@@ -25,22 +25,22 @@ for (const level of levels) {
     const id = String(raw.id ?? file.slice(0, -5)).padStart(2, "0");
     const alias = `g_${level}_${id}`;
     imports.push(`import ${alias} from "../../data/grammar/${level}/${file}";`);
-    lessonLines.push(`    ${alias} as SigureGrammarLesson,`);
+    lessonLines.push(`    ${alias} as GrammarLesson,`);
     totalLessons += 1;
   }
 
   levelEntries.push(`  ${upper}: [\n${lessonLines.join("\n")}\n  ],`);
 }
 
-const source = `import type { LevelId, SigureGrammarLesson } from "./types";
+const source = `import type { LevelId, GrammarLesson } from "./types";
 
 ${imports.join("\n")}
 
-export const grammarLessonsByLevel: Record<LevelId, SigureGrammarLesson[]> = {
+export const grammarLessonsByLevel: Record<LevelId, GrammarLesson[]> = {
 ${levelEntries.join("\n")}
 };
 
-export const ALL_GRAMMAR_LESSONS: SigureGrammarLesson[] = [
+export const ALL_GRAMMAR_LESSONS: GrammarLesson[] = [
   ...grammarLessonsByLevel.N5,
   ...grammarLessonsByLevel.N4,
   ...grammarLessonsByLevel.N3,
@@ -52,7 +52,7 @@ export function grammarLessonKey(level: LevelId, id: string) {
   return \`\${level}:\${id}\`;
 }
 
-export function findGrammarLesson(level: LevelId, id: string): SigureGrammarLesson | undefined {
+export function findGrammarLesson(level: LevelId, id: string): GrammarLesson | undefined {
   return grammarLessonsByLevel[level].find((item) => item.id === id);
 }
 `;

@@ -1,6 +1,6 @@
 import { router } from "expo-router";
-import { useMemo, useState } from "react";
-import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { useEffect, useMemo, useState } from "react";
+import { BackHandler, FlatList, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BottomTabs } from "@/components/BottomTabs";
 import { ConjugationDrill } from "@/components/ConjugationDrill";
@@ -9,7 +9,7 @@ import { GrammarLessonMachine } from "@/components/GrammarLessonMachine";
 import { PaperBackdrop } from "@/components/PaperBackdrop";
 import { ProficiencyMeter } from "@/components/ProficiencyMeter";
 import { findGrammarLesson, grammarLessonKey, grammarLessonsByLevel } from "@/data/grammarRegistry";
-import type { LevelId, SigureGrammarLesson } from "@/data/types";
+import type { LevelId, GrammarLesson } from "@/data/types";
 import { lessonAllowedPos } from "@/lib/conjugator";
 import { lessonExamples } from "@/lib/grammar";
 import { useProgress } from "@/state/progress";
@@ -28,6 +28,16 @@ export default function GrammarScreen() {
   const [search, setSearch] = useState("");
   const [selectedRef, setSelectedRef] = useState<{ level: LevelId; id: string } | null>(null);
 
+  // Intercept Android hardware / nav-bar back button so closing a lesson returns to the lesson list
+  useEffect(() => {
+    if (!selectedRef) return;
+    const sub = BackHandler.addEventListener("hardwareBackPress", () => {
+      setSelectedRef(null);
+      return true;
+    });
+    return () => sub.remove();
+  }, [selectedRef]);
+
   const activeAccent = levelAccent[levelFilter];
 
   const lessonsList = useMemo(() => {
@@ -44,7 +54,7 @@ export default function GrammarScreen() {
     );
   }, [levelFilter, search]);
 
-  const selectedLesson: SigureGrammarLesson | null = useMemo(
+  const selectedLesson: GrammarLesson | null = useMemo(
     () => (selectedRef ? findGrammarLesson(selectedRef.level, selectedRef.id) ?? null : null),
     [selectedRef],
   );
@@ -74,7 +84,7 @@ export default function GrammarScreen() {
 
           <View style={styles.titleRow}>
             <Text style={styles.title}>
-              {selectedLesson ? `${selectedLesson.level} 文法 ${selectedLesson.id}` : "時雨文法練功機"}
+              {selectedLesson ? `${selectedLesson.level} 文法 ${selectedLesson.id}` : "文法練功機"}
             </Text>
             <Pressable
               onPress={() => setPref("showFurigana", !prefs.showFurigana)}
@@ -211,7 +221,7 @@ export default function GrammarScreen() {
             tabs={[
               { id: "lessons", label: "文法課堂", color: activeAccent },
               { id: "drill", label: "六大活用", color: activeAccent },
-              { id: "compare", label: "易混辨析", color: activeAccent },
+              { id: "compare", label: "易混擂台", color: activeAccent },
             ]}
           />
         )}

@@ -1,14 +1,14 @@
 import { ALL_GRAMMAR_LESSONS, grammarLessonKey, grammarLessonsByLevel } from "@/data/grammarRegistry";
-import type { LevelId, SigureGrammarExample, SigureGrammarLesson } from "@/data/types";
+import type { LevelId, GrammarExample, GrammarLesson } from "@/data/types";
 import { attemptStats } from "@/lib/proficiency";
 
-export function grammarByLevel(level: LevelId | "ALL"): SigureGrammarLesson[] {
+export function grammarByLevel(level: LevelId | "ALL"): GrammarLesson[] {
   if (level === "ALL") return ALL_GRAMMAR_LESSONS;
   return grammarLessonsByLevel[level];
 }
 
-export function lessonExamples(lesson: SigureGrammarLesson): SigureGrammarExample[] {
-  const list: SigureGrammarExample[] = [];
+export function lessonExamples(lesson: GrammarLesson): GrammarExample[] {
+  const list: GrammarExample[] = [];
   for (const sec of lesson.sections ?? []) {
     for (const ex of sec.examples ?? []) {
       if (ex && typeof ex.ja === "string" && ex.ja.trim().length > 0) {

@@ -83,7 +83,7 @@ export default function DashboardScreen() {
             </View>
             <Text style={styles.title}>今日の勉強</Text>
             <Text style={styles.subtitle}>
-              N5–N3 單字、時雨國文法與 {totalLexicon} 詞即時活用練功機
+              N5–N3 單字、國文法與 {totalLexicon} 詞即時活用練功機
             </Text>
 
             <View style={styles.heroStats}>

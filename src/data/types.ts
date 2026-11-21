@@ -31,20 +31,20 @@ export type LevelManifest = {
   topics: TopicManifest[];
 };
 
-export type SigureGrammarExample = {
+export type GrammarExample = {
   ja: string;
   reading?: string;
   zh?: string;
 };
 
-export type SigureGrammarSection = {
+export type GrammarSection = {
   heading: string;
   pattern?: string;
   notes?: string[];
-  examples?: SigureGrammarExample[];
+  examples?: GrammarExample[];
 };
 
-export type SigureGrammarLesson = {
+export type GrammarLesson = {
   level: LevelId;
   lesson: number;
   id: string;
@@ -56,7 +56,7 @@ export type SigureGrammarLesson = {
   published?: string;
   pattern: string;
   connection: string[];
-  sections: SigureGrammarSection[];
+  sections: GrammarSection[];
 };
 
 export type ConfusableSide = {

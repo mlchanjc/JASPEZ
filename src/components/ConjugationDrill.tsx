@@ -64,125 +64,137 @@ export function ConjugationDrill({ levelFilter }: Props) {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-      <View style={styles.topCard}>
-        <View style={styles.topRow}>
-          <View>
-            <Text style={styles.heading}>國文法・六大活用特訓</Text>
-            <Text style={styles.sub}>依時雨學校文法分類 · 本級共 {verbPoolCount} 個動詞</Text>
+    <View style={styles.container}>
+      <ScrollView style={styles.scroller} contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        <View style={styles.topCard}>
+          <View style={styles.topRow}>
+            <View>
+              <Text style={styles.heading}>國文法・六大活用特訓</Text>
+              <Text style={styles.sub}>依學校國文法分類 · 本級共 {verbPoolCount} 個動詞</Text>
+            </View>
+            <View style={styles.scorePill}>
+              <Text style={styles.scoreText}>
+                {correctCount} / {totalCount}
+              </Text>
+            </View>
           </View>
-          <View style={styles.scorePill}>
-            <Text style={styles.scoreText}>
-              {correctCount} / {totalCount}
-            </Text>
-          </View>
-        </View>
 
-        <View style={styles.formGrid}>
-          {FORM_TABS.map((tab) => {
-            const selected = tab.id === form;
-            return (
-              <Pressable
-                key={tab.id}
-                onPress={() => setForm(tab.id)}
-                style={[styles.formChip, selected && styles.formChipActive]}
-              >
-                <Text style={[styles.formChipText, selected && styles.formChipTextActive]}>{tab.label}</Text>
-              </Pressable>
-            );
-          })}
-        </View>
-      </View>
-
-      <View style={styles.drillCard}>
-        <View style={styles.badges}>
-          <View style={[styles.levelBadge, { backgroundColor: accent }]}>
-            <Text style={styles.levelBadgeText}>{question.level}</Text>
-          </View>
-          <View style={styles.groupBadge}>
-            <Text style={styles.groupText}>{question.posLabel}</Text>
+          <View style={styles.formGrid}>
+            {FORM_TABS.map((tab) => {
+              const selected = tab.id === form;
+              return (
+                <Pressable
+                  key={tab.id}
+                  onPress={() => setForm(tab.id)}
+                  style={[styles.formChip, selected && styles.formChipActive]}
+                >
+                  <Text style={[styles.formChipText, selected && styles.formChipTextActive]}>{tab.label}</Text>
+                </Pressable>
+              );
+            })}
           </View>
         </View>
 
-        <View style={styles.verbBlock}>
-          {prefs.showFurigana && <Text style={styles.rt}>{question.rt}</Text>}
-          <Text style={styles.dict}>{question.dict}</Text>
-          <Text style={styles.meaning}>{question.meaning}</Text>
-        </View>
+        <View style={styles.drillCard}>
+          <View style={styles.badges}>
+            <View style={[styles.levelBadge, { backgroundColor: accent }]}>
+              <Text style={styles.levelBadgeText}>{question.level}</Text>
+            </View>
+            <View style={styles.groupBadge}>
+              <Text style={styles.groupText}>{question.posLabel}</Text>
+            </View>
+          </View>
 
-        <Text style={styles.prompt}>{question.promptLabel}</Text>
+          <View style={styles.verbBlock}>
+            {prefs.showFurigana && <Text style={styles.rt}>{question.rt}</Text>}
+            <Text style={styles.dict}>{question.dict}</Text>
+            <Text style={styles.meaning}>{question.meaning}</Text>
+          </View>
 
-        <View style={styles.choicesGrid}>
-          {question.choices.map((opt) => {
-            let bg = theme.white;
-            let border = theme.paperBorder;
-            let bottom = "#CBD5E1";
-            let color = theme.ink;
-            if (picked !== null) {
-              if (opt === question.answer) {
-                bg = theme.successSoft;
-                border = theme.success;
-                bottom = theme.matchaDark;
-                color = theme.matchaDark;
-              } else if (opt === picked) {
-                bg = theme.errorSoft;
-                border = theme.error;
-                bottom = theme.error;
-                color = theme.error;
-              } else {
-                bg = theme.surface;
-                color = theme.inkMuted;
+          <Text style={styles.prompt}>{question.promptLabel}</Text>
+
+          <View style={styles.choicesGrid}>
+            {question.choices.map((opt) => {
+              let bg = theme.white;
+              let border = theme.paperBorder;
+              let bottom = "#CBD5E1";
+              let color = theme.ink;
+              if (picked !== null) {
+                if (opt === question.answer) {
+                  bg = theme.successSoft;
+                  border = theme.success;
+                  bottom = theme.matchaDark;
+                  color = theme.matchaDark;
+                } else if (opt === picked) {
+                  bg = theme.errorSoft;
+                  border = theme.error;
+                  bottom = theme.error;
+                  color = theme.error;
+                } else {
+                  bg = theme.surface;
+                  color = theme.inkMuted;
+                }
               }
-            }
-            return (
-              <Pressable
-                key={opt}
-                disabled={picked !== null}
-                onPress={() => choose(opt)}
-                style={[styles.choiceBtn, { backgroundColor: bg, borderColor: border, borderBottomColor: bottom }]}
-              >
-                <Text style={[styles.choiceText, { color }]}>{opt}</Text>
-              </Pressable>
-            );
-          })}
-        </View>
-
-        {picked !== null && (
-          <View
-            style={[
-              styles.ruleBox,
-              {
-                backgroundColor: isCorrect ? theme.successSoft : theme.errorSoft,
-                borderColor: isCorrect ? theme.success : theme.error,
-              },
-            ]}
-          >
-            <Text style={[styles.ruleTitle, { color: isCorrect ? theme.matchaDark : theme.error }]}>
-              {isCorrect ? `正確！${question.dict} → ${question.answer}` : `正解：${question.dict} → ${question.answer}`}
-            </Text>
-            <Text style={styles.ruleBody}>{question.rule}</Text>
-            <Pressable onPress={nextVerb} style={styles.nextBtn}>
-              <Text style={styles.nextBtnText}>隨機抽下一詞 →</Text>
-            </Pressable>
+              return (
+                <Pressable
+                  key={opt}
+                  disabled={picked !== null}
+                  onPress={() => choose(opt)}
+                  style={[styles.choiceBtn, { backgroundColor: bg, borderColor: border, borderBottomColor: bottom }]}
+                >
+                  <Text style={[styles.choiceText, { color }]}>{opt}</Text>
+                </Pressable>
+              );
+            })}
           </View>
-        )}
-      </View>
-    </ScrollView>
+        </View>
+      </ScrollView>
+
+      {/* PINNED ZERO-SCROLL FEEDBACK BAR */}
+      {picked !== null && (
+        <View
+          style={[
+            styles.feedbackDock,
+            {
+              backgroundColor: isCorrect ? "#ECFDF5" : "#FFF1F2",
+              borderTopColor: isCorrect ? theme.success : theme.error,
+            },
+          ]}
+        >
+          <View style={styles.dockTop}>
+            <Text style={[styles.dockTitle, { color: isCorrect ? theme.matchaDark : theme.error }]}>
+              {isCorrect ? `✓ 正確！${question.dict} → ${question.answer}` : `✕ 正解：${question.dict} → ${question.answer}`}
+            </Text>
+            <Text style={styles.dockBody} numberOfLines={2}>
+              {question.rule}
+            </Text>
+          </View>
+          <Pressable
+            onPress={nextVerb}
+            style={[styles.dockBtn, { backgroundColor: isCorrect ? theme.success : theme.error }]}
+          >
+            <Text style={styles.dockBtnText}>下一題 →</Text>
+          </Pressable>
+        </View>
+      )}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  scrollContent: { paddingHorizontal: 18, paddingBottom: 32, gap: 14 },
+  container: { flex: 1 },
+  scroller: { flex: 1 },
+  scrollContent: { paddingHorizontal: 18, paddingBottom: 24, gap: 12 },
   topCard: {
     backgroundColor: theme.white,
     borderRadius: 22,
-    padding: 16,
-    gap: 12,
+    padding: 15,
+    gap: 10,
     borderWidth: 1.5,
     borderColor: theme.paperBorder,
   },
   topRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 8 },
-  heading: { fontSize: 17, fontWeight: "900", color: theme.ink },
+  heading: { fontSize: 16, fontWeight: "900", color: theme.ink },
   sub: { fontSize: 12, color: theme.inkSoft, marginTop: 2, fontWeight: "600" },
   scorePill: {
     backgroundColor: theme.indigoSoft,
@@ -207,17 +219,17 @@ const styles = StyleSheet.create({
   formChipTextActive: { color: "#fff" },
   drillCard: {
     backgroundColor: theme.white,
-    borderRadius: 26,
-    padding: 20,
-    gap: 16,
+    borderRadius: 24,
+    padding: 18,
+    gap: 14,
     alignItems: "center",
     borderWidth: 1.5,
     borderColor: theme.paperBorder,
     shadowColor: "#161B2E",
-    shadowOpacity: 0.06,
-    shadowRadius: 14,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 3,
+    shadowOpacity: 0.05,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 5 },
+    elevation: 2,
   },
   badges: { flexDirection: "row", alignItems: "center", gap: 8 },
   levelBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 99 },
@@ -231,8 +243,8 @@ const styles = StyleSheet.create({
   groupText: { fontSize: 12, fontWeight: "800", color: theme.goldDark },
   verbBlock: { alignItems: "center", gap: 2 },
   rt: { fontSize: 13, fontWeight: "700", color: theme.inkSoft },
-  dict: { fontSize: 34, fontWeight: "900", color: theme.ink },
-  meaning: { fontSize: 15, fontWeight: "700", color: theme.inkSoft, marginTop: 2, textAlign: "center" },
+  dict: { fontSize: 32, fontWeight: "900", color: theme.ink },
+  meaning: { fontSize: 14, fontWeight: "700", color: theme.inkSoft, marginTop: 2, textAlign: "center" },
   prompt: {
     fontSize: 13,
     fontWeight: "900",
@@ -245,30 +257,28 @@ const styles = StyleSheet.create({
   choicesGrid: { flexDirection: "row", flexWrap: "wrap", gap: 10, width: "100%" },
   choiceBtn: {
     width: "48%",
-    paddingVertical: 14,
+    paddingVertical: 13,
     borderRadius: 16,
     borderWidth: 1.5,
     borderBottomWidth: 4,
     alignItems: "center",
   },
   choiceText: { fontSize: 16, fontWeight: "800" },
-  ruleBox: {
-    width: "100%",
-    borderRadius: 18,
-    borderWidth: 1.5,
-    padding: 14,
-    gap: 8,
+  feedbackDock: {
+    borderTopWidth: 2,
+    paddingHorizontal: 18,
+    paddingVertical: 12,
+    gap: 10,
   },
-  ruleTitle: { fontSize: 14, fontWeight: "900" },
-  ruleBody: { fontSize: 13, color: theme.ink, lineHeight: 19 },
-  nextBtn: {
-    marginTop: 4,
-    backgroundColor: theme.ink,
+  dockTop: { gap: 3 },
+  dockTitle: { fontSize: 15, fontWeight: "900" },
+  dockBody: { fontSize: 12, color: theme.ink, lineHeight: 18, fontWeight: "600" },
+  dockBtn: {
     paddingVertical: 12,
     borderRadius: 14,
     alignItems: "center",
   },
-  nextBtnText: { color: "#fff", fontSize: 14, fontWeight: "900" },
+  dockBtnText: { color: "#fff", fontSize: 15, fontWeight: "900" },
   emptyCard: {
     margin: 20,
     padding: 24,

@@ -1,109 +1,385 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { CONFUSABLE_PAIRS } from "@/data/grammar";
+import { findGrammarLesson } from "@/data/grammarRegistry";
+import type { LevelId } from "@/data/types";
+import { lessonExamples } from "@/lib/grammar";
+import { useProgress } from "@/state/progress";
 import { levelAccent, theme } from "@/theme";
 
+type ArenaGroup = {
+  id: string;
+  label: string;
+  level: LevelId;
+  members: { level: LevelId; lessonId: string; choiceLabel: string; tokens: string[]; tip: string }[];
+};
+
+const ARENA_GROUPS: ArenaGroup[] = [
+  {
+    id: "conditionals",
+    label: "假定四天王",
+    level: "N4",
+    members: [
+      { level: "N4", lessonId: "10", choiceLabel: "と", tokens: ["と"], tip: "恆常必然結果（一…就…），後句不可接意志或請求。" },
+      { level: "N4", lessonId: "11", choiceLabel: "ば", tokens: ["ば"], tip: "假定形＋ば，著重於前句條件成立。" },
+      { level: "N4", lessonId: "12", choiceLabel: "たら", tokens: ["たら", "だら"], tip: "最萬用條件句，強調前項完成之後，後句可接請求／意志。" },
+      { level: "N4", lessonId: "13", choiceLabel: "なら", tokens: ["なら"], tip: "承接對方話題或前提（如果要…的話），常用於給建議。" },
+    ],
+  },
+  {
+    id: "aux-verbs",
+    label: "補助動詞",
+    level: "N4",
+    members: [
+      { level: "N4", lessonId: "16", choiceLabel: "ていく", tokens: ["ていく", "ていき", "ていっ", "でいく", "でいっ"], tip: "動作往遠處或未來持續變化。" },
+      { level: "N4", lessonId: "17", choiceLabel: "てくる", tokens: ["てくる", "てき", "でくる", "でき"], tip: "從過去持續到現在，或朝說話者方向而來。" },
+      { level: "N4", lessonId: "18", choiceLabel: "てみる", tokens: ["てみる", "てみ", "でみる", "でみ"], tip: "試著做看看結果如何。" },
+      { level: "N4", lessonId: "19", choiceLabel: "てしまう", tokens: ["てしまう", "てしま", "でしまう", "でしま", "ちゃう", "ちゃっ"], tip: "徹底完成，或不小心、帶有遺憾語感。" },
+      { level: "N4", lessonId: "20", choiceLabel: "ておく", tokens: ["ておく", "ておき", "ておい", "でおく", "でおい"], tip: "為了日後目的而事先準備。" },
+    ],
+  },
+  {
+    id: "cause-effect",
+    label: "因果歸因",
+    level: "N3",
+    members: [
+      { level: "N3", lessonId: "04", choiceLabel: "おかげで", tokens: ["おかげで", "おかげだ", "おかげです"], tip: "帶有感謝心情，後句必為正面好結果。" },
+      { level: "N3", lessonId: "33", choiceLabel: "せいで", tokens: ["せいで", "せいだ", "せいです"], tip: "帶有責怪或懊惱，後句為負面壞結果。" },
+      { level: "N3", lessonId: "34", choiceLabel: "せいか", tokens: ["せいか"], tip: "不確定的推測原因（也許是因為…的緣故）。" },
+    ],
+  },
+  {
+    id: "purpose-decision",
+    label: "目的與決定",
+    level: "N3",
+    members: [
+      { level: "N4", lessonId: "37", choiceLabel: "ために", tokens: ["ために", "ためだ", "ためです"], tip: "可控意志動作的目的（為了…），或表原因。" },
+      { level: "N3", lessonId: "123", choiceLabel: "ように", tokens: ["ように"], tip: "接可能形／無意志／否定形表狀態目標，或表比喻與勸告。" },
+      { level: "N3", lessonId: "25", choiceLabel: "ことにしている", tokens: ["ことにしている", "ことにしています"], tip: "自己養成的個人習慣（總是固定這麼做）。" },
+      { level: "N3", lessonId: "26", choiceLabel: "ことになっている", tokens: ["ことになっている", "ことになっています"], tip: "外部規則、制度或既定安排（按規定…）。" },
+    ],
+  },
+];
+
+type ArenaQuestion = {
+  id: string;
+  before: string;
+  after: string;
+  fullJa: string;
+  reading: string;
+  zh: string;
+  correctLabel: string;
+  choices: string[];
+  tip: string;
+};
+
+function buildPool(group: ArenaGroup): ArenaQuestion[] {
+  const list: ArenaQuestion[] = [];
+  const allChoices = group.members.map((m) => m.choiceLabel);
+
+  for (const member of group.members) {
+    const lesson = findGrammarLesson(member.level, member.lessonId);
+    if (!lesson) continue;
+    const examples = lessonExamples(lesson);
+    examples.forEach((ex, idx) => {
+      const ja = ex.ja.trim();
+      let hit = "";
+      let pos = -1;
+      for (const tok of member.tokens) {
+        if (tok.length === 1) {
+          const re = new RegExp(`${tok}(?=[、。！？\\s]|$)`);
+          const m = re.exec(ja);
+          if (m) {
+            hit = tok;
+            pos = m.index;
+            break;
+          }
+        } else {
+          const i = ja.indexOf(tok);
+          if (i >= 0) {
+            hit = tok;
+            pos = i;
+            break;
+          }
+        }
+      }
+      if (!hit || pos < 0) return;
+
+      list.push({
+        id: `${group.id}:${member.lessonId}:${idx}`,
+        before: ja.slice(0, pos),
+        after: ja.slice(pos + hit.length),
+        fullJa: ja,
+        reading: (ex.reading ?? "").trim(),
+        zh: (ex.zh ?? "").trim(),
+        correctLabel: member.choiceLabel,
+        choices: allChoices,
+        tip: member.tip,
+      });
+    });
+  }
+  return list;
+}
+
 export function GrammarCompare() {
-  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const { prefs } = useProgress();
+  const [subMode, setSubMode] = useState<"arena" | "guide">("arena");
+  const [groupId, setGroupId] = useState<string>(ARENA_GROUPS[0].id);
+  const [cursor, setCursor] = useState(0);
+  const [picked, setPicked] = useState<string | null>(null);
+  const [streak, setStreak] = useState(0);
+  const [correctTotal, setCorrectTotal] = useState(0);
+  const [answeredTotal, setAnsweredTotal] = useState(0);
+
+  const activeGroup = ARENA_GROUPS.find((g) => g.id === groupId) ?? ARENA_GROUPS[0];
+  const pool = useMemo(() => {
+    const built = buildPool(activeGroup);
+    // Shuffle pool whenever switching group
+    for (let i = built.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [built[i], built[j]] = [built[j], built[i]];
+    }
+    return built;
+  }, [activeGroup]);
+
+  const question = pool.length > 0 ? pool[cursor % pool.length] : null;
+  const isCorrect = question !== null && picked === question.correctLabel;
+  const accent = levelAccent[activeGroup.level];
+
+  const selectGroup = (id: string) => {
+    setGroupId(id);
+    setCursor(0);
+    setPicked(null);
+  };
+
+  const choose = (label: string) => {
+    if (!question || picked !== null) return;
+    setPicked(label);
+    setAnsweredTotal((n) => n + 1);
+    if (label === question.correctLabel) {
+      setCorrectTotal((n) => n + 1);
+      setStreak((n) => n + 1);
+    } else {
+      setStreak(0);
+    }
+  };
+
+  const nextQuestion = () => {
+    setCursor((n) => n + 1);
+    setPicked(null);
+  };
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-      <View style={styles.banner}>
-        <Text style={styles.bannerTitle}>易混文法辨析</Text>
-        <Text style={styles.bannerSub}>並排對照 N5–N3 最常搞混的句型，點選小測驗立刻驗收。</Text>
-      </View>
-
-      {CONFUSABLE_PAIRS.map((pair) => {
-        const picked = answers[pair.id];
-        const isCorrect = picked === pair.correct;
-        const accent = levelAccent[pair.level];
-
-        return (
-          <View key={pair.id} style={styles.card}>
-            <View style={styles.head}>
-              <View style={[styles.levelBadge, { backgroundColor: accent }]}>
-                <Text style={styles.levelText}>{pair.level}</Text>
-              </View>
-              <View style={styles.headText}>
-                <Text style={styles.title}>{pair.title}</Text>
-                <Text style={styles.subtitle}>{pair.subtitle}</Text>
-              </View>
+    <View style={styles.container}>
+      <ScrollView style={styles.scroller} contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        {/* Top Mode & Stats Header */}
+        <View style={styles.topCard}>
+          <View style={styles.topHead}>
+            <View>
+              <Text style={styles.heading}>易混實戰擂台</Text>
+              <Text style={styles.sub}>
+                本組共 {pool.length} 句真實例句 · 連勝 🔥 {streak}（{correctTotal}/{answeredTotal}）
+              </Text>
             </View>
-
-            <View style={styles.columns}>
-              <View style={[styles.sideBox, { backgroundColor: theme.indigoSoft }]}>
-                <Text style={[styles.sideLabel, { color: theme.indigo }]}>{pair.left.label}</Text>
-                <Text style={styles.sideRule}>{pair.left.rule}</Text>
-                <Text style={styles.sideExample}>{pair.left.example}</Text>
-                <Text style={styles.sideTrans}>{pair.left.translation}</Text>
-              </View>
-              <View style={[styles.sideBox, { backgroundColor: theme.goldSoft }]}>
-                <Text style={[styles.sideLabel, { color: theme.goldDark }]}>{pair.right.label}</Text>
-                <Text style={styles.sideRule}>{pair.right.rule}</Text>
-                <Text style={styles.sideExample}>{pair.right.example}</Text>
-                <Text style={styles.sideTrans}>{pair.right.translation}</Text>
-              </View>
-            </View>
-
-            <View style={styles.miniQuiz}>
-              <Text style={styles.quizLabel}>⚡ 即時小測驗</Text>
-              <Text style={styles.quizPrompt}>{pair.quizPrompt}</Text>
-              <View style={styles.optionRow}>
-                {pair.options.map((opt) => {
-                  let bg = theme.white;
-                  let border = theme.paperBorder;
-                  let bottom = "#CBD5E1";
-                  let color = theme.ink;
-                  if (picked) {
-                    if (opt === pair.correct) {
-                      bg = theme.successSoft;
-                      border = theme.success;
-                      bottom = theme.matchaDark;
-                      color = theme.matchaDark;
-                    } else if (opt === picked) {
-                      bg = theme.errorSoft;
-                      border = theme.error;
-                      bottom = theme.error;
-                      color = theme.error;
-                    } else {
-                      color = theme.inkMuted;
-                    }
-                  }
-                  return (
-                    <Pressable
-                      key={opt}
-                      onPress={() => setAnswers((prev) => ({ ...prev, [pair.id]: opt }))}
-                      style={[styles.optionBtn, { backgroundColor: bg, borderColor: border, borderBottomColor: bottom }]}
-                    >
-                      <Text style={[styles.optionText, { color }]}>{opt}</Text>
-                    </Pressable>
-                  );
-                })}
-              </View>
-              {picked && (
-                <Text style={[styles.explanation, { color: isCorrect ? theme.matchaDark : theme.error }]}>
-                  {isCorrect ? "✓ " : "✕ "}
-                  {pair.explanation}
-                </Text>
-              )}
+            <View style={styles.segmented}>
+              <Pressable
+                onPress={() => setSubMode("arena")}
+                style={[styles.segBtn, subMode === "arena" && styles.segBtnActive]}
+              >
+                <Text style={[styles.segText, subMode === "arena" && styles.segTextActive]}>實戰</Text>
+              </Pressable>
+              <Pressable
+                onPress={() => setSubMode("guide")}
+                style={[styles.segBtn, subMode === "guide" && styles.segBtnActive]}
+              >
+                <Text style={[styles.segText, subMode === "guide" && styles.segTextActive]}>速查</Text>
+              </Pressable>
             </View>
           </View>
-        );
-      })}
-    </ScrollView>
+
+          {subMode === "arena" && (
+            <View style={styles.groupRow}>
+              {ARENA_GROUPS.map((g) => {
+                const selected = g.id === groupId;
+                const col = levelAccent[g.level];
+                return (
+                  <Pressable
+                    key={g.id}
+                    onPress={() => selectGroup(g.id)}
+                    style={[styles.groupChip, selected && { backgroundColor: col, borderColor: col }]}
+                  >
+                    <Text style={[styles.groupChipText, selected && { color: "#fff" }]}>{g.label}</Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          )}
+        </View>
+
+        {/* MODE A: DYNAMIC CONFUSABLE ARENA */}
+        {subMode === "arena" && question && (
+          <View style={styles.card}>
+            <View style={styles.badgeRow}>
+              <View style={[styles.levelBadge, { backgroundColor: accent }]}>
+                <Text style={styles.levelBadgeText}>{activeGroup.level}</Text>
+              </View>
+              <Text style={styles.groupLabel}>{activeGroup.label} · 選出最適合語境的文法</Text>
+            </View>
+
+            <Text style={styles.sentence}>
+              {question.before}
+              <Text
+                style={[
+                  styles.blankText,
+                  {
+                    color: picked === null ? accent : isCorrect ? theme.matchaDark : theme.error,
+                  },
+                ]}
+              >
+                {picked === null ? " 【　　】 " : ` 【${picked}】 `}
+              </Text>
+              {question.after}
+            </Text>
+
+            {prefs.showFurigana && question.reading ? (
+              <Text style={styles.reading}>
+                {picked !== null ? question.reading : "（作答後顯示完整假名讀音）"}
+              </Text>
+            ) : null}
+
+            {question.zh ? <Text style={styles.zh}>{question.zh}</Text> : null}
+
+            <View style={styles.choicesGrid}>
+              {question.choices.map((opt) => {
+                const isAns = opt === question.correctLabel;
+                const isPick = opt === picked;
+                let bg = theme.white;
+                let border = theme.paperBorder;
+                let bottom = "#CBD5E1";
+                let color = theme.ink;
+                if (picked !== null) {
+                  if (isAns) {
+                    bg = theme.successSoft;
+                    border = theme.success;
+                    bottom = theme.matchaDark;
+                    color = theme.matchaDark;
+                  } else if (isPick) {
+                    bg = theme.errorSoft;
+                    border = theme.error;
+                    bottom = theme.error;
+                    color = theme.error;
+                  } else {
+                    bg = theme.surface;
+                    color = theme.inkMuted;
+                  }
+                }
+                return (
+                  <Pressable
+                    key={opt}
+                    disabled={picked !== null}
+                    onPress={() => choose(opt)}
+                    style={[styles.tile, { backgroundColor: bg, borderColor: border, borderBottomColor: bottom }]}
+                  >
+                    <Text style={[styles.tileText, { color }]}>{opt}</Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </View>
+        )}
+
+        {/* MODE B: QUICK REFERENCE CHEAT-SHEETS */}
+        {subMode === "guide" &&
+          CONFUSABLE_PAIRS.map((pair) => (
+            <View key={pair.id} style={styles.card}>
+              <View style={styles.badgeRow}>
+                <View style={[styles.levelBadge, { backgroundColor: levelAccent[pair.level] }]}>
+                  <Text style={styles.levelBadgeText}>{pair.level}</Text>
+                </View>
+                <View style={styles.headText}>
+                  <Text style={styles.pairTitle}>{pair.title}</Text>
+                  <Text style={styles.pairSub}>{pair.subtitle}</Text>
+                </View>
+              </View>
+              <View style={styles.columns}>
+                <View style={[styles.sideBox, { backgroundColor: theme.indigoSoft }]}>
+                  <Text style={[styles.sideLabel, { color: theme.indigo }]}>{pair.left.label}</Text>
+                  <Text style={styles.sideRule}>{pair.left.rule}</Text>
+                  <Text style={styles.sideExample}>{pair.left.example}</Text>
+                  <Text style={styles.sideTrans}>{pair.left.translation}</Text>
+                </View>
+                <View style={[styles.sideBox, { backgroundColor: theme.goldSoft }]}>
+                  <Text style={[styles.sideLabel, { color: theme.goldDark }]}>{pair.right.label}</Text>
+                  <Text style={styles.sideRule}>{pair.right.rule}</Text>
+                  <Text style={styles.sideExample}>{pair.right.example}</Text>
+                  <Text style={styles.sideTrans}>{pair.right.translation}</Text>
+                </View>
+              </View>
+            </View>
+          ))}
+      </ScrollView>
+
+      {/* PINNED ZERO-SCROLL FEEDBACK BAR */}
+      {subMode === "arena" && question && picked !== null && (
+        <View
+          style={[
+            styles.feedbackDock,
+            {
+              backgroundColor: isCorrect ? "#ECFDF5" : "#FFF1F2",
+              borderTopColor: isCorrect ? theme.success : theme.error,
+            },
+          ]}
+        >
+          <View style={styles.dockTop}>
+            <Text style={[styles.dockTitle, { color: isCorrect ? theme.matchaDark : theme.error }]}>
+              {isCorrect ? `✓ 答對了！「${question.correctLabel}」` : `✕ 正解：「${question.correctLabel}」`}
+            </Text>
+            <Text style={styles.dockBody} numberOfLines={2}>
+              {question.tip}
+            </Text>
+          </View>
+          <Pressable
+            onPress={nextQuestion}
+            style={[styles.dockBtn, { backgroundColor: isCorrect ? theme.success : theme.error }]}
+          >
+            <Text style={styles.dockBtnText}>下一題 →</Text>
+          </Pressable>
+        </View>
+      )}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  scrollContent: { paddingHorizontal: 18, paddingBottom: 32, gap: 14 },
-  banner: {
-    backgroundColor: theme.indigo,
-    borderRadius: 24,
-    padding: 18,
-    gap: 4,
+  container: { flex: 1 },
+  scroller: { flex: 1 },
+  scrollContent: { paddingHorizontal: 18, paddingBottom: 24, gap: 12 },
+  topCard: {
+    backgroundColor: theme.white,
+    borderRadius: 22,
+    padding: 15,
+    gap: 10,
+    borderWidth: 1.5,
+    borderColor: theme.paperBorder,
   },
-  bannerTitle: { fontSize: 18, fontWeight: "900", color: "#fff" },
-  bannerSub: { fontSize: 13, color: "rgba(255, 255, 255, 0.85)", lineHeight: 19 },
+  topHead: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 8 },
+  heading: { fontSize: 16, fontWeight: "900", color: theme.ink },
+  sub: { fontSize: 12, color: theme.inkSoft, marginTop: 2, fontWeight: "700" },
+  segmented: { flexDirection: "row", backgroundColor: theme.paper, borderRadius: 11, padding: 3, gap: 2 },
+  segBtn: { paddingHorizontal: 11, paddingVertical: 5, borderRadius: 8 },
+  segBtnActive: { backgroundColor: theme.white },
+  segText: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
+  segTextActive: { color: theme.indigo },
+  groupRow: { flexDirection: "row", flexWrap: "wrap", gap: 6 },
+  groupChip: {
+    paddingHorizontal: 11,
+    paddingVertical: 7,
+    borderRadius: 11,
+    backgroundColor: theme.surface,
+    borderWidth: 1.5,
+    borderColor: theme.paperBorder,
+  },
+  groupChipText: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
   card: {
     backgroundColor: theme.white,
     borderRadius: 24,
@@ -117,37 +393,44 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 5 },
     elevation: 2,
   },
-  head: { flexDirection: "row", alignItems: "center", gap: 10 },
+  badgeRow: { flexDirection: "row", alignItems: "center", gap: 8 },
   levelBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 99 },
-  levelText: { color: "#fff", fontSize: 11, fontWeight: "900" },
-  headText: { flex: 1 },
-  title: { fontSize: 18, fontWeight: "900", color: theme.ink },
-  subtitle: { fontSize: 12, color: theme.inkSoft, fontWeight: "700", marginTop: 2 },
-  columns: { flexDirection: "row", gap: 10 },
-  sideBox: { flex: 1, borderRadius: 16, padding: 12, gap: 6 },
-  sideLabel: { fontSize: 13, fontWeight: "900" },
-  sideRule: { fontSize: 12, color: theme.ink, lineHeight: 18 },
-  sideExample: { fontSize: 13, fontWeight: "800", color: theme.ink, paddingTop: 4 },
-  sideTrans: { fontSize: 11, color: theme.inkSoft },
-  miniQuiz: {
-    backgroundColor: theme.surface,
+  levelBadgeText: { color: "#fff", fontSize: 11, fontWeight: "900" },
+  groupLabel: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
+  sentence: { fontSize: 19, lineHeight: 30, fontWeight: "800", color: theme.ink },
+  blankText: { fontWeight: "900" },
+  reading: { fontSize: 12, color: theme.inkMuted, lineHeight: 18 },
+  zh: { fontSize: 14, color: theme.inkSoft, fontWeight: "600", lineHeight: 21 },
+  choicesGrid: { flexDirection: "row", flexWrap: "wrap", gap: 10 },
+  tile: {
+    width: "48%",
     borderRadius: 16,
-    padding: 13,
-    gap: 8,
-    borderWidth: 1,
-    borderColor: theme.paperBorder,
-  },
-  quizLabel: { fontSize: 11, fontWeight: "900", color: theme.vermillion },
-  quizPrompt: { fontSize: 13, fontWeight: "700", color: theme.ink, lineHeight: 20 },
-  optionRow: { flexDirection: "row", gap: 8 },
-  optionBtn: {
-    flex: 1,
-    paddingVertical: 11,
-    borderRadius: 14,
     borderWidth: 1.5,
-    borderBottomWidth: 3,
+    borderBottomWidth: 4,
+    paddingVertical: 13,
+    paddingHorizontal: 10,
     alignItems: "center",
+    justifyContent: "center",
   },
-  optionText: { fontSize: 14, fontWeight: "900" },
-  explanation: { fontSize: 12, lineHeight: 18, fontWeight: "700" },
+  tileText: { fontSize: 15, fontWeight: "900", textAlign: "center" },
+  headText: { flex: 1 },
+  pairTitle: { fontSize: 16, fontWeight: "900", color: theme.ink },
+  pairSub: { fontSize: 12, color: theme.inkSoft, fontWeight: "600" },
+  columns: { flexDirection: "row", gap: 10 },
+  sideBox: { flex: 1, borderRadius: 14, padding: 11, gap: 5 },
+  sideLabel: { fontSize: 13, fontWeight: "900" },
+  sideRule: { fontSize: 12, color: theme.ink, lineHeight: 17 },
+  sideExample: { fontSize: 12, fontWeight: "800", color: theme.ink, paddingTop: 3 },
+  sideTrans: { fontSize: 11, color: theme.inkSoft },
+  feedbackDock: {
+    borderTopWidth: 2,
+    paddingHorizontal: 18,
+    paddingVertical: 12,
+    gap: 10,
+  },
+  dockTop: { gap: 3 },
+  dockTitle: { fontSize: 15, fontWeight: "900" },
+  dockBody: { fontSize: 12, color: theme.ink, lineHeight: 18, fontWeight: "600" },
+  dockBtn: { paddingVertical: 12, borderRadius: 14, alignItems: "center" },
+  dockBtnText: { color: "#fff", fontSize: 15, fontWeight: "900" },
 });

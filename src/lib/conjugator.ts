@@ -5,7 +5,7 @@ import type {
   ExampleClozeQuestion,
   LevelId,
   PatternDrillQuestion,
-  SigureGrammarLesson,
+  GrammarLesson,
   WordPos,
 } from "@/data/types";
 import { lessonExamples } from "@/lib/grammar";
@@ -87,7 +87,7 @@ let cachedLexicon: LexiconWord[] | null = null;
 
 /**
  * Extracts N (名詞), Na (形容動詞), A (形容詞), and V (五段/一段/カ變/サ變)
- * directly from the bundled sigure.tw N5–N3 vocab JSON files.
+ * directly from the bundled bundled dataset N5–N3 vocab JSON files.
  */
 export function getLexicon(): LexiconWord[] {
   if (cachedLexicon) return cachedLexicon;
@@ -218,7 +218,7 @@ function uniqueChoices(answer: string, candidates: string[]): string[] {
 }
 
 // ==================================================
-// LOW-LEVEL CLASSICAL INFLECTIONS (時雨國文法六大活用)
+// LOW-LEVEL CLASSICAL INFLECTIONS (國文法六大活用)
 // ==================================================
 function isIiAdjective(word: LexiconWord) {
   return word.dict === "いい" || word.dict === "良い" || word.rt === "いい";
@@ -445,7 +445,7 @@ function verbMeirei(word: LexiconWord): { form: string; rule: string; wrongs: st
 }
 
 // ==================================================
-// UNIVERSAL SIGURE PATTERN PARSER & VERIFIED GUARD
+// UNIVERSAL grammar PATTERN PARSER & VERIFIED GUARD
 // ==================================================
 type ParsedClause = {
   pos: WordPos;
@@ -501,7 +501,7 @@ function cleanVerifiedSuffix(raw: string): string {
   return stripped;
 }
 
-export function parseLessonClauses(lesson: SigureGrammarLesson): ParsedClause[] {
+export function parseLessonClauses(lesson: GrammarLesson): ParsedClause[] {
   const key = `${lesson.level}:${lesson.id}`;
   const pat = (lesson.pattern ?? "").trim();
   const connText = (lesson.connection ?? []).join(" ");
@@ -900,13 +900,13 @@ export function lexiconCount(level: LevelId | "ALL", allowedPos: WordPos[] = ["N
   return getLexicon().filter((w) => posSet.has(w.pos) && (level === "ALL" || w.level === level)).length;
 }
 
-export function lessonAllowedPos(lesson: SigureGrammarLesson): WordPos[] {
+export function lessonAllowedPos(lesson: GrammarLesson): WordPos[] {
   const clauses = parseLessonClauses(lesson);
   return Array.from(new Set(clauses.map((c) => c.pos)));
 }
 
 export function generateLessonPatternDrill(
-  lesson: SigureGrammarLesson,
+  lesson: GrammarLesson,
   recentIds: readonly string[] = [],
 ): PatternDrillQuestion | null {
   const clauses = parseLessonClauses(lesson);
@@ -944,7 +944,7 @@ export function generateLessonPatternDrill(
 // ==================================================
 // BOUNDARY-SAFE REAL EXAMPLE CLOZE GENERATOR
 // ==================================================
-function candidateTargets(lesson: SigureGrammarLesson): string[] {
+function candidateTargets(lesson: GrammarLesson): string[] {
   const raw = `${lesson.point ?? ""}／${lesson.gloss ?? ""}`;
   const parts = raw
     .split(/[／/・、,，]/)
@@ -972,7 +972,7 @@ function findSafeTargetIndex(sentence: string, target: string): number {
 }
 
 export function generateLessonCloze(
-  lesson: SigureGrammarLesson,
+  lesson: GrammarLesson,
   exampleIndex: number,
 ): ExampleClozeQuestion | null {
   const examples = lessonExamples(lesson);
