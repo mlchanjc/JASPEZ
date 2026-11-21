@@ -16,6 +16,7 @@ type ArenaQuestion = {
   reading: string;
   zh: string;
   correctLabel: string;
+  surface: string;
   choices: string[];
   tip: string;
 };
@@ -27,7 +28,7 @@ function buildPool(group: ArenaGroupMeta): ArenaQuestion[] {
   // 1. Add curated AI question bank entries for this group
   ARENA_BANK.forEach((item, idx) => {
     if (item.groupId !== group.id) return;
-    const fullJa = `${item.before}${item.answer}${item.after}`;
+    const fullJa = `${item.before}${item.surface}${item.after}`;
     if (seenJa.has(fullJa)) return;
     seenJa.add(fullJa);
     list.push({
@@ -38,6 +39,7 @@ function buildPool(group: ArenaGroupMeta): ArenaQuestion[] {
       reading: item.reading,
       zh: item.zh,
       correctLabel: item.answer,
+      surface: item.surface,
       choices: group.choices,
       tip: item.tip,
     });
@@ -82,6 +84,7 @@ function buildPool(group: ArenaGroupMeta): ArenaQuestion[] {
         reading: (ex.reading ?? "").trim(),
         zh: (ex.zh ?? "").trim(),
         correctLabel: member.choiceLabel,
+        surface: hit,
         choices: group.choices,
         tip: member.tip,
       });
@@ -207,7 +210,7 @@ export function GrammarCompare() {
                   },
                 ]}
               >
-                {picked === null ? " 【　　】 " : ` 【${picked}】 `}
+                {picked === null ? " 【　　】 " : ` 【${question.surface}】 `}
               </Text>
               {question.after}
             </Text>
@@ -303,7 +306,7 @@ export function GrammarCompare() {
         >
           <View style={styles.dockTop}>
             <Text style={[styles.dockTitle, { color: isCorrect ? theme.matchaDark : theme.error }]}>
-              {isCorrect ? `✓ 答對了！「${question.correctLabel}」` : `✕ 正解：「${question.correctLabel}」`}
+              {isCorrect ? `✓ 答對了！「${question.correctLabel}」` : `✕ 正解：「${question.correctLabel}」`}{question.surface !== question.correctLabel ? `（${question.surface}）` : ""}
             </Text>
             <Text style={styles.dockBody} numberOfLines={2}>
               {question.tip}

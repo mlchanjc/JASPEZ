@@ -478,6 +478,8 @@ export function GrammarRichContent({ lesson, showFurigana, accentColor, onNaviga
       {lesson.sections.map((sec, idx) => {
         const isSub = (sec.level ?? 2) >= 3;
         const blocks: GrammarBlock[] = Array.isArray(sec.blocks) ? sec.blocks : [];
+        const hasLegacy = Boolean((sec.notes && sec.notes.length > 0) || (sec.examples && sec.examples.length > 0));
+        if (blocks.length === 0 && !hasLegacy) return null;
 
         return (
           <View key={`${sec.heading}-${idx}`} style={[styles.sectionCard, isSub && styles.subSectionCard]}>

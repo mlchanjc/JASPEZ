@@ -3,9 +3,9 @@ import { lessons, manifests } from "@/data/registry";
 import type {
   ClassicalForm,
   ExampleClozeQuestion,
+  GrammarLesson,
   LevelId,
   PatternDrillQuestion,
-  GrammarLesson,
   WordPos,
 } from "@/data/types";
 import { lessonExamples } from "@/lib/grammar";
@@ -59,6 +59,18 @@ const GODAN_E: Record<string, string> = {
   る: "れ",
 };
 
+const GODAN_O: Record<string, string> = {
+  う: "お",
+  く: "こ",
+  ぐ: "ご",
+  す: "そ",
+  つ: "と",
+  ぬ: "の",
+  ぶ: "ぼ",
+  む: "も",
+  る: "ろ",
+};
+
 const HONORIFIC_ARU_VERBS = new Set(["いらっしゃる", "おっしゃる", "くださる", "なさる", "ござる"]);
 const ACTIVE_LEVELS: LevelId[] = ["N5", "N4", "N3"];
 
@@ -71,7 +83,6 @@ function classifyVerb(verbType: string): { category: VerbCategory; label: string
   return null;
 }
 
-/** Null-safe primary token cleaner (prevents TypeError on null reading/word/meaning). */
 function cleanPrimary(raw: string | null | undefined): string {
   if (typeof raw !== "string") return "";
   const trimmed = raw.trim();
@@ -85,10 +96,6 @@ function isJapaneseWord(str: string): boolean {
 
 let cachedLexicon: LexiconWord[] | null = null;
 
-/**
- * Extracts N (名詞), Na (形容動詞), A (形容詞), and V (五段/一段/カ變/サ變)
- * directly from the bundled bundled dataset N5–N3 vocab JSON files.
- */
 export function getLexicon(): LexiconWord[] {
   if (cachedLexicon) return cachedLexicon;
   const seen = new Set<string>();
@@ -114,7 +121,6 @@ export function getLexicon(): LexiconWord[] {
         const meaning = rawMeaning.split("／")[0]?.trim() ?? rawMeaning;
         const safeRt = isJapaneseWord(rt) ? rt : dict;
 
-        // 1. Verbs
         if (typeof w.verbType === "string" && w.verbType.length > 0) {
           const vInfo = classifyVerb(w.verbType);
           if (!vInfo) return;
@@ -144,7 +150,6 @@ export function getLexicon(): LexiconWord[] {
           return;
         }
 
-        // 2. I-Adjectives (A)
         if (isAdjLesson && dict.endsWith("い")) {
           const key = `${level}:A:${dict}`;
           if (seen.has(key)) return;
@@ -161,7 +166,6 @@ export function getLexicon(): LexiconWord[] {
           return;
         }
 
-        // 3. Na-Adjectives (Na)
         if (isNaLesson) {
           const stem = dict.replace(/[だな]$/, "");
           if (!stem || stem === "同じ") return;
@@ -180,7 +184,6 @@ export function getLexicon(): LexiconWord[] {
           return;
         }
 
-        // 4. Nouns (N)
         if (isNounLesson && dict.length <= 6) {
           const key = `${level}:N:${dict}`;
           if (seen.has(key)) return;
@@ -218,7 +221,7 @@ function uniqueChoices(answer: string, candidates: string[]): string[] {
 }
 
 // ==================================================
-// LOW-LEVEL CLASSICAL INFLECTIONS (國文法六大活用)
+// CLASSICAL INFLECTION HELPERS (國文法六大活用)
 // ==================================================
 function isIiAdjective(word: LexiconWord) {
   return word.dict === "いい" || word.dict === "良い" || word.rt === "いい";
@@ -238,10 +241,18 @@ function isHonorificAru(word: LexiconWord) {
 }
 
 function verbMizenNai(word: LexiconWord): { form: string; rule: string; wrongs: string[] } {
+  if (word.verbCategory === "kuru") {
+    const s = word.dict.slice(0, -1);
+    return {
+      form: `${s}ず`,
+      rule: "カ變動詞「来る」接「ず」用未然形，讀作「こず（来ず）」（非きず）。",
+      wrongs: [`${s}らず`, `${s}れず`, `${s}るず`],
+    };
+  }
   if (isAruVerb(word)) {
     return {
       form: "ない",
-      rule: "「ある」的否定是特殊例外：直接變成形容詞「ない」（不可說「あらない」）。",
+      rule: "「ある」的否定是特殊例外：直接變成「ない」（不可說「あらない」）。",
       wrongs: ["あらない", "ありない", "あれない"],
     };
   }
@@ -250,6 +261,66 @@ function verbMizenNai(word: LexiconWord): { form: string; rule: string; wrongs: 
     form: `${m.stem}ない`,
     rule: `${m.rule} 再接助動詞「ない」。`,
     wrongs: m.wrongStems.map((x) => `${x}ない`),
+  };
+}
+
+function verbMizenZu(word: LexiconWord): { form: string; rule: string; wrongs: string[] } {
+  if (word.verbCategory === "suru") {
+    const s = word.dict.slice(0, -2);
+    return {
+      form: `${s}せず`,
+      rule: "サ變動詞接「ず」時為特殊未然形「せ」＋「ず」→「〜せず」（非〜しず）。",
+      wrongs: [`${s}しず`, `${s}すず`, `${s}さず`],
+    };
+  }
+  if (isAruVerb(word)) {
+    return {
+      form: "あらず",
+      rule: "「ある」接古語否定助動詞「ず」時用未然形「あら」＋「ず」。",
+      wrongs: ["ありず", "あれず", "なず"],
+    };
+  }
+  const m = verbMizen(word);
+  return {
+    form: `${m.stem}ず`,
+    rule: `${m.rule} 接否定助動詞「ず」。`,
+    wrongs: m.wrongStems.map((x) => `${x}ず`),
+  };
+}
+
+function verbVolitional(word: LexiconWord): { form: string; rule: string; wrongs: string[] } {
+  const { dict, verbCategory } = word;
+  if (verbCategory === "kuru") {
+    const s = dict.slice(0, -1);
+    return {
+      form: `${s}よう`,
+      rule: "カ變動詞「来る」的意向形（未然形＋よう）讀作「こよう（来よう）」。",
+      wrongs: [`${s}ろう`, `${s}う`, `${s}ようう`],
+    };
+  }
+  if (verbCategory === "suru") {
+    const s = dict.slice(0, -2);
+    return {
+      form: `${s}しよう`,
+      rule: "サ變動詞「〜する」的意向形為「〜しよう」。",
+      wrongs: [`${s}すろう`, `${s}そう`, `${s}せよう`],
+    };
+  }
+  if (verbCategory === "ichidan") {
+    const s = dict.slice(0, -1);
+    return {
+      form: `${s}よう`,
+      rule: "一段動詞去字尾「る」＋「よう」（意向形）。",
+      wrongs: [`${s}ろう`, `${s}おう`, `${s}う`],
+    };
+  }
+  const s = dict.slice(0, -1);
+  const last = dict.slice(-1);
+  const o = GODAN_O[last] ?? "お";
+  return {
+    form: `${s}${o}う`,
+    rule: `五段動詞將字尾「${last}」改為お段「${o}」＋「う」（意向形）。`,
+    wrongs: [`${s}${GODAN_A[last] ?? "わ"}う`, `${s}${GODAN_E[last] ?? "え"}う`, `${s}よう`],
   };
 }
 
@@ -445,49 +516,51 @@ function verbMeirei(word: LexiconWord): { form: string; rule: string; wrongs: st
 }
 
 // ==================================================
-// UNIVERSAL grammar PATTERN PARSER & VERIFIED GUARD
+// STRICT WHITELIST PATTERN PARSER (ZERO WRONG ANSWERS)
 // ==================================================
+type ClauseMode =
+  | "plain"
+  | "n_no"
+  | "n_ni"
+  | "n_da"
+  | "n_de"
+  | "n_dearu"
+  | "n_nara"
+  | "n_dattara"
+  | "na_na"
+  | "na_ni"
+  | "na_da"
+  | "na_de"
+  | "na_dearu"
+  | "na_nara"
+  | "na_dattara"
+  | "a_ku"
+  | "a_kute"
+  | "a_kuaru"
+  | "a_katta"
+  | "a_katei"
+  | "a_sa"
+  | "v_koto"
+  | "v_mizen"
+  | "v_mizen_nai"
+  | "v_mizen_zu"
+  | "v_volitional"
+  | "v_renyou"
+  | "v_te"
+  | "v_teiru"
+  | "v_ta"
+  | "v_katei"
+  | "v_meirei";
+
 type ParsedClause = {
   pos: WordPos;
-  mode:
-    | "plain"
-    | "n_no"
-    | "n_ni"
-    | "n_da"
-    | "n_de"
-    | "n_dearu"
-    | "n_nara"
-    | "n_dattara"
-    | "na_na"
-    | "na_ni"
-    | "na_da"
-    | "na_de"
-    | "na_dearu"
-    | "na_nara"
-    | "na_dattara"
-    | "a_ku"
-    | "a_kute"
-    | "a_katta"
-    | "a_katei"
-    | "a_sa"
-    | "v_mizen"
-    | "v_mizen_nai"
-    | "v_renyou"
-    | "v_te"
-    | "v_ta"
-    | "v_katei"
-    | "v_meirei";
+  mode: ClauseMode;
   suffix: string;
   label: string;
 };
 
-const FORBIDDEN_SUFFIX_RE = /[A-Za-z＋+〜～~…・/／]|動詞|名詞|形容|補助|肯定|否定|疑問|場所|敘述|移動|連體|修飾/;
+const FORBIDDEN_SUFFIX_RE = /[A-Za-z＋+〜～~…・/／]|動詞|名詞|形容|補助|肯定|否定|疑問|場所|敘述|移動|連體|修飾|後句|句子/;
 
-/**
- * Strictly cleans a single-slot Japanese suffix.
- * Returns "" if the suffix contains multi-slot placeholders (e.g. N＋から＋N＋にかけて)
- * or non-Japanese meta-labels so broken drills are NEVER generated.
- */
 function cleanVerifiedSuffix(raw: string): string {
   const stripped = raw
     .replace(/【[^】]*】/g, "")
@@ -501,18 +574,108 @@ function cleanVerifiedSuffix(raw: string): string {
   return stripped;
 }
 
+/**
+ * Strictly parses a single LHS token into { pos, mode } using an exact whitelist.
+ * Returns null if the token is unrecognized or semantically restricted (e.g. 時間名詞, 數量詞, A語幹),
+ * so the Pattern Machine NEVER guesses `plain` and NEVER produces a grammatically wrong answer.
+ */
+function parseStrictLhsToken(rawPart: string, suffix: string): { pos: WordPos; mode: ClauseMode; label: string } | null {
+  // Normalize full-width letters/spaces (e.g., Ｎ -> N, Ｖ -> V, "Na な" -> "Naな")
+  const p = rawPart.normalize("NFKC").replace(/\s+/g, "").trim();
+  if (!p) return null;
+
+  // Reject semantically restricted or non-POS labels
+  if (/時間名詞|數量詞|副詞|疑問|句子|普通體|たとえ|お\(ご\)|場所|語幹/.test(p) && !/^Na\(語幹\)$/.test(p)) {
+    return null;
+  }
+
+  // --- Na (形容動詞) ---
+  if (p === "Na" || p === "Na(語幹)") {
+    return { pos: "Na", mode: "plain", label: `Na＋${suffix}` };
+  }
+  if (p === "Naな") return { pos: "Na", mode: "na_na", label: `Na（連體形な）＋${suffix}` };
+  if (p === "Naに") return { pos: "Na", mode: "na_ni", label: `Na＋に＋${suffix}` };
+  if (p === "Naだ") return { pos: "Na", mode: "na_da", label: `Na＋だ＋${suffix}` };
+  if (p === "Naで") return { pos: "Na", mode: "na_de", label: `Na＋で＋${suffix}` };
+  if (p === "Naである") return { pos: "Na", mode: "na_dearu", label: `Na＋である＋${suffix}` };
+
+  // --- N (名詞) ---
+  if (p === "N" || p === "名詞") return { pos: "N", mode: "plain", label: `N＋${suffix}` };
+  if (p === "Nの") return { pos: "N", mode: "n_no", label: `N＋の＋${suffix}` };
+  if (p === "Nな") return { pos: "N", mode: "na_na", label: `N＋な＋${suffix}` };
+  if (p === "Nに") return { pos: "N", mode: "n_ni", label: `N＋に＋${suffix}` };
+  if (p === "Nだ") return { pos: "N", mode: "n_da", label: `N＋だ＋${suffix}` };
+  if (p === "Nで") return { pos: "N", mode: "n_de", label: `N＋で＋${suffix}` };
+  if (p === "Nである") return { pos: "N", mode: "n_dearu", label: `N＋である＋${suffix}` };
+
+  // --- A (い形容詞) ---
+  if (p === "A" || p === "A(連體形)" || p === "A(終止形)") {
+    return { pos: "A", mode: "plain", label: `A（連體形）＋${suffix}` };
+  }
+  if (p === "Aく") return { pos: "A", mode: "a_ku", label: `A（連用形く）＋${suffix}` };
+  if (p === "Aて" || p === "Aくて") return { pos: "A", mode: "a_kute", label: `A（連用形くて）＋${suffix}` };
+  if (p === "Aくある") return { pos: "A", mode: "a_kuaru", label: `A（連用形くある）＋${suffix}` };
+  if (p === "Aかっ") return { pos: "A", mode: "a_katta", label: `A（連用形かっ）＋${suffix}` };
+  if (p === "A(假定形)") return { pos: "A", mode: "a_katei", label: `A（假定形けれ）＋${suffix}` };
+
+  // --- V (動詞) ---
+  if (p === "V" || p === "Vる" || p === "V(連體形)" || p === "V(終止形)" || p === "V(原形)" || p === "V(辭書形)") {
+    return { pos: "V", mode: "plain", label: `V（連體形）＋${suffix}` };
+  }
+  if (p === "Vこと") return { pos: "V", mode: "v_koto", label: `V（連體形）＋こと＋${suffix}` };
+  if (p === "V(連用形)" || p === "動詞連用形") {
+    return { pos: "V", mode: "v_renyou", label: `V（連用形）＋${suffix}` };
+  }
+  if (p === "V(未然形)" || p === "動詞未然形") {
+    return { pos: "V", mode: "v_mizen", label: `V（未然形）＋${suffix}` };
+  }
+  if (p === "Vない" || p === "Vーない") {
+    return { pos: "V", mode: "v_mizen_nai", label: `V（未然形＋ない）＋${suffix}` };
+  }
+  if (p === "Vて" || p === "Vーて" || p === "V(テ形)") {
+    return { pos: "V", mode: "v_te", label: `V（連用形音便て）＋${suffix}` };
+  }
+  if (p === "Vている") {
+    return { pos: "V", mode: "v_teiru", label: `V（連用形音便＋ている）＋${suffix}` };
+  }
+  if (p === "Vた" || p === "Vーた" || p === "V(タ形)") {
+    return { pos: "V", mode: "v_ta", label: `V（連用形音便た）＋${suffix}` };
+  }
+  if (p === "V(假定形)") {
+    return { pos: "V", mode: "v_katei", label: `V（假定形）＋${suffix}` };
+  }
+  if (p === "V(意向形)") {
+    return { pos: "V", mode: "v_volitional", label: `V（意向形）＋${suffix}` };
+  }
+
+  return null;
+}
+
 export function parseLessonClauses(lesson: GrammarLesson): ParsedClause[] {
   const key = `${lesson.level}:${lesson.id}`;
   const pat = (lesson.pattern ?? "").trim();
-  const connText = (lesson.connection ?? []).join(" ");
 
-  // 1. Curated high-precision rules (including V+て compound patterns & core N5/N4 lessons)
+  // 1. Curated high-precision rules (exact Japanese professor verification)
   if (key === "N5:02") return [{ pos: "N", mode: "n_de", suffix: "", label: "名詞中止形（N＋で）" }];
   if (key === "N5:08") return [{ pos: "A", mode: "a_kute", suffix: "", label: "形容詞中止形（A連用形く＋て）" }];
   if (key === "N5:13") return [{ pos: "Na", mode: "na_de", suffix: "", label: "形容動詞中止形（Na＋で）" }];
   if (key === "N5:35") return [{ pos: "V", mode: "v_te", suffix: "ください", label: "V（連用形音便）＋てください" }];
+  if (key === "N5:36" || key === "N4:46") {
+    return [
+      { pos: "N", mode: "n_de", suffix: "も", label: "N＋でも" },
+      { pos: "Na", mode: "na_de", suffix: "も", label: "Na＋でも" },
+      { pos: "A", mode: "a_kute", suffix: "も", label: "A（連用形くて）＋も" },
+      { pos: "V", mode: "v_te", suffix: "も", label: "V（連用形音便て）＋も" },
+    ];
+  }
   if (key === "N5:37") return [{ pos: "V", mode: "v_te", suffix: "いる", label: "V（連用形音便）＋ている" }];
   if (key === "N5:38") return [{ pos: "V", mode: "v_te", suffix: "から", label: "V（連用形音便）＋てから" }];
+  if (key === "N4:01") {
+    return [
+      { pos: "N", mode: "n_ni", suffix: "する", label: "N＋にする（決定）" },
+      { pos: "V", mode: "v_koto", suffix: "にする", label: "V（連體形）＋ことにする（決定）" },
+    ];
+  }
   if (key === "N4:05") {
     return [
       { pos: "N", mode: "n_ni", suffix: "なる", label: "N＋に＋なる" },
@@ -563,8 +726,19 @@ export function parseLessonClauses(lesson: GrammarLesson): ParsedClause[] {
   if (key === "N4:18") return [{ pos: "V", mode: "v_te", suffix: "みる", label: "V（連用形音便）＋てみる" }];
   if (key === "N4:19") return [{ pos: "V", mode: "v_te", suffix: "しまう", label: "V（連用形音便）＋てしまう" }];
   if (key === "N4:20") return [{ pos: "V", mode: "v_te", suffix: "おく", label: "V（連用形音便）＋ておく" }];
+  if (key === "N4:21") return [{ pos: "V", mode: "v_mizen_zu", suffix: "", label: "V（未然形）＋ず（サ變為せず）" }];
+  if (key === "N4:31") return [{ pos: "V", mode: "v_volitional", suffix: "", label: "V（意向形：う／よう）" }];
   if (key === "N4:45") return [{ pos: "V", mode: "v_te", suffix: "はいけない", label: "V（連用形音便）＋てはいけない" }];
   if (key === "N3:100") return [{ pos: "N", mode: "plain", suffix: "はもちろん", label: "N＋はもちろん" }];
+  if (key === "N3:104") return [{ pos: "V", mode: "plain", suffix: "べき", label: "V（連體形）＋べき" }];
+  if (key === "N3:125") {
+    return [
+      { pos: "N", mode: "plain", suffix: "ならよかった", label: "N＋なら（ば）よかった" },
+      { pos: "Na", mode: "plain", suffix: "ならよかった", label: "Na＋なら（ば）よかった" },
+      { pos: "A", mode: "a_katei", suffix: "ばよかった", label: "A（假定形けれ）＋ばよかった" },
+      { pos: "V", mode: "v_katei", suffix: "ばよかった", label: "V（假定形）＋ばよかった" },
+    ];
+  }
   if (key === "N3:140") {
     return [
       { pos: "V", mode: "plain", suffix: "んですが", label: "V（連體形）＋んですが" },
@@ -573,90 +747,115 @@ export function parseLessonClauses(lesson: GrammarLesson): ParsedClause[] {
       { pos: "Na", mode: "na_na", suffix: "んですが", label: "Na（連體形な）＋んですが" },
     ];
   }
+  if (key === "N5:23") return [{ pos: "V", mode: "v_te", suffix: "", label: "V（連用形音便て・中止形）" }];
+  if (key === "N3:07") return [{ pos: "V", mode: "v_renyou", suffix: "かけ", label: "V（連用形）＋かけ" }];
+  if (key === "N3:08") return [{ pos: "V", mode: "v_renyou", suffix: "がち", label: "V（連用形）＋がち" }];
+  if (key === "N3:28") {
+    return [
+      { pos: "N", mode: "n_no", suffix: "際に", label: "N＋の＋際に" },
+      { pos: "V", mode: "plain", suffix: "際に", label: "V（連體形）＋際に" },
+    ];
+  }
+  if (key === "N3:93") return [{ pos: "N", mode: "n_no", suffix: "うえで", label: "N＋のうえで" }];
+  if (key === "N3:15") {
+    return [
+      { pos: "N", mode: "plain", suffix: "ぎみ", label: "N＋ぎみ" },
+      { pos: "V", mode: "v_renyou", suffix: "ぎみ", label: "V（連用形）＋ぎみ" },
+    ];
+  }
+  if (key === "N3:42") {
+    return [
+      { pos: "N", mode: "n_da", suffix: "ったっけ", label: "N＋だったっけ" },
+      { pos: "Na", mode: "na_da", suffix: "ったっけ", label: "Na＋だったっけ" },
+      { pos: "A", mode: "a_katta", suffix: "っけ", label: "A（連用形かっ）＋たっけ" },
+      { pos: "V", mode: "v_ta", suffix: "っけ", label: "V（連用形音便た）＋っけ" },
+    ];
+  }
+  if (key === "N3:44") return [{ pos: "V", mode: "v_renyou", suffix: "っぱなし", label: "V（連用形）＋っぱなし" }];
+  if (key === "N3:45") return [{ pos: "N", mode: "plain", suffix: "っぽい", label: "N＋っぽい" }];
+  if (key === "N3:48") return [{ pos: "V", mode: "v_te", suffix: "からでないと", label: "V（連用形音便て）＋からでないと" }];
+  if (key === "N3:49") return [{ pos: "V", mode: "v_te", suffix: "くれ", label: "V（連用形音便て）＋くれ" }];
+  if (key === "N3:50") return [{ pos: "V", mode: "v_te", suffix: "ごらん", label: "V（連用形音便て）＋ごらん" }];
+  if (key === "N3:57") {
+    return [
+      { pos: "N", mode: "n_de", suffix: "よかった", label: "N＋でよかった" },
+      { pos: "Na", mode: "na_de", suffix: "よかった", label: "Na＋でよかった" },
+      { pos: "A", mode: "a_kute", suffix: "よかった", label: "A（連用形くて）＋よかった" },
+      { pos: "V", mode: "v_te", suffix: "よかった", label: "V（連用形音便て）＋よかった" },
+    ];
+  }
+  if (key === "N3:74") return [{ pos: "V", mode: "v_mizen_nai", suffix: "でおく", label: "V（未然形＋ない）＋でおく" }];
+  if (key === "N3:75") {
+    return [
+      { pos: "N", mode: "n_de", suffix: "ないと", label: "N＋でないと" },
+      { pos: "Na", mode: "na_de", suffix: "ないと", label: "Na＋でないと" },
+      { pos: "A", mode: "a_ku", suffix: "ないと", label: "A（連用形く）＋ないと" },
+      { pos: "V", mode: "v_mizen_nai", suffix: "と", label: "V（未然形＋ない）＋と" },
+    ];
+  }
+  if (key === "N3:121") return [{ pos: "V", mode: "v_renyou", suffix: "ようがない", label: "V（連用形）＋ようがない" }];
+  if (key === "N3:137") {
+    return [
+      { pos: "N", mode: "na_na", suffix: "んじゃない", label: "N＋なんじゃない" },
+      { pos: "Na", mode: "na_na", suffix: "んじゃない", label: "Na＋なんじゃない" },
+      { pos: "A", mode: "plain", suffix: "んじゃない", label: "A（連體形）＋んじゃない" },
+      { pos: "V", mode: "plain", suffix: "んじゃない", label: "V（連體形）＋んじゃない" },
+    ];
+  }
+  // Semantically restricted / multi-slot / causative patterns: rely on real-example Cloze & Study Notes
+  if (
+    key === "N4:02" ||
+    key === "N4:08" ||
+    key === "N3:30" ||
+    key === "N3:31" ||
+    key === "N3:32" ||
+    key === "N3:36" ||
+    key === "N3:52" ||
+    key === "N3:54" ||
+    key === "N3:72" ||
+    key === "N3:112" ||
+    key === "N2:06"
+  ) {
+    return [];
+  }
 
   if (!pat) return [];
 
-  // 2. Strict generic parser for verified single-suffix patterns
+  // 2. Strict whitelist parser for remaining single-suffix patterns
   const clauses: ParsedClause[] = [];
   const rawSegments = pat.split(/[／/]/);
 
+  let pendingLhs: string[] = [];
   for (const seg of rawSegments) {
     const plusIdx = seg.indexOf("＋");
-    if (plusIdx < 0) continue;
-    const lhs = seg.slice(0, plusIdx).trim();
+    if (plusIdx < 0) {
+      // Carry forward LHS-only slash tokens (e.g. "Nの" in "Nの／Vている＋最中（に）")
+      const norm = seg.normalize("NFKC").trim();
+      if (/^(N|Na|A|V|名詞|動詞)/.test(norm)) {
+        pendingLhs.push(seg.trim());
+      }
+      continue;
+    }
+    const lhsAll = [...pendingLhs, seg.slice(0, plusIdx).trim()].filter(Boolean);
+    pendingLhs = [];
     const rhsRaw = seg.slice(plusIdx + 1).trim();
     const suffix = cleanVerifiedSuffix(rhsRaw);
     if (!suffix) continue;
 
-    // Skip LHS that starts with non-POS discourse markers like "疑問詞" or "たとえ"
-    if (/疑問詞|たとえ|お（ご）/.test(lhs)) continue;
+    const lhsJoined = lhsAll.join("・");
+    const sharedKatei = /（假定形）|\(假定形\)/.test(lhsJoined);
 
-    const lhsParts = lhs.split(/[・、]/).map((s) => s.trim()).filter(Boolean);
+    const lhsParts = lhsJoined.split(/[・、]/).map((s) => s.trim()).filter(Boolean);
     for (const part of lhsParts) {
-      if (part.startsWith("Na") || part.includes("形容動詞")) {
-        if (part.includes("な") || connText.includes("形容動詞連體形")) {
-          clauses.push({ pos: "Na", mode: "na_na", suffix, label: `Na（連體形な）＋${suffix}` });
-        } else if (part.includes("に")) {
-          clauses.push({ pos: "Na", mode: "na_ni", suffix, label: `Na＋に＋${suffix}` });
-        } else if (part.includes("である")) {
-          clauses.push({ pos: "Na", mode: "na_dearu", suffix, label: `Na＋である＋${suffix}` });
-        } else if (part.includes("だ")) {
-          clauses.push({ pos: "Na", mode: "na_da", suffix, label: `Na＋だ＋${suffix}` });
-        } else {
-          clauses.push({ pos: "Na", mode: "plain", suffix, label: `Na＋${suffix}` });
-        }
-        continue;
-      }
-
-      if (/^N(?![a-z])/.test(part) || part.includes("名詞")) {
-        if (part.includes("の")) {
-          clauses.push({ pos: "N", mode: "n_no", suffix, label: `N＋の＋${suffix}` });
-        } else if (part.includes("に")) {
-          clauses.push({ pos: "N", mode: "n_ni", suffix, label: `N＋に＋${suffix}` });
-        } else if (part.includes("である")) {
-          clauses.push({ pos: "N", mode: "n_dearu", suffix, label: `N＋である＋${suffix}` });
-        } else if (part.includes("だ")) {
-          clauses.push({ pos: "N", mode: "n_da", suffix, label: `N＋だ＋${suffix}` });
-        } else {
-          clauses.push({ pos: "N", mode: "plain", suffix, label: `N＋${suffix}` });
-        }
-        continue;
-      }
-
-      if (/^A(?![a-z])/.test(part) || part.includes("形容詞")) {
-        if (part.includes("假定") || connText.includes("形容詞假定形")) {
-          clauses.push({ pos: "A", mode: "a_katei", suffix, label: `A（假定形）＋${suffix}` });
-        } else if (part.includes("かっ")) {
-          clauses.push({ pos: "A", mode: "a_katta", suffix, label: `A（過去形かっ）＋${suffix}` });
-        } else if (part.includes("く") || part.includes("連用")) {
-          clauses.push({ pos: "A", mode: "a_ku", suffix, label: `A（連用形く）＋${suffix}` });
-        } else {
-          clauses.push({ pos: "A", mode: "plain", suffix, label: `A（連體形）＋${suffix}` });
-        }
-        continue;
-      }
-
-      if (/^V(?![a-z])/.test(part) || part.includes("動詞")) {
-        if (part.includes("假定") || connText.includes("動詞假定形")) {
-          clauses.push({ pos: "V", mode: "v_katei", suffix, label: `V（假定形）＋${suffix}` });
-        } else if (part.includes("ない")) {
-          clauses.push({ pos: "V", mode: "v_mizen_nai", suffix, label: `V（未然形＋ない）＋${suffix}` });
-        } else if (part.includes("未然") || connText.includes("動詞未然形")) {
-          clauses.push({ pos: "V", mode: "v_mizen", suffix, label: `V（未然形）＋${suffix}` });
-        } else if (part.includes("て") || part.includes("テ")) {
-          clauses.push({ pos: "V", mode: "v_te", suffix, label: `V（連用形音便て）＋${suffix}` });
-        } else if (part.includes("た") || part.includes("タ")) {
-          clauses.push({ pos: "V", mode: "v_ta", suffix, label: `V（連用形音便た）＋${suffix}` });
-        } else if (part.includes("連用") || connText.includes("動詞連用形")) {
-          clauses.push({ pos: "V", mode: "v_renyou", suffix, label: `V（連用形）＋${suffix}` });
-        } else {
-          clauses.push({ pos: "V", mode: "plain", suffix, label: `V（連體形）＋${suffix}` });
-        }
+      const normalizedPart =
+        sharedKatei && part.normalize("NFKC") === "A" ? "A(假定形)" : part;
+      const parsed = parseStrictLhsToken(normalizedPart, suffix);
+      if (parsed) {
+        clauses.push({ pos: parsed.pos, mode: parsed.mode, suffix, label: parsed.label });
       }
     }
   }
 
-  // Deduplicate
   const seen = new Set<string>();
   return clauses.filter((c) => {
     const k = `${c.pos}:${c.mode}:${c.suffix}`;
@@ -696,9 +895,10 @@ function applyClause(
     case "n_da":
     case "na_da": {
       const ans = `${d}だ${suf}`;
+      const extraAccepted = suf === "ったっけ" ? [`${d}だっけ`] : [];
       return {
         answer: ans,
-        accepted: [ans],
+        accepted: [ans, ...extraAccepted],
         choices: uniqueChoices(ans, [`${d}${suf}`, `${d}な${suf}`, `${d}の${suf}`]),
         rule: `${word.posLabel}以斷定助動詞「だ」接續「${suf}」。`,
       };
@@ -710,7 +910,7 @@ function applyClause(
         answer: ans,
         accepted: [ans],
         choices: uniqueChoices(ans, [`${d}て${suf}`, `${d}くて${suf}`, `${d}な${suf}`]),
-        rule: `${word.posLabel}中止形直接接「で」。`,
+        rule: `${word.posLabel}以「で」接續${suf ? `「${suf}」` : "（中止形）"}。`,
       };
     }
     case "n_dearu":
@@ -766,14 +966,24 @@ function applyClause(
     }
     case "a_kute": {
       const s = adjStem(word);
-      const ans = `${s}くて`;
+      const ans = `${s}くて${suf}`;
       return {
         answer: ans,
         accepted: [ans],
-        choices: uniqueChoices(ans, [`${d}て`, `${s}で`, `${s}くで`]),
+        choices: uniqueChoices(ans, [`${d}て${suf}`, `${s}で${suf}`, `${s}くで${suf}`]),
         rule: isIiAdjective(word)
-          ? "「いい／良い」連用形為「よく」，中止形為「よくて」。"
-          : "形容詞（A）去「い」改為連用形「く」＋「て」。",
+          ? `「いい／良い」連用形為「よく」→「${ans}」。`
+          : `形容詞（A）去「い」改為連用形「く」＋「て${suf}」。`,
+      };
+    }
+    case "a_kuaru": {
+      const s = adjStem(word);
+      const ans = `${s}くある${suf}`;
+      return {
+        answer: ans,
+        accepted: [ans],
+        choices: uniqueChoices(ans, [`${d}${suf}`, `${s}く${suf}`, `${s}くである${suf}`]),
+        rule: `形容詞（A）改連用形「く」＋「ある」再接「${suf}」。`,
       };
     }
     case "a_katta": {
@@ -808,6 +1018,15 @@ function applyClause(
         rule: `形容詞（A）去「い」直接加「さ」構成抽象名詞。`,
       };
     }
+    case "v_koto": {
+      const ans = `${d}こと${suf}`;
+      return {
+        answer: ans,
+        accepted: [ans],
+        choices: uniqueChoices(ans, [`${d}${suf}`, `${verbRenyou(word).stem}こと${suf}`, `${d}の${suf}`]),
+        rule: `動詞連體形（原形）須先名詞化加「こと」，再接「${suf}」→「${ans}」。`,
+      };
+    }
     case "v_mizen_nai": {
       const mn = verbMizenNai(word);
       const ans = `${mn.form}${suf}`;
@@ -815,13 +1034,36 @@ function applyClause(
         answer: ans,
         accepted: [ans],
         choices: uniqueChoices(ans, mn.wrongs.map((x) => `${x}${suf}`)),
-        rule: `${mn.rule} 後面接續「${suf}」。`,
+        rule: `${mn.rule}${suf ? ` 後面接續「${suf}」。` : ""}`,
+      };
+    }
+    case "v_mizen_zu": {
+      const mz = verbMizenZu(word);
+      return {
+        answer: mz.form,
+        accepted: [mz.form],
+        choices: uniqueChoices(mz.form, mz.wrongs),
+        rule: mz.rule,
+      };
+    }
+    case "v_volitional": {
+      const vol = verbVolitional(word);
+      const ans = `${vol.form}${suf}`;
+      return {
+        answer: ans,
+        accepted: [ans],
+        choices: uniqueChoices(ans, vol.wrongs.map((x) => `${x}${suf}`)),
+        rule: `${vol.rule}${suf ? ` 後面接續「${suf}」。` : ""}`,
       };
     }
     case "v_mizen": {
       if (suf === "ない") {
         const mn = verbMizenNai(word);
         return { answer: mn.form, accepted: [mn.form], choices: uniqueChoices(mn.form, mn.wrongs), rule: mn.rule };
+      }
+      if (suf === "ず") {
+        const mz = verbMizenZu(word);
+        return { answer: mz.form, accepted: [mz.form], choices: uniqueChoices(mz.form, mz.wrongs), rule: mz.rule };
       }
       const m = verbMizen(word);
       const ans = `${m.stem}${suf}`;
@@ -850,6 +1092,16 @@ function applyClause(
         accepted: [ans],
         choices: uniqueChoices(ans, te.wrongs.map((x) => `${x}${suf}`)),
         rule: `${te.rule} 後面接續「${suf}」。`,
+      };
+    }
+    case "v_teiru": {
+      const te = verbTeOrTa(word, "te");
+      const ans = `${te.form}いる${suf}`;
+      return {
+        answer: ans,
+        accepted: [ans],
+        choices: uniqueChoices(ans, [`${d}${suf}`, ...te.wrongs.slice(0, 2).map((x) => `${x}いる${suf}`)]),
+        rule: `${te.rule} 接「いる」表持續中，再接「${suf}」。`,
       };
     }
     case "v_ta": {
@@ -958,10 +1210,6 @@ function candidateTargets(lesson: GrammarLesson): string[] {
   return Array.from(new Set(parts)).sort((a, b) => b.length - a.length);
 }
 
-/**
- * Avoids false matches for 1-character particles (like ば/と/に) inside unrelated words
- * by requiring 1-char targets to sit before punctuation/space or after a valid boundary.
- */
 function findSafeTargetIndex(sentence: string, target: string): number {
   if (target.length >= 2) {
     return sentence.indexOf(target);

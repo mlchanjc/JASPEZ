@@ -8,6 +8,7 @@ export type BankQuestion = {
   reading: string;
   zh: string;
   answer: string;
+  surface: string;
   tip: string;
 };
 
@@ -110,16 +111,17 @@ export const ARENA_GROUPS: ArenaGroupMeta[] = [
   },
 ];
 
-type RawTuple = [string, string, string, string, string, string, string];
+type RawTuple = [string, string, string, string, string, string, string, string?];
 
 export const ARENA_BANK: BankQuestion[] = (rawArenaBank as RawTuple[]).map(
-  ([groupId, before, after, reading, zh, answer, tip]) => ({
+  ([groupId, before, after, reading, zh, answer, tip, surface]) => ({
     groupId,
     before,
     after,
     reading,
     zh,
     answer,
+    surface: surface ?? answer,
     tip,
   }),
 );
