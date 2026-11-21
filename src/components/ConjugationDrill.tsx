@@ -1,15 +1,17 @@
 import { useEffect, useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import type { ConjugationForm, ConjugationQuestion, LevelId } from "@/data/types";
-import { generateConjugationQuestion, verbCountForLevel } from "@/lib/conjugator";
+import type { ClassicalForm, LevelId, PatternDrillQuestion } from "@/data/types";
+import { generateClassicalVerbDrill, lexiconCount } from "@/lib/conjugator";
 import { useProgress } from "@/state/progress";
 import { levelAccent, theme } from "@/theme";
 
-const FORM_TABS: { id: ConjugationForm; label: string; prompt: string }[] = [
-  { id: "te", label: "て形", prompt: "選出正確的「て形」" },
-  { id: "nai", label: "ない形", prompt: "選出正確的「ない形（否定）」" },
-  { id: "potential", label: "可能形", prompt: "選出正確的「可能形（能夠）」" },
-  { id: "ta", label: "た形", prompt: "選出正確的「た形（過去）」" },
+const FORM_TABS: { id: ClassicalForm; label: string }[] = [
+  { id: "mizen_nai", label: "未然形＋ない" },
+  { id: "renyou_tai", label: "連用形＋たい" },
+  { id: "renyou_te", label: "連用音便＋て" },
+  { id: "renyou_ta", label: "連用音便＋た" },
+  { id: "katei_ba", label: "假定形＋ば" },
+  { id: "meirei", label: "命令形" },
 ];
 
 type Props = {
@@ -18,33 +20,32 @@ type Props = {
 
 export function ConjugationDrill({ levelFilter }: Props) {
   const { prefs } = useProgress();
-  const [form, setForm] = useState<ConjugationForm>("te");
+  const [form, setForm] = useState<ClassicalForm>("katei_ba");
   const [recentIds, setRecentIds] = useState<string[]>([]);
-  const [question, setQuestion] = useState<ConjugationQuestion | null>(() =>
-    generateConjugationQuestion("te", levelFilter, []),
+  const [question, setQuestion] = useState<PatternDrillQuestion | null>(() =>
+    generateClassicalVerbDrill("katei_ba", levelFilter, []),
   );
   const [picked, setPicked] = useState<string | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
 
-  const verbPoolCount = useMemo(() => verbCountForLevel(levelFilter), [levelFilter]);
+  const verbPoolCount = useMemo(() => lexiconCount(levelFilter, ["V"]), [levelFilter]);
 
   useEffect(() => {
     setRecentIds([]);
     setPicked(null);
-    setQuestion(generateConjugationQuestion(form, levelFilter, []));
+    setQuestion(generateClassicalVerbDrill(form, levelFilter, []));
   }, [form, levelFilter]);
 
   if (!question) {
     return (
       <View style={styles.emptyCard}>
         <Text style={styles.emptyTitle}>這個級別暫無動詞題庫</Text>
-        <Text style={styles.emptyBody}>請切換至 N5、N4、N3 或「全部」開始動態活用練習。</Text>
+        <Text style={styles.emptyBody}>請切換至 N5、N4、N3 或「全部」開始國文法活用練習。</Text>
       </View>
     );
   }
 
-  const activeTab = FORM_TABS.find((t) => t.id === form) ?? FORM_TABS[0];
   const isCorrect = picked === question.answer;
   const accent = levelAccent[question.level];
 
@@ -56,10 +57,10 @@ export function ConjugationDrill({ levelFilter }: Props) {
   };
 
   const nextVerb = () => {
-    const nextRecent = [...recentIds.slice(-14), question.id];
+    const nextRecent = [...recentIds.slice(-16), question.id];
     setRecentIds(nextRecent);
     setPicked(null);
-    setQuestion(generateConjugationQuestion(form, levelFilter, nextRecent));
+    setQuestion(generateClassicalVerbDrill(form, levelFilter, nextRecent));
   };
 
   return (
@@ -67,8 +68,8 @@ export function ConjugationDrill({ levelFilter }: Props) {
       <View style={styles.topCard}>
         <View style={styles.topRow}>
           <View>
-            <Text style={styles.heading}>動態動詞變化快刷</Text>
-            <Text style={styles.sub}>即時由單字庫生成 · 本級共 {verbPoolCount} 個動詞</Text>
+            <Text style={styles.heading}>國文法・六大活用特訓</Text>
+            <Text style={styles.sub}>依時雨學校文法分類 · 本級共 {verbPoolCount} 個動詞</Text>
           </View>
           <View style={styles.scorePill}>
             <Text style={styles.scoreText}>
@@ -77,7 +78,7 @@ export function ConjugationDrill({ levelFilter }: Props) {
           </View>
         </View>
 
-        <View style={styles.formRow}>
+        <View style={styles.formGrid}>
           {FORM_TABS.map((tab) => {
             const selected = tab.id === form;
             return (
@@ -99,7 +100,7 @@ export function ConjugationDrill({ levelFilter }: Props) {
             <Text style={styles.levelBadgeText}>{question.level}</Text>
           </View>
           <View style={styles.groupBadge}>
-            <Text style={styles.groupText}>{question.group}</Text>
+            <Text style={styles.groupText}>{question.posLabel}</Text>
           </View>
         </View>
 
@@ -109,7 +110,7 @@ export function ConjugationDrill({ levelFilter }: Props) {
           <Text style={styles.meaning}>{question.meaning}</Text>
         </View>
 
-        <Text style={styles.prompt}>{activeTab.prompt}</Text>
+        <Text style={styles.prompt}>{question.promptLabel}</Text>
 
         <View style={styles.choicesGrid}>
           {question.choices.map((opt) => {
@@ -161,7 +162,7 @@ export function ConjugationDrill({ levelFilter }: Props) {
             </Text>
             <Text style={styles.ruleBody}>{question.rule}</Text>
             <Pressable onPress={nextVerb} style={styles.nextBtn}>
-              <Text style={styles.nextBtnText}>隨機下一題 →</Text>
+              <Text style={styles.nextBtnText}>隨機抽下一詞 →</Text>
             </Pressable>
           </View>
         )}
@@ -190,10 +191,11 @@ const styles = StyleSheet.create({
     borderRadius: 99,
   },
   scoreText: { fontSize: 13, fontWeight: "900", color: theme.indigo },
-  formRow: { flexDirection: "row", gap: 6 },
+  formGrid: { flexDirection: "row", flexWrap: "wrap", gap: 6 },
   formChip: {
-    flex: 1,
-    paddingVertical: 9,
+    width: "31.5%",
+    paddingVertical: 8,
+    paddingHorizontal: 4,
     borderRadius: 12,
     backgroundColor: theme.surface,
     borderWidth: 1.5,
@@ -201,7 +203,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   formChipActive: { backgroundColor: theme.indigo, borderColor: theme.indigo },
-  formChipText: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
+  formChipText: { fontSize: 11, fontWeight: "800", color: theme.inkSoft },
   formChipTextActive: { color: "#fff" },
   drillCard: {
     backgroundColor: theme.white,
@@ -231,7 +233,15 @@ const styles = StyleSheet.create({
   rt: { fontSize: 13, fontWeight: "700", color: theme.inkSoft },
   dict: { fontSize: 34, fontWeight: "900", color: theme.ink },
   meaning: { fontSize: 15, fontWeight: "700", color: theme.inkSoft, marginTop: 2, textAlign: "center" },
-  prompt: { fontSize: 13, fontWeight: "800", color: theme.indigo },
+  prompt: {
+    fontSize: 13,
+    fontWeight: "900",
+    color: theme.indigo,
+    backgroundColor: theme.indigoSoft,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 10,
+  },
   choicesGrid: { flexDirection: "row", flexWrap: "wrap", gap: 10, width: "100%" },
   choiceBtn: {
     width: "48%",

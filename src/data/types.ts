@@ -2,6 +2,8 @@ export type LevelId = "N5" | "N4" | "N3" | "N2" | "N1";
 
 export type RegisterMode = "polite" | "casual";
 
+export type WordPos = "N" | "Na" | "A" | "V";
+
 export type VocabWord = {
   verbType?: string | null;
   word: string;
@@ -52,14 +54,38 @@ export type GrammarExample = {
   casual: GrammarVariant;
 };
 
+export type PatternRuleId =
+  | "adj-chushi-te"
+  | "v-mizen-nai"
+  | "v-renyou-tai"
+  | "v-te-mo-ii"
+  | "v-te-wa-ikenai"
+  | "v-koto-ga-dekiru"
+  | "v-ta-koto-ga-aru"
+  | "n4-ba"
+  | "n4-tara"
+  | "n4-nara"
+  | "v-te-shimau"
+  | "v-te-miru"
+  | "v-te-oku"
+  | "n3-okage-de"
+  | "n3-sei-de"
+  | "n3-wake-dewa-nai"
+  | "n3-uchi-ni"
+  | "n3-koto-ni-suru";
+
 export type GrammarPoint = {
   id: string;
   level: LevelId;
+  sigureCode: string;
+  sigureUrl?: string;
   pattern: string;
   meaning: string;
   tag: string;
   formation: string;
   nuance: string;
+  patternRuleId: PatternRuleId;
+  allowedPos: WordPos[];
   examples: GrammarExample[];
 };
 
@@ -83,17 +109,19 @@ export type ConfusablePair = {
   explanation: string;
 };
 
-export type ConjugationForm = "te" | "nai" | "potential" | "ta";
+export type ClassicalForm = "mizen_nai" | "renyou_tai" | "renyou_te" | "renyou_ta" | "katei_ba" | "meirei";
 
-export type ConjugationQuestion = {
+export type PatternDrillQuestion = {
   id: string;
   level: LevelId;
+  pos: WordPos;
+  posLabel: string;
   dict: string;
   rt: string;
-  group: string;
   meaning: string;
-  form: ConjugationForm;
+  promptLabel: string;
   answer: string;
+  accepted: string[];
   choices: string[];
   rule: string;
 };

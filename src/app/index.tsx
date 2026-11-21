@@ -6,7 +6,7 @@ import { PaperBackdrop } from "@/components/PaperBackdrop";
 import { PressableScale } from "@/components/PressableScale";
 import { ProgressBar } from "@/components/ProgressBar";
 import { LEVELS } from "@/data/registry";
-import { verbCountForLevel } from "@/lib/conjugator";
+import { lexiconCount } from "@/lib/conjugator";
 import { grammarLevelSummary } from "@/lib/grammar";
 import { PROFICIENCY_LEVELS } from "@/lib/proficiency";
 import { levelSummary } from "@/lib/vocab";
@@ -41,7 +41,7 @@ export default function DashboardScreen() {
     [grammarLearned, grammarAttempts],
   );
 
-  const totalVerbs = useMemo(() => verbCountForLevel("ALL"), []);
+  const totalLexicon = useMemo(() => lexiconCount("ALL"), []);
 
   const vocabTotals = vocabSummaries.reduce(
     (sum, item) => ({
@@ -83,7 +83,7 @@ export default function DashboardScreen() {
             </View>
             <Text style={styles.title}>今日の勉強</Text>
             <Text style={styles.subtitle}>
-              N5–N3 單字、多情境文法與 {totalVerbs} 動詞即時活用
+              N5–N3 單字、時雨國文法與 {totalLexicon} 詞即時活用練功機
             </Text>
 
             <View style={styles.heroStats}>
