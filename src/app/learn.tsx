@@ -1,6 +1,6 @@
 import { Link, router } from "expo-router";
 import { useMemo, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BottomTabs } from "@/components/BottomTabs";
 import { LevelSummary } from "@/components/LevelSummary";
@@ -15,13 +15,23 @@ import { levelAccent, theme } from "@/theme";
 export default function LearnScreen() {
   const { currentLevel, setCurrentLevel, learned, attempts } = useProgress();
   const [level, setLevel] = useState<LevelId>(currentLevel);
-  const topics = manifests[level].topics;
+  const [search, setSearch] = useState("");
+  const allTopics = manifests[level].topics;
   const summary = useMemo(() => levelSummary(level, learned, attempts), [level, learned, attempts]);
+
+  const topics = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    if (!q) return allTopics;
+    return allTopics.filter((t) => t.title.toLowerCase().includes(q) || t.id.includes(q));
+  }, [allTopics, search]);
 
   const chooseLevel = (next: LevelId) => {
     setLevel(next);
     setCurrentLevel(next);
+    setSearch("");
   };
+
+  const accent = levelAccent[level];
 
   return (
     <View style={styles.screen}>
@@ -38,21 +48,54 @@ export default function LearnScreen() {
               </Pressable>
             </Link>
           </View>
-          <Text style={styles.title}>單字課程</Text>
+          <View style={styles.titleRow}>
+            <Text style={styles.title}>單字課程</Text>
+            <View style={[styles.countPill, { backgroundColor: `${accent}18` }]}>
+              <Text style={[styles.countPillText, { color: accent }]}>
+                {allTopics.length} 課 · {summary.total} 詞
+              </Text>
+            </View>
+          </View>
+          {allTopics.length > 0 && (
+            <View style={styles.searchWrap}>
+              <TextInput
+                value={search}
+                onChangeText={setSearch}
+                placeholder={`搜尋 ${level} 單字課（例如：動詞、名詞、05）`}
+                placeholderTextColor={theme.inkMuted}
+                style={styles.searchInput}
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+            </View>
+          )}
         </View>
+
         <View style={styles.summary}>
           <LevelSummary level={level} {...summary} />
         </View>
-        <ScrollView style={styles.topicScroller} contentContainerStyle={styles.topics} showsVerticalScrollIndicator={false}>
-          {topics.length === 0 ? (
+
+        <ScrollView
+          style={styles.topicScroller}
+          contentContainerStyle={styles.topics}
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
+        >
+          {allTopics.length === 0 ? (
             <View style={styles.empty}>
               <Text style={styles.emptyEmoji}>🚧</Text>
               <Text style={styles.emptyTitle}>{level} 還在準備</Text>
               <Text style={styles.emptyBody}>這一級的單字課程尚未開放，先挑戰 N5–N3 吧！</Text>
             </View>
+          ) : topics.length === 0 ? (
+            <View style={styles.empty}>
+              <Text style={styles.emptyTitle}>找不到符合的單字課</Text>
+              <Text style={styles.emptyBody}>試試切換下方級別或清除搜尋字詞。</Text>
+            </View>
           ) : (
             topics.map((topic) => {
               const percent = topicCompletion(level, topic.id, learned);
+              const pctInt = Math.round(percent * 100);
               return (
                 <Link
                   key={topic.id}
@@ -60,17 +103,29 @@ export default function LearnScreen() {
                   asChild
                 >
                   <Pressable style={styles.topic}>
-                    <View style={styles.topicHead}>
-                      <Text style={styles.topicTitle}>{topic.title}</Text>
-                      <View style={[styles.pctPill, { backgroundColor: `${levelAccent[level]}18` }]}>
-                        <Text style={[styles.topicPercent, { color: levelAccent[level] }]}>
-                          {Math.round(percent * 100)}%
+                    <View style={styles.cardTop}>
+                      <View style={[styles.codeBadge, { backgroundColor: accent }]}>
+                        <Text style={styles.codeBadgeText}>
+                          {level} · {topic.id}
                         </Text>
                       </View>
+                      <View style={styles.wordCountChip}>
+                        <Text style={styles.wordCountChipText}>{topic.wordCount} 詞</Text>
+                      </View>
+                      <View style={[styles.pctPill, { backgroundColor: `${accent}18` }]}>
+                        <Text style={[styles.topicPercent, { color: accent }]}>{pctInt}%</Text>
+                      </View>
                     </View>
-                    <Text style={styles.topicCount}>{topic.wordCount} 個單字</Text>
-                    <View style={styles.barWrap}>
-                      <ProgressBar percent={percent} color={levelAccent[level]} height={9} />
+
+                    <Text style={styles.topicTitle}>{topic.title}</Text>
+
+                    <View style={styles.cardFoot}>
+                      <View style={styles.barWrap}>
+                        <ProgressBar percent={percent} color={accent} height={8} />
+                      </View>
+                      <Text style={[styles.enterLabel, { color: accent }]}>
+                        {pctInt >= 100 ? "✓ 複習 →" : "開始學習 →"}
+                      </Text>
                     </View>
                   </Pressable>
                 </Link>
@@ -78,6 +133,7 @@ export default function LearnScreen() {
             })
           )}
         </ScrollView>
+
         <BottomTabs
           value={level}
           onChange={(next) => chooseLevel(next as LevelId)}
@@ -91,7 +147,7 @@ export default function LearnScreen() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: theme.paper },
   safe: { flex: 1 },
-  top: { paddingHorizontal: 18, paddingTop: 8, paddingBottom: 10 },
+  top: { paddingHorizontal: 18, paddingTop: 8, paddingBottom: 10, gap: 10 },
   topBar: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
   backBtn: {
     backgroundColor: theme.white,
@@ -109,15 +165,26 @@ const styles = StyleSheet.create({
     borderRadius: 99,
   },
   grammarShortcutText: { color: theme.indigo, fontSize: 12, fontWeight: "900" },
-  title: { marginTop: 10, fontSize: 28, fontWeight: "900", color: theme.ink },
-  summary: { paddingHorizontal: 18, paddingBottom: 12 },
+  titleRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
+  title: { fontSize: 26, fontWeight: "900", color: theme.ink },
+  countPill: { paddingHorizontal: 11, paddingVertical: 5, borderRadius: 99 },
+  countPillText: { fontSize: 12, fontWeight: "900" },
+  searchWrap: {
+    backgroundColor: theme.white,
+    borderRadius: 14,
+    borderWidth: 1.5,
+    borderColor: theme.paperBorder,
+    paddingHorizontal: 12,
+  },
+  searchInput: { height: 40, fontSize: 14, color: theme.ink, fontWeight: "600" },
+  summary: { paddingHorizontal: 18, paddingBottom: 10 },
   topicScroller: { flex: 1 },
-  topics: { paddingHorizontal: 18, paddingBottom: 32, gap: 12 },
+  topics: { paddingHorizontal: 18, paddingBottom: 32, gap: 11 },
   topic: {
     backgroundColor: theme.white,
     borderRadius: 22,
-    padding: 16,
-    gap: 8,
+    padding: 15,
+    gap: 9,
     borderWidth: 1.5,
     borderColor: theme.paperBorder,
     shadowColor: "#161B2E",
@@ -126,15 +193,27 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     elevation: 2,
   },
-  topicHead: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 8 },
-  topicTitle: { flex: 1, fontSize: 16, fontWeight: "900", color: theme.ink },
-  topicCount: { color: theme.inkSoft, fontSize: 13, fontWeight: "600" },
-  pctPill: { paddingHorizontal: 9, paddingVertical: 3, borderRadius: 99 },
-  topicPercent: { fontSize: 12, fontWeight: "900" },
+  cardTop: { flexDirection: "row", alignItems: "center", gap: 7, flexWrap: "wrap" },
+  codeBadge: { paddingHorizontal: 9, paddingVertical: 3, borderRadius: 99 },
+  codeBadgeText: { color: "#fff", fontSize: 11, fontWeight: "900" },
+  wordCountChip: {
+    backgroundColor: theme.surface,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 99,
+    borderWidth: 1,
+    borderColor: theme.paperBorder,
+  },
+  wordCountChipText: { color: theme.inkSoft, fontSize: 11, fontWeight: "800" },
+  pctPill: { paddingHorizontal: 9, paddingVertical: 3, borderRadius: 99, marginLeft: "auto" },
+  topicPercent: { fontSize: 11, fontWeight: "900" },
+  topicTitle: { fontSize: 16, fontWeight: "900", color: theme.ink, lineHeight: 22 },
+  cardFoot: { flexDirection: "row", alignItems: "center", gap: 12 },
   barWrap: { flex: 1, minWidth: 0 },
+  enterLabel: { fontSize: 12, fontWeight: "900" },
   empty: {
-    marginTop: 20,
-    padding: 28,
+    marginTop: 14,
+    padding: 26,
     borderRadius: 24,
     backgroundColor: theme.white,
     borderWidth: 1.5,
@@ -143,6 +222,6 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   emptyEmoji: { fontSize: 32 },
-  emptyTitle: { fontSize: 20, fontWeight: "900", color: theme.ink },
-  emptyBody: { color: theme.inkSoft, textAlign: "center", lineHeight: 20 },
+  emptyTitle: { fontSize: 18, fontWeight: "900", color: theme.ink },
+  emptyBody: { color: theme.inkSoft, textAlign: "center", lineHeight: 20, fontSize: 13 },
 });
