@@ -1,0 +1,196 @@
+{
+  "level": "N4",
+  "lesson": 12,
+  "title": "N4日文單字12（名詞）物品",
+  "words": [
+    {
+      "word": "湯",
+      "reading": "ゆ",
+      "accent": "[1]",
+      "meaning": "熱水、開水／溫泉／泡澡水、洗澡水",
+      "extraInfo": "「お湯」是指「熱水」，因此浴缸的熱水、熱開水、溫泉等都稱為「お湯」。\n\n「お水」是指「冷水」，所以開水（冷的）、或者是冰水都是稱為「お水」。\n\n因此，如果要熱水，日文說「お湯」，不說「熱いお水」。\n\n另外還有一個詞是「お冷や」，跟「お水」一樣都是冷水，但有些場合「日本酒」也稱為「お冷や」，為了避免混淆，如果想要冷開水，說「お水」即可。"
+    },
+    {
+      "word": "糸",
+      "reading": "いと",
+      "accent": "[1]",
+      "meaning": "線、絲",
+      "extraInfo": null
+    },
+    {
+      "word": "絹",
+      "reading": "きぬ",
+      "accent": "[1]",
+      "meaning": "絲綢、絲絹",
+      "extraInfo": null
+    },
+    {
+      "word": "棚",
+      "reading": "たな",
+      "accent": "[0]",
+      "meaning": "架子",
+      "extraInfo": null
+    },
+    {
+      "word": "鏡",
+      "reading": "かがみ",
+      "accent": "[3]",
+      "meaning": "鏡子",
+      "extraInfo": null
+    },
+    {
+      "word": "畳",
+      "reading": "たたみ",
+      "accent": "[0]",
+      "meaning": "榻榻米",
+      "extraInfo": null
+    },
+    {
+      "word": "お礼",
+      "reading": "おれい",
+      "accent": "[0]",
+      "meaning": "謝禮、謝意",
+      "extraInfo": null
+    },
+    {
+      "word": "布団",
+      "reading": "ふとん",
+      "accent": "[0]",
+      "meaning": "棉被、被子、被褥",
+      "extraInfo": null
+    },
+    {
+      "word": "木綿",
+      "reading": "もめん",
+      "accent": "[0]",
+      "meaning": "棉花／棉線／棉布、棉紗",
+      "extraInfo": null
+    },
+    {
+      "word": "日記",
+      "reading": "にっき",
+      "accent": "[0]",
+      "meaning": "日記",
+      "extraInfo": null
+    },
+    {
+      "word": "道具",
+      "reading": "どうぐ",
+      "accent": "[3]",
+      "meaning": "工具、器具／道具",
+      "extraInfo": null
+    },
+    {
+      "word": "玩具",
+      "reading": "おもちゃ",
+      "accent": "[2]",
+      "meaning": "玩具",
+      "extraInfo": null
+    },
+    {
+      "word": "品物",
+      "reading": "しなもの",
+      "accent": "[0]",
+      "meaning": "物品、貨品、商品",
+      "extraInfo": null
+    },
+    {
+      "word": "人形",
+      "reading": "にんぎょう",
+      "accent": "[0]",
+      "meaning": "人偶、娃娃",
+      "extraInfo": "「人形」、「ぬいぐるみ」、「フィギュア」的差別\n\n「人形」顧名思義是以人形為主的玩偶，通常用紙、土或木頭等製作而成，多為鑑賞、裝飾用途，或用於表演藝術等。如果是用絨布等縫補並放入填充物的布偶娃娃，則通常稱為「ぬいぐるみ」，如熊娃娃、兔娃娃等動物布偶。但以廣義來說，「人形」有時也會包含「ぬいぐるみ」。\n\n以下為圖片參考，可以比較看看差異：\n\n人形（人偶娃娃）\n\n人形\n\nぬいぐるみ（填充布娃娃）\n\nぬいぐるみ\n\nフィギュア（人形公仔、人形模型）\n\nフィギュア"
+    },
+    {
+      "word": "押入れ",
+      "reading": "おしいれ",
+      "accent": "[0]",
+      "meaning": "壁櫥",
+      "extraInfo": null
+    },
+    {
+      "word": "お土産",
+      "reading": "おみやげ",
+      "accent": "[0]",
+      "meaning": "伴手禮／土產",
+      "extraInfo": null
+    },
+    {
+      "word": "贈り物",
+      "reading": "おくりもの",
+      "accent": "[0]",
+      "meaning": "贈物、禮品",
+      "extraInfo": null
+    },
+    {
+      "word": "忘れ物",
+      "reading": "わすれもの",
+      "accent": "[0]",
+      "meaning": "遺失物、遺忘物品",
+      "extraInfo": null
+    },
+    {
+      "word": "引き出し",
+      "reading": "ひきだし",
+      "accent": "[0]",
+      "meaning": "抽屜",
+      "extraInfo": null
+    },
+    {
+      "word": "ガラス",
+      "reading": "glas 〔荷〕",
+      "accent": "[0]",
+      "meaning": "玻璃",
+      "extraInfo": null
+    },
+    {
+      "word": "ピアノ",
+      "reading": "piano",
+      "accent": "[0]",
+      "meaning": "鋼琴",
+      "extraInfo": null
+    },
+    {
+      "word": "カーテン",
+      "reading": "curtain",
+      "accent": "[1]",
+      "meaning": "窗簾",
+      "extraInfo": null
+    },
+    {
+      "word": "テキスト",
+      "reading": "text",
+      "accent": "[1]",
+      "meaning": "文字、文本／教材、課本、教科書",
+      "extraInfo": null
+    },
+    {
+      "word": "ガソリン",
+      "reading": "gasoline",
+      "accent": "[0]",
+      "meaning": "汽油",
+      "extraInfo": null
+    },
+    {
+      "word": "プレゼント",
+      "reading": "present",
+      "accent": "[2]",
+      "meaning": "禮物／送禮物",
+      "extraInfo": null
+    },
+    {
+      "word": "アルコール",
+      "reading": "alcohol 〔荷〕",
+      "accent": "[0]",
+      "meaning": "酒精",
+      "extraInfo": null
+    },
+    {
+      "word": "スーツケース",
+      "reading": "suitcase",
+      "accent": "[4]",
+      "meaning": "行李箱、旅行箱、手提箱",
+      "extraInfo": null
+    }
+  ]
+}

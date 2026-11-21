@@ -1,0 +1,434 @@
+{
+  "level": "N3",
+  "lesson": 3,
+  "title": "N3日文單字03（名詞）人物職稱",
+  "words": [
+    {
+      "word": "長女",
+      "reading": "ちょうじょ",
+      "accent": "[1]",
+      "meaning": "長女",
+      "extraInfo": null
+    },
+    {
+      "word": "長男",
+      "reading": "ちょうなん",
+      "accent": "[1]",
+      "meaning": "長男",
+      "extraInfo": null
+    },
+    {
+      "word": "夫婦",
+      "reading": "ふうふ",
+      "accent": "[1]",
+      "meaning": "夫婦",
+      "extraInfo": null
+    },
+    {
+      "word": "姪",
+      "reading": "めい",
+      "accent": "[0][1]",
+      "meaning": "姪女／外甥女",
+      "extraInfo": null
+    },
+    {
+      "word": "甥",
+      "reading": "おい",
+      "accent": "[0]",
+      "meaning": "姪子／外甥男",
+      "extraInfo": null
+    },
+    {
+      "word": "孫",
+      "reading": "まご",
+      "accent": "[2]",
+      "meaning": "孫子",
+      "extraInfo": null
+    },
+    {
+      "word": "従兄弟",
+      "reading": "いとこ",
+      "accent": "[2]",
+      "meaning": "堂表兄弟姊妹",
+      "extraInfo": null
+    },
+    {
+      "word": "義母",
+      "reading": "ぎぼ",
+      "accent": "[1]",
+      "meaning": "岳母／繼母／養母",
+      "extraInfo": null
+    },
+    {
+      "word": "義父",
+      "reading": "ぎふ",
+      "accent": "[1]",
+      "meaning": "岳父／繼父／養父",
+      "extraInfo": null
+    },
+    {
+      "word": "花嫁",
+      "reading": "はなよめ",
+      "accent": "[2]",
+      "meaning": "新娘",
+      "extraInfo": null
+    },
+    {
+      "word": "花婿",
+      "reading": "はなむこ",
+      "accent": "[2]",
+      "meaning": "新郎",
+      "extraInfo": null
+    },
+    {
+      "word": "幼児",
+      "reading": "ようじ",
+      "accent": "[1]",
+      "meaning": "幼兒",
+      "extraInfo": null
+    },
+    {
+      "word": "少女",
+      "reading": "しょうじょ",
+      "accent": "[1]",
+      "meaning": "少女",
+      "extraInfo": null
+    },
+    {
+      "word": "少年",
+      "reading": "しょうねん",
+      "accent": "[0]",
+      "meaning": "少年",
+      "extraInfo": null
+    },
+    {
+      "word": "若者",
+      "reading": "わかもの",
+      "accent": "[0]",
+      "meaning": "年輕人",
+      "extraInfo": null
+    },
+    {
+      "word": "青年",
+      "reading": "せいねん",
+      "accent": "[0]",
+      "meaning": "青年",
+      "extraInfo": null
+    },
+    {
+      "word": "成人",
+      "reading": "せいじん",
+      "accent": "[0]",
+      "meaning": "成人",
+      "extraInfo": null
+    },
+    {
+      "word": "老人",
+      "reading": "ろうじん",
+      "accent": "[0]",
+      "meaning": "老人",
+      "extraInfo": "「老人」、「年寄り」、「高齢者」的差別\n\n以上都稱為「老人、老年人」，意思基本無異，只是既定的單字組合跟給人感覺的差異而已。既定的單字組合就是像中文的老人年金或高齡社會這樣，我們不會講高齡年金，以下來看看日文有哪些組合：\n\n老人ホーム、特別養護老人ホーム\n高齢者福祉、高齢者向け施設\nお年寄り相談室\n\n以上有些能互換，有些則是固定用語，簡言之都是指「老年人」的意思。\n\n「年寄り」通常前面會加上「お」表示尊重：「お年寄り」。\n\n感受上「高齢者」偏向於客觀描述，指年齡超過65歲以上者，較沒有歧視或偏見的意味，因此新聞播報或報告資料上通常使用此稱呼。在口語上「お年寄り」則較普遍被使用。"
+    },
+    {
+      "word": "年寄り",
+      "reading": "としより",
+      "accent": "[3]",
+      "meaning": "老人",
+      "extraInfo": "「老人」、「年寄り」、「高齢者」的差別\n\n以上都稱為「老人、老年人」，意思基本無異，只是既定的單字組合跟給人感覺的差異而已。既定的單字組合就是像中文的老人年金或高齡社會這樣，我們不會講高齡年金，以下來看看日文有哪些組合：\n\n老人ホーム、特別養護老人ホーム\n高齢者福祉、高齢者向け施設\nお年寄り相談室\n\n以上有些能互換，有些則是固定用語，簡言之都是指「老年人」的意思。\n\n「年寄り」通常前面會加上「お」表示尊重：「お年寄り」。\n\n感受上「高齢者」偏向於客觀描述，指年齡超過65歲以上者，較沒有歧視或偏見的意味，因此新聞播報或報告資料上通常使用此稱呼。在口語上「お年寄り」則較普遍被使用。"
+    },
+    {
+      "word": "高齢者",
+      "reading": "こうれいしゃ",
+      "accent": "[3]",
+      "meaning": "老年人",
+      "extraInfo": "「老人」、「年寄り」、「高齢者」的差別\n\n以上都稱為「老人、老年人」，意思基本無異，只是既定的單字組合跟給人感覺的差異而已。既定的單字組合就是像中文的老人年金或高齡社會這樣，我們不會講高齡年金，以下來看看日文有哪些組合：\n\n老人ホーム、特別養護老人ホーム\n高齢者福祉、高齢者向け施設\nお年寄り相談室\n\n以上有些能互換，有些則是固定用語，簡言之都是指「老年人」的意思。\n\n「年寄り」通常前面會加上「お」表示尊重：「お年寄り」。\n\n感受上「高齢者」偏向於客觀描述，指年齡超過65歲以上者，較沒有歧視或偏見的意味，因此新聞播報或報告資料上通常使用此稱呼。在口語上「お年寄り」則較普遍被使用。"
+    },
+    {
+      "word": "個人",
+      "reading": "こじん",
+      "accent": "[1]",
+      "meaning": "個人",
+      "extraInfo": null
+    },
+    {
+      "word": "本人",
+      "reading": "ほんにん",
+      "accent": "[1]",
+      "meaning": "本人",
+      "extraInfo": null
+    },
+    {
+      "word": "相手",
+      "reading": "あいて",
+      "accent": "[3]",
+      "meaning": "對方／對象、共事夥伴／對手",
+      "extraInfo": null
+    },
+    {
+      "word": "知り合い",
+      "reading": "しりあい",
+      "accent": "[0]",
+      "meaning": "認識的人",
+      "extraInfo": null
+    },
+    {
+      "word": "友人",
+      "reading": "ゆうじん",
+      "accent": "[0]",
+      "meaning": "友人",
+      "extraInfo": null
+    },
+    {
+      "word": "恋人",
+      "reading": "こいびと",
+      "accent": "[0]",
+      "meaning": "戀人、情人",
+      "extraInfo": null
+    },
+    {
+      "word": "家主",
+      "reading": "やぬし",
+      "accent": "[1]",
+      "meaning": "屋主／一家之主",
+      "extraInfo": null
+    },
+    {
+      "word": "美人",
+      "reading": "びじん",
+      "accent": "[1]",
+      "meaning": "美人",
+      "extraInfo": null
+    },
+    {
+      "word": "犯人",
+      "reading": "はんにん",
+      "accent": "[1]",
+      "meaning": "犯人",
+      "extraInfo": null
+    },
+    {
+      "word": "上司",
+      "reading": "じょうし",
+      "accent": "[1]",
+      "meaning": "上司",
+      "extraInfo": null
+    },
+    {
+      "word": "画家",
+      "reading": "がか",
+      "accent": "[0]",
+      "meaning": "畫家",
+      "extraInfo": null
+    },
+    {
+      "word": "作家",
+      "reading": "さっか",
+      "accent": "[0]",
+      "meaning": "作家",
+      "extraInfo": null
+    },
+    {
+      "word": "詩人",
+      "reading": "しじん",
+      "accent": "[0]",
+      "meaning": "詩人",
+      "extraInfo": null
+    },
+    {
+      "word": "歌手",
+      "reading": "かしゅ",
+      "accent": "[1]",
+      "meaning": "歌手",
+      "extraInfo": null
+    },
+    {
+      "word": "作曲家",
+      "reading": "さっきょくか",
+      "accent": "[0]",
+      "meaning": "作曲家",
+      "extraInfo": null
+    },
+    {
+      "word": "大工",
+      "reading": "だいく",
+      "accent": "[1]",
+      "meaning": "木匠",
+      "extraInfo": null
+    },
+    {
+      "word": "建築家",
+      "reading": "けんちくか",
+      "accent": "[0]",
+      "meaning": "建築師",
+      "extraInfo": null
+    },
+    {
+      "word": "職人",
+      "reading": "しょくにん",
+      "accent": "[0]",
+      "meaning": "工匠、手藝人、專家（指工藝領域）",
+      "extraInfo": null
+    },
+    {
+      "word": "記者",
+      "reading": "きしゃ",
+      "accent": "[1][2]",
+      "meaning": "記者",
+      "extraInfo": null
+    },
+    {
+      "word": "農家",
+      "reading": "のうか",
+      "accent": "[1]",
+      "meaning": "農民",
+      "extraInfo": null
+    },
+    {
+      "word": "巡査",
+      "reading": "じゅんさ",
+      "accent": "[1][0]",
+      "meaning": "警察",
+      "extraInfo": "「警察官、警察、警官、巡査、お巡りさん」的差別\n\n在N5單字篇曾介紹過警察的說法，這篇出現新的「巡査」，一起做比較：\n\n警察官：泛指所有警務人員。\n警察：泛指警察及其組織，亦可作為警察官的略稱。\n警官：警察官的略稱。\n巡査：指警察階級中最底層的警察。\nお巡りさん：最平易近人的稱呼。\n\n日常生活一般用「お巡りさん」來稱呼警察，較為親切。由於警察經常會在路上巡邏，而日本在稱呼他人時習慣加上「さん」來表示敬意，因此就形成了「お巡りさん」。"
+    },
+    {
+      "word": "漁師",
+      "reading": "りょうし",
+      "accent": "[1]",
+      "meaning": "漁夫",
+      "extraInfo": null
+    },
+    {
+      "word": "行員",
+      "reading": "こういん",
+      "accent": "[0]",
+      "meaning": "銀行員略稱",
+      "extraInfo": null
+    },
+    {
+      "word": "自営業",
+      "reading": "じえいぎょう",
+      "accent": "[2]",
+      "meaning": "自營業",
+      "extraInfo": null
+    },
+    {
+      "word": "調理師",
+      "reading": "ちょうりし",
+      "accent": "[3]",
+      "meaning": "烹飪師",
+      "extraInfo": null
+    },
+    {
+      "word": "美容師",
+      "reading": "びようし",
+      "accent": "[2]",
+      "meaning": "美容師",
+      "extraInfo": null
+    },
+    {
+      "word": "俳優",
+      "reading": "はいゆう",
+      "accent": "[0]",
+      "meaning": "演員",
+      "extraInfo": null
+    },
+    {
+      "word": "女優",
+      "reading": "じょゆう",
+      "accent": "[0]",
+      "meaning": "女演員",
+      "extraInfo": null
+    },
+    {
+      "word": "男優",
+      "reading": "だんゆう",
+      "accent": "[0]",
+      "meaning": "男演員",
+      "extraInfo": null
+    },
+    {
+      "word": "声優",
+      "reading": "せいゆう",
+      "accent": "[0]",
+      "meaning": "配音員",
+      "extraInfo": null
+    },
+    {
+      "word": "医師",
+      "reading": "いし",
+      "accent": "[1]",
+      "meaning": "醫師",
+      "extraInfo": "「医師」和「医者」的差別\n\n如同「醫生」跟「醫師」般，口語我們習慣稱對方為「醫生」，但正式名稱為「醫師」，如「醫師執照、醫師國考」。\n\n医師：通過國家考試取得合格醫師執照，為傷患病人診療的人物。\n医者：為傷患病人診療的人物。\n\n因此如果是密醫就只能稱得上是「医者」而無「医師」資格，日文又稱為「無免許医師（無照醫師）」或是俗稱的「闇医者（密醫）」。"
+    },
+    {
+      "word": "介護士",
+      "reading": "かいごし",
+      "accent": "[3]",
+      "meaning": "看護",
+      "extraInfo": null
+    },
+    {
+      "word": "教員",
+      "reading": "きょういん",
+      "accent": "[0]",
+      "meaning": "教職人員",
+      "extraInfo": null
+    },
+    {
+      "word": "弁護士",
+      "reading": "べんごし",
+      "accent": "[3]",
+      "meaning": "律師",
+      "extraInfo": null
+    },
+    {
+      "word": "保育士",
+      "reading": "ほいくし",
+      "accent": "[3]",
+      "meaning": "保育人員",
+      "extraInfo": "「保育士」和「ベビーシッター」的差別\n\n這個職業在以前的日本稱為「保母」，但隨著時代演變，「男性保母」越來越多的情況下，這個稱呼就跟「看護婦」一樣退役了。現在無論男女通稱為「保育士」，不過還有另一種常見的稱呼叫做「ベビーシッター」，此兩者又有何差別呢？\n\n保育士：具有國家資格取得合法執照者。\nベビーシッター：不需要任何資格，沒有國家資格，但有由民間組織頒發的認定資格，如「公益社団法人全国保育サービス協会」。\n\n一般媽媽幫忙帶孩子的那種保母多為「ベビーシッター」（這裡指的是不具有資格或有取得民間組織認定資格的），而「保育士」多為「幼兒園」或「托育中心」的專職人員。"
+    },
+    {
+      "word": "政治家",
+      "reading": "せいじか",
+      "accent": "[0]",
+      "meaning": "政治家",
+      "extraInfo": null
+    },
+    {
+      "word": "公民",
+      "reading": "こうみん",
+      "accent": "[0]",
+      "meaning": "公民",
+      "extraInfo": null
+    },
+    {
+      "word": "駅員",
+      "reading": "えきいん",
+      "accent": "[2]",
+      "meaning": "站務員",
+      "extraInfo": null
+    },
+    {
+      "word": "車掌",
+      "reading": "しゃしょう",
+      "accent": "[0]",
+      "meaning": "乘務員",
+      "extraInfo": null
+    },
+    {
+      "word": "運転士",
+      "reading": "うんてんし",
+      "accent": "[3]",
+      "meaning": "駕駛員",
+      "extraInfo": null
+    },
+    {
+      "word": "客室乗務員",
+      "reading": "きゃくしつじょうむいん",
+      "accent": "[7]",
+      "meaning": "乘務員",
+      "extraInfo": "「客室乗務員、スチュワーデス、スチュワード」的差別\n\n「客室乗務員」的意思是「列車或船舶或飛機上的服務人員」，但此單字大多指「空服人員」。而「スチュワーデス」是指女空服員，「スチュワード」是指男空服員，不過這些也一樣隨著性平意識的崛起而漸漸少用了。\n\n「スチュワーデス」和「スチュワード」都是「客室乗務員」的一種。\n\n空服方面\n\n客室乗務員\n\nスチュワーデス（女空服）\nスチュワード（男空服）\n\n「スチュワーデス、スチュワード」就跟「保母、看護婦」一樣具有性別差異，因此也漸漸被「CA」取代，「CA」就是「cabin attendant（キャビンアテンダント）」，也就是「客室乗務員」的意思。"
+    }
+  ]
+}

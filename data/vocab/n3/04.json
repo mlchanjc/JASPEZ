@@ -1,0 +1,315 @@
+{
+  "level": "N3",
+  "lesson": 4,
+  "title": "N3日文單字04（名詞）身體部位",
+  "words": [
+    {
+      "word": "肌",
+      "reading": "はだ",
+      "accent": "[1]",
+      "meaning": "肌膚",
+      "extraInfo": "「肌」、「皮膚」、「皮」的差別\n\n肌　：皮膚組織中最表層的部分。\n皮膚：醫學領域專有名詞，皮膚共分為表皮、真皮與皮下組織三部分，而「肌」在表皮層。\n皮　：動植物或物品的外皮\n\n- 肌がきれいですね。\n肌膚真好呢！\n\n- 皮膚炎が起こる。\n引起皮膚炎。\n\n- りんごの皮を剝く。\n剝蘋果皮。"
+    },
+    {
+      "word": "皮膚",
+      "reading": "ひふ",
+      "accent": "[1]",
+      "meaning": "皮膚",
+      "extraInfo": "「肌」、「皮膚」、「皮」的差別\n\n肌　：皮膚組織中最表層的部分。\n皮膚：醫學領域專有名詞，皮膚共分為表皮、真皮與皮下組織三部分，而「肌」在表皮層。\n皮　：動植物或物品的外皮\n\n- 肌がきれいですね。\n肌膚真好呢！\n\n- 皮膚炎が起こる。\n引起皮膚炎。\n\n- りんごの皮を剝く。\n剝蘋果皮。"
+    },
+    {
+      "word": "皮",
+      "reading": "かわ",
+      "accent": "[2]",
+      "meaning": "皮",
+      "extraInfo": "「肌」、「皮膚」、「皮」的差別\n\n肌　：皮膚組織中最表層的部分。\n皮膚：醫學領域專有名詞，皮膚共分為表皮、真皮與皮下組織三部分，而「肌」在表皮層。\n皮　：動植物或物品的外皮\n\n- 肌がきれいですね。\n肌膚真好呢！\n\n- 皮膚炎が起こる。\n引起皮膚炎。\n\n- りんごの皮を剝く。\n剝蘋果皮。"
+    },
+    {
+      "word": "しわ",
+      "reading": "しわ",
+      "accent": "[0]",
+      "meaning": "皺紋",
+      "extraInfo": null
+    },
+    {
+      "word": "髪の毛",
+      "reading": "かみのけ",
+      "accent": "[3]",
+      "meaning": "毛髮",
+      "extraInfo": null
+    },
+    {
+      "word": "額",
+      "reading": "ひたい",
+      "accent": "[0]",
+      "meaning": "額頭",
+      "extraInfo": "「額」和「おでこ」的差別\n\n意思皆相同，都是指「額頭」\n\n額：較書面語，但口語也經常使用。\nおでこ：口語，文章不會使用。"
+    },
+    {
+      "word": "おでこ",
+      "reading": "おでこ",
+      "accent": "[2]",
+      "meaning": "額頭",
+      "extraInfo": "「額」和「おでこ」的差別\n\n意思皆相同，都是指「額頭」\n\n額：較書面語，但口語也經常使用。\nおでこ：口語，文章不會使用。"
+    },
+    {
+      "word": "眉毛",
+      "reading": "まゆげ",
+      "accent": "[1]",
+      "meaning": "眉毛",
+      "extraInfo": null
+    },
+    {
+      "word": "まぶた",
+      "reading": "まぶた",
+      "accent": "[1]",
+      "meaning": "眼皮",
+      "extraInfo": null
+    },
+    {
+      "word": "まつ毛",
+      "reading": "まつげ",
+      "accent": "[1]",
+      "meaning": "睫毛",
+      "extraInfo": null
+    },
+    {
+      "word": "目玉",
+      "reading": "めだま",
+      "accent": "[3]",
+      "meaning": "眼球",
+      "extraInfo": null
+    },
+    {
+      "word": "頬",
+      "reading": "ほお",
+      "accent": "[1]",
+      "meaning": "臉頰",
+      "extraInfo": "「頬」可讀做「ほお」或「ほほ」，兩者都有人使用，講哪一種都可以，通常「ほお」比較多人用。"
+    },
+    {
+      "word": "唇",
+      "reading": "くちびる",
+      "accent": "[0]",
+      "meaning": "嘴唇",
+      "extraInfo": null
+    },
+    {
+      "word": "舌",
+      "reading": "した",
+      "accent": "[2]",
+      "meaning": "舌頭",
+      "extraInfo": null
+    },
+    {
+      "word": "あご",
+      "reading": "あご",
+      "accent": "[2]",
+      "meaning": "下巴",
+      "extraInfo": null
+    },
+    {
+      "word": "肩",
+      "reading": "かた",
+      "accent": "[1]",
+      "meaning": "肩膀",
+      "extraInfo": null
+    },
+    {
+      "word": "肘",
+      "reading": "ひじ",
+      "accent": "[2]",
+      "meaning": "手肘",
+      "extraInfo": null
+    },
+    {
+      "word": "親指",
+      "reading": "おやゆび",
+      "accent": "[0]",
+      "meaning": "拇指",
+      "extraInfo": null
+    },
+    {
+      "word": "人差し指",
+      "reading": "ひとさしゆび",
+      "accent": "[4]",
+      "meaning": "食指",
+      "extraInfo": null
+    },
+    {
+      "word": "中指",
+      "reading": "なかゆび",
+      "accent": "[2]",
+      "meaning": "中指",
+      "extraInfo": null
+    },
+    {
+      "word": "薬指",
+      "reading": "くすりゆび",
+      "accent": "[3]",
+      "meaning": "無名指",
+      "extraInfo": null
+    },
+    {
+      "word": "小指",
+      "reading": "こゆび",
+      "accent": "[0]",
+      "meaning": "小指",
+      "extraInfo": null
+    },
+    {
+      "word": "爪",
+      "reading": "つめ",
+      "accent": "[0]",
+      "meaning": "指甲",
+      "extraInfo": null
+    },
+    {
+      "word": "手の平",
+      "reading": "てのひら",
+      "accent": "[1][2]",
+      "meaning": "手掌",
+      "extraInfo": null
+    },
+    {
+      "word": "手の甲",
+      "reading": "てのこう",
+      "accent": "[1]",
+      "meaning": "手背",
+      "extraInfo": null
+    },
+    {
+      "word": "胸",
+      "reading": "むね",
+      "accent": "[2]",
+      "meaning": "胸部",
+      "extraInfo": null
+    },
+    {
+      "word": "乳",
+      "reading": "ちち",
+      "accent": "[2][1]",
+      "meaning": "乳房",
+      "extraInfo": null
+    },
+    {
+      "word": "脇",
+      "reading": "わき",
+      "accent": "[2]",
+      "meaning": "腋下",
+      "extraInfo": null
+    },
+    {
+      "word": "腹",
+      "reading": "はら",
+      "accent": "[2]",
+      "meaning": "肚子",
+      "extraInfo": "「お腹」和「腹」意思相同，都是指「肚子」。\n\nお腹：口語。\n腹：較書面語，但口語也經常使用。在口語中使用時，其語感比「お腹」粗俗，因此多為男性使用。"
+    },
+    {
+      "word": "へそ",
+      "reading": "へそ",
+      "accent": "[0]",
+      "meaning": "肚臍",
+      "extraInfo": null
+    },
+    {
+      "word": "腰",
+      "reading": "こし",
+      "accent": "[0]",
+      "meaning": "腰",
+      "extraInfo": null
+    },
+    {
+      "word": "尻",
+      "reading": "しり",
+      "accent": "[2]",
+      "meaning": "屁股",
+      "extraInfo": null
+    },
+    {
+      "word": "もも",
+      "reading": "もも",
+      "accent": "[1]",
+      "meaning": "大腿",
+      "extraInfo": null
+    },
+    {
+      "word": "膝",
+      "reading": "ひざ",
+      "accent": "[0]",
+      "meaning": "膝蓋",
+      "extraInfo": null
+    },
+    {
+      "word": "足首",
+      "reading": "あしくび",
+      "accent": "[2][3]",
+      "meaning": "腳踝",
+      "extraInfo": null
+    },
+    {
+      "word": "かかと",
+      "reading": "かかと",
+      "accent": "[0]",
+      "meaning": "腳跟",
+      "extraInfo": null
+    },
+    {
+      "word": "爪先",
+      "reading": "つまさき",
+      "accent": "[0]",
+      "meaning": "腳尖",
+      "extraInfo": null
+    },
+    {
+      "word": "骨",
+      "reading": "ほね",
+      "accent": "[2]",
+      "meaning": "骨頭",
+      "extraInfo": null
+    },
+    {
+      "word": "血液",
+      "reading": "けつえき",
+      "accent": "[2]",
+      "meaning": "血液",
+      "extraInfo": null
+    },
+    {
+      "word": "涙",
+      "reading": "なみだ",
+      "accent": "[1]",
+      "meaning": "淚水",
+      "extraInfo": null
+    },
+    {
+      "word": "命",
+      "reading": "いのち",
+      "accent": "[1]",
+      "meaning": "生命",
+      "extraInfo": null
+    },
+    {
+      "word": "身長",
+      "reading": "しんちょう",
+      "accent": "[0]",
+      "meaning": "身高",
+      "extraInfo": null
+    },
+    {
+      "word": "体力",
+      "reading": "たいりょく",
+      "accent": "[1]",
+      "meaning": "體力",
+      "extraInfo": null
+    },
+    {
+      "word": "表情",
+      "reading": "ひょうじょう",
+      "accent": "[3]",
+      "meaning": "表情",
+      "extraInfo": null
+    }
+  ]
+}

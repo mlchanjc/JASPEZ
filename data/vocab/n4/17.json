@@ -1,0 +1,911 @@
+{
+  "level": "N4",
+  "lesson": 17,
+  "title": "N4日文單字17（動詞）他動詞單字列表",
+  "words": [
+    {
+      "verbType": "五段",
+      "word": "打つ",
+      "reading": "うつ",
+      "accent": "[1]",
+      "meaning": "打／拍／下（圍棋）／採取（措施）",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "折る",
+      "reading": "おる",
+      "accent": "[1]",
+      "meaning": "折／彎",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "かむ",
+      "reading": "かむ",
+      "accent": "[1]",
+      "meaning": "咬、嚼／叮／口吃、結巴／牽涉、參與",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "足す",
+      "reading": "たす",
+      "accent": "[0]",
+      "meaning": "加／添",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "釣る",
+      "reading": "つる",
+      "accent": "[0]",
+      "meaning": "釣魚／勾引",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "塗る",
+      "reading": "ぬる",
+      "accent": "[0]",
+      "meaning": "塗抹",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "踏む",
+      "reading": "ふむ",
+      "accent": "[0]",
+      "meaning": "踩、踏／經歷／履行／評估",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "焼く",
+      "reading": "やく",
+      "accent": "[0]",
+      "meaning": "燒／烤",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "致す",
+      "reading": "いたす",
+      "accent": "[2]",
+      "meaning": "做／導致",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "祈る",
+      "reading": "いのる",
+      "accent": "[2]",
+      "meaning": "祈禱",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "写す",
+      "reading": "うつす",
+      "accent": "[2]",
+      "meaning": "抄寫、謄寫、複寫／描寫、描繪／拍照、攝影",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "移す",
+      "reading": "うつす",
+      "accent": "[2]",
+      "meaning": "移動",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "選ぶ",
+      "reading": "えらぶ",
+      "accent": "[2]",
+      "meaning": "選擇",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "送る",
+      "reading": "おくる",
+      "accent": "[0]",
+      "meaning": "送、寄／派遣／度過、過（生活、時光）／送行、送別",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "起こす",
+      "reading": "おこす",
+      "accent": "[2]",
+      "meaning": "引起／喚起／掀起",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "落とす",
+      "reading": "おとす",
+      "accent": "[2]",
+      "meaning": "掉落、弄掉／降低／遺漏／刷掉／下載／關閉",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "思う",
+      "reading": "おもう",
+      "accent": "[2]",
+      "meaning": "想／認為",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "飾る",
+      "reading": "かざる",
+      "accent": "[0]",
+      "meaning": "裝飾",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "壊す",
+      "reading": "こわす",
+      "accent": "[2]",
+      "meaning": "弄壞",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "探す",
+      "reading": "さがす",
+      "accent": "[0]",
+      "meaning": "尋找",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "𠮟る",
+      "reading": "しかる",
+      "accent": "[0]",
+      "meaning": "喝斥、責罵",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "包む",
+      "reading": "つつむ",
+      "accent": "[2]",
+      "meaning": "包、裹／籠罩",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "直す",
+      "reading": "なおす",
+      "accent": "[2]",
+      "meaning": "修改／修理／重做",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "盗む",
+      "reading": "ぬすむ",
+      "accent": "[2]",
+      "meaning": "偷竊、盜取",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "払う",
+      "reading": "はらう",
+      "accent": "[2]",
+      "meaning": "拂去、掃除、揮去／支付、付款／付出",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "拾う",
+      "reading": "ひろう",
+      "accent": "[0]",
+      "meaning": "撿起／挑選",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "申す",
+      "reading": "もうす",
+      "accent": "[1]",
+      "meaning": "說、講",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "もらう",
+      "reading": "もらう",
+      "accent": "[0]",
+      "meaning": "得到／領取",
+      "extraInfo": "本篇牽涉到文法「もらう、くれる、いただく、さしあげる」等授受動詞，有些單字中文雖然一樣，但日文有不同用法，詳細部分可參考：N4文法28「授受動詞」あげる、くれる、もらう。"
+    },
+    {
+      "verbType": "五段",
+      "word": "沸かす",
+      "reading": "わかす",
+      "accent": "[0]",
+      "meaning": "使沸騰",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "謝る",
+      "reading": "あやまる",
+      "accent": "[3]",
+      "meaning": "道歉／謝罪",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "頂く",
+      "reading": "いただく",
+      "accent": "[0]",
+      "meaning": "得到／蒙受",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "伺う",
+      "reading": "うかがう",
+      "accent": "[0]",
+      "meaning": "詢問／聽／拜訪",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "行う",
+      "reading": "おこなう",
+      "accent": "[0]",
+      "meaning": "舉行",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "下さる",
+      "reading": "くださる",
+      "accent": "[3]",
+      "meaning": "給予",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "楽しむ",
+      "reading": "たのしむ",
+      "accent": "[3]",
+      "meaning": "享受、取樂",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "手伝う",
+      "reading": "てつだう",
+      "accent": "[3]",
+      "meaning": "幫忙",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "引っ越す",
+      "reading": "ひっこす",
+      "accent": "[3]",
+      "meaning": "搬家",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "仰る",
+      "reading": "おっしゃる",
+      "accent": "[3]",
+      "meaning": "說、講",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "思い出す",
+      "reading": "おもいだす",
+      "accent": "[4]",
+      "meaning": "想起來",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "召し上がる",
+      "reading": "めしあがる",
+      "accent": "[0][4]",
+      "meaning": "吃／喝",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "世話",
+      "reading": "せわ",
+      "accent": "[2]",
+      "meaning": "照顧、照料／麻煩、打擾",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "講義",
+      "reading": "こうぎ",
+      "accent": "[1]",
+      "meaning": "講座、課程／講授、講課",
+      "extraInfo": "「講義」通常是指講座的意思，而中文的講義一般用「プリント」表示。"
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "予定",
+      "reading": "よてい",
+      "accent": "[0]",
+      "meaning": "預定",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "予約",
+      "reading": "よやく",
+      "accent": "[0]",
+      "meaning": "預約",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "利用",
+      "reading": "りよう",
+      "accent": "[0]",
+      "meaning": "利用／使用",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "案内",
+      "reading": "あんない",
+      "accent": "[3]",
+      "meaning": "引導、指引、帶路／介紹／通知、告知",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "運転",
+      "reading": "うんてん",
+      "accent": "[0]",
+      "meaning": "駕駛／運轉",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "遠慮",
+      "reading": "えんりょ",
+      "accent": "[0]",
+      "meaning": "客氣、顧慮／節制、自制／婉拒、謝絕",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "計画",
+      "reading": "けいかく",
+      "accent": "[0]",
+      "meaning": "計畫",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "経験",
+      "reading": "けいけん",
+      "accent": "[0]",
+      "meaning": "經驗、經歷、體驗",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "見学",
+      "reading": "けんがく",
+      "accent": "[0]",
+      "meaning": "參觀、觀摩",
+      "extraInfo": "「見物」和「見学」的差別\n\n見物：一般的參觀、遊覽古蹟聖地等。\n見学：有學習到知識、技術的參觀，如到工廠參觀。\n\n- いろいろ見物しました。\n 到處參觀。\n\n- 工場を見学したい。\n我想參觀工廠。"
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "見物",
+      "reading": "けんぶつ",
+      "accent": "[0]",
+      "meaning": "參觀／遊覽",
+      "extraInfo": "「見物」和「見学」的差別\n\n見物：一般的參觀、遊覽古蹟聖地等。\n見学：有學習到知識、技術的參觀，如到工廠參觀。\n\n- いろいろ見物しました。\n 到處參觀。\n\n- 工場を見学したい。\n我想參觀工廠。"
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "準備",
+      "reading": "じゅんび",
+      "accent": "[1]",
+      "meaning": "準備",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "承知",
+      "reading": "しょうち",
+      "accent": "[0]",
+      "meaning": "知道、了解／同意、答應",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "生産",
+      "reading": "せいさん",
+      "accent": "[0]",
+      "meaning": "生產",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "説明",
+      "reading": "せつめい",
+      "accent": "[0]",
+      "meaning": "說明、解釋",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "相談",
+      "reading": "そうだん",
+      "accent": "[0]",
+      "meaning": "商量、談談、討論",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "中止",
+      "reading": "ちゅうし",
+      "accent": "[0]",
+      "meaning": "中止／停止",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "通訳",
+      "reading": "つうやく",
+      "accent": "[1]",
+      "meaning": "口譯",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "登録",
+      "reading": "とうろく",
+      "accent": "[0]",
+      "meaning": "註冊／〈法〉登記、註冊",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "拝見",
+      "reading": "はいけん",
+      "accent": "[0]",
+      "meaning": "看、讀",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "発音",
+      "reading": "はつおん",
+      "accent": "[0]",
+      "meaning": "發音",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "放送",
+      "reading": "ほうそう",
+      "accent": "[0]",
+      "meaning": "播放、廣播",
+      "extraInfo": "「放送」是播放或廣播的意思，「生放送」就是直播。"
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "翻訳",
+      "reading": "ほんやく",
+      "accent": "[0]",
+      "meaning": "翻譯",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "約束",
+      "reading": "やくそく",
+      "accent": "[0]",
+      "meaning": "約定",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "輸出",
+      "reading": "ゆしゅつ",
+      "accent": "[0]",
+      "meaning": "輸出、出口（貿易）",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "輸入",
+      "reading": "ゆにゅう",
+      "accent": "[0]",
+      "meaning": "輸入、進口（貿易）",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "予習",
+      "reading": "よしゅう",
+      "accent": "[0]",
+      "meaning": "預習",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "連絡",
+      "reading": "れんらく",
+      "accent": "[0]",
+      "meaning": "聯絡",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "教育",
+      "reading": "きょういく",
+      "accent": "[0]",
+      "meaning": "教育",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "競争",
+      "reading": "きょうそう",
+      "accent": "[0]",
+      "meaning": "競爭",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "研究",
+      "reading": "けんきゅう",
+      "accent": "[0]",
+      "meaning": "研究",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "紹介",
+      "reading": "しょうかい",
+      "accent": "[0]",
+      "meaning": "介紹",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "招待",
+      "reading": "しょうたい",
+      "accent": "[1]",
+      "meaning": "招待",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "注射",
+      "reading": "ちゅうしゃ",
+      "accent": "[0]",
+      "meaning": "注射、打針",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變複合",
+      "word": "復習",
+      "reading": "ふくしゅう",
+      "accent": "[0]",
+      "meaning": "複習",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "挙げる",
+      "reading": "あげる",
+      "accent": "[0]",
+      "meaning": "舉起／舉例／舉辦／動用全部／檢舉",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "植える",
+      "reading": "うえる",
+      "accent": "[0]",
+      "meaning": "種植／培育",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "変える",
+      "reading": "かえる",
+      "accent": "[0]",
+      "meaning": "改變、變更、更改",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "決める",
+      "reading": "きめる",
+      "accent": "[0]",
+      "meaning": "決定、成功做出",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "くれる",
+      "reading": "くれる",
+      "accent": "[0]",
+      "meaning": "給（我方）",
+      "extraInfo": "本篇牽涉到文法「もらう、くれる、いただく、さしあげる」等授受動詞，有些單字中文雖然一樣，但日文有不同用法，詳細部分可參考：N4文法28「授受動詞」あげる、くれる、もらう。"
+    },
+    {
+      "verbType": "下一段",
+      "word": "下げる",
+      "reading": "さげる",
+      "accent": "[2]",
+      "meaning": "降下、放下／降低、減少／撤下、撤回",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "捨てる",
+      "reading": "すてる",
+      "accent": "[0]",
+      "meaning": "捨棄、丟棄／放棄",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "立てる",
+      "reading": "たてる",
+      "accent": "[2]",
+      "meaning": "豎立／發出、揚起／擬定／樹立／給面子",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "建てる",
+      "reading": "たてる",
+      "accent": "[2]",
+      "meaning": "建造／創立",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "漬ける",
+      "reading": "つける",
+      "accent": "[0]",
+      "meaning": "浸泡、泡／醃漬、醃",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "連れる",
+      "reading": "つれる",
+      "accent": "[0]",
+      "meaning": "帶、帶領",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "止める",
+      "reading": "とめる",
+      "accent": "[0]",
+      "meaning": "停止／制止",
+      "extraInfo": "「やめる」和「とめる」的差別\n\n「やめる」漢字寫作「止める」（通常寫平假名居多），和「止める」很像，但意思不一樣，「やめる」是「不做」的意思，延伸有「停止、放棄、作罷、取消」等意思，動漫上常聽到的「やめろ」、「やめて」（住手）就是由這個字而來的。而「とめる」是使之停下，例如讓引擎停下來：エンジンを止める。"
+    },
+    {
+      "verbType": "下一段",
+      "word": "投げる",
+      "reading": "なげる",
+      "accent": "[2]",
+      "meaning": "投",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "褒める",
+      "reading": "ほめる",
+      "accent": "[2]",
+      "meaning": "誇獎／讚美",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "やめる",
+      "reading": "やめる",
+      "accent": "[0]",
+      "meaning": "停止／取消／作罷",
+      "extraInfo": "「やめる」和「とめる」的差別\n\n「やめる」漢字寫作「止める」（通常寫平假名居多），和「止める」很像，但意思不一樣，「やめる」是「不做」的意思，延伸有「停止、放棄、作罷、取消」等意思，動漫上常聽到的「やめろ」、「やめて」（住手）就是由這個字而來的。而「とめる」是使之停下，例如讓引擎停下來：エンジンを止める。"
+    },
+    {
+      "verbType": "下一段",
+      "word": "集める",
+      "reading": "あつめる",
+      "accent": "[3]",
+      "meaning": "收集／集中",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "苛める",
+      "reading": "いじめる",
+      "accent": "[0]",
+      "meaning": "虐待、欺侮、霸凌",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "比べる",
+      "reading": "くらべる",
+      "accent": "[0]",
+      "meaning": "比較",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "知らせる",
+      "reading": "しらせる",
+      "accent": "[0]",
+      "meaning": "通知／告知",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "調べる",
+      "reading": "しらべる",
+      "accent": "[3]",
+      "meaning": "調查、查詢、檢查",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "育てる",
+      "reading": "そだてる",
+      "accent": "[3]",
+      "meaning": "養育、扶養、培育",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "尋ねる",
+      "reading": "たずねる",
+      "accent": "[3]",
+      "meaning": "尋找／探求／詢問",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "訪ねる",
+      "reading": "たずねる",
+      "accent": "[3]",
+      "meaning": "拜訪、訪問、探訪",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "伝える",
+      "reading": "つたえる",
+      "accent": "[0]",
+      "meaning": "傳達、告訴、轉達／傳導／傳授、教導",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "続ける",
+      "reading": "つづける",
+      "accent": "[0]",
+      "meaning": "繼續／不斷",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "届ける",
+      "reading": "とどける",
+      "accent": "[3]",
+      "meaning": "送達",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "始める",
+      "reading": "はじめる",
+      "accent": "[0]",
+      "meaning": "開始",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "見つける",
+      "reading": "みつける",
+      "accent": "[0]",
+      "meaning": "發現、找到",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "迎える",
+      "reading": "むかえる",
+      "accent": "[0]",
+      "meaning": "迎接／接待／接納",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "片付ける",
+      "reading": "かたづける",
+      "accent": "[4]",
+      "meaning": "整理／解決／處理",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "考える",
+      "reading": "かんがえる",
+      "accent": "[3][4]",
+      "meaning": "思考／考慮",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "差し上げる",
+      "reading": "さしあげる",
+      "accent": "[0][4]",
+      "meaning": "呈送／敬獻／舉起",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "捕まえる",
+      "reading": "つかまえる",
+      "accent": "[0]",
+      "meaning": "捕捉／抓住／攔住",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "取り替える",
+      "reading": "とりかえる",
+      "accent": "[0]",
+      "meaning": "更新／交換",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "乗り換える",
+      "reading": "のりかえる",
+      "accent": "[4][3]",
+      "meaning": "換乘／改搭",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "間違える",
+      "reading": "まちがえる",
+      "accent": "[4][3]",
+      "meaning": "搞錯、弄錯",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "申し上げる",
+      "reading": "もうしあげる",
+      "accent": "[5][0]",
+      "meaning": "說、講",
+      "extraInfo": null
+    }
+  ]
+}

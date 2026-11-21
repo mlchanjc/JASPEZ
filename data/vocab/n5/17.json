@@ -1,0 +1,56 @@
+{
+  "level": "N5",
+  "lesson": 17,
+  "title": "N5日文單字17（形容詞）顏色／明暗",
+  "words": [
+    {
+      "word": "青い",
+      "reading": "あおい",
+      "accent": "[2]",
+      "meaning": "青、青色／藍、藍色／綠、綠色",
+      "extraInfo": "關於「青い」的解釋，它同時具有藍色跟綠色的意思（也就是青藍或青綠的感覺），一般來說，如果硬要區分「藍色」跟「綠色」的話，那麼「青い」較偏向藍色的意思，綠色則是「緑」（名詞），由於「緑」是名詞，因此要形容某個東西「綠綠的」時，會說「緑の○〇」、「緑だ」。另外，「青い」也用於表示蔬菜水果尚未成熟時的綠色，從而延伸出技術、想法等不成熟的意思。"
+    },
+    {
+      "word": "赤い",
+      "reading": "あかい",
+      "accent": "[0]",
+      "meaning": "紅、紅色",
+      "extraInfo": null
+    },
+    {
+      "word": "明るい",
+      "reading": "あかるい",
+      "accent": "[0][3]",
+      "meaning": "亮、明亮、光明",
+      "extraInfo": null
+    },
+    {
+      "word": "黄色い",
+      "reading": "きいろい",
+      "accent": "[0]",
+      "meaning": "黃、黃色",
+      "extraInfo": null
+    },
+    {
+      "word": "暗い",
+      "reading": "くらい",
+      "accent": "[0]",
+      "meaning": "暗、陰暗、黑暗",
+      "extraInfo": null
+    },
+    {
+      "word": "黒い",
+      "reading": "くろい",
+      "accent": "[2]",
+      "meaning": "黑、黑色",
+      "extraInfo": null
+    },
+    {
+      "word": "白い",
+      "reading": "しろい",
+      "accent": "[2]",
+      "meaning": "白、白色",
+      "extraInfo": null
+    }
+  ]
+}

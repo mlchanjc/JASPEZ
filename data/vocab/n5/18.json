@@ -1,0 +1,77 @@
+{
+  "level": "N5",
+  "lesson": 18,
+  "title": "N5日文單字18（形容詞）綜合",
+  "words": [
+    {
+      "word": "危ない",
+      "reading": "あぶない",
+      "accent": "[0][3]",
+      "meaning": "危險",
+      "extraInfo": null
+    },
+    {
+      "word": "忙しい",
+      "reading": "いそがしい",
+      "accent": "[4]",
+      "meaning": "忙、忙錄",
+      "extraInfo": null
+    },
+    {
+      "word": "痛い",
+      "reading": "いたい",
+      "accent": "[2]",
+      "meaning": "痛、痛苦",
+      "extraInfo": null
+    },
+    {
+      "word": "うるさい",
+      "reading": "うるさい",
+      "accent": "[3]",
+      "meaning": "吵",
+      "extraInfo": "「うるさい」是很吵的意思，它也有漢字，寫做「五月蠅い」，但一般只寫平假名的「うるさい」。\n\n五月蠅い的由來\n「うるさい」的「うる」是由代表「心」的「うら（古語）」轉變而來的，再加上代表狹隘的「狭し」，就變成「うるさし」，意思就是心受到某種刺激而使心思繁亂，後來演變為受到聲音打擾而使心思繁亂。漢字的「五月蠅い」並不是說「五月蠅」的假名就是「うるさ」，而是因為五月的蒼蠅特別讓人心思繁亂，所以把五月的蒼蠅套用在「うるさい」，就變成「五月蠅い」了。"
+    },
+    {
+      "word": "可愛い",
+      "reading": "かわいい",
+      "accent": "[3]",
+      "meaning": "可愛",
+      "extraInfo": "注意「可愛い」的假名有兩個「い」&rarr;「かわいい」。"
+    },
+    {
+      "word": "楽しい",
+      "reading": "たのしい",
+      "accent": "[3]",
+      "meaning": "快樂、開心、愉快",
+      "extraInfo": null
+    },
+    {
+      "word": "ない",
+      "reading": "ない",
+      "accent": "[1]",
+      "meaning": "沒有、無",
+      "extraInfo": null
+    },
+    {
+      "word": "欲しい",
+      "reading": "ほしい",
+      "accent": "[2]",
+      "meaning": "想要",
+      "extraInfo": null
+    },
+    {
+      "word": "丸い",
+      "reading": "まるい",
+      "accent": "[0]",
+      "meaning": "圓、圓形",
+      "extraInfo": null
+    },
+    {
+      "word": "若い",
+      "reading": "わかい",
+      "accent": "[2]",
+      "meaning": "年輕、年少",
+      "extraInfo": null
+    }
+  ]
+}

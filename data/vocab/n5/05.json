@@ -1,0 +1,343 @@
+{
+  "level": "N5",
+  "lesson": 5,
+  "title": "N5日文單字05（名詞）場所、地點",
+  "words": [
+    {
+      "word": "家",
+      "reading": "いえ",
+      "accent": "[2]",
+      "meaning": "房子／家",
+      "extraInfo": null
+    },
+    {
+      "word": "池",
+      "reading": "いけ",
+      "accent": "[2]",
+      "meaning": "池塘",
+      "extraInfo": null
+    },
+    {
+      "word": "入り口",
+      "reading": "いりぐち",
+      "accent": "[0]",
+      "meaning": "入口",
+      "extraInfo": null
+    },
+    {
+      "word": "映画館",
+      "reading": "えいがかん",
+      "accent": "[3]",
+      "meaning": "電影院",
+      "extraInfo": null
+    },
+    {
+      "word": "お手洗い",
+      "reading": "おてあらい",
+      "accent": "[3]",
+      "meaning": "洗手間",
+      "extraInfo": null
+    },
+    {
+      "word": "お風呂",
+      "reading": "おふろ",
+      "accent": "[2]",
+      "meaning": "浴室／浴缸／澡堂、浴池",
+      "extraInfo": null
+    },
+    {
+      "word": "会社",
+      "reading": "かいしゃ",
+      "accent": "[0]",
+      "meaning": "公司",
+      "extraInfo": null
+    },
+    {
+      "word": "階段",
+      "reading": "かいだん",
+      "accent": "[0]",
+      "meaning": "樓梯",
+      "extraInfo": null
+    },
+    {
+      "word": "角",
+      "reading": "かど",
+      "accent": "[1]",
+      "meaning": "轉角／角落",
+      "extraInfo": null
+    },
+    {
+      "word": "外国",
+      "reading": "がいこく",
+      "accent": "[0]",
+      "meaning": "外國",
+      "extraInfo": null
+    },
+    {
+      "word": "学校",
+      "reading": "がっこう",
+      "accent": "[0]",
+      "meaning": "學校",
+      "extraInfo": null
+    },
+    {
+      "word": "喫茶店",
+      "reading": "きっさてん",
+      "accent": "[0][3]",
+      "meaning": "咖啡店、咖啡廳",
+      "extraInfo": null
+    },
+    {
+      "word": "教室",
+      "reading": "きょうしつ",
+      "accent": "[0]",
+      "meaning": "教室",
+      "extraInfo": null
+    },
+    {
+      "word": "銀行",
+      "reading": "ぎんこう",
+      "accent": "[0]",
+      "meaning": "銀行",
+      "extraInfo": null
+    },
+    {
+      "word": "国",
+      "reading": "くに",
+      "accent": "[0]",
+      "meaning": "國、國家",
+      "extraInfo": null
+    },
+    {
+      "word": "玄関",
+      "reading": "げんかん",
+      "accent": "[1]",
+      "meaning": "玄關",
+      "extraInfo": null
+    },
+    {
+      "word": "公園",
+      "reading": "こうえん",
+      "accent": "[0]",
+      "meaning": "公園",
+      "extraInfo": null
+    },
+    {
+      "word": "交差点",
+      "reading": "こうさてん",
+      "accent": "[0][3]",
+      "meaning": "十字路口、交叉路口",
+      "extraInfo": null
+    },
+    {
+      "word": "交番",
+      "reading": "こうばん",
+      "accent": "[0]",
+      "meaning": "派出所",
+      "extraInfo": null
+    },
+    {
+      "word": "職員室",
+      "reading": "しょくいんしつ",
+      "accent": "[3]",
+      "meaning": "教職員室、教師辦公室",
+      "extraInfo": null
+    },
+    {
+      "word": "食堂",
+      "reading": "しょくどう",
+      "accent": "[0]",
+      "meaning": "食堂、餐廳",
+      "extraInfo": null
+    },
+    {
+      "word": "大使館",
+      "reading": "たいしかん",
+      "accent": "[3]",
+      "meaning": "大使館",
+      "extraInfo": null
+    },
+    {
+      "word": "建物",
+      "reading": "たてもの",
+      "accent": "[2][3]",
+      "meaning": "建築物、建築、建物",
+      "extraInfo": null
+    },
+    {
+      "word": "台所",
+      "reading": "だいどころ",
+      "accent": "[0]",
+      "meaning": "廚房",
+      "extraInfo": null
+    },
+    {
+      "word": "出口",
+      "reading": "でぐち",
+      "accent": "[1]",
+      "meaning": "出口",
+      "extraInfo": null
+    },
+    {
+      "word": "所",
+      "reading": "ところ",
+      "accent": "[0]",
+      "meaning": "地方、場所、地點",
+      "extraInfo": null
+    },
+    {
+      "word": "図書館",
+      "reading": "としょかん",
+      "accent": "[2]",
+      "meaning": "圖書館",
+      "extraInfo": "「図書館」是2號音。"
+    },
+    {
+      "word": "庭",
+      "reading": "にわ",
+      "accent": "[0]",
+      "meaning": "庭院、院子",
+      "extraInfo": null
+    },
+    {
+      "word": "橋",
+      "reading": "はし",
+      "accent": "[2]",
+      "meaning": "橋",
+      "extraInfo": "「橋」的重音是2號音，如果唸成1號音會變成筷子「箸」"
+    },
+    {
+      "word": "場所",
+      "reading": "ばしょ",
+      "accent": "[0]",
+      "meaning": "地方、地點、場所",
+      "extraInfo": null
+    },
+    {
+      "word": "バス停",
+      "reading": "ばすてい",
+      "accent": "[0]",
+      "meaning": "公車站",
+      "extraInfo": null
+    },
+    {
+      "word": "病院",
+      "reading": "びょういん",
+      "accent": "[0]",
+      "meaning": "醫院",
+      "extraInfo": null
+    },
+    {
+      "word": "部屋",
+      "reading": "へや",
+      "accent": "[2]",
+      "meaning": "房間",
+      "extraInfo": null
+    },
+    {
+      "word": "町",
+      "reading": "まち",
+      "accent": "[2]",
+      "meaning": "城鎮／街、街道",
+      "extraInfo": null
+    },
+    {
+      "word": "店",
+      "reading": "みせ",
+      "accent": "[2]",
+      "meaning": "店、店面、商店",
+      "extraInfo": null
+    },
+    {
+      "word": "道",
+      "reading": "みち",
+      "accent": "[0]",
+      "meaning": "路、道路",
+      "extraInfo": null
+    },
+    {
+      "word": "村",
+      "reading": "むら",
+      "accent": "[2]",
+      "meaning": "村、村子、村莊",
+      "extraInfo": null
+    },
+    {
+      "word": "八百屋",
+      "reading": "やおや",
+      "accent": "[0]",
+      "meaning": "蔬果店、蔬菜店",
+      "extraInfo": null
+    },
+    {
+      "word": "郵便局",
+      "reading": "ゆうびんきょく",
+      "accent": "[3]",
+      "meaning": "郵局",
+      "extraInfo": null
+    },
+    {
+      "word": "廊下",
+      "reading": "ろうか",
+      "accent": "[0]",
+      "meaning": "走廊",
+      "extraInfo": null
+    },
+    {
+      "word": "アパート",
+      "reading": "apartment",
+      "accent": "[2]",
+      "meaning": "公寓",
+      "extraInfo": null
+    },
+    {
+      "word": "エレベーター",
+      "reading": "elevator",
+      "accent": "[3]",
+      "meaning": "電梯",
+      "extraInfo": null
+    },
+    {
+      "word": "カフェ",
+      "reading": "caf&eacute;〔法〕",
+      "accent": "[1]",
+      "meaning": "咖啡廳",
+      "extraInfo": null
+    },
+    {
+      "word": "デパート",
+      "reading": "department",
+      "accent": "[2]",
+      "meaning": "百貨公司",
+      "extraInfo": null
+    },
+    {
+      "word": "トイレ",
+      "reading": "toilet",
+      "accent": "[1]",
+      "meaning": "廁所",
+      "extraInfo": null
+    },
+    {
+      "word": "プール",
+      "reading": "pool",
+      "accent": "[1]",
+      "meaning": "游泳池",
+      "extraInfo": null
+    },
+    {
+      "word": "ホテル",
+      "reading": "hotel",
+      "accent": "[1]",
+      "meaning": "飯店、旅館",
+      "extraInfo": null
+    },
+    {
+      "word": "レストラン",
+      "reading": "restaurant",
+      "accent": "[1]",
+      "meaning": "餐廳",
+      "extraInfo": null
+    }
+  ]
+}

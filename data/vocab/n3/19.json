@@ -1,0 +1,238 @@
+{
+  "level": "N3",
+  "lesson": 19,
+  "title": "N3日文單字19（動名詞）動詞轉名詞",
+  "words": [
+    {
+      "word": "向き",
+      "reading": "むき",
+      "accent": "[1]",
+      "meaning": "方向／朝向",
+      "extraInfo": null
+    },
+    {
+      "word": "行き",
+      "reading": "いき",
+      "accent": "[0]",
+      "meaning": "前往",
+      "extraInfo": null
+    },
+    {
+      "word": "行き",
+      "reading": "ゆき",
+      "accent": "[0]",
+      "meaning": "前往",
+      "extraInfo": null
+    },
+    {
+      "word": "貸し",
+      "reading": "かし",
+      "accent": "[0]",
+      "meaning": "借出／貸方",
+      "extraInfo": null
+    },
+    {
+      "word": "勝ち",
+      "reading": "かち",
+      "accent": "[2]",
+      "meaning": "勝利",
+      "extraInfo": null
+    },
+    {
+      "word": "負け",
+      "reading": "まけ",
+      "accent": "[0]",
+      "meaning": "輸",
+      "extraInfo": null
+    },
+    {
+      "word": "暮れ",
+      "reading": "くれ",
+      "accent": "[0]",
+      "meaning": "黃昏／結束／歲末",
+      "extraInfo": null
+    },
+    {
+      "word": "詫び",
+      "reading": "わび",
+      "accent": "[0]",
+      "meaning": "道歉／歉意",
+      "extraInfo": null
+    },
+    {
+      "word": "怒り",
+      "reading": "いかり",
+      "accent": "[3]",
+      "meaning": "生氣、怒火",
+      "extraInfo": null
+    },
+    {
+      "word": "急ぎ",
+      "reading": "いそぎ",
+      "accent": "[3]",
+      "meaning": "急忙",
+      "extraInfo": null
+    },
+    {
+      "word": "飾り",
+      "reading": "かざり",
+      "accent": "[0]",
+      "meaning": "飾品",
+      "extraInfo": null
+    },
+    {
+      "word": "祭り",
+      "reading": "まつり",
+      "accent": "[0]",
+      "meaning": "祭典、祭祀／節日",
+      "extraInfo": null
+    },
+    {
+      "word": "迎え",
+      "reading": "むかえ",
+      "accent": "[0]",
+      "meaning": "迎接",
+      "extraInfo": null
+    },
+    {
+      "word": "戻り",
+      "reading": "もどり",
+      "accent": "[3]",
+      "meaning": "返回／回復",
+      "extraInfo": null
+    },
+    {
+      "word": "別れ",
+      "reading": "わかれ",
+      "accent": "[3]",
+      "meaning": "分開／離別",
+      "extraInfo": null
+    },
+    {
+      "word": "下り",
+      "reading": "くだり",
+      "accent": "[0]",
+      "meaning": "下來／下降",
+      "extraInfo": null
+    },
+    {
+      "word": "頼み",
+      "reading": "たのみ",
+      "accent": "[3]",
+      "meaning": "請求／拜託",
+      "extraInfo": null
+    },
+    {
+      "word": "続き",
+      "reading": "つづき",
+      "accent": "[0]",
+      "meaning": "繼續／未完",
+      "extraInfo": null
+    },
+    {
+      "word": "狙い",
+      "reading": "ねらい",
+      "accent": "[0]",
+      "meaning": "目標",
+      "extraInfo": null
+    },
+    {
+      "word": "始め",
+      "reading": "はじめ",
+      "accent": "[0]",
+      "meaning": "開始",
+      "extraInfo": null
+    },
+    {
+      "word": "騒ぎ",
+      "reading": "さわぎ",
+      "accent": "[1]",
+      "meaning": "騷動／吵鬧",
+      "extraInfo": null
+    },
+    {
+      "word": "上り",
+      "reading": "のぼり",
+      "accent": "[0]",
+      "meaning": "上升",
+      "extraInfo": null
+    },
+    {
+      "word": "違い",
+      "reading": "ちがい",
+      "accent": "[0]",
+      "meaning": "不同、差別、差異",
+      "extraInfo": null
+    },
+    {
+      "word": "考え",
+      "reading": "かんがえ",
+      "accent": "[3]",
+      "meaning": "想法／見解",
+      "extraInfo": null
+    },
+    {
+      "word": "喜び",
+      "reading": "よろこび",
+      "accent": "[0]",
+      "meaning": "喜悅",
+      "extraInfo": null
+    },
+    {
+      "word": "決まり",
+      "reading": "きまり",
+      "accent": "[0]",
+      "meaning": "決定／規則",
+      "extraInfo": null
+    },
+    {
+      "word": "知らせ",
+      "reading": "しらせ",
+      "accent": "[0]",
+      "meaning": "通知／消息",
+      "extraInfo": null
+    },
+    {
+      "word": "書き取り",
+      "reading": "かきとり",
+      "accent": "[0]",
+      "meaning": "聽寫",
+      "extraInfo": null
+    },
+    {
+      "word": "始まり",
+      "reading": "はじまり",
+      "accent": "[0]",
+      "meaning": "開始／開端／起始",
+      "extraInfo": null
+    },
+    {
+      "word": "見送り",
+      "reading": "みおくり",
+      "accent": "[0]",
+      "meaning": "送行",
+      "extraInfo": null
+    },
+    {
+      "word": "間違い",
+      "reading": "まちがい",
+      "accent": "[3]",
+      "meaning": "錯誤／差錯",
+      "extraInfo": null
+    },
+    {
+      "word": "割り当て",
+      "reading": "わりあて",
+      "accent": "[0]",
+      "meaning": "分配／分擔",
+      "extraInfo": null
+    },
+    {
+      "word": "思い切り",
+      "reading": "おもいきり",
+      "accent": "[0]",
+      "meaning": "果斷／下決心",
+      "extraInfo": null
+    }
+  ]
+}

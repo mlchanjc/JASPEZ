@@ -1,0 +1,112 @@
+{
+  "level": "N3",
+  "lesson": 22,
+  "title": "N3日文單字22（副詞）綜合",
+  "words": [
+    {
+      "word": "再び",
+      "reading": "ふたたび",
+      "accent": "[0]",
+      "meaning": "再次、又",
+      "extraInfo": null
+    },
+    {
+      "word": "突然",
+      "reading": "とつぜん",
+      "accent": "[0]",
+      "meaning": "突然",
+      "extraInfo": null
+    },
+    {
+      "word": "早速",
+      "reading": "さっそく",
+      "accent": "[0]",
+      "meaning": "立刻、馬上",
+      "extraInfo": null
+    },
+    {
+      "word": "じっと",
+      "reading": "じっと",
+      "accent": "[0]",
+      "meaning": "一動不動／凝視、注視",
+      "extraInfo": null
+    },
+    {
+      "word": "絶えず",
+      "reading": "たえず",
+      "accent": "[1]",
+      "meaning": "不斷地",
+      "extraInfo": null
+    },
+    {
+      "word": "思わず",
+      "reading": "おもわず",
+      "accent": "[2]",
+      "meaning": "不禁、不由得",
+      "extraInfo": null
+    },
+    {
+      "word": "一度に",
+      "reading": "いちどに",
+      "accent": "[3]",
+      "meaning": "同時、一次",
+      "extraInfo": null
+    },
+    {
+      "word": "うっかり",
+      "reading": "うっかり",
+      "accent": "[3]",
+      "meaning": "一時疏忽、粗心大意、沒注意、馬虎",
+      "extraInfo": null
+    },
+    {
+      "word": "すっきり",
+      "reading": "すっきり",
+      "accent": "[3]",
+      "meaning": "清爽／簡潔",
+      "extraInfo": null
+    },
+    {
+      "word": "こっそり",
+      "reading": "こっそり",
+      "accent": "[3]",
+      "meaning": "悄悄、偷偷",
+      "extraInfo": null
+    },
+    {
+      "word": "さっさと",
+      "reading": "さっさと",
+      "accent": "[1]",
+      "meaning": "趕緊",
+      "extraInfo": null
+    },
+    {
+      "word": "相変わらず",
+      "reading": "あいかわらず",
+      "accent": "[0]",
+      "meaning": "一如往常",
+      "extraInfo": null
+    },
+    {
+      "word": "ほっと",
+      "reading": "ほっと",
+      "accent": "[0]",
+      "meaning": "鬆口氣／輕嘆",
+      "extraInfo": null
+    },
+    {
+      "word": "のんびり",
+      "reading": "のんびり",
+      "accent": "[3]",
+      "meaning": "悠閒",
+      "extraInfo": null
+    },
+    {
+      "word": "どきどき",
+      "reading": "どきどき",
+      "accent": "[1]",
+      "meaning": "心跳加速、心怦怦跳、心動、緊張",
+      "extraInfo": null
+    }
+  ]
+}

@@ -1,0 +1,287 @@
+{
+  "level": "N4",
+  "lesson": 16,
+  "title": "N4日文單字16（副詞）綜合",
+  "words": [
+    {
+      "word": "特に",
+      "reading": "とくに",
+      "accent": "[1]",
+      "meaning": "特別",
+      "extraInfo": null
+    },
+    {
+      "word": "たまに",
+      "reading": "たまに",
+      "accent": "[0]",
+      "meaning": "偶爾",
+      "extraInfo": null
+    },
+    {
+      "word": "ほとんど",
+      "reading": "ほとんど",
+      "accent": "[2]",
+      "meaning": "幾乎",
+      "extraInfo": null
+    },
+    {
+      "word": "急に",
+      "reading": "きゅうに",
+      "accent": "[0]",
+      "meaning": "突然、驟然",
+      "extraInfo": null
+    },
+    {
+      "word": "暫く",
+      "reading": "しばらく",
+      "accent": "[2]",
+      "meaning": "暫時",
+      "extraInfo": null
+    },
+    {
+      "word": "必ず",
+      "reading": "かならず",
+      "accent": "[0]",
+      "meaning": "必定、必然",
+      "extraInfo": null
+    },
+    {
+      "word": "一杯",
+      "reading": "いっぱい",
+      "accent": "[0]",
+      "meaning": "滿滿地、很多",
+      "extraInfo": null
+    },
+    {
+      "word": "是非",
+      "reading": "ぜひ",
+      "accent": "[1]",
+      "meaning": "務必",
+      "extraInfo": null
+    },
+    {
+      "word": "大分",
+      "reading": "だいぶ",
+      "accent": "[0]",
+      "meaning": "頗、很",
+      "extraInfo": null
+    },
+    {
+      "word": "大抵",
+      "reading": "たいてい",
+      "accent": "[0]",
+      "meaning": "大致上、多半",
+      "extraInfo": null
+    },
+    {
+      "word": "大体",
+      "reading": "だいたい",
+      "accent": "[0]",
+      "meaning": "大概",
+      "extraInfo": "「大体」是大體上、約莫的意思。\n\n- 大体完成した。\n差不多完成了。\n\n- 大体いくらの予算でできますか。\n大概預算是多少？"
+    },
+    {
+      "word": "全然",
+      "reading": "ぜんぜん",
+      "accent": "[0]",
+      "meaning": "全然、完全、絲毫、根本【後接否定】",
+      "extraInfo": null
+    },
+    {
+      "word": "もちろん",
+      "reading": "もちろん",
+      "accent": "[2]",
+      "meaning": "當然",
+      "extraInfo": null
+    },
+    {
+      "word": "決して",
+      "reading": "けっして",
+      "accent": "[0]",
+      "meaning": "絕對【後接否定】",
+      "extraInfo": null
+    },
+    {
+      "word": "例えば",
+      "reading": "たとえば",
+      "accent": "[2]",
+      "meaning": "例如",
+      "extraInfo": null
+    },
+    {
+      "word": "将来",
+      "reading": "しょうらい",
+      "accent": "[1]",
+      "meaning": "將來",
+      "extraInfo": null
+    },
+    {
+      "word": "非常に",
+      "reading": "ひじょうに",
+      "accent": "[0]",
+      "meaning": "非常",
+      "extraInfo": "「随分」相當於「とても、非常に」，表示超越一般程度。"
+    },
+    {
+      "word": "まず",
+      "reading": "まず",
+      "accent": "[1]",
+      "meaning": "首先",
+      "extraInfo": null
+    },
+    {
+      "word": "もし",
+      "reading": "もし",
+      "accent": "[1]",
+      "meaning": "如果",
+      "extraInfo": null
+    },
+    {
+      "word": "やっと",
+      "reading": "やっと",
+      "accent": "[0]",
+      "meaning": "好不容易、終於",
+      "extraInfo": null
+    },
+    {
+      "word": "きっと",
+      "reading": "きっと",
+      "accent": "[0]",
+      "meaning": "一定",
+      "extraInfo": null
+    },
+    {
+      "word": "ずっと",
+      "reading": "ずっと",
+      "accent": "[0]",
+      "meaning": "一直",
+      "extraInfo": null
+    },
+    {
+      "word": "さっき",
+      "reading": "さっき",
+      "accent": "[1]",
+      "meaning": "剛才、剛剛、方才",
+      "extraInfo": null
+    },
+    {
+      "word": "いくら",
+      "reading": "いくら",
+      "accent": "[1]",
+      "meaning": "無論怎樣",
+      "extraInfo": null
+    },
+    {
+      "word": "やはり",
+      "reading": "やはり",
+      "accent": "[2]",
+      "meaning": "果然",
+      "extraInfo": null
+    },
+    {
+      "word": "やっぱり",
+      "reading": "やっぱり",
+      "accent": "[3]",
+      "meaning": "果然、果真（口語）",
+      "extraInfo": null
+    },
+    {
+      "word": "これから",
+      "reading": "これから",
+      "accent": "[0]",
+      "meaning": "從現在起、今後",
+      "extraInfo": null
+    },
+    {
+      "word": "しっかり",
+      "reading": "しっかり",
+      "accent": "[3]",
+      "meaning": "好好地／穩健／振作／牢固",
+      "extraInfo": null
+    },
+    {
+      "word": "すっかり",
+      "reading": "すっかり",
+      "accent": "[3]",
+      "meaning": "完全、徹底、全都",
+      "extraInfo": null
+    },
+    {
+      "word": "それほど",
+      "reading": "それほど",
+      "accent": "[0]",
+      "meaning": "那麼地（程度）",
+      "extraInfo": null
+    },
+    {
+      "word": "なるほど",
+      "reading": "なるほど",
+      "accent": "[0]",
+      "meaning": "原來如此",
+      "extraInfo": null
+    },
+    {
+      "word": "なかなか",
+      "reading": "なかなか",
+      "accent": "[0]",
+      "meaning": "很／怎麼也 【後接否定】",
+      "extraInfo": null
+    },
+    {
+      "word": "なるべく",
+      "reading": "なるべく",
+      "accent": "[0]",
+      "meaning": "盡量",
+      "extraInfo": null
+    },
+    {
+      "word": "そろそろ",
+      "reading": "そろそろ",
+      "accent": "[1]",
+      "meaning": "差不多、即將",
+      "extraInfo": null
+    },
+    {
+      "word": "ちっとも",
+      "reading": "ちっとも",
+      "accent": "[3]",
+      "meaning": "一點也 【後接否定】",
+      "extraInfo": null
+    },
+    {
+      "word": "どんどん",
+      "reading": "どんどん",
+      "accent": "[1]",
+      "meaning": "接連不斷／順利",
+      "extraInfo": null
+    },
+    {
+      "word": "はっきり",
+      "reading": "はっきり",
+      "accent": "[3]",
+      "meaning": "清楚明確",
+      "extraInfo": null
+    },
+    {
+      "word": "もうすぐ",
+      "reading": "もうすぐ",
+      "accent": "[3]",
+      "meaning": "即將、快要",
+      "extraInfo": null
+    },
+    {
+      "word": "とうとう",
+      "reading": "とうとう",
+      "accent": "[1]",
+      "meaning": "終於、終究、最終",
+      "extraInfo": null
+    },
+    {
+      "word": "できるだけ",
+      "reading": "できるだけ",
+      "accent": "[0]",
+      "meaning": "盡可能",
+      "extraInfo": null
+    }
+  ]
+}

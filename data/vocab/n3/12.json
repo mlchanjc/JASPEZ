@@ -1,0 +1,210 @@
+{
+  "level": "N3",
+  "lesson": 12,
+  "title": "N3日文單字12（名詞）物品",
+  "words": [
+    {
+      "word": "麻",
+      "reading": "あさ",
+      "accent": "[2]",
+      "meaning": "麻布",
+      "extraInfo": null
+    },
+    {
+      "word": "櫛",
+      "reading": "くし",
+      "accent": "[2]",
+      "meaning": "梳子",
+      "extraInfo": null
+    },
+    {
+      "word": "籤",
+      "reading": "くじ",
+      "accent": "[1]",
+      "meaning": "籤",
+      "extraInfo": null
+    },
+    {
+      "word": "物",
+      "reading": "ぶつ",
+      "accent": "[1]",
+      "meaning": "物品",
+      "extraInfo": null
+    },
+    {
+      "word": "紐",
+      "reading": "ひも",
+      "accent": "[0]",
+      "meaning": "繩子",
+      "extraInfo": null
+    },
+    {
+      "word": "袋",
+      "reading": "ふくろ",
+      "accent": "[3]",
+      "meaning": "袋子",
+      "extraInfo": null
+    },
+    {
+      "word": "夕刊",
+      "reading": "ゆうかん",
+      "accent": "[0]",
+      "meaning": "晚報",
+      "extraInfo": null
+    },
+    {
+      "word": "瀬戸物",
+      "reading": "せともの",
+      "accent": "[0]",
+      "meaning": "陶瓷器",
+      "extraInfo": null
+    },
+    {
+      "word": "缶",
+      "reading": "かん",
+      "accent": "[1]",
+      "meaning": "罐子／罐頭",
+      "extraInfo": null
+    },
+    {
+      "word": "蓋",
+      "reading": "ふた",
+      "accent": "[0]",
+      "meaning": "蓋子",
+      "extraInfo": null
+    },
+    {
+      "word": "缶詰",
+      "reading": "かんづめ",
+      "accent": "[3]",
+      "meaning": "罐頭",
+      "extraInfo": null
+    },
+    {
+      "word": "名刺",
+      "reading": "めいし",
+      "accent": "[0]",
+      "meaning": "名片",
+      "extraInfo": null
+    },
+    {
+      "word": "手帳",
+      "reading": "てちょう",
+      "accent": "[0]",
+      "meaning": "手冊、記事本",
+      "extraInfo": null
+    },
+    {
+      "word": "書物",
+      "reading": "しょもつ",
+      "accent": "[1]",
+      "meaning": "書籍",
+      "extraInfo": null
+    },
+    {
+      "word": "書類",
+      "reading": "しょるい",
+      "accent": "[0]",
+      "meaning": "文件、資料",
+      "extraInfo": null
+    },
+    {
+      "word": "便箋",
+      "reading": "びんせん",
+      "accent": "[0]",
+      "meaning": "便籤、信紙",
+      "extraInfo": null
+    },
+    {
+      "word": "書留",
+      "reading": "かきとめ",
+      "accent": "[0]",
+      "meaning": "掛號（信）",
+      "extraInfo": null
+    },
+    {
+      "word": "枕",
+      "reading": "まくら",
+      "accent": "[1]",
+      "meaning": "枕頭",
+      "extraInfo": null
+    },
+    {
+      "word": "毛布",
+      "reading": "もうふ",
+      "accent": "[1]",
+      "meaning": "毛毯",
+      "extraInfo": null
+    },
+    {
+      "word": "布巾",
+      "reading": "ふきん",
+      "accent": "[2]",
+      "meaning": "抹布（擦桌子等）",
+      "extraInfo": "「布巾」跟「雑巾」的差別\n\n「布巾」是指乾淨的布，通常拿來擦杯子、碗或桌子等等。\n\n「雑巾」是指擦髒東西的布，如擦地板等。"
+    },
+    {
+      "word": "雑巾",
+      "reading": "ぞうきん",
+      "accent": "[0]",
+      "meaning": "抹布（擦地板等）",
+      "extraInfo": "「布巾」跟「雑巾」的差別\n\n「布巾」是指乾淨的布，通常拿來擦杯子、碗或桌子等等。\n\n「雑巾」是指擦髒東西的布，如擦地板等。"
+    },
+    {
+      "word": "絨毯",
+      "reading": "じゅうたん",
+      "accent": "[1]",
+      "meaning": "地毯",
+      "extraInfo": null
+    },
+    {
+      "word": "鋏",
+      "reading": "はさみ",
+      "accent": "[3][2]",
+      "meaning": "剪刀",
+      "extraInfo": null
+    },
+    {
+      "word": "鋸",
+      "reading": "のこぎり",
+      "accent": "[3]",
+      "meaning": "鋸子",
+      "extraInfo": null
+    },
+    {
+      "word": "金槌",
+      "reading": "かなづち",
+      "accent": "[3]",
+      "meaning": "鐵鎚",
+      "extraInfo": null
+    },
+    {
+      "word": "電池",
+      "reading": "でんち",
+      "accent": "[1]",
+      "meaning": "電池",
+      "extraInfo": null
+    },
+    {
+      "word": "電卓",
+      "reading": "でんたく",
+      "accent": "[0]",
+      "meaning": "計算機",
+      "extraInfo": null
+    },
+    {
+      "word": "蛍光灯",
+      "reading": "けいこうとう",
+      "accent": "[0]",
+      "meaning": "日光燈",
+      "extraInfo": null
+    },
+    {
+      "word": "懐中電灯",
+      "reading": "かいちゅうでんとう",
+      "accent": "[5]",
+      "meaning": "手電筒",
+      "extraInfo": null
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "level": "N4",
+  "lesson": 1,
+  "title": "N4日文單字01（名詞）數字與時間",
+  "words": [
+    {
+      "word": "一度",
+      "reading": "いちど",
+      "accent": "[3][0]",
+      "meaning": "一次",
+      "extraInfo": null
+    },
+    {
+      "word": "一回",
+      "reading": "いっかい",
+      "accent": "[3]",
+      "meaning": "一次",
+      "extraInfo": null
+    },
+    {
+      "word": "一杯",
+      "reading": "いっぱい",
+      "accent": "[1]",
+      "meaning": "一杯",
+      "extraInfo": null
+    },
+    {
+      "word": "明日",
+      "reading": "あす",
+      "accent": "[2][0]",
+      "meaning": "明天",
+      "extraInfo": "「明日（あした）」主要用於口語，「明日（あす）」主要用於文語（文章、歌詞、成語等）。"
+    },
+    {
+      "word": "今度",
+      "reading": "こんど",
+      "accent": "[1]",
+      "meaning": "這次／下次",
+      "extraInfo": null
+    },
+    {
+      "word": "今回",
+      "reading": "こんかい",
+      "accent": "[1]",
+      "meaning": "這次",
+      "extraInfo": null
+    },
+    {
+      "word": "今夜",
+      "reading": "こんや",
+      "accent": "[1]",
+      "meaning": "今晚",
+      "extraInfo": null
+    },
+    {
+      "word": "最近",
+      "reading": "さいきん",
+      "accent": "[0]",
+      "meaning": "最近",
+      "extraInfo": null
+    },
+    {
+      "word": "最初",
+      "reading": "さいしょ",
+      "accent": "[0]",
+      "meaning": "最初／首次",
+      "extraInfo": null
+    },
+    {
+      "word": "最後",
+      "reading": "さいご",
+      "accent": "[1]",
+      "meaning": "最後",
+      "extraInfo": null
+    },
+    {
+      "word": "正月",
+      "reading": "しょうがつ",
+      "accent": "[4][0]",
+      "meaning": "正月",
+      "extraInfo": "「正月」指的就是一月，而1月1日至1月7日稱為「松の内」，「正月」通常指此期間。"
+    },
+    {
+      "word": "時代",
+      "reading": "じだい",
+      "accent": "[0]",
+      "meaning": "時代",
+      "extraInfo": null
+    },
+    {
+      "word": "昼間",
+      "reading": "ひるま",
+      "accent": "[3]",
+      "meaning": "白天",
+      "extraInfo": null
+    },
+    {
+      "word": "歴史",
+      "reading": "れきし",
+      "accent": "[0]",
+      "meaning": "歷史",
+      "extraInfo": null
+    },
+    {
+      "word": "昔",
+      "reading": "むかし",
+      "accent": "[0]",
+      "meaning": "從前、以前",
+      "extraInfo": null
+    },
+    {
+      "word": "久しぶり",
+      "reading": "ひさしぶり",
+      "accent": "[0][5]",
+      "meaning": "久、久違",
+      "extraInfo": "「久しぶり」就是指隔了好久的意思。常常可以聽到人家說「お久しぶりです」就是「好久不見」的意思。"
+    }
+  ]
+}

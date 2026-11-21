@@ -1,0 +1,133 @@
+{
+  "level": "N3",
+  "lesson": 21,
+  "title": "N3日文單字21（形容動詞）綜合",
+  "words": [
+    {
+      "word": "豊か",
+      "reading": "ゆたか",
+      "accent": "[1]",
+      "meaning": "豐富",
+      "extraInfo": null
+    },
+    {
+      "word": "基本的",
+      "reading": "きほんてき",
+      "accent": "[0]",
+      "meaning": "基本的",
+      "extraInfo": null
+    },
+    {
+      "word": "国際的",
+      "reading": "こくさいてき",
+      "accent": "[0]",
+      "meaning": "國際性",
+      "extraInfo": null
+    },
+    {
+      "word": "消極的",
+      "reading": "しょうきょくてき",
+      "accent": "[0]",
+      "meaning": "消極",
+      "extraInfo": null
+    },
+    {
+      "word": "積極的",
+      "reading": "せっきょくてき",
+      "accent": "[0]",
+      "meaning": "積極",
+      "extraInfo": null
+    },
+    {
+      "word": "まし",
+      "reading": "まし",
+      "accent": "[0]",
+      "meaning": "勝過、優於",
+      "extraInfo": null
+    },
+    {
+      "word": "地味",
+      "reading": "じみ",
+      "accent": "[2]",
+      "meaning": "樸素",
+      "extraInfo": null
+    },
+    {
+      "word": "有利",
+      "reading": "ゆうり",
+      "accent": "[1]",
+      "meaning": "有利",
+      "extraInfo": null
+    },
+    {
+      "word": "不可能",
+      "reading": "ふかのう",
+      "accent": "[2]",
+      "meaning": "不可能",
+      "extraInfo": null
+    },
+    {
+      "word": "不注意",
+      "reading": "ふちゅうい",
+      "accent": "[2]",
+      "meaning": "不小心、疏忽",
+      "extraInfo": null
+    },
+    {
+      "word": "ばらばら",
+      "reading": "ばらばら",
+      "accent": "[0]",
+      "meaning": "零散、分散、七零八碎／各自不同",
+      "extraInfo": null
+    },
+    {
+      "word": "別々",
+      "reading": "べつべつ",
+      "accent": "[0]",
+      "meaning": "分別、各自",
+      "extraInfo": null
+    },
+    {
+      "word": "当然",
+      "reading": "とうぜん",
+      "accent": "[0]",
+      "meaning": "當然",
+      "extraInfo": null
+    },
+    {
+      "word": "快適",
+      "reading": "かいてき",
+      "accent": "[0]",
+      "meaning": "舒適、舒服",
+      "extraInfo": null
+    },
+    {
+      "word": "抽象的",
+      "reading": "ちゅうしょうてき",
+      "accent": "[0]",
+      "meaning": "抽象的",
+      "extraInfo": null
+    },
+    {
+      "word": "具体的",
+      "reading": "ぐたいてき",
+      "accent": "[0]",
+      "meaning": "具體的",
+      "extraInfo": null
+    },
+    {
+      "word": "不幸",
+      "reading": "ふこう",
+      "accent": "[2][1]",
+      "meaning": "不幸",
+      "extraInfo": null
+    },
+    {
+      "word": "素朴",
+      "reading": "そぼく",
+      "accent": "[0]",
+      "meaning": "樸素",
+      "extraInfo": null
+    }
+  ]
+}

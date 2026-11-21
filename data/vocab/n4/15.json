@@ -1,0 +1,210 @@
+{
+  "level": "N4",
+  "lesson": 15,
+  "title": "N4日文單字15（形容動詞）綜合",
+  "words": [
+    {
+      "word": "変",
+      "reading": "へん",
+      "accent": "[1]",
+      "meaning": "怪怪的、奇怪、異常",
+      "extraInfo": null
+    },
+    {
+      "word": "別",
+      "reading": "べつ",
+      "accent": "[0]",
+      "meaning": "別的、另一個／不同",
+      "extraInfo": null
+    },
+    {
+      "word": "だめ",
+      "reading": "だめ",
+      "accent": "[2]",
+      "meaning": "不可以／沒用／沒辦法／不中用",
+      "extraInfo": null
+    },
+    {
+      "word": "無理",
+      "reading": "むり",
+      "accent": "[1]",
+      "meaning": "不合理、無理／勉強／沒辦法",
+      "extraInfo": null
+    },
+    {
+      "word": "危険",
+      "reading": "きけん",
+      "accent": "[0]",
+      "meaning": "危險",
+      "extraInfo": null
+    },
+    {
+      "word": "大事",
+      "reading": "だいじ",
+      "accent": "[0][3]",
+      "meaning": "重要、要緊",
+      "extraInfo": "「大切、大事、重要」的中文都是「重要」的意思，其中「大切」和「大事」意思差不多，都是偏向主觀，大多為個人觀點，跟個人有關；「重要」就不太一樣了，是對社會大眾、國家立場等來說重要的，像是國家重要文化財產、歷史重要人物等，都是在客觀上具有重要意義的。\n\n＜差異＞\n大切：主觀、個人\n大事：主觀帶有一點客觀、個人或非個人\n重要：客觀、大眾社會"
+    },
+    {
+      "word": "盛ん",
+      "reading": "さかん",
+      "accent": "[0]",
+      "meaning": "旺盛／積極／興盛",
+      "extraInfo": null
+    },
+    {
+      "word": "確か",
+      "reading": "たしか",
+      "accent": "[1]",
+      "meaning": "確切、確實／可靠、肯定的",
+      "extraInfo": null
+    },
+    {
+      "word": "不便",
+      "reading": "ふべん",
+      "accent": "[1]",
+      "meaning": "不方便、不便",
+      "extraInfo": null
+    },
+    {
+      "word": "自由",
+      "reading": "じゆう",
+      "accent": "[2]",
+      "meaning": "自由",
+      "extraInfo": null
+    },
+    {
+      "word": "邪魔",
+      "reading": "じゃま",
+      "accent": "[0]",
+      "meaning": "礙事、妨礙、干擾",
+      "extraInfo": null
+    },
+    {
+      "word": "適当",
+      "reading": "てきとう",
+      "accent": "[0]",
+      "meaning": "適當、恰當／隨便、敷衍",
+      "extraInfo": null
+    },
+    {
+      "word": "特別",
+      "reading": "とくべつ",
+      "accent": "[0]",
+      "meaning": "特別、特殊",
+      "extraInfo": null
+    },
+    {
+      "word": "必要",
+      "reading": "ひつよう",
+      "accent": "[0]",
+      "meaning": "需要、必須、必要",
+      "extraInfo": null
+    },
+    {
+      "word": "複雑",
+      "reading": "ふくざつ",
+      "accent": "[0]",
+      "meaning": "複雜",
+      "extraInfo": null
+    },
+    {
+      "word": "安心",
+      "reading": "あんしん",
+      "accent": "[0]",
+      "meaning": "安心、放心",
+      "extraInfo": null
+    },
+    {
+      "word": "安全",
+      "reading": "あんぜん",
+      "accent": "[0]",
+      "meaning": "安全",
+      "extraInfo": null
+    },
+    {
+      "word": "簡単",
+      "reading": "かんたん",
+      "accent": "[0]",
+      "meaning": "簡單、簡易、容易、輕易",
+      "extraInfo": null
+    },
+    {
+      "word": "残念",
+      "reading": "ざんねん",
+      "accent": "[3]",
+      "meaning": "遺憾、可惜",
+      "extraInfo": null
+    },
+    {
+      "word": "失礼",
+      "reading": "しつれい",
+      "accent": "[2]",
+      "meaning": "失禮、沒禮貌",
+      "extraInfo": null
+    },
+    {
+      "word": "親切",
+      "reading": "しんせつ",
+      "accent": "[1]",
+      "meaning": "熱心、熱情、體貼、好意",
+      "extraInfo": null
+    },
+    {
+      "word": "心配",
+      "reading": "しんぱい",
+      "accent": "[0]",
+      "meaning": "擔心",
+      "extraInfo": null
+    },
+    {
+      "word": "丁寧",
+      "reading": "ていねい",
+      "accent": "[1]",
+      "meaning": "禮貌、鄭重、客氣／謹慎、仔細、細心",
+      "extraInfo": null
+    },
+    {
+      "word": "熱心",
+      "reading": "ねっしん",
+      "accent": "[1][3]",
+      "meaning": "熱心、積極、熱忱、熱情、熱衷",
+      "extraInfo": null
+    },
+    {
+      "word": "随分",
+      "reading": "ずいぶん",
+      "accent": "[1]",
+      "meaning": "過分",
+      "extraInfo": null
+    },
+    {
+      "word": "十分",
+      "reading": "じゅうぶん",
+      "accent": "[3]",
+      "meaning": "充足、充分、足夠",
+      "extraInfo": null
+    },
+    {
+      "word": "真面目",
+      "reading": "まじめ",
+      "accent": "[0]",
+      "meaning": "認真、正經",
+      "extraInfo": null
+    },
+    {
+      "word": "一生懸命",
+      "reading": "いっしょうけんめい",
+      "accent": "[5]",
+      "meaning": "拚命、努力、全力以赴、竭盡全力",
+      "extraInfo": "關於「一生懸命」\n\n「一生懸命」源自於「一所懸命」，表示鎌倉時期的武士拚命地守護自己的領土，後來變成「一生懸命」，現在「一生懸命」更為常用。\n\n注意\n\n「生」有長音，「所」沒有長音。\n\n- 一生懸命\n\n- 一所懸命"
+    },
+    {
+      "word": "オーバー",
+      "reading": "over",
+      "accent": "[1]",
+      "meaning": "過度、誇張／超過",
+      "extraInfo": null
+    }
+  ]
+}

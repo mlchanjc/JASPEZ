@@ -1,0 +1,140 @@
+{
+  "level": "N3",
+  "lesson": 13,
+  "title": "N3日文單字13（名詞）抽象",
+  "words": [
+    {
+      "word": "愛",
+      "reading": "あい",
+      "accent": "[1]",
+      "meaning": "愛",
+      "extraInfo": null
+    },
+    {
+      "word": "謎",
+      "reading": "なぞ",
+      "accent": "[0]",
+      "meaning": "謎、神秘／謎語",
+      "extraInfo": null
+    },
+    {
+      "word": "合図",
+      "reading": "あいず",
+      "accent": "[1]",
+      "meaning": "信號、暗號",
+      "extraInfo": null
+    },
+    {
+      "word": "文句",
+      "reading": "もんく",
+      "accent": "[1]",
+      "meaning": "抱怨",
+      "extraInfo": null
+    },
+    {
+      "word": "敬意",
+      "reading": "けいい",
+      "accent": "[1]",
+      "meaning": "敬意",
+      "extraInfo": null
+    },
+    {
+      "word": "自信",
+      "reading": "じしん",
+      "accent": "[0]",
+      "meaning": "自信",
+      "extraInfo": null
+    },
+    {
+      "word": "勇気",
+      "reading": "ゆうき",
+      "accent": "[1]",
+      "meaning": "勇氣",
+      "extraInfo": null
+    },
+    {
+      "word": "知識",
+      "reading": "ちしき",
+      "accent": "[1]",
+      "meaning": "知識",
+      "extraInfo": null
+    },
+    {
+      "word": "感想",
+      "reading": "かんそう",
+      "accent": "[0]",
+      "meaning": "感想、心得",
+      "extraInfo": null
+    },
+    {
+      "word": "目的",
+      "reading": "もくてき",
+      "accent": "[0]",
+      "meaning": "目的",
+      "extraInfo": null
+    },
+    {
+      "word": "性格",
+      "reading": "せいかく",
+      "accent": "[0]",
+      "meaning": "性格",
+      "extraInfo": null
+    },
+    {
+      "word": "印象",
+      "reading": "いんしょう",
+      "accent": "[0]",
+      "meaning": "印象",
+      "extraInfo": null
+    },
+    {
+      "word": "引力",
+      "reading": "いんりょく",
+      "accent": "[1]",
+      "meaning": "引力",
+      "extraInfo": null
+    },
+    {
+      "word": "能力",
+      "reading": "のうりょく",
+      "accent": "[1]",
+      "meaning": "能力",
+      "extraInfo": null
+    },
+    {
+      "word": "状態",
+      "reading": "じょうたい",
+      "accent": "[0]",
+      "meaning": "狀態",
+      "extraInfo": null
+    },
+    {
+      "word": "冗談",
+      "reading": "じょうだん",
+      "accent": "[3]",
+      "meaning": "開玩笑",
+      "extraInfo": null
+    },
+    {
+      "word": "やる気",
+      "reading": "やるき",
+      "accent": "[0]",
+      "meaning": "幹勁",
+      "extraInfo": null
+    },
+    {
+      "word": "思い出",
+      "reading": "おもいで",
+      "accent": "[0]",
+      "meaning": "回憶",
+      "extraInfo": null
+    },
+    {
+      "word": "悲しみ",
+      "reading": "かなしみ",
+      "accent": "[0]",
+      "meaning": "悲傷",
+      "extraInfo": null
+    }
+  ]
+}

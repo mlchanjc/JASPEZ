@@ -1,0 +1,77 @@
+{
+  "level": "N4",
+  "lesson": 7,
+  "title": "N4日文單字07（名詞）交通工具",
+  "words": [
+    {
+      "word": "船",
+      "reading": "ふね",
+      "accent": "[1]",
+      "meaning": "船",
+      "extraInfo": null
+    },
+    {
+      "word": "港",
+      "reading": "みなと",
+      "accent": "[0]",
+      "meaning": "港口、碼頭",
+      "extraInfo": null
+    },
+    {
+      "word": "線路",
+      "reading": "せんろ",
+      "accent": "[1]",
+      "meaning": "鐵軌、鐵路",
+      "extraInfo": null
+    },
+    {
+      "word": "汽車",
+      "reading": "きしゃ",
+      "accent": "[1][2]",
+      "meaning": "蒸汽火車",
+      "extraInfo": "「列車」是泛指「汽車」和「電車」等。「汽車」是指蒸氣火車，而電力驅動的列車則為「電車」。"
+    },
+    {
+      "word": "列車",
+      "reading": "れっしゃ",
+      "accent": "[0][1]",
+      "meaning": "列車",
+      "extraInfo": "「列車」是泛指「汽車」和「電車」等。「汽車」是指蒸氣火車，而電力驅動的列車則為「電車」。"
+    },
+    {
+      "word": "特急",
+      "reading": "とっきゅう",
+      "accent": "[0]",
+      "meaning": "特快車",
+      "extraInfo": null
+    },
+    {
+      "word": "乗り物",
+      "reading": "のりもの",
+      "accent": "[0]",
+      "meaning": "交通工具",
+      "extraInfo": null
+    },
+    {
+      "word": "新幹線",
+      "reading": "しんかんせん",
+      "accent": "[3]",
+      "meaning": "新幹線",
+      "extraInfo": "「新幹線」是日本高速列車，相當於台灣的高鐵。"
+    },
+    {
+      "word": "エスカレーター",
+      "reading": "escalator",
+      "accent": "[4]",
+      "meaning": "電扶梯",
+      "extraInfo": null
+    },
+    {
+      "word": "オートバイ",
+      "reading": "auto ＋ bicycle 〔和〕",
+      "accent": "[3]",
+      "meaning": "摩托車",
+      "extraInfo": "「オートバイ」要注意重音是3號音，跟台灣的台語「歐兜賣」的重音不一樣。"
+    }
+  ]
+}

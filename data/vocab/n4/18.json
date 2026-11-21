@@ -1,0 +1,551 @@
+{
+  "level": "N4",
+  "lesson": 18,
+  "title": "N4日文單字18（動詞）自動詞單字列表",
+  "words": [
+    {
+      "verbType": "五段",
+      "word": "合う",
+      "reading": "あう",
+      "accent": "[1]",
+      "meaning": "適合／會合／一致",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "空く",
+      "reading": "あく",
+      "accent": "[0]",
+      "meaning": "空出",
+      "extraInfo": "「空く（あく）」和「空く（すく）」的差別\n\n空く：原本裝滿、被占用的空間變空。\n空く：空間裡的密度變低。\n\n- 課長のポストが空いてます。\n課長職位出缺。\n\n- 明日、空いてる？\n明天有空嗎？\n\n- 席が空いている。\n有空位。\n\n- カフェが空いている。\n咖啡聽很空。\n\n- お腹が空いた。\n肚子餓了。\n\n- 手が空いたら教えてください。\n你有了空之後，請告訴我。\n\n- 今日はバスが空いていて、空いている席があってよかった。\n今天公車不擁擠，有空位真是太好了。\n\n補充\n「手が空く」也可以唸做「手が空く」，意思相同。"
+    },
+    {
+      "verbType": "五段",
+      "word": "おる",
+      "reading": "おる",
+      "accent": "[1]",
+      "meaning": "在／有",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "勝つ",
+      "reading": "かつ",
+      "accent": "[1]",
+      "meaning": "勝利、贏／克服",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "込む",
+      "reading": "こむ",
+      "accent": "[1]",
+      "meaning": "擁擠、密集",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "空く",
+      "reading": "すく",
+      "accent": "[0]",
+      "meaning": "空、不擁擠／餓",
+      "extraInfo": "「空く（あく）」和「空く（すく）」的差別\n\n空く：原本裝滿、被占用的空間變空。\n空く：空間裡的密度變低。\n\n- 課長のポストが空いてます。\n課長職位出缺。\n\n- 明日、空いてる？\n明天有空嗎？\n\n- 席が空いている。\n有空位。\n\n- カフェが空いている。\n咖啡聽很空。\n\n- お腹が空いた。\n肚子餓了。\n\n- 手が空いたら教えてください。\n你有了空之後，請告訴我。\n\n- 今日はバスが空いていて、空いている席があってよかった。\n今天公車不擁擠，有空位真是太好了。\n\n補充\n「手が空く」也可以唸做「手が空く」，意思相同。"
+    },
+    {
+      "verbType": "五段",
+      "word": "済む",
+      "reading": "すむ",
+      "accent": "[1]",
+      "meaning": "解決／完成／足夠",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "鳴る",
+      "reading": "なる",
+      "accent": "[0]",
+      "meaning": "響、鳴",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "やむ",
+      "reading": "やむ",
+      "accent": "[0]",
+      "meaning": "結束、停止",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "寄る",
+      "reading": "よる",
+      "accent": "[0]",
+      "meaning": "靠近／順道去",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "沸く",
+      "reading": "わく",
+      "accent": "[0]",
+      "meaning": "沸騰／興奮",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "上がる",
+      "reading": "あがる",
+      "accent": "[0]",
+      "meaning": "上升／發生／結束／緊張／去／吃、喝",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "動く",
+      "reading": "うごく",
+      "accent": "[2]",
+      "meaning": "動／行動",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "移る",
+      "reading": "うつる",
+      "accent": "[2]",
+      "meaning": "移動／變遷／感染",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "踊る",
+      "reading": "おどる",
+      "accent": "[0]",
+      "meaning": "跳舞",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "通う",
+      "reading": "かよう",
+      "accent": "[0]",
+      "meaning": "通學、通勤／往來／傳達",
+      "extraInfo": "「通う」和「通る」的差別\n\n通う：定期性的通行、往返。\n通る：通過、穿過。\n\n- 学校に通っている。\n上學。\n\n- 家の前を通る。\n 走過家門。\n\n- 林の中を通っている道。\n穿過樹林的小徑。\n\n- トンネルを通る。\n穿過隧道。\n\n- 試験に通る。\n考試及格。"
+    },
+    {
+      "verbType": "五段",
+      "word": "乾く",
+      "reading": "かわく",
+      "accent": "[2]",
+      "meaning": "乾、乾燥",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "変わる",
+      "reading": "かわる",
+      "accent": "[0]",
+      "meaning": "變化／異於一般",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "決まる",
+      "reading": "きまる",
+      "accent": "[0]",
+      "meaning": "決定、確定／成功做到／打扮好看",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "下がる",
+      "reading": "さがる",
+      "accent": "[2]",
+      "meaning": "下降／後退",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "騒ぐ",
+      "reading": "さわぐ",
+      "accent": "[2]",
+      "meaning": "騷動、吵鬧",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "触る",
+      "reading": "さわる",
+      "accent": "[0]",
+      "meaning": "觸摸、碰觸",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "進む",
+      "reading": "すすむ",
+      "accent": "[0]",
+      "meaning": "前進／進展",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "滑る",
+      "reading": "すべる",
+      "accent": "[2]",
+      "meaning": "滑／溜／不及格／搞笑失敗",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "続く",
+      "reading": "つづく",
+      "accent": "[0]",
+      "meaning": "繼續、持續／接續",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "通る",
+      "reading": "とおる",
+      "accent": "[1]",
+      "meaning": "通過",
+      "extraInfo": "「通う」和「通る」的差別\n\n通う：定期性的通行、往返。\n通る：通過、穿過。\n\n- 学校に通っている。\n上學。\n\n- 家の前を通る。\n 走過家門。\n\n- 林の中を通っている道。\n穿過樹林的小徑。\n\n- トンネルを通る。\n穿過隧道。\n\n- 試験に通る。\n考試及格。"
+    },
+    {
+      "verbType": "五段",
+      "word": "泊まる",
+      "reading": "とまる",
+      "accent": "[0]",
+      "meaning": "住宿／停泊",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "治る",
+      "reading": "なおる",
+      "accent": "[2]",
+      "meaning": "治好、痊癒",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "直る",
+      "reading": "なおる",
+      "accent": "[2]",
+      "meaning": "修好／恢復",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "眠る",
+      "reading": "ねむる",
+      "accent": "[0]",
+      "meaning": "睡覺",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "残る",
+      "reading": "のこる",
+      "accent": "[2]",
+      "meaning": "殘餘、剩下／留下",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "光る",
+      "reading": "ひかる",
+      "accent": "[2]",
+      "meaning": "發光",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "太る",
+      "reading": "ふとる",
+      "accent": "[2]",
+      "meaning": "發胖、變胖",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "参る",
+      "reading": "まいる",
+      "accent": "[1]",
+      "meaning": "來／去／輸／傷腦筋",
+      "extraInfo": "「謙譲語」\n\n「参る」是「行く、来る」的謙讓語，另外，「輸」或者是「傷腦筋」也可以用「参る」表示，例如「参った（我輸了）」／「参ったなあ（真傷腦筋哪）」。語彙的意思要看場合來決定。"
+    },
+    {
+      "verbType": "五段",
+      "word": "回る",
+      "reading": "まわる",
+      "accent": "[0]",
+      "meaning": "轉、旋轉／繞、環繞／巡迴",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "向かう",
+      "reading": "むかう",
+      "accent": "[0]",
+      "meaning": "向／往／面對",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "戻る",
+      "reading": "もどる",
+      "accent": "[2]",
+      "meaning": "返回",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "集まる",
+      "reading": "あつまる",
+      "accent": "[3]",
+      "meaning": "集合",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "驚く",
+      "reading": "おどろく",
+      "accent": "[3]",
+      "meaning": "驚訝、吃驚",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "頑張る",
+      "reading": "がんばる",
+      "accent": "[3]",
+      "meaning": "加油、努力",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "間に合う",
+      "reading": "まにあう",
+      "accent": "[3]",
+      "meaning": "趕上、來得及／足夠、夠用",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "見つかる",
+      "reading": "みつかる",
+      "accent": "[0]",
+      "meaning": "發現、找出",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "喜ぶ",
+      "reading": "よろこぶ",
+      "accent": "[3]",
+      "meaning": "喜悅",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "いらっしゃる",
+      "reading": "いらっしゃる",
+      "accent": "[4]",
+      "meaning": "有／在／來／去",
+      "extraInfo": null
+    },
+    {
+      "verbType": "上一段",
+      "word": "似る",
+      "reading": "にる",
+      "accent": "[0]",
+      "meaning": "像、相似",
+      "extraInfo": null
+    },
+    {
+      "verbType": "上一段",
+      "word": "生きる",
+      "reading": "いきる",
+      "accent": "[2]",
+      "meaning": "活／生存／有用",
+      "extraInfo": null
+    },
+    {
+      "verbType": "上一段",
+      "word": "落ちる",
+      "reading": "おちる",
+      "accent": "[2]",
+      "meaning": "掉／凋零",
+      "extraInfo": null
+    },
+    {
+      "verbType": "上一段",
+      "word": "下りる",
+      "reading": "おりる",
+      "accent": "[2]",
+      "meaning": "下／批下來",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "折れる",
+      "reading": "おれる",
+      "accent": "[2]",
+      "meaning": "折／彎曲／讓步",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "暮れる",
+      "reading": "くれる",
+      "accent": "[0]",
+      "meaning": "天黑／一直反覆／迷惘",
+      "extraInfo": null
+    },
+    {
+      "verbType": "上一段",
+      "word": "過ぎる",
+      "reading": "すぎる",
+      "accent": "[2]",
+      "meaning": "過去／過度",
+      "extraInfo": null
+    },
+    {
+      "verbType": "上一段",
+      "word": "足りる",
+      "reading": "たりる",
+      "accent": "[0]",
+      "meaning": "足夠",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "慣れる",
+      "reading": "なれる",
+      "accent": "[2]",
+      "meaning": "習慣、適應",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "逃げる",
+      "reading": "にげる",
+      "accent": "[2]",
+      "meaning": "逃跑、逃避",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "濡れる",
+      "reading": "ぬれる",
+      "accent": "[0]",
+      "meaning": "淋濕",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "冷える",
+      "reading": "ひえる",
+      "accent": "[2]",
+      "meaning": "變冷",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "増える",
+      "reading": "ふえる",
+      "accent": "[2]",
+      "meaning": "增加",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "見える",
+      "reading": "みえる",
+      "accent": "[2]",
+      "meaning": "看得見",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "焼ける",
+      "reading": "やける",
+      "accent": "[0]",
+      "meaning": "燃燒／吃醋／天空變紅",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "痩せる",
+      "reading": "やせる",
+      "accent": "[0]",
+      "meaning": "瘦",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "揺れる",
+      "reading": "ゆれる",
+      "accent": "[0]",
+      "meaning": "搖晃／猶豫",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "割れる",
+      "reading": "われる",
+      "accent": "[0]",
+      "meaning": "破裂、破碎／分歧／查明、暴露",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "遅れる",
+      "reading": "おくれる",
+      "accent": "[0]",
+      "meaning": "遲／過時",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "聞こえる",
+      "reading": "きこえる",
+      "accent": "[0]",
+      "meaning": "聽得到",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "壊れる",
+      "reading": "こわれる",
+      "accent": "[3]",
+      "meaning": "壞掉／損壞／故障",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "倒れる",
+      "reading": "たおれる",
+      "accent": "[3]",
+      "meaning": "倒／塌陷／倒閉／病倒",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "汚れる",
+      "reading": "よごれる",
+      "accent": "[0]",
+      "meaning": "髒",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "別れる",
+      "reading": "わかれる",
+      "accent": "[3]",
+      "meaning": "離別／分手",
+      "extraInfo": null
+    }
+  ]
+}

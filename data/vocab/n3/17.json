@@ -1,0 +1,301 @@
+{
+  "level": "N3",
+  "lesson": 17,
+  "title": "N3日文單字17（名詞）綜合（四）",
+  "words": [
+    {
+      "word": "牛",
+      "reading": "うし",
+      "accent": "[0]",
+      "meaning": "牛",
+      "extraInfo": null
+    },
+    {
+      "word": "馬",
+      "reading": "うま",
+      "accent": "[2]",
+      "meaning": "馬",
+      "extraInfo": null
+    },
+    {
+      "word": "症状",
+      "reading": "しょうじょう",
+      "accent": "[3]",
+      "meaning": "症狀",
+      "extraInfo": null
+    },
+    {
+      "word": "頭痛",
+      "reading": "ずつう",
+      "accent": "[0]",
+      "meaning": "頭痛",
+      "extraInfo": null
+    },
+    {
+      "word": "下痢",
+      "reading": "げり",
+      "accent": "[0]",
+      "meaning": "腹瀉、拉肚子",
+      "extraInfo": null
+    },
+    {
+      "word": "吐き気",
+      "reading": "はきけ",
+      "accent": "[3]",
+      "meaning": "想吐、噁心、作嘔",
+      "extraInfo": null
+    },
+    {
+      "word": "体重",
+      "reading": "たいじゅう",
+      "accent": "[0]",
+      "meaning": "體重",
+      "extraInfo": null
+    },
+    {
+      "word": "機嫌",
+      "reading": "きげん",
+      "accent": "[0]",
+      "meaning": "心情、情緒",
+      "extraInfo": null
+    },
+    {
+      "word": "中年",
+      "reading": "ちゅうねん",
+      "accent": "[0]",
+      "meaning": "中年",
+      "extraInfo": null
+    },
+    {
+      "word": "中高年",
+      "reading": "ちゅうこうねん",
+      "accent": "[3]",
+      "meaning": "中老年",
+      "extraInfo": null
+    },
+    {
+      "word": "縞模様",
+      "reading": "しまもよう",
+      "accent": "[3]",
+      "meaning": "條紋樣式",
+      "extraInfo": null
+    },
+    {
+      "word": "花模様",
+      "reading": "はなもよう",
+      "accent": "[3]",
+      "meaning": "花紋樣式",
+      "extraInfo": null
+    },
+    {
+      "word": "水玉模様",
+      "reading": "みずたまもよう",
+      "accent": "[5]",
+      "meaning": "水滴樣式",
+      "extraInfo": null
+    },
+    {
+      "word": "各駅停車",
+      "reading": "かくえきていしゃ",
+      "accent": "[5]",
+      "meaning": "各站停車",
+      "extraInfo": null
+    },
+    {
+      "word": "自動券売機",
+      "reading": "じどうけんばいき",
+      "accent": "[6]",
+      "meaning": "自動售票機",
+      "extraInfo": null
+    },
+    {
+      "word": "商品",
+      "reading": "しょうひん",
+      "accent": "[1]",
+      "meaning": "商品",
+      "extraInfo": null
+    },
+    {
+      "word": "標本",
+      "reading": "ひょうほん",
+      "accent": "[0]",
+      "meaning": "標本",
+      "extraInfo": null
+    },
+    {
+      "word": "正面",
+      "reading": "しょうめん",
+      "accent": "[3]",
+      "meaning": "正面",
+      "extraInfo": null
+    },
+    {
+      "word": "食前",
+      "reading": "しょくぜん",
+      "accent": "[0]",
+      "meaning": "飯前",
+      "extraInfo": null
+    },
+    {
+      "word": "農業",
+      "reading": "のうぎょう",
+      "accent": "[1]",
+      "meaning": "農業",
+      "extraInfo": null
+    },
+    {
+      "word": "特徴",
+      "reading": "とくちょう",
+      "accent": "[0]",
+      "meaning": "特徵",
+      "extraInfo": null
+    },
+    {
+      "word": "宗教",
+      "reading": "しゅうきょう",
+      "accent": "[1]",
+      "meaning": "宗教",
+      "extraInfo": null
+    },
+    {
+      "word": "所所",
+      "reading": "ところどころ",
+      "accent": "[4]",
+      "meaning": "到處",
+      "extraInfo": null
+    },
+    {
+      "word": "中旬",
+      "reading": "ちゅうじゅん",
+      "accent": "[0]",
+      "meaning": "中旬",
+      "extraInfo": null
+    },
+    {
+      "word": "食料",
+      "reading": "しょくりょう",
+      "accent": "[2]",
+      "meaning": "食品、食物",
+      "extraInfo": null
+    },
+    {
+      "word": "天井",
+      "reading": "てんじょう",
+      "accent": "[0]",
+      "meaning": "天花板",
+      "extraInfo": null
+    },
+    {
+      "word": "朝刊",
+      "reading": "ちょうかん",
+      "accent": "[0]",
+      "meaning": "早報、晨報",
+      "extraInfo": null
+    },
+    {
+      "word": "中心",
+      "reading": "ちゅうしん",
+      "accent": "[0]",
+      "meaning": "中心／核心",
+      "extraInfo": null
+    },
+    {
+      "word": "表面",
+      "reading": "ひょうめん",
+      "accent": "[3]",
+      "meaning": "表面／外表",
+      "extraInfo": null
+    },
+    {
+      "word": "直前",
+      "reading": "ちょくぜん",
+      "accent": "[0]",
+      "meaning": "即將、眼看就要／正前方",
+      "extraInfo": null
+    },
+    {
+      "word": "お辞儀",
+      "reading": "おじぎ",
+      "accent": "[0]",
+      "meaning": "行禮、鞠躬／推辭、婉拒",
+      "extraInfo": null
+    },
+    {
+      "word": "世の中",
+      "reading": "よのなか",
+      "accent": "[2]",
+      "meaning": "世間、社會／世事",
+      "extraInfo": null
+    },
+    {
+      "word": "お互い",
+      "reading": "おたがい",
+      "accent": "[0]",
+      "meaning": "互相、彼此",
+      "extraInfo": null
+    },
+    {
+      "word": "引っ越し",
+      "reading": "ひっこし",
+      "accent": "[0]",
+      "meaning": "搬家",
+      "extraInfo": null
+    },
+    {
+      "word": "楽しみ",
+      "reading": "たのしみ",
+      "accent": "[3][4][0]",
+      "meaning": "期待／樂趣",
+      "extraInfo": null
+    },
+    {
+      "word": "留守番",
+      "reading": "るすばん",
+      "accent": "[0]",
+      "meaning": "看家的人",
+      "extraInfo": null
+    },
+    {
+      "word": "進学率",
+      "reading": "しんがくりつ",
+      "accent": "[4]",
+      "meaning": "升學率",
+      "extraInfo": null
+    },
+    {
+      "word": "出来事",
+      "reading": "できごと",
+      "accent": "[2]",
+      "meaning": "事情、事件",
+      "extraInfo": null
+    },
+    {
+      "word": "年末年始",
+      "reading": "ねんまつねんし",
+      "accent": "[5]",
+      "meaning": "年末年初",
+      "extraInfo": null
+    },
+    {
+      "word": "当たり前",
+      "reading": "あたりまえ",
+      "accent": "[0]",
+      "meaning": "理所當然",
+      "extraInfo": null
+    },
+    {
+      "word": "保健体育",
+      "reading": "ほけんたいいく",
+      "accent": "[4]",
+      "meaning": "保健體育（科目）",
+      "extraInfo": null
+    },
+    {
+      "word": "カルタ",
+      "reading": "carta 〔葡〕",
+      "accent": "[1]",
+      "meaning": "歌牌（日本紙牌遊戲）",
+      "extraInfo": null
+    }
+  ]
+}

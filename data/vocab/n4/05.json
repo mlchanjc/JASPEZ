@@ -1,0 +1,105 @@
+{
+  "level": "N4",
+  "lesson": 5,
+  "title": "N4日文單字05（名詞）飲食",
+  "words": [
+    {
+      "word": "米",
+      "reading": "こめ",
+      "accent": "[2]",
+      "meaning": "米",
+      "extraInfo": null
+    },
+    {
+      "word": "豚カツ",
+      "reading": "とんかつ",
+      "accent": "[0]",
+      "meaning": "炸豬排",
+      "extraInfo": "為什麼豬排飯都要寫「勝」字？\n\n常常可以看到菜單上有「勝つ丼」，或是店家名字直接就是「勝✕✕」，其由來是明治32年（1899年）在東京銀座有一家名為「煉瓦亭」的老店，為了使西方料理更配合日本人的口味而改變烹飪方法，創作「ポークカツレツ（即「豚カツ」）」。「カツレツ」是從「cutlet」而來的外來語，但意思不一樣，原本的「cutlet」是用平底鍋煎，而「カツレツ」是炸的。後來，由於「カツ」和日文的「勝つ」同音，有吉祥好兆頭的意味，因此許多店家就用這個字作為代表，來討個吉兆，許多學生在考試前，或是政治候選人在選舉前都會吃「勝つ丼」，來祈求金榜題名、大獲選票。"
+    },
+    {
+      "word": "カツ丼",
+      "reading": "かつどん",
+      "accent": "[0]",
+      "meaning": "豬排蓋飯",
+      "extraInfo": null
+    },
+    {
+      "word": "食料品",
+      "reading": "しょくりょうひん",
+      "accent": "[0]",
+      "meaning": "食品",
+      "extraInfo": null
+    },
+    {
+      "word": "味噌",
+      "reading": "みそ",
+      "accent": "[1]",
+      "meaning": "味噌、豆醬",
+      "extraInfo": null
+    },
+    {
+      "word": "葡萄",
+      "reading": "ぶどう",
+      "accent": "[0]",
+      "meaning": "葡萄",
+      "extraInfo": null
+    },
+    {
+      "word": "ケーキ",
+      "reading": "cake",
+      "accent": "[1]",
+      "meaning": "蛋糕",
+      "extraInfo": null
+    },
+    {
+      "word": "サラダ",
+      "reading": "salad",
+      "accent": "[1]",
+      "meaning": "沙拉",
+      "extraInfo": null
+    },
+    {
+      "word": "ジャム",
+      "reading": "jam",
+      "accent": "[1]",
+      "meaning": "果醬",
+      "extraInfo": null
+    },
+    {
+      "word": "ビーフ",
+      "reading": "beef",
+      "accent": "[1]",
+      "meaning": "牛肉",
+      "extraInfo": null
+    },
+    {
+      "word": "ステーキ",
+      "reading": "steak",
+      "accent": "[2]",
+      "meaning": "牛排",
+      "extraInfo": null
+    },
+    {
+      "word": "ハンバーグ",
+      "reading": "hamburg steak",
+      "accent": "[3]",
+      "meaning": "漢堡肉",
+      "extraInfo": "「ハンバーグ」和「ハンバーガー」的差別\n\n「ハンバーグ」是漢堡肉，「ハンバーガー」才是漢堡的意思。所以摩斯漢堡就是「モスバーガー」（縮寫取バーガー二字）。"
+    },
+    {
+      "word": "ハンバーガー",
+      "reading": "hamburger",
+      "accent": "[3]",
+      "meaning": "漢堡",
+      "extraInfo": "「ハンバーグ」和「ハンバーガー」的差別\n\n「ハンバーグ」是漢堡肉，「ハンバーガー」才是漢堡的意思。所以摩斯漢堡就是「モスバーガー」（縮寫取バーガー二字）。"
+    },
+    {
+      "word": "ポークステーキ",
+      "reading": "pork steak",
+      "accent": "[5]",
+      "meaning": "豬排",
+      "extraInfo": "豬排的日文\n\n「ポークステーキ」和「豚ステーキ」都是豬排的意思。「豚」是豬的意思。"
+    }
+  ]
+}

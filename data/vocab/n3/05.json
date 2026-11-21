@@ -1,0 +1,224 @@
+{
+  "level": "N3",
+  "lesson": 5,
+  "title": "N3日文單字05（名詞）場所方位",
+  "words": [
+    {
+      "word": "穴",
+      "reading": "あな",
+      "accent": "[2]",
+      "meaning": "洞穴",
+      "extraInfo": null
+    },
+    {
+      "word": "麓",
+      "reading": "ふもと",
+      "accent": "[3]",
+      "meaning": "山腳",
+      "extraInfo": null
+    },
+    {
+      "word": "丘陵",
+      "reading": "きゅうりょう",
+      "accent": "[0]",
+      "meaning": "丘陵",
+      "extraInfo": null
+    },
+    {
+      "word": "居間",
+      "reading": "いま",
+      "accent": "[2]",
+      "meaning": "起居室（客廳）",
+      "extraInfo": null
+    },
+    {
+      "word": "地下",
+      "reading": "ちか",
+      "accent": "[1]",
+      "meaning": "地下",
+      "extraInfo": null
+    },
+    {
+      "word": "道路",
+      "reading": "どうろ",
+      "accent": "[1]",
+      "meaning": "道路",
+      "extraInfo": null
+    },
+    {
+      "word": "都市",
+      "reading": "とし",
+      "accent": "[1]",
+      "meaning": "都市",
+      "extraInfo": null
+    },
+    {
+      "word": "地方",
+      "reading": "ちほう",
+      "accent": "[2][1]",
+      "meaning": "地方",
+      "extraInfo": null
+    },
+    {
+      "word": "地区",
+      "reading": "ちく",
+      "accent": "[1]",
+      "meaning": "地區",
+      "extraInfo": null
+    },
+    {
+      "word": "地盤",
+      "reading": "じばん",
+      "accent": "[0]",
+      "meaning": "地盤",
+      "extraInfo": null
+    },
+    {
+      "word": "故郷",
+      "reading": "こきょう",
+      "accent": "[1]",
+      "meaning": "故鄉",
+      "extraInfo": "「こきょう」和「ふるさと」的差別\n\n「こきょう」的漢字是「故郷」；「ふるさと」的漢字則是「古里」，不過「故里」、「故郷」也在被容許的範圍內，雖說如此，但通常寫平假名居多。\n\n「故郷」和「ふるさと」都是指出生長大的地方，即中文的「故鄉」、「家鄉」的意思。「故郷」較為書面語，「ふるさと」則偏向口語。早期比較常用「故郷」的寫法（有一首很有名的日本傳統童謠歌曲的歌名稱作〈故郷〉），但現在的漢字寫法基本上已區分為「故郷」和「古里」，雖然兩者意思基本相同，不過受到歌曲等影響，「ふるさと」的情感色彩更為強烈。"
+    },
+    {
+      "word": "古里",
+      "reading": "ふるさと",
+      "accent": "[2]",
+      "meaning": "故鄉",
+      "extraInfo": "「こきょう」和「ふるさと」的差別\n\n「こきょう」的漢字是「故郷」；「ふるさと」的漢字則是「古里」，不過「故里」、「故郷」也在被容許的範圍內，雖說如此，但通常寫平假名居多。\n\n「故郷」和「ふるさと」都是指出生長大的地方，即中文的「故鄉」、「家鄉」的意思。「故郷」較為書面語，「ふるさと」則偏向口語。早期比較常用「故郷」的寫法（有一首很有名的日本傳統童謠歌曲的歌名稱作〈故郷〉），但現在的漢字寫法基本上已區分為「故郷」和「古里」，雖然兩者意思基本相同，不過受到歌曲等影響，「ふるさと」的情感色彩更為強烈。"
+    },
+    {
+      "word": "目的地",
+      "reading": "もくてきち",
+      "accent": "[4][3]",
+      "meaning": "目的地",
+      "extraInfo": null
+    },
+    {
+      "word": "距離",
+      "reading": "きょり",
+      "accent": "[1]",
+      "meaning": "距離",
+      "extraInfo": null
+    },
+    {
+      "word": "片道",
+      "reading": "かたみち",
+      "accent": "[0]",
+      "meaning": "單行道",
+      "extraInfo": null
+    },
+    {
+      "word": "近道",
+      "reading": "ちかみち",
+      "accent": "[2]",
+      "meaning": "捷徑、近路",
+      "extraInfo": null
+    },
+    {
+      "word": "途上",
+      "reading": "とじょう",
+      "accent": "[0]",
+      "meaning": "途中、路上",
+      "extraInfo": null
+    },
+    {
+      "word": "向かい",
+      "reading": "むかい",
+      "accent": "[0]",
+      "meaning": "對面",
+      "extraInfo": null
+    },
+    {
+      "word": "両側",
+      "reading": "りょうがわ",
+      "accent": "[0]",
+      "meaning": "兩側",
+      "extraInfo": null
+    },
+    {
+      "word": "辺り",
+      "reading": "あたり",
+      "accent": "[1]",
+      "meaning": "附近、一帶",
+      "extraInfo": "「辺り」、「付近」、「近所」等都是附近的意思。根據基準的物體，用法跟範圍會有所不同。"
+    },
+    {
+      "word": "付近",
+      "reading": "ふきん",
+      "accent": "[1]",
+      "meaning": "附近",
+      "extraInfo": "「辺り」、「付近」、「近所」等都是附近的意思。根據基準的物體，用法跟範圍會有所不同。"
+    },
+    {
+      "word": "奥",
+      "reading": "おく",
+      "accent": "[1]",
+      "meaning": "裡面、深處",
+      "extraInfo": null
+    },
+    {
+      "word": "突き当り",
+      "reading": "つきあたり",
+      "accent": "[0]",
+      "meaning": "盡頭",
+      "extraInfo": null
+    },
+    {
+      "word": "地球",
+      "reading": "ちきゅう",
+      "accent": "[0]",
+      "meaning": "地球",
+      "extraInfo": null
+    },
+    {
+      "word": "東洋",
+      "reading": "とうよう",
+      "accent": "[1]",
+      "meaning": "東洋",
+      "extraInfo": null
+    },
+    {
+      "word": "各国",
+      "reading": "かっこく",
+      "accent": "[1]",
+      "meaning": "各國",
+      "extraInfo": null
+    },
+    {
+      "word": "環境",
+      "reading": "かんきょう",
+      "accent": "[0]",
+      "meaning": "環境",
+      "extraInfo": null
+    },
+    {
+      "word": "都庁",
+      "reading": "とちょう",
+      "accent": "[1]",
+      "meaning": "都廳（東京都政府）",
+      "extraInfo": null
+    },
+    {
+      "word": "道庁",
+      "reading": "どうちょう",
+      "accent": "[1]",
+      "meaning": "道廳（北海道政府）",
+      "extraInfo": null
+    },
+    {
+      "word": "府庁",
+      "reading": "ふちょう",
+      "accent": "[1][2]",
+      "meaning": "府廳（府政府）",
+      "extraInfo": null
+    },
+    {
+      "word": "県庁",
+      "reading": "けんちょう",
+      "accent": "[1]",
+      "meaning": "縣廳（縣政府）",
+      "extraInfo": null
+    }
+  ]
+}

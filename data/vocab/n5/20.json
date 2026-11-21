@@ -1,0 +1,495 @@
+{
+  "level": "N5",
+  "lesson": 20,
+  "title": "N5日文單字20（動詞）他動詞單字列表",
+  "words": [
+    {
+      "verbType": "五段",
+      "word": "言う",
+      "reading": "いう",
+      "accent": "[0]",
+      "meaning": "說",
+      "extraInfo": "「言う」的唸法\n\n「言う」是假名寫法跟發音不一致的單字，雖然「言う」的假名寫「いう」，但唸法不是「i u」，而是「yu u」。另外，只有「言う」須唸「yu u」，其他活用變化則唸「i」即可，如「言わない」、「言います」、「言えば」。"
+    },
+    {
+      "verbType": "五段",
+      "word": "売る",
+      "reading": "うる",
+      "accent": "[0]",
+      "meaning": "賣",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "置く",
+      "reading": "おく",
+      "accent": "[0]",
+      "meaning": "放置",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "押す",
+      "reading": "おす",
+      "accent": "[0]",
+      "meaning": "推／按／壓",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "買う",
+      "reading": "かう",
+      "accent": "[0]",
+      "meaning": "買",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "書く",
+      "reading": "かく",
+      "accent": "[1]",
+      "meaning": "寫",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "貸す",
+      "reading": "かす",
+      "accent": "[0]",
+      "meaning": "借（出）",
+      "extraInfo": "「借りる」和「貸す」的差別\n\n無論是借別人或是跟別人借，中文都叫做「借」，但日文則有區分。\n\n借りる：借入。我跟別人借\n貸す　：貸出。我借給別人\n\n借出借入看似簡單，但差之毫釐失之千里，隨著不同的立場更要注意。\n\n- お金を借りたい。 ≒ お金を貸してほしい。\n我想借你的錢。 ≒ 希望你借我錢。\n\n- お金を貸したい。 ≒ お金を借りてほしい。\n我想借錢給你。 ≒ 希望你跟我借錢。"
+    },
+    {
+      "verbType": "五段",
+      "word": "聞く",
+      "reading": "きく",
+      "accent": "[0]",
+      "meaning": "聽／問",
+      "extraInfo": "「聞く」和「聴く」的差別\n\n「聞く」有聽跟問的意思。\n\n- 物音を聞く。\n聽聲音。\n\n- 噂を聞く。\n聽傳聞。\n\n- 道を聞く。\n問路。\n\n另外有個相似詞「聴く」，這是比較認真地聽，有品嘗、享受、仔細聽等意味。\n\n- 名曲を聴く。\n傾聽名曲。\n\n- 大統領の声を聴く。\n專心聽總統發言。"
+    },
+    {
+      "verbType": "五段",
+      "word": "切る",
+      "reading": "きる",
+      "accent": "[1]",
+      "meaning": "切割／中斷",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "消す",
+      "reading": "けす",
+      "accent": "[0]",
+      "meaning": "消除／擦掉",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "さす",
+      "reading": "さす",
+      "accent": "[1]",
+      "meaning": "撐（傘）",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "知る",
+      "reading": "しる",
+      "accent": "[0]",
+      "meaning": "知道",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "吸う",
+      "reading": "すう",
+      "accent": "[0]",
+      "meaning": "吸",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "出す",
+      "reading": "だす",
+      "accent": "[1]",
+      "meaning": "拿出／提出",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "撮る",
+      "reading": "とる",
+      "accent": "[1]",
+      "meaning": "拍照、攝影",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "取る",
+      "reading": "とる",
+      "accent": "[1]",
+      "meaning": "拿取",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "脱ぐ",
+      "reading": "ぬぐ",
+      "accent": "[1]",
+      "meaning": "脫（衣物等）",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "飲む",
+      "reading": "のむ",
+      "accent": "[1]",
+      "meaning": "喝",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "穿く",
+      "reading": "はく",
+      "accent": "[0]",
+      "meaning": "穿（褲子等）",
+      "extraInfo": "「着る」和「穿く／履く」的差別\n\n「着る」是穿上半身（衣服、外套），「穿く」跟「履く」是下半身（褲、裙、鞋、襪）。而「穿く」跟「履く」幾乎相同，通常只寫平假名「はく」。另外，如果是連身的如泳裝或連身裙，則是用「着る」。\n\n- セーターを着る。\n穿毛衣。\n\n- ワンピースを着る。\n穿連身裙。\n\n- ズボンを穿く。\n穿褲子。\n\n- 靴下を履く。\n穿襪子。"
+    },
+    {
+      "verbType": "五段",
+      "word": "履く",
+      "reading": "はく",
+      "accent": "[0]",
+      "meaning": "穿（鞋子等）",
+      "extraInfo": "「着る」和「穿く／履く」的差別\n\n「着る」是穿上半身（衣服、外套），「穿く」跟「履く」是下半身（褲、裙、鞋、襪）。而「穿く」跟「履く」幾乎相同，通常只寫平假名「はく」。另外，如果是連身的如泳裝或連身裙，則是用「着る」。\n\n- セーターを着る。\n穿毛衣。\n\n- ワンピースを着る。\n穿連身裙。\n\n- ズボンを穿く。\n穿褲子。\n\n- 靴下を履く。\n穿襪子。"
+    },
+    {
+      "verbType": "五段",
+      "word": "貼る",
+      "reading": "はる",
+      "accent": "[0]",
+      "meaning": "張貼",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "引く",
+      "reading": "ひく",
+      "accent": "[0]",
+      "meaning": "拉／抽／引誘",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "弾く",
+      "reading": "ひく",
+      "accent": "[0]",
+      "meaning": "彈奏",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "待つ",
+      "reading": "まつ",
+      "accent": "[1]",
+      "meaning": "等待",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "持つ",
+      "reading": "もつ",
+      "accent": "[1]",
+      "meaning": "拿／持有",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "やる",
+      "reading": "やる",
+      "accent": "[0]",
+      "meaning": "做／玩",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "呼ぶ",
+      "reading": "よぶ",
+      "accent": "[0]",
+      "meaning": "呼叫／稱呼",
+      "extraInfo": "「呼ぶ」和「読む」\n\n「呼ぶ」跟「読む」的重音需要注意，兩者的「て形」常被誤唸。\n\n要點\n\n「呼んで」 0號音\n「読んで」 1號音"
+    },
+    {
+      "verbType": "五段",
+      "word": "読む",
+      "reading": "よむ",
+      "accent": "[1]",
+      "meaning": "讀／唸",
+      "extraInfo": "「呼ぶ」和「読む」\n\n「呼ぶ」跟「読む」的重音需要注意，兩者的「て形」常被誤唸。\n\n要點\n\n「呼んで」 0號音\n「読んで」 1號音"
+    },
+    {
+      "verbType": "五段",
+      "word": "洗う",
+      "reading": "あらう",
+      "accent": "[0]",
+      "meaning": "洗（手、物品）",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "歌う",
+      "reading": "うたう",
+      "accent": "[0]",
+      "meaning": "唱",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "返す",
+      "reading": "かえす",
+      "accent": "[1]",
+      "meaning": "返回／回答",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "かぶる",
+      "reading": "かぶる",
+      "accent": "[2]",
+      "meaning": "戴（帽子等）",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "頼む",
+      "reading": "たのむ",
+      "accent": "[2]",
+      "meaning": "拜託、請求",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "使う",
+      "reading": "つかう",
+      "accent": "[0]",
+      "meaning": "使用",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "作る",
+      "reading": "つくる",
+      "accent": "[2]",
+      "meaning": "製作、做",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "なくす",
+      "reading": "なくす",
+      "accent": "[0]",
+      "meaning": "弄丟、丟失",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "習う",
+      "reading": "ならう",
+      "accent": "[2]",
+      "meaning": "學習",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "話す",
+      "reading": "はなす",
+      "accent": "[2]",
+      "meaning": "說／談／討論",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "磨く",
+      "reading": "みがく",
+      "accent": "[0]",
+      "meaning": "磨／刷（牙）",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "渡す",
+      "reading": "わたす",
+      "accent": "[0]",
+      "meaning": "交給／渡過",
+      "extraInfo": null
+    },
+    {
+      "verbType": "上一段",
+      "word": "着る",
+      "reading": "きる",
+      "accent": "[0]",
+      "meaning": "穿（上衣等）",
+      "extraInfo": "「着る」和「穿く／履く」的差別\n\n「着る」是穿上半身（衣服、外套），「穿く」跟「履く」是下半身（褲、裙、鞋、襪）。而「穿く」跟「履く」幾乎相同，通常只寫平假名「はく」。另外，如果是連身的如泳裝或連身裙，則是用「着る」。\n\n- セーターを着る。\n穿毛衣。\n\n- ワンピースを着る。\n穿連身裙。\n\n- ズボンを穿く。\n穿褲子。\n\n- 靴下を履く。\n穿襪子。"
+    },
+    {
+      "verbType": "上一段",
+      "word": "見る",
+      "reading": "みる",
+      "accent": "[1]",
+      "meaning": "看",
+      "extraInfo": null
+    },
+    {
+      "verbType": "上一段",
+      "word": "浴びる",
+      "reading": "あびる",
+      "accent": "[0]",
+      "meaning": "淋浴／蒙受",
+      "extraInfo": null
+    },
+    {
+      "verbType": "上一段",
+      "word": "借りる",
+      "reading": "かりる",
+      "accent": "[0]",
+      "meaning": "借（入）",
+      "extraInfo": "「借りる」和「貸す」的差別\n\n無論是借別人或是跟別人借，中文都叫做「借」，但日文則有區分。\n\n借りる：借入。我跟別人借\n貸す　：貸出。我借給別人\n\n借出借入看似簡單，但差之毫釐失之千里，隨著不同的立場更要注意。\n\n- お金を借りたい。 ≒ お金を貸してほしい。\n我想借你的錢。 ≒ 希望你借我錢。\n\n- お金を貸したい。 ≒ お金を借りてほしい。\n我想借錢給你。 ≒ 希望你跟我借錢。"
+    },
+    {
+      "verbType": "下一段",
+      "word": "開ける",
+      "reading": "あける",
+      "accent": "[0]",
+      "meaning": "打開",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "上げる",
+      "reading": "あげる",
+      "accent": "[0]",
+      "meaning": "抬／舉",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "入れる",
+      "reading": "いれる",
+      "accent": "[0]",
+      "meaning": "放入",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "掛ける",
+      "reading": "かける",
+      "accent": "[2]",
+      "meaning": "戴上／花費／撥打（電話）",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "締める",
+      "reading": "しめる",
+      "accent": "[2]",
+      "meaning": "繫上／減縮",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "閉める",
+      "reading": "しめる",
+      "accent": "[2]",
+      "meaning": "關閉",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "食べる",
+      "reading": "たべる",
+      "accent": "[2]",
+      "meaning": "吃",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "付ける",
+      "reading": "つける",
+      "accent": "[2]",
+      "meaning": "安裝／附上、貼上",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "見せる",
+      "reading": "みせる",
+      "accent": "[2]",
+      "meaning": "讓看／展現",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "教える",
+      "reading": "おしえる",
+      "accent": "[0]",
+      "meaning": "教導／告訴",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "覚える",
+      "reading": "おぼえる",
+      "accent": "[3]",
+      "meaning": "記住／學會",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "並べる",
+      "reading": "ならべる",
+      "accent": "[0]",
+      "meaning": "並列、排列",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變",
+      "word": "コピー",
+      "reading": "copy",
+      "accent": "[1]",
+      "meaning": "複製／影印",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變",
+      "word": "掃除",
+      "reading": "そうじ",
+      "accent": "[0]",
+      "meaning": "打掃",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變",
+      "word": "洗濯",
+      "reading": "せんたく",
+      "accent": "[0]",
+      "meaning": "洗（衣物）",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變",
+      "word": "勉強",
+      "reading": "べんきょう",
+      "accent": "[0]",
+      "meaning": "學習、用功",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變",
+      "word": "練習",
+      "reading": "れんしゅう",
+      "accent": "[0]",
+      "meaning": "練習",
+      "extraInfo": null
+    }
+  ]
+}

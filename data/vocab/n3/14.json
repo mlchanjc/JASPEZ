@@ -1,0 +1,259 @@
+{
+  "level": "N3",
+  "lesson": 14,
+  "title": "N3日文單字14（名詞）綜合（一）",
+  "words": [
+    {
+      "word": "粗",
+      "reading": "あら",
+      "accent": "[2]",
+      "meaning": "魚渣／毛病",
+      "extraInfo": "「粗（あら）」的意思\n\n「粗」是從形容詞「粗い」來的，作為形容詞時表示「粗糙的」，作為名詞時則是「魚渣（去除掉主要的肉，僅附帶一點點的肉的骨頭）」，這可以另外做成一道料理，例如「粗の吸い物【魚骨湯頭】」。由此衍伸的意思是「毛病」，就是專找他人的毛病，中文我們常說雞蛋裡挑骨頭，就是「粗を探す」。"
+    },
+    {
+      "word": "幅",
+      "reading": "はば",
+      "accent": "[0]",
+      "meaning": "寬度／幅度",
+      "extraInfo": null
+    },
+    {
+      "word": "底",
+      "reading": "そこ",
+      "accent": "[0]",
+      "meaning": "底部／深處",
+      "extraInfo": null
+    },
+    {
+      "word": "列",
+      "reading": "れつ",
+      "accent": "[1]",
+      "meaning": "排／列／隊伍",
+      "extraInfo": null
+    },
+    {
+      "word": "黴",
+      "reading": "かび",
+      "accent": "[0]",
+      "meaning": "黴菌",
+      "extraInfo": null
+    },
+    {
+      "word": "型",
+      "reading": "かた",
+      "accent": "[2]",
+      "meaning": "形狀／類型",
+      "extraInfo": null
+    },
+    {
+      "word": "癖",
+      "reading": "くせ",
+      "accent": "[2]",
+      "meaning": "毛病／壞習慣／（古怪的）特徵",
+      "extraInfo": "「癖（くせ）」的意思\n\n「癖」比較傾向於「癖好」，所以這裡的「毛病」是指「怪癖、壞習慣」，例如「あの人は爪を噛む癖がある。（那個人有咬指甲的壞習慣）」。由此可延伸形容某些具有與眾不同的強烈特徵之事物，經典的例子莫過於臭豆腐了，「クセの強い臭豆腐（味道強烈的臭豆腐）」、「くっさいけどクセになる（雖然很臭但會上癮）」，這裡的「クセ」都代表與眾不同、具有強烈的識別性、獨特的風格或特色。"
+    },
+    {
+      "word": "桁",
+      "reading": "けた",
+      "accent": "[0]",
+      "meaning": "位數（ digit ）",
+      "extraInfo": "「桁」表示「位數」，也可作為「助数詞（量詞）」，如「9桁」就是「9位數（9-digit）」。"
+    },
+    {
+      "word": "旗",
+      "reading": "はた",
+      "accent": "[2]",
+      "meaning": "旗幟",
+      "extraInfo": null
+    },
+    {
+      "word": "質",
+      "reading": "しつ",
+      "accent": "[0]",
+      "meaning": "品質／性質／資質",
+      "extraInfo": null
+    },
+    {
+      "word": "縞",
+      "reading": "しま",
+      "accent": "[2]",
+      "meaning": "條紋",
+      "extraInfo": null
+    },
+    {
+      "word": "灰",
+      "reading": "はい",
+      "accent": "[0]",
+      "meaning": "灰塵、灰燼",
+      "extraInfo": null
+    },
+    {
+      "word": "丸",
+      "reading": "まる",
+      "accent": "[0]",
+      "meaning": "圓形／圈圈／全部／零",
+      "extraInfo": "「丸」除了「圓、圓圈」等意，也可以用來表示「完整、全部」的意思，如「丸見え」就是「一覽無遺」。"
+    },
+    {
+      "word": "偽",
+      "reading": "にせ",
+      "accent": "[0]",
+      "meaning": "假冒、偽造",
+      "extraInfo": null
+    },
+    {
+      "word": "仲",
+      "reading": "なか",
+      "accent": "[1]",
+      "meaning": "關係",
+      "extraInfo": null
+    },
+    {
+      "word": "端",
+      "reading": "はし",
+      "accent": "[0]",
+      "meaning": "端／邊／片段／起頭",
+      "extraInfo": null
+    },
+    {
+      "word": "柱",
+      "reading": "はしら",
+      "accent": "[3][0]",
+      "meaning": "梁柱、柱子",
+      "extraInfo": null
+    },
+    {
+      "word": "畑",
+      "reading": "はたけ",
+      "accent": "[0]",
+      "meaning": "田地",
+      "extraInfo": null
+    },
+    {
+      "word": "噂",
+      "reading": "うわさ",
+      "accent": "[0]",
+      "meaning": "傳言、謠言",
+      "extraInfo": null
+    },
+    {
+      "word": "煙",
+      "reading": "けむり",
+      "accent": "[0]",
+      "meaning": "煙",
+      "extraInfo": null
+    },
+    {
+      "word": "氷",
+      "reading": "こおり",
+      "accent": "[0]",
+      "meaning": "冰",
+      "extraInfo": null
+    },
+    {
+      "word": "印",
+      "reading": "しるし",
+      "accent": "[0]",
+      "meaning": "標記、記號／證據／象徵",
+      "extraInfo": null
+    },
+    {
+      "word": "紫",
+      "reading": "むらさき",
+      "accent": "[2]",
+      "meaning": "紫色",
+      "extraInfo": null
+    },
+    {
+      "word": "記事",
+      "reading": "きじ",
+      "accent": "[1]",
+      "meaning": "文章／報導文章",
+      "extraInfo": null
+    },
+    {
+      "word": "死後",
+      "reading": "しご",
+      "accent": "[1]",
+      "meaning": "死後",
+      "extraInfo": null
+    },
+    {
+      "word": "事後",
+      "reading": "じご",
+      "accent": "[1]",
+      "meaning": "事後",
+      "extraInfo": null
+    },
+    {
+      "word": "蕎麦",
+      "reading": "そば",
+      "accent": "[1]",
+      "meaning": "蕎麥麵",
+      "extraInfo": null
+    },
+    {
+      "word": "馬鹿",
+      "reading": "ばか",
+      "accent": "[1]",
+      "meaning": "笨蛋",
+      "extraInfo": null
+    },
+    {
+      "word": "宛名",
+      "reading": "あてな",
+      "accent": "[0]",
+      "meaning": "收件人姓名",
+      "extraInfo": null
+    },
+    {
+      "word": "箇所",
+      "reading": "かしょ",
+      "accent": "[1]",
+      "meaning": "部分、地方",
+      "extraInfo": "「箇所」是指特定的某部分，如「修正箇所に赤で印を付けた（修正的地方用紅筆做了記號）」。也可作為「助数詞（量詞）」，如「５か所修正した（修正了五個地方）」。\n\n當「箇所」作為名詞時，有幾種寫法，如：「個所」、「か所」、「カ所」、「ヵ所」、「ケ所」、「ヶ所」。"
+    },
+    {
+      "word": "課題",
+      "reading": "かだい",
+      "accent": "[0]",
+      "meaning": "課題",
+      "extraInfo": null
+    },
+    {
+      "word": "画面",
+      "reading": "がめん",
+      "accent": "[1][0]",
+      "meaning": "畫面",
+      "extraInfo": null
+    },
+    {
+      "word": "基本",
+      "reading": "きほん",
+      "accent": "[0]",
+      "meaning": "基本",
+      "extraInfo": null
+    },
+    {
+      "word": "効果",
+      "reading": "こうか",
+      "accent": "[1]",
+      "meaning": "效果",
+      "extraInfo": null
+    },
+    {
+      "word": "礼儀",
+      "reading": "れいぎ",
+      "accent": "[3]",
+      "meaning": "禮儀",
+      "extraInfo": null
+    },
+    {
+      "word": "敬語",
+      "reading": "けいご",
+      "accent": "[0]",
+      "meaning": "敬語",
+      "extraInfo": null
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "level": "N4",
+  "lesson": 19,
+  "title": "N4日文單字19（動詞）自他同形、對立【最終章】",
+  "words": [
+    {
+      "verbType": "自他五",
+      "word": "急ぐ",
+      "reading": "いそぐ",
+      "accent": "[2]",
+      "meaning": "急／快點",
+      "extraInfo": null
+    },
+    {
+      "verbType": "自他五",
+      "word": "怒る",
+      "reading": "おこる",
+      "accent": "[2]",
+      "meaning": "生氣／喝斥",
+      "extraInfo": null
+    },
+    {
+      "verbType": "自他五",
+      "word": "構う",
+      "reading": "かまう",
+      "accent": "[2]",
+      "meaning": "介意／理會、管／逗、戲弄",
+      "extraInfo": null
+    },
+    {
+      "verbType": "自他五",
+      "word": "運ぶ",
+      "reading": "はこぶ",
+      "accent": "[0]",
+      "meaning": "搬運／進展",
+      "extraInfo": null
+    },
+    {
+      "verbType": "自他五",
+      "word": "開く",
+      "reading": "ひらく",
+      "accent": "[2]",
+      "meaning": "打開、開啟／舉辦、召開／開墾、開發／差距擴大",
+      "extraInfo": null
+    },
+    {
+      "verbType": "自他五",
+      "word": "笑う",
+      "reading": "わらう",
+      "accent": "[0]",
+      "meaning": "笑／嘲笑",
+      "extraInfo": null
+    },
+    {
+      "verbType": "自他下",
+      "word": "受ける",
+      "reading": "うける",
+      "accent": "[2]",
+      "meaning": "接受、收到／遭受、蒙受／參加、接受（考試等）／受歡迎／好笑",
+      "extraInfo": null
+    },
+    {
+      "verbType": "自他下",
+      "word": "負ける",
+      "reading": "まける",
+      "accent": "[0]",
+      "meaning": "輸／減價、額外贈送／皮膚發炎",
+      "extraInfo": null
+    }
+  ]
+}

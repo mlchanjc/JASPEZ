@@ -1,0 +1,126 @@
+{
+  "level": "N5",
+  "lesson": 4,
+  "title": "N5日文單字04（名詞）職稱、身分",
+  "words": [
+    {
+      "word": "お巡りさん",
+      "reading": "おまわりさん",
+      "accent": "[2]",
+      "meaning": "警察、巡警",
+      "extraInfo": null
+    },
+    {
+      "word": "会社員",
+      "reading": "かいしゃいん",
+      "accent": "[3]",
+      "meaning": "公司職員、上班族",
+      "extraInfo": null
+    },
+    {
+      "word": "学生",
+      "reading": "がくせい",
+      "accent": "[0]",
+      "meaning": "學生",
+      "extraInfo": null
+    },
+    {
+      "word": "学長",
+      "reading": "がくちょう",
+      "accent": "[0]",
+      "meaning": "校長",
+      "extraInfo": null
+    },
+    {
+      "word": "教師",
+      "reading": "きょうし",
+      "accent": "[1]",
+      "meaning": "教師、老師",
+      "extraInfo": null
+    },
+    {
+      "word": "警官",
+      "reading": "けいかん",
+      "accent": "[0]",
+      "meaning": "警察",
+      "extraInfo": null
+    },
+    {
+      "word": "警察",
+      "reading": "けいさつ",
+      "accent": "[0]",
+      "meaning": "警察",
+      "extraInfo": null
+    },
+    {
+      "word": "校長",
+      "reading": "こうちょう",
+      "accent": "[0]",
+      "meaning": "校長",
+      "extraInfo": null
+    },
+    {
+      "word": "後輩",
+      "reading": "こうはい",
+      "accent": "[0]",
+      "meaning": "後輩、後進／學弟、學妹",
+      "extraInfo": null
+    },
+    {
+      "word": "公務員",
+      "reading": "こうむいん",
+      "accent": "[3]",
+      "meaning": "公務員",
+      "extraInfo": null
+    },
+    {
+      "word": "親友",
+      "reading": "しんゆう",
+      "accent": "[0]",
+      "meaning": "摯友、好友",
+      "extraInfo": null
+    },
+    {
+      "word": "生徒",
+      "reading": "せいと",
+      "accent": "[1]",
+      "meaning": "學生",
+      "extraInfo": null
+    },
+    {
+      "word": "先生",
+      "reading": "せんせい",
+      "accent": "[3]",
+      "meaning": "老師",
+      "extraInfo": null
+    },
+    {
+      "word": "先輩",
+      "reading": "せんぱい",
+      "accent": "[0]",
+      "meaning": "前輩、先進／學長、學姐",
+      "extraInfo": null
+    },
+    {
+      "word": "友達",
+      "reading": "ともだち",
+      "accent": "[0]",
+      "meaning": "朋友",
+      "extraInfo": null
+    },
+    {
+      "word": "留学生",
+      "reading": "りゅうがくせい",
+      "accent": "[3][4]",
+      "meaning": "留學生",
+      "extraInfo": null
+    },
+    {
+      "word": "サラリーマン",
+      "reading": "salary man〔和〕",
+      "accent": "[3]",
+      "meaning": "上班族",
+      "extraInfo": null
+    }
+  ]
+}

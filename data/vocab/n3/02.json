@@ -1,0 +1,308 @@
+{
+  "level": "N3",
+  "lesson": 2,
+  "title": "N3日文單字02（名詞）費用相關",
+  "words": [
+    {
+      "word": "金",
+      "reading": "きん",
+      "accent": "[1]",
+      "meaning": "黃金",
+      "extraInfo": null
+    },
+    {
+      "word": "小銭",
+      "reading": "こぜに",
+      "accent": "[0]",
+      "meaning": "零錢（小額錢幣）",
+      "extraInfo": null
+    },
+    {
+      "word": "給料",
+      "reading": "きゅうりょう",
+      "accent": "[1]",
+      "meaning": "薪水",
+      "extraInfo": null
+    },
+    {
+      "word": "税金",
+      "reading": "ぜいきん",
+      "accent": "[0]",
+      "meaning": "稅金",
+      "extraInfo": null
+    },
+    {
+      "word": "賞金",
+      "reading": "しょうきん",
+      "accent": "[0]",
+      "meaning": "獎金",
+      "extraInfo": null
+    },
+    {
+      "word": "本代",
+      "reading": "ほんだい",
+      "accent": "[0]",
+      "meaning": "書錢",
+      "extraInfo": null
+    },
+    {
+      "word": "薬代",
+      "reading": "くすりだい",
+      "accent": "[0]",
+      "meaning": "藥費",
+      "extraInfo": null
+    },
+    {
+      "word": "部屋代",
+      "reading": "へやだい",
+      "accent": "[0]",
+      "meaning": "房間租金",
+      "extraInfo": null
+    },
+    {
+      "word": "ガス代",
+      "reading": "ガスだい",
+      "accent": "[0]",
+      "meaning": "瓦斯費",
+      "extraInfo": "「代」大部分是依照消費程度做付費，例如：ガス代、電気代、電話代、ネット代、食事代等。"
+    },
+    {
+      "word": "電気代",
+      "reading": "でんきだい",
+      "accent": "[0]",
+      "meaning": "電費",
+      "extraInfo": "「代」大部分是依照消費程度做付費，例如：ガス代、電気代、電話代、ネット代、食事代等。"
+    },
+    {
+      "word": "電話代",
+      "reading": "でんわだい",
+      "accent": "[0]",
+      "meaning": "電話費",
+      "extraInfo": "「代」大部分是依照消費程度做付費，例如：ガス代、電気代、電話代、ネット代、食事代等。"
+    },
+    {
+      "word": "修理代",
+      "reading": "しゅうりだい",
+      "accent": "[0]",
+      "meaning": "修理費",
+      "extraInfo": null
+    },
+    {
+      "word": "食事代",
+      "reading": "しょくじだい",
+      "accent": "[0]",
+      "meaning": "餐費",
+      "extraInfo": "「代」大部分是依照消費程度做付費，例如：ガス代、電気代、電話代、ネット代、食事代等。"
+    },
+    {
+      "word": "治療代",
+      "reading": "ちりょうだい",
+      "accent": "[0]",
+      "meaning": "治療費",
+      "extraInfo": null
+    },
+    {
+      "word": "電車代",
+      "reading": "でんしゃだい",
+      "accent": "[0]",
+      "meaning": "電車費",
+      "extraInfo": null
+    },
+    {
+      "word": "水道代",
+      "reading": "すいどうだい",
+      "accent": "[0]",
+      "meaning": "水費",
+      "extraInfo": null
+    },
+    {
+      "word": "ネット代",
+      "reading": "ネットだい",
+      "accent": "[0]",
+      "meaning": "網路費",
+      "extraInfo": "「代」大部分是依照消費程度做付費，例如：ガス代、電気代、電話代、ネット代、食事代等。"
+    },
+    {
+      "word": "送料",
+      "reading": "そうりょう",
+      "accent": "[1]",
+      "meaning": "運費、郵資",
+      "extraInfo": "「料」主要用於利用某服務時的費用，多為一次性固定費用，例如：授業料、サービス料、送料、入場料等。"
+    },
+    {
+      "word": "使用料",
+      "reading": "しようりょう",
+      "accent": "[2]",
+      "meaning": "使用費",
+      "extraInfo": null
+    },
+    {
+      "word": "手数料",
+      "reading": "てすうりょう",
+      "accent": "[2]",
+      "meaning": "手續費",
+      "extraInfo": null
+    },
+    {
+      "word": "郵送料",
+      "reading": "ゆうそうりょう",
+      "accent": "[3]",
+      "meaning": "郵寄費",
+      "extraInfo": null
+    },
+    {
+      "word": "入場料",
+      "reading": "にゅうじょうりょう",
+      "accent": "[3]",
+      "meaning": "入場費",
+      "extraInfo": "「料」主要用於利用某服務時的費用，多為一次性固定費用，例如：授業料、サービス料、送料、入場料等。"
+    },
+    {
+      "word": "授業料",
+      "reading": "じゅぎょうりょう",
+      "accent": "[2]",
+      "meaning": "學費",
+      "extraInfo": "「料」主要用於利用某服務時的費用，多為一次性固定費用，例如：授業料、サービス料、送料、入場料等。"
+    },
+    {
+      "word": "サービス料",
+      "reading": "サービスりょう",
+      "accent": "[4]",
+      "meaning": "服務費",
+      "extraInfo": "「料」主要用於利用某服務時的費用，多為一次性固定費用，例如：授業料、サービス料、送料、入場料等。"
+    },
+    {
+      "word": "学費",
+      "reading": "がくひ",
+      "accent": "[0]",
+      "meaning": "學費",
+      "extraInfo": null
+    },
+    {
+      "word": "食費",
+      "reading": "しょくひ",
+      "accent": "[0]",
+      "meaning": "伙食費",
+      "extraInfo": null
+    },
+    {
+      "word": "治療費",
+      "reading": "ちりょうひ",
+      "accent": "[2]",
+      "meaning": "治療費",
+      "extraInfo": null
+    },
+    {
+      "word": "医療費",
+      "reading": "いりょうひ",
+      "accent": "[2]",
+      "meaning": "醫療費",
+      "extraInfo": "「費」表示開支中的一個項目，例如：生活費、教育費、医療費、交通費等。"
+    },
+    {
+      "word": "衣料費",
+      "reading": "いりょうひ",
+      "accent": "[2]",
+      "meaning": "服裝費",
+      "extraInfo": null
+    },
+    {
+      "word": "交際費",
+      "reading": "こうさいひ",
+      "accent": "[3]",
+      "meaning": "交際費",
+      "extraInfo": null
+    },
+    {
+      "word": "交通費",
+      "reading": "こうつうひ",
+      "accent": "[3]",
+      "meaning": "交通費",
+      "extraInfo": "「費」表示開支中的一個項目，例如：生活費、教育費、医療費、交通費等。"
+    },
+    {
+      "word": "光熱費",
+      "reading": "こうねつひ",
+      "accent": "[4][3]",
+      "meaning": "電費和瓦斯費的統稱",
+      "extraInfo": null
+    },
+    {
+      "word": "生活費",
+      "reading": "せいかつひ",
+      "accent": "[4][3]",
+      "meaning": "生活費",
+      "extraInfo": "「費」表示開支中的一個項目，例如：生活費、教育費、医療費、交通費等。"
+    },
+    {
+      "word": "住居費",
+      "reading": "じゅうきょひ",
+      "accent": "[3]",
+      "meaning": "居住費",
+      "extraInfo": null
+    },
+    {
+      "word": "教育費",
+      "reading": "きょういくひ",
+      "accent": "[4]",
+      "meaning": "教育費",
+      "extraInfo": "「費」表示開支中的一個項目，例如：生活費、教育費、医療費、交通費等。"
+    },
+    {
+      "word": "家賃",
+      "reading": "やちん",
+      "accent": "[1]",
+      "meaning": "房租",
+      "extraInfo": "「賃」多為租借之物所付金額，或利用交通工具支付的費用，例如：家賃、船賃、借り賃等。"
+    },
+    {
+      "word": "運賃",
+      "reading": "うんちん",
+      "accent": "[1]",
+      "meaning": "載人或貨物的運費",
+      "extraInfo": null
+    },
+    {
+      "word": "船賃",
+      "reading": "ふなちん",
+      "accent": "[2]",
+      "meaning": "乘船費或租船費",
+      "extraInfo": "「賃」多為租借之物所付金額，或利用交通工具支付的費用，例如：家賃、船賃、借り賃等。"
+    },
+    {
+      "word": "借り賃",
+      "reading": "かりちん",
+      "accent": "[2]",
+      "meaning": "租金（入借）",
+      "extraInfo": "「賃」多為租借之物所付金額，或利用交通工具支付的費用，例如：家賃、船賃、借り賃等。"
+    },
+    {
+      "word": "貸し賃",
+      "reading": "かしちん",
+      "accent": "[2]",
+      "meaning": "租金（出租）",
+      "extraInfo": null
+    },
+    {
+      "word": "電車賃",
+      "reading": "でんしゃちん",
+      "accent": "[3]",
+      "meaning": "電車費",
+      "extraInfo": null
+    },
+    {
+      "word": "水道料金",
+      "reading": "すいどうりょうきん",
+      "accent": "[5]",
+      "meaning": "水費",
+      "extraInfo": null
+    },
+    {
+      "word": "電気料金",
+      "reading": "でんきりょうきん",
+      "accent": "[4]",
+      "meaning": "電費",
+      "extraInfo": null
+    }
+  ]
+}

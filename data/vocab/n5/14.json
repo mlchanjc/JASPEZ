@@ -1,0 +1,322 @@
+{
+  "level": "N5",
+  "lesson": 14,
+  "title": "N5日文單字14（名詞）季節",
+  "words": [
+    {
+      "word": "秋",
+      "reading": "あき",
+      "accent": "[1]",
+      "meaning": "秋、秋天、秋季",
+      "extraInfo": null
+    },
+    {
+      "word": "朝",
+      "reading": "あさ",
+      "accent": "[1]",
+      "meaning": "早上、早晨",
+      "extraInfo": null
+    },
+    {
+      "word": "明後日",
+      "reading": "あさって",
+      "accent": "[2]",
+      "meaning": "後天",
+      "extraInfo": null
+    },
+    {
+      "word": "明日",
+      "reading": "あした",
+      "accent": "[3][0]",
+      "meaning": "明天、明日",
+      "extraInfo": null
+    },
+    {
+      "word": "後",
+      "reading": "あと",
+      "accent": "[1]",
+      "meaning": "之後",
+      "extraInfo": null
+    },
+    {
+      "word": "いつ",
+      "reading": "いつ",
+      "accent": "[1]",
+      "meaning": "什麼時候、何時",
+      "extraInfo": "「何時」的假名有「いつ」跟「なんじ」，一般來說「いつ」會寫平假名，「なんじ」會寫漢字「何時」。"
+    },
+    {
+      "word": "今",
+      "reading": "いま",
+      "accent": "[1]",
+      "meaning": "現在、此刻／現代、現今",
+      "extraInfo": "「今」的意思\n\n「今」是現在的意思，不過如果是非常近期的過去或未來，也可以用「今」。\n\n- 今、何してる？\n你現在在做什麼？現在\n\n- 今、何て言ったの？\n你剛剛說什麼？過去\n\n- 今、コーヒーを入れますので、少々お待ちください。\n現在馬上就泡咖啡，請稍等一下。未來\n\n「今（いま）」跟「さっき」都是「剛才」的意思\n\n「さっき [1]」（注意有促音）時間上比「今」還要更之前，不過這些單字都沒有規定是幾分鐘，下面舉兩個例子。\n\n- さっき、何て言ったの？\n\n- 今、何て言ったの？\n\n- 你剛剛說什麼？上一秒對方才剛說的話\n\n- さっき、あなたを待っていた時、ナンパされちゃった。\n\n- 今、あなたを待っていた時、ナンパされちゃった。\n\n- 我剛剛等你的時候，被人搭訕了。已過了一段時間"
+    },
+    {
+      "word": "一昨日",
+      "reading": "おととい",
+      "accent": "[3][0]",
+      "meaning": "前天",
+      "extraInfo": null
+    },
+    {
+      "word": "一昨年",
+      "reading": "おととし",
+      "accent": "[2]",
+      "meaning": "前年",
+      "extraInfo": null
+    },
+    {
+      "word": "季節",
+      "reading": "きせつ",
+      "accent": "[1][2]",
+      "meaning": "季節",
+      "extraInfo": null
+    },
+    {
+      "word": "昨日",
+      "reading": "きのう",
+      "accent": "[2][0]",
+      "meaning": "昨天、昨日",
+      "extraInfo": null
+    },
+    {
+      "word": "今日",
+      "reading": "きょう",
+      "accent": "[1]",
+      "meaning": "今天、今日",
+      "extraInfo": null
+    },
+    {
+      "word": "去年",
+      "reading": "きょねん",
+      "accent": "[1]",
+      "meaning": "去年",
+      "extraInfo": null
+    },
+    {
+      "word": "今朝",
+      "reading": "けさ",
+      "accent": "[1]",
+      "meaning": "今天早上、今早",
+      "extraInfo": null
+    },
+    {
+      "word": "今年",
+      "reading": "ことし",
+      "accent": "[0]",
+      "meaning": "今年",
+      "extraInfo": "「今年」、「毎年」的假名要注意。"
+    },
+    {
+      "word": "今月",
+      "reading": "こんげつ",
+      "accent": "[0]",
+      "meaning": "這個月、本月",
+      "extraInfo": null
+    },
+    {
+      "word": "今週",
+      "reading": "こんしゅう",
+      "accent": "[0]",
+      "meaning": "本週、這週、這禮拜、這個星期",
+      "extraInfo": null
+    },
+    {
+      "word": "今晩",
+      "reading": "こんばん",
+      "accent": "[1]",
+      "meaning": "今天晚上、今晚、今夜",
+      "extraInfo": null
+    },
+    {
+      "word": "午後",
+      "reading": "ごご",
+      "accent": "[1]",
+      "meaning": "下午、午後",
+      "extraInfo": null
+    },
+    {
+      "word": "午前",
+      "reading": "ごぜん",
+      "accent": "[1]",
+      "meaning": "上午、午前",
+      "extraInfo": null
+    },
+    {
+      "word": "先",
+      "reading": "さき",
+      "accent": "[0]",
+      "meaning": "先、之前／將來、未來",
+      "extraInfo": "「先」的意思\n\n「先 [0]」有很多意思，有先後順序的先，時間順序的先、去的地方，尖端、未來等等的意思。\n\n- 代金を先に払う。\n先付貨款。先後順序的先\n\n- 先に出かける。\n先出門。時間順序的先\n\n- 出張先。\n出差的地方。去的地方\n\n- 指の先。\n指尖。手指尖端\n\n- この先、どうなるか。\n未來會如何呢？未來"
+    },
+    {
+      "word": "昨夜",
+      "reading": "さくや",
+      "accent": "[2]",
+      "meaning": "昨夜、昨晚、昨天晚上",
+      "extraInfo": "「昨夜」是昨天晚上的意思。"
+    },
+    {
+      "word": "再来月",
+      "reading": "さらいげつ",
+      "accent": "[0][2]",
+      "meaning": "下下個月",
+      "extraInfo": null
+    },
+    {
+      "word": "再来週",
+      "reading": "さらいしゅう",
+      "accent": "[0]",
+      "meaning": "下下週",
+      "extraInfo": null
+    },
+    {
+      "word": "再来年",
+      "reading": "さらいねん",
+      "accent": "[0]",
+      "meaning": "後年",
+      "extraInfo": null
+    },
+    {
+      "word": "先月",
+      "reading": "せんげつ",
+      "accent": "[1]",
+      "meaning": "上個月、上月",
+      "extraInfo": null
+    },
+    {
+      "word": "先週",
+      "reading": "せんしゅう",
+      "accent": "[0]",
+      "meaning": "上週、上禮拜、上星期",
+      "extraInfo": null
+    },
+    {
+      "word": "次",
+      "reading": "つぎ",
+      "accent": "[2]",
+      "meaning": "下、下個",
+      "extraInfo": null
+    },
+    {
+      "word": "年",
+      "reading": "とし",
+      "accent": "[2]",
+      "meaning": "年、一年",
+      "extraInfo": null
+    },
+    {
+      "word": "夏",
+      "reading": "なつ",
+      "accent": "[2]",
+      "meaning": "夏、夏天、夏季",
+      "extraInfo": null
+    },
+    {
+      "word": "春",
+      "reading": "はる",
+      "accent": "[1]",
+      "meaning": "春、春天、春季",
+      "extraInfo": null
+    },
+    {
+      "word": "昼",
+      "reading": "ひる",
+      "accent": "[2]",
+      "meaning": "白天／中午",
+      "extraInfo": null
+    },
+    {
+      "word": "冬",
+      "reading": "ふゆ",
+      "accent": "[2]",
+      "meaning": "冬、冬天、冬季",
+      "extraInfo": null
+    },
+    {
+      "word": "毎朝",
+      "reading": "まいあさ",
+      "accent": "[1][0]",
+      "meaning": "每天早上",
+      "extraInfo": null
+    },
+    {
+      "word": "毎週",
+      "reading": "まいしゅう",
+      "accent": "[0]",
+      "meaning": "每週、每星期、每個禮拜",
+      "extraInfo": null
+    },
+    {
+      "word": "毎月",
+      "reading": "まいつき",
+      "accent": "[0]",
+      "meaning": "每月、每個月",
+      "extraInfo": null
+    },
+    {
+      "word": "毎年",
+      "reading": "まいとし",
+      "accent": "[0]",
+      "meaning": "每年、年年、每一年",
+      "extraInfo": "「今年」、「毎年」的假名要注意。"
+    },
+    {
+      "word": "毎日",
+      "reading": "まいにち",
+      "accent": "[1]",
+      "meaning": "每天、每日",
+      "extraInfo": null
+    },
+    {
+      "word": "毎晩",
+      "reading": "まいばん",
+      "accent": "[1]",
+      "meaning": "每天晚上、每晚",
+      "extraInfo": null
+    },
+    {
+      "word": "夕方",
+      "reading": "ゆうがた",
+      "accent": "[0]",
+      "meaning": "傍晚、黃昏",
+      "extraInfo": "「夕方」是傍晚的意思。\n\n「夕べ」也意指「傍晚」，但表「傍晚」一般使用「夕方」，而「夕べ」通常用於從傍晚開始舉辦的活動名稱，如「星空と音楽の夕べ（星空與音樂之夜）」。"
+    },
+    {
+      "word": "ゆうべ",
+      "reading": "ゆうべ",
+      "accent": "[3]",
+      "meaning": "昨天晚上、昨晚",
+      "extraInfo": "「ゆうべ」的漢字寫作「昨夜」。此外，有個同音單字為「夕べ」，意指「傍晚」，但表「傍晚」一般使用「夕方」，而「夕べ」通常用於從傍晚開始舉辦的活動名稱，如「星空と音楽の夕べ（星空與音樂之夜）」。"
+    },
+    {
+      "word": "夜",
+      "reading": "よる",
+      "accent": "[1]",
+      "meaning": "晚上、夜、夜間、夜晚",
+      "extraInfo": "日文有「晩」這個字，意思也是晚上，不過「晚上」通常說「夜」、「晚餐」則是說「晩ご飯」。雖然近年也出現「夜ご飯」，但接受度沒有那麼高。"
+    },
+    {
+      "word": "来月",
+      "reading": "らいげつ",
+      "accent": "[1]",
+      "meaning": "下個月",
+      "extraInfo": null
+    },
+    {
+      "word": "来週",
+      "reading": "らいしゅう",
+      "accent": "[0]",
+      "meaning": "下週、下星期、下禮拜",
+      "extraInfo": null
+    },
+    {
+      "word": "来年",
+      "reading": "らいねん",
+      "accent": "[0]",
+      "meaning": "明年、來年",
+      "extraInfo": null
+    }
+  ]
+}

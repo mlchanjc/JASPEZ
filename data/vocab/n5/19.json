@@ -1,0 +1,161 @@
+{
+  "level": "N5",
+  "lesson": 19,
+  "title": "N5日文單字19（形容動詞）綜合",
+  "words": [
+    {
+      "word": "嫌",
+      "reading": "いや",
+      "accent": "[2]",
+      "meaning": "討厭、厭惡／不要／不愉快、不悅",
+      "extraInfo": "「いや」和「きらい」的差別\n\n「嫌」是指不好的感受，常用於拒絕，相當於「不要」的意思。如果加上名詞就是「討厭的◯◯」（嫌な◯◯）。\n\n- 大都会に住むのは嫌です。\n我不要住在大都會。（不想住在大都會。）\n\n- 嫌な奴。\n讓人感到不快的傢伙。\n\n容易被誤會之否定的「否（いや）」\n還有一種「いや」是否定的意思，漢字寫作「否」，但一般只寫平假名。\n例：いや、そんなことはないよ。\n不，才沒那回事呢。いや ≒ いいえ\n\n另外還要注意一點，「嫌い」是形容討厭的，跟「嫌」的用法不一樣，要注意。\n\n比較\n\n- 大都会に住むのは嫌です。\n我不要住在大都會。（不想住在大都會。）\n\n- 大都会に住むのは嫌いです。\n我討厭住在大都會。\n\n- 嫌な奴。\n讓人感到不快的傢伙。\n\n- 嫌いな奴。\n討厭的傢伙。"
+    },
+    {
+      "word": "色々",
+      "reading": "いろいろ",
+      "accent": "[0]",
+      "meaning": "各種、各式各樣",
+      "extraInfo": null
+    },
+    {
+      "word": "同じ",
+      "reading": "おなじ",
+      "accent": "[0]",
+      "meaning": "一樣、相同、同樣",
+      "extraInfo": null
+    },
+    {
+      "word": "嫌い",
+      "reading": "きらい",
+      "accent": "[0]",
+      "meaning": "討厭、不喜歡",
+      "extraInfo": "「いや」和「きらい」的差別\n\n「嫌」是指不好的感受，常用於拒絕，相當於「不要」的意思。如果加上名詞就是「討厭的◯◯」（嫌な◯◯）。\n\n- 大都会に住むのは嫌です。\n我不要住在大都會。（不想住在大都會。）\n\n- 嫌な奴。\n讓人感到不快的傢伙。\n\n另外還要注意一點，「嫌い」是形容討厭的，跟「嫌」的用法不一樣，要注意。\n\n比較\n\n- 大都会に住むのは嫌です。\n我不要住在大都會。（不想住在大都會。）\n\n- 大都会に住むのは嫌いです。\n我討厭住在大都會。\n\n- 嫌な奴。\n讓人感到不快的傢伙。\n\n- 嫌いな奴。\n討厭的傢伙。"
+    },
+    {
+      "word": "きれい",
+      "reading": "きれい",
+      "accent": "[1]",
+      "meaning": "漂亮、美麗、好看／乾淨、清潔",
+      "extraInfo": null
+    },
+    {
+      "word": "結構",
+      "reading": "けっこう",
+      "accent": "[1]",
+      "meaning": "相當、滿／夠了、不用了／沒問題、沒關係",
+      "extraInfo": null
+    },
+    {
+      "word": "静か",
+      "reading": "しずか",
+      "accent": "[1]",
+      "meaning": "安靜、寧靜、靜謐／文靜／平靜、安穩",
+      "extraInfo": null
+    },
+    {
+      "word": "上手",
+      "reading": "じょうず",
+      "accent": "[3]",
+      "meaning": "很會、很好、善於、拿手、高明、擅長",
+      "extraInfo": null
+    },
+    {
+      "word": "丈夫",
+      "reading": "じょうぶ",
+      "accent": "[0]",
+      "meaning": "堅固、結實、耐用／健康、健壯",
+      "extraInfo": "「丈夫」的意思\n\n日文的「丈夫」不是中文「丈夫」的意思，而是堅固、結實的意思。\n\n- 丈夫な建物です。\n堅固的建築物。\n\n- 丈夫な胃です。\n鐵胃。\n\n- 体が丈夫です。\n身體很健康／勇健。"
+    },
+    {
+      "word": "大切",
+      "reading": "たいせつ",
+      "accent": "[0]",
+      "meaning": "重要、珍貴／珍惜",
+      "extraInfo": null
+    },
+    {
+      "word": "大変",
+      "reading": "たいへん",
+      "accent": "[0]",
+      "meaning": "辛苦、吃力、費事／不得了、嚴重",
+      "extraInfo": null
+    },
+    {
+      "word": "大丈夫",
+      "reading": "だいじょうぶ",
+      "accent": "[3]",
+      "meaning": "沒問題、沒關係／沒事、不要緊／可以／不用",
+      "extraInfo": null
+    },
+    {
+      "word": "大好き",
+      "reading": "だいすき",
+      "accent": "[1]",
+      "meaning": "非常喜歡、超喜歡",
+      "extraInfo": null
+    },
+    {
+      "word": "得意",
+      "reading": "とくい",
+      "accent": "[2][0]",
+      "meaning": "擅長、拿手、強項",
+      "extraInfo": null
+    },
+    {
+      "word": "苦手",
+      "reading": "にがて",
+      "accent": "[0]",
+      "meaning": "不擅長、不拿手",
+      "extraInfo": null
+    },
+    {
+      "word": "賑やか",
+      "reading": "にぎやか",
+      "accent": "[2]",
+      "meaning": "熱鬧、繁華",
+      "extraInfo": null
+    },
+    {
+      "word": "下手",
+      "reading": "へた",
+      "accent": "[2]",
+      "meaning": "拙劣、不好",
+      "extraInfo": null
+    },
+    {
+      "word": "便利",
+      "reading": "べんり",
+      "accent": "[1]",
+      "meaning": "方便、便利",
+      "extraInfo": null
+    },
+    {
+      "word": "本当",
+      "reading": "ほんとう",
+      "accent": "[0]",
+      "meaning": "真的、真實、真正／其實、實際",
+      "extraInfo": null
+    },
+    {
+      "word": "真っ直ぐ",
+      "reading": "まっすぐ",
+      "accent": "[3]",
+      "meaning": "筆直、挺直／正直、耿直、直爽",
+      "extraInfo": null
+    },
+    {
+      "word": "有名",
+      "reading": "ゆうめい",
+      "accent": "[0]",
+      "meaning": "有名、知名",
+      "extraInfo": null
+    },
+    {
+      "word": "立派",
+      "reading": "りっぱ",
+      "accent": "[0]",
+      "meaning": "出色、優秀、偉大、氣派",
+      "extraInfo": null
+    }
+  ]
+}

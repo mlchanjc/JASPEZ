@@ -1,0 +1,385 @@
+{
+  "level": "N4",
+  "lesson": 4,
+  "title": "N4日文單字04（名詞）場所・方位",
+  "words": [
+    {
+      "word": "席",
+      "reading": "せき",
+      "accent": "[1]",
+      "meaning": "座位",
+      "extraInfo": null
+    },
+    {
+      "word": "壁",
+      "reading": "かべ",
+      "accent": "[0]",
+      "meaning": "牆壁",
+      "extraInfo": null
+    },
+    {
+      "word": "屋根",
+      "reading": "やね",
+      "accent": "[1]",
+      "meaning": "屋頂",
+      "extraInfo": null
+    },
+    {
+      "word": "屋上",
+      "reading": "おくじょう",
+      "accent": "[0]",
+      "meaning": "樓頂",
+      "extraInfo": null
+    },
+    {
+      "word": "寺",
+      "reading": "てら",
+      "accent": "[2]",
+      "meaning": "寺廟",
+      "extraInfo": null
+    },
+    {
+      "word": "神社",
+      "reading": "じんじゃ",
+      "accent": "[1]",
+      "meaning": "神社",
+      "extraInfo": null
+    },
+    {
+      "word": "教会",
+      "reading": "きょうかい",
+      "accent": "[0]",
+      "meaning": "教會",
+      "extraInfo": null
+    },
+    {
+      "word": "講堂",
+      "reading": "こうどう",
+      "accent": "[0]",
+      "meaning": "禮堂",
+      "extraInfo": null
+    },
+    {
+      "word": "表",
+      "reading": "おもて",
+      "accent": "[3]",
+      "meaning": "表面／正面",
+      "extraInfo": null
+    },
+    {
+      "word": "裏",
+      "reading": "うら",
+      "accent": "[2]",
+      "meaning": "裡面／反面",
+      "extraInfo": null
+    },
+    {
+      "word": "真ん中",
+      "reading": "まんなか",
+      "accent": "[0]",
+      "meaning": "正中間",
+      "extraInfo": null
+    },
+    {
+      "word": "隅",
+      "reading": "すみ",
+      "accent": "[1]",
+      "meaning": "角落",
+      "extraInfo": null
+    },
+    {
+      "word": "間",
+      "reading": "あいだ",
+      "accent": "[0]",
+      "meaning": "中間／之間",
+      "extraInfo": "「間」和「うち」的差別\n\n「間」和「うち」都是表示在某個時間之內（這裡的「うち」不是家的意思），基本差別不大，「間」比較單純指某個期間，而「うち」比較有緊促短時間或錯過這個時段就會沒有機會的含意。\n\n- 雨が降らないうちに、買い物に行きましょう。\n趁沒下雨這段時間，趕緊去買東西吧。\n感覺快下雨了，所以這短時間要趕快去買東西。（不適合用「間」）\n\n- 警察がいない。今のうちに逃げよう。\n警察不在，趁現在（這段時間）趕緊逃吧！\n抓準時機逃走，時間稍縱即逝。（不適合用「間」）\n\n如果是單純描述某段時間，則兩者都可以用。\n\n- 若いうちに旅行しておきたいです。\n\n- 若い間に旅行しておきたいです。\n\n- 想在年輕的時候先去旅行。"
+    },
+    {
+      "word": "途中",
+      "reading": "とちゅう",
+      "accent": "[0]",
+      "meaning": "途中／中途",
+      "extraInfo": null
+    },
+    {
+      "word": "以上",
+      "reading": "いじょう",
+      "accent": "[1]",
+      "meaning": "以上",
+      "extraInfo": null
+    },
+    {
+      "word": "以下",
+      "reading": "いか",
+      "accent": "[1]",
+      "meaning": "以下",
+      "extraInfo": null
+    },
+    {
+      "word": "以内",
+      "reading": "いない",
+      "accent": "[1]",
+      "meaning": "以內",
+      "extraInfo": null
+    },
+    {
+      "word": "以外",
+      "reading": "いがい",
+      "accent": "[1]",
+      "meaning": "以外",
+      "extraInfo": null
+    },
+    {
+      "word": "住所",
+      "reading": "じゅうしょ",
+      "accent": "[1]",
+      "meaning": "住址／住處",
+      "extraInfo": null
+    },
+    {
+      "word": "遠く",
+      "reading": "とおく",
+      "accent": "[3]",
+      "meaning": "遠處",
+      "extraInfo": null
+    },
+    {
+      "word": "近所",
+      "reading": "きんじょ",
+      "accent": "[1]",
+      "meaning": "近處／附近",
+      "extraInfo": null
+    },
+    {
+      "word": "通り",
+      "reading": "とおり",
+      "accent": "[3]",
+      "meaning": "大街道",
+      "extraInfo": "「通り」的意思\n\n有兩種意思，第一種是大街道的意思。\n\n- 通りに出て遊ぶ。\n到大街上去玩。\n\n另一種意思是「正如～、按照～」。\n\n- 先生の言う通りです。\n如老師說的。\n\n- その通りです。\n所言甚是。\n\n- 説明書の通りに操作する。\n按照說明書操作。"
+    },
+    {
+      "word": "坂",
+      "reading": "さか",
+      "accent": "[2]",
+      "meaning": "坡道",
+      "extraInfo": null
+    },
+    {
+      "word": "市",
+      "reading": "し",
+      "accent": "[1]",
+      "meaning": "市",
+      "extraInfo": null
+    },
+    {
+      "word": "田舎",
+      "reading": "いなか",
+      "accent": "[0]",
+      "meaning": "鄉下",
+      "extraInfo": null
+    },
+    {
+      "word": "郊外",
+      "reading": "こうがい",
+      "accent": "[1]",
+      "meaning": "郊區",
+      "extraInfo": null
+    },
+    {
+      "word": "国際",
+      "reading": "こくさい",
+      "accent": "[0]",
+      "meaning": "國際",
+      "extraInfo": null
+    },
+    {
+      "word": "西洋",
+      "reading": "せいよう",
+      "accent": "[1]",
+      "meaning": "西洋",
+      "extraInfo": null
+    },
+    {
+      "word": "世界",
+      "reading": "せかい",
+      "accent": "[1]",
+      "meaning": "世界",
+      "extraInfo": null
+    },
+    {
+      "word": "島",
+      "reading": "しま",
+      "accent": "[2]",
+      "meaning": "島嶼",
+      "extraInfo": null
+    },
+    {
+      "word": "湖",
+      "reading": "みずうみ",
+      "accent": "[3][2]",
+      "meaning": "湖",
+      "extraInfo": null
+    },
+    {
+      "word": "海岸",
+      "reading": "かいがん",
+      "accent": "[0]",
+      "meaning": "海岸",
+      "extraInfo": null
+    },
+    {
+      "word": "旅館",
+      "reading": "りょかん",
+      "accent": "[0]",
+      "meaning": "旅館",
+      "extraInfo": null
+    },
+    {
+      "word": "受付",
+      "reading": "うけつけ",
+      "accent": "[0]",
+      "meaning": "櫃檯",
+      "extraInfo": null
+    },
+    {
+      "word": "床屋",
+      "reading": "とこや",
+      "accent": "[0]",
+      "meaning": "理髮店",
+      "extraInfo": "「床屋」和「美容院」的差別\n\n「床屋」和「美容院」所需證照不同，「床屋」需要「理容師免許」，而「美容院」則需要「美容師免許」。服務方面，「床屋」可以提供用剃刀的服務，「美容院」主要提供染髮、燙髮等整理髮型的服務。另外，「床屋」在以前江戶時代是專為男性理髮的地方。\n\n示意圖\n\n床屋\n\n美容院"
+    },
+    {
+      "word": "美容院",
+      "reading": "びよういん",
+      "accent": "[2]",
+      "meaning": "美容院",
+      "extraInfo": "「床屋」和「美容院」的差別\n\n「床屋」和「美容院」所需證照不同，「床屋」需要「理容師免許」，而「美容院」則需要「美容師免許」。服務方面，「床屋」可以提供用剃刀的服務，「美容院」主要提供染髮、燙髮等整理髮型的服務。另外，「床屋」在以前江戶時代是專為男性理髮的地方。\n\n示意圖\n\n床屋\n\n美容院"
+    },
+    {
+      "word": "会場",
+      "reading": "かいじょう",
+      "accent": "[0]",
+      "meaning": "會場",
+      "extraInfo": "「会場」的「場」唸「じょう」。"
+    },
+    {
+      "word": "工場",
+      "reading": "こうじょう",
+      "accent": "[3]",
+      "meaning": "工廠",
+      "extraInfo": "「工場」的讀音有兩種，意思完全不同。\n\n工場（こうじょう）：工廠。指物品的製造、生產、修理等的建築物。\n工場（こうば）：工作的場所。指作業的場所。"
+    },
+    {
+      "word": "売り場",
+      "reading": "うりば",
+      "accent": "[0]",
+      "meaning": "賣場",
+      "extraInfo": "「売り場」的「場」唸「ば」。"
+    },
+    {
+      "word": "事務所",
+      "reading": "じむしょ",
+      "accent": "[2]",
+      "meaning": "事務所",
+      "extraInfo": null
+    },
+    {
+      "word": "会議室",
+      "reading": "かいぎしつ",
+      "accent": "[3]",
+      "meaning": "會議室",
+      "extraInfo": null
+    },
+    {
+      "word": "展覧会",
+      "reading": "てんらんかい",
+      "accent": "[3]",
+      "meaning": "展覽會",
+      "extraInfo": null
+    },
+    {
+      "word": "動物園",
+      "reading": "どうぶつえん",
+      "accent": "[4]",
+      "meaning": "動物園",
+      "extraInfo": null
+    },
+    {
+      "word": "美術館",
+      "reading": "びじゅつかん",
+      "accent": "[3][2]",
+      "meaning": "美術館",
+      "extraInfo": null
+    },
+    {
+      "word": "新聞社",
+      "reading": "しんぶんしゃ",
+      "accent": "[3]",
+      "meaning": "報社",
+      "extraInfo": "「新聞」和「ニュース」的差別\n\n「新聞」是報紙，所以「新聞社」就是報社。而「ニュース」才是新聞（news）的意思。"
+    },
+    {
+      "word": "研究室",
+      "reading": "けんきゅうしつ",
+      "accent": "[3]",
+      "meaning": "研究室",
+      "extraInfo": null
+    },
+    {
+      "word": "駐車場",
+      "reading": "ちゅうしゃじょう",
+      "accent": "[0]",
+      "meaning": "停車場",
+      "extraInfo": "「駐車場」的「場」唸「じょう」。"
+    },
+    {
+      "word": "ビル",
+      "reading": "building",
+      "accent": "[1]",
+      "meaning": "大樓",
+      "extraInfo": null
+    },
+    {
+      "word": "アジア",
+      "reading": "Asia",
+      "accent": "[1]",
+      "meaning": "亞洲",
+      "extraInfo": null
+    },
+    {
+      "word": "アフリカ",
+      "reading": "Africa",
+      "accent": "[0]",
+      "meaning": "非洲",
+      "extraInfo": null
+    },
+    {
+      "word": "アメリカ",
+      "reading": "America",
+      "accent": "[0]",
+      "meaning": "美國",
+      "extraInfo": null
+    },
+    {
+      "word": "テニスコート",
+      "reading": "tennis court",
+      "accent": "[4]",
+      "meaning": "網球場",
+      "extraInfo": null
+    },
+    {
+      "word": "ガソリンスタンド",
+      "reading": "gasoline ＋ stand 〔和〕",
+      "accent": "[6]",
+      "meaning": "加油站",
+      "extraInfo": "加油站的日文「ガソリンスタンド」可以縮寫成「ガソスタ」。"
+    },
+    {
+      "word": "スーパーマーケット",
+      "reading": "supermarket",
+      "accent": "[5]",
+      "meaning": "超市",
+      "extraInfo": "超市的日文「スーパーマーケット」可以縮寫成「スーパー」。"
+    }
+  ]
+}

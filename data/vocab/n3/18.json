@@ -1,0 +1,1407 @@
+{
+  "level": "N3",
+  "lesson": 18,
+  "title": "N3日文單字18（名詞）片假名總整理",
+  "words": [
+    {
+      "word": "ガム",
+      "reading": "gum",
+      "accent": "[1]",
+      "meaning": "口香糖",
+      "extraInfo": null
+    },
+    {
+      "word": "ゴム",
+      "reading": "gom 〔荷〕",
+      "accent": "[1]",
+      "meaning": "橡膠",
+      "extraInfo": null
+    },
+    {
+      "word": "トン",
+      "reading": "ton",
+      "accent": "[1]",
+      "meaning": "噸",
+      "extraInfo": null
+    },
+    {
+      "word": "ミス",
+      "reading": "miss",
+      "accent": "[1]",
+      "meaning": "失誤",
+      "extraInfo": null
+    },
+    {
+      "word": "ミリ",
+      "reading": "milli 〔法〕",
+      "accent": "[1]",
+      "meaning": "毫米",
+      "extraInfo": "「ミリ」和「センチ」\n\n「ミリ」標記為「m」，接於單位前面表示1/1000。\n「センチ」標記為「c」，接於單位前面表示1/100。\n\n在日語中單獨說「ミリ」和「センチ」時，通常指「mm（ミリメートル）（毫米）」和「cm（センチメートル）（公分）」。"
+    },
+    {
+      "word": "バン",
+      "reading": "van",
+      "accent": "[1]",
+      "meaning": "箱型車、麵包車",
+      "extraInfo": null
+    },
+    {
+      "word": "ビラ",
+      "reading": "ビラ",
+      "accent": "[0]",
+      "meaning": "傳單",
+      "extraInfo": null
+    },
+    {
+      "word": "プロ",
+      "reading": "pro",
+      "accent": "[1]",
+      "meaning": "專業／專家",
+      "extraInfo": null
+    },
+    {
+      "word": "アニメ",
+      "reading": "animation",
+      "accent": "[1][0]",
+      "meaning": "動漫、動畫",
+      "extraInfo": null
+    },
+    {
+      "word": "インキ",
+      "reading": "inkt 〔荷〕",
+      "accent": "[0]",
+      "meaning": "墨水",
+      "extraInfo": null
+    },
+    {
+      "word": "インク",
+      "reading": "ink",
+      "accent": "[0]",
+      "meaning": "墨水",
+      "extraInfo": null
+    },
+    {
+      "word": "オペラ",
+      "reading": "opera 〔義〕",
+      "accent": "[1]",
+      "meaning": "歌劇",
+      "extraInfo": null
+    },
+    {
+      "word": "カード",
+      "reading": "card",
+      "accent": "[1]",
+      "meaning": "卡片",
+      "extraInfo": null
+    },
+    {
+      "word": "カラー",
+      "reading": "color",
+      "accent": "[1]",
+      "meaning": "顏色",
+      "extraInfo": null
+    },
+    {
+      "word": "クイズ",
+      "reading": "quiz",
+      "accent": "[1]",
+      "meaning": "猜謎／問答",
+      "extraInfo": null
+    },
+    {
+      "word": "ゲーム",
+      "reading": "game",
+      "accent": "[1]",
+      "meaning": "遊戲",
+      "extraInfo": null
+    },
+    {
+      "word": "コース",
+      "reading": "course",
+      "accent": "[1]",
+      "meaning": "課程／路線",
+      "extraInfo": null
+    },
+    {
+      "word": "ジャズ",
+      "reading": "jazz",
+      "accent": "[1]",
+      "meaning": "爵士樂",
+      "extraInfo": null
+    },
+    {
+      "word": "スープ",
+      "reading": "soup",
+      "accent": "[1]",
+      "meaning": "湯",
+      "extraInfo": null
+    },
+    {
+      "word": "スキー",
+      "reading": "ski",
+      "accent": "[2]",
+      "meaning": "滑雪",
+      "extraInfo": null
+    },
+    {
+      "word": "スター",
+      "reading": "star",
+      "accent": "[2]",
+      "meaning": "星星／明星",
+      "extraInfo": null
+    },
+    {
+      "word": "センチ",
+      "reading": "centi 〔法〕",
+      "accent": "[1]",
+      "meaning": "公分",
+      "extraInfo": "「ミリ」和「センチ」\n\n「ミリ」標記為「m」，接於單位前面表示1/1000。\n「センチ」標記為「c」，接於單位前面表示1/100。\n\n在日語中單獨說「ミリ」和「センチ」時，通常指「mm（ミリメートル）（毫米）」和「cm（センチメートル）（公分）」。"
+    },
+    {
+      "word": "ソース",
+      "reading": "sauce",
+      "accent": "[1]",
+      "meaning": "醬汁",
+      "extraInfo": null
+    },
+    {
+      "word": "タオル",
+      "reading": "towel",
+      "accent": "[1]",
+      "meaning": "毛巾",
+      "extraInfo": null
+    },
+    {
+      "word": "チーズ",
+      "reading": "cheese",
+      "accent": "[1]",
+      "meaning": "起司",
+      "extraInfo": null
+    },
+    {
+      "word": "チーム",
+      "reading": "team",
+      "accent": "[1]",
+      "meaning": "團隊",
+      "extraInfo": null
+    },
+    {
+      "word": "チップ",
+      "reading": "chip",
+      "accent": "[1]",
+      "meaning": "蔬菜水果的碎片／木屑／〈半導體〉晶片",
+      "extraInfo": null
+    },
+    {
+      "word": "データ",
+      "reading": "data",
+      "accent": "[1][0]",
+      "meaning": "數據／資料",
+      "extraInfo": null
+    },
+    {
+      "word": "テーマ",
+      "reading": "Thema 〔德〕",
+      "accent": "[1]",
+      "meaning": "主題",
+      "extraInfo": null
+    },
+    {
+      "word": "テント",
+      "reading": "tent",
+      "accent": "[1]",
+      "meaning": "帳篷",
+      "extraInfo": null
+    },
+    {
+      "word": "トップ",
+      "reading": "top",
+      "accent": "[1]",
+      "meaning": "頂端、頂尖／第一名／最高層",
+      "extraInfo": null
+    },
+    {
+      "word": "ドラマ",
+      "reading": "drama",
+      "accent": "[1]",
+      "meaning": "戲劇／電視劇",
+      "extraInfo": null
+    },
+    {
+      "word": "バッグ",
+      "reading": "bag",
+      "accent": "[1]",
+      "meaning": "包包",
+      "extraInfo": null
+    },
+    {
+      "word": "バレエ",
+      "reading": "ballet 〔法〕",
+      "accent": "[1]",
+      "meaning": "芭蕾舞",
+      "extraInfo": null
+    },
+    {
+      "word": "パンツ",
+      "reading": "pants",
+      "accent": "[1][0]",
+      "meaning": "內褲／褲子",
+      "extraInfo": "「パンツ」的重音\n\n「パンツ[1]」通常指「內褲」。\n「パンツ[0]」通常指「褲子」。"
+    },
+    {
+      "word": "ピンク",
+      "reading": "pink",
+      "accent": "[1]",
+      "meaning": "粉紅色",
+      "extraInfo": null
+    },
+    {
+      "word": "ブログ",
+      "reading": "blog",
+      "accent": "[0]",
+      "meaning": "部落格",
+      "extraInfo": null
+    },
+    {
+      "word": "ベルト",
+      "reading": "belt",
+      "accent": "[0]",
+      "meaning": "皮帶",
+      "extraInfo": null
+    },
+    {
+      "word": "ペンキ",
+      "reading": "pek 〔荷〕",
+      "accent": "[0]",
+      "meaning": "油漆",
+      "extraInfo": null
+    },
+    {
+      "word": "ベンチ",
+      "reading": "bench",
+      "accent": "[1]",
+      "meaning": "長凳",
+      "extraInfo": null
+    },
+    {
+      "word": "ホーム",
+      "reading": "home",
+      "accent": "[1]",
+      "meaning": "家／故鄉／中心／首頁",
+      "extraInfo": null
+    },
+    {
+      "word": "ホール",
+      "reading": "hall",
+      "accent": "[1]",
+      "meaning": "大廳",
+      "extraInfo": null
+    },
+    {
+      "word": "ボール",
+      "reading": "ball",
+      "accent": "[0]",
+      "meaning": "球",
+      "extraInfo": null
+    },
+    {
+      "word": "ホラー",
+      "reading": "horror",
+      "accent": "[1]",
+      "meaning": "恐怖",
+      "extraInfo": null
+    },
+    {
+      "word": "マイク",
+      "reading": "mike",
+      "accent": "[1]",
+      "meaning": "麥克風",
+      "extraInfo": null
+    },
+    {
+      "word": "マウス",
+      "reading": "mouse",
+      "accent": "[1]",
+      "meaning": "滑鼠",
+      "extraInfo": null
+    },
+    {
+      "word": "マナー",
+      "reading": "manner",
+      "accent": "[1]",
+      "meaning": "禮儀、禮節",
+      "extraInfo": null
+    },
+    {
+      "word": "ミルク",
+      "reading": "milk",
+      "accent": "[1]",
+      "meaning": "牛奶",
+      "extraInfo": null
+    },
+    {
+      "word": "ライト",
+      "reading": "light",
+      "accent": "[1]",
+      "meaning": "光／燈光／照明",
+      "extraInfo": null
+    },
+    {
+      "word": "ライト",
+      "reading": "right",
+      "accent": "[1]",
+      "meaning": "右側／右外野手／右派",
+      "extraInfo": null
+    },
+    {
+      "word": "ラベル",
+      "reading": "label",
+      "accent": "[1][0]",
+      "meaning": "標籤",
+      "extraInfo": null
+    },
+    {
+      "word": "ランチ",
+      "reading": "lunch",
+      "accent": "[1]",
+      "meaning": "午餐",
+      "extraInfo": null
+    },
+    {
+      "word": "リボン",
+      "reading": "ribbon",
+      "accent": "[1]",
+      "meaning": "緞帶",
+      "extraInfo": null
+    },
+    {
+      "word": "ルール",
+      "reading": "rule",
+      "accent": "[1]",
+      "meaning": "規則",
+      "extraInfo": null
+    },
+    {
+      "word": "レベル",
+      "reading": "level",
+      "accent": "[1][0]",
+      "meaning": "程度、水準、級別／階級",
+      "extraInfo": null
+    },
+    {
+      "word": "ワイン",
+      "reading": "wine",
+      "accent": "[1]",
+      "meaning": "葡萄酒",
+      "extraInfo": null
+    },
+    {
+      "word": "セット",
+      "reading": "set",
+      "accent": "[1]",
+      "meaning": "設定／成套／組",
+      "extraInfo": null
+    },
+    {
+      "word": "ノック",
+      "reading": "knock",
+      "accent": "[1]",
+      "meaning": "敲",
+      "extraInfo": null
+    },
+    {
+      "word": "プラス",
+      "reading": "plus",
+      "accent": "[0][1]",
+      "meaning": "加",
+      "extraInfo": null
+    },
+    {
+      "word": "ロック",
+      "reading": "lock",
+      "accent": "[1]",
+      "meaning": "上鎖",
+      "extraInfo": null
+    },
+    {
+      "word": "ロック",
+      "reading": "rock",
+      "accent": "[1]",
+      "meaning": "岩石／搖滾",
+      "extraInfo": null
+    },
+    {
+      "word": "デート",
+      "reading": "date",
+      "accent": "[1]",
+      "meaning": "約會",
+      "extraInfo": null
+    },
+    {
+      "word": "ヒット",
+      "reading": "hit",
+      "accent": "[1]",
+      "meaning": "熱門／擊中／點擊",
+      "extraInfo": null
+    },
+    {
+      "word": "ダウン",
+      "reading": "down",
+      "accent": "[1]",
+      "meaning": "下降",
+      "extraInfo": null
+    },
+    {
+      "word": "アルバム",
+      "reading": "album",
+      "accent": "[0]",
+      "meaning": "專輯／相簿",
+      "extraInfo": null
+    },
+    {
+      "word": "イコール",
+      "reading": "equal",
+      "accent": "[2]",
+      "meaning": "等於／等號",
+      "extraInfo": null
+    },
+    {
+      "word": "イメージ",
+      "reading": "image",
+      "accent": "[2][1]",
+      "meaning": "印象、形象／想像畫面",
+      "extraInfo": null
+    },
+    {
+      "word": "ウイルス",
+      "reading": "virus 〔拉丁〕",
+      "accent": "[2]",
+      "meaning": "病毒",
+      "extraInfo": null
+    },
+    {
+      "word": "エッセー",
+      "reading": "essay",
+      "accent": "[1]",
+      "meaning": "隨筆（文章）",
+      "extraInfo": null
+    },
+    {
+      "word": "オフィス",
+      "reading": "office",
+      "accent": "[1]",
+      "meaning": "辦公室",
+      "extraInfo": null
+    },
+    {
+      "word": "オレンジ",
+      "reading": "orange",
+      "accent": "[2]",
+      "meaning": "柳橙／橙色",
+      "extraInfo": null
+    },
+    {
+      "word": "カップル",
+      "reading": "couple",
+      "accent": "[1]",
+      "meaning": "情侶、夫婦",
+      "extraInfo": null
+    },
+    {
+      "word": "キッチン",
+      "reading": "kitchen",
+      "accent": "[1]",
+      "meaning": "廚房",
+      "extraInfo": null
+    },
+    {
+      "word": "グループ",
+      "reading": "group",
+      "accent": "[2]",
+      "meaning": "小組、群組",
+      "extraInfo": null
+    },
+    {
+      "word": "コンビニ",
+      "reading": "convenience store",
+      "accent": "[0]",
+      "meaning": "超商、便利商店",
+      "extraInfo": null
+    },
+    {
+      "word": "シーズン",
+      "reading": "season",
+      "accent": "[1]",
+      "meaning": "季節",
+      "extraInfo": null
+    },
+    {
+      "word": "ショック",
+      "reading": "shock",
+      "accent": "[1]",
+      "meaning": "驚嚇、衝擊、打擊／休克",
+      "extraInfo": null
+    },
+    {
+      "word": "スカーフ",
+      "reading": "scarf",
+      "accent": "[2]",
+      "meaning": "領巾",
+      "extraInfo": null
+    },
+    {
+      "word": "ストレス",
+      "reading": "stress",
+      "accent": "[2]",
+      "meaning": "壓力",
+      "extraInfo": null
+    },
+    {
+      "word": "スピード",
+      "reading": "speed",
+      "accent": "[0]",
+      "meaning": "速度",
+      "extraInfo": null
+    },
+    {
+      "word": "ソックス",
+      "reading": "socks",
+      "accent": "[1]",
+      "meaning": "襪子",
+      "extraInfo": null
+    },
+    {
+      "word": "ソファー",
+      "reading": "sofa",
+      "accent": "[1]",
+      "meaning": "沙發",
+      "extraInfo": null
+    },
+    {
+      "word": "タイトル",
+      "reading": "title",
+      "accent": "[1]",
+      "meaning": "標題",
+      "extraInfo": null
+    },
+    {
+      "word": "ダンサー",
+      "reading": "dancer",
+      "accent": "[1]",
+      "meaning": "舞者",
+      "extraInfo": null
+    },
+    {
+      "word": "チケット",
+      "reading": "ticket",
+      "accent": "[2][1]",
+      "meaning": "（入場）票、券、門票",
+      "extraInfo": null
+    },
+    {
+      "word": "チャイム",
+      "reading": "chime",
+      "accent": "[1]",
+      "meaning": "鈴聲／門鈴",
+      "extraInfo": null
+    },
+    {
+      "word": "チャンス",
+      "reading": "chance",
+      "accent": "[1]",
+      "meaning": "機會",
+      "extraInfo": null
+    },
+    {
+      "word": "チョーク",
+      "reading": "chalk",
+      "accent": "[1]",
+      "meaning": "粉筆",
+      "extraInfo": null
+    },
+    {
+      "word": "デザート",
+      "reading": "dessert",
+      "accent": "[2]",
+      "meaning": "甜點",
+      "extraInfo": null
+    },
+    {
+      "word": "デジカメ",
+      "reading": "digital camera",
+      "accent": "[0]",
+      "meaning": "數位相機",
+      "extraInfo": null
+    },
+    {
+      "word": "デジタル",
+      "reading": "digital",
+      "accent": "[1]",
+      "meaning": "數字",
+      "extraInfo": null
+    },
+    {
+      "word": "トランプ",
+      "reading": "trump",
+      "accent": "[2]",
+      "meaning": "撲克牌",
+      "extraInfo": null
+    },
+    {
+      "word": "ナンバー",
+      "reading": "number",
+      "accent": "[1]",
+      "meaning": "號碼、數字",
+      "extraInfo": null
+    },
+    {
+      "word": "バランス",
+      "reading": "balance",
+      "accent": "[0]",
+      "meaning": "平衡",
+      "extraInfo": null
+    },
+    {
+      "word": "パンプス",
+      "reading": "pumps",
+      "accent": "[1][0]",
+      "meaning": "女用皮鞋",
+      "extraInfo": null
+    },
+    {
+      "word": "ヒーター",
+      "reading": "heater",
+      "accent": "[1]",
+      "meaning": "電暖器",
+      "extraInfo": null
+    },
+    {
+      "word": "ビニール",
+      "reading": "vinyl",
+      "accent": "[2]",
+      "meaning": "塑膠",
+      "extraInfo": null
+    },
+    {
+      "word": "ブランド",
+      "reading": "brand",
+      "accent": "[0]",
+      "meaning": "商標",
+      "extraInfo": null
+    },
+    {
+      "word": "フルーツ",
+      "reading": "fruit",
+      "accent": "[2]",
+      "meaning": "水果",
+      "extraInfo": null
+    },
+    {
+      "word": "ブレーキ",
+      "reading": "brake",
+      "accent": "[2]",
+      "meaning": "煞車（裝置）",
+      "extraInfo": null
+    },
+    {
+      "word": "ベテラン",
+      "reading": "veteran",
+      "accent": "[0]",
+      "meaning": "老手、老鳥、行家",
+      "extraInfo": null
+    },
+    {
+      "word": "ベランダ",
+      "reading": "veranda",
+      "accent": "[0]",
+      "meaning": "陽台",
+      "extraInfo": null
+    },
+    {
+      "word": "ボーナス",
+      "reading": "bonus",
+      "accent": "[1]",
+      "meaning": "獎金",
+      "extraInfo": null
+    },
+    {
+      "word": "ポップス",
+      "reading": "pops",
+      "accent": "[1]",
+      "meaning": "流行音樂",
+      "extraInfo": null
+    },
+    {
+      "word": "マスコミ",
+      "reading": "mass communication",
+      "accent": "[0]",
+      "meaning": "媒體",
+      "extraInfo": null
+    },
+    {
+      "word": "マフラー",
+      "reading": "muffler",
+      "accent": "[1]",
+      "meaning": "圍巾",
+      "extraInfo": null
+    },
+    {
+      "word": "メニュー",
+      "reading": "menu",
+      "accent": "[1]",
+      "meaning": "菜單",
+      "extraInfo": null
+    },
+    {
+      "word": "メモリー",
+      "reading": "memory",
+      "accent": "[1][0]",
+      "meaning": "記憶體",
+      "extraInfo": null
+    },
+    {
+      "word": "ライター",
+      "reading": "lighter",
+      "accent": "[1]",
+      "meaning": "打火機",
+      "extraInfo": null
+    },
+    {
+      "word": "ライター",
+      "reading": "writer",
+      "accent": "[1][0]",
+      "meaning": "作家",
+      "extraInfo": null
+    },
+    {
+      "word": "ラケット",
+      "reading": "racket",
+      "accent": "[2]",
+      "meaning": "球拍",
+      "extraInfo": null
+    },
+    {
+      "word": "ラッシュ",
+      "reading": "rush",
+      "accent": "[1]",
+      "meaning": "尖峰時段／擁擠",
+      "extraInfo": null
+    },
+    {
+      "word": "リーダー",
+      "reading": "leader",
+      "accent": "[1]",
+      "meaning": "領導者",
+      "extraInfo": null
+    },
+    {
+      "word": "リビング",
+      "reading": "living",
+      "accent": "[1]",
+      "meaning": "客廳",
+      "extraInfo": null
+    },
+    {
+      "word": "レシート",
+      "reading": "receipt",
+      "accent": "[2]",
+      "meaning": "收據、發票",
+      "extraInfo": null
+    },
+    {
+      "word": "レンタル",
+      "reading": "rental",
+      "accent": "[1]",
+      "meaning": "出租",
+      "extraInfo": null
+    },
+    {
+      "word": "ロケット",
+      "reading": "rocket",
+      "accent": "[2][1]",
+      "meaning": "火箭",
+      "extraInfo": null
+    },
+    {
+      "word": "ロッカー",
+      "reading": "locker",
+      "accent": "[1]",
+      "meaning": "儲物櫃",
+      "extraInfo": null
+    },
+    {
+      "word": "ロボット",
+      "reading": "robot",
+      "accent": "[1][2]",
+      "meaning": "機器人",
+      "extraInfo": null
+    },
+    {
+      "word": "オープン",
+      "reading": "open",
+      "accent": "[1]",
+      "meaning": "開放／開（店）",
+      "extraInfo": null
+    },
+    {
+      "word": "サンプル",
+      "reading": "sample",
+      "accent": "[1]",
+      "meaning": "樣本、樣品",
+      "extraInfo": null
+    },
+    {
+      "word": "マイナス",
+      "reading": "minus",
+      "accent": "[0]",
+      "meaning": "減／負數",
+      "extraInfo": null
+    },
+    {
+      "word": "マスター",
+      "reading": "master",
+      "accent": "[1]",
+      "meaning": "學好、學會、精通／老闆、主人／碩士",
+      "extraInfo": null
+    },
+    {
+      "word": "イベント",
+      "reading": "event",
+      "accent": "[0]",
+      "meaning": "活動",
+      "extraInfo": null
+    },
+    {
+      "word": "デザイン",
+      "reading": "design",
+      "accent": "[2]",
+      "meaning": "設計",
+      "extraInfo": null
+    },
+    {
+      "word": "アイデア",
+      "reading": "idea",
+      "accent": "[1][3]",
+      "meaning": "點子、主意",
+      "extraInfo": null
+    },
+    {
+      "word": "アクション",
+      "reading": "action",
+      "accent": "[1]",
+      "meaning": "動作",
+      "extraInfo": null
+    },
+    {
+      "word": "アドバイス",
+      "reading": "advice",
+      "accent": "[1][3]",
+      "meaning": "建議、忠告",
+      "extraInfo": null
+    },
+    {
+      "word": "アマチュア",
+      "reading": "amateur",
+      "accent": "[0]",
+      "meaning": "業餘、愛好者",
+      "extraInfo": null
+    },
+    {
+      "word": "アンケート",
+      "reading": "enqu&ecirc;te 〔法〕",
+      "accent": "[1]",
+      "meaning": "問卷調查",
+      "extraInfo": null
+    },
+    {
+      "word": "ウエイター",
+      "reading": "waiter",
+      "accent": "[2][0]",
+      "meaning": "服務生（男）",
+      "extraInfo": null
+    },
+    {
+      "word": "エネルギー",
+      "reading": "Energie 〔德〕",
+      "accent": "[2][3]",
+      "meaning": "能源",
+      "extraInfo": null
+    },
+    {
+      "word": "エンジニア",
+      "reading": "engineer",
+      "accent": "[3]",
+      "meaning": "工程師",
+      "extraInfo": null
+    },
+    {
+      "word": "カーペット",
+      "reading": "carpet",
+      "accent": "[1]",
+      "meaning": "地毯",
+      "extraInfo": null
+    },
+    {
+      "word": "カメラマン",
+      "reading": "cameraman",
+      "accent": "[3]",
+      "meaning": "攝影師",
+      "extraInfo": null
+    },
+    {
+      "word": "クラシック",
+      "reading": "classic",
+      "accent": "[3]",
+      "meaning": "經典",
+      "extraInfo": null
+    },
+    {
+      "word": "クリスマス",
+      "reading": "Christmas",
+      "accent": "[3]",
+      "meaning": "聖誕節",
+      "extraInfo": null
+    },
+    {
+      "word": "ケチャップ",
+      "reading": "ketchup",
+      "accent": "[2][1]",
+      "meaning": "番茄醬",
+      "extraInfo": null
+    },
+    {
+      "word": "コメディー",
+      "reading": "comedy",
+      "accent": "[1]",
+      "meaning": "喜劇",
+      "extraInfo": null
+    },
+    {
+      "word": "コンタクト",
+      "reading": "contact",
+      "accent": "[1]",
+      "meaning": "接觸／交涉",
+      "extraInfo": null
+    },
+    {
+      "word": "ジェット機",
+      "reading": "ジェットき",
+      "accent": "[3]",
+      "meaning": "噴射機",
+      "extraInfo": null
+    },
+    {
+      "word": "ジャケット",
+      "reading": "jacket",
+      "accent": "[1][2][0]",
+      "meaning": "夾克",
+      "extraInfo": null
+    },
+    {
+      "word": "ストーリー",
+      "reading": "story",
+      "accent": "[2]",
+      "meaning": "故事",
+      "extraInfo": null
+    },
+    {
+      "word": "ストライプ",
+      "reading": "stripe",
+      "accent": "[3]",
+      "meaning": "條紋",
+      "extraInfo": null
+    },
+    {
+      "word": "スニーカー",
+      "reading": "sneakers",
+      "accent": "[2][0]",
+      "meaning": "運動鞋",
+      "extraInfo": null
+    },
+    {
+      "word": "ダイニング",
+      "reading": "dining",
+      "accent": "[1]",
+      "meaning": "用餐／食堂",
+      "extraInfo": null
+    },
+    {
+      "word": "デザイナー",
+      "reading": "designer",
+      "accent": "[2][0]",
+      "meaning": "設計師",
+      "extraInfo": null
+    },
+    {
+      "word": "トースター",
+      "reading": "toaster",
+      "accent": "[1]",
+      "meaning": "烤麵包機",
+      "extraInfo": null
+    },
+    {
+      "word": "ネックレス",
+      "reading": "necklace",
+      "accent": "[1]",
+      "meaning": "項鍊",
+      "extraInfo": null
+    },
+    {
+      "word": "パーセント",
+      "reading": "percent",
+      "accent": "[3]",
+      "meaning": "百分比",
+      "extraInfo": null
+    },
+    {
+      "word": "パートナー",
+      "reading": "partner",
+      "accent": "[1]",
+      "meaning": "夥伴／搭當／配偶、伴侶",
+      "extraInfo": null
+    },
+    {
+      "word": "バイオリン",
+      "reading": "violin",
+      "accent": "[0]",
+      "meaning": "小提琴",
+      "extraInfo": null
+    },
+    {
+      "word": "ハイキング",
+      "reading": "hiking",
+      "accent": "[1]",
+      "meaning": "健行",
+      "extraInfo": null
+    },
+    {
+      "word": "ハイヒール",
+      "reading": "high heels",
+      "accent": "[3]",
+      "meaning": "高跟鞋",
+      "extraInfo": null
+    },
+    {
+      "word": "パイロット",
+      "reading": "pilot",
+      "accent": "[1][3]",
+      "meaning": "飛行員",
+      "extraInfo": null
+    },
+    {
+      "word": "パスポート",
+      "reading": "passport",
+      "accent": "[3]",
+      "meaning": "護照",
+      "extraInfo": null
+    },
+    {
+      "word": "ピアニスト",
+      "reading": "pianist",
+      "accent": "[3]",
+      "meaning": "鋼琴家",
+      "extraInfo": null
+    },
+    {
+      "word": "ピクニック",
+      "reading": "picnic",
+      "accent": "[1]",
+      "meaning": "郊遊、野餐",
+      "extraInfo": null
+    },
+    {
+      "word": "ファスナー",
+      "reading": "fastener",
+      "accent": "[1]",
+      "meaning": "拉鍊",
+      "extraInfo": null
+    },
+    {
+      "word": "ファックス",
+      "reading": "fax",
+      "accent": "[1]",
+      "meaning": "傳真",
+      "extraInfo": null
+    },
+    {
+      "word": "フライパン",
+      "reading": "frying pan",
+      "accent": "[0]",
+      "meaning": "平底鍋",
+      "extraInfo": null
+    },
+    {
+      "word": "ブラインド",
+      "reading": "blind",
+      "accent": "[0]",
+      "meaning": "百葉簾",
+      "extraInfo": null
+    },
+    {
+      "word": "ヘルメット",
+      "reading": "helmet",
+      "accent": "[1][3]",
+      "meaning": "安全帽／頭盔",
+      "extraInfo": null
+    },
+    {
+      "word": "マヨネーズ",
+      "reading": "mayonnaise 〔法〕",
+      "accent": "[3]",
+      "meaning": "美乃滋",
+      "extraInfo": null
+    },
+    {
+      "word": "マンション",
+      "reading": "mansion",
+      "accent": "[1]",
+      "meaning": "大廈、大樓",
+      "extraInfo": null
+    },
+    {
+      "word": "メッセージ",
+      "reading": "message",
+      "accent": "[1]",
+      "meaning": "訊息／留言",
+      "extraInfo": null
+    },
+    {
+      "word": "リサイクル",
+      "reading": "recycle",
+      "accent": "[2]",
+      "meaning": "回收",
+      "extraInfo": null
+    },
+    {
+      "word": "インスタント",
+      "reading": "instant",
+      "accent": "[1][4]",
+      "meaning": "速成、即時",
+      "extraInfo": null
+    },
+    {
+      "word": "インタビュー",
+      "reading": "interview",
+      "accent": "[1]",
+      "meaning": "訪問、採訪",
+      "extraInfo": null
+    },
+    {
+      "word": "ウエイトレス",
+      "reading": "waitress",
+      "accent": "[2]",
+      "meaning": "服務生（女）",
+      "extraInfo": null
+    },
+    {
+      "word": "オリンピック",
+      "reading": "Olympic",
+      "accent": "[4]",
+      "meaning": "奧林匹克",
+      "extraInfo": null
+    },
+    {
+      "word": "クラスメート",
+      "reading": "classmate",
+      "accent": "[4]",
+      "meaning": "同學",
+      "extraInfo": null
+    },
+    {
+      "word": "ストッキング",
+      "reading": "stocking",
+      "accent": "[2]",
+      "meaning": "絲襪",
+      "extraInfo": null
+    },
+    {
+      "word": "ダイヤモンド",
+      "reading": "diamond",
+      "accent": "[4]",
+      "meaning": "鑽石",
+      "extraInfo": null
+    },
+    {
+      "word": "ディスプレー",
+      "reading": "display",
+      "accent": "[1]",
+      "meaning": "螢幕、顯示器／展示、陳列",
+      "extraInfo": null
+    },
+    {
+      "word": "ドレッシング",
+      "reading": "dressing",
+      "accent": "[2]",
+      "meaning": "（沙拉）調味醬",
+      "extraInfo": null
+    },
+    {
+      "word": "バラエティー",
+      "reading": "variety",
+      "accent": "[2]",
+      "meaning": "綜藝節目",
+      "extraInfo": null
+    },
+    {
+      "word": "パンフレット",
+      "reading": "pamphlet",
+      "accent": "[1][4]",
+      "meaning": "宣傳手冊",
+      "extraInfo": null
+    },
+    {
+      "word": "ビデオデッキ",
+      "reading": "video deck",
+      "accent": "[4]",
+      "meaning": "影音播放機",
+      "extraInfo": null
+    },
+    {
+      "word": "プライバシー",
+      "reading": "privacy",
+      "accent": "[2]",
+      "meaning": "隱私",
+      "extraInfo": null
+    },
+    {
+      "word": "プラスチック",
+      "reading": "plastic",
+      "accent": "[4]",
+      "meaning": "塑料",
+      "extraInfo": null
+    },
+    {
+      "word": "ホームページ",
+      "reading": "home page",
+      "accent": "[4]",
+      "meaning": "首頁",
+      "extraInfo": null
+    },
+    {
+      "word": "ボランティア",
+      "reading": "volunteer",
+      "accent": "[2]",
+      "meaning": "義工、志工",
+      "extraInfo": null
+    },
+    {
+      "word": "ポリエステル",
+      "reading": "polyester",
+      "accent": "[3]",
+      "meaning": "聚酯纖維",
+      "extraInfo": null
+    },
+    {
+      "word": "ミュージカル",
+      "reading": "musical",
+      "accent": "[1]",
+      "meaning": "音樂劇",
+      "extraInfo": null
+    },
+    {
+      "word": "レインコート",
+      "reading": "raincoat",
+      "accent": "[4]",
+      "meaning": "雨衣",
+      "extraInfo": null
+    },
+    {
+      "word": "トレーニング",
+      "reading": "training",
+      "accent": "[2]",
+      "meaning": "訓練",
+      "extraInfo": null
+    },
+    {
+      "word": "アイスクリーム",
+      "reading": "ice cream",
+      "accent": "[5]",
+      "meaning": "冰淇淋",
+      "extraInfo": null
+    },
+    {
+      "word": "インターネット",
+      "reading": "Internet",
+      "accent": "[5]",
+      "meaning": "網際網路",
+      "extraInfo": null
+    },
+    {
+      "word": "スチュワーデス",
+      "reading": "stewardess",
+      "accent": "[3]",
+      "meaning": "女空服員",
+      "extraInfo": null
+    },
+    {
+      "word": "バーゲンセール",
+      "reading": "bargain sale",
+      "accent": "[5]",
+      "meaning": "大拍賣、減價特賣",
+      "extraInfo": null
+    },
+    {
+      "word": "ハードディスク",
+      "reading": "hard disk",
+      "accent": "[4]",
+      "meaning": "硬碟",
+      "extraInfo": null
+    },
+    {
+      "word": "ファストフード",
+      "reading": "fast food",
+      "accent": "[4]",
+      "meaning": "速食",
+      "extraInfo": null
+    },
+    {
+      "word": "プラットホーム",
+      "reading": "platform",
+      "accent": "[5]",
+      "meaning": "月台",
+      "extraInfo": null
+    },
+    {
+      "word": "ミュージシャン",
+      "reading": "musician",
+      "accent": "[3][1]",
+      "meaning": "音樂家",
+      "extraInfo": null
+    },
+    {
+      "word": "ラッシュアワー",
+      "reading": "rush hour",
+      "accent": "[4]",
+      "meaning": "尖峰時段",
+      "extraInfo": null
+    },
+    {
+      "word": "コンタクトレンズ",
+      "reading": "contact lens",
+      "accent": "[6]",
+      "meaning": "隱形眼鏡",
+      "extraInfo": null
+    },
+    {
+      "word": "ドキュメンタリー",
+      "reading": "documentary",
+      "accent": "[3]",
+      "meaning": "記錄片",
+      "extraInfo": null
+    },
+    {
+      "word": "プリペイドカード",
+      "reading": "prepaid card",
+      "accent": "[6]",
+      "meaning": "預付卡",
+      "extraInfo": null
+    },
+    {
+      "word": "コミュニケーション",
+      "reading": "communication",
+      "accent": "[4]",
+      "meaning": "溝通、交流",
+      "extraInfo": null
+    }
+  ]
+}

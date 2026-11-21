@@ -1,0 +1,126 @@
+{
+  "level": "N4",
+  "lesson": 10,
+  "title": "N4日文單字10（名詞）專業領域",
+  "words": [
+    {
+      "word": "地理",
+      "reading": "ちり",
+      "accent": "[1]",
+      "meaning": "地理",
+      "extraInfo": null
+    },
+    {
+      "word": "医学",
+      "reading": "いがく",
+      "accent": "[1]",
+      "meaning": "醫學",
+      "extraInfo": null
+    },
+    {
+      "word": "科学",
+      "reading": "かがく",
+      "accent": "[1]",
+      "meaning": "科學",
+      "extraInfo": null
+    },
+    {
+      "word": "政治",
+      "reading": "せいじ",
+      "accent": "[0]",
+      "meaning": "政治",
+      "extraInfo": null
+    },
+    {
+      "word": "文化",
+      "reading": "ぶんか",
+      "accent": "[1]",
+      "meaning": "文化",
+      "extraInfo": null
+    },
+    {
+      "word": "漫画",
+      "reading": "まんが",
+      "accent": "[0]",
+      "meaning": "漫畫",
+      "extraInfo": null
+    },
+    {
+      "word": "語学",
+      "reading": "ごがく",
+      "accent": "[1]",
+      "meaning": "語學",
+      "extraInfo": null
+    },
+    {
+      "word": "専門",
+      "reading": "せんもん",
+      "accent": "[0]",
+      "meaning": "專門",
+      "extraInfo": null
+    },
+    {
+      "word": "文学",
+      "reading": "ぶんがく",
+      "accent": "[1]",
+      "meaning": "文學",
+      "extraInfo": null
+    },
+    {
+      "word": "文法",
+      "reading": "ぶんぽう",
+      "accent": "[0]",
+      "meaning": "文法",
+      "extraInfo": null
+    },
+    {
+      "word": "法律",
+      "reading": "ほうりつ",
+      "accent": "[0]",
+      "meaning": "法律",
+      "extraInfo": null
+    },
+    {
+      "word": "体育",
+      "reading": "たいいく",
+      "accent": "[1]",
+      "meaning": "體育",
+      "extraInfo": null
+    },
+    {
+      "word": "建築",
+      "reading": "けんちく",
+      "accent": "[0]",
+      "meaning": "建築",
+      "extraInfo": null
+    },
+    {
+      "word": "数学",
+      "reading": "すうがく",
+      "accent": "[0]",
+      "meaning": "數學",
+      "extraInfo": null
+    },
+    {
+      "word": "芸術",
+      "reading": "げいじゅつ",
+      "accent": "[0]",
+      "meaning": "藝術",
+      "extraInfo": null
+    },
+    {
+      "word": "工業",
+      "reading": "こうぎょう",
+      "accent": "[1]",
+      "meaning": "工業",
+      "extraInfo": null
+    },
+    {
+      "word": "産業",
+      "reading": "さんぎょう",
+      "accent": "[0]",
+      "meaning": "產業",
+      "extraInfo": null
+    }
+  ]
+}

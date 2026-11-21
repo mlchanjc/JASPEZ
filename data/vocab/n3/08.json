@@ -1,0 +1,210 @@
+{
+  "level": "N3",
+  "lesson": 8,
+  "title": "N3日文單字08（名詞）廚房器具",
+  "words": [
+    {
+      "word": "粥",
+      "reading": "かゆ",
+      "accent": "[0]",
+      "meaning": "粥",
+      "extraInfo": null
+    },
+    {
+      "word": "茶",
+      "reading": "ちゃ",
+      "accent": "[0]",
+      "meaning": "茶",
+      "extraInfo": null
+    },
+    {
+      "word": "うどん",
+      "reading": "うどん",
+      "accent": "[0]",
+      "meaning": "烏龍麵",
+      "extraInfo": "「うどん」是烏龍麵的意思，漢字是「饂飩」，但一般寫平假名。"
+    },
+    {
+      "word": "弁当",
+      "reading": "べんとう",
+      "accent": "[3]",
+      "meaning": "便當",
+      "extraInfo": null
+    },
+    {
+      "word": "味噌汁",
+      "reading": "みそしる",
+      "accent": "[3]",
+      "meaning": "味噌湯",
+      "extraInfo": null
+    },
+    {
+      "word": "酢",
+      "reading": "す",
+      "accent": "[1]",
+      "meaning": "醋",
+      "extraInfo": null
+    },
+    {
+      "word": "胡椒",
+      "reading": "こしょう",
+      "accent": "[2]",
+      "meaning": "胡椒",
+      "extraInfo": null
+    },
+    {
+      "word": "油",
+      "reading": "あぶら",
+      "accent": "[0]",
+      "meaning": "油",
+      "extraInfo": null
+    },
+    {
+      "word": "脂",
+      "reading": "あぶら",
+      "accent": "[0]",
+      "meaning": "脂肪／油脂",
+      "extraInfo": null
+    },
+    {
+      "word": "食糧",
+      "reading": "しょくりょう",
+      "accent": "[2]",
+      "meaning": "糧食",
+      "extraInfo": "「食糧」是糧食的意思，但通常指「米」或「麥」。"
+    },
+    {
+      "word": "栄養",
+      "reading": "えいよう",
+      "accent": "[0]",
+      "meaning": "營養",
+      "extraInfo": null
+    },
+    {
+      "word": "食器棚",
+      "reading": "しょっきだな",
+      "accent": "[3]",
+      "meaning": "廚具架",
+      "extraInfo": null
+    },
+    {
+      "word": "包丁",
+      "reading": "ほうちょう",
+      "accent": "[0]",
+      "meaning": "菜刀",
+      "extraInfo": null
+    },
+    {
+      "word": "まな板",
+      "reading": "まないた",
+      "accent": "[0][3]",
+      "meaning": "砧板",
+      "extraInfo": null
+    },
+    {
+      "word": "杓文字",
+      "reading": "しゃもじ",
+      "accent": "[1]",
+      "meaning": "飯勺",
+      "extraInfo": "「杓文字」跟「お玉杓子」都是勺子的意思，前者多指「飯勺」，後者多指「湯勺」。另外，「お玉杓子」通常用簡稱「お玉」。"
+    },
+    {
+      "word": "お玉",
+      "reading": "おたま",
+      "accent": "[2]",
+      "meaning": "湯勺子",
+      "extraInfo": "「杓文字」跟「お玉杓子」都是勺子的意思，前者多指「飯勺」，後者多指「湯勺」。另外，「お玉杓子」通常用簡稱「お玉」。"
+    },
+    {
+      "word": "お玉杓子",
+      "reading": "おたまじゃくし",
+      "accent": "[4]",
+      "meaning": "湯勺子",
+      "extraInfo": "「杓文字」跟「お玉杓子」都是勺子的意思，前者多指「飯勺」，後者多指「湯勺」。另外，「お玉杓子」通常用簡稱「お玉」。"
+    },
+    {
+      "word": "鍋",
+      "reading": "なべ",
+      "accent": "[1]",
+      "meaning": "鍋子",
+      "extraInfo": null
+    },
+    {
+      "word": "中華鍋",
+      "reading": "ちゅうかなべ",
+      "accent": "[4][3]",
+      "meaning": "炒菜鍋",
+      "extraInfo": null
+    },
+    {
+      "word": "湯飲み",
+      "reading": "ゆのみ",
+      "accent": "[3]",
+      "meaning": "茶杯",
+      "extraInfo": null
+    },
+    {
+      "word": "皿",
+      "reading": "さら",
+      "accent": "[0]",
+      "meaning": "盤子",
+      "extraInfo": null
+    },
+    {
+      "word": "丼",
+      "reading": "どんぶり",
+      "accent": "[0]",
+      "meaning": "大碗",
+      "extraInfo": "「丼」是「丼鉢」的簡稱，是大碗的意思，將白飯跟各種食品盛在大碗裡的料理叫做「丼飯」或「丼物」，有「牛丼」、「親子丼」、「海鮮丼」等。"
+    },
+    {
+      "word": "丼鉢",
+      "reading": "どんぶりばち",
+      "accent": "[4]",
+      "meaning": "大碗",
+      "extraInfo": "「丼」是「丼鉢」的簡稱，是大碗的意思，將白飯跟各種食品盛在大碗裡的料理叫做「丼飯」或「丼物」，有「牛丼」、「親子丼」、「海鮮丼」等。"
+    },
+    {
+      "word": "丼飯",
+      "reading": "どんぶりめし",
+      "accent": "[4][0]",
+      "meaning": "丼飯、蓋飯",
+      "extraInfo": "「丼」是「丼鉢」的簡稱，是大碗的意思，將白飯跟各種食品盛在大碗裡的料理叫做「丼飯」或「丼物」，有「牛丼」、「親子丼」、「海鮮丼」等。"
+    },
+    {
+      "word": "丼物",
+      "reading": "どんぶりもの",
+      "accent": "[0]",
+      "meaning": "丼飯、蓋飯",
+      "extraInfo": "「丼」是「丼鉢」的簡稱，是大碗的意思，將白飯跟各種食品盛在大碗裡的料理叫做「丼飯」或「丼物」，有「牛丼」、「親子丼」、「海鮮丼」等。"
+    },
+    {
+      "word": "炊飯器",
+      "reading": "すいはんき",
+      "accent": "[3]",
+      "meaning": "電鍋",
+      "extraInfo": null
+    },
+    {
+      "word": "電子レンジ",
+      "reading": "でんしれんじ",
+      "accent": "[4]",
+      "meaning": "微波爐",
+      "extraInfo": null
+    },
+    {
+      "word": "オーブン",
+      "reading": "oven",
+      "accent": "[1]",
+      "meaning": "烤箱",
+      "extraInfo": null
+    },
+    {
+      "word": "エプロン",
+      "reading": "apron",
+      "accent": "[1]",
+      "meaning": "圍裙",
+      "extraInfo": null
+    }
+  ]
+}

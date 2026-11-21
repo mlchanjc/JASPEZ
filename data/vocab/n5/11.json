@@ -1,0 +1,105 @@
+{
+  "level": "N5",
+  "lesson": 11,
+  "title": "N5日文單字11（名詞）電器",
+  "words": [
+    {
+      "word": "こたつ",
+      "reading": "こたつ",
+      "accent": "[0]",
+      "meaning": "暖桌（日式暖桌）、被爐",
+      "extraInfo": null
+    },
+    {
+      "word": "洗濯機",
+      "reading": "せんたくき",
+      "accent": "[4][3]",
+      "meaning": "洗衣機",
+      "extraInfo": null
+    },
+    {
+      "word": "扇風機",
+      "reading": "せんぷうき",
+      "accent": "[3]",
+      "meaning": "電風扇、電扇",
+      "extraInfo": null
+    },
+    {
+      "word": "暖房",
+      "reading": "だんぼう",
+      "accent": "[0]",
+      "meaning": "暖氣",
+      "extraInfo": null
+    },
+    {
+      "word": "電気",
+      "reading": "でんき",
+      "accent": "[1]",
+      "meaning": "電力、電氣／燈、電燈",
+      "extraInfo": null
+    },
+    {
+      "word": "電気製品",
+      "reading": "でんきせいひん",
+      "accent": "[4]",
+      "meaning": "電器產品",
+      "extraInfo": null
+    },
+    {
+      "word": "電話",
+      "reading": "でんわ",
+      "accent": "[0]",
+      "meaning": "電話",
+      "extraInfo": null
+    },
+    {
+      "word": "冷蔵庫",
+      "reading": "れいぞうこ",
+      "accent": "[3]",
+      "meaning": "冰箱",
+      "extraInfo": "注意「冷蔵庫」的「蔵」寫法，是「蔵」不是「藏」。"
+    },
+    {
+      "word": "エアコン",
+      "reading": "air conditioner",
+      "accent": "[0]",
+      "meaning": "空調",
+      "extraInfo": null
+    },
+    {
+      "word": "カメラ",
+      "reading": "camera",
+      "accent": "[1]",
+      "meaning": "相機、照相機／攝影機",
+      "extraInfo": null
+    },
+    {
+      "word": "テレビ",
+      "reading": "television",
+      "accent": "[1]",
+      "meaning": "電視",
+      "extraInfo": null
+    },
+    {
+      "word": "パソコン",
+      "reading": "personal computer",
+      "accent": "[0]",
+      "meaning": "電腦、個人電腦",
+      "extraInfo": null
+    },
+    {
+      "word": "ビデオ",
+      "reading": "video",
+      "accent": "[1]",
+      "meaning": "影片／錄影帶",
+      "extraInfo": null
+    },
+    {
+      "word": "ラジオ",
+      "reading": "radio",
+      "accent": "[1]",
+      "meaning": "收音機",
+      "extraInfo": null
+    }
+  ]
+}

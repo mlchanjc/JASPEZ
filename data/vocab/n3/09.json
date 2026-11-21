@@ -1,0 +1,189 @@
+{
+  "level": "N3",
+  "lesson": 9,
+  "title": "N3日文單字09（名詞）交通工具",
+  "words": [
+    {
+      "word": "自動車",
+      "reading": "じどうしゃ",
+      "accent": "[2][0]",
+      "meaning": "汽車",
+      "extraInfo": null
+    },
+    {
+      "word": "トラック",
+      "reading": "truck",
+      "accent": "[2]",
+      "meaning": "卡車",
+      "extraInfo": null
+    },
+    {
+      "word": "MRT",
+      "reading": "エムアールティー",
+      "accent": "[6]",
+      "meaning": "MRT",
+      "extraInfo": null
+    },
+    {
+      "word": "パトカー",
+      "reading": "patrol car",
+      "accent": "[2][3]",
+      "meaning": "警車、巡邏警車",
+      "extraInfo": null
+    },
+    {
+      "word": "救急車",
+      "reading": "きゅうきゅうしゃ",
+      "accent": "[3]",
+      "meaning": "救護車",
+      "extraInfo": null
+    },
+    {
+      "word": "消防車",
+      "reading": "しょうぼうしゃ",
+      "accent": "[3]",
+      "meaning": "消防車",
+      "extraInfo": null
+    },
+    {
+      "word": "始発",
+      "reading": "しはつ",
+      "accent": "[0]",
+      "meaning": "頭班車",
+      "extraInfo": null
+    },
+    {
+      "word": "終電",
+      "reading": "しゅうでん",
+      "accent": "[0]",
+      "meaning": "末班車",
+      "extraInfo": null
+    },
+    {
+      "word": "普通列車",
+      "reading": "ふつうれっしゃ",
+      "accent": "[4]",
+      "meaning": "普通列車（慢）",
+      "extraInfo": null
+    },
+    {
+      "word": "快速列車",
+      "reading": "かいそくれっしゃ",
+      "accent": "[5]",
+      "meaning": "快速列車（中）",
+      "extraInfo": null
+    },
+    {
+      "word": "急行列車",
+      "reading": "きゅうこうれっしゃ",
+      "accent": "[5]",
+      "meaning": "急行列車（快）",
+      "extraInfo": null
+    },
+    {
+      "word": "特急列車",
+      "reading": "とっきゅうれっしゃ",
+      "accent": "[5]",
+      "meaning": "特急列車（極快）",
+      "extraInfo": null
+    },
+    {
+      "word": "定期券",
+      "reading": "ていきけん",
+      "accent": "[3]",
+      "meaning": "定期車票",
+      "extraInfo": "「定期券」是「定期乗車券」的簡稱，提供特定期間需要搭乘的人，使用者需一次支付全期金額，但金額會比單次賣票累計的總金額便宜，如月票、季票。"
+    },
+    {
+      "word": "回数券",
+      "reading": "かいすうけん",
+      "accent": "[3]",
+      "meaning": "回數券",
+      "extraInfo": "「回数券」是指一次提供數張票給經常需要購買的人，有分「乗車券・入場券・食券・コーヒーチケット」等，其金額會比單次購買累計的總金額便宜，如一疊10張。在大眾運輸方面，由於隨著IC卡的普及，使用「回数券」的人越來越少，因此很多經營鐵路、公車等公司開始廢止「回数券」。"
+    },
+    {
+      "word": "券売機",
+      "reading": "けんばいき",
+      "accent": "[3]",
+      "meaning": "售票機",
+      "extraInfo": null
+    },
+    {
+      "word": "精算機",
+      "reading": "せいさんき",
+      "accent": "[3]",
+      "meaning": "補票機",
+      "extraInfo": null
+    },
+    {
+      "word": "窓口",
+      "reading": "まどぐち",
+      "accent": "[2]",
+      "meaning": "窗口",
+      "extraInfo": null
+    },
+    {
+      "word": "改札口",
+      "reading": "かいさつぐち",
+      "accent": "[4]",
+      "meaning": "剪票口",
+      "extraInfo": null
+    },
+    {
+      "word": "乗り場",
+      "reading": "のりば",
+      "accent": "[0]",
+      "meaning": "乘車處",
+      "extraInfo": null
+    },
+    {
+      "word": "ホーム",
+      "reading": "platform",
+      "accent": "[1]",
+      "meaning": "月台",
+      "extraInfo": null
+    },
+    {
+      "word": "踏切",
+      "reading": "ふみきり",
+      "accent": "[0]",
+      "meaning": "平交道",
+      "extraInfo": "「踏切」是平交道的意思，「踏切事故」就是平交道事故，「踏切注意」就是注意平交道（有無列車通過）。"
+    },
+    {
+      "word": "信号",
+      "reading": "しんごう",
+      "accent": "[0]",
+      "meaning": "紅綠燈",
+      "extraInfo": null
+    },
+    {
+      "word": "交通事故",
+      "reading": "こうつうじこ",
+      "accent": "[5]",
+      "meaning": "交通事故",
+      "extraInfo": null
+    },
+    {
+      "word": "船便",
+      "reading": "ふなびん",
+      "accent": "[0]",
+      "meaning": "海運、船運",
+      "extraInfo": null
+    },
+    {
+      "word": "航空便",
+      "reading": "こうくうびん",
+      "accent": "[0]",
+      "meaning": "空運／航空郵件",
+      "extraInfo": null
+    },
+    {
+      "word": "宅配便",
+      "reading": "たくはいびん",
+      "accent": "[0]",
+      "meaning": "宅配、快遞",
+      "extraInfo": null
+    }
+  ]
+}

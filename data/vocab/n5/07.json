@@ -1,0 +1,238 @@
+{
+  "level": "N5",
+  "lesson": 7,
+  "title": "N5日文單字07（名詞）飲食",
+  "words": [
+    {
+      "word": "朝ご飯",
+      "reading": "あさごはん",
+      "accent": "[3]",
+      "meaning": "早餐、早飯、早點",
+      "extraInfo": "早午晩餐的「ご飯」一般都寫「ご飯」，很少會寫「御飯」，如「朝ご飯」。"
+    },
+    {
+      "word": "飴",
+      "reading": "あめ",
+      "accent": "[0]",
+      "meaning": "糖果",
+      "extraInfo": "注意「飴」的重音是[0]，如果唸作[1]就變成「雨」，意思不一樣。"
+    },
+    {
+      "word": "お菓子",
+      "reading": "おかし",
+      "accent": "[2]",
+      "meaning": "點心、零食",
+      "extraInfo": null
+    },
+    {
+      "word": "お酒",
+      "reading": "おさけ",
+      "accent": "[0]",
+      "meaning": "酒",
+      "extraInfo": null
+    },
+    {
+      "word": "お茶",
+      "reading": "おちゃ",
+      "accent": "[0]",
+      "meaning": "茶",
+      "extraInfo": null
+    },
+    {
+      "word": "お弁当",
+      "reading": "おべんとう",
+      "accent": "[0]",
+      "meaning": "便當",
+      "extraInfo": null
+    },
+    {
+      "word": "牛肉",
+      "reading": "ぎゅうにく",
+      "accent": "[0]",
+      "meaning": "牛肉",
+      "extraInfo": null
+    },
+    {
+      "word": "牛乳",
+      "reading": "ぎゅうにゅう",
+      "accent": "[0]",
+      "meaning": "牛奶、牛乳、鮮奶、鮮乳",
+      "extraInfo": null
+    },
+    {
+      "word": "果物",
+      "reading": "くだもの",
+      "accent": "[2]",
+      "meaning": "水果",
+      "extraInfo": null
+    },
+    {
+      "word": "紅茶",
+      "reading": "こうちゃ",
+      "accent": "[0]",
+      "meaning": "紅茶",
+      "extraInfo": null
+    },
+    {
+      "word": "ご飯",
+      "reading": "ごはん",
+      "accent": "[1]",
+      "meaning": "正餐／飯、米飯、白飯",
+      "extraInfo": "「ご飯」的「ご」漢字是「御」，不過一般都寫「ご飯」，很少會寫「御飯」，早午晩餐皆是如此，如「朝ご飯」。"
+    },
+    {
+      "word": "魚",
+      "reading": "さかな",
+      "accent": "[0]",
+      "meaning": "魚",
+      "extraInfo": null
+    },
+    {
+      "word": "砂糖",
+      "reading": "さとう",
+      "accent": "[2]",
+      "meaning": "糖、砂糖",
+      "extraInfo": "注意「砂糖」的重音是[2]，如果唸作[1]就變成「佐藤」。"
+    },
+    {
+      "word": "塩",
+      "reading": "しお",
+      "accent": "[2]",
+      "meaning": "鹽、鹽巴",
+      "extraInfo": null
+    },
+    {
+      "word": "醤油",
+      "reading": "しょうゆ",
+      "accent": "[0]",
+      "meaning": "醬油",
+      "extraInfo": null
+    },
+    {
+      "word": "食べ物",
+      "reading": "たべもの",
+      "accent": "[3][2]",
+      "meaning": "食物",
+      "extraInfo": null
+    },
+    {
+      "word": "卵",
+      "reading": "たまご",
+      "accent": "[2][0]",
+      "meaning": "蛋、雞蛋",
+      "extraInfo": null
+    },
+    {
+      "word": "鶏肉",
+      "reading": "とりにく",
+      "accent": "[0]",
+      "meaning": "雞肉",
+      "extraInfo": null
+    },
+    {
+      "word": "肉",
+      "reading": "にく",
+      "accent": "[2]",
+      "meaning": "肉／果肉",
+      "extraInfo": null
+    },
+    {
+      "word": "飲み物",
+      "reading": "のみもの",
+      "accent": "[2][3]",
+      "meaning": "飲料",
+      "extraInfo": null
+    },
+    {
+      "word": "晩ご飯",
+      "reading": "ばんごはん",
+      "accent": "[3]",
+      "meaning": "晩餐、晩飯",
+      "extraInfo": null
+    },
+    {
+      "word": "昼ご飯",
+      "reading": "ひるごはん",
+      "accent": "[3]",
+      "meaning": "午餐、午飯",
+      "extraInfo": null
+    },
+    {
+      "word": "豚肉",
+      "reading": "ぶたにく",
+      "accent": "[0]",
+      "meaning": "豬肉",
+      "extraInfo": null
+    },
+    {
+      "word": "水",
+      "reading": "みず",
+      "accent": "[0]",
+      "meaning": "水",
+      "extraInfo": null
+    },
+    {
+      "word": "野菜",
+      "reading": "やさい",
+      "accent": "[0]",
+      "meaning": "蔬菜",
+      "extraInfo": null
+    },
+    {
+      "word": "夕飯",
+      "reading": "ゆうはん",
+      "accent": "[0]",
+      "meaning": "晩飯、晩餐",
+      "extraInfo": null
+    },
+    {
+      "word": "料理",
+      "reading": "りょうり",
+      "accent": "[1]",
+      "meaning": "料理、菜餚",
+      "extraInfo": null
+    },
+    {
+      "word": "カレー",
+      "reading": "curry",
+      "accent": "[0]",
+      "meaning": "咖哩",
+      "extraInfo": null
+    },
+    {
+      "word": "コーヒー",
+      "reading": "coffee",
+      "accent": "[3]",
+      "meaning": "咖啡",
+      "extraInfo": null
+    },
+    {
+      "word": "ジュース",
+      "reading": "juice",
+      "accent": "[1]",
+      "meaning": "果汁",
+      "extraInfo": null
+    },
+    {
+      "word": "バター",
+      "reading": "butter",
+      "accent": "[1]",
+      "meaning": "奶油",
+      "extraInfo": null
+    },
+    {
+      "word": "パン",
+      "reading": "p&atilde;o〔葡〕",
+      "accent": "[1]",
+      "meaning": "麵包",
+      "extraInfo": null
+    },
+    {
+      "word": "ビール",
+      "reading": "bier〔荷〕",
+      "accent": "[1]",
+      "meaning": "啤酒",
+      "extraInfo": null
+    }
+  ]
+}

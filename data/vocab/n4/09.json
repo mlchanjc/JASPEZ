@@ -1,0 +1,98 @@
+{
+  "level": "N4",
+  "lesson": 9,
+  "title": "N4日文單字09（名詞）電器",
+  "words": [
+    {
+      "word": "機械",
+      "reading": "きかい",
+      "accent": "[2][1]",
+      "meaning": "機械",
+      "extraInfo": null
+    },
+    {
+      "word": "電灯",
+      "reading": "でんとう",
+      "accent": "[0]",
+      "meaning": "電燈",
+      "extraInfo": "「電灯」、「電球」、「電気」的差別？\n\n「電灯」：泛指電燈，包含日光燈、燈泡等。\n\n例子\n\n- 懐中電灯。\n手電筒。\n\n- 室内灯。\n室內燈。\n\n- 街灯。\n路燈。\n\n- 車内灯。\n車內燈。\n\n「電球」：是電燈泡的意思，通常指白熾燈泡。\n\n例子\n\n- 白熱電球。\n白熾燈泡。\n\n「電気」：是指電本身，可以用在很多地方。\n\n例子\n\n- 電気カーペット。\n電毯。\n\n- 電気スタンド。\n檯燈。\n\n- 電気ストーブ。\n電暖爐。\n\n由於「電気」就是電的意思，所以可以用在「關掉電源」上面，如：\n\n- 電気を消す。\n關掉電源。\n一般都是指關燈。\n\n- こたつの電気を消す。\n關暖爐。\n\n開關電燈也可以說「電灯をつける」、「電灯を消す」。"
+    },
+    {
+      "word": "電球",
+      "reading": "でんきゅう",
+      "accent": "[0]",
+      "meaning": "電燈泡",
+      "extraInfo": "「電灯」、「電球」、「電気」的差別？\n\n「電灯」：泛指電燈，包含日光燈、燈泡等。\n\n例子\n\n- 懐中電灯。\n手電筒。\n\n- 室内灯。\n室內燈。\n\n- 街灯。\n路燈。\n\n- 車内灯。\n車內燈。\n\n「電球」：是電燈泡的意思，通常指白熾燈泡。\n\n例子\n\n- 白熱電球。\n白熾燈泡。\n\n「電気」：是指電本身，可以用在很多地方。\n\n例子\n\n- 電気カーペット。\n電毯。\n\n- 電気スタンド。\n檯燈。\n\n- 電気ストーブ。\n電暖爐。\n\n由於「電気」就是電的意思，所以可以用在「關掉電源」上面，如：\n\n- 電気を消す。\n關掉電源。\n一般都是指關燈。\n\n- こたつの電気を消す。\n關暖爐。\n\n開關電燈也可以說「電灯をつける」、「電灯を消す」。"
+    },
+    {
+      "word": "除湿機",
+      "reading": "じょしつき",
+      "accent": "[3]",
+      "meaning": "除濕機",
+      "extraInfo": null
+    },
+    {
+      "word": "電子辞書",
+      "reading": "でんしじしょ",
+      "accent": "[4]",
+      "meaning": "電子辭典",
+      "extraInfo": null
+    },
+    {
+      "word": "ベル",
+      "reading": "bell",
+      "accent": "[1]",
+      "meaning": "電鈴",
+      "extraInfo": null
+    },
+    {
+      "word": "ソフト",
+      "reading": "software",
+      "accent": "[1]",
+      "meaning": "軟體",
+      "extraInfo": null
+    },
+    {
+      "word": "ハード",
+      "reading": "hardware",
+      "accent": "[1]",
+      "meaning": "硬體",
+      "extraInfo": null
+    },
+    {
+      "word": "ステレオ",
+      "reading": "stereo",
+      "accent": "[0]",
+      "meaning": "立體音響",
+      "extraInfo": null
+    },
+    {
+      "word": "プリンター",
+      "reading": "printer",
+      "accent": "[0]",
+      "meaning": "印表機",
+      "extraInfo": null
+    },
+    {
+      "word": "キーボード",
+      "reading": "keyboard",
+      "accent": "[3]",
+      "meaning": "鍵盤",
+      "extraInfo": null
+    },
+    {
+      "word": "コンピューター",
+      "reading": "computer",
+      "accent": "[3]",
+      "meaning": "電腦",
+      "extraInfo": "個人電腦的日文是パソコン（personal computer）\n\n電腦的日文是コンピューター（computer）\n\n不過一般講「電腦」大多還是講「パソコン」居多。"
+    },
+    {
+      "word": "デジタルカメラ",
+      "reading": "digital camera",
+      "accent": "[5]",
+      "meaning": "數位相機",
+      "extraInfo": null
+    }
+  ]
+}

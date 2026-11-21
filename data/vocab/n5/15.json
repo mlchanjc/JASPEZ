@@ -1,0 +1,721 @@
+{
+  "level": "N5",
+  "lesson": 15,
+  "title": "N5日文單字15（名詞）綜合",
+  "words": [
+    {
+      "word": "青",
+      "reading": "あお",
+      "accent": "[1]",
+      "meaning": "青／藍／綠",
+      "extraInfo": "顏色有形容詞跟名詞兩種，形容詞就是後面加上「い」，例如「青い」。不過有的顏色只有名詞，例如「緑」，沒有「緑い」的說法。"
+    },
+    {
+      "word": "赤",
+      "reading": "あか",
+      "accent": "[1]",
+      "meaning": "紅、紅色",
+      "extraInfo": "「赤い」是形容詞「紅色的」，「赤」則是名詞「紅色」。"
+    },
+    {
+      "word": "椅子",
+      "reading": "いす",
+      "accent": "[0]",
+      "meaning": "椅子",
+      "extraInfo": null
+    },
+    {
+      "word": "犬",
+      "reading": "いぬ",
+      "accent": "[2]",
+      "meaning": "狗、狗狗",
+      "extraInfo": "「犬」跟「ワンちゃん」的差別？\n\n「犬」就是狗的意思，不過一般日常很常聽到「ワンちゃん」，比較親切可愛，為什麼叫「ワンちゃん」是因為狗狗都汪汪叫，所以叫作「ワン（汪）ちゃん（醬）」。"
+    },
+    {
+      "word": "意味",
+      "reading": "いみ",
+      "accent": "[1]",
+      "meaning": "意思、含意、意義、含義",
+      "extraInfo": null
+    },
+    {
+      "word": "色",
+      "reading": "いろ",
+      "accent": "[2]",
+      "meaning": "顏色",
+      "extraInfo": null
+    },
+    {
+      "word": "うさぎ",
+      "reading": "うさぎ",
+      "accent": "[0]",
+      "meaning": "兔子、兔",
+      "extraInfo": null
+    },
+    {
+      "word": "英語",
+      "reading": "えいご",
+      "accent": "[0]",
+      "meaning": "英文、英語",
+      "extraInfo": null
+    },
+    {
+      "word": "お金",
+      "reading": "おかね",
+      "accent": "[0]",
+      "meaning": "錢、金錢、貨幣、通貨",
+      "extraInfo": null
+    },
+    {
+      "word": "お皿",
+      "reading": "おさら",
+      "accent": "[0]",
+      "meaning": "盤子、碟子",
+      "extraInfo": null
+    },
+    {
+      "word": "男",
+      "reading": "おとこ",
+      "accent": "[3]",
+      "meaning": "男子、男人、男、男性",
+      "extraInfo": "關於性別的說法\n\n關於性別，「男性」、「女性」比較文雅，有些場合也可以使用「男」、「女」，不過如果是對女生直接說「女」，中文聽起來就像「喂、女人」（很難聽）。"
+    },
+    {
+      "word": "男の子",
+      "reading": "おとこのこ",
+      "accent": "[3]",
+      "meaning": "男孩、男孩子",
+      "extraInfo": null
+    },
+    {
+      "word": "大人",
+      "reading": "おとな",
+      "accent": "[0]",
+      "meaning": "大人、成年人、成人",
+      "extraInfo": null
+    },
+    {
+      "word": "女",
+      "reading": "おんな",
+      "accent": "[3]",
+      "meaning": "女人、女、女子、女性",
+      "extraInfo": "關於性別的說法\n\n關於性別，「男性」、「女性」比較文雅，有些場合也可以使用「男」、「女」，不過如果是對女生直接說「女」，中文聽起來就像「喂、女人」（很難聽）。"
+    },
+    {
+      "word": "女の子",
+      "reading": "おんなのこ",
+      "accent": "[3]",
+      "meaning": "女孩、女孩子",
+      "extraInfo": null
+    },
+    {
+      "word": "鍵",
+      "reading": "かぎ",
+      "accent": "[2]",
+      "meaning": "鑰匙／鎖",
+      "extraInfo": null
+    },
+    {
+      "word": "傘",
+      "reading": "かさ",
+      "accent": "[1]",
+      "meaning": "傘、雨傘",
+      "extraInfo": null
+    },
+    {
+      "word": "風邪",
+      "reading": "かぜ",
+      "accent": "[0]",
+      "meaning": "感冒",
+      "extraInfo": null
+    },
+    {
+      "word": "片仮名",
+      "reading": "かたかな",
+      "accent": "[3]",
+      "meaning": "片假名",
+      "extraInfo": null
+    },
+    {
+      "word": "鞄",
+      "reading": "かばん",
+      "accent": "[0]",
+      "meaning": "包包、書包、公事包",
+      "extraInfo": null
+    },
+    {
+      "word": "花瓶",
+      "reading": "かびん",
+      "accent": "[0]",
+      "meaning": "花瓶",
+      "extraInfo": null
+    },
+    {
+      "word": "亀",
+      "reading": "かめ",
+      "accent": "[1]",
+      "meaning": "烏龜、龜",
+      "extraInfo": null
+    },
+    {
+      "word": "漢字",
+      "reading": "かんじ",
+      "accent": "[0]",
+      "meaning": "漢字",
+      "extraInfo": null
+    },
+    {
+      "word": "黄色",
+      "reading": "きいろ",
+      "accent": "[0]",
+      "meaning": "黃、黃色",
+      "extraInfo": null
+    },
+    {
+      "word": "薬",
+      "reading": "くすり",
+      "accent": "[0]",
+      "meaning": "藥、藥物",
+      "extraInfo": null
+    },
+    {
+      "word": "黒",
+      "reading": "くろ",
+      "accent": "[1]",
+      "meaning": "黑、黑色",
+      "extraInfo": null
+    },
+    {
+      "word": "元気",
+      "reading": "げんき",
+      "accent": "[1]",
+      "meaning": "精神、活力、朝氣／健康",
+      "extraInfo": null
+    },
+    {
+      "word": "高校",
+      "reading": "こうこう",
+      "accent": "[0]",
+      "meaning": "高中",
+      "extraInfo": null
+    },
+    {
+      "word": "言葉",
+      "reading": "ことば",
+      "accent": "[3]",
+      "meaning": "詞彙／語言、話／話、話語、言語、言詞",
+      "extraInfo": null
+    },
+    {
+      "word": "子供",
+      "reading": "こども",
+      "accent": "[0]",
+      "meaning": "小孩、孩子、兒童",
+      "extraInfo": null
+    },
+    {
+      "word": "ごみ箱",
+      "reading": "ごみばこ",
+      "accent": "[0][3]",
+      "meaning": "垃圾桶",
+      "extraInfo": null
+    },
+    {
+      "word": "財布",
+      "reading": "さいふ",
+      "accent": "[0]",
+      "meaning": "錢包、皮夾",
+      "extraInfo": null
+    },
+    {
+      "word": "作文",
+      "reading": "さくぶん",
+      "accent": "[0]",
+      "meaning": "作文、寫作",
+      "extraInfo": null
+    },
+    {
+      "word": "試験",
+      "reading": "しけん",
+      "accent": "[2]",
+      "meaning": "考試、測驗／測試、試驗",
+      "extraInfo": null
+    },
+    {
+      "word": "仕事",
+      "reading": "しごと",
+      "accent": "[0]",
+      "meaning": "工作、事務",
+      "extraInfo": null
+    },
+    {
+      "word": "質問",
+      "reading": "しつもん",
+      "accent": "[0]",
+      "meaning": "疑問、問題／詢問、提問",
+      "extraInfo": "「質問」和「問題」的差別？\n\n「質問」是對某件事有疑問、不懂&rarr;提出問題，而「問題」是非正常的情況、事件，或者是讓人作答的題目。\n\n- 在課堂上\n\n- 先生、質問があります。\n\n- 老師，我有問題。\n\n- はい、どうぞ。\n\n- 好，請說。\n\n- 先生、問題があります。\n\n- 老師，我人有問題。\n\n「質問」跟「問題」的用法如下：\n\n- 先生に質問する。\n問老師問題。\n\n- 質問を受ける。\n接受提問。\n\n- 次の問題に日本語で答えなさい。\n下個題目請用日語回答。\n\n- 環境破壊が問題となっている。\n目前面臨環境破壞的問題。"
+    },
+    {
+      "word": "宿題",
+      "reading": "しゅくだい",
+      "accent": "[0]",
+      "meaning": "作業、功課",
+      "extraInfo": null
+    },
+    {
+      "word": "小学校",
+      "reading": "しょうがっこう",
+      "accent": "[3]",
+      "meaning": "小學",
+      "extraInfo": null
+    },
+    {
+      "word": "白",
+      "reading": "しろ",
+      "accent": "[1]",
+      "meaning": "白、白色",
+      "extraInfo": null
+    },
+    {
+      "word": "自己",
+      "reading": "じこ",
+      "accent": "[1]",
+      "meaning": "自己",
+      "extraInfo": "「自分」跟「自己」的差別？\n\n「自分」跟「自己」的意思幾乎一樣，只是用法不同而已，這些用法多半是慣用句，多看一些文章很快就能掌握。\n\n日文\n假名\n中文\n\n自分のこと（不可用「自己」）\nじぶんのこと\n自己的事情\n\n自分でやる（不可用「自己」）\nじぶんでやる\n自己做\n\n自己紹介（不可用「自分」）\nじこしょうかい\n自我介紹\n\n自己愛（不可用「自分」）\nじこあい\n自戀"
+    },
+    {
+      "word": "自分",
+      "reading": "じぶん",
+      "accent": "[0]",
+      "meaning": "自己",
+      "extraInfo": "「自分」跟「自己」的差別？\n\n「自分」跟「自己」的意思幾乎一樣，只是用法不同而已，這些用法多半是慣用句，多看一些文章很快就能掌握。\n\n日文\n假名\n中文\n\n自分のこと（不可用「自己」）\nじぶんのこと\n自己的事情\n\n自分でやる（不可用「自己」）\nじぶんでやる\n自己做\n\n自己紹介（不可用「自分」）\nじこしょうかい\n自我介紹\n\n自己愛（不可用「自分」）\nじこあい\n自戀"
+    },
+    {
+      "word": "女性",
+      "reading": "じょせい",
+      "accent": "[0]",
+      "meaning": "女性",
+      "extraInfo": "關於性別的說法\n\n關於性別，「男性」、「女性」比較文雅，有些場合也可以使用「男」、「女」，不過如果是對女生直接說「女」，中文聽起來就像「喂、女人」（很難聽）。"
+    },
+    {
+      "word": "石けん",
+      "reading": "せっけん",
+      "accent": "[0]",
+      "meaning": "肥皂",
+      "extraInfo": null
+    },
+    {
+      "word": "台湾語",
+      "reading": "たいわんご",
+      "accent": "[0]",
+      "meaning": "臺灣台語",
+      "extraInfo": "「台湾語」指的是「臺灣台語」，不是臺灣的中文。日本人在特別指出臺灣的中文時，一般稱作「台湾華語」。"
+    },
+    {
+      "word": "たばこ",
+      "reading": "たばこ",
+      "accent": "[0]",
+      "meaning": "香菸",
+      "extraInfo": null
+    },
+    {
+      "word": "誕生日",
+      "reading": "たんじょうび",
+      "accent": "[3]",
+      "meaning": "生日",
+      "extraInfo": null
+    },
+    {
+      "word": "大学",
+      "reading": "だいがく",
+      "accent": "[0]",
+      "meaning": "大學",
+      "extraInfo": null
+    },
+    {
+      "word": "男性",
+      "reading": "だんせい",
+      "accent": "[0]",
+      "meaning": "男性",
+      "extraInfo": "關於性別的說法\n\n關於性別，「男性」、「女性」比較文雅，有些場合也可以使用「男」、「女」，不過如果是對女生直接說「女」，中文聽起來就像「喂、女人」（很難聽）。"
+    },
+    {
+      "word": "茶色",
+      "reading": "ちゃいろ",
+      "accent": "[0]",
+      "meaning": "棕色、褐色、咖啡色、茶色",
+      "extraInfo": null
+    },
+    {
+      "word": "茶碗",
+      "reading": "ちゃわん",
+      "accent": "[0]",
+      "meaning": "茶碗、飯碗",
+      "extraInfo": null
+    },
+    {
+      "word": "中学校",
+      "reading": "ちゅうがっこう",
+      "accent": "[3]",
+      "meaning": "中學",
+      "extraInfo": null
+    },
+    {
+      "word": "中国語",
+      "reading": "ちゅうごくご",
+      "accent": "[0]",
+      "meaning": "中文",
+      "extraInfo": "中文有繁體字跟簡體字，日文都稱為「中国語」。如果想要區分繁體字與簡體字，只要加上「繁体字」或「簡体字」即可。\n\n- 中文（繁體字）：中国語（繁体字）\n\n- 中文（簡體字）：中国語（簡体字）\n\n日本人在特別指出臺灣的中文時，一般稱作「台湾華語」，例如「台湾華語を勉強しています。どうぞよろしくお願いします。（我正在學習臺灣華語。請多多指教。）」"
+    },
+    {
+      "word": "使い方",
+      "reading": "つかいかた",
+      "accent": "[0]",
+      "meaning": "使用方法、用法",
+      "extraInfo": null
+    },
+    {
+      "word": "机",
+      "reading": "つくえ",
+      "accent": "[0]",
+      "meaning": "桌子、書桌、辦公桌",
+      "extraInfo": "「机」跟「テーブル」的差別\n\n一個是書桌辦公桌的感覺（≒desk），一個是圓桌方桌的感覺（table）。由此可知，通常認真用的就是「机」，休閒用的就是「テーブル」（像客廳的桌子就叫作「テーブル」）。當然硬體方面「机」是方正有抽屜那種（像教室的桌子），「テーブル」只是單純桌面加上桌腳。"
+    },
+    {
+      "word": "時計",
+      "reading": "とけい",
+      "accent": "[0]",
+      "meaning": "鐘錶、時鐘、手錶",
+      "extraInfo": null
+    },
+    {
+      "word": "床",
+      "reading": "とこ",
+      "accent": "[0]",
+      "meaning": "床、床鋪",
+      "extraInfo": "日文的「床」是床鋪還是地板？\n\n「ベッド」就是英文的「bed」。「床」是指鋪床的地方，給人印象是在地板上鋪棉被的日式睡鋪。不過現在比較少講「床」，一般說「布団」，例如「布団で寝る（睡棉被）」，而「床」是指地板，注意它們的漢字雖然一樣但假名不同。\n\n要點\n\n- ベッド：床（bed）\n\n- 床：鋪床的地方\n\n- 布団：棉被、被鋪\n\n- 床：地板"
+    },
+    {
+      "word": "鳥",
+      "reading": "とり",
+      "accent": "[0]",
+      "meaning": "鳥、鳥類、禽類",
+      "extraInfo": null
+    },
+    {
+      "word": "動物",
+      "reading": "どうぶつ",
+      "accent": "[0]",
+      "meaning": "動物",
+      "extraInfo": null
+    },
+    {
+      "word": "夏休み",
+      "reading": "なつやすみ",
+      "accent": "[3]",
+      "meaning": "暑假",
+      "extraInfo": null
+    },
+    {
+      "word": "名前",
+      "reading": "なまえ",
+      "accent": "[0]",
+      "meaning": "名字、姓名、名稱",
+      "extraInfo": null
+    },
+    {
+      "word": "日本語",
+      "reading": "にほんご",
+      "accent": "[0]",
+      "meaning": "日文、日語、日本語",
+      "extraInfo": null
+    },
+    {
+      "word": "猫",
+      "reading": "ねこ",
+      "accent": "[1]",
+      "meaning": "貓",
+      "extraInfo": null
+    },
+    {
+      "word": "灰皿",
+      "reading": "はいざら",
+      "accent": "[0][3]",
+      "meaning": "菸灰缸",
+      "extraInfo": null
+    },
+    {
+      "word": "箱",
+      "reading": "はこ",
+      "accent": "[0]",
+      "meaning": "箱、盒、箱子、盒子",
+      "extraInfo": null
+    },
+    {
+      "word": "箸",
+      "reading": "はし",
+      "accent": "[1]",
+      "meaning": "筷子",
+      "extraInfo": null
+    },
+    {
+      "word": "番号",
+      "reading": "ばんごう",
+      "accent": "[3]",
+      "meaning": "號碼、編號、數字",
+      "extraInfo": null
+    },
+    {
+      "word": "人",
+      "reading": "ひと",
+      "accent": "[0]",
+      "meaning": "人、人類",
+      "extraInfo": null
+    },
+    {
+      "word": "平仮名",
+      "reading": "ひらがな",
+      "accent": "[3][0]",
+      "meaning": "平假名",
+      "extraInfo": null
+    },
+    {
+      "word": "病気",
+      "reading": "びょうき",
+      "accent": "[0]",
+      "meaning": "生病、疾病",
+      "extraInfo": null
+    },
+    {
+      "word": "冬休み",
+      "reading": "ふゆやすみ",
+      "accent": "[3]",
+      "meaning": "寒假",
+      "extraInfo": null
+    },
+    {
+      "word": "文",
+      "reading": "ぶん",
+      "accent": "[1]",
+      "meaning": "句子、文句、文",
+      "extraInfo": null
+    },
+    {
+      "word": "文章",
+      "reading": "ぶんしょう",
+      "accent": "[1]",
+      "meaning": "文章",
+      "extraInfo": null
+    },
+    {
+      "word": "帽子",
+      "reading": "ぼうし",
+      "accent": "[0]",
+      "meaning": "帽子",
+      "extraInfo": null
+    },
+    {
+      "word": "窓",
+      "reading": "まど",
+      "accent": "[1]",
+      "meaning": "窗、窗戶",
+      "extraInfo": null
+    },
+    {
+      "word": "緑",
+      "reading": "みどり",
+      "accent": "[1]",
+      "meaning": "綠、綠色",
+      "extraInfo": "有的顏色只有名詞，例如「緑」，沒有「緑い」的說法。"
+    },
+    {
+      "word": "皆さん",
+      "reading": "みなさん",
+      "accent": "[2]",
+      "meaning": "大家、各位",
+      "extraInfo": "「みんな」跟「皆さん」的差別？\n\n「みんな」跟「皆さん」，中文意思也差不多，都是指大家的意思。「みんな」除了大家之外，也可以代表「全部」的意思。「皆さん」其實就是「みんな」帶有敬意的說詞，因此正式場合跟大家說話的時候，通常使用「皆さん」或者是更高敬意的「皆様」。\n\n- みんなの事はみんなでやる。\n大家的事大家一起做。\n\n- みんなに知らせてください。\n請通知大家。\n\n- みんな食べてしまった。\n全部吃光光了。\n\n- 皆さん、こんにちは。\n大家好。\n\n- 皆さんにご報告いたします。\n我跟各位報告一下。\n\n補充\n\n「みんな」指包含自己在內的團體。而自己通常為領導人，當要對大家喊話的時候使用。例如：みんな、集まれ！（大家集合！）\n\n「皆さん」喊話的對象（團體）並不包含自己，意思就是對其他團體帶有禮貌性的說話。例如：皆さん、ご注意ください。（大家請注意。）"
+    },
+    {
+      "word": "みんな",
+      "reading": "みんな",
+      "accent": "[3]",
+      "meaning": "大家／全部",
+      "extraInfo": "「みんな」跟「皆さん」的差別？\n\n「みんな」跟「皆さん」，中文意思也差不多，都是指大家的意思。「みんな」除了大家之外，也可以代表「全部」的意思。「皆さん」其實就是「みんな」帶有敬意的說詞，因此正式場合跟大家說話的時候，通常使用「皆さん」或者是更高敬意的「皆様」。\n\n- みんなの事はみんなでやる。\n大家的事大家一起做。\n\n- みんなに知らせてください。\n請通知大家。\n\n- みんな食べてしまった。\n全部吃光光了。\n\n- 皆さん、こんにちは。\n大家好。\n\n- 皆さんにご報告いたします。\n我跟各位報告一下。\n\n補充\n\n「みんな」指包含自己在內的團體。而自己通常為領導人，當要對大家喊話的時候使用。例如：みんな、集まれ！（大家集合！）\n\n「皆さん」喊話的對象（團體）並不包含自己，意思就是對其他團體帶有禮貌性的說話。例如：皆さん、ご注意ください。（大家請注意。）"
+    },
+    {
+      "word": "眼鏡",
+      "reading": "めがね",
+      "accent": "[1]",
+      "meaning": "眼鏡",
+      "extraInfo": null
+    },
+    {
+      "word": "問題",
+      "reading": "もんだい",
+      "accent": "[0]",
+      "meaning": "問題／題目、試題",
+      "extraInfo": "「質問」和「問題」的差別？\n\n「質問」是對某件事有疑問、不懂&rarr;提出問題，而「問題」是非正常的情況、事件，或者是讓人作答的題目。\n\n- 在課堂上\n\n- 先生、質問があります。\n\n- 老師，我有問題。\n\n- はい、どうぞ。\n\n- 好，請說。\n\n- 先生、問題があります。\n\n- 老師，我人有問題。\n\n「質問」跟「問題」的用法如下：\n\n- 先生に質問する。\n問老師問題。\n\n- 質問を受ける。\n接受提問。\n\n- 次の問題に日本語で答えなさい。\n下個題目請用日語回答。\n\n- 環境破壊が問題となっている。\n目前面臨環境破壞的問題。"
+    },
+    {
+      "word": "床",
+      "reading": "ゆか",
+      "accent": "[0]",
+      "meaning": "地板",
+      "extraInfo": "日文的「床」是床鋪還是地板？\n\n「ベッド」就是英文的「bed」。「床」是指鋪床的地方，給人印象是在地板上鋪棉被的日式睡鋪。不過現在比較少講「床」，一般說「布団」，例如「布団で寝る（睡棉被）」，而「床」是指地板，注意它們的漢字雖然一樣但假名不同。\n\n要點\n\n- ベッド：床（bed）\n\n- 床：鋪床的地方\n\n- 布団：棉被、被鋪\n\n- 床：地板"
+    },
+    {
+      "word": "留学",
+      "reading": "りゅうがく",
+      "accent": "[0]",
+      "meaning": "留學",
+      "extraInfo": null
+    },
+    {
+      "word": "カップ",
+      "reading": "cup",
+      "accent": "[1]",
+      "meaning": "杯子",
+      "extraInfo": null
+    },
+    {
+      "word": "カレンダー",
+      "reading": "calendar",
+      "accent": "[2]",
+      "meaning": "日曆、月曆、行事曆",
+      "extraInfo": null
+    },
+    {
+      "word": "広東語",
+      "reading": "カントンご",
+      "accent": "[0]",
+      "meaning": "廣東話、粵語",
+      "extraInfo": "粵語（廣東話）的日文是「広東語」。"
+    },
+    {
+      "word": "キログラム",
+      "reading": "kilogramme〔法〕",
+      "accent": "[3]",
+      "meaning": "公斤",
+      "extraInfo": null
+    },
+    {
+      "word": "キロメートル",
+      "reading": "kilom&egrave;tre〔法〕",
+      "accent": "[3]",
+      "meaning": "公里",
+      "extraInfo": null
+    },
+    {
+      "word": "クラス",
+      "reading": "class",
+      "accent": "[1]",
+      "meaning": "班級",
+      "extraInfo": null
+    },
+    {
+      "word": "グラム",
+      "reading": "gramme〔法〕",
+      "accent": "[1]",
+      "meaning": "公克",
+      "extraInfo": null
+    },
+    {
+      "word": "コップ",
+      "reading": "kop〔荷〕",
+      "accent": "[0]",
+      "meaning": "玻璃杯、杯子",
+      "extraInfo": null
+    },
+    {
+      "word": "スプーン",
+      "reading": "spoon",
+      "accent": "[2]",
+      "meaning": "湯匙",
+      "extraInfo": null
+    },
+    {
+      "word": "テスト",
+      "reading": "test",
+      "accent": "[1]",
+      "meaning": "考試、測驗／測試",
+      "extraInfo": null
+    },
+    {
+      "word": "テーブル",
+      "reading": "table",
+      "accent": "[0]",
+      "meaning": "桌子、圓桌、方桌、餐桌",
+      "extraInfo": "「机」跟「テーブル」的差別\n\n一個是書桌辦公桌的感覺（≒desk），一個是圓桌方桌的感覺（table）。由此可知，通常認真用的就是「机」，休閒用的就是「テーブル」（像客廳的桌子就叫作「テーブル」）。當然硬體方面「机」是方正有抽屜那種（像教室的桌子），「テーブル」只是單純桌面加上桌腳。"
+    },
+    {
+      "word": "ドア",
+      "reading": "door",
+      "accent": "[1]",
+      "meaning": "門",
+      "extraInfo": null
+    },
+    {
+      "word": "ナイフ",
+      "reading": "knife",
+      "accent": "[1]",
+      "meaning": "刀、小刀、刀子／餐刀",
+      "extraInfo": null
+    },
+    {
+      "word": "ネクタイ",
+      "reading": "necktie",
+      "accent": "[1]",
+      "meaning": "領帶",
+      "extraInfo": null
+    },
+    {
+      "word": "ハンカチ",
+      "reading": "handkerchief",
+      "accent": "[3][0]",
+      "meaning": "手帕",
+      "extraInfo": null
+    },
+    {
+      "word": "フォーク",
+      "reading": "fork",
+      "accent": "[1]",
+      "meaning": "叉子",
+      "extraInfo": null
+    },
+    {
+      "word": "ベッド",
+      "reading": "bed",
+      "accent": "[1]",
+      "meaning": "床、床鋪",
+      "extraInfo": "日文的「床」是床鋪還是地板？\n\n「ベッド」就是英文的「bed」。「床」是指鋪床的地方，給人印象是在地板上鋪棉被的日式睡鋪。不過現在比較少講「床」，一般說「布団」，例如「布団で寝る（睡棉被）」，而「床」是指地板，注意它們的漢字雖然一樣但假名不同。\n\n要點\n\n- ベッド：床（bed）\n\n- 床：鋪床的地方\n\n- 布団：棉被、被鋪\n\n- 床：地板"
+    },
+    {
+      "word": "ペット",
+      "reading": "pet",
+      "accent": "[1]",
+      "meaning": "寵物",
+      "extraInfo": null
+    },
+    {
+      "word": "マッチ",
+      "reading": "match",
+      "accent": "[1]",
+      "meaning": "火柴",
+      "extraInfo": null
+    },
+    {
+      "word": "メートル",
+      "reading": "m&egrave;tre〔法〕",
+      "accent": "[0]",
+      "meaning": "公尺",
+      "extraInfo": null
+    },
+    {
+      "word": "ワンちゃん",
+      "reading": "ワンちゃん",
+      "accent": "[1]",
+      "meaning": "狗、狗狗、小狗",
+      "extraInfo": "「犬」跟「ワンちゃん」的差別？\n\n「犬」就是狗的意思，不過一般日常很常聽到「ワンちゃん」，比較親切可愛，為什麼叫「ワンちゃん」是因為狗狗都汪汪叫，所以叫作「ワン（汪）ちゃん（醬）」。"
+    }
+  ]
+}

@@ -1,0 +1,406 @@
+{
+  "level": "N3",
+  "lesson": 1,
+  "title": "N3日文單字01（名詞）數字與時間",
+  "words": [
+    {
+      "word": "数",
+      "reading": "かず",
+      "accent": "[1]",
+      "meaning": "數目",
+      "extraInfo": "数（かず）和　数字（すうじ）的差別\n\n数：表示物品的數量，如「五個」\n数字：一般的數字，如「5」"
+    },
+    {
+      "word": "数字",
+      "reading": "すうじ",
+      "accent": "[0]",
+      "meaning": "數字",
+      "extraInfo": "数（かず）和　数字（すうじ）的差別\n\n数：表示物品的數量，如「五個」\n数字：一般的數字，如「5」"
+    },
+    {
+      "word": "以前",
+      "reading": "いぜん",
+      "accent": "[1]",
+      "meaning": "以前",
+      "extraInfo": null
+    },
+    {
+      "word": "以後",
+      "reading": "いご",
+      "accent": "[1]",
+      "meaning": "以後",
+      "extraInfo": null
+    },
+    {
+      "word": "後",
+      "reading": "のち",
+      "accent": "[2][0]",
+      "meaning": "之後",
+      "extraInfo": "後（のち）和　後（あと）的差別\n\n後：時間順序上的未來，譯為「之後」\n後：除了時間也能表示位置（用於有移動的人事物），譯為「之後、後面」\n\n用於時間表現的「後」，「のち」較文語，多出現在商務信件或天氣預報\n商務信件：後ほど文語 = 後で口語\n天氣預報：晴れ後曇り文語"
+    },
+    {
+      "word": "今後",
+      "reading": "こんご",
+      "accent": "[0]",
+      "meaning": "今後",
+      "extraInfo": null
+    },
+    {
+      "word": "未来",
+      "reading": "みらい",
+      "accent": "[1]",
+      "meaning": "未來",
+      "extraInfo": null
+    },
+    {
+      "word": "早朝",
+      "reading": "そうちょう",
+      "accent": "[0]",
+      "meaning": "早晨",
+      "extraInfo": null
+    },
+    {
+      "word": "正午",
+      "reading": "しょうご",
+      "accent": "[1]",
+      "meaning": "正午",
+      "extraInfo": null
+    },
+    {
+      "word": "夜間",
+      "reading": "やかん",
+      "accent": "[1]",
+      "meaning": "夜晚",
+      "extraInfo": null
+    },
+    {
+      "word": "夜中",
+      "reading": "よなか",
+      "accent": "[3]",
+      "meaning": "半夜",
+      "extraInfo": null
+    },
+    {
+      "word": "深夜",
+      "reading": "しんや",
+      "accent": "[1]",
+      "meaning": "深夜",
+      "extraInfo": null
+    },
+    {
+      "word": "真夜中",
+      "reading": "まよなか",
+      "accent": "[2]",
+      "meaning": "更深的夜",
+      "extraInfo": null
+    },
+    {
+      "word": "先日",
+      "reading": "せんじつ",
+      "accent": "[0]",
+      "meaning": "前幾天",
+      "extraInfo": null
+    },
+    {
+      "word": "前日",
+      "reading": "ぜんじつ",
+      "accent": "[0]",
+      "meaning": "前一天",
+      "extraInfo": "昨日：今天的前一天（＝「昨日」），「昨日」為書面語。\n前日：某一天的前一天，以任意某一天（非今天）為基準。"
+    },
+    {
+      "word": "一昨日",
+      "reading": "いっさくじつ",
+      "accent": "[4]",
+      "meaning": "前天",
+      "extraInfo": null
+    },
+    {
+      "word": "昨日",
+      "reading": "さくじつ",
+      "accent": "[2]",
+      "meaning": "昨日",
+      "extraInfo": "昨日：今天的前一天（＝「昨日」），「昨日」為書面語。\n前日：某一天的前一天，以任意某一天（非今天）為基準。"
+    },
+    {
+      "word": "本日",
+      "reading": "ほんじつ",
+      "accent": "[1]",
+      "meaning": "本日",
+      "extraInfo": "本日（ほんじつ）和　今日（きょう）的差別\n\n本日：本日\n今日：今天\n「本日」較文語，多用於正式場合或文書。一般會話講「今日」"
+    },
+    {
+      "word": "明日",
+      "reading": "みょうにち",
+      "accent": "[1]",
+      "meaning": "明日",
+      "extraInfo": "明日：今天的後一天（＝「明日」），「明日」為書面語。\n翌日：某一天的隔天，以任意某一天（非今天）為基準。"
+    },
+    {
+      "word": "明後日",
+      "reading": "みょうごにち",
+      "accent": "[3]",
+      "meaning": "後天",
+      "extraInfo": null
+    },
+    {
+      "word": "翌日",
+      "reading": "よくじつ",
+      "accent": "[0]",
+      "meaning": "翌日",
+      "extraInfo": "明日：今天的後一天（＝「明日」），「明日」為書面語。\n翌日：某一天的隔天，以任意某一天（非今天）為基準。"
+    },
+    {
+      "word": "前年",
+      "reading": "ぜんねん",
+      "accent": "[0]",
+      "meaning": "前一年",
+      "extraInfo": "「昨年」和「前年」的差別跟「昨日」和「前日」一樣。\n昨日：今天的前一天，為書面語。\n前日：某一天的前一天，以任意某一天（非今天）為基準。"
+    },
+    {
+      "word": "一昨年",
+      "reading": "いっさくねん",
+      "accent": "[0][4]",
+      "meaning": "前年",
+      "extraInfo": null
+    },
+    {
+      "word": "昨年",
+      "reading": "さくねん",
+      "accent": "[0]",
+      "meaning": "去年",
+      "extraInfo": "「昨年」和「前年」的差別跟「昨日」和「前日」一樣。\n昨日：今天的前一天，為書面語。\n前日：某一天的前一天，以任意某一天（非今天）為基準。"
+    },
+    {
+      "word": "本年",
+      "reading": "ほんねん",
+      "accent": "[1]",
+      "meaning": "今年",
+      "extraInfo": "本年（ほんねん）和　今年（ことし）的差別\n\n本年：今年\n今年：今年\n「本年」較文語，多用於正式場合，一般會話講「今年」"
+    },
+    {
+      "word": "明年",
+      "reading": "みょうねん",
+      "accent": "[0][1]",
+      "meaning": "明年",
+      "extraInfo": "「明年」和「翌年」的差別跟「明日」和「翌日」一樣。\n明日：今天的後一天，為書面語。\n翌日：某一天的隔天，以任意某一天（非今天）為基準。"
+    },
+    {
+      "word": "明後年",
+      "reading": "みょうごねん",
+      "accent": "[0][3]",
+      "meaning": "後年",
+      "extraInfo": null
+    },
+    {
+      "word": "翌年",
+      "reading": "よくねん",
+      "accent": "[0]",
+      "meaning": "翌年",
+      "extraInfo": "「明年」和「翌年」的差別跟「明日」和「翌日」一樣。\n明日：今天的後一天，為書面語。\n翌日：某一天的隔天，以任意某一天（非今天）為基準。"
+    },
+    {
+      "word": "平日",
+      "reading": "へいじつ",
+      "accent": "[0]",
+      "meaning": "平日",
+      "extraInfo": null
+    },
+    {
+      "word": "休日",
+      "reading": "きゅうじつ",
+      "accent": "[0]",
+      "meaning": "假日",
+      "extraInfo": null
+    },
+    {
+      "word": "週末",
+      "reading": "しゅうまつ",
+      "accent": "[0]",
+      "meaning": "週末",
+      "extraInfo": null
+    },
+    {
+      "word": "月末",
+      "reading": "げつまつ",
+      "accent": "[0]",
+      "meaning": "月底",
+      "extraInfo": null
+    },
+    {
+      "word": "上旬",
+      "reading": "じょうじゅん",
+      "accent": "[0]",
+      "meaning": "上旬",
+      "extraInfo": null
+    },
+    {
+      "word": "下旬",
+      "reading": "げじゅん",
+      "accent": "[0]",
+      "meaning": "下旬",
+      "extraInfo": null
+    },
+    {
+      "word": "算数",
+      "reading": "さんすう",
+      "accent": "[3]",
+      "meaning": "算數",
+      "extraInfo": null
+    },
+    {
+      "word": "点数",
+      "reading": "てんすう",
+      "accent": "[3]",
+      "meaning": "分數",
+      "extraInfo": "点数（てんすう）和　分数（ぶんすう）的差別\n\n点数：得分的分數，如成績上的分數、比賽的分數。\n分数：數學上的分數，有分母和分子。"
+    },
+    {
+      "word": "少数",
+      "reading": "しょうすう",
+      "accent": "[3]",
+      "meaning": "少數",
+      "extraInfo": null
+    },
+    {
+      "word": "整数",
+      "reading": "せいすう",
+      "accent": "[3]",
+      "meaning": "整數",
+      "extraInfo": null
+    },
+    {
+      "word": "分数",
+      "reading": "ぶんすう",
+      "accent": "[3]",
+      "meaning": "分數",
+      "extraInfo": "点数（てんすう）和　分数（ぶんすう）的差別\n\n点数：得分的分數，如成績上的分數、比賽的分數。\n分数：數學上的分數，有分母和分子。"
+    },
+    {
+      "word": "小数",
+      "reading": "しょうすう",
+      "accent": "[3]",
+      "meaning": "小數",
+      "extraInfo": null
+    },
+    {
+      "word": "小数点",
+      "reading": "しょうすうてん",
+      "accent": "[3]",
+      "meaning": "小數點",
+      "extraInfo": null
+    },
+    {
+      "word": "奇数",
+      "reading": "きすう",
+      "accent": "[2]",
+      "meaning": "奇數",
+      "extraInfo": null
+    },
+    {
+      "word": "偶数",
+      "reading": "ぐうすう",
+      "accent": "[3]",
+      "meaning": "偶數",
+      "extraInfo": null
+    },
+    {
+      "word": "足し算",
+      "reading": "たしざん",
+      "accent": "[2]",
+      "meaning": "加法",
+      "extraInfo": null
+    },
+    {
+      "word": "引き算",
+      "reading": "ひきざん",
+      "accent": "[2]",
+      "meaning": "減法",
+      "extraInfo": null
+    },
+    {
+      "word": "掛け算",
+      "reading": "かけざん",
+      "accent": "[2]",
+      "meaning": "乘法",
+      "extraInfo": null
+    },
+    {
+      "word": "割り算",
+      "reading": "わりざん",
+      "accent": "[2]",
+      "meaning": "除法",
+      "extraInfo": null
+    },
+    {
+      "word": "三角",
+      "reading": "さんかく",
+      "accent": "[1]",
+      "meaning": "三角形",
+      "extraInfo": null
+    },
+    {
+      "word": "四角",
+      "reading": "しかく",
+      "accent": "[3]",
+      "meaning": "四方形",
+      "extraInfo": null
+    },
+    {
+      "word": "長方形",
+      "reading": "ちょうほうけい",
+      "accent": "[3][0]",
+      "meaning": "長方形",
+      "extraInfo": null
+    },
+    {
+      "word": "一列",
+      "reading": "いちれつ",
+      "accent": "[2]",
+      "meaning": "一排",
+      "extraInfo": null
+    },
+    {
+      "word": "期間",
+      "reading": "きかん",
+      "accent": "[1][2]",
+      "meaning": "期間",
+      "extraInfo": null
+    },
+    {
+      "word": "期限",
+      "reading": "きげん",
+      "accent": "[1]",
+      "meaning": "期限",
+      "extraInfo": null
+    },
+    {
+      "word": "締め切り",
+      "reading": "しめきり",
+      "accent": "[0]",
+      "meaning": "截止",
+      "extraInfo": null
+    },
+    {
+      "word": "生前",
+      "reading": "せいぜん",
+      "accent": "[0]",
+      "meaning": "生前",
+      "extraInfo": null
+    },
+    {
+      "word": "一生",
+      "reading": "いっしょう",
+      "accent": "[0]",
+      "meaning": "一生",
+      "extraInfo": null
+    },
+    {
+      "word": "生年月日",
+      "reading": "せいねんがっぴ",
+      "accent": "[5]",
+      "meaning": "出生年月日",
+      "extraInfo": null
+    }
+  ]
+}

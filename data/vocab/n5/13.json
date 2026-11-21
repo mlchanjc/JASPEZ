@@ -1,0 +1,147 @@
+{
+  "level": "N5",
+  "lesson": 13,
+  "title": "N5日文單字13（名詞）休閒",
+  "words": [
+    {
+      "word": "歌",
+      "reading": "うた",
+      "accent": "[2]",
+      "meaning": "歌、歌曲",
+      "extraInfo": null
+    },
+    {
+      "word": "絵",
+      "reading": "え",
+      "accent": "[1]",
+      "meaning": "畫、圖畫、繪畫",
+      "extraInfo": null
+    },
+    {
+      "word": "映画",
+      "reading": "えいが",
+      "accent": "[1][0]",
+      "meaning": "電影",
+      "extraInfo": null
+    },
+    {
+      "word": "音楽",
+      "reading": "おんがく",
+      "accent": "[1]",
+      "meaning": "音樂",
+      "extraInfo": null
+    },
+    {
+      "word": "買い物",
+      "reading": "かいもの",
+      "accent": "[0]",
+      "meaning": "買東西、購物／買的東西、購物品",
+      "extraInfo": "「買い物」是買東西的意思，也可作為移動的目的。\n例：「姉はデパートへ買い物に行きました（姊姊去百貨公司買東西了）」"
+    },
+    {
+      "word": "雑誌",
+      "reading": "ざっし",
+      "accent": "[0]",
+      "meaning": "雜誌、刊物",
+      "extraInfo": "注意漢字的寫法，日文的「雑誌」是「雑」不是「雜」。"
+    },
+    {
+      "word": "写真",
+      "reading": "しゃしん",
+      "accent": "[0]",
+      "meaning": "照片、相片",
+      "extraInfo": null
+    },
+    {
+      "word": "新聞",
+      "reading": "しんぶん",
+      "accent": "[0]",
+      "meaning": "報紙",
+      "extraInfo": "日文「新聞」是報紙的意思，「ニュース」才是新聞的意思。\n例：「新聞を読む（看報紙）」／「ニュースを見る（看新聞）」"
+    },
+    {
+      "word": "水泳",
+      "reading": "すいえい",
+      "accent": "[0]",
+      "meaning": "游泳",
+      "extraInfo": null
+    },
+    {
+      "word": "暇",
+      "reading": "ひま",
+      "accent": "[0]",
+      "meaning": "空、空閒／閒、閒暇、無事",
+      "extraInfo": null
+    },
+    {
+      "word": "休み",
+      "reading": "やすみ",
+      "accent": "[3]",
+      "meaning": "休息／休假、假日、假期",
+      "extraInfo": null
+    },
+    {
+      "word": "ギター",
+      "reading": "guitar",
+      "accent": "[1]",
+      "meaning": "吉他",
+      "extraInfo": null
+    },
+    {
+      "word": "サッカー",
+      "reading": "soccer",
+      "accent": "[1]",
+      "meaning": "足球",
+      "extraInfo": null
+    },
+    {
+      "word": "シャワー",
+      "reading": "shower",
+      "accent": "[1]",
+      "meaning": "淋浴、沖澡",
+      "extraInfo": null
+    },
+    {
+      "word": "スポーツ",
+      "reading": "sport",
+      "accent": "[2]",
+      "meaning": "運動、體育",
+      "extraInfo": null
+    },
+    {
+      "word": "テニス",
+      "reading": "tennis",
+      "accent": "[1]",
+      "meaning": "網球",
+      "extraInfo": null
+    },
+    {
+      "word": "ニュース",
+      "reading": "news",
+      "accent": "[1]",
+      "meaning": "新聞／消息",
+      "extraInfo": "日文「新聞」是報紙的意思，「ニュース」才是新聞的意思。\n例：「新聞を読む（看報紙）」／「ニュースを見る（看新聞）」"
+    },
+    {
+      "word": "バドミントン",
+      "reading": "badminton",
+      "accent": "[3]",
+      "meaning": "羽球、羽毛球",
+      "extraInfo": null
+    },
+    {
+      "word": "パーティー",
+      "reading": "party",
+      "accent": "[1]",
+      "meaning": "派對",
+      "extraInfo": null
+    },
+    {
+      "word": "レジャー",
+      "reading": "leisure",
+      "accent": "[1]",
+      "meaning": "休閒",
+      "extraInfo": null
+    }
+  ]
+}

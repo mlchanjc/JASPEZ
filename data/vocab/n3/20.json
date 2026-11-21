@@ -1,0 +1,133 @@
+{
+  "level": "N3",
+  "lesson": 20,
+  "title": "N3日文單字20（形容詞）綜合",
+  "words": [
+    {
+      "word": "濃い",
+      "reading": "こい",
+      "accent": "[1]",
+      "meaning": "濃郁",
+      "extraInfo": null
+    },
+    {
+      "word": "痒い",
+      "reading": "かゆい",
+      "accent": "[2]",
+      "meaning": "癢",
+      "extraInfo": null
+    },
+    {
+      "word": "臭い",
+      "reading": "くさい",
+      "accent": "[2]",
+      "meaning": "臭",
+      "extraInfo": null
+    },
+    {
+      "word": "悔しい",
+      "reading": "くやしい",
+      "accent": "[3]",
+      "meaning": "悔恨、不甘心",
+      "extraInfo": null
+    },
+    {
+      "word": "苦しい",
+      "reading": "くるしい",
+      "accent": "[3]",
+      "meaning": "痛苦",
+      "extraInfo": null
+    },
+    {
+      "word": "詳しい",
+      "reading": "くわしい",
+      "accent": "[3]",
+      "meaning": "詳細",
+      "extraInfo": null
+    },
+    {
+      "word": "親しい",
+      "reading": "したしい",
+      "accent": "[3]",
+      "meaning": "親密",
+      "extraInfo": null
+    },
+    {
+      "word": "激しい",
+      "reading": "はげしい",
+      "accent": "[3]",
+      "meaning": "激烈、猛烈",
+      "extraInfo": null
+    },
+    {
+      "word": "眩しい",
+      "reading": "まぶしい",
+      "accent": "[3]",
+      "meaning": "耀眼、炫目",
+      "extraInfo": null
+    },
+    {
+      "word": "茶色い",
+      "reading": "ちゃいろい",
+      "accent": "[0]",
+      "meaning": "茶色、褐色",
+      "extraInfo": null
+    },
+    {
+      "word": "大人しい",
+      "reading": "おとなしい",
+      "accent": "[4]",
+      "meaning": "穩重、溫順、文靜、老實",
+      "extraInfo": null
+    },
+    {
+      "word": "憎らしい",
+      "reading": "にくらしい",
+      "accent": "[4]",
+      "meaning": "可憎的／令人討厭",
+      "extraInfo": null
+    },
+    {
+      "word": "真っ白い",
+      "reading": "まっしろい",
+      "accent": "[4]",
+      "meaning": "雪白、純白",
+      "extraInfo": null
+    },
+    {
+      "word": "蒸し暑い",
+      "reading": "むしあつい",
+      "accent": "[4]",
+      "meaning": "悶熱",
+      "extraInfo": null
+    },
+    {
+      "word": "羨ましい",
+      "reading": "うらやましい",
+      "accent": "[5]",
+      "meaning": "羨慕",
+      "extraInfo": null
+    },
+    {
+      "word": "かっこいい",
+      "reading": "かっこいい",
+      "accent": "[4]",
+      "meaning": "帥、酷",
+      "extraInfo": null
+    },
+    {
+      "word": "我慢強い",
+      "reading": "がまんづよい",
+      "accent": "[5]",
+      "meaning": "忍受力高、耐性強",
+      "extraInfo": null
+    },
+    {
+      "word": "もったいない",
+      "reading": "もったいない",
+      "accent": "[5]",
+      "meaning": "浪費／可惜／過度的",
+      "extraInfo": null
+    }
+  ]
+}

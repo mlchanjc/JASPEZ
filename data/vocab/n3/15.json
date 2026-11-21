@@ -1,0 +1,280 @@
+{
+  "level": "N3",
+  "lesson": 15,
+  "title": "N3日文單字15（名詞）綜合（二）",
+  "words": [
+    {
+      "word": "資格",
+      "reading": "しかく",
+      "accent": "[0]",
+      "meaning": "資格",
+      "extraInfo": null
+    },
+    {
+      "word": "資源",
+      "reading": "しげん",
+      "accent": "[1]",
+      "meaning": "資源",
+      "extraInfo": null
+    },
+    {
+      "word": "事件",
+      "reading": "じけん",
+      "accent": "[1]",
+      "meaning": "事件",
+      "extraInfo": null
+    },
+    {
+      "word": "事前",
+      "reading": "じぜん",
+      "accent": "[0]",
+      "meaning": "事前",
+      "extraInfo": null
+    },
+    {
+      "word": "湿気",
+      "reading": "しっけ",
+      "accent": "[0]",
+      "meaning": "濕氣",
+      "extraInfo": null
+    },
+    {
+      "word": "湿度",
+      "reading": "しつど",
+      "accent": "[2][1]",
+      "meaning": "濕度",
+      "extraInfo": null
+    },
+    {
+      "word": "自動",
+      "reading": "じどう",
+      "accent": "[0]",
+      "meaning": "自動",
+      "extraInfo": null
+    },
+    {
+      "word": "氏名",
+      "reading": "しめい",
+      "accent": "[1]",
+      "meaning": "姓名",
+      "extraInfo": null
+    },
+    {
+      "word": "目上",
+      "reading": "めうえ",
+      "accent": "[0][3]",
+      "meaning": "上位者、長輩",
+      "extraInfo": "目上と目下\n\n「目上」的意思是指身分地位或年齡比自己高的人物，「目下」則是身分地位或年齡比自己低的人物，對「目上の人」要使用敬語，對「目下の人」可用丁寧體（表示客氣）或用普通體。"
+    },
+    {
+      "word": "目下",
+      "reading": "めした",
+      "accent": "[3][0]",
+      "meaning": "下位者、晚輩",
+      "extraInfo": "目上と目下\n\n「目上」的意思是指身分地位或年齡比自己高的人物，「目下」則是身分地位或年齡比自己低的人物，對「目上の人」要使用敬語，對「目下の人」可用丁寧體（表示客氣）或用普通體。"
+    },
+    {
+      "word": "物価",
+      "reading": "ぶっか",
+      "accent": "[0]",
+      "meaning": "物價",
+      "extraInfo": null
+    },
+    {
+      "word": "物理",
+      "reading": "ぶつり",
+      "accent": "[1]",
+      "meaning": "物理",
+      "extraInfo": null
+    },
+    {
+      "word": "世紀",
+      "reading": "せいき",
+      "accent": "[1]",
+      "meaning": "世紀",
+      "extraInfo": null
+    },
+    {
+      "word": "正義",
+      "reading": "せいぎ",
+      "accent": "[1]",
+      "meaning": "正義",
+      "extraInfo": null
+    },
+    {
+      "word": "世間",
+      "reading": "せけん",
+      "accent": "[1]",
+      "meaning": "世間／交際／世人",
+      "extraInfo": null
+    },
+    {
+      "word": "速度",
+      "reading": "そくど",
+      "accent": "[1]",
+      "meaning": "速度",
+      "extraInfo": null
+    },
+    {
+      "word": "態度",
+      "reading": "たいど",
+      "accent": "[1]",
+      "meaning": "態度",
+      "extraInfo": null
+    },
+    {
+      "word": "定期",
+      "reading": "ていき",
+      "accent": "[1]",
+      "meaning": "定期",
+      "extraInfo": null
+    },
+    {
+      "word": "図書",
+      "reading": "としょ",
+      "accent": "[1]",
+      "meaning": "圖書、書籍",
+      "extraInfo": null
+    },
+    {
+      "word": "人気",
+      "reading": "にんき",
+      "accent": "[0]",
+      "meaning": "人氣（受歡迎程度）",
+      "extraInfo": null
+    },
+    {
+      "word": "中身",
+      "reading": "なかみ",
+      "accent": "[2]",
+      "meaning": "內容物／內容",
+      "extraInfo": null
+    },
+    {
+      "word": "濃度",
+      "reading": "のうど",
+      "accent": "[1]",
+      "meaning": "濃度",
+      "extraInfo": null
+    },
+    {
+      "word": "場面",
+      "reading": "ばめん",
+      "accent": "[1][0]",
+      "meaning": "場面",
+      "extraInfo": null
+    },
+    {
+      "word": "範囲",
+      "reading": "はんい",
+      "accent": "[1]",
+      "meaning": "範圍",
+      "extraInfo": null
+    },
+    {
+      "word": "被害",
+      "reading": "ひがい",
+      "accent": "[1]",
+      "meaning": "受損、受害",
+      "extraInfo": null
+    },
+    {
+      "word": "舞台",
+      "reading": "ぶたい",
+      "accent": "[1]",
+      "meaning": "舞台",
+      "extraInfo": null
+    },
+    {
+      "word": "二手",
+      "reading": "ふたて",
+      "accent": "[3]",
+      "meaning": "二路",
+      "extraInfo": "此二手非彼二手\n\n「二手」的意思是分成兩隊、兵分二路、分道揚鑣等，如「二手に分かれる（分成兩隊、兵分二路）」，「二手に分かれて捜査する（兵分兩路去搜查）」，「二手に分かれて探そう（分成兩路去找）」。\n\n中文的「二手、中古」日文是「中古[0][1]」，如「二手車／中古車」的日文就是「中古車」。"
+    },
+    {
+      "word": "符号",
+      "reading": "ふごう",
+      "accent": "[0]",
+      "meaning": "符號",
+      "extraInfo": null
+    },
+    {
+      "word": "調子",
+      "reading": "ちょうし",
+      "accent": "[0]",
+      "meaning": "狀態／狀況",
+      "extraInfo": "「調子」是指人或事物的進行、進展的狀態。\n\n- 調子が悪いです。\n身體不適。也可用於機械或工作的狀況不佳。\n\n- 機械の調子が悪い。\n機械的狀況不好。"
+    },
+    {
+      "word": "生物",
+      "reading": "せいぶつ",
+      "accent": "[1]",
+      "meaning": "生物",
+      "extraInfo": null
+    },
+    {
+      "word": "悪戯",
+      "reading": "いたずら",
+      "accent": "[0]",
+      "meaning": "惡作劇",
+      "extraInfo": null
+    },
+    {
+      "word": "一体",
+      "reading": "いったい",
+      "accent": "[0]",
+      "meaning": "一體",
+      "extraInfo": null
+    },
+    {
+      "word": "学歴",
+      "reading": "がくれき",
+      "accent": "[0]",
+      "meaning": "學歷",
+      "extraInfo": null
+    },
+    {
+      "word": "例外",
+      "reading": "れいがい",
+      "accent": "[0]",
+      "meaning": "例外",
+      "extraInfo": null
+    },
+    {
+      "word": "現代",
+      "reading": "げんだい",
+      "accent": "[1]",
+      "meaning": "現代",
+      "extraInfo": null
+    },
+    {
+      "word": "後半",
+      "reading": "こうはん",
+      "accent": "[0]",
+      "meaning": "後半",
+      "extraInfo": null
+    },
+    {
+      "word": "高齢",
+      "reading": "こうれい",
+      "accent": "[0]",
+      "meaning": "高齡",
+      "extraInfo": null
+    },
+    {
+      "word": "国籍",
+      "reading": "こくせき",
+      "accent": "[0]",
+      "meaning": "國籍",
+      "extraInfo": null
+    },
+    {
+      "word": "黒板",
+      "reading": "こくばん",
+      "accent": "[0]",
+      "meaning": "黑板",
+      "extraInfo": null
+    }
+  ]
+}

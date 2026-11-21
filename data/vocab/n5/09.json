@@ -1,0 +1,98 @@
+{
+  "level": "N5",
+  "lesson": 9,
+  "title": "N5日文單字09（名詞）交通工具",
+  "words": [
+    {
+      "word": "駅",
+      "reading": "えき",
+      "accent": "[1]",
+      "meaning": "車站、火車站",
+      "extraInfo": null
+    },
+    {
+      "word": "切符",
+      "reading": "きっぷ",
+      "accent": "[0]",
+      "meaning": "票、車票、入場票",
+      "extraInfo": null
+    },
+    {
+      "word": "空港",
+      "reading": "くうこう",
+      "accent": "[0]",
+      "meaning": "機場",
+      "extraInfo": null
+    },
+    {
+      "word": "車",
+      "reading": "くるま",
+      "accent": "[0]",
+      "meaning": "車、車子、汽車",
+      "extraInfo": null
+    },
+    {
+      "word": "交通",
+      "reading": "こうつう",
+      "accent": "[0]",
+      "meaning": "交通",
+      "extraInfo": null
+    },
+    {
+      "word": "自転車",
+      "reading": "じてんしゃ",
+      "accent": "[2][0]",
+      "meaning": "自行車、腳踏車、單車",
+      "extraInfo": "日文「バイク」是機車的意思，腳踏車是「自転車」。"
+    },
+    {
+      "word": "地下鉄",
+      "reading": "ちかてつ",
+      "accent": "[0]",
+      "meaning": "地下鐵、地鐵",
+      "extraInfo": null
+    },
+    {
+      "word": "電車",
+      "reading": "でんしゃ",
+      "accent": "[0][1]",
+      "meaning": "電車",
+      "extraInfo": null
+    },
+    {
+      "word": "荷物",
+      "reading": "にもつ",
+      "accent": "[1]",
+      "meaning": "行李、貨物、包裹",
+      "extraInfo": null
+    },
+    {
+      "word": "飛行機",
+      "reading": "ひこうき",
+      "accent": "[2]",
+      "meaning": "飛機",
+      "extraInfo": null
+    },
+    {
+      "word": "タクシー",
+      "reading": "taxi",
+      "accent": "[1]",
+      "meaning": "計程車",
+      "extraInfo": null
+    },
+    {
+      "word": "バイク",
+      "reading": "bike",
+      "accent": "[1]",
+      "meaning": "機車",
+      "extraInfo": "日文「バイク」是機車的意思，腳踏車是「自転車」。"
+    },
+    {
+      "word": "バス",
+      "reading": "bus",
+      "accent": "[1]",
+      "meaning": "公車、巴士",
+      "extraInfo": null
+    }
+  ]
+}

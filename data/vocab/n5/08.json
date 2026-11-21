@@ -1,0 +1,112 @@
+{
+  "level": "N5",
+  "lesson": 8,
+  "title": "N5日文單字08（名詞）大自然",
+  "words": [
+    {
+      "word": "雨",
+      "reading": "あめ",
+      "accent": "[1]",
+      "meaning": "雨、雨水／下雨天",
+      "extraInfo": "注意「雨」的重音是[1]，如果唸作[0]就變成「飴」。"
+    },
+    {
+      "word": "海",
+      "reading": "うみ",
+      "accent": "[1]",
+      "meaning": "海、海洋、大海",
+      "extraInfo": null
+    },
+    {
+      "word": "風",
+      "reading": "かぜ",
+      "accent": "[0]",
+      "meaning": "風",
+      "extraInfo": "「風」為風之意，而「風邪」的意思是感冒。\n由於古代認為感冒是受風之邪氣（風寒）而引起，因此便對這病症稱之為「風邪」，與「風」同音。"
+    },
+    {
+      "word": "川",
+      "reading": "かわ",
+      "accent": "[2]",
+      "meaning": "河、川、河川、河水",
+      "extraInfo": null
+    },
+    {
+      "word": "木",
+      "reading": "き",
+      "accent": "[1]",
+      "meaning": "樹、樹木／木材、木頭",
+      "extraInfo": null
+    },
+    {
+      "word": "草",
+      "reading": "くさ",
+      "accent": "[2]",
+      "meaning": "草／雜草",
+      "extraInfo": null
+    },
+    {
+      "word": "曇り",
+      "reading": "くもり",
+      "accent": "[3]",
+      "meaning": "陰天、多雲",
+      "extraInfo": null
+    },
+    {
+      "word": "自然",
+      "reading": "しぜん",
+      "accent": "[0]",
+      "meaning": "自然",
+      "extraInfo": null
+    },
+    {
+      "word": "空",
+      "reading": "そら",
+      "accent": "[1]",
+      "meaning": "天空／天氣",
+      "extraInfo": null
+    },
+    {
+      "word": "天気",
+      "reading": "てんき",
+      "accent": "[1]",
+      "meaning": "天氣／晴天、好天氣",
+      "extraInfo": null
+    },
+    {
+      "word": "花",
+      "reading": "はな",
+      "accent": "[2]",
+      "meaning": "花、花朵",
+      "extraInfo": null
+    },
+    {
+      "word": "晴れ",
+      "reading": "はれ",
+      "accent": "[2]",
+      "meaning": "晴天",
+      "extraInfo": null
+    },
+    {
+      "word": "火",
+      "reading": "ひ",
+      "accent": "[1]",
+      "meaning": "火",
+      "extraInfo": null
+    },
+    {
+      "word": "山",
+      "reading": "やま",
+      "accent": "[2]",
+      "meaning": "山",
+      "extraInfo": null
+    },
+    {
+      "word": "雪",
+      "reading": "ゆき",
+      "accent": "[2]",
+      "meaning": "雪",
+      "extraInfo": null
+    }
+  ]
+}

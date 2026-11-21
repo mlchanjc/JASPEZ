@@ -1,0 +1,168 @@
+{
+  "level": "N4",
+  "lesson": 14,
+  "title": "N4日文單字14（形容詞）綜合",
+  "words": [
+    {
+      "word": "酸っぱい",
+      "reading": "すっぱい",
+      "accent": "[3]",
+      "meaning": "酸、酸的",
+      "extraInfo": null
+    },
+    {
+      "word": "苦い",
+      "reading": "にがい",
+      "accent": "[2]",
+      "meaning": "苦、苦澀／難受、痛苦",
+      "extraInfo": null
+    },
+    {
+      "word": "辛い",
+      "reading": "からい",
+      "accent": "[2]",
+      "meaning": "辣、辛辣／鹹／嚴厲／不甜、口感較乾（的酒）",
+      "extraInfo": null
+    },
+    {
+      "word": "深い",
+      "reading": "ふかい",
+      "accent": "[2]",
+      "meaning": "深、深邃／深刻、深厚、深奧／濃、濃厚",
+      "extraInfo": null
+    },
+    {
+      "word": "浅い",
+      "reading": "あさい",
+      "accent": "[0][2]",
+      "meaning": "淺／淺薄、膚淺／淡、淡薄",
+      "extraInfo": null
+    },
+    {
+      "word": "固い・硬い・堅い",
+      "reading": "かたい",
+      "accent": "[0]",
+      "meaning": "堅固／頑固／堅硬／艱澀、生硬／堅實",
+      "extraInfo": null
+    },
+    {
+      "word": "眠い",
+      "reading": "ねむい",
+      "accent": "[0][2]",
+      "meaning": "想睡、睏、愛睏",
+      "extraInfo": null
+    },
+    {
+      "word": "ひどい",
+      "reading": "ひどい",
+      "accent": "[2]",
+      "meaning": "過分、糟糕、殘酷／嚴重",
+      "extraInfo": null
+    },
+    {
+      "word": "怖い",
+      "reading": "こわい",
+      "accent": "[2]",
+      "meaning": "可怕、恐怖、害怕、嚇人",
+      "extraInfo": null
+    },
+    {
+      "word": "正しい",
+      "reading": "ただしい",
+      "accent": "[3]",
+      "meaning": "正確、對的／端正",
+      "extraInfo": null
+    },
+    {
+      "word": "悲しい",
+      "reading": "かなしい",
+      "accent": "[0][3]",
+      "meaning": "悲傷、難過、傷心",
+      "extraInfo": null
+    },
+    {
+      "word": "嬉しい",
+      "reading": "うれしい",
+      "accent": "[3]",
+      "meaning": "高興、開心、欣喜",
+      "extraInfo": null
+    },
+    {
+      "word": "美しい",
+      "reading": "うつくしい",
+      "accent": "[4]",
+      "meaning": "美、美麗、漂亮、優美／美好",
+      "extraInfo": null
+    },
+    {
+      "word": "珍しい",
+      "reading": "めずらしい",
+      "accent": "[4]",
+      "meaning": "罕見、少見、難得、稀有／珍貴／稀奇、珍奇、獨特",
+      "extraInfo": null
+    },
+    {
+      "word": "寂しい・淋しい",
+      "reading": "さびしい",
+      "accent": "[3]",
+      "meaning": "寂寞、孤獨、孤單／冷清、淒涼、寂寥",
+      "extraInfo": null
+    },
+    {
+      "word": "細かい",
+      "reading": "こまかい",
+      "accent": "[3]",
+      "meaning": "細、細小、細緻／詳細／細膩、周到／瑣碎的、吹毛求疵的／小氣的／零錢、小額",
+      "extraInfo": null
+    },
+    {
+      "word": "柔らかい・軟らかい",
+      "reading": "やわらかい",
+      "accent": "[4]",
+      "meaning": "軟、柔軟、嫩／溫和、柔和",
+      "extraInfo": null
+    },
+    {
+      "word": "恥ずかしい",
+      "reading": "はずかしい",
+      "accent": "[4]",
+      "meaning": "害羞、不好意思、難為情／丟臉、羞恥、可恥",
+      "extraInfo": null
+    },
+    {
+      "word": "素晴らしい",
+      "reading": "すばらしい",
+      "accent": "[4]",
+      "meaning": "棒、太棒了、出色、精彩、絕妙",
+      "extraInfo": null
+    },
+    {
+      "word": "うまい",
+      "reading": "うまい",
+      "accent": "[2]",
+      "meaning": "好吃、美味／擅長、高明／順利、巧妙",
+      "extraInfo": null
+    },
+    {
+      "word": "すごい",
+      "reading": "すごい",
+      "accent": "[2]",
+      "meaning": "厲害、了不起／非常、很／可怕、猛烈",
+      "extraInfo": null
+    },
+    {
+      "word": "よろしい",
+      "reading": "よろしい",
+      "accent": "[0]",
+      "meaning": "好、行、可以",
+      "extraInfo": null
+    },
+    {
+      "word": "おかしい",
+      "reading": "おかしい",
+      "accent": "[3]",
+      "meaning": "好笑、有趣、滑稽／可笑／奇怪、怪怪的／可疑、不對勁、古怪",
+      "extraInfo": null
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "level": "N5",
+  "lesson": 2,
+  "title": "N5日文單字02（名詞）家族",
+  "words": [
+    {
+      "word": "兄",
+      "reading": "あに",
+      "accent": "[1]",
+      "meaning": "哥哥",
+      "extraInfo": null
+    },
+    {
+      "word": "姉",
+      "reading": "あね",
+      "accent": "[0]",
+      "meaning": "姊姊",
+      "extraInfo": null
+    },
+    {
+      "word": "妹",
+      "reading": "いもうと",
+      "accent": "[4]",
+      "meaning": "妹妹",
+      "extraInfo": null
+    },
+    {
+      "word": "妹さん",
+      "reading": "いもうとさん",
+      "accent": "[0]",
+      "meaning": "妹妹",
+      "extraInfo": null
+    },
+    {
+      "word": "お母さん",
+      "reading": "おかあさん",
+      "accent": "[2]",
+      "meaning": "媽媽、母親",
+      "extraInfo": null
+    },
+    {
+      "word": "奥さん",
+      "reading": "おくさん",
+      "accent": "[1]",
+      "meaning": "太太、夫人",
+      "extraInfo": null
+    },
+    {
+      "word": "お子さん",
+      "reading": "おこさん",
+      "accent": "[0]",
+      "meaning": "孩子",
+      "extraInfo": null
+    },
+    {
+      "word": "おじ",
+      "reading": "おじ",
+      "accent": "[0]",
+      "meaning": "伯父／叔父／叔叔",
+      "extraInfo": null
+    },
+    {
+      "word": "おじいさん",
+      "reading": "おじいさん",
+      "accent": "[2]",
+      "meaning": "爺爺／老爺爺",
+      "extraInfo": null
+    },
+    {
+      "word": "おじさん",
+      "reading": "おじさん",
+      "accent": "[0]",
+      "meaning": "伯父／叔父／叔叔",
+      "extraInfo": null
+    },
+    {
+      "word": "夫",
+      "reading": "おっと",
+      "accent": "[0]",
+      "meaning": "先生、丈夫",
+      "extraInfo": null
+    },
+    {
+      "word": "お父さん",
+      "reading": "おとうさん",
+      "accent": "[2]",
+      "meaning": "爸爸、父親",
+      "extraInfo": null
+    },
+    {
+      "word": "弟",
+      "reading": "おとうと",
+      "accent": "[4]",
+      "meaning": "弟弟",
+      "extraInfo": null
+    },
+    {
+      "word": "弟さん",
+      "reading": "おとうとさん",
+      "accent": "[0]",
+      "meaning": "弟弟",
+      "extraInfo": null
+    },
+    {
+      "word": "お兄さん",
+      "reading": "おにいさん",
+      "accent": "[2]",
+      "meaning": "哥哥／大哥",
+      "extraInfo": null
+    },
+    {
+      "word": "お姉さん",
+      "reading": "おねえさん",
+      "accent": "[2]",
+      "meaning": "姊姊／大姐、姐姐",
+      "extraInfo": null
+    },
+    {
+      "word": "おば",
+      "reading": "おば",
+      "accent": "[0]",
+      "meaning": "伯母／嬸嬸／阿姨",
+      "extraInfo": null
+    },
+    {
+      "word": "おばあさん",
+      "reading": "おばあさん",
+      "accent": "[2]",
+      "meaning": "奶奶／老奶奶",
+      "extraInfo": null
+    },
+    {
+      "word": "おばさん",
+      "reading": "おばさん",
+      "accent": "[0]",
+      "meaning": "伯母／嬸嬸／阿姨",
+      "extraInfo": null
+    },
+    {
+      "word": "家族",
+      "reading": "かぞく",
+      "accent": "[1]",
+      "meaning": "家人",
+      "extraInfo": null
+    },
+    {
+      "word": "兄弟",
+      "reading": "きょうだい",
+      "accent": "[1]",
+      "meaning": "兄弟姊妹",
+      "extraInfo": null
+    },
+    {
+      "word": "ご家族",
+      "reading": "ごかぞく",
+      "accent": "[2]",
+      "meaning": "家人",
+      "extraInfo": null
+    },
+    {
+      "word": "ご兄弟",
+      "reading": "ごきょうだい",
+      "accent": "[2]",
+      "meaning": "兄弟姊妹",
+      "extraInfo": null
+    },
+    {
+      "word": "ご姉妹",
+      "reading": "ごしまい",
+      "accent": "[2]",
+      "meaning": "姊妹",
+      "extraInfo": null
+    },
+    {
+      "word": "ご主人",
+      "reading": "ごしゅじん",
+      "accent": "[2]",
+      "meaning": "先生、丈夫",
+      "extraInfo": null
+    },
+    {
+      "word": "ご両親",
+      "reading": "ごりょうしん",
+      "accent": "[2]",
+      "meaning": "父母、雙親",
+      "extraInfo": null
+    },
+    {
+      "word": "姉妹",
+      "reading": "しまい",
+      "accent": "[1]",
+      "meaning": "姊妹",
+      "extraInfo": null
+    },
+    {
+      "word": "主人",
+      "reading": "しゅじん",
+      "accent": "[1]",
+      "meaning": "先生、丈夫",
+      "extraInfo": null
+    },
+    {
+      "word": "祖父",
+      "reading": "そふ",
+      "accent": "[1]",
+      "meaning": "祖父、爺爺",
+      "extraInfo": null
+    },
+    {
+      "word": "祖母",
+      "reading": "そぼ",
+      "accent": "[1]",
+      "meaning": "祖母、奶奶",
+      "extraInfo": null
+    },
+    {
+      "word": "父",
+      "reading": "ちち",
+      "accent": "[1][2]",
+      "meaning": "父親、爸爸",
+      "extraInfo": null
+    },
+    {
+      "word": "妻",
+      "reading": "つま",
+      "accent": "[1]",
+      "meaning": "妻子、太太",
+      "extraInfo": null
+    },
+    {
+      "word": "母",
+      "reading": "はは",
+      "accent": "[1]",
+      "meaning": "母親、媽媽",
+      "extraInfo": null
+    },
+    {
+      "word": "息子",
+      "reading": "むすこ",
+      "accent": "[0]",
+      "meaning": "兒子",
+      "extraInfo": null
+    },
+    {
+      "word": "息子さん",
+      "reading": "むすこさん",
+      "accent": "[0]",
+      "meaning": "兒子",
+      "extraInfo": null
+    },
+    {
+      "word": "娘",
+      "reading": "むすめ",
+      "accent": "[3]",
+      "meaning": "女兒",
+      "extraInfo": null
+    },
+    {
+      "word": "娘さん",
+      "reading": "むすめさん",
+      "accent": "[0]",
+      "meaning": "女兒",
+      "extraInfo": null
+    },
+    {
+      "word": "両親",
+      "reading": "りょうしん",
+      "accent": "[1]",
+      "meaning": "父母、雙親",
+      "extraInfo": null
+    }
+  ]
+}

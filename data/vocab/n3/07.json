@@ -1,0 +1,119 @@
+{
+  "level": "N3",
+  "lesson": 7,
+  "title": "N3日文單字07（名詞）電器家具",
+  "words": [
+    {
+      "word": "家具",
+      "reading": "かぐ",
+      "accent": "[1]",
+      "meaning": "家具",
+      "extraInfo": null
+    },
+    {
+      "word": "たんす",
+      "reading": "たんす",
+      "accent": "[0]",
+      "meaning": "衣櫥、衣櫃、櫃子",
+      "extraInfo": null
+    },
+    {
+      "word": "掃除機",
+      "reading": "そうじき",
+      "accent": "[3]",
+      "meaning": "吸塵器",
+      "extraInfo": null
+    },
+    {
+      "word": "洗面所",
+      "reading": "せんめんじょ",
+      "accent": "[5][0]",
+      "meaning": "洗手台",
+      "extraInfo": null
+    },
+    {
+      "word": "液晶テレビ",
+      "reading": "えきしょうテレビ",
+      "accent": "[5]",
+      "meaning": "液晶電視",
+      "extraInfo": null
+    },
+    {
+      "word": "空気清浄機",
+      "reading": "くうきせいじょうき",
+      "accent": "[6]",
+      "meaning": "空氣清淨機",
+      "extraInfo": null
+    },
+    {
+      "word": "電気ポット",
+      "reading": "でんきポット",
+      "accent": "[4]",
+      "meaning": "電熱水壺",
+      "extraInfo": null
+    },
+    {
+      "word": "電気スタンド",
+      "reading": "でんきスタンド",
+      "accent": "[5]",
+      "meaning": "檯燈",
+      "extraInfo": null
+    },
+    {
+      "word": "電気シェーバー",
+      "reading": "でんきシェーバー",
+      "accent": "[4]",
+      "meaning": "電動刮鬍刀",
+      "extraInfo": null
+    },
+    {
+      "word": "目覚まし時計",
+      "reading": "めざましどけい",
+      "accent": "[5]",
+      "meaning": "鬧鐘",
+      "extraInfo": null
+    },
+    {
+      "word": "ミシン",
+      "reading": "sewing machine",
+      "accent": "[1]",
+      "meaning": "縫紉機",
+      "extraInfo": null
+    },
+    {
+      "word": "アイロン",
+      "reading": "iron",
+      "accent": "[0]",
+      "meaning": "熨斗",
+      "extraInfo": null
+    },
+    {
+      "word": "ミキサー",
+      "reading": "mixer",
+      "accent": "[1]",
+      "meaning": "果汁機",
+      "extraInfo": null
+    },
+    {
+      "word": "リモコン",
+      "reading": "remote control",
+      "accent": "[0]",
+      "meaning": "搖控器",
+      "extraInfo": null
+    },
+    {
+      "word": "ドライヤー",
+      "reading": "dryer,drier",
+      "accent": "[0][2]",
+      "meaning": "吹風機",
+      "extraInfo": null
+    },
+    {
+      "word": "ホットカーペット",
+      "reading": "hot ＋ carpet 〔和〕",
+      "accent": "[4]",
+      "meaning": "電毯",
+      "extraInfo": null
+    }
+  ]
+}

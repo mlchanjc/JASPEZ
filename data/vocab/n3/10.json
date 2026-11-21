@@ -1,0 +1,224 @@
+{
+  "level": "N3",
+  "lesson": 10,
+  "title": "N3日文單字10（名詞）服裝",
+  "words": [
+    {
+      "word": "襟",
+      "reading": "えり",
+      "accent": "[2]",
+      "meaning": "衣領",
+      "extraInfo": null
+    },
+    {
+      "word": "ハイネック",
+      "reading": "high-necked",
+      "accent": "[3]",
+      "meaning": "高領",
+      "extraInfo": null
+    },
+    {
+      "word": "裾",
+      "reading": "すそ",
+      "accent": "[0]",
+      "meaning": "衣襬",
+      "extraInfo": null
+    },
+    {
+      "word": "袖",
+      "reading": "そで",
+      "accent": "[0]",
+      "meaning": "袖子",
+      "extraInfo": null
+    },
+    {
+      "word": "草履",
+      "reading": "ぞうり",
+      "accent": "[0]",
+      "meaning": "草鞋",
+      "extraInfo": null
+    },
+    {
+      "word": "ブーツ",
+      "reading": "boots",
+      "accent": "[1]",
+      "meaning": "靴子",
+      "extraInfo": null
+    },
+    {
+      "word": "ニット",
+      "reading": "knit",
+      "accent": "[1]",
+      "meaning": "針織",
+      "extraInfo": null
+    },
+    {
+      "word": "トップス",
+      "reading": "tops",
+      "accent": "[0]",
+      "meaning": "泛指所有上衣",
+      "extraInfo": null
+    },
+    {
+      "word": "パーカー",
+      "reading": "parka",
+      "accent": "[0][1]",
+      "meaning": "連帽衣",
+      "extraInfo": null
+    },
+    {
+      "word": "ベスト",
+      "reading": "vest",
+      "accent": "[1]",
+      "meaning": "背心",
+      "extraInfo": null
+    },
+    {
+      "word": "ダウンジャケット",
+      "reading": "down jacket",
+      "accent": "[4]",
+      "meaning": "羽絨外套",
+      "extraInfo": null
+    },
+    {
+      "word": "スリップ",
+      "reading": "slip",
+      "accent": "[2][1]",
+      "meaning": "襯裙",
+      "extraInfo": null
+    },
+    {
+      "word": "ブラジャー",
+      "reading": "brassiere",
+      "accent": "[2]",
+      "meaning": "胸罩",
+      "extraInfo": null
+    },
+    {
+      "word": "オールインワン",
+      "reading": "all-in-one",
+      "accent": "[6]",
+      "meaning": "連身褲",
+      "extraInfo": null
+    },
+    {
+      "word": "ブラウス",
+      "reading": "blouse",
+      "accent": "[2]",
+      "meaning": "女性襯衫",
+      "extraInfo": null
+    },
+    {
+      "word": null,
+      "reading": null,
+      "accent": null,
+      "meaning": null,
+      "extraInfo": null
+    },
+    {
+      "word": "ケープ",
+      "reading": "cape",
+      "accent": "[1]",
+      "meaning": "披肩／斗篷",
+      "extraInfo": null
+    },
+    {
+      "word": "ジャージ",
+      "reading": "jersey",
+      "accent": "[0][1]",
+      "meaning": "運動服（針織）",
+      "extraInfo": null
+    },
+    {
+      "word": "スウェットシャツ",
+      "reading": "sweat shirt",
+      "accent": "[5]",
+      "meaning": "運動衫",
+      "extraInfo": null
+    },
+    {
+      "word": "ブレザー",
+      "reading": "blazer",
+      "accent": "[2]",
+      "meaning": "西裝外套",
+      "extraInfo": null
+    },
+    {
+      "word": "ダスターコート",
+      "reading": "duster coat",
+      "accent": "[5]",
+      "meaning": "風衣",
+      "extraInfo": null
+    },
+    {
+      "word": "トレンチコート",
+      "reading": "trench coat",
+      "accent": "[5]",
+      "meaning": "風衣（戰壕大衣）",
+      "extraInfo": null
+    },
+    {
+      "word": "メンズ",
+      "reading": "men's",
+      "accent": "[0]",
+      "meaning": "男性服飾",
+      "extraInfo": null
+    },
+    {
+      "word": null,
+      "reading": null,
+      "accent": null,
+      "meaning": null,
+      "extraInfo": null
+    },
+    {
+      "word": "レディース",
+      "reading": "ladies'",
+      "accent": "[0]",
+      "meaning": "女性服飾",
+      "extraInfo": null
+    },
+    {
+      "word": "カジュアルウエア",
+      "reading": "casual wear",
+      "accent": "[6]",
+      "meaning": "休閒服",
+      "extraInfo": null
+    },
+    {
+      "word": "フォーマルウエア",
+      "reading": "formal wear",
+      "accent": "[6]",
+      "meaning": "正式禮服",
+      "extraInfo": null
+    },
+    {
+      "word": "制服",
+      "reading": "せいふく",
+      "accent": "[0]",
+      "meaning": "制服",
+      "extraInfo": null
+    },
+    {
+      "word": "チャイナドレス",
+      "reading": "china dress 〔和〕",
+      "accent": "[4]",
+      "meaning": "旗袍",
+      "extraInfo": null
+    },
+    {
+      "word": "イブニングドレス",
+      "reading": "evening dress",
+      "accent": "[6]",
+      "meaning": "晚禮服",
+      "extraInfo": null
+    },
+    {
+      "word": "ウエディングドレス",
+      "reading": "wedding dress",
+      "accent": "[6]",
+      "meaning": "婚紗",
+      "extraInfo": null
+    }
+  ]
+}

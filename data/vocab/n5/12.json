@@ -1,0 +1,182 @@
+{
+  "level": "N5",
+  "lesson": 12,
+  "title": "N5日文單字12（名詞）文具",
+  "words": [
+    {
+      "word": "鉛筆",
+      "reading": "えんぴつ",
+      "accent": "[0]",
+      "meaning": "鉛筆",
+      "extraInfo": null
+    },
+    {
+      "word": "紙",
+      "reading": "かみ",
+      "accent": "[2]",
+      "meaning": "紙",
+      "extraInfo": null
+    },
+    {
+      "word": "切手",
+      "reading": "きって",
+      "accent": "[0]",
+      "meaning": "郵票",
+      "extraInfo": null
+    },
+    {
+      "word": "消しゴム",
+      "reading": "けしゴム",
+      "accent": "[0]",
+      "meaning": "橡皮擦、擦子、擦布",
+      "extraInfo": "橡皮擦\n\n橡皮擦的日文是「消しゴム」，「消し」是擦掉，「ゴム」是橡膠（gom）[荷蘭文]。"
+    },
+    {
+      "word": "修正液",
+      "reading": "しゅうせいえき",
+      "accent": "[3]",
+      "meaning": "修正液、立可白",
+      "extraInfo": "修正〇〇\n\n「修正液」是指立可白，其他也有「修正ペン（修正筆）」、「修正テープ（修正帶）」、「修正シール（修正貼）」等。"
+    },
+    {
+      "word": "辞書",
+      "reading": "じしょ",
+      "accent": "[1]",
+      "meaning": "辭典",
+      "extraInfo": null
+    },
+    {
+      "word": "定規",
+      "reading": "じょうぎ",
+      "accent": "[1]",
+      "meaning": "尺",
+      "extraInfo": null
+    },
+    {
+      "word": "地図",
+      "reading": "ちず",
+      "accent": "[1]",
+      "meaning": "地圖",
+      "extraInfo": null
+    },
+    {
+      "word": "手紙",
+      "reading": "てがみ",
+      "accent": "[0]",
+      "meaning": "信、信紙、書信",
+      "extraInfo": null
+    },
+    {
+      "word": "はがき",
+      "reading": "はがき",
+      "accent": "[0]",
+      "meaning": "明信片",
+      "extraInfo": "明信片\n\n明信片以假名「はがき」、「ハガキ」書寫居多，但也寫作「葉書」。"
+    },
+    {
+      "word": "封筒",
+      "reading": "ふうとう",
+      "accent": "[0]",
+      "meaning": "信封",
+      "extraInfo": null
+    },
+    {
+      "word": "付箋",
+      "reading": "ふせん",
+      "accent": "[0]",
+      "meaning": "便利貼",
+      "extraInfo": null
+    },
+    {
+      "word": "筆箱",
+      "reading": "ふでばこ",
+      "accent": "[0]",
+      "meaning": "鉛筆盒、筆盒、筆袋",
+      "extraInfo": "鉛筆盒\n\n鉛筆盒稱為「筆箱」，如果是筆袋一般會用外來語的「ペンケース」。"
+    },
+    {
+      "word": "文房具",
+      "reading": "ぶんぼうぐ",
+      "accent": "[3]",
+      "meaning": "文具",
+      "extraInfo": null
+    },
+    {
+      "word": "本",
+      "reading": "ほん",
+      "accent": "[1]",
+      "meaning": "書、書籍、書本",
+      "extraInfo": null
+    },
+    {
+      "word": "本棚",
+      "reading": "ほんだな",
+      "accent": "[1]",
+      "meaning": "書架、書櫃",
+      "extraInfo": null
+    },
+    {
+      "word": "万年筆",
+      "reading": "まんねんひつ",
+      "accent": "[3]",
+      "meaning": "鋼筆",
+      "extraInfo": null
+    },
+    {
+      "word": "シャープペンシル",
+      "reading": "sharp pencil〔和〕",
+      "accent": "[4]",
+      "meaning": "自動鉛筆",
+      "extraInfo": null
+    },
+    {
+      "word": "ステープラー",
+      "reading": "stapler",
+      "accent": "[2]",
+      "meaning": "釘書機",
+      "extraInfo": null
+    },
+    {
+      "word": "ノート",
+      "reading": "note",
+      "accent": "[1]",
+      "meaning": "筆記、筆記本",
+      "extraInfo": null
+    },
+    {
+      "word": "ペン",
+      "reading": "pen",
+      "accent": "[1]",
+      "meaning": "筆",
+      "extraInfo": null
+    },
+    {
+      "word": "ページ",
+      "reading": "page",
+      "accent": "[0]",
+      "meaning": "頁、頁數／頁面",
+      "extraInfo": null
+    },
+    {
+      "word": "ボールペン",
+      "reading": "ballpoint pen",
+      "accent": "[0]",
+      "meaning": "原子筆",
+      "extraInfo": null
+    },
+    {
+      "word": "ポスト",
+      "reading": "post",
+      "accent": "[1]",
+      "meaning": "郵筒、郵箱",
+      "extraInfo": null
+    },
+    {
+      "word": "ルーズリーフ",
+      "reading": "loose-leaf",
+      "accent": "[4]",
+      "meaning": "活頁紙",
+      "extraInfo": null
+    }
+  ]
+}

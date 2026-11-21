@@ -1,0 +1,147 @@
+{
+  "level": "N3",
+  "lesson": 11,
+  "title": "N3日文單字11（名詞）專業領域",
+  "words": [
+    {
+      "word": "国語",
+      "reading": "こくご",
+      "accent": "[0]",
+      "meaning": "國語",
+      "extraInfo": null
+    },
+    {
+      "word": "古典",
+      "reading": "こてん",
+      "accent": "[0]",
+      "meaning": "古典",
+      "extraInfo": null
+    },
+    {
+      "word": "理科",
+      "reading": "りか",
+      "accent": "[1]",
+      "meaning": "理科",
+      "extraInfo": null
+    },
+    {
+      "word": "化学",
+      "reading": "かがく",
+      "accent": "[1]",
+      "meaning": "化學",
+      "extraInfo": null
+    },
+    {
+      "word": "美術",
+      "reading": "びじゅつ",
+      "accent": "[1]",
+      "meaning": "美術",
+      "extraInfo": null
+    },
+    {
+      "word": "家庭科",
+      "reading": "かていか",
+      "accent": "[0]",
+      "meaning": "家政課",
+      "extraInfo": null
+    },
+    {
+      "word": "保健",
+      "reading": "ほけん",
+      "accent": "[0]",
+      "meaning": "保健",
+      "extraInfo": null
+    },
+    {
+      "word": "情報",
+      "reading": "じょうほう",
+      "accent": "[0]",
+      "meaning": "資訊、消息／情報",
+      "extraInfo": null
+    },
+    {
+      "word": "経営",
+      "reading": "けいえい",
+      "accent": "[0]",
+      "meaning": "經營、管理",
+      "extraInfo": null
+    },
+    {
+      "word": "保険",
+      "reading": "ほけん",
+      "accent": "[0]",
+      "meaning": "保險",
+      "extraInfo": null
+    },
+    {
+      "word": "看護",
+      "reading": "かんご",
+      "accent": "[1]",
+      "meaning": "護理",
+      "extraInfo": null
+    },
+    {
+      "word": "太鼓",
+      "reading": "たいこ",
+      "accent": "[0]",
+      "meaning": "太鼓",
+      "extraInfo": null
+    },
+    {
+      "word": "三味線",
+      "reading": "しゃみせん",
+      "accent": "[0]",
+      "meaning": "日本三弦樂器",
+      "extraInfo": null
+    },
+    {
+      "word": "作曲",
+      "reading": "さっきょく",
+      "accent": "[0]",
+      "meaning": "作曲",
+      "extraInfo": null
+    },
+    {
+      "word": "曲",
+      "reading": "きょく",
+      "accent": "[0]",
+      "meaning": "曲子",
+      "extraInfo": null
+    },
+    {
+      "word": "演歌",
+      "reading": "えんか",
+      "accent": "[1]",
+      "meaning": "演歌",
+      "extraInfo": null
+    },
+    {
+      "word": "歌劇",
+      "reading": "かげき",
+      "accent": "[1]",
+      "meaning": "歌劇",
+      "extraInfo": null
+    },
+    {
+      "word": "演劇",
+      "reading": "えんげき",
+      "accent": "[0]",
+      "meaning": "戲劇",
+      "extraInfo": null
+    },
+    {
+      "word": "演奏",
+      "reading": "えんそう",
+      "accent": "[0]",
+      "meaning": "演奏",
+      "extraInfo": null
+    },
+    {
+      "word": "化学反応",
+      "reading": "かがくはんのう",
+      "accent": "[4]",
+      "meaning": "化學反應",
+      "extraInfo": null
+    }
+  ]
+}

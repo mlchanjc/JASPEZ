@@ -1,0 +1,294 @@
+{
+  "level": "N3",
+  "lesson": 16,
+  "title": "N3日文單字16（名詞）綜合（三）",
+  "words": [
+    {
+      "word": "小包",
+      "reading": "こづつみ",
+      "accent": "[2]",
+      "meaning": "小包裹",
+      "extraInfo": null
+    },
+    {
+      "word": "名字",
+      "reading": "みょうじ",
+      "accent": "[1]",
+      "meaning": "姓氏",
+      "extraInfo": null
+    },
+    {
+      "word": "縞柄",
+      "reading": "しまがら",
+      "accent": "[0]",
+      "meaning": "條紋花樣",
+      "extraInfo": null
+    },
+    {
+      "word": "花柄",
+      "reading": "はながら",
+      "accent": "[0]",
+      "meaning": "花圖案",
+      "extraInfo": null
+    },
+    {
+      "word": "民主",
+      "reading": "みんしゅ",
+      "accent": "[1]",
+      "meaning": "民主",
+      "extraInfo": null
+    },
+    {
+      "word": "民間",
+      "reading": "みんかん",
+      "accent": "[0]",
+      "meaning": "民間",
+      "extraInfo": null
+    },
+    {
+      "word": "兵隊",
+      "reading": "へいたい",
+      "accent": "[0]",
+      "meaning": "軍隊",
+      "extraInfo": null
+    },
+    {
+      "word": "方法",
+      "reading": "ほうほう",
+      "accent": "[0]",
+      "meaning": "方法",
+      "extraInfo": null
+    },
+    {
+      "word": "手段",
+      "reading": "しゅだん",
+      "accent": "[1]",
+      "meaning": "手段",
+      "extraInfo": null
+    },
+    {
+      "word": "歯車",
+      "reading": "はぐるま",
+      "accent": "[2]",
+      "meaning": "齒輪",
+      "extraInfo": null
+    },
+    {
+      "word": "免許",
+      "reading": "めんきょ",
+      "accent": "[1]",
+      "meaning": "執照、許可證",
+      "extraInfo": null
+    },
+    {
+      "word": "作品",
+      "reading": "さくひん",
+      "accent": "[0]",
+      "meaning": "作品",
+      "extraInfo": null
+    },
+    {
+      "word": "題名",
+      "reading": "だいめい",
+      "accent": "[0]",
+      "meaning": "主題、標題",
+      "extraInfo": null
+    },
+    {
+      "word": "随筆",
+      "reading": "ずいひつ",
+      "accent": "[0]",
+      "meaning": "隨筆、散文",
+      "extraInfo": null
+    },
+    {
+      "word": "文体",
+      "reading": "ぶんたい",
+      "accent": "[0]",
+      "meaning": "文體",
+      "extraInfo": null
+    },
+    {
+      "word": "種類",
+      "reading": "しゅるい",
+      "accent": "[1]",
+      "meaning": "種類",
+      "extraInfo": null
+    },
+    {
+      "word": "水滴",
+      "reading": "すいてき",
+      "accent": "[0]",
+      "meaning": "水滴",
+      "extraInfo": null
+    },
+    {
+      "word": "水筒",
+      "reading": "すいとう",
+      "accent": "[0]",
+      "meaning": "水壺",
+      "extraInfo": null
+    },
+    {
+      "word": "図表",
+      "reading": "ずひょう",
+      "accent": "[0]",
+      "meaning": "圖表",
+      "extraInfo": null
+    },
+    {
+      "word": "性質",
+      "reading": "せいしつ",
+      "accent": "[0]",
+      "meaning": "性質",
+      "extraInfo": null
+    },
+    {
+      "word": "性能",
+      "reading": "せいのう",
+      "accent": "[0]",
+      "meaning": "性能",
+      "extraInfo": null
+    },
+    {
+      "word": "製品",
+      "reading": "せいひん",
+      "accent": "[0]",
+      "meaning": "製品、產品",
+      "extraInfo": null
+    },
+    {
+      "word": "責任",
+      "reading": "せきにん",
+      "accent": "[0]",
+      "meaning": "責任",
+      "extraInfo": null
+    },
+    {
+      "word": "洗剤",
+      "reading": "せんざい",
+      "accent": "[0]",
+      "meaning": "清潔劑",
+      "extraInfo": null
+    },
+    {
+      "word": "前半",
+      "reading": "ぜんはん",
+      "accent": "[0]",
+      "meaning": "前半",
+      "extraInfo": null
+    },
+    {
+      "word": "団体",
+      "reading": "だんたい",
+      "accent": "[0]",
+      "meaning": "團體",
+      "extraInfo": null
+    },
+    {
+      "word": "中華",
+      "reading": "ちゅうか",
+      "accent": "[1]",
+      "meaning": "中華",
+      "extraInfo": null
+    },
+    {
+      "word": "鉄鋼",
+      "reading": "てっこう",
+      "accent": "[0]",
+      "meaning": "鋼鐵",
+      "extraInfo": null
+    },
+    {
+      "word": "番組",
+      "reading": "ばんぐみ",
+      "accent": "[0]",
+      "meaning": "節目",
+      "extraInfo": null
+    },
+    {
+      "word": "独身",
+      "reading": "どくしん",
+      "accent": "[0]",
+      "meaning": "單身",
+      "extraInfo": null
+    },
+    {
+      "word": "年上",
+      "reading": "としうえ",
+      "accent": "[0]",
+      "meaning": "年長",
+      "extraInfo": null
+    },
+    {
+      "word": "年下",
+      "reading": "としした",
+      "accent": "[0]",
+      "meaning": "年歲小",
+      "extraInfo": null
+    },
+    {
+      "word": "内容",
+      "reading": "ないよう",
+      "accent": "[0]",
+      "meaning": "內容",
+      "extraInfo": null
+    },
+    {
+      "word": "標語",
+      "reading": "ひょうご",
+      "accent": "[0]",
+      "meaning": "標語",
+      "extraInfo": null
+    },
+    {
+      "word": "風俗",
+      "reading": "ふうぞく",
+      "accent": "[1]",
+      "meaning": "風俗、民俗／風月場所",
+      "extraInfo": null
+    },
+    {
+      "word": "食後",
+      "reading": "しょくご",
+      "accent": "[0]",
+      "meaning": "飯後",
+      "extraInfo": null
+    },
+    {
+      "word": "実力",
+      "reading": "じつりょく",
+      "accent": "[0]",
+      "meaning": "實力",
+      "extraInfo": null
+    },
+    {
+      "word": "暴力",
+      "reading": "ぼうりょく",
+      "accent": "[1]",
+      "meaning": "暴力",
+      "extraInfo": null
+    },
+    {
+      "word": "出身",
+      "reading": "しゅっしん",
+      "accent": "[0]",
+      "meaning": "出身",
+      "extraInfo": null
+    },
+    {
+      "word": "順番",
+      "reading": "じゅんばん",
+      "accent": "[0]",
+      "meaning": "順序",
+      "extraInfo": null
+    },
+    {
+      "word": "条件",
+      "reading": "じょうけん",
+      "accent": "[3]",
+      "meaning": "條件",
+      "extraInfo": null
+    }
+  ]
+}

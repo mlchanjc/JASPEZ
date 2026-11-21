@@ -1,0 +1,105 @@
+{
+  "level": "N5",
+  "lesson": 3,
+  "title": "N5日文單字03（名詞）身體各部位",
+  "words": [
+    {
+      "word": "足",
+      "reading": "あし",
+      "accent": "[2]",
+      "meaning": "腳、足部",
+      "extraInfo": null
+    },
+    {
+      "word": "頭",
+      "reading": "あたま",
+      "accent": "[3][2]",
+      "meaning": "頭／頭腦",
+      "extraInfo": null
+    },
+    {
+      "word": "お腹",
+      "reading": "おなか",
+      "accent": "[0]",
+      "meaning": "肚、肚子",
+      "extraInfo": null
+    },
+    {
+      "word": "顔",
+      "reading": "かお",
+      "accent": "[0]",
+      "meaning": "臉、面孔",
+      "extraInfo": null
+    },
+    {
+      "word": "髪",
+      "reading": "かみ",
+      "accent": "[2]",
+      "meaning": "頭髮／髮型",
+      "extraInfo": null
+    },
+    {
+      "word": "体",
+      "reading": "からだ",
+      "accent": "[0]",
+      "meaning": "身體",
+      "extraInfo": null
+    },
+    {
+      "word": "口",
+      "reading": "くち",
+      "accent": "[0]",
+      "meaning": "嘴、嘴巴",
+      "extraInfo": null
+    },
+    {
+      "word": "声",
+      "reading": "こえ",
+      "accent": "[1]",
+      "meaning": "聲、聲音",
+      "extraInfo": null
+    },
+    {
+      "word": "手",
+      "reading": "て",
+      "accent": "[1]",
+      "meaning": "手",
+      "extraInfo": null
+    },
+    {
+      "word": "喉",
+      "reading": "のど",
+      "accent": "[1]",
+      "meaning": "喉嚨",
+      "extraInfo": null
+    },
+    {
+      "word": "歯",
+      "reading": "は",
+      "accent": "[1]",
+      "meaning": "牙、牙齒",
+      "extraInfo": null
+    },
+    {
+      "word": "鼻",
+      "reading": "はな",
+      "accent": "[0]",
+      "meaning": "鼻、鼻子",
+      "extraInfo": null
+    },
+    {
+      "word": "耳",
+      "reading": "みみ",
+      "accent": "[2]",
+      "meaning": "耳、耳朵",
+      "extraInfo": null
+    },
+    {
+      "word": "目",
+      "reading": "め",
+      "accent": "[1]",
+      "meaning": "眼、眼睛",
+      "extraInfo": null
+    }
+  ]
+}

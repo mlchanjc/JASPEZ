@@ -1,0 +1,140 @@
+{
+  "level": "N3",
+  "lesson": 6,
+  "title": "N3日文單字06（名詞）建築地方",
+  "words": [
+    {
+      "word": "区役所",
+      "reading": "くやくしょ",
+      "accent": "[2]",
+      "meaning": "〖日〗區役所",
+      "extraInfo": null
+    },
+    {
+      "word": "警察署",
+      "reading": "けいさつしょ",
+      "accent": "[5][0]",
+      "meaning": "〖日〗警察署",
+      "extraInfo": null
+    },
+    {
+      "word": "劇場",
+      "reading": "げきじょう",
+      "accent": "[0]",
+      "meaning": "劇場、劇院",
+      "extraInfo": null
+    },
+    {
+      "word": "公民館",
+      "reading": "こうみんかん",
+      "accent": "[3]",
+      "meaning": "〖日〗公民館",
+      "extraInfo": null
+    },
+    {
+      "word": "市役所",
+      "reading": "しやくしょ",
+      "accent": "[2]",
+      "meaning": "〖日〗市役所",
+      "extraInfo": null
+    },
+    {
+      "word": "出入国在留管理庁",
+      "reading": "しゅつにゅうこくざいりゅうかんりちょう",
+      "accent": "[3]-[7]",
+      "meaning": "〖日〗出入國在留管理廳",
+      "extraInfo": null
+    },
+    {
+      "word": "消防署",
+      "reading": "しょうぼうしょ",
+      "accent": "[0][5]",
+      "meaning": "〖日〗消防署",
+      "extraInfo": null
+    },
+    {
+      "word": "専門学校",
+      "reading": "せんもんがっこう",
+      "accent": "[5]",
+      "meaning": "〖日〗專門學校",
+      "extraInfo": null
+    },
+    {
+      "word": "短期大学",
+      "reading": "たんきだいがく",
+      "accent": "[4]",
+      "meaning": "〖日〗短期大學",
+      "extraInfo": null
+    },
+    {
+      "word": "短大",
+      "reading": "たんだい",
+      "accent": "[0]",
+      "meaning": "〖日〗短大",
+      "extraInfo": null
+    },
+    {
+      "word": "大学院",
+      "reading": "だいがくいん",
+      "accent": "[4]",
+      "meaning": "研究所",
+      "extraInfo": null
+    },
+    {
+      "word": "停留所",
+      "reading": "ていりゅうじょ",
+      "accent": "[0][5]",
+      "meaning": "停靠站",
+      "extraInfo": null
+    },
+    {
+      "word": "入管庁",
+      "reading": "にゅうかんちょう",
+      "accent": "[3]",
+      "meaning": "〖日〗入管廳",
+      "extraInfo": null
+    },
+    {
+      "word": "博物館",
+      "reading": "はくぶつかん",
+      "accent": "[4][3]",
+      "meaning": "博物館",
+      "extraInfo": null
+    },
+    {
+      "word": "売店",
+      "reading": "ばいてん",
+      "accent": "[0]",
+      "meaning": "販賣部",
+      "extraInfo": null
+    },
+    {
+      "word": "風呂屋",
+      "reading": "ふろや",
+      "accent": "[2]",
+      "meaning": "澡堂",
+      "extraInfo": null
+    },
+    {
+      "word": "保育園",
+      "reading": "ほいくえん",
+      "accent": "[3]",
+      "meaning": "〖日〗保育園",
+      "extraInfo": null
+    },
+    {
+      "word": "保健所",
+      "reading": "ほけんじょ",
+      "accent": "[0][4]",
+      "meaning": "〖日〗保健所",
+      "extraInfo": null
+    },
+    {
+      "word": "幼稚園",
+      "reading": "ようちえん",
+      "accent": "[3]",
+      "meaning": "〖日〗幼稚園",
+      "extraInfo": null
+    }
+  ]
+}

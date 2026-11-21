@@ -1,0 +1,447 @@
+{
+  "level": "N5",
+  "lesson": 21,
+  "title": "N5日文單字21（動詞）自動詞單字列表",
+  "words": [
+    {
+      "verbType": "五段",
+      "word": "会う",
+      "reading": "あう",
+      "accent": "[1]",
+      "meaning": "遇見、見面",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "開く",
+      "reading": "あく",
+      "accent": "[0]",
+      "meaning": "開",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "ある",
+      "reading": "ある",
+      "accent": "[1]",
+      "meaning": "有／在",
+      "extraInfo": "關於「いる」和「ある」\n\n「いる」和「ある」都是存在動詞，皆表示「有、在」的意思，所謂的存在動詞就是指動詞本身並沒有動作，只是單純描述主詞的存在而已。一般用有沒有生命跡象來判斷要用哪一個，有生命的（如動物）用「いる」，沒有生命的（物體）用「ある」，但由於「鬼」是使用「いる」，「植物」是使用「ある」，不同見解之下容易出錯，最好的分辨辦法就是能自主移動的使用「いる」，無法自主移動的使用「ある」。\n\n- 教室に学生がいる。\n教室裡有學生。學生＝可以自主移動，用「いる」\n\n- 教室に机がある。\n教室裡有桌子。桌子＝無法自主移動，用「ある」"
+    },
+    {
+      "verbType": "五段",
+      "word": "行く",
+      "reading": "いく",
+      "accent": "[0]",
+      "meaning": "去、往",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "要る",
+      "reading": "いる",
+      "accent": "[0]",
+      "meaning": "要、需要",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "咲く",
+      "reading": "さく",
+      "accent": "[0]",
+      "meaning": "開（花）",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "死ぬ",
+      "reading": "しぬ",
+      "accent": "[0]",
+      "meaning": "死",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "住む",
+      "reading": "すむ",
+      "accent": "[1]",
+      "meaning": "居住",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "立つ",
+      "reading": "たつ",
+      "accent": "[1]",
+      "meaning": "站、立",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "着く",
+      "reading": "つく",
+      "accent": "[1][2]",
+      "meaning": "到達／碰觸／就坐",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "飛ぶ",
+      "reading": "とぶ",
+      "accent": "[0]",
+      "meaning": "飛／跳",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "なる",
+      "reading": "なる",
+      "accent": "[1]",
+      "meaning": "成為／組成",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "泣く",
+      "reading": "なく",
+      "accent": "[0]",
+      "meaning": "哭泣",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "鳴く",
+      "reading": "なく",
+      "accent": "[0]",
+      "meaning": "動物鳴叫",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "乗る",
+      "reading": "のる",
+      "accent": "[0]",
+      "meaning": "乘坐、乘勢",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "吹く",
+      "reading": "ふく",
+      "accent": "[1][2]",
+      "meaning": "吹",
+      "extraInfo": "「吹く」是自他同形，可作自動詞也可作他動詞。\n\n- 風が吹く　↔　口笛を吹く\n風吹　↔　吹口哨"
+    },
+    {
+      "verbType": "五段",
+      "word": "降る",
+      "reading": "ふる",
+      "accent": "[1]",
+      "meaning": "下（雨）／降下",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "遊ぶ",
+      "reading": "あそぶ",
+      "accent": "[0]",
+      "meaning": "玩耍",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "歩く",
+      "reading": "あるく",
+      "accent": "[2]",
+      "meaning": "走、步行",
+      "extraInfo": "「歩く」是「走（步行）」的意思，「走る」是「跑」的意思。"
+    },
+    {
+      "verbType": "五段",
+      "word": "泳ぐ",
+      "reading": "およぐ",
+      "accent": "[2]",
+      "meaning": "游泳",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "終わる",
+      "reading": "おわる",
+      "accent": "[0]",
+      "meaning": "結束",
+      "extraInfo": "「終わる」是自他同形，可作自動詞也可作他動詞。\n\n- 夏が終わる　↔　説明を終わる\n夏天結束　↔　結束說明"
+    },
+    {
+      "verbType": "五段",
+      "word": "帰る",
+      "reading": "かえる",
+      "accent": "[1]",
+      "meaning": "回去、回家",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "掛かる",
+      "reading": "かかる",
+      "accent": "[2]",
+      "meaning": "掛著／花費",
+      "extraInfo": "「掛かる」的意思\n\n「掛かる」有掛著的意思，也有花費時間或金錢的意思。\n\n- 壁に絵が掛かっている。\n牆壁上掛著畫。\n\n- これを作るには金も時間も掛かる。\n做這個要花費時間跟金錢。"
+    },
+    {
+      "verbType": "五段",
+      "word": "曇る",
+      "reading": "くもる",
+      "accent": "[2]",
+      "meaning": "陰天",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "困る",
+      "reading": "こまる",
+      "accent": "[2]",
+      "meaning": "困擾、為難",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "閉まる",
+      "reading": "しまる",
+      "accent": "[2]",
+      "meaning": "關閉",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "座る",
+      "reading": "すわる",
+      "accent": "[0]",
+      "meaning": "坐下",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "違う",
+      "reading": "ちがう",
+      "accent": "[0]",
+      "meaning": "不同／錯誤",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "止まる",
+      "reading": "とまる",
+      "accent": "[0]",
+      "meaning": "停住／停止",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "並ぶ",
+      "reading": "ならぶ",
+      "accent": "[0]",
+      "meaning": "排列",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "登る",
+      "reading": "のぼる",
+      "accent": "[0]",
+      "meaning": "登／上升",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "入る",
+      "reading": "はいる",
+      "accent": "[1]",
+      "meaning": "進入／裝有",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "走る",
+      "reading": "はしる",
+      "accent": "[2]",
+      "meaning": "跑／行駛（車）",
+      "extraInfo": "「歩く」是「走（步行）」的意思，「走る」是「跑」的意思。"
+    },
+    {
+      "verbType": "五段",
+      "word": "曲がる",
+      "reading": "まがる",
+      "accent": "[0]",
+      "meaning": "轉彎／傾斜",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "分かる",
+      "reading": "わかる",
+      "accent": "[2]",
+      "meaning": "理解、明白",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "渡る",
+      "reading": "わたる",
+      "accent": "[0]",
+      "meaning": "渡過、經過",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "始まる",
+      "reading": "はじまる",
+      "accent": "[0]",
+      "meaning": "開始",
+      "extraInfo": null
+    },
+    {
+      "verbType": "五段",
+      "word": "働く",
+      "reading": "はたらく",
+      "accent": "[0]",
+      "meaning": "工作",
+      "extraInfo": "「勤める」和「働く」和「仕事する」的差別\n\n「勤める」跟「働く」、「仕事する」都可以表示工作，但前者為任職之意，中後者為工作之意。\n\n- 銀行に勤めています。\n在銀行任職的銀行人員，不一定只限於做內部的業務工作。\n\n- 銀行で働いています。\n在銀行做銀行內部的業務工作，但不一定是銀行的員工。例如派遣人員。\n\n- 銀行で仕事しています。\n在銀行這個環境工作的人員，不一定是銀行員工，也不一定做銀行內部業務。例如來修繕銀行的工程人員／來銀行種植樹木的園藝人員。\n\n「ています」是「ている」的丁寧體（禮貌體），表示狀態。請留意「勤める」的場所用「に」。「働く」跟「仕事する」的場所用「で」。\n\n「働く」也是自他同形。\n\n- 第六感が働く　↔　すりを働く\n第六感啟動　↔　當扒手、小偷"
+    },
+    {
+      "verbType": "上一段",
+      "word": "居る",
+      "reading": "いる",
+      "accent": "[0]",
+      "meaning": "有／在",
+      "extraInfo": null
+    },
+    {
+      "verbType": "上一段",
+      "word": "起きる",
+      "reading": "おきる",
+      "accent": "[2]",
+      "meaning": "起來／發生",
+      "extraInfo": null
+    },
+    {
+      "verbType": "上一段",
+      "word": "降りる",
+      "reading": "おりる",
+      "accent": "[2]",
+      "meaning": "下（車）",
+      "extraInfo": null
+    },
+    {
+      "verbType": "上一段",
+      "word": "出来る",
+      "reading": "できる",
+      "accent": "[2]",
+      "meaning": "能、可以",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "出る",
+      "reading": "でる",
+      "accent": "[1]",
+      "meaning": "出來／離開",
+      "extraInfo": "「出掛ける」和「出る」的差別\n\n「出掛ける」是出門、外出的意思，「出る」則是單純描述從一個地方離開（出去）。\n\n- 買い物に出掛ける。\n出門買東西。\n\n- 友達の家へ出掛ける。\n出門到朋友家。\n\n- ベルを鳴らすと友達が出てきた。\n按門鈴時，朋友走出門外來。\n\n- 宿題を忘れた者は前に出なさい。\n忘記作業的人出來到前面。\n\n- 彼は都市の生活にあこがれて、家を出た。\n他嚮往都市生活而離家了。\n\n- 大学を出て、すぐ就職する。\n大學畢業後，馬上就職。\n\n「出る」應用範圍很廣，可以表示許多「出來」的意思，再來看看以下例子：\n\n- このテレビは音が出ない。\n這台電視的聲音出不來。\n\n- 風が出てきた。\n起風了。\n\n- 医学用語から出た言葉。\n從醫學用語出來的詞彙。\n\n- この学校からは多くの政治家が出た。\n這所學校出了很多政治家。"
+    },
+    {
+      "verbType": "下一段",
+      "word": "寝る",
+      "reading": "ねる",
+      "accent": "[0]",
+      "meaning": "睡覺／躺下",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "消える",
+      "reading": "きえる",
+      "accent": "[0]",
+      "meaning": "消失",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "晴れる",
+      "reading": "はれる",
+      "accent": "[2]",
+      "meaning": "放晴",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "生まれる",
+      "reading": "うまれる",
+      "accent": "[0]",
+      "meaning": "出生／產生",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "答える",
+      "reading": "こたえる",
+      "accent": "[3][2]",
+      "meaning": "回答",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "疲れる",
+      "reading": "つかれる",
+      "accent": "[3]",
+      "meaning": "疲累",
+      "extraInfo": null
+    },
+    {
+      "verbType": "下一段",
+      "word": "勤める",
+      "reading": "つとめる",
+      "accent": "[3]",
+      "meaning": "任職、工作",
+      "extraInfo": "「勤める」和「働く」和「仕事する」的差別\n\n「勤める」跟「働く」、「仕事する」都可以表示工作，但前者為任職之意，中後者為工作之意。\n\n- 銀行に勤めています。\n在銀行任職的銀行人員，不一定只限於做內部的業務工作。\n\n- 銀行で働いています。\n在銀行做銀行內部的業務工作，但不一定是銀行的員工。例如派遣人員。\n\n- 銀行で仕事しています。\n在銀行這個環境工作的人員，不一定是銀行員工，也不一定做銀行內部業務。例如來修繕銀行的工程人員／來銀行種植樹木的園藝人員。\n\n「ています」是「ている」的丁寧體（禮貌體），表示狀態。請留意「勤める」的場所用「に」。「働く」跟「仕事する」的場所用「で」。"
+    },
+    {
+      "verbType": "下一段",
+      "word": "出掛ける",
+      "reading": "でかける",
+      "accent": "[0]",
+      "meaning": "出門、出去",
+      "extraInfo": "「出掛ける」和「出る」的差別\n\n「出掛ける」是出門、外出的意思，「出る」則是單純描述從一個地方離開（出去）。\n\n- 買い物に出掛ける。\n出門買東西。\n\n- 友達の家へ出掛ける。\n出門到朋友家。\n\n- ベルを鳴らすと友達が出てきた。\n按門鈴時，朋友走出門外來。\n\n- 宿題を忘れた者は前に出なさい。\n忘記作業的人出來到前面。\n\n- 彼は都市の生活にあこがれて、家を出た。\n他嚮往都市生活而離家了。\n\n- 大学を出て、すぐ就職する。\n大學畢業後，馬上就職。"
+    },
+    {
+      "verbType": "サ變",
+      "word": "散歩",
+      "reading": "さんぽ",
+      "accent": "[0]",
+      "meaning": "散步",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變",
+      "word": "結婚",
+      "reading": "けっこん",
+      "accent": "[0]",
+      "meaning": "結婚",
+      "extraInfo": null
+    },
+    {
+      "verbType": "サ變",
+      "word": "旅行",
+      "reading": "りょこう",
+      "accent": "[0]",
+      "meaning": "旅行",
+      "extraInfo": null
+    },
+    {
+      "verbType": "カ變",
+      "word": "来る",
+      "reading": "くる",
+      "accent": "[1]",
+      "meaning": "來",
+      "extraInfo": null
+    }
+  ]
+}

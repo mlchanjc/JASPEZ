@@ -1,0 +1,126 @@
+{
+  "level": "N4",
+  "lesson": 6,
+  "title": "N4日文單字06（名詞）大自然",
+  "words": [
+    {
+      "word": "葉",
+      "reading": "は",
+      "accent": "[0]",
+      "meaning": "葉子",
+      "extraInfo": null
+    },
+    {
+      "word": "日",
+      "reading": "ひ",
+      "accent": "[0]",
+      "meaning": "日子／白天／太陽",
+      "extraInfo": "「日」的發音有很多種\n「ひ」是日子、太陽等，「にち」是日數，「か」是日的量。\nその日（ひ）／16日（じゅうろくにち）／二日（ふつか）\n那一天（日子）／十六號（日曆）／兩天（日的數量）\n\n補充\n「日」的重音是[0]，但前面有修飾語時，重音變成[1]。\n\n- 日が昇る。（ひ↗︎が[0]）\n太陽升起。"
+    },
+    {
+      "word": "月",
+      "reading": "つき",
+      "accent": "[2]",
+      "meaning": "月／月亮",
+      "extraInfo": "「月」的發音有很多種\n月亮唸做「つき」，月份唸做「がつ」，月的量唸做「げつ」。\n月（つき）／九月（くがつ）／一ヶ月（いっかげつ）\n月亮／九月（日曆）／一個月（月的數量）"
+    },
+    {
+      "word": "枝",
+      "reading": "えだ",
+      "accent": "[0]",
+      "meaning": "樹枝",
+      "extraInfo": null
+    },
+    {
+      "word": "森",
+      "reading": "もり",
+      "accent": "[0]",
+      "meaning": "森林",
+      "extraInfo": null
+    },
+    {
+      "word": "雲",
+      "reading": "くも",
+      "accent": "[1]",
+      "meaning": "雲",
+      "extraInfo": null
+    },
+    {
+      "word": "星",
+      "reading": "ほし",
+      "accent": "[0]",
+      "meaning": "星星",
+      "extraInfo": null
+    },
+    {
+      "word": "石",
+      "reading": "いし",
+      "accent": "[2]",
+      "meaning": "石頭",
+      "extraInfo": null
+    },
+    {
+      "word": "砂",
+      "reading": "すな",
+      "accent": "[0]",
+      "meaning": "沙子",
+      "extraInfo": "「砂」是沙子的意思，要注意部首是石字旁。"
+    },
+    {
+      "word": "光",
+      "reading": "ひかり",
+      "accent": "[3]",
+      "meaning": "光輝、光",
+      "extraInfo": null
+    },
+    {
+      "word": "景色",
+      "reading": "けしき",
+      "accent": "[1]",
+      "meaning": "景色、風景",
+      "extraInfo": "「景色」：自然界的景色。（中文：風景、景色）\n「風景」：映入眼簾的整個畫面，不一定是自然景色。（中文：畫面、情景）\n\n- 一面の雪景色。\n一片雪景。\n\n景色がいい。\n風景很好。"
+    },
+    {
+      "word": "風景",
+      "reading": "ふうけい",
+      "accent": "[1]",
+      "meaning": "畫面、情景",
+      "extraInfo": "「景色」：自然界的景色。（中文：風景、景色）\n「風景」：映入眼簾的整個畫面，不一定是自然景色。（中文：畫面、情景）"
+    },
+    {
+      "word": "空気",
+      "reading": "くうき",
+      "accent": "[1]",
+      "meaning": "空氣",
+      "extraInfo": null
+    },
+    {
+      "word": "地震",
+      "reading": "じしん",
+      "accent": "[0]",
+      "meaning": "地震",
+      "extraInfo": null
+    },
+    {
+      "word": "台風",
+      "reading": "たいふう",
+      "accent": "[3]",
+      "meaning": "颱風",
+      "extraInfo": null
+    },
+    {
+      "word": "天気予報",
+      "reading": "てんきよほう",
+      "accent": "[4]",
+      "meaning": "氣象預報",
+      "extraInfo": null
+    },
+    {
+      "word": "ガス",
+      "reading": "gas 〔荷〕",
+      "accent": "[1]",
+      "meaning": "瓦斯",
+      "extraInfo": null
+    }
+  ]
+}

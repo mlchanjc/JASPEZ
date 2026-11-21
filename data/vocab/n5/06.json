@@ -1,0 +1,161 @@
+{
+  "level": "N5",
+  "lesson": 6,
+  "title": "N5日文單字06（名詞）方位",
+  "words": [
+    {
+      "word": "上",
+      "reading": "うえ",
+      "accent": "[0]",
+      "meaning": "上、上面、上方",
+      "extraInfo": null
+    },
+    {
+      "word": "後ろ",
+      "reading": "うしろ",
+      "accent": "[0]",
+      "meaning": "後、後面／後方／背後",
+      "extraInfo": null
+    },
+    {
+      "word": "内",
+      "reading": "うち",
+      "accent": "[0]",
+      "meaning": "內、內部、裡面",
+      "extraInfo": null
+    },
+    {
+      "word": "北",
+      "reading": "きた",
+      "accent": "[0]",
+      "meaning": "北、北方、北邊",
+      "extraInfo": null
+    },
+    {
+      "word": "下",
+      "reading": "した",
+      "accent": "[0]",
+      "meaning": "下、下面、下方",
+      "extraInfo": null
+    },
+    {
+      "word": "外",
+      "reading": "そと",
+      "accent": "[1]",
+      "meaning": "外、外面、外部",
+      "extraInfo": null
+    },
+    {
+      "word": "そば",
+      "reading": "そば",
+      "accent": "[1]",
+      "meaning": "旁邊、附近",
+      "extraInfo": "「そば」前後左右都可使用，且不限性質，不一定要緊鄰，相當於「近く」。\n\n- 駅のそばに本屋があります。\n車站附近有書店。\n\n- 彼はいつもそばにいてくれます。\n他總是陪伴在我身邊。"
+    },
+    {
+      "word": "縦",
+      "reading": "たて",
+      "accent": "[1]",
+      "meaning": "直、縱／南北向",
+      "extraInfo": null
+    },
+    {
+      "word": "近く",
+      "reading": "ちかく",
+      "accent": "[1][2]",
+      "meaning": "附近",
+      "extraInfo": "日文「周り」跟「近く」的差別\n\n「周り」是指周圍、周遭的人事物。例如「周りの人」（身邊的人、大家），「周りの目」（周遭的眼光），而「近く」作為名詞時，意思是附近，作為副詞則是指即將、不久。\n\n「近く」名詞\n\n- 私の家は近くにあります。\n我家就在附近。\n\n- 駅の近く。\n車站附近。\n\n「近く」副詞\n\n- 近く再開する予定です。\n預計近期再次召開。"
+    },
+    {
+      "word": "隣",
+      "reading": "となり",
+      "accent": "[0]",
+      "meaning": "隔壁",
+      "extraInfo": "「隣」同樣表示左或右，但僅限於同性質，且有緊鄰在側之意。\n\n- 山田さんの隣に佐藤さんがいます。\n山田先生的隔壁是佐藤小姐。皆為人物\n\n- 薬屋の隣に肉屋があります。\n藥店的隔壁是肉店。皆為建築\n\n「隣」多用於人或建築。\n中文跟日文的漢字不一樣，日文的「隣」，「阝」在左邊。"
+    },
+    {
+      "word": "中",
+      "reading": "なか",
+      "accent": "[1]",
+      "meaning": "中間、裡面、內部",
+      "extraInfo": null
+    },
+    {
+      "word": "西",
+      "reading": "にし",
+      "accent": "[0]",
+      "meaning": "西、西方、西邊",
+      "extraInfo": null
+    },
+    {
+      "word": "東",
+      "reading": "ひがし",
+      "accent": "[0]",
+      "meaning": "東、東方、東邊",
+      "extraInfo": null
+    },
+    {
+      "word": "左",
+      "reading": "ひだり",
+      "accent": "[0]",
+      "meaning": "左、左邊、左側",
+      "extraInfo": null
+    },
+    {
+      "word": "辺",
+      "reading": "へん",
+      "accent": "[0]",
+      "meaning": "附近、一帶",
+      "extraInfo": null
+    },
+    {
+      "word": "方位",
+      "reading": "ほうい",
+      "accent": "[1]",
+      "meaning": "方位",
+      "extraInfo": null
+    },
+    {
+      "word": "前",
+      "reading": "まえ",
+      "accent": "[1]",
+      "meaning": "前、前面、前方",
+      "extraInfo": null
+    },
+    {
+      "word": "周り",
+      "reading": "まわり",
+      "accent": "[0]",
+      "meaning": "周圍、周遭、四周",
+      "extraInfo": "日文「周り」跟「近く」的差別\n\n「周り」是指周圍、周遭的人事物。例如「周りの人」（身邊的人、大家），「周りの目」（周遭的眼光），而「近く」作為名詞時，意思是附近，作為副詞則是指即將、不久。\n\n「近く」名詞\n\n- 私の家は近くにあります。\n我家就在附近。\n\n- 駅の近く。\n車站附近。\n\n「近く」副詞\n\n- 近く再開する予定です。\n預計近期再次召開。"
+    },
+    {
+      "word": "右",
+      "reading": "みぎ",
+      "accent": "[0]",
+      "meaning": "右、右邊、右側",
+      "extraInfo": null
+    },
+    {
+      "word": "南",
+      "reading": "みなみ",
+      "accent": "[0]",
+      "meaning": "南、南方、南邊",
+      "extraInfo": null
+    },
+    {
+      "word": "向こう",
+      "reading": "むこう",
+      "accent": "[2][0]",
+      "meaning": "對面／另一邊、另一側／那邊",
+      "extraInfo": null
+    },
+    {
+      "word": "横",
+      "reading": "よこ",
+      "accent": "[0]",
+      "meaning": "旁邊、隔壁／旁、旁側／側面／橫、橫向／東西向",
+      "extraInfo": "「横」用於水平（左邊或右邊），可用於同性質或不同性質的人事物，例如人與人，或是人與物品。\n\n- 図書館の横に美術館があります。\n圖書館旁邊有美術館。同性質\n\n- 木の横に犬がいます。\n樹旁邊有一隻狗。不同性質"
+    }
+  ]
+}
