@@ -100,14 +100,15 @@
             {
               "ja": "日本へ留学にします。",
               "reading": "にほんへりゅうがくにします。",
-              "status": "incorrect"
+              "status": "wrong"
             },
             {
               "ja": "日本へ留学することにします。",
               "reading": "にほんへりゅうがくすることにします。",
               "status": "correct"
             }
-          ]
+          ],
+          "grouped": true
         },
         {
           "type": "block",

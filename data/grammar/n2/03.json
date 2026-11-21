@@ -177,10 +177,6 @@
       "level": 3,
       "blocks": [
         {
-          "type": "note",
-          "text": "既然已經約定好了，就請務必要遵守承諾。"
-        },
-        {
           "type": "examples",
           "items": [
             {
@@ -195,18 +191,22 @@
               "status": "correct",
               "label": "主觀表現"
             }
-          ]
+          ],
+          "grouped": true,
+          "sharedZh": "既然已經約定好了，就請務必要遵守承諾。"
         }
       ]
+    },
+    {
+      "heading": "不可互換的情況",
+      "level": 3,
+      "headingOnly": true,
+      "blocks": []
     },
     {
       "heading": "A.「以上（いじょう）（は）」可用於非一般常識的因果關係。",
       "level": 4,
       "blocks": [
-        {
-          "type": "note",
-          "text": "既然田中來了，就暫停遊戲吧。"
-        },
         {
           "type": "examples",
           "items": [
@@ -218,9 +218,11 @@
             {
               "ja": "田中君が来たからには、ゲームを中止しよう。",
               "reading": "たなかくんがきたからには、ゲームをちゅうししよう。",
-              "status": "correct"
+              "status": "question"
             }
-          ]
+          ],
+          "grouped": true,
+          "sharedZh": "既然田中來了，就暫停遊戲吧。"
         }
       ]
     },
@@ -228,10 +230,6 @@
       "heading": "B.「以上（いじょう）（は）」可用於否定。",
       "level": 4,
       "blocks": [
-        {
-          "type": "note",
-          "text": "既然不知道詳細狀況，就不應該責罵小孩。"
-        },
         {
           "type": "examples",
           "items": [
@@ -243,9 +241,11 @@
             {
               "ja": "詳しい状況を知らないからには、子供を叱るべきではない。",
               "reading": "くわしいじょうきょうをしらないからには、こどもをしかるべきではない。",
-              "status": "correct"
+              "status": "question"
             }
-          ]
+          ],
+          "grouped": true,
+          "sharedZh": "既然不知道詳細狀況，就不應該責罵小孩。"
         }
       ]
     }

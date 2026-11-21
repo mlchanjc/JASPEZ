@@ -150,10 +150,11 @@
             {
               "ja": "そう考えないべきだ。",
               "reading": "そうかんがえないべきだ。",
-              "status": "incorrect",
+              "status": "wrong",
               "note": "嚴格來說屬於錯誤句型。"
             }
-          ]
+          ],
+          "grouped": true
         },
         {
           "type": "callout",

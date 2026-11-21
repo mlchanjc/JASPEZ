@@ -8,364 +8,416 @@
       "reading": "きく",
       "accent": "[0]",
       "meaning": "見效、奏效、有效果",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "経つ",
       "reading": "たつ",
       "accent": "[1]",
       "meaning": "（時間）經過／流逝",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "建つ",
       "reading": "たつ",
       "accent": "[1]",
       "meaning": "蓋、建",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "発つ",
       "reading": "たつ",
       "accent": "[1]",
       "meaning": "出發／動身",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "付く",
       "reading": "つく",
       "accent": "[1]",
       "meaning": "附加／裝／附著／跟隨",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "散る",
       "reading": "ちる",
       "accent": "[0]",
       "meaning": "散開／分散／落（葉）",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "減る",
       "reading": "へる",
       "accent": "[0]",
       "meaning": "減少",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "向く",
       "reading": "むく",
       "accent": "[0]",
       "meaning": "朝向／面向／指向／適合",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "映る",
       "reading": "うつる",
       "accent": "[2]",
       "meaning": "反映／映照",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "渇く",
       "reading": "かわく",
       "accent": "[2]",
       "meaning": "口渴",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "腐る",
       "reading": "くさる",
       "accent": "[2]",
       "meaning": "腐／腐敗／腐爛",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "下る",
       "reading": "くだる",
       "accent": "[0]",
       "meaning": "向下（走）",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "暮らす",
       "reading": "くらす",
       "accent": "[0]",
       "meaning": "生活／過日子",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "育つ",
       "reading": "そだつ",
       "accent": "[2]",
       "meaning": "成長／長大／養育",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "揃う",
       "reading": "そろう",
       "accent": "[2]",
       "meaning": "一致／整齊／到齊",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "黙る",
       "reading": "だまる",
       "accent": "[2]",
       "meaning": "沉默／閉嘴",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "届く",
       "reading": "とどく",
       "accent": "[2]",
       "meaning": "送達／到達",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "上る",
       "reading": "のぼる",
       "accent": "[0]",
       "meaning": "上爬／高達",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "昇る",
       "reading": "のぼる",
       "accent": "[0]",
       "meaning": "上升、升起／晉升",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "悩む",
       "reading": "なやむ",
       "accent": "[2]",
       "meaning": "煩惱",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "迷う",
       "reading": "まよう",
       "accent": "[2]",
       "meaning": "猶豫／迷（路）",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "返る",
       "reading": "かえる",
       "accent": "[1]",
       "meaning": "返／還／回／恢復／翻轉",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "罹る",
       "reading": "かかる",
       "accent": "[2]",
       "meaning": "患（病）、罹患",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "代わる",
       "reading": "かわる",
       "accent": "[0]",
       "meaning": "替、代替／換、代換",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "替わる",
       "reading": "かわる",
       "accent": "[0]",
       "meaning": "替代／替換",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "刺さる",
       "reading": "ささる",
       "accent": "[2]",
       "meaning": "刺／扎",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "出会う",
       "reading": "であう",
       "accent": "[2]",
       "meaning": "相遇、相逢",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "詰まる",
       "reading": "つまる",
       "accent": "[2]",
       "meaning": "堵塞／填滿／緊縮／塞住",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "流行る",
       "reading": "はやる",
       "accent": "[2]",
       "meaning": "流行",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "混ざる",
       "reading": "まざる",
       "accent": "[2]",
       "meaning": "混雜",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "混じる",
       "reading": "まじる",
       "accent": "[2]",
       "meaning": "混合、參雜、夾雜",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "埋まる",
       "reading": "うまる",
       "accent": "[0]",
       "meaning": "被埋住／滿、填滿、塞滿／填補",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "起こる",
       "reading": "おこる",
       "accent": "[2]",
       "meaning": "發生／引起",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "広がる",
       "reading": "ひろがる",
       "accent": "[0]",
       "meaning": "蔓延／擴大",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "広まる",
       "reading": "ひろまる",
       "accent": "[3][0]",
       "meaning": "傳播／普及／傳開",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "深まる",
       "reading": "ふかまる",
       "accent": "[3]",
       "meaning": "加深",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "温まる",
       "reading": "あたたまる",
       "accent": "[4]",
       "meaning": "溫／暖／取暖",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "片付く",
       "reading": "かたづく",
       "accent": "[3]",
       "meaning": "整理／解決",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "高まる",
       "reading": "たかまる",
       "accent": "[3]",
       "meaning": "增高／高漲",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "助かる",
       "reading": "たすかる",
       "accent": "[3]",
       "meaning": "得救、獲救",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "亡くなる",
       "reading": "なくなる",
       "accent": "[0]",
       "meaning": "死亡",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "まとまる",
       "reading": "まとまる",
       "accent": "[0]",
       "meaning": "整理好、整齊／統整／達成／一致／完成",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "役立つ",
       "reading": "やくだつ",
       "accent": "[3]",
       "meaning": "有用／有幫助",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "弱まる",
       "reading": "よわまる",
       "accent": "[3]",
       "meaning": "減弱／弱化",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "強まる",
       "reading": "つよまる",
       "accent": "[3]",
       "meaning": "加強／強化",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "繋がる",
       "reading": "つながる",
       "accent": "[0]",
       "meaning": "連、連結、連接／關聯",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "近付く",
       "reading": "ちかづく",
       "accent": "[3]",
       "meaning": "靠近／接近",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "捕まる",
       "reading": "つかまる",
       "accent": "[0]",
       "meaning": "被抓／被逮",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "付き合う",
       "reading": "つきあう",
       "accent": "[3]",
       "meaning": "交往／來往／陪／作伴",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "割り込む",
       "reading": "わりこむ",
       "accent": "[3]",
       "meaning": "插入／插嘴／插隊",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "通り越す",
       "reading": "とおりこす",
       "accent": "[4]",
       "meaning": "越過／走過／通過",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "擦れ違う",
       "reading": "すれちがう",
       "accent": "[4][0]",
       "meaning": "擦身而過／錯過",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     }
   ]
 }

@@ -51,7 +51,7 @@ export type GrammarBlock =
   | { type: "note"; text: string }
   | { type: "block"; text: string }
   | { type: "pattern"; pattern: string; connection?: string[] }
-  | { type: "examples"; items: GrammarExample[] }
+  | { type: "examples"; items: GrammarExample[]; grouped?: boolean; sharedZh?: string }
   | { type: "callout"; kind?: string; text?: string; blocks?: GrammarBlock[] }
   | { type: "table"; caption?: string; rows: GrammarTableCell[][] }
   | { type: "image"; src: string; alt?: string }
@@ -60,6 +60,7 @@ export type GrammarBlock =
 export type GrammarSection = {
   heading: string;
   level?: number;
+  headingOnly?: boolean;
   blocks?: GrammarBlock[];
   pattern?: string;
   notes?: string[];

@@ -14,6 +14,12 @@
   ],
   "sections": [
     {
+      "heading": "ている",
+      "level": 2,
+      "headingOnly": true,
+      "blocks": []
+    },
+    {
       "heading": "認識動詞屬性",
       "level": 3,
       "blocks": [
@@ -209,14 +215,17 @@
           "items": [
             {
               "ja": "私は今、メガネをかけています。",
-              "reading": "わたしはいま、メガネをかけています。"
+              "reading": "わたしはいま、メガネをかけています。",
+              "status": "triangle"
             },
             {
               "ja": "メガネをかけている男の人が好きです。",
               "reading": "メガネをかけているおとこのひとがすきです。",
               "status": "correct"
             }
-          ]
+          ],
+          "grouped": true,
+          "sharedZh": "我喜歡戴眼鏡的男生。"
         }
       ]
     },

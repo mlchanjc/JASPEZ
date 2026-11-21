@@ -249,25 +249,12 @@
           "type": "examples",
           "items": [
             {
-              "ja": "です"
+              "ja": "です",
+              "status": "correct"
             },
             {
-              "ja": "です"
-            },
-            {
-              "ja": "い"
-            },
-            {
-              "ja": "く"
-            },
-            {
-              "ja": "ない"
-            },
-            {
-              "ja": "い"
-            },
-            {
-              "ja": "かった"
+              "ja": "です",
+              "status": "correct"
             },
             {
               "ja": "い"
@@ -279,6 +266,22 @@
               "ja": "ない"
             },
             {
+              "ja": "い"
+            },
+            {
+              "ja": "かった",
+              "status": "correct"
+            },
+            {
+              "ja": "い"
+            },
+            {
+              "ja": "く"
+            },
+            {
+              "ja": "ない"
+            },
+            {
               "ja": "ない"
             },
             {
@@ -288,12 +291,14 @@
               "ja": "い"
             },
             {
-              "ja": "かった"
+              "ja": "かった",
+              "status": "correct"
             },
             {
               "ja": "くなかった"
             }
-          ]
+          ],
+          "grouped": true
         },
         {
           "type": "image",
@@ -532,6 +537,12 @@
       ]
     },
     {
+      "heading": "初學者常見錯誤",
+      "level": 2,
+      "headingOnly": true,
+      "blocks": []
+    },
+    {
       "heading": "形容詞過去式",
       "level": 3,
       "blocks": [
@@ -567,7 +578,8 @@
               "reading": "さむかったです。",
               "status": "correct"
             }
-          ]
+          ],
+          "grouped": true
         },
         {
           "type": "note",
@@ -579,14 +591,15 @@
             {
               "ja": "美味しいでした",
               "reading": "おいしいでした",
-              "status": "incorrect"
+              "status": "wrong"
             },
             {
               "ja": "嬉しいでした",
               "reading": "うれしいでした",
-              "status": "incorrect"
+              "status": "wrong"
             }
-          ]
+          ],
+          "grouped": true
         }
       ]
     }

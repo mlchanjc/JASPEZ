@@ -69,12 +69,14 @@
             {
               "ja": "事件に関する情報",
               "reading": "じけんにかんするじょうほう",
-              "zh": "跟事件有關的情報。"
+              "zh": "跟事件有關的情報。",
+              "status": "correct"
             },
             {
               "ja": "事件に関しての情報",
               "reading": "じけんにかんしてのじょうほう",
-              "zh": "跟事件有關的情報。"
+              "zh": "跟事件有關的情報。",
+              "status": "correct"
             },
             {
               "ja": "政治に関する研究",
@@ -86,7 +88,8 @@
               "reading": "せいじにかんしてのけんきゅう",
               "zh": "跟政治有關的研究。"
             }
-          ]
+          ],
+          "grouped": true
         },
         {
           "type": "callout",
@@ -94,6 +97,12 @@
           "text": "還有「\nN\nに\n関\n（\nかん\n）\nした\nN\n」的形式，但比較少數。"
         }
       ]
+    },
+    {
+      "heading": "「に関して」與「について」的區別",
+      "level": 2,
+      "headingOnly": true,
+      "blocks": []
     },
     {
       "heading": "討論範圍",
@@ -148,9 +157,10 @@
             {
               "ja": "事件につく情報",
               "reading": "じけんにつくじょうほう",
-              "status": "incorrect"
+              "status": "wrong"
             }
-          ]
+          ],
+          "grouped": true
         }
       ]
     }

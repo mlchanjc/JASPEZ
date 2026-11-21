@@ -189,15 +189,17 @@
             },
             {
               "ja": "プレゼント",
-              "zh": "（給媽媽的禮物）"
+              "zh": "（給媽媽的禮物）",
+              "status": "wrong"
             },
             {
               "ja": "母にのプレゼント",
               "reading": "ははにのプレゼント",
-              "status": "incorrect",
+              "status": "wrong",
               "label": "錯誤用法"
             }
-          ]
+          ],
+          "grouped": true
         }
       ]
     }

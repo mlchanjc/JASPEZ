@@ -189,9 +189,12 @@
               "status": "correct"
             },
             {
-              "ja": "弟の足は犬に噛まれました。"
+              "ja": "弟の足は犬に噛まれました。",
+              "status": "question"
             }
-          ]
+          ],
+          "grouped": true,
+          "sharedZh": "弟弟被狗咬到腳了。"
         },
         {
           "type": "note",
@@ -211,7 +214,9 @@
               "ja": "私のスマホは友達に壊されました。",
               "status": "correct"
             }
-          ]
+          ],
+          "grouped": true,
+          "sharedZh": "我的手機被朋友弄壞了。"
         },
         {
           "type": "callout",

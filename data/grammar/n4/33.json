@@ -161,19 +161,21 @@
             {
               "ja": "たくさん勉強したのに、合格するだろう。",
               "reading": "たくさんべんきょうしたのに、ごうかくするだろう。",
-              "status": "incorrect"
+              "status": "wrong"
             },
             {
               "ja": "たくさん勉強したのに、合格したい。",
               "reading": "たくさんべんきょうしたのに、ごうかくしたい。",
-              "status": "incorrect"
+              "status": "wrong"
             },
             {
               "ja": "たくさん勉強したのに、不合格だった。",
               "reading": "たくさんべんきょうしたのに、ふごうかくだった。",
               "status": "correct"
             }
-          ]
+          ],
+          "grouped": true,
+          "sharedZh": "明明念這麼多書了，卻還是不及格。"
         }
       ]
     },

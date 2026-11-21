@@ -175,9 +175,10 @@
             {
               "ja": "村田さんは頑張れば夢は叶うだろうと思う。",
               "reading": "むらたさんはがんばればゆめはかなうだろうとおもう。",
-              "status": "incorrect"
+              "status": "wrong"
             }
-          ]
+          ],
+          "grouped": true
         },
         {
           "type": "note",

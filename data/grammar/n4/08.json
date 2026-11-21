@@ -72,7 +72,8 @@
               "reading": "わたしはあたまがおおきい。",
               "status": "correct"
             }
-          ]
+          ],
+          "grouped": true
         }
       ]
     },
@@ -86,14 +87,15 @@
             {
               "ja": "彼は寂しいです。",
               "reading": "かれはさびしいです。",
-              "status": "incorrect"
+              "status": "wrong"
             },
             {
               "ja": "私は寂しいです。",
               "reading": "わたしはさびしいです。",
               "status": "correct"
             }
-          ]
+          ],
+          "grouped": true
         },
         {
           "type": "note",

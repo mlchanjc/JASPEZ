@@ -131,14 +131,26 @@ type RenderItem =
   | { kind: "grammarGroup"; pattern?: { pattern: string; connection?: string[] }; notes: string[] }
   | { kind: "single"; block: GrammarBlock };
 
-function stripDuplicateConnection(text: string, connection?: string[]): string {
-  if (!connection || connection.length === 0) return text;
-  const connSet = new Set(["詳細接續：", "詳細接續:", ...connection.map((c) => c.trim())]);
-  return text
+function normalizeLineForDedup(s: string): string {
+  return s.replace(/[\s\u3000]/g, "").trim();
+}
+
+function stripDuplicateConnection(rawText: string, connection?: string[]): string {
+  if (!connection || connection.length === 0) return rawText;
+  const connNormSet = new Set([
+    "詳細接續：",
+    "詳細接續:",
+    ...connection.map((c) => normalizeLineForDedup(c)),
+  ]);
+  const kept = rawText
+    .replace(/\r\n/g, "\n")
     .split("\n")
-    .filter((line) => !connSet.has(line.trim()))
-    .join("\n")
-    .trim();
+    .filter((line) => {
+      const n = normalizeLineForDedup(line);
+      if (!n) return false;
+      return !connNormSet.has(n);
+    });
+  return kept.join("\n").trim();
 }
 
 function groupBlocksForRender(blocks: GrammarBlock[]): RenderItem[] {
@@ -157,9 +169,11 @@ function groupBlocksForRender(blocks: GrammarBlock[]): RenderItem[] {
       const notes: string[] = [];
       let j = i + 1;
       while (j < blocks.length && blocks[j]?.type === "block") {
-        const rawText = cleanInlineText((blocks[j] as { type: "block"; text: string }).text ?? "");
-        const deduped = stripDuplicateConnection(rawText, b.connection);
-        if (deduped) notes.push(deduped);
+        const rawBlock = (blocks[j] as { type: "block"; text: string }).text ?? "";
+        // Strip duplicate 詳細接續 lines BEFORE cleanInlineText joins lines together!
+        const dedupedRaw = stripDuplicateConnection(rawBlock, b.connection);
+        const cleaned = cleanInlineText(dedupedRaw);
+        if (cleaned) notes.push(cleaned);
         j += 1;
       }
       items.push({
@@ -410,25 +424,84 @@ function BlockList({
         if (block.type === "examples") {
           const items = normalizeExamples(block.items ?? []);
           if (items.length === 0) return null;
+          const statusMeta = (st?: string) => {
+            if (st === "correct") return { sym: "○", bg: "#DCFCE7", fg: "#15803D" };
+            if (st === "question") return { sym: "？", bg: "#FEF3C7", fg: "#B45309" };
+            if (st === "triangle") return { sym: "△", bg: "#FEF3C7", fg: "#B45309" };
+            if (st === "wrong") return { sym: "✕", bg: "#FFE4E6", fg: "#BE123C" };
+            if (st === "arrow") return { sym: "→", bg: "#E0E7FF", fg: "#3730A3" };
+            return null;
+          };
+
+          if (block.grouped) {
+            return (
+              <View key={`ex-${idx}`} style={styles.groupedExampleCard}>
+                {items.map((ex, eIdx) => {
+                  const sm = statusMeta(ex.status);
+                  return (
+                    <View
+                      key={`exi-${eIdx}`}
+                      style={[styles.groupedExampleRow, eIdx > 0 && styles.groupedExampleDivider]}
+                    >
+                      <View
+                        style={[
+                          styles.exampleNum,
+                          { backgroundColor: sm ? sm.bg : `${accentColor}1E` },
+                        ]}
+                      >
+                        <Text style={[styles.exampleNumText, { color: sm ? sm.fg : accentColor }]}>
+                          {sm ? sm.sym : eIdx + 1}
+                        </Text>
+                      </View>
+                      <View style={styles.exampleBody}>
+                        {ex.label ? <Text style={styles.exampleLabel}>{ex.label}</Text> : null}
+                        <Text style={styles.exampleJa}>{ex.ja}</Text>
+                        {showFurigana && ex.reading ? (
+                          <Text style={styles.exampleReading}>{ex.reading}</Text>
+                        ) : null}
+                        {ex.zh ? <Text style={styles.exampleZh}>{ex.zh}</Text> : null}
+                      </View>
+                    </View>
+                  );
+                })}
+                {block.sharedZh ? (
+                  <View style={styles.sharedZhFooter}>
+                    <Text style={styles.sharedZhText}>{block.sharedZh}</Text>
+                  </View>
+                ) : null}
+              </View>
+            );
+          }
+
           return (
             <View key={`ex-${idx}`} style={styles.examplesStack}>
-              {items.map((ex, eIdx) => (
-                <View key={`exi-${eIdx}`} style={styles.exampleItem}>
-                  <View style={styles.exampleRow}>
-                    <View style={[styles.exampleNum, { backgroundColor: `${accentColor}1E` }]}>
-                      <Text style={[styles.exampleNumText, { color: accentColor }]}>{eIdx + 1}</Text>
-                    </View>
-                    <View style={styles.exampleBody}>
-                      {ex.label ? <Text style={styles.exampleLabel}>{ex.label}</Text> : null}
-                      <Text style={styles.exampleJa}>{ex.ja}</Text>
-                      {showFurigana && ex.reading ? (
-                        <Text style={styles.exampleReading}>{ex.reading}</Text>
-                      ) : null}
-                      {ex.zh ? <Text style={styles.exampleZh}>{ex.zh}</Text> : null}
+              {items.map((ex, eIdx) => {
+                const sm = statusMeta(ex.status);
+                return (
+                  <View key={`exi-${eIdx}`} style={styles.exampleItem}>
+                    <View style={styles.exampleRow}>
+                      <View
+                        style={[
+                          styles.exampleNum,
+                          { backgroundColor: sm ? sm.bg : `${accentColor}1E` },
+                        ]}
+                      >
+                        <Text style={[styles.exampleNumText, { color: sm ? sm.fg : accentColor }]}>
+                          {sm ? sm.sym : eIdx + 1}
+                        </Text>
+                      </View>
+                      <View style={styles.exampleBody}>
+                        {ex.label ? <Text style={styles.exampleLabel}>{ex.label}</Text> : null}
+                        <Text style={styles.exampleJa}>{ex.ja}</Text>
+                        {showFurigana && ex.reading ? (
+                          <Text style={styles.exampleReading}>{ex.reading}</Text>
+                        ) : null}
+                        {ex.zh ? <Text style={styles.exampleZh}>{ex.zh}</Text> : null}
+                      </View>
                     </View>
                   </View>
-                </View>
-              ))}
+                );
+              })}
             </View>
           );
         }
@@ -473,13 +546,35 @@ export function GrammarRichContent({ lesson, showFurigana, accentColor, onNaviga
     ? Math.min(winHeight * 0.78, modalImgWidth / zoomImage.aspectRatio)
     : 300;
 
+  // Nest consecutive level-4 (<h4>) child sections inside their parent level-3 (<h3>) card
+  // so sections like 「不可互換的情況」+ A + B render as ONE unified card matching 「可互換的情況」.
+  const groupedSections: { sec: (typeof lesson.sections)[number]; children: (typeof lesson.sections)[number][] }[] = [];
+  for (let i = 0; i < lesson.sections.length; i += 1) {
+    const sec = lesson.sections[i];
+    const lvl = sec.level ?? 2;
+    if (lvl === 4 && groupedSections.length > 0 && (groupedSections[groupedSections.length - 1].sec.level ?? 2) === 3) {
+      groupedSections[groupedSections.length - 1].children.push(sec);
+    } else {
+      groupedSections.push({ sec, children: [] });
+    }
+  }
+
   return (
     <View style={styles.wrap}>
-      {lesson.sections.map((sec, idx) => {
+      {groupedSections.map(({ sec, children }, idx) => {
         const isSub = (sec.level ?? 2) >= 3;
         const blocks: GrammarBlock[] = Array.isArray(sec.blocks) ? sec.blocks : [];
         const hasLegacy = Boolean((sec.notes && sec.notes.length > 0) || (sec.examples && sec.examples.length > 0));
-        if (blocks.length === 0 && !hasLegacy) return null;
+        const hasChildren = children.length > 0;
+        if (blocks.length === 0 && !hasLegacy && !hasChildren) {
+          if (!sec.headingOnly || !sec.heading) return null;
+          return (
+            <View key={`${sec.heading}-${idx}`} style={styles.headingOnlyBanner}>
+              <View style={[styles.headingBar, { backgroundColor: isSub ? theme.indigo : accentColor }]} />
+              <Text style={isSub ? styles.headingOnlySubText : styles.sectionHeading}>{sec.heading}</Text>
+            </View>
+          );
+        }
 
         return (
           <View key={`${sec.heading}-${idx}`} style={[styles.sectionCard, isSub && styles.subSectionCard]}>
@@ -499,7 +594,7 @@ export function GrammarRichContent({ lesson, showFurigana, accentColor, onNaviga
                 onZoom={setZoomImage}
                 onNavigateLesson={onNavigateLesson}
               />
-            ) : (
+            ) : hasLegacy ? (
               <View style={styles.blockStack}>
                 {(sec.notes ?? []).map((n, nIdx) => (
                   <Text key={nIdx} style={styles.noteText}>
@@ -514,7 +609,27 @@ export function GrammarRichContent({ lesson, showFurigana, accentColor, onNaviga
                   </View>
                 ))}
               </View>
-            )}
+            ) : null}
+
+            {children.map((child, cIdx) => {
+              const cBlocks: GrammarBlock[] = Array.isArray(child.blocks) ? child.blocks : [];
+              if (cBlocks.length === 0 && !child.heading) return null;
+              return (
+                <View key={`ch-${cIdx}`} style={[styles.childSubBlock, cIdx > 0 && styles.childSubBlockBorder]}>
+                  {child.heading ? <Text style={styles.h4Heading}>{child.heading}</Text> : null}
+                  {cBlocks.length > 0 ? (
+                    <BlockList
+                      blocks={cBlocks}
+                      showFurigana={showFurigana}
+                      accentColor={accentColor}
+                      maxImgWidth={maxImgWidth}
+                      onZoom={setZoomImage}
+                      onNavigateLesson={onNavigateLesson}
+                    />
+                  ) : null}
+                </View>
+              );
+            })}
           </View>
         );
       })}
@@ -578,6 +693,45 @@ const styles = StyleSheet.create({
   headingBar: { width: 4, height: 18, borderRadius: 4 },
   sectionHeading: { flex: 1, fontSize: 16, fontWeight: "900", color: theme.ink, lineHeight: 22 },
   subHeading: { flex: 1, fontSize: 14, fontWeight: "900", color: theme.indigo, lineHeight: 20 },
+  headingOnlyBanner: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    paddingHorizontal: 6,
+    paddingTop: 6,
+    paddingBottom: 2,
+  },
+  headingOnlySubText: { flex: 1, fontSize: 15, fontWeight: "900", color: theme.indigo, lineHeight: 21 },
+  childSubBlock: { gap: 8 },
+  childSubBlockBorder: {
+    borderTopWidth: 1,
+    borderTopColor: theme.paperBorder,
+    paddingTop: 12,
+    marginTop: 2,
+  },
+  h4Heading: { fontSize: 13.5, fontWeight: "800", color: theme.ink, lineHeight: 20 },
+  groupedExampleCard: {
+    backgroundColor: theme.white,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: theme.paperBorder,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    gap: 8,
+  },
+  groupedExampleRow: { flexDirection: "row", alignItems: "flex-start", gap: 10 },
+  groupedExampleDivider: {
+    borderTopWidth: 1,
+    borderTopColor: "#EEF2F7",
+    paddingTop: 8,
+  },
+  sharedZhFooter: {
+    borderTopWidth: 1,
+    borderTopColor: "#E2E8F0",
+    paddingTop: 8,
+    paddingLeft: 32,
+  },
+  sharedZhText: { fontSize: 13.5, color: theme.inkSoft, fontWeight: "600", lineHeight: 20 },
   blockStack: { gap: 10 },
   grammarBlockCard: {
     backgroundColor: "#F5F7FF",

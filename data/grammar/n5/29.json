@@ -88,7 +88,9 @@
               "ja": "コーヒーとジュースがあります。",
               "status": "correct"
             }
-          ]
+          ],
+          "grouped": true,
+          "sharedZh": "有咖啡和果汁。"
         }
       ]
     },

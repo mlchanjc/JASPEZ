@@ -320,14 +320,15 @@
             {
               "ja": "時雨さんもこの小説を読んだそうだった。",
               "reading": "しぐれさんもこのしょうせつをよんだそうだった。",
-              "status": "incorrect"
+              "status": "wrong"
             },
             {
               "ja": "時雨さんもこの小説を読むそうだった。",
               "reading": "しぐれさんもこのしょうせつをよむそうだった。",
-              "status": "incorrect"
+              "status": "wrong"
             }
-          ]
+          ],
+          "grouped": true
         }
       ]
     },

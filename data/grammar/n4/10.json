@@ -145,7 +145,7 @@
             {
               "ja": "雨が降ると、試合は中止してください。→ 不可接主觀語氣",
               "reading": "あめがふると、しあいはちゅうししてください。→ 不可接主觀語氣",
-              "status": "incorrect"
+              "status": "wrong"
             },
             {
               "ja": "雨が降ると困ります。",
@@ -153,14 +153,17 @@
               "status": "correct"
             },
             {
-              "ja": "たら"
+              "ja": "たら",
+              "status": "correct"
             },
             {
               "ja": "雨が降ったら、試合は中止してください。",
               "reading": "あめがふったら、しあいはちゅうししてください。",
               "status": "correct"
             }
-          ]
+          ],
+          "grouped": true,
+          "sharedZh": "如果下雨請中止比賽。"
         },
         {
           "type": "callout",

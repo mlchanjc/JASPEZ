@@ -14,6 +14,12 @@
   ],
   "sections": [
     {
+      "heading": "文法句型",
+      "level": 2,
+      "headingOnly": true,
+      "blocks": []
+    },
+    {
       "heading": "〜（よ）う",
       "level": 3,
       "blocks": [
@@ -231,9 +237,11 @@
             },
             {
               "ja": "彼は日本に留学しようと思う。",
-              "reading": "かれはにほんにりゅうがくしようとおもう。"
+              "reading": "かれはにほんにりゅうがくしようとおもう。",
+              "status": "wrong"
             }
-          ]
+          ],
+          "grouped": true
         },
         {
           "type": "callout",

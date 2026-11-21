@@ -305,10 +305,11 @@
             {
               "ja": "私は学生です。私は先生ではない。",
               "reading": "わたしはがくせいです。わたしはせんせいではない。",
-              "status": "incorrect",
+              "status": "wrong",
               "label": "文體不一致"
             }
-          ]
+          ],
+          "grouped": true
         }
       ]
     },

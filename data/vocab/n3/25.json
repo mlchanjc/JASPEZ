@@ -8,91 +8,104 @@
       "reading": "つめる",
       "accent": "[2]",
       "meaning": "填、裝、塞／擠／值勤、待命",
-      "extraInfo": "關於「詰める」\n\n「詰める」有分為他動詞和自動詞，一般較常會使用到的是他動詞，表示填入、裝入的意思。但作為自動詞時則有人物前往特定場所待命以應對突發狀況的意思，這時的主詞是人物，即「人が場所に詰める」，中文翻譯多為「值勤、待命」。此用法較艱澀，且用法侷限，日常生活中較少出現，但在特定情況仍會看到這樣的用法，例如「突発的事態にすぐに対応できるよう、事務所に詰めている（為了能夠馬上應對突發狀況，正在事務所待命）」。"
+      "extraInfo": "關於「詰める」\n\n「詰める」有分為他動詞和自動詞，一般較常會使用到的是他動詞，表示填入、裝入的意思。但作為自動詞時則有人物前往特定場所待命以應對突發狀況的意思，這時的主詞是人物，即「人が場所に詰める」，中文翻譯多為「值勤、待命」。此用法較艱澀，且用法侷限，日常生活中較少出現，但在特定情況仍會看到這樣的用法，例如「突発的事態にすぐに対応できるよう、事務所に詰めている（為了能夠馬上應對突發狀況，正在事務所待命）」。",
+      "verbType": "下一段"
     },
     {
       "word": "巻く",
       "reading": "まく",
       "accent": "[0]",
       "meaning": "捲／纏、繞／轉、擰／包圍",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "張る",
       "reading": "はる",
       "accent": "[0]",
       "meaning": "張開／擴張／覆蓋／拉緊／張貼",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "蒸す",
       "reading": "むす",
       "accent": "[1]",
       "meaning": "悶／蒸",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "結ぶ",
       "reading": "むすぶ",
       "accent": "[0]",
       "meaning": "繫、結／凝結／締結／結合／連結",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "奢る",
       "reading": "おごる",
       "accent": "[0]",
       "meaning": "請客／奢侈",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "当たる",
       "reading": "あたる",
       "accent": "[0]",
       "meaning": "碰撞／猜中／命中／曬、照",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "間違う",
       "reading": "まちがう",
       "accent": "[3]",
       "meaning": "錯誤／搞錯、弄錯",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     },
     {
       "word": "寄せる",
       "reading": "よせる",
       "accent": "[0]",
       "meaning": "靠近、貼近／集中",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "下一段"
     },
     {
       "word": "感じる",
       "reading": "かんじる",
       "accent": "[0]",
       "meaning": "感覺、感到、感受",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "上一段"
     },
     {
       "word": "通じる",
       "reading": "つうじる",
       "accent": "[0]",
       "meaning": "相通／通往／通曉／領會、理解",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "上一段"
     },
     {
       "word": "閉じる",
       "reading": "とじる",
       "accent": "[2]",
       "meaning": "閉／合／蓋",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "上一段"
     },
     {
       "word": "叫ぶ",
       "reading": "さけぶ",
       "accent": "[2]",
       "meaning": "喊／叫",
-      "extraInfo": null
+      "extraInfo": null,
+      "verbType": "五段"
     }
   ]
 }

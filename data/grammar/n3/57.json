@@ -97,10 +97,11 @@
             {
               "ja": "お前に会えて少しよかった。",
               "reading": "おまえにあえてすこしよかった。",
-              "status": "incorrect",
+              "status": "wrong",
               "zh": "能遇見你真是有點太好了。"
             }
-          ]
+          ],
+          "grouped": true
         }
       ]
     }

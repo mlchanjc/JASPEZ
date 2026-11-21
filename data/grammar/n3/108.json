@@ -58,14 +58,16 @@
             {
               "ja": "7時ほど起きる。",
               "reading": "7じほどおきる。",
-              "status": "incorrect"
+              "status": "wrong"
             },
             {
               "ja": "7時ごろ起きる",
               "reading": "7じごろおきる",
               "status": "correct"
             }
-          ]
+          ],
+          "grouped": true,
+          "sharedZh": "7點左右起床。"
         },
         {
           "type": "note",

@@ -83,10 +83,11 @@
             {
               "ja": "電車に乗ったところにカバンを忘れたらしい。",
               "reading": "でんしゃにのったところにカバンをわすれたらしい。",
-              "status": "incorrect",
+              "status": "wrong",
               "zh": "好像搭乘電車的時候，忘了包包。"
             }
-          ]
+          ],
+          "grouped": true
         }
       ]
     },
@@ -212,21 +213,25 @@
           "type": "examples",
           "items": [
             {
-              "ja": "ところ"
+              "ja": "ところ",
+              "status": "wrong"
             },
             {
-              "ja": "ところに"
+              "ja": "ところに",
+              "status": "wrong"
             },
             {
               "ja": "ところへ"
             },
             {
-              "ja": "ところに"
+              "ja": "ところに",
+              "status": "wrong"
             },
             {
               "ja": "ところを"
             }
-          ]
+          ],
+          "grouped": true
         },
         {
           "type": "note",

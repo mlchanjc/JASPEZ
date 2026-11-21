@@ -12,6 +12,12 @@
   "connection": [],
   "sections": [
     {
+      "heading": "基本觀念",
+      "level": 2,
+      "headingOnly": true,
+      "blocks": []
+    },
+    {
       "level": 2,
       "blocks": [
         {
