@@ -1,65 +1,12 @@
 import { useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ARENA_BANK, ARENA_GROUPS } from "@/data/arenaBank";
+import type { ArenaGroupMeta } from "@/data/arenaBank";
 import { CONFUSABLE_PAIRS } from "@/data/grammar";
 import { findGrammarLesson } from "@/data/grammarRegistry";
-import type { LevelId } from "@/data/types";
 import { lessonExamples } from "@/lib/grammar";
 import { useProgress } from "@/state/progress";
 import { levelAccent, theme } from "@/theme";
-
-type ArenaGroup = {
-  id: string;
-  label: string;
-  level: LevelId;
-  members: { level: LevelId; lessonId: string; choiceLabel: string; tokens: string[]; tip: string }[];
-};
-
-const ARENA_GROUPS: ArenaGroup[] = [
-  {
-    id: "conditionals",
-    label: "假定四天王",
-    level: "N4",
-    members: [
-      { level: "N4", lessonId: "10", choiceLabel: "と", tokens: ["と"], tip: "恆常必然結果（一…就…），後句不可接意志或請求。" },
-      { level: "N4", lessonId: "11", choiceLabel: "ば", tokens: ["ば"], tip: "假定形＋ば，著重於前句條件成立。" },
-      { level: "N4", lessonId: "12", choiceLabel: "たら", tokens: ["たら", "だら"], tip: "最萬用條件句，強調前項完成之後，後句可接請求／意志。" },
-      { level: "N4", lessonId: "13", choiceLabel: "なら", tokens: ["なら"], tip: "承接對方話題或前提（如果要…的話），常用於給建議。" },
-    ],
-  },
-  {
-    id: "aux-verbs",
-    label: "補助動詞",
-    level: "N4",
-    members: [
-      { level: "N4", lessonId: "16", choiceLabel: "ていく", tokens: ["ていく", "ていき", "ていっ", "でいく", "でいっ"], tip: "動作往遠處或未來持續變化。" },
-      { level: "N4", lessonId: "17", choiceLabel: "てくる", tokens: ["てくる", "てき", "でくる", "でき"], tip: "從過去持續到現在，或朝說話者方向而來。" },
-      { level: "N4", lessonId: "18", choiceLabel: "てみる", tokens: ["てみる", "てみ", "でみる", "でみ"], tip: "試著做看看結果如何。" },
-      { level: "N4", lessonId: "19", choiceLabel: "てしまう", tokens: ["てしまう", "てしま", "でしまう", "でしま", "ちゃう", "ちゃっ"], tip: "徹底完成，或不小心、帶有遺憾語感。" },
-      { level: "N4", lessonId: "20", choiceLabel: "ておく", tokens: ["ておく", "ておき", "ておい", "でおく", "でおい"], tip: "為了日後目的而事先準備。" },
-    ],
-  },
-  {
-    id: "cause-effect",
-    label: "因果歸因",
-    level: "N3",
-    members: [
-      { level: "N3", lessonId: "04", choiceLabel: "おかげで", tokens: ["おかげで", "おかげだ", "おかげです"], tip: "帶有感謝心情，後句必為正面好結果。" },
-      { level: "N3", lessonId: "33", choiceLabel: "せいで", tokens: ["せいで", "せいだ", "せいです"], tip: "帶有責怪或懊惱，後句為負面壞結果。" },
-      { level: "N3", lessonId: "34", choiceLabel: "せいか", tokens: ["せいか"], tip: "不確定的推測原因（也許是因為…的緣故）。" },
-    ],
-  },
-  {
-    id: "purpose-decision",
-    label: "目的與決定",
-    level: "N3",
-    members: [
-      { level: "N4", lessonId: "37", choiceLabel: "ために", tokens: ["ために", "ためだ", "ためです"], tip: "可控意志動作的目的（為了…），或表原因。" },
-      { level: "N3", lessonId: "123", choiceLabel: "ように", tokens: ["ように"], tip: "接可能形／無意志／否定形表狀態目標，或表比喻與勸告。" },
-      { level: "N3", lessonId: "25", choiceLabel: "ことにしている", tokens: ["ことにしている", "ことにしています"], tip: "自己養成的個人習慣（總是固定這麼做）。" },
-      { level: "N3", lessonId: "26", choiceLabel: "ことになっている", tokens: ["ことになっている", "ことになっています"], tip: "外部規則、制度或既定安排（按規定…）。" },
-    ],
-  },
-];
 
 type ArenaQuestion = {
   id: string;
@@ -73,16 +20,37 @@ type ArenaQuestion = {
   tip: string;
 };
 
-function buildPool(group: ArenaGroup): ArenaQuestion[] {
+function buildPool(group: ArenaGroupMeta): ArenaQuestion[] {
   const list: ArenaQuestion[] = [];
-  const allChoices = group.members.map((m) => m.choiceLabel);
+  const seenJa = new Set<string>();
 
-  for (const member of group.members) {
+  // 1. Add curated AI question bank entries for this group
+  ARENA_BANK.forEach((item, idx) => {
+    if (item.groupId !== group.id) return;
+    const fullJa = `${item.before}${item.answer}${item.after}`;
+    if (seenJa.has(fullJa)) return;
+    seenJa.add(fullJa);
+    list.push({
+      id: `bank:${group.id}:${idx}`,
+      before: item.before,
+      after: item.after,
+      fullJa,
+      reading: item.reading,
+      zh: item.zh,
+      correctLabel: item.answer,
+      choices: group.choices,
+      tip: item.tip,
+    });
+  });
+
+  // 2. Merge matching real bundled lesson examples (deduped)
+  for (const member of group.lessonRefs) {
     const lesson = findGrammarLesson(member.level, member.lessonId);
     if (!lesson) continue;
     const examples = lessonExamples(lesson);
     examples.forEach((ex, idx) => {
       const ja = ex.ja.trim();
+      if (!ja || seenJa.has(ja)) return;
       let hit = "";
       let pos = -1;
       for (const tok of member.tokens) {
@@ -105,19 +73,21 @@ function buildPool(group: ArenaGroup): ArenaQuestion[] {
       }
       if (!hit || pos < 0) return;
 
+      seenJa.add(ja);
       list.push({
-        id: `${group.id}:${member.lessonId}:${idx}`,
+        id: `lesson:${group.id}:${member.lessonId}:${idx}`,
         before: ja.slice(0, pos),
         after: ja.slice(pos + hit.length),
         fullJa: ja,
         reading: (ex.reading ?? "").trim(),
         zh: (ex.zh ?? "").trim(),
         correctLabel: member.choiceLabel,
-        choices: allChoices,
+        choices: group.choices,
         tip: member.tip,
       });
     });
   }
+
   return list;
 }
 
@@ -134,7 +104,6 @@ export function GrammarCompare() {
   const activeGroup = ARENA_GROUPS.find((g) => g.id === groupId) ?? ARENA_GROUPS[0];
   const pool = useMemo(() => {
     const built = buildPool(activeGroup);
-    // Shuffle pool whenever switching group
     for (let i = built.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
       [built[i], built[j]] = [built[j], built[i]];
@@ -172,13 +141,13 @@ export function GrammarCompare() {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scroller} contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-        {/* Top Mode & Stats Header */}
+        {/* Top Mode & Stats Header (overflow-safe flex layout) */}
         <View style={styles.topCard}>
           <View style={styles.topHead}>
-            <View>
+            <View style={styles.topHeadLeft}>
               <Text style={styles.heading}>易混實戰擂台</Text>
-              <Text style={styles.sub}>
-                本組共 {pool.length} 句真實例句 · 連勝 🔥 {streak}（{correctTotal}/{answeredTotal}）
+              <Text style={styles.sub} numberOfLines={2}>
+                本組 {pool.length} 題 · 連勝 🔥{streak}（{correctTotal}/{answeredTotal}）
               </Text>
             </View>
             <View style={styles.segmented}>
@@ -198,7 +167,7 @@ export function GrammarCompare() {
           </View>
 
           {subMode === "arena" && (
-            <View style={styles.groupRow}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.groupRow}>
               {ARENA_GROUPS.map((g) => {
                 const selected = g.id === groupId;
                 const col = levelAccent[g.level];
@@ -212,7 +181,7 @@ export function GrammarCompare() {
                   </Pressable>
                 );
               })}
-            </View>
+            </ScrollView>
           )}
         </View>
 
@@ -223,7 +192,9 @@ export function GrammarCompare() {
               <View style={[styles.levelBadge, { backgroundColor: accent }]}>
                 <Text style={styles.levelBadgeText}>{activeGroup.level}</Text>
               </View>
-              <Text style={styles.groupLabel}>{activeGroup.label} · 選出最適合語境的文法</Text>
+              <Text style={styles.groupLabel} numberOfLines={1}>
+                {activeGroup.label} · 選出最適合的文法
+              </Text>
             </View>
 
             <Text style={styles.sentence}>
@@ -243,7 +214,7 @@ export function GrammarCompare() {
 
             {prefs.showFurigana && question.reading ? (
               <Text style={styles.reading}>
-                {picked !== null ? question.reading : "（作答後顯示完整假名讀音）"}
+                {picked !== null ? question.reading : "（作答後顯示假名讀音）"}
               </Text>
             ) : null}
 
@@ -362,17 +333,33 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: theme.paperBorder,
   },
-  topHead: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 8 },
+  topHead: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: 10,
+  },
+  topHeadLeft: {
+    flex: 1,
+    minWidth: 0,
+  },
   heading: { fontSize: 16, fontWeight: "900", color: theme.ink },
   sub: { fontSize: 12, color: theme.inkSoft, marginTop: 2, fontWeight: "700" },
-  segmented: { flexDirection: "row", backgroundColor: theme.paper, borderRadius: 11, padding: 3, gap: 2 },
+  segmented: {
+    flexDirection: "row",
+    backgroundColor: theme.paper,
+    borderRadius: 11,
+    padding: 3,
+    gap: 2,
+    flexShrink: 0,
+  },
   segBtn: { paddingHorizontal: 11, paddingVertical: 5, borderRadius: 8 },
   segBtnActive: { backgroundColor: theme.white },
   segText: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
   segTextActive: { color: theme.indigo },
-  groupRow: { flexDirection: "row", flexWrap: "wrap", gap: 6 },
+  groupRow: { flexDirection: "row", gap: 6, paddingRight: 4 },
   groupChip: {
-    paddingHorizontal: 11,
+    paddingHorizontal: 12,
     paddingVertical: 7,
     borderRadius: 11,
     backgroundColor: theme.surface,
@@ -396,7 +383,7 @@ const styles = StyleSheet.create({
   badgeRow: { flexDirection: "row", alignItems: "center", gap: 8 },
   levelBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 99 },
   levelBadgeText: { color: "#fff", fontSize: 11, fontWeight: "900" },
-  groupLabel: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
+  groupLabel: { flex: 1, fontSize: 12, fontWeight: "800", color: theme.inkSoft },
   sentence: { fontSize: 19, lineHeight: 30, fontWeight: "800", color: theme.ink },
   blankText: { fontWeight: "900" },
   reading: { fontSize: 12, color: theme.inkMuted, lineHeight: 18 },
