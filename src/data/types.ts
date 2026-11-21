@@ -35,6 +35,7 @@ export type GrammarExample = {
   ja: string;
   reading?: string;
   zh?: string;
+  label?: string;
 };
 
 export type GrammarTableCell = {
@@ -48,6 +49,7 @@ export type GrammarTableCell = {
 
 export type GrammarBlock =
   | { type: "note"; text: string }
+  | { type: "block"; text: string }
   | { type: "pattern"; pattern: string; connection?: string[] }
   | { type: "examples"; items: GrammarExample[] }
   | { type: "callout"; kind?: string; text?: string; blocks?: GrammarBlock[] }
