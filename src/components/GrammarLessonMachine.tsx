@@ -1,30 +1,26 @@
 import { useEffect, useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
-import { FuriganaSentence } from "@/components/FuriganaSentence";
 import { ProficiencyMeter } from "@/components/ProficiencyMeter";
-import type { GrammarPoint, PatternDrillQuestion } from "@/data/types";
-import { generatePatternDrill, lexiconCount } from "@/lib/conjugator";
-import { isCorrectGrammarAnswer } from "@/lib/grammar";
+import { grammarLessonKey } from "@/data/grammarRegistry";
+import type { PatternDrillQuestion, SigureGrammarLesson } from "@/data/types";
+import {
+  generateLessonCloze,
+  generateLessonPatternDrill,
+  lessonAllowedPos,
+  lexiconCount,
+} from "@/lib/conjugator";
+import { lessonExamples } from "@/lib/grammar";
 import { PROFICIENCY_LEVELS } from "@/lib/proficiency";
 import { useProgress } from "@/state/progress";
 import { levelAccent, theme } from "@/theme";
 
 type Props = {
-  lesson: GrammarPoint;
+  lesson: SigureGrammarLesson;
   onBack: () => void;
 };
 
 function normalizeInput(value: string) {
   return value.normalize("NFKC").trim().toLowerCase().replace(/[\s・･？?。、]/g, "");
-}
-
-function shuffle<T>(arr: readonly T[]): T[] {
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy;
 }
 
 export function GrammarLessonMachine({ lesson, onBack }: Props) {
@@ -40,11 +36,24 @@ export function GrammarLessonMachine({ lesson, onBack }: Props) {
     clearGhostGrammar,
   } = useProgress();
 
-  const [mode, setMode] = useState<"machine" | "cloze" | "rule">("machine");
+  const key = grammarLessonKey(lesson.level, lesson.id);
+  const accent = levelAccent[lesson.level];
+  const prof = getGrammarProficiency(key);
+
+  const allowedPos = useMemo(() => lessonAllowedPos(lesson), [lesson]);
+  const examples = useMemo(() => lessonExamples(lesson), [lesson]);
+  const hasMachine = allowedPos.length > 0;
+  const firstCloze = useMemo(() => generateLessonCloze(lesson, 0), [lesson]);
+  const hasCloze = firstCloze !== null;
+
+  const defaultMode: "machine" | "cloze" | "study" = hasMachine ? "machine" : hasCloze ? "cloze" : "study";
+  const [mode, setMode] = useState<"machine" | "cloze" | "study">(defaultMode);
   const [inputMode, setInputMode] = useState<"tiles" | "type">("tiles");
+
+  // Pattern machine state
   const [recentIds, setRecentIds] = useState<string[]>([]);
   const [drill, setDrill] = useState<PatternDrillQuestion | null>(() =>
-    generatePatternDrill(lesson.patternRuleId, lesson.allowedPos, lesson.level, []),
+    hasMachine ? generateLessonPatternDrill(lesson, []) : null,
   );
   const [typed, setTyped] = useState("");
   const [picked, setPicked] = useState<string | null>(null);
@@ -52,27 +61,36 @@ export function GrammarLessonMachine({ lesson, onBack }: Props) {
   const [streak, setStreak] = useState(0);
   const [total, setTotal] = useState(0);
 
-  // Cloze state
+  // Real-example Cloze state
   const [exampleIdx, setExampleIdx] = useState(0);
   const [clozePicked, setClozePicked] = useState<string | null>(null);
-  const [clozeCorrect, setClozeCorrect] = useState(false);
 
-  const poolSize = useMemo(() => lexiconCount("ALL", lesson.allowedPos), [lesson.allowedPos]);
-  const accent = levelAccent[lesson.level];
-  const prof = getGrammarProficiency(lesson.id);
+  const poolSize = useMemo(
+    () => (allowedPos.length > 0 ? lexiconCount("ALL", allowedPos) : 0),
+    [allowedPos],
+  );
+
+  const activeCloze = useMemo(() => {
+    if (!hasCloze) return null;
+    for (let offset = 0; offset < examples.length; offset += 1) {
+      const q = generateLessonCloze(lesson, exampleIdx + offset);
+      if (q) return q;
+    }
+    return null;
+  }, [examples.length, exampleIdx, hasCloze, lesson]);
 
   useEffect(() => {
+    const nextDefault = hasMachine ? "machine" : hasCloze ? "cloze" : "study";
+    setMode(nextDefault);
     setRecentIds([]);
     setPicked(null);
     setTyped("");
-    setDrill(generatePatternDrill(lesson.patternRuleId, lesson.allowedPos, lesson.level, []));
+    setStreak(0);
+    setTotal(0);
+    setDrill(hasMachine ? generateLessonPatternDrill(lesson, []) : null);
     setExampleIdx(0);
     setClozePicked(null);
-  }, [lesson.id]);
-
-  const currentExample = lesson.examples[exampleIdx % lesson.examples.length];
-  const variant = currentExample[prefs.register];
-  const clozeChoices = useMemo(() => shuffle(variant.choices), [currentExample.id, prefs.register]);
+  }, [hasCloze, hasMachine, lesson]);
 
   const submitDrill = (raw: string) => {
     if (!drill || picked !== null) return;
@@ -84,13 +102,13 @@ export function GrammarLessonMachine({ lesson, onBack }: Props) {
     setTotal((n) => n + 1);
     if (ok) {
       setStreak((n) => n + 1);
-      markGrammarLearned(lesson.id);
-      clearGhostGrammar(lesson.id);
+      markGrammarLearned(key);
+      clearGhostGrammar(key);
     } else {
       setStreak(0);
-      addGhostGrammar(lesson.id);
+      addGhostGrammar(key);
     }
-    recordGrammarAttempt(lesson.id, ok);
+    recordGrammarAttempt(key, ok);
   };
 
   const nextDrill = () => {
@@ -98,21 +116,20 @@ export function GrammarLessonMachine({ lesson, onBack }: Props) {
     setRecentIds(nextRecent);
     setPicked(null);
     setTyped("");
-    setDrill(generatePatternDrill(lesson.patternRuleId, lesson.allowedPos, "ALL", nextRecent));
+    setDrill(generateLessonPatternDrill(lesson, nextRecent));
   };
 
   const submitCloze = (choice: string) => {
-    if (clozePicked !== null) return;
-    const ok = isCorrectGrammarAnswer(variant, choice);
+    if (!activeCloze || clozePicked !== null) return;
+    const ok = choice === activeCloze.answer;
     setClozePicked(choice);
-    setClozeCorrect(ok);
     if (ok) {
-      markGrammarLearned(lesson.id);
-      clearGhostGrammar(lesson.id);
+      markGrammarLearned(key);
+      clearGhostGrammar(key);
     } else {
-      addGhostGrammar(lesson.id);
+      addGhostGrammar(key);
     }
-    recordGrammarAttempt(lesson.id, ok);
+    recordGrammarAttempt(key, ok);
   };
 
   return (
@@ -128,40 +145,50 @@ export function GrammarLessonMachine({ lesson, onBack }: Props) {
             <Text style={styles.backChipText}>← 所有文法課</Text>
           </Pressable>
           <View style={[styles.levelPill, { backgroundColor: accent }]}>
-            <Text style={styles.levelPillText}>{lesson.sigureCode}</Text>
+            <Text style={styles.levelPillText}>
+              {lesson.level} 文法 {lesson.id}
+            </Text>
           </View>
         </View>
-        <Text style={styles.patternTitle}>{lesson.pattern}</Text>
-        <Text style={styles.patternMeaning}>{lesson.meaning}</Text>
-        <View style={styles.formulaBanner}>
-          <Text style={styles.formulaLabel}>文法接續（國文法）</Text>
-          <Text style={styles.formulaValue}>{lesson.formation}</Text>
-        </View>
+
+        <Text style={styles.patternTitle}>{lesson.title}</Text>
+        {lesson.gloss ? <Text style={styles.patternMeaning}>{lesson.gloss}</Text> : null}
+
+        {lesson.pattern ? (
+          <View style={styles.formulaBanner}>
+            <Text style={styles.formulaLabel}>文法接續（時雨國文法）</Text>
+            <Text style={styles.formulaValue}>{lesson.pattern}</Text>
+          </View>
+        ) : null}
 
         {/* Sub-mode Switcher */}
         <View style={styles.subTabs}>
+          {hasMachine && (
+            <Pressable
+              onPress={() => setMode("machine")}
+              style={[styles.subTab, mode === "machine" && { backgroundColor: accent }]}
+            >
+              <Text style={[styles.subTabText, mode === "machine" && { color: "#fff" }]}>⚡ 活用練功</Text>
+            </Pressable>
+          )}
+          {hasCloze && (
+            <Pressable
+              onPress={() => setMode("cloze")}
+              style={[styles.subTab, mode === "cloze" && { backgroundColor: accent }]}
+            >
+              <Text style={[styles.subTabText, mode === "cloze" && { color: "#fff" }]}>📝 例句填空</Text>
+            </Pressable>
+          )}
           <Pressable
-            onPress={() => setMode("machine")}
-            style={[styles.subTab, mode === "machine" && { backgroundColor: accent }]}
+            onPress={() => setMode("study")}
+            style={[styles.subTab, mode === "study" && { backgroundColor: accent }]}
           >
-            <Text style={[styles.subTabText, mode === "machine" && { color: "#fff" }]}>⚡ 活用練功機</Text>
-          </Pressable>
-          <Pressable
-            onPress={() => setMode("cloze")}
-            style={[styles.subTab, mode === "cloze" && { backgroundColor: accent }]}
-          >
-            <Text style={[styles.subTabText, mode === "cloze" && { color: "#fff" }]}>📝 例句填空</Text>
-          </Pressable>
-          <Pressable
-            onPress={() => setMode("rule")}
-            style={[styles.subTab, mode === "rule" && { backgroundColor: accent }]}
-          >
-            <Text style={[styles.subTabText, mode === "rule" && { color: "#fff" }]}>📖 規則筆記</Text>
+            <Text style={[styles.subTabText, mode === "study" && { color: "#fff" }]}>📖 課文筆記</Text>
           </Pressable>
         </View>
       </View>
 
-      {/* MODE 1: UNLIMITED PATTERN PRACTICE MACHINE */}
+      {/* MODE 1: UNLIMITED 4-POS PATTERN MACHINE */}
       {mode === "machine" && drill && (
         <View style={styles.card}>
           <View style={styles.machineTop}>
@@ -169,20 +196,20 @@ export function GrammarLessonMachine({ lesson, onBack }: Props) {
               <Text style={styles.posBadgeText}>{drill.posLabel}</Text>
             </View>
             <Text style={styles.poolInfo}>
-              可用詞庫 {poolSize} 詞 · 連對 {streak}（共 {total} 題）
+              詞庫 {poolSize} 詞 · 連對 {streak}（共 {total} 題）
             </Text>
           </View>
 
           <View style={styles.wordHero}>
             {prefs.showFurigana && <Text style={styles.wordRt}>{drill.rt}</Text>}
             <Text style={styles.wordDict}>{drill.dict}</Text>
-            <Text style={styles.wordMeaning}>{drill.meaning}</Text>
+            {drill.meaning ? <Text style={styles.wordMeaning}>{drill.meaning}</Text> : null}
           </View>
 
           <Text style={styles.promptBanner}>{drill.promptLabel}</Text>
 
           <View style={styles.modeRow}>
-            <Text style={styles.modeLabel}>練習方式</Text>
+            <Text style={styles.modeLabel}>作答方式</Text>
             <View style={styles.segmented}>
               <Pressable
                 onPress={() => setInputMode("tiles")}
@@ -242,7 +269,7 @@ export function GrammarLessonMachine({ lesson, onBack }: Props) {
                 value={typed}
                 onChangeText={setTyped}
                 editable={picked === null}
-                placeholder="輸入活用後的結果…"
+                placeholder="輸入活用結果…"
                 placeholderTextColor={theme.inkMuted}
                 onSubmitEditing={() => submitDrill(typed)}
                 style={styles.textInput}
@@ -270,11 +297,12 @@ export function GrammarLessonMachine({ lesson, onBack }: Props) {
               ]}
             >
               <Text style={[styles.feedbackTitle, { color: isCorrect ? theme.matchaDark : theme.error }]}>
-                {isCorrect
-                  ? `正確！${drill.dict} → ${drill.answer}`
-                  : `正解：${drill.accepted.join(" ／ ")}`}
+                {isCorrect ? `正確！${drill.dict} → ${drill.answer}` : `正解：${drill.accepted.join(" ／ ")}`}
               </Text>
               <Text style={styles.feedbackBody}>{drill.rule}</Text>
+              {lesson.connection.length > 0 && (
+                <Text style={styles.connHint}>接續：{lesson.connection[0]}</Text>
+              )}
               <Pressable onPress={nextDrill} style={[styles.nextBtn, { backgroundColor: accent }]}>
                 <Text style={styles.nextBtnText}>隨機抽下一詞 →</Text>
               </Pressable>
@@ -283,39 +311,55 @@ export function GrammarLessonMachine({ lesson, onBack }: Props) {
         </View>
       )}
 
-      {/* MODE 2: CONTEXT CLOZE */}
-      {mode === "cloze" && (
+      {/* MODE 2: REAL SCRAPED EXAMPLE CLOZE */}
+      {mode === "cloze" && activeCloze && (
         <View style={styles.card}>
           <View style={styles.machineTop}>
             <Text style={styles.poolInfo}>
-              例句情境 {(exampleIdx % lesson.examples.length) + 1} / {lesson.examples.length}
+              時雨例句 {(exampleIdx % examples.length) + 1} / {examples.length}
             </Text>
-            {lesson.examples.length > 1 && (
+            {examples.length > 1 && (
               <Pressable
                 onPress={() => {
-                  setExampleIdx((n) => (n + 1) % lesson.examples.length);
+                  setExampleIdx((n) => (n + 1) % examples.length);
                   setClozePicked(null);
                 }}
                 style={styles.cycleBtn}
               >
-                <Text style={styles.cycleBtnText}>換一題情境 ↻</Text>
+                <Text style={styles.cycleBtnText}>換一句 ↻</Text>
               </Pressable>
             )}
           </View>
 
-          <FuriganaSentence
-            key={`${currentExample.id}-${prefs.register}`}
-            tokens={variant.tokens}
-            showFurigana={prefs.showFurigana}
-            blankText={clozePicked ?? undefined}
-            blankStatus={clozePicked === null ? "idle" : clozeCorrect ? "correct" : "wrong"}
-            accentColor={accent}
-          />
-          <Text style={styles.translation}>{variant.translation}</Text>
+          <Text style={styles.clozeSentence}>
+            {activeCloze.before}
+            <Text
+              style={[
+                styles.clozeBlankText,
+                {
+                  color:
+                    clozePicked === null
+                      ? accent
+                      : clozePicked === activeCloze.answer
+                        ? theme.matchaDark
+                        : theme.error,
+                },
+              ]}
+            >
+              {clozePicked === null ? " 【　　】 " : ` 【${clozePicked}】 `}
+            </Text>
+            {activeCloze.after}
+          </Text>
+
+          {prefs.showFurigana && activeCloze.reading ? (
+            <Text style={styles.clozeReading}>{clozePicked !== null ? activeCloze.reading : "（作答後顯示完整假名讀音）"}</Text>
+          ) : null}
+
+          {activeCloze.zh ? <Text style={styles.translation}>{activeCloze.zh}</Text> : null}
 
           <View style={styles.tilesGrid}>
-            {clozeChoices.map((opt) => {
-              const isAns = opt === variant.answer;
+            {activeCloze.choices.map((opt) => {
+              const isAns = opt === activeCloze.answer;
               const isPick = opt === clozePicked;
               let bg = theme.white;
               let border = theme.paperBorder;
@@ -355,22 +399,23 @@ export function GrammarLessonMachine({ lesson, onBack }: Props) {
               style={[
                 styles.feedback,
                 {
-                  backgroundColor: clozeCorrect ? theme.successSoft : theme.errorSoft,
-                  borderColor: clozeCorrect ? theme.success : theme.error,
+                  backgroundColor: clozePicked === activeCloze.answer ? theme.successSoft : theme.errorSoft,
+                  borderColor: clozePicked === activeCloze.answer ? theme.success : theme.error,
                 },
               ]}
             >
-              <Text style={[styles.feedbackTitle, { color: clozeCorrect ? theme.matchaDark : theme.error }]}>
-                {clozeCorrect ? "答對了！" : `正解：${variant.answer}`}
+              <Text
+                style={[
+                  styles.feedbackTitle,
+                  { color: clozePicked === activeCloze.answer ? theme.matchaDark : theme.error },
+                ]}
+              >
+                {clozePicked === activeCloze.answer ? "答對了！" : `正解：${activeCloze.answer}`}
               </Text>
-              <Text style={styles.feedbackBody}>
-                {!clozeCorrect && variant.wrongHints[clozePicked]
-                  ? variant.wrongHints[clozePicked]
-                  : lesson.nuance}
-              </Text>
+              <Text style={styles.feedbackBody}>{activeCloze.fullJa}</Text>
               <Pressable
                 onPress={() => {
-                  setExampleIdx((n) => (n + 1) % lesson.examples.length);
+                  setExampleIdx((n) => (n + 1) % examples.length);
                   setClozePicked(null);
                 }}
                 style={[styles.nextBtn, { backgroundColor: accent }]}
@@ -382,20 +427,53 @@ export function GrammarLessonMachine({ lesson, onBack }: Props) {
         </View>
       )}
 
-      {/* MODE 3: RULE & PERSONAL NOTES */}
-      {mode === "rule" && (
-        <View style={styles.card}>
-          <Text style={styles.sectionTitle}>語感與文法重點</Text>
-          <Text style={styles.nuanceText}>{lesson.nuance}</Text>
+      {/* MODE 3: FULL SIGURE LESSON NOTES, EXAMPLES & PERSONAL NOTE */}
+      {mode === "study" && (
+        <View style={styles.studyWrap}>
+          {lesson.connection.length > 0 && (
+            <View style={styles.card}>
+              <Text style={styles.sectionTitle}>國文法接續規則</Text>
+              {lesson.connection.map((line, i) => (
+                <Text key={i} style={styles.connItem}>
+                  • {line}
+                </Text>
+              ))}
+            </View>
+          )}
 
-          <View style={styles.profWrap}>
-            <Text style={styles.sectionTitle}>熟練度</Text>
+          {lesson.sections.map((sec, idx) => (
+            <View key={`${sec.heading}-${idx}`} style={styles.card}>
+              <Text style={styles.sectionTitle}>{sec.heading}</Text>
+              {sec.pattern ? (
+                <View style={styles.subFormula}>
+                  <Text style={styles.subFormulaText}>{sec.pattern}</Text>
+                </View>
+              ) : null}
+              {(sec.notes ?? []).map((note, nIdx) => (
+                <Text key={nIdx} style={styles.nuanceText}>
+                  {note}
+                </Text>
+              ))}
+              {(sec.examples ?? []).map((ex, eIdx) => (
+                <View key={eIdx} style={styles.exampleItem}>
+                  <Text style={styles.exampleJa}>{ex.ja}</Text>
+                  {prefs.showFurigana && ex.reading ? (
+                    <Text style={styles.exampleReading}>{ex.reading}</Text>
+                  ) : null}
+                  {ex.zh ? <Text style={styles.exampleZh}>{ex.zh}</Text> : null}
+                </View>
+              ))}
+            </View>
+          ))}
+
+          <View style={styles.card}>
+            <Text style={styles.sectionTitle}>熟練度與個人筆記</Text>
             <ProficiencyMeter value={prof} />
             <View style={styles.profBtns}>
               {PROFICIENCY_LEVELS.map((label, idx) => (
                 <Pressable
                   key={label}
-                  onPress={() => setGrammarProficiency(lesson.id, idx)}
+                  onPress={() => setGrammarProficiency(key, idx)}
                   style={[
                     styles.profBtn,
                     prof === idx && { backgroundColor: theme.indigo, borderColor: theme.indigo },
@@ -405,14 +483,10 @@ export function GrammarLessonMachine({ lesson, onBack }: Props) {
                 </Pressable>
               ))}
             </View>
-          </View>
-
-          <View style={styles.noteWrap}>
-            <Text style={styles.sectionTitle}>個人筆記（自動儲存）</Text>
             <TextInput
-              value={grammarNotes[lesson.id] ?? ""}
-              onChangeText={(text) => setGrammarNote(lesson.id, text)}
-              placeholder="記錄時雨課堂重點或自己的造句…"
+              value={grammarNotes[key] ?? ""}
+              onChangeText={(text) => setGrammarNote(key, text)}
+              placeholder="記錄自己的記憶重點或例句…"
               placeholderTextColor={theme.inkMuted}
               style={styles.noteInput}
               multiline
@@ -425,7 +499,7 @@ export function GrammarLessonMachine({ lesson, onBack }: Props) {
 }
 
 const styles = StyleSheet.create({
-  scrollContent: { paddingHorizontal: 18, paddingBottom: 32, gap: 14 },
+  scrollContent: { paddingHorizontal: 18, paddingBottom: 36, gap: 14 },
   lessonHeader: {
     backgroundColor: theme.white,
     borderRadius: 24,
@@ -446,8 +520,8 @@ const styles = StyleSheet.create({
   backChipText: { fontSize: 12, fontWeight: "800", color: theme.ink },
   levelPill: { paddingHorizontal: 11, paddingVertical: 5, borderRadius: 99 },
   levelPillText: { color: "#fff", fontSize: 12, fontWeight: "900" },
-  patternTitle: { fontSize: 22, fontWeight: "900", color: theme.ink },
-  patternMeaning: { fontSize: 14, fontWeight: "700", color: theme.inkSoft },
+  patternTitle: { fontSize: 19, fontWeight: "900", color: theme.ink, lineHeight: 26 },
+  patternMeaning: { fontSize: 13, fontWeight: "700", color: theme.inkSoft },
   formulaBanner: {
     backgroundColor: theme.indigoSoft,
     borderRadius: 14,
@@ -465,24 +539,25 @@ const styles = StyleSheet.create({
   },
   subTab: { flex: 1, paddingVertical: 9, borderRadius: 11, alignItems: "center" },
   subTabText: { fontSize: 12, fontWeight: "900", color: theme.inkSoft },
+  studyWrap: { gap: 12 },
   card: {
     backgroundColor: theme.white,
-    borderRadius: 26,
-    padding: 20,
-    gap: 15,
+    borderRadius: 24,
+    padding: 18,
+    gap: 13,
     borderWidth: 1.5,
     borderColor: theme.paperBorder,
     shadowColor: "#161B2E",
-    shadowOpacity: 0.06,
-    shadowRadius: 14,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 3,
+    shadowOpacity: 0.05,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 5 },
+    elevation: 2,
   },
   machineTop: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8, flexWrap: "wrap" },
   posBadge: { backgroundColor: theme.goldSoft, paddingHorizontal: 10, paddingVertical: 4, borderRadius: 99 },
   posBadgeText: { fontSize: 12, fontWeight: "900", color: theme.goldDark },
   poolInfo: { fontSize: 12, fontWeight: "700", color: theme.inkMuted },
-  wordHero: { alignItems: "center", paddingVertical: 8, gap: 2 },
+  wordHero: { alignItems: "center", paddingVertical: 6, gap: 2 },
   wordRt: { fontSize: 13, fontWeight: "700", color: theme.inkSoft },
   wordDict: { fontSize: 34, fontWeight: "900", color: theme.ink },
   wordMeaning: { fontSize: 14, fontWeight: "700", color: theme.inkSoft, marginTop: 2, textAlign: "center" },
@@ -533,6 +608,7 @@ const styles = StyleSheet.create({
   feedback: { borderRadius: 18, borderWidth: 1.5, padding: 14, gap: 8 },
   feedbackTitle: { fontSize: 15, fontWeight: "900" },
   feedbackBody: { fontSize: 13, color: theme.ink, lineHeight: 20 },
+  connHint: { fontSize: 12, color: theme.inkSoft, fontWeight: "700" },
   nextBtn: { marginTop: 4, paddingVertical: 12, borderRadius: 14, alignItems: "center" },
   nextBtnText: { color: "#fff", fontSize: 14, fontWeight: "900" },
   cycleBtn: {
@@ -544,10 +620,26 @@ const styles = StyleSheet.create({
     borderRadius: 99,
   },
   cycleBtnText: { fontSize: 12, fontWeight: "800", color: theme.indigo },
-  translation: { fontSize: 15, color: theme.inkSoft, fontWeight: "600", lineHeight: 22 },
-  sectionTitle: { fontSize: 14, fontWeight: "900", color: theme.ink },
-  nuanceText: { fontSize: 14, color: theme.inkSoft, lineHeight: 22 },
-  profWrap: { gap: 8, paddingTop: 8, borderTopWidth: 1, borderTopColor: theme.paperBorder },
+  clozeSentence: { fontSize: 19, lineHeight: 30, fontWeight: "800", color: theme.ink },
+  clozeBlankText: { fontWeight: "900" },
+  clozeReading: { fontSize: 12, color: theme.inkMuted, lineHeight: 18 },
+  translation: { fontSize: 14, color: theme.inkSoft, fontWeight: "600", lineHeight: 22 },
+  sectionTitle: { fontSize: 15, fontWeight: "900", color: theme.ink },
+  connItem: { fontSize: 13, color: theme.indigo, fontWeight: "700", lineHeight: 20 },
+  subFormula: { backgroundColor: theme.surface, padding: 10, borderRadius: 10, borderWidth: 1, borderColor: theme.paperBorder },
+  subFormulaText: { fontSize: 13, fontWeight: "800", color: theme.indigo },
+  nuanceText: { fontSize: 13, color: theme.inkSoft, lineHeight: 21 },
+  exampleItem: {
+    backgroundColor: theme.surface,
+    borderRadius: 14,
+    padding: 12,
+    gap: 4,
+    borderWidth: 1,
+    borderColor: theme.paperBorder,
+  },
+  exampleJa: { fontSize: 15, fontWeight: "800", color: theme.ink, lineHeight: 22 },
+  exampleReading: { fontSize: 12, color: theme.indigo, lineHeight: 18 },
+  exampleZh: { fontSize: 13, color: theme.inkSoft, lineHeight: 19 },
   profBtns: { flexDirection: "row", gap: 6 },
   profBtn: {
     flex: 1,
@@ -559,7 +651,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   profBtnText: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
-  noteWrap: { gap: 8, paddingTop: 8, borderTopWidth: 1, borderTopColor: theme.paperBorder },
   noteInput: {
     backgroundColor: theme.surface,
     borderWidth: 1.5,

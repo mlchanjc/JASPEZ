@@ -1,6 +1,6 @@
 import { router } from "expo-router";
 import { useMemo, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BottomTabs } from "@/components/BottomTabs";
 import { ConjugationDrill } from "@/components/ConjugationDrill";
@@ -8,29 +8,45 @@ import { GrammarCompare } from "@/components/GrammarCompare";
 import { GrammarLessonMachine } from "@/components/GrammarLessonMachine";
 import { PaperBackdrop } from "@/components/PaperBackdrop";
 import { ProficiencyMeter } from "@/components/ProficiencyMeter";
-import { GRAMMAR_POINTS } from "@/data/grammar";
-import type { GrammarPoint, LevelId } from "@/data/types";
-import { grammarByLevel } from "@/lib/grammar";
+import { findGrammarLesson, grammarLessonKey, grammarLessonsByLevel } from "@/data/grammarRegistry";
+import type { LevelId, SigureGrammarLesson } from "@/data/types";
+import { lessonAllowedPos } from "@/lib/conjugator";
+import { lessonExamples } from "@/lib/grammar";
 import { useProgress } from "@/state/progress";
 import { levelAccent, theme } from "@/theme";
 
 type GrammarTab = "lessons" | "drill" | "compare";
 
-const FILTER_LEVELS: (LevelId | "ALL")[] = ["ALL", "N5", "N4", "N3"];
+const LEVEL_FILTERS: LevelId[] = ["N5", "N4", "N3", "N2"];
 
 export default function GrammarScreen() {
   const { currentLevel, prefs, setPref, ghostGrammar, grammarLearned, getGrammarProficiency } = useProgress();
   const [tab, setTab] = useState<GrammarTab>("lessons");
-  const [levelFilter, setLevelFilter] = useState<LevelId | "ALL">(
-    currentLevel === "N5" || currentLevel === "N4" || currentLevel === "N3" ? currentLevel : "ALL",
+  const [levelFilter, setLevelFilter] = useState<LevelId>(
+    currentLevel === "N1" ? "N5" : currentLevel,
   );
-  const [selectedLessonId, setSelectedLessonId] = useState<string | null>(null);
+  const [search, setSearch] = useState("");
+  const [selectedRef, setSelectedRef] = useState<{ level: LevelId; id: string } | null>(null);
 
-  const activeAccent = levelFilter === "ALL" ? theme.indigo : levelAccent[levelFilter];
-  const lessonsList = useMemo(() => grammarByLevel(levelFilter), [levelFilter]);
-  const selectedLesson: GrammarPoint | null = useMemo(
-    () => (selectedLessonId ? GRAMMAR_POINTS.find((g) => g.id === selectedLessonId) ?? null : null),
-    [selectedLessonId],
+  const activeAccent = levelAccent[levelFilter];
+
+  const lessonsList = useMemo(() => {
+    const base = grammarLessonsByLevel[levelFilter];
+    const q = search.trim().toLowerCase();
+    if (!q) return base;
+    return base.filter(
+      (item) =>
+        item.title.toLowerCase().includes(q) ||
+        item.point.toLowerCase().includes(q) ||
+        item.gloss.toLowerCase().includes(q) ||
+        item.pattern.toLowerCase().includes(q) ||
+        item.id.includes(q),
+    );
+  }, [levelFilter, search]);
+
+  const selectedLesson: SigureGrammarLesson | null = useMemo(
+    () => (selectedRef ? findGrammarLesson(selectedRef.level, selectedRef.id) ?? null : null),
+    [selectedRef],
   );
 
   return (
@@ -41,7 +57,7 @@ export default function GrammarScreen() {
           <View style={styles.navRow}>
             <Pressable
               onPress={() => {
-                if (selectedLesson) setSelectedLessonId(null);
+                if (selectedLesson) setSelectedRef(null);
                 else router.back();
               }}
               hitSlop={12}
@@ -57,35 +73,25 @@ export default function GrammarScreen() {
           </View>
 
           <View style={styles.titleRow}>
-            <Text style={styles.title}>{selectedLesson ? selectedLesson.sigureCode : "時雨文法練功機"}</Text>
-            <View style={styles.toggleRow}>
-              <Pressable
-                onPress={() => setPref("showFurigana", !prefs.showFurigana)}
-                style={[styles.miniToggle, prefs.showFurigana && styles.miniToggleOn]}
-              >
-                <Text style={[styles.miniToggleText, prefs.showFurigana && styles.miniToggleTextOn]}>
-                  振假名 {prefs.showFurigana ? "開" : "關"}
-                </Text>
-              </Pressable>
-
-              {selectedLesson && (
-                <Pressable
-                  onPress={() => setPref("register", prefs.register === "polite" ? "casual" : "polite")}
-                  style={styles.registerToggle}
-                >
-                  <Text style={styles.registerToggleText}>
-                    {prefs.register === "polite" ? "敬體 です" : "常體 だ"}
-                  </Text>
-                </Pressable>
-              )}
-            </View>
+            <Text style={styles.title}>
+              {selectedLesson ? `${selectedLesson.level} 文法 ${selectedLesson.id}` : "時雨文法練功機"}
+            </Text>
+            <Pressable
+              onPress={() => setPref("showFurigana", !prefs.showFurigana)}
+              style={[styles.miniToggle, prefs.showFurigana && styles.miniToggleOn]}
+            >
+              <Text style={[styles.miniToggleText, prefs.showFurigana && styles.miniToggleTextOn]}>
+                假名讀音 {prefs.showFurigana ? "開" : "關"}
+              </Text>
+            </Pressable>
           </View>
 
           {!selectedLesson && tab !== "compare" && (
             <View style={styles.levelRow}>
-              {FILTER_LEVELS.map((lvl) => {
+              {LEVEL_FILTERS.map((lvl) => {
                 const selected = lvl === levelFilter;
-                const chipColor = lvl === "ALL" ? theme.ink : levelAccent[lvl];
+                const chipColor = levelAccent[lvl];
+                const count = grammarLessonsByLevel[lvl].length;
                 return (
                   <Pressable
                     key={lvl}
@@ -96,42 +102,75 @@ export default function GrammarScreen() {
                     ]}
                   >
                     <Text style={[styles.levelChipText, selected && { color: "#fff" }]}>
-                      {lvl === "ALL" ? "全部" : lvl}
+                      {lvl} ({count})
                     </Text>
                   </Pressable>
                 );
               })}
             </View>
           )}
+
+          {!selectedLesson && tab === "lessons" && (
+            <View style={styles.searchWrap}>
+              <TextInput
+                value={search}
+                onChangeText={setSearch}
+                placeholder={`搜尋 ${levelFilter} 文法（例如：ば、11、假定、中止形）`}
+                placeholderTextColor={theme.inkMuted}
+                style={styles.searchInput}
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+            </View>
+          )}
         </View>
 
         <View style={styles.body}>
           {selectedLesson ? (
-            <GrammarLessonMachine lesson={selectedLesson} onBack={() => setSelectedLessonId(null)} />
+            <GrammarLessonMachine lesson={selectedLesson} onBack={() => setSelectedRef(null)} />
           ) : tab === "lessons" ? (
-            <ScrollView contentContainerStyle={styles.lessonList} showsVerticalScrollIndicator={false}>
-              {lessonsList.map((item) => {
+            <FlatList
+              data={lessonsList}
+              keyExtractor={(item) => grammarLessonKey(item.level, item.id)}
+              contentContainerStyle={styles.lessonList}
+              showsVerticalScrollIndicator={false}
+              keyboardShouldPersistTaps="handled"
+              ListEmptyComponent={
+                <View style={styles.emptyCard}>
+                  <Text style={styles.emptyTitle}>找不到符合的文法課</Text>
+                  <Text style={styles.emptyBody}>試試切換上方級別或清除搜尋字詞。</Text>
+                </View>
+              }
+              renderItem={({ item }) => {
+                const key = grammarLessonKey(item.level, item.id);
                 const accent = levelAccent[item.level];
-                const learned = grammarLearned.has(item.id);
-                const isGhost = ghostGrammar.includes(item.id);
-                const prof = getGrammarProficiency(item.id);
+                const learned = grammarLearned.has(key);
+                const isGhost = ghostGrammar.includes(key);
+                const prof = getGrammarProficiency(key);
+                const posList = lessonAllowedPos(item);
+                const exCount = lessonExamples(item).length;
+
                 return (
                   <Pressable
-                    key={item.id}
-                    onPress={() => setSelectedLessonId(item.id)}
+                    onPress={() => setSelectedRef({ level: item.level, id: item.id })}
                     style={styles.lessonCard}
                   >
                     <View style={styles.cardTop}>
                       <View style={[styles.codeBadge, { backgroundColor: accent }]}>
-                        <Text style={styles.codeBadgeText}>{item.sigureCode}</Text>
+                        <Text style={styles.codeBadgeText}>
+                          {item.level} · {item.id}
+                        </Text>
                       </View>
-                      <View style={styles.posRow}>
-                        {item.allowedPos.map((p) => (
-                          <View key={p} style={styles.posChip}>
-                            <Text style={styles.posChipText}>{p}</Text>
-                          </View>
-                        ))}
-                      </View>
+                      {posList.length > 0 && (
+                        <View style={styles.posRow}>
+                          {posList.map((p) => (
+                            <View key={p} style={styles.posChip}>
+                              <Text style={styles.posChipText}>{p}</Text>
+                            </View>
+                          ))}
+                        </View>
+                      )}
+                      {exCount > 0 && <Text style={styles.exBadge}>{exCount} 例句</Text>}
                       {isGhost ? (
                         <Text style={styles.ghostFlag}>⚡ 錯題</Text>
                       ) : learned ? (
@@ -139,21 +178,25 @@ export default function GrammarScreen() {
                       ) : null}
                     </View>
 
-                    <Text style={styles.cardPattern}>{item.pattern}</Text>
-                    <Text style={styles.cardMeaning}>{item.meaning}</Text>
-
-                    <View style={styles.formulaPill}>
-                      <Text style={styles.formulaPillText}>{item.formation}</Text>
-                    </View>
+                    <Text style={styles.cardPattern}>{item.title}</Text>
+                    {item.pattern ? (
+                      <View style={styles.formulaPill}>
+                        <Text style={styles.formulaPillText} numberOfLines={2}>
+                          {item.pattern}
+                        </Text>
+                      </View>
+                    ) : null}
 
                     <View style={styles.cardFoot}>
                       <ProficiencyMeter value={prof} />
-                      <Text style={[styles.enterLabel, { color: accent }]}>開始練功 →</Text>
+                      <Text style={[styles.enterLabel, { color: accent }]}>
+                        {posList.length > 0 ? "⚡ 活用練功 →" : "閱讀練習 →"}
+                      </Text>
                     </View>
                   </Pressable>
                 );
-              })}
-            </ScrollView>
+              }}
+            />
           ) : tab === "drill" ? (
             <ConjugationDrill levelFilter={levelFilter} />
           ) : (
@@ -180,7 +223,7 @@ export default function GrammarScreen() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: theme.paper },
   safe: { flex: 1 },
-  top: { paddingHorizontal: 18, paddingTop: 8, paddingBottom: 12, gap: 10 },
+  top: { paddingHorizontal: 18, paddingTop: 8, paddingBottom: 10, gap: 10 },
   navRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
   backBtn: {
     backgroundColor: theme.white,
@@ -198,9 +241,8 @@ const styles = StyleSheet.create({
     borderRadius: 99,
   },
   ghostPillText: { fontSize: 12, fontWeight: "900", color: theme.goldDark },
-  titleRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8, flexWrap: "wrap" },
+  titleRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
   title: { fontSize: 24, fontWeight: "900", color: theme.ink },
-  toggleRow: { flexDirection: "row", gap: 6 },
   miniToggle: {
     paddingHorizontal: 11,
     paddingVertical: 6,
@@ -209,22 +251,10 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: theme.paperBorder,
   },
-  miniToggleOn: {
-    backgroundColor: theme.indigo,
-    borderColor: theme.indigo,
-  },
+  miniToggleOn: { backgroundColor: theme.indigo, borderColor: theme.indigo },
   miniToggleText: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
   miniToggleTextOn: { color: "#fff" },
-  registerToggle: {
-    paddingHorizontal: 11,
-    paddingVertical: 6,
-    borderRadius: 12,
-    backgroundColor: theme.vermillionSoft,
-    borderWidth: 1.5,
-    borderColor: "rgba(255, 90, 95, 0.25)",
-  },
-  registerToggleText: { fontSize: 12, fontWeight: "900", color: theme.vermillion },
-  levelRow: { flexDirection: "row", gap: 8 },
+  levelRow: { flexDirection: "row", gap: 6 },
   levelChip: {
     flex: 1,
     paddingVertical: 8,
@@ -235,12 +265,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   levelChipText: { fontSize: 12, fontWeight: "900", color: theme.inkSoft },
+  searchWrap: {
+    backgroundColor: theme.white,
+    borderRadius: 14,
+    borderWidth: 1.5,
+    borderColor: theme.paperBorder,
+    paddingHorizontal: 13,
+    paddingVertical: 9,
+  },
+  searchInput: { fontSize: 14, color: theme.ink, fontWeight: "600" },
   body: { flex: 1 },
-  lessonList: { paddingHorizontal: 18, paddingBottom: 32, gap: 12 },
+  lessonList: { paddingHorizontal: 18, paddingBottom: 32, gap: 11 },
   lessonCard: {
     backgroundColor: theme.white,
     borderRadius: 22,
-    padding: 16,
+    padding: 15,
     gap: 8,
     borderWidth: 1.5,
     borderColor: theme.paperBorder,
@@ -251,7 +290,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   cardTop: { flexDirection: "row", alignItems: "center", gap: 6, flexWrap: "wrap" },
-  codeBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 99 },
+  codeBadge: { paddingHorizontal: 9, paddingVertical: 3, borderRadius: 99 },
   codeBadgeText: { color: "#fff", fontSize: 11, fontWeight: "900" },
   posRow: { flexDirection: "row", gap: 4 },
   posChip: {
@@ -263,10 +302,10 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   posChipText: { fontSize: 10, fontWeight: "900", color: theme.inkSoft },
+  exBadge: { fontSize: 11, fontWeight: "700", color: theme.inkMuted },
   learnedFlag: { marginLeft: "auto", fontSize: 11, fontWeight: "900", color: theme.matchaDark },
   ghostFlag: { marginLeft: "auto", fontSize: 11, fontWeight: "900", color: theme.goldDark },
-  cardPattern: { fontSize: 18, fontWeight: "900", color: theme.ink },
-  cardMeaning: { fontSize: 13, fontWeight: "700", color: theme.inkSoft },
+  cardPattern: { fontSize: 16, fontWeight: "900", color: theme.ink, lineHeight: 22 },
   formulaPill: {
     backgroundColor: theme.indigoSoft,
     borderRadius: 10,
@@ -278,7 +317,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingTop: 4,
+    paddingTop: 2,
   },
   enterLabel: { fontSize: 13, fontWeight: "900" },
+  emptyCard: {
+    backgroundColor: theme.white,
+    borderRadius: 20,
+    padding: 24,
+    borderWidth: 1.5,
+    borderColor: theme.paperBorder,
+    gap: 6,
+  },
+  emptyTitle: { fontSize: 16, fontWeight: "900", color: theme.ink },
+  emptyBody: { fontSize: 13, color: theme.inkSoft },
 });

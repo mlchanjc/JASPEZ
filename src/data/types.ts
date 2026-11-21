@@ -7,9 +7,9 @@ export type WordPos = "N" | "Na" | "A" | "V";
 export type VocabWord = {
   verbType?: string | null;
   word: string;
-  reading: string;
+  reading: string | null;
   accent: string | null;
-  meaning: string;
+  meaning: string | null;
   extraInfo?: string | null;
 };
 
@@ -31,62 +31,32 @@ export type LevelManifest = {
   topics: TopicManifest[];
 };
 
-export type GrammarToken = {
-  text?: string;
-  rt?: string;
+export type SigureGrammarExample = {
+  ja: string;
   reading?: string;
-  meaning?: string;
-  blank?: boolean;
+  zh?: string;
 };
 
-export type GrammarVariant = {
-  tokens: GrammarToken[];
-  translation: string;
-  answer: string;
-  accepted: string[];
-  choices: string[];
-  wrongHints: Record<string, string>;
+export type SigureGrammarSection = {
+  heading: string;
+  pattern?: string;
+  notes?: string[];
+  examples?: SigureGrammarExample[];
 };
 
-export type GrammarExample = {
-  id: string;
-  polite: GrammarVariant;
-  casual: GrammarVariant;
-};
-
-export type PatternRuleId =
-  | "adj-chushi-te"
-  | "v-mizen-nai"
-  | "v-renyou-tai"
-  | "v-te-mo-ii"
-  | "v-te-wa-ikenai"
-  | "v-koto-ga-dekiru"
-  | "v-ta-koto-ga-aru"
-  | "n4-ba"
-  | "n4-tara"
-  | "n4-nara"
-  | "v-te-shimau"
-  | "v-te-miru"
-  | "v-te-oku"
-  | "n3-okage-de"
-  | "n3-sei-de"
-  | "n3-wake-dewa-nai"
-  | "n3-uchi-ni"
-  | "n3-koto-ni-suru";
-
-export type GrammarPoint = {
-  id: string;
+export type SigureGrammarLesson = {
   level: LevelId;
-  sigureCode: string;
-  sigureUrl?: string;
+  lesson: number;
+  id: string;
+  title: string;
+  point: string;
+  gloss: string;
+  url: string;
+  source?: string;
+  published?: string;
   pattern: string;
-  meaning: string;
-  tag: string;
-  formation: string;
-  nuance: string;
-  patternRuleId: PatternRuleId;
-  allowedPos: WordPos[];
-  examples: GrammarExample[];
+  connection: string[];
+  sections: SigureGrammarSection[];
 };
 
 export type ConfusableSide = {
@@ -124,4 +94,14 @@ export type PatternDrillQuestion = {
   accepted: string[];
   choices: string[];
   rule: string;
+};
+
+export type ExampleClozeQuestion = {
+  before: string;
+  after: string;
+  answer: string;
+  fullJa: string;
+  reading: string;
+  zh: string;
+  choices: string[];
 };

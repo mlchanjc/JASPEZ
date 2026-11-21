@@ -11,9 +11,10 @@ export function acceptedAnswers(word: VocabWord) {
     if (normalized) answers.add(normalized);
   };
   add(word.word);
-  add(word.reading);
-  for (const part of word.reading.split(/[;；/／、,，]/)) add(part);
-  for (const kana of word.reading.matchAll(/[\u3040-\u30ffー]+/g)) add(kana[0]);
+  const reading = word.reading ?? "";
+  add(reading);
+  for (const part of reading.split(/[;；/／、,，]/)) add(part);
+  for (const kana of reading.matchAll(/[\u3040-\u30ffー]+/g)) add(kana[0]);
   return answers;
 }
 
