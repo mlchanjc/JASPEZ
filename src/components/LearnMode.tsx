@@ -41,11 +41,12 @@ function makeRound(words: VocabWord[], avoid: number | null): Round {
 }
 
 export function LearnMode({ level, topicId, words }: { level: LevelId; topicId: string; words: VocabWord[] }) {
-  const { getProficiency, recordAttempt } = useProgress();
+  const { getProficiency, recordAttempt, prefs, setPref } = useProgress();
   const [round, setRound] = useState(() => makeRound(words, null));
   const [picked, setPicked] = useState<number | null>(null);
   const [outcome, setOutcome] = useState<Outcome | null>(null);
-  const [kanaOnly, setKanaOnly] = useState(false);
+  const kanaOnly = prefs.kanaOnly;
+  const setKanaOnly = (updater: boolean | ((v: boolean) => boolean)) => setPref("kanaOnly", typeof updater === "function" ? updater(prefs.kanaOnly) : updater);
   const key = wordKey(level, topicId, round.prompt.index);
   const proficiency = outcome ? outcome.after : getProficiency(key);
 

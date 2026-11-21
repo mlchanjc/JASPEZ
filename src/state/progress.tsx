@@ -2,9 +2,15 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { attemptStats, clampProficiency, pushAttempt, seedAttempts } from "@/lib/proficiency";
-import type { LevelId } from "@/data/types";
+import type { LevelId, RegisterMode } from "@/data/types";
 
 const STORAGE_KEY = "jaspez.progress.v1";
+
+export type UserPrefs = {
+  showFurigana: boolean;
+  register: RegisterMode;
+  kanaOnly: boolean;
+};
 
 type ProgressState = {
   streak: number;
@@ -12,6 +18,11 @@ type ProgressState = {
   learned: string[];
   attempts: Record<string, number[]>;
   currentLevel: LevelId;
+  grammarLearned: string[];
+  grammarAttempts: Record<string, number[]>;
+  grammarNotes: Record<string, string>;
+  ghostGrammar: string[];
+  prefs: UserPrefs;
 };
 
 type ProgressContextValue = {
@@ -26,6 +37,27 @@ type ProgressContextValue = {
   getProficiency: (key: string) => number;
   setProficiency: (key: string, level: number) => void;
   recordAttempt: (key: string, correct: boolean) => { level: number; correct: number; total: number };
+  // Grammar & preferences
+  grammarLearnedCount: number;
+  grammarLearned: ReadonlySet<string>;
+  grammarAttempts: Readonly<Record<string, number[]>>;
+  grammarNotes: Readonly<Record<string, string>>;
+  ghostGrammar: readonly string[];
+  prefs: UserPrefs;
+  setPref: <K extends keyof UserPrefs>(key: K, value: UserPrefs[K]) => void;
+  markGrammarLearned: (id: string) => void;
+  getGrammarProficiency: (id: string) => number;
+  setGrammarProficiency: (id: string, level: number) => void;
+  recordGrammarAttempt: (id: string, correct: boolean) => { level: number; correct: number; total: number };
+  setGrammarNote: (id: string, note: string) => void;
+  addGhostGrammar: (id: string) => void;
+  clearGhostGrammar: (id: string) => void;
+};
+
+const defaultPrefs: UserPrefs = {
+  showFurigana: true,
+  register: "polite",
+  kanaOnly: false,
 };
 
 const initial: ProgressState = {
@@ -34,17 +66,27 @@ const initial: ProgressState = {
   learned: [],
   attempts: {},
   currentLevel: "N5",
+  grammarLearned: [],
+  grammarAttempts: {},
+  grammarNotes: {},
+  ghostGrammar: [],
+  prefs: defaultPrefs,
 };
 
-function readAttempts(saved: { attempts?: unknown; proficiency?: unknown }) {
+function readAttemptsMap(raw: unknown) {
   const attempts: Record<string, number[]> = {};
-  if (saved.attempts && typeof saved.attempts === "object") {
-    for (const [key, value] of Object.entries(saved.attempts)) {
+  if (raw && typeof raw === "object") {
+    for (const [key, value] of Object.entries(raw)) {
       if (!Array.isArray(value)) continue;
       const history = value.filter((item) => item === 0 || item === 1).slice(-8);
       if (history.length > 0) attempts[key] = history;
     }
   }
+  return attempts;
+}
+
+function readAttempts(saved: { attempts?: unknown; proficiency?: unknown }) {
+  const attempts = readAttemptsMap(saved.attempts);
   if (saved.proficiency && typeof saved.proficiency === "object") {
     for (const [key, score] of Object.entries(saved.proficiency)) {
       if (attempts[key]) continue;
@@ -53,6 +95,28 @@ function readAttempts(saved: { attempts?: unknown; proficiency?: unknown }) {
     }
   }
   return attempts;
+}
+
+function readNotes(raw: unknown) {
+  const notes: Record<string, string> = {};
+  if (raw && typeof raw === "object") {
+    for (const [key, value] of Object.entries(raw)) {
+      if (typeof value === "string" && value.trim().length > 0) {
+        notes[key] = value;
+      }
+    }
+  }
+  return notes;
+}
+
+function readPrefs(raw: unknown): UserPrefs {
+  if (!raw || typeof raw !== "object") return defaultPrefs;
+  const obj = raw as Partial<UserPrefs>;
+  return {
+    showFurigana: typeof obj.showFurigana === "boolean" ? obj.showFurigana : defaultPrefs.showFurigana,
+    register: obj.register === "casual" || obj.register === "polite" ? obj.register : defaultPrefs.register,
+    kanaOnly: typeof obj.kanaOnly === "boolean" ? obj.kanaOnly : defaultPrefs.kanaOnly,
+  };
 }
 
 const ProgressContext = createContext<ProgressContextValue | null>(null);
@@ -70,6 +134,15 @@ function previousDate(iso: string) {
   return localDate(date);
 }
 
+function nextStreak(prev: ProgressState) {
+  const today = localDate();
+  let streak = prev.streak;
+  if (prev.lastActiveDate !== today) {
+    streak = prev.lastActiveDate === previousDate(today) ? prev.streak + 1 : 1;
+  }
+  return { streak, lastActiveDate: today };
+}
+
 export function ProgressProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<ProgressState>(initial);
   const [ready, setReady] = useState(false);
@@ -85,6 +158,13 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
           learned: Array.isArray(saved.learned) ? saved.learned : [],
           attempts: readAttempts(saved),
           currentLevel: saved.currentLevel ?? "N5",
+          grammarLearned: Array.isArray(saved.grammarLearned) ? saved.grammarLearned : [],
+          grammarAttempts: readAttemptsMap(saved.grammarAttempts),
+          grammarNotes: readNotes(saved.grammarNotes),
+          ghostGrammar: Array.isArray(saved.ghostGrammar)
+            ? saved.ghostGrammar.filter((item): item is string => typeof item === "string")
+            : [],
+          prefs: readPrefs(saved.prefs),
         });
       })
       .finally(() => setReady(true));
@@ -96,6 +176,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   }, [ready, state]);
 
   const learned = useMemo(() => new Set(state.learned), [state.learned]);
+  const grammarLearned = useMemo(() => new Set(state.grammarLearned), [state.grammarLearned]);
 
   const value = useMemo<ProgressContextValue>(
     () => ({
@@ -108,13 +189,8 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       setCurrentLevel: (level) => setState((prev) => ({ ...prev, currentLevel: level })),
       markLearned: (key) =>
         setState((prev) => {
-          const today = localDate();
           const learnedKeys = prev.learned.includes(key) ? prev.learned : [...prev.learned, key];
-          let streak = prev.streak;
-          if (prev.lastActiveDate !== today) {
-            streak = prev.lastActiveDate === previousDate(today) ? prev.streak + 1 : 1;
-          }
-          return { ...prev, learned: learnedKeys, streak, lastActiveDate: today };
+          return { ...prev, learned: learnedKeys, ...nextStreak(prev) };
         }),
       getProficiency: (key) => attemptStats(state.attempts[key]).level,
       setProficiency: (key, level) => {
@@ -135,8 +211,67 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
         }));
         return { level: stats.level, correct: stats.correct, total: stats.total };
       },
+      // Grammar & preferences
+      grammarLearnedCount: state.grammarLearned.length,
+      grammarLearned,
+      grammarAttempts: state.grammarAttempts,
+      grammarNotes: state.grammarNotes,
+      ghostGrammar: state.ghostGrammar,
+      prefs: state.prefs,
+      setPref: (key, val) =>
+        setState((prev) => ({
+          ...prev,
+          prefs: { ...prev.prefs, [key]: val },
+        })),
+      markGrammarLearned: (id) =>
+        setState((prev) => {
+          const grammarLearnedKeys = prev.grammarLearned.includes(id)
+            ? prev.grammarLearned
+            : [...prev.grammarLearned, id];
+          const ghostGrammar = prev.ghostGrammar.filter((item) => item !== id);
+          return { ...prev, grammarLearned: grammarLearnedKeys, ghostGrammar, ...nextStreak(prev) };
+        }),
+      getGrammarProficiency: (id) => attemptStats(state.grammarAttempts[id]).level,
+      setGrammarProficiency: (id, level) => {
+        const seeded = seedAttempts(level);
+        setState((prev) => {
+          const grammarAttempts = { ...prev.grammarAttempts };
+          if (seeded.length === 0) delete grammarAttempts[id];
+          else grammarAttempts[id] = seeded;
+          return { ...prev, grammarAttempts };
+        });
+      },
+      recordGrammarAttempt: (id, correct) => {
+        const history = pushAttempt(state.grammarAttempts[id], correct);
+        const stats = attemptStats(history);
+        setState((prev) => ({
+          ...prev,
+          grammarAttempts: {
+            ...prev.grammarAttempts,
+            [id]: pushAttempt(prev.grammarAttempts[id], correct),
+          },
+        }));
+        return { level: stats.level, correct: stats.correct, total: stats.total };
+      },
+      setGrammarNote: (id, note) =>
+        setState((prev) => {
+          const grammarNotes = { ...prev.grammarNotes };
+          if (note.trim().length === 0) delete grammarNotes[id];
+          else grammarNotes[id] = note;
+          return { ...prev, grammarNotes };
+        }),
+      addGhostGrammar: (id) =>
+        setState((prev) => {
+          if (prev.ghostGrammar.includes(id)) return prev;
+          return { ...prev, ghostGrammar: [...prev.ghostGrammar, id] };
+        }),
+      clearGhostGrammar: (id) =>
+        setState((prev) => ({
+          ...prev,
+          ghostGrammar: prev.ghostGrammar.filter((item) => item !== id),
+        })),
     }),
-    [learned, ready, state],
+    [grammarLearned, learned, ready, state],
   );
 
   return <ProgressContext.Provider value={value}>{children}</ProgressContext.Provider>;

@@ -28,10 +28,17 @@ export default function LearnScreen() {
       <PaperBackdrop />
       <SafeAreaView style={styles.safe} edges={["top", "left", "right"]}>
         <View style={styles.top}>
-          <Pressable onPress={() => router.back()} hitSlop={12}>
-            <Text style={styles.back}>返回</Text>
-          </Pressable>
-          <Text style={styles.title}>選擇級別</Text>
+          <View style={styles.topBar}>
+            <Pressable onPress={() => router.back()} hitSlop={12}>
+              <Text style={styles.back}>← 返回</Text>
+            </Pressable>
+            <Link href="/grammar" asChild>
+              <Pressable style={styles.grammarShortcut}>
+                <Text style={styles.grammarShortcutText}>文法特訓 →</Text>
+              </Pressable>
+            </Link>
+          </View>
+          <Text style={styles.title}>單字課程</Text>
         </View>
         <View style={styles.summary}>
           <LevelSummary level={level} {...summary} />
@@ -51,12 +58,16 @@ export default function LearnScreen() {
                   href={{ pathname: "/topic/[level]/[id]", params: { level, id: topic.id } }}
                   asChild
                 >
-                <Pressable style={styles.topic}>
-                  <Text style={styles.topicTitle}>{topic.title}</Text>
-                  <Text style={styles.topicCount}>{topic.wordCount} words</Text>
-                  <ProgressBar percent={percent} color={levelAccent[level]} height={8} />
-                  <Text style={styles.topicPercent}>{Math.round(percent * 100)}%</Text>
-                </Pressable>
+                  <Pressable style={styles.topic}>
+                    <View style={styles.topicHead}>
+                      <Text style={styles.topicTitle}>{topic.title}</Text>
+                      <Text style={styles.topicPercent}>{Math.round(percent * 100)}%</Text>
+                    </View>
+                    <Text style={styles.topicCount}>{topic.wordCount} 個單字</Text>
+                    <View style={styles.barWrap}>
+                      <ProgressBar percent={percent} color={levelAccent[level]} height={8} />
+                    </View>
+                  </Pressable>
                 </Link>
               );
             })
@@ -75,9 +86,17 @@ export default function LearnScreen() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: theme.paper },
   safe: { flex: 1 },
-  top: { paddingHorizontal: 20, paddingTop: 8 },
-  back: { color: theme.indigo, fontWeight: "700" },
-  title: { marginTop: 8, fontSize: 28, fontWeight: "800", color: theme.ink },
+  top: { paddingHorizontal: 20, paddingTop: 8, paddingBottom: 8 },
+  topBar: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
+  back: { color: theme.indigo, fontWeight: "800", fontSize: 14 },
+  grammarShortcut: {
+    backgroundColor: theme.indigoSoft,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 99,
+  },
+  grammarShortcutText: { color: theme.indigo, fontSize: 12, fontWeight: "800" },
+  title: { marginTop: 8, fontSize: 28, fontWeight: "900", color: theme.ink },
   summary: { paddingHorizontal: 20, paddingBottom: 12 },
   topicScroller: { flex: 1 },
   topics: { paddingHorizontal: 20, paddingBottom: 32, gap: 12 },
@@ -86,16 +105,27 @@ const styles = StyleSheet.create({
     borderRadius: 22,
     padding: 16,
     gap: 8,
+    borderWidth: 1,
+    borderColor: theme.paperBorder,
     shadowColor: "#1E2430",
-    shadowOpacity: 0.06,
+    shadowOpacity: 0.05,
     shadowRadius: 10,
     shadowOffset: { width: 0, height: 4 },
     elevation: 2,
   },
-  topicTitle: { fontSize: 16, fontWeight: "800", color: theme.ink },
-  topicCount: { color: theme.inkSoft },
-  topicPercent: { alignSelf: "flex-end", color: theme.inkSoft, fontSize: 12 },
-  empty: { marginTop: 24, padding: 24, borderRadius: 22, backgroundColor: theme.white },
+  topicHead: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 8 },
+  topicTitle: { flex: 1, fontSize: 16, fontWeight: "800", color: theme.ink },
+  topicCount: { color: theme.inkSoft, fontSize: 13, fontWeight: "600" },
+  topicPercent: { color: theme.indigo, fontSize: 13, fontWeight: "800" },
+  barWrap: { flex: 1, minWidth: 0 },
+  empty: {
+    marginTop: 24,
+    padding: 24,
+    borderRadius: 22,
+    backgroundColor: theme.white,
+    borderWidth: 1,
+    borderColor: theme.paperBorder,
+  },
   emptyTitle: { fontSize: 20, fontWeight: "800", color: theme.ink },
   emptyBody: { marginTop: 6, color: theme.inkSoft },
 });
