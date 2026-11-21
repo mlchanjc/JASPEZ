@@ -4,7 +4,8 @@ import type { LevelId, VocabWord } from "@/data/types";
 import { isCorrectAnswer } from "@/lib/answers";
 import { wordKey } from "@/lib/vocab";
 import { useProgress } from "@/state/progress";
-import { levelAccent, theme } from "@/theme";
+import { useAppTheme } from "@/theme";
+import type { AppTheme } from "@/theme";
 import { ProgressBar } from "./ProgressBar";
 
 type Prompt = { word: VocabWord; index: number };
@@ -20,6 +21,8 @@ function shuffle(words: VocabWord[]) {
 
 export function QuizMode({ level, topicId, words }: { level: LevelId; topicId: string; words: VocabWord[] }) {
   const { markLearned } = useProgress();
+  const { t, levelAccent } = useAppTheme();
+  const styles = useMemo(() => makeStyles(t), [t]);
   const [seed, setSeed] = useState(0);
   const prompts = useMemo(() => shuffle(words), [level, topicId, words, seed]);
   const [cursor, setCursor] = useState(0);
@@ -55,13 +58,15 @@ export function QuizMode({ level, topicId, words }: { level: LevelId; topicId: s
     return (
       <View style={styles.doneWrap}>
         <View style={styles.doneCard}>
-          <Text style={styles.doneEmoji}>🎉</Text>
-          <Text style={styles.doneTitle}>這課測驗完成了！</Text>
+          <View style={styles.hankoStamp}>
+            <Text style={styles.hankoText}>完</Text>
+          </View>
+          <Text style={styles.doneTitle}>本課測驗完成</Text>
           <Text style={styles.doneBody}>
             本次答對 {correctCount} / {prompts.length} 題，答對的單字已自動記進學習進度。
           </Text>
-          <Pressable onPress={restart} style={[styles.restartBtn, { backgroundColor: accent }]}>
-            <Text style={styles.restartBtnText}>再挑戰一次 →</Text>
+          <Pressable onPress={restart} style={styles.restartBtn}>
+            <Text style={styles.restartBtnText}>再練習一次 →</Text>
           </Pressable>
         </View>
       </View>
@@ -94,33 +99,25 @@ export function QuizMode({ level, topicId, words }: { level: LevelId; topicId: s
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
       >
-        <View style={styles.topCard}>
+        <View style={styles.topBar}>
           <View style={styles.sessionHead}>
-            <Text style={styles.heading}>單字手打測驗</Text>
-            <View style={[styles.scorePill, { backgroundColor: `${accent}18` }]}>
-              <Text style={[styles.scoreText, { color: accent }]}>
-                {answered} / {prompts.length}
-              </Text>
-            </View>
+            <Text style={styles.heading}>手打測驗</Text>
+            <Text style={styles.scoreText}>
+              {answered} / {prompts.length}
+            </Text>
           </View>
           <View style={styles.barWrap}>
-            <ProgressBar percent={prompts.length === 0 ? 0 : answered / prompts.length} color={accent} height={8} />
+            <ProgressBar percent={prompts.length === 0 ? 0 : answered / prompts.length} color={accent} height={4} />
           </View>
         </View>
 
         <Animated.View style={[styles.drillCard, { transform: [{ translateX: shake }] }]}>
-          <View style={styles.badges}>
-            <View style={[styles.levelBadge, { backgroundColor: accent }]}>
-              <Text style={styles.levelBadgeText}>{level}</Text>
-            </View>
-            {prompt.word.verbType ? (
-              <View style={styles.groupBadge}>
-                <Text style={styles.groupText}>{prompt.word.verbType}</Text>
-              </View>
-            ) : null}
+          <View style={styles.metaRow}>
+            <Text style={[styles.levelTag, { color: accent }]}>{level}</Text>
+            {prompt.word.verbType ? <Text style={styles.verbTag}>{prompt.word.verbType}</Text> : null}
           </View>
 
-          <Text style={styles.promptBanner}>請輸入對應的漢字或平假名</Text>
+          <Text style={styles.promptLabel}>輸入對應的漢字或平假名</Text>
           <Text style={styles.meaning}>{prompt.word.meaning}</Text>
 
           <View style={styles.inputGroup}>
@@ -128,7 +125,7 @@ export function QuizMode({ level, topicId, words }: { level: LevelId; topicId: s
               value={input}
               onChangeText={setInput}
               placeholder="輸入漢字或假名..."
-              placeholderTextColor={theme.inkMuted}
+              placeholderTextColor={t.inkMuted}
               autoCapitalize="none"
               autoCorrect={false}
               editable={!feedback}
@@ -136,35 +133,31 @@ export function QuizMode({ level, topicId, words }: { level: LevelId; topicId: s
               style={styles.input}
             />
             <Pressable
-              style={[
-                styles.submit,
-                { backgroundColor: input.trim() && !feedback ? accent : "#CBD5E1" },
-              ]}
+              style={[styles.submit, !(input.trim() && !feedback) && styles.submitDisabled]}
               onPress={submit}
               disabled={Boolean(feedback) || !input.trim()}
             >
-              <Text style={styles.submitText}>送出答案</Text>
+              <Text style={[styles.submitText, !(input.trim() && !feedback) && styles.submitTextDisabled]}>
+                送出答案
+              </Text>
             </Pressable>
           </View>
         </Animated.View>
       </ScrollView>
 
-      {/* PINNED ZERO-SCROLL FEEDBACK BAR */}
       {feedback ? (
         <View
           style={[
             styles.feedbackDock,
             {
-              backgroundColor: feedback === "success" ? "#ECFDF5" : "#FFF1F2",
-              borderTopColor: feedback === "success" ? theme.success : theme.error,
+              backgroundColor: feedback === "success" ? t.successSoft : t.errorSoft,
+              borderTopColor: feedback === "success" ? t.success : t.error,
             },
           ]}
         >
           <View style={styles.dockTop}>
-            <Text style={[styles.dockTitle, { color: feedback === "success" ? theme.matchaDark : theme.error }]}>
-              {feedback === "success"
-                ? `✓ 正確！${prompt.word.word}`
-                : `✕ 正解：${prompt.word.word}`}
+            <Text style={[styles.dockTitle, { color: feedback === "success" ? t.matchaDark : t.error }]}>
+              {feedback === "success" ? `✓ 正確 · ${prompt.word.word}` : `✕ 正解 · ${prompt.word.word}`}
             </Text>
             {prompt.word.reading ? (
               <Text style={styles.dockBody} numberOfLines={2}>
@@ -175,7 +168,7 @@ export function QuizMode({ level, topicId, words }: { level: LevelId; topicId: s
           </View>
           <Pressable
             onPress={continueQuiz}
-            style={[styles.dockBtn, { backgroundColor: feedback === "success" ? theme.success : theme.error }]}
+            style={[styles.dockBtn, { backgroundColor: feedback === "success" ? t.success : t.error }]}
           >
             <Text style={styles.dockBtnText}>下一題 →</Text>
           </Pressable>
@@ -185,111 +178,102 @@ export function QuizMode({ level, topicId, words }: { level: LevelId; topicId: s
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-  scroller: { flex: 1 },
-  scrollContent: { paddingHorizontal: 18, paddingBottom: 24, gap: 12 },
-  topCard: {
-    backgroundColor: theme.white,
-    borderRadius: 22,
-    padding: 15,
-    gap: 10,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-  },
-  sessionHead: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
-  heading: { fontSize: 16, fontWeight: "900", color: theme.ink },
-  scorePill: { paddingHorizontal: 11, paddingVertical: 4, borderRadius: 99 },
-  scoreText: { fontSize: 12, fontWeight: "900" },
-  barWrap: { flex: 1, minWidth: 0 },
-  drillCard: {
-    backgroundColor: theme.white,
-    borderRadius: 24,
-    padding: 20,
-    gap: 14,
-    alignItems: "center",
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    shadowColor: "#161B2E",
-    shadowOpacity: 0.05,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 5 },
-    elevation: 2,
-  },
-  badges: { flexDirection: "row", alignItems: "center", gap: 8 },
-  levelBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 99 },
-  levelBadgeText: { color: "#fff", fontSize: 12, fontWeight: "900" },
-  groupBadge: {
-    backgroundColor: theme.goldSoft,
-    paddingHorizontal: 12,
-    paddingVertical: 4,
-    borderRadius: 99,
-  },
-  groupText: { fontSize: 12, fontWeight: "800", color: theme.goldDark },
-  promptBanner: {
-    fontSize: 12,
-    fontWeight: "900",
-    color: theme.indigo,
-    backgroundColor: theme.indigoSoft,
-    paddingHorizontal: 12,
-    paddingVertical: 5,
-    borderRadius: 99,
-  },
-  meaning: { fontSize: 28, fontWeight: "900", color: theme.ink, textAlign: "center", lineHeight: 36 },
-  inputGroup: { width: "100%", gap: 10, marginTop: 4 },
-  input: {
-    backgroundColor: theme.surface,
-    borderRadius: 16,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-    fontSize: 18,
-    fontWeight: "700",
-    color: theme.ink,
-    textAlign: "center",
-  },
-  submit: {
-    borderRadius: 16,
-    alignItems: "center",
-    paddingVertical: 14,
-  },
-  submitText: { color: "#fff", fontWeight: "900", fontSize: 15 },
-  feedbackDock: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 12,
-    paddingHorizontal: 18,
-    paddingVertical: 12,
-    borderTopWidth: 2,
-  },
-  dockTop: { flex: 1, minWidth: 0, gap: 3 },
-  dockTitle: { fontSize: 14, fontWeight: "900" },
-  dockBody: { fontSize: 12, color: theme.inkSoft, fontWeight: "700" },
-  dockBtn: {
-    paddingHorizontal: 16,
-    paddingVertical: 11,
-    borderRadius: 14,
-  },
-  dockBtnText: { color: "#fff", fontSize: 13, fontWeight: "900" },
-  doneWrap: { flex: 1, justifyContent: "center", paddingHorizontal: 18 },
-  doneCard: {
-    backgroundColor: theme.white,
-    borderRadius: 24,
-    padding: 26,
-    alignItems: "center",
-    gap: 10,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    shadowColor: "#161B2E",
-    shadowOpacity: 0.05,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 5 },
-    elevation: 2,
-  },
-  doneEmoji: { fontSize: 44 },
-  doneTitle: { fontSize: 22, fontWeight: "900", color: theme.ink },
-  doneBody: { color: theme.inkSoft, textAlign: "center", fontSize: 14, lineHeight: 22 },
-  restartBtn: { marginTop: 8, paddingHorizontal: 22, paddingVertical: 12, borderRadius: 14 },
-  restartBtnText: { color: "#fff", fontWeight: "900", fontSize: 14 },
-});
+function makeStyles(t: AppTheme) {
+  return StyleSheet.create({
+    container: { flex: 1 },
+    scroller: { flex: 1 },
+    scrollContent: { paddingHorizontal: 18, paddingTop: 12, paddingBottom: 24, gap: 14 },
+    topBar: { gap: 8, paddingBottom: 10, borderBottomWidth: 1, borderBottomColor: t.paperBorder },
+    sessionHead: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
+    heading: { fontSize: 15, fontWeight: "700", color: t.ink },
+    scoreText: { fontSize: 12.5, fontWeight: "700", color: t.inkSoft },
+    barWrap: { flex: 1, minWidth: 0 },
+    drillCard: {
+      backgroundColor: t.white,
+      borderRadius: 10,
+      padding: 20,
+      gap: 12,
+      alignItems: "center",
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    metaRow: { flexDirection: "row", alignItems: "center", gap: 10 },
+    levelTag: { fontSize: 12, fontWeight: "800", letterSpacing: 0.6 },
+    verbTag: {
+      fontSize: 11,
+      fontWeight: "700",
+      color: t.goldDark,
+      backgroundColor: t.goldSoft,
+      paddingHorizontal: 8,
+      paddingVertical: 2,
+      borderRadius: 4,
+    },
+    promptLabel: { fontSize: 12, fontWeight: "600", color: t.inkMuted, letterSpacing: 0.6 },
+    meaning: { fontSize: 26, fontWeight: "700", color: t.ink, textAlign: "center", lineHeight: 34 },
+    inputGroup: { width: "100%", gap: 10, marginTop: 6 },
+    input: {
+      backgroundColor: t.surface,
+      borderRadius: 8,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      paddingHorizontal: 14,
+      paddingVertical: 13,
+      fontSize: 17,
+      fontWeight: "600",
+      color: t.ink,
+      textAlign: "center",
+    },
+    submit: {
+      backgroundColor: t.ink,
+      borderRadius: 8,
+      alignItems: "center",
+      paddingVertical: 13,
+    },
+    submitDisabled: { backgroundColor: t.surface, borderWidth: 1, borderColor: t.paperBorder },
+    submitText: { color: t.paper, fontWeight: "700", fontSize: 14 },
+    submitTextDisabled: { color: t.inkMuted },
+    feedbackDock: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 12,
+      paddingHorizontal: 18,
+      paddingVertical: 12,
+      borderTopWidth: 1.5,
+    },
+    dockTop: { flex: 1, minWidth: 0, gap: 3 },
+    dockTitle: { fontSize: 13.5, fontWeight: "700" },
+    dockBody: { fontSize: 11.5, color: t.inkSoft, fontWeight: "600" },
+    dockBtn: { paddingHorizontal: 15, paddingVertical: 10, borderRadius: 6 },
+    dockBtnText: { color: "#fff", fontSize: 13, fontWeight: "700" },
+    doneWrap: { flex: 1, justifyContent: "center", paddingHorizontal: 18 },
+    doneCard: {
+      backgroundColor: t.white,
+      borderRadius: 10,
+      padding: 28,
+      alignItems: "center",
+      gap: 12,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    hankoStamp: {
+      width: 64,
+      height: 64,
+      borderRadius: 32,
+      borderWidth: 2,
+      borderColor: t.vermillion,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    hankoText: { fontFamily: t.serif, fontSize: 28, fontWeight: "700", color: t.vermillion },
+    doneTitle: { fontFamily: t.serif, fontSize: 21, fontWeight: "700", color: t.ink },
+    doneBody: { color: t.inkSoft, textAlign: "center", fontSize: 13.5, lineHeight: 21 },
+    restartBtn: {
+      marginTop: 6,
+      backgroundColor: t.ink,
+      paddingHorizontal: 20,
+      paddingVertical: 11,
+      borderRadius: 6,
+    },
+    restartBtnText: { color: t.paper, fontWeight: "700", fontSize: 13.5 },
+  });
+}

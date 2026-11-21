@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Animated, StyleSheet, View } from "react-native";
+import { useAppTheme } from "@/theme";
 
 type Props = {
   percent: number;
@@ -8,20 +9,21 @@ type Props = {
   height?: number;
 };
 
-export function ProgressBar({ percent, color, trackColor = "rgba(30, 36, 48, 0.08)", height = 10 }: Props) {
+export function ProgressBar({ percent, color, trackColor, height = 4 }: Props) {
+  const { t } = useAppTheme();
   const progress = useRef(new Animated.Value(0)).current;
   const clamped = Math.max(0, Math.min(1, percent));
 
   useEffect(() => {
-    Animated.timing(progress, { toValue: clamped, duration: 700, useNativeDriver: false }).start();
+    Animated.timing(progress, { toValue: clamped, duration: 550, useNativeDriver: false }).start();
   }, [clamped, progress]);
 
   return (
-    <View style={[styles.track, { height, backgroundColor: trackColor }]}>
+    <View style={[styles.track, { height, backgroundColor: trackColor ?? t.paperBorder }]}>
       <Animated.View
         style={{
           height: "100%",
-          borderRadius: height,
+          borderRadius: 2,
           backgroundColor: color,
           width: progress.interpolate({ inputRange: [0, 1], outputRange: ["0%", "100%"] }),
         }}
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
     width: "100%",
     maxWidth: "100%",
     alignSelf: "stretch",
-    borderRadius: 99,
+    borderRadius: 2,
     overflow: "hidden",
   },
 });

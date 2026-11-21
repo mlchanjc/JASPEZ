@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from "expo-router";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BottomTabs } from "@/components/BottomTabs";
@@ -9,13 +9,16 @@ import { QuizMode } from "@/components/QuizMode";
 import { VocabList } from "@/components/VocabList";
 import { lessons, manifests } from "@/data/registry";
 import { isLevelId } from "@/lib/vocab";
-import { levelAccent, theme } from "@/theme";
+import { useAppTheme } from "@/theme";
+import type { AppTheme } from "@/theme";
 
 export default function TopicScreen() {
   const params = useLocalSearchParams<{ level: string; id: string }>();
   const level = String(params.level ?? "");
   const id = String(params.id ?? "");
   const [mode, setMode] = useState<"list" | "learn" | "quiz">("list");
+  const { t, levelAccent } = useAppTheme();
+  const styles = useMemo(() => makeStyles(t), [t]);
 
   if (!isLevelId(level)) {
     return (
@@ -52,16 +55,9 @@ export default function TopicScreen() {
             <Pressable onPress={() => router.back()} hitSlop={12} style={styles.backBtn}>
               <Text style={styles.back}>← 所有單字課</Text>
             </Pressable>
-            <View style={styles.navBadges}>
-              <View style={[styles.levelPill, { backgroundColor: accent }]}>
-                <Text style={styles.levelPillText}>
-                  {level} 單字 {id}
-                </Text>
-              </View>
-              <View style={styles.countPill}>
-                <Text style={styles.countPillText}>{lesson.words.length} 詞</Text>
-              </View>
-            </View>
+            <Text style={[styles.levelMeta, { color: accent }]}>
+              {level} · {id}（{lesson.words.length} 詞）
+            </Text>
           </View>
           <Text style={styles.title} numberOfLines={2}>
             {topic.title}
@@ -92,34 +88,32 @@ export default function TopicScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: theme.paper },
-  safe: { flex: 1 },
-  top: { paddingHorizontal: 18, paddingTop: 8, paddingBottom: 10, gap: 8 },
-  navRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
-  backBtn: {
-    backgroundColor: theme.white,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 99,
-    borderWidth: 1,
-    borderColor: theme.paperBorder,
-  },
-  back: { color: theme.ink, fontWeight: "800", fontSize: 13 },
-  navBadges: { flexDirection: "row", alignItems: "center", gap: 6 },
-  levelPill: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 99 },
-  levelPillText: { color: "#fff", fontSize: 11, fontWeight: "900" },
-  countPill: {
-    backgroundColor: theme.white,
-    paddingHorizontal: 9,
-    paddingVertical: 4,
-    borderRadius: 99,
-    borderWidth: 1,
-    borderColor: theme.paperBorder,
-  },
-  countPillText: { color: theme.inkSoft, fontSize: 11, fontWeight: "800" },
-  title: { fontSize: 20, fontWeight: "900", color: theme.ink, lineHeight: 26 },
-  body: { flex: 1 },
-  missing: { flex: 1, alignItems: "center", justifyContent: "center" },
-  missingText: { color: theme.ink, fontSize: 18, fontWeight: "800" },
-});
+function makeStyles(t: AppTheme) {
+  return StyleSheet.create({
+    screen: { flex: 1, backgroundColor: t.paper },
+    safe: { flex: 1 },
+    top: {
+      paddingHorizontal: 18,
+      paddingTop: 10,
+      paddingBottom: 12,
+      gap: 8,
+      borderBottomWidth: 1,
+      borderBottomColor: t.paperBorder,
+    },
+    navRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
+    backBtn: {
+      backgroundColor: t.white,
+      paddingHorizontal: 11,
+      paddingVertical: 5,
+      borderRadius: 4,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    back: { color: t.ink, fontWeight: "700", fontSize: 12.5 },
+    levelMeta: { fontSize: 12, fontWeight: "800", letterSpacing: 0.5 },
+    title: { fontFamily: t.serif, fontSize: 19, fontWeight: "700", color: t.ink, lineHeight: 26 },
+    body: { flex: 1 },
+    missing: { flex: 1, alignItems: "center", justifyContent: "center" },
+    missingText: { color: t.ink, fontSize: 16, fontWeight: "700" },
+  });
+}

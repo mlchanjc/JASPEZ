@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   Image,
   Linking,
@@ -13,7 +13,8 @@ import {
 import type { ImageSourcePropType } from "react-native";
 import { resolveGrammarImage } from "@/data/grammarImages";
 import type { GrammarBlock, GrammarExample, GrammarLesson, GrammarTableCell, LevelId } from "@/data/types";
-import { theme } from "@/theme";
+import { useAppTheme } from "@/theme";
+import type { AppTheme } from "@/theme";
 
 type Props = {
   lesson: GrammarLesson;
@@ -30,36 +31,38 @@ type CalloutStyleMeta = {
   titleColor: string;
 };
 
-const CALLOUT_STYLES: Record<string, CalloutStyleMeta> = {
-  warning: {
-    badge: "⚠️ 注意",
-    bg: "#FFF1F2",
-    border: "#FECDD3",
-    accent: "#F43F5E",
-    titleColor: "#BE123C",
-  },
-  point: {
-    badge: "💡 重點",
-    bg: "#FFFBEB",
-    border: "#FDE68A",
-    accent: "#F59E0B",
-    titleColor: "#B45309",
-  },
-  note: {
-    badge: "📝 說明",
-    bg: "#EEF2FF",
-    border: "#C7D2FE",
-    accent: "#4F46E5",
-    titleColor: "#3730A3",
-  },
-  hosoku: {
-    badge: "📌 補充",
-    bg: "#ECFDF5",
-    border: "#A7F3D0",
-    accent: "#10B981",
-    titleColor: "#047857",
-  },
-};
+function getCalloutStyles(t: AppTheme, isDark: boolean): Record<string, CalloutStyleMeta> {
+  return {
+    warning: {
+      badge: "注意",
+      bg: isDark ? "rgba(224, 90, 71, 0.12)" : "#FDF2F0",
+      border: isDark ? "rgba(224, 90, 71, 0.32)" : "#EBCAC5",
+      accent: t.vermillion,
+      titleColor: t.vermillion,
+    },
+    point: {
+      badge: "重點",
+      bg: isDark ? "rgba(212, 168, 87, 0.12)" : "#FAF5EA",
+      border: isDark ? "rgba(212, 168, 87, 0.30)" : "#E6D9BE",
+      accent: t.gold,
+      titleColor: t.goldDark,
+    },
+    note: {
+      badge: "說明",
+      bg: isDark ? "rgba(137, 169, 212, 0.11)" : "#F2F4F7",
+      border: isDark ? "rgba(137, 169, 212, 0.28)" : "#D8DEE6",
+      accent: t.indigo,
+      titleColor: t.indigo,
+    },
+    hosoku: {
+      badge: "補充",
+      bg: isDark ? "rgba(87, 166, 125, 0.12)" : "#EFF6F2",
+      border: isDark ? "rgba(87, 166, 125, 0.30)" : "#CDE0D5",
+      accent: t.matcha,
+      titleColor: t.matchaDark,
+    },
+  };
+}
 
 type ZoomState = {
   source: ImageSourcePropType;
@@ -210,6 +213,8 @@ function TableBlockView({
   rows: GrammarTableCell[][];
   showFurigana: boolean;
 }) {
+  const { t, isDark } = useAppTheme();
+  const styles = useMemo(() => makeStyles(t, isDark), [t, isDark]);
   if (!Array.isArray(rows) || rows.length === 0) return null;
 
   const maxCols = rows.reduce((max, r) => {
@@ -277,6 +282,8 @@ function ImageBlockView({
   maxWidth: number;
   onZoom: (zoom: ZoomState) => void;
 }) {
+  const { t, isDark } = useAppTheme();
+  const styles = useMemo(() => makeStyles(t, isDark), [t, isDark]);
   const bundled = resolveGrammarImage(src);
   const source: ImageSourcePropType = bundled ? bundled.source : { uri: src };
   const aspectRatio = bundled ? bundled.width / Math.max(1, bundled.height) : 16 / 9;
@@ -305,7 +312,7 @@ function ImageBlockView({
         <Text style={styles.imageCaption} numberOfLines={1}>
           {alt || "文法圖解"}
         </Text>
-        <Text style={styles.zoomHint}>🔍 點擊放大</Text>
+        <Text style={styles.zoomHint}>點擊放大</Text>
       </View>
     </Pressable>
   );
@@ -326,6 +333,9 @@ function BlockList({
   onZoom: (zoom: ZoomState) => void;
   onNavigateLesson?: (level: LevelId, id: string) => void;
 }) {
+  const { t, isDark } = useAppTheme();
+  const styles = useMemo(() => makeStyles(t, isDark), [t, isDark]);
+  const calloutStyles = useMemo(() => getCalloutStyles(t, isDark), [t, isDark]);
   const grouped = groupBlocksForRender(blocks);
 
   return (
@@ -372,7 +382,7 @@ function BlockList({
         }
 
         if (block.type === "callout") {
-          const meta = CALLOUT_STYLES[block.kind ?? "note"] ?? CALLOUT_STYLES.note;
+          const meta = calloutStyles[block.kind ?? "note"] ?? calloutStyles.note;
           const text = block.text ? cleanInlineText(block.text) : "";
           return (
             <View
@@ -425,11 +435,11 @@ function BlockList({
           const items = normalizeExamples(block.items ?? []);
           if (items.length === 0) return null;
           const statusMeta = (st?: string) => {
-            if (st === "correct") return { sym: "○", bg: "#DCFCE7", fg: "#15803D" };
-            if (st === "question") return { sym: "？", bg: "#FEF3C7", fg: "#B45309" };
-            if (st === "triangle") return { sym: "△", bg: "#FEF3C7", fg: "#B45309" };
-            if (st === "wrong") return { sym: "✕", bg: "#FFE4E6", fg: "#BE123C" };
-            if (st === "arrow") return { sym: "→", bg: "#E0E7FF", fg: "#3730A3" };
+            if (st === "correct") return { sym: "○", bg: t.successSoft, fg: t.matchaDark };
+            if (st === "question") return { sym: "？", bg: t.goldSoft, fg: t.goldDark };
+            if (st === "triangle") return { sym: "△", bg: t.goldSoft, fg: t.goldDark };
+            if (st === "wrong") return { sym: "✕", bg: t.errorSoft, fg: t.error };
+            if (st === "arrow") return { sym: "→", bg: t.indigoSoft, fg: t.indigo };
             return null;
           };
 
@@ -521,7 +531,7 @@ function BlockList({
               style={styles.linkCard}
             >
               <Text style={styles.linkText}>
-                {internal ? `📘 相關課程：${block.text}` : `🔗 ${block.text}`}
+                {internal ? `相關課程 · ${block.text}` : `${block.text}`}
               </Text>
               <Text style={styles.linkArrow}>→</Text>
             </Pressable>
@@ -535,6 +545,8 @@ function BlockList({
 }
 
 export function GrammarRichContent({ lesson, showFurigana, accentColor, onNavigateLesson }: Props) {
+  const { t, isDark } = useAppTheme();
+  const styles = useMemo(() => makeStyles(t, isDark), [t, isDark]);
   const { width: winWidth, height: winHeight } = useWindowDimensions();
   const [zoomImage, setZoomImage] = useState<ZoomState | null>(null);
 
@@ -570,7 +582,7 @@ export function GrammarRichContent({ lesson, showFurigana, accentColor, onNaviga
           if (!sec.headingOnly || !sec.heading) return null;
           return (
             <View key={`${sec.heading}-${idx}`} style={styles.headingOnlyBanner}>
-              <View style={[styles.headingBar, { backgroundColor: isSub ? theme.indigo : accentColor }]} />
+              <View style={[styles.headingBar, { backgroundColor: isSub ? t.indigo : accentColor }]} />
               <Text style={isSub ? styles.headingOnlySubText : styles.sectionHeading}>{sec.heading}</Text>
             </View>
           );
@@ -674,25 +686,27 @@ export function GrammarRichContent({ lesson, showFurigana, accentColor, onNaviga
   );
 }
 
-const styles = StyleSheet.create({
+function makeStyles(t: AppTheme, isDark: boolean) {
+  void isDark;
+  return StyleSheet.create({
   wrap: { gap: 12 },
   sectionCard: {
-    backgroundColor: theme.white,
-    borderRadius: 22,
+    backgroundColor: t.white,
+    borderRadius: 10,
     padding: 16,
     gap: 12,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
+    borderWidth: 1,
+    borderColor: t.paperBorder,
   },
   subSectionCard: {
-    backgroundColor: theme.surface,
-    borderRadius: 18,
+    backgroundColor: t.surface,
+    borderRadius: 8,
     padding: 14,
   },
   headingRow: { flexDirection: "row", alignItems: "center", gap: 8 },
   headingBar: { width: 4, height: 18, borderRadius: 4 },
-  sectionHeading: { flex: 1, fontSize: 16, fontWeight: "900", color: theme.ink, lineHeight: 22 },
-  subHeading: { flex: 1, fontSize: 14, fontWeight: "900", color: theme.indigo, lineHeight: 20 },
+  sectionHeading: { flex: 1, fontSize: 16, fontWeight: "900", color: t.ink, lineHeight: 22 },
+  subHeading: { flex: 1, fontSize: 14, fontWeight: "900", color: t.indigo, lineHeight: 20 },
   headingOnlyBanner: {
     flexDirection: "row",
     alignItems: "center",
@@ -701,20 +715,20 @@ const styles = StyleSheet.create({
     paddingTop: 6,
     paddingBottom: 2,
   },
-  headingOnlySubText: { flex: 1, fontSize: 15, fontWeight: "900", color: theme.indigo, lineHeight: 21 },
+  headingOnlySubText: { flex: 1, fontSize: 15, fontWeight: "900", color: t.indigo, lineHeight: 21 },
   childSubBlock: { gap: 8 },
   childSubBlockBorder: {
     borderTopWidth: 1,
-    borderTopColor: theme.paperBorder,
+    borderTopColor: t.paperBorder,
     paddingTop: 12,
     marginTop: 2,
   },
-  h4Heading: { fontSize: 13.5, fontWeight: "800", color: theme.ink, lineHeight: 20 },
+  h4Heading: { fontSize: 13.5, fontWeight: "800", color: t.ink, lineHeight: 20 },
   groupedExampleCard: {
-    backgroundColor: theme.white,
-    borderRadius: 14,
+    backgroundColor: t.white,
+    borderRadius: 8,
     borderWidth: 1,
-    borderColor: theme.paperBorder,
+    borderColor: t.paperBorder,
     paddingHorizontal: 12,
     paddingVertical: 10,
     gap: 8,
@@ -722,83 +736,83 @@ const styles = StyleSheet.create({
   groupedExampleRow: { flexDirection: "row", alignItems: "flex-start", gap: 10 },
   groupedExampleDivider: {
     borderTopWidth: 1,
-    borderTopColor: "#EEF2F7",
+    borderTopColor: t.paperBorder,
     paddingTop: 8,
   },
   sharedZhFooter: {
     borderTopWidth: 1,
-    borderTopColor: "#E2E8F0",
+    borderTopColor: t.paperBorder,
     paddingTop: 8,
     paddingLeft: 32,
   },
-  sharedZhText: { fontSize: 13.5, color: theme.inkSoft, fontWeight: "600", lineHeight: 20 },
+  sharedZhText: { fontSize: 13.5, color: t.inkSoft, fontWeight: "600", lineHeight: 20 },
   blockStack: { gap: 10 },
   grammarBlockCard: {
-    backgroundColor: "#F5F7FF",
-    borderRadius: 14,
+    backgroundColor: t.surface,
+    borderRadius: 8,
     borderWidth: 1,
-    borderColor: "rgba(79, 70, 229, 0.2)",
+    borderColor: t.paperBorder,
     borderLeftWidth: 4,
     padding: 13,
     gap: 8,
   },
   patternHeader: { gap: 4 },
   patternLabel: { fontSize: 11, fontWeight: "900" },
-  patternValue: { fontSize: 15, fontWeight: "900", color: theme.ink, lineHeight: 22 },
+  patternValue: { fontSize: 15, fontWeight: "900", color: t.ink, lineHeight: 22 },
   connList: { gap: 3, paddingTop: 3 },
-  connLine: { fontSize: 12, fontWeight: "700", color: theme.inkSoft, lineHeight: 18 },
-  blockDivider: { height: 1, backgroundColor: "rgba(79, 70, 229, 0.14)" },
-  blockNoteText: { fontSize: 13.5, color: theme.ink, lineHeight: 22, fontWeight: "600" },
-  noteText: { fontSize: 14, color: theme.ink, lineHeight: 22, fontWeight: "500" },
+  connLine: { fontSize: 12, fontWeight: "700", color: t.inkSoft, lineHeight: 18 },
+  blockDivider: { height: 1, backgroundColor: t.paperBorder },
+  blockNoteText: { fontSize: 13.5, color: t.ink, lineHeight: 22, fontWeight: "600" },
+  noteText: { fontSize: 14, color: t.ink, lineHeight: 22, fontWeight: "500" },
   calloutBox: {
-    borderRadius: 14,
+    borderRadius: 8,
     borderWidth: 1,
     borderLeftWidth: 4,
     padding: 12,
     gap: 8,
   },
   calloutBadge: { fontSize: 12, fontWeight: "900" },
-  calloutText: { fontSize: 13, color: theme.ink, lineHeight: 21, fontWeight: "600" },
+  calloutText: { fontSize: 13, color: t.ink, lineHeight: 21, fontWeight: "600" },
   tableWrap: { gap: 6 },
-  tableCaption: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
+  tableCaption: { fontSize: 12, fontWeight: "800", color: t.inkSoft },
   tableBox: {
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: theme.paperBorder,
+    borderColor: t.paperBorder,
     overflow: "hidden",
-    backgroundColor: theme.white,
+    backgroundColor: t.white,
   },
   tableRow: { flexDirection: "row", alignItems: "stretch" },
-  tableRowBorder: { borderTopWidth: 1, borderTopColor: theme.paperBorder },
-  tableHeaderRow: { backgroundColor: theme.indigoSoft },
-  tableRowAlt: { backgroundColor: theme.surface },
+  tableRowBorder: { borderTopWidth: 1, borderTopColor: t.paperBorder },
+  tableHeaderRow: { backgroundColor: t.indigoSoft },
+  tableRowAlt: { backgroundColor: t.surface },
   tableCell: { paddingHorizontal: 10, paddingVertical: 8, justifyContent: "center", gap: 2 },
-  tableCellBorder: { borderLeftWidth: 1, borderLeftColor: theme.paperBorder },
-  tableCellHeader: { backgroundColor: theme.indigoSoft },
-  tableCellText: { fontSize: 13, color: theme.ink, lineHeight: 19, fontWeight: "600" },
-  tableCellHeaderText: { fontWeight: "900", color: theme.indigo },
-  tableCellReading: { fontSize: 11, color: theme.indigo, lineHeight: 15 },
-  tableCellZh: { fontSize: 11, color: theme.inkSoft, lineHeight: 16 },
+  tableCellBorder: { borderLeftWidth: 1, borderLeftColor: t.paperBorder },
+  tableCellHeader: { backgroundColor: t.indigoSoft },
+  tableCellText: { fontSize: 13, color: t.ink, lineHeight: 19, fontWeight: "600" },
+  tableCellHeaderText: { fontWeight: "900", color: t.indigo },
+  tableCellReading: { fontSize: 11, color: t.indigo, lineHeight: 15 },
+  tableCellZh: { fontSize: 11, color: t.inkSoft, lineHeight: 16 },
   imageCard: {
-    backgroundColor: theme.surface,
-    borderRadius: 14,
+    backgroundColor: t.surface,
+    borderRadius: 8,
     padding: 10,
     borderWidth: 1,
-    borderColor: theme.paperBorder,
+    borderColor: t.paperBorder,
     gap: 8,
     overflow: "hidden",
   },
   imageCenter: { alignItems: "center", justifyContent: "center" },
   imageFooter: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
-  imageCaption: { flex: 1, fontSize: 11, fontWeight: "700", color: theme.inkMuted },
-  zoomHint: { fontSize: 11, fontWeight: "800", color: theme.indigo },
+  imageCaption: { flex: 1, fontSize: 11, fontWeight: "700", color: t.inkMuted },
+  zoomHint: { fontSize: 11, fontWeight: "800", color: t.indigo },
   examplesStack: { gap: 8 },
   exampleItem: {
-    backgroundColor: theme.surface,
-    borderRadius: 14,
+    backgroundColor: t.surface,
+    borderRadius: 8,
     padding: 11,
     borderWidth: 1,
-    borderColor: theme.paperBorder,
+    borderColor: t.paperBorder,
   },
   exampleRow: { flexDirection: "row", gap: 9, alignItems: "flex-start" },
   exampleNum: {
@@ -811,22 +825,22 @@ const styles = StyleSheet.create({
   },
   exampleNumText: { fontSize: 11, fontWeight: "900" },
   exampleBody: { flex: 1, gap: 3 },
-  exampleLabel: { fontSize: 11, fontWeight: "900", color: theme.indigo, marginBottom: 1 },
-  exampleJa: { fontSize: 15, fontWeight: "800", color: theme.ink, lineHeight: 22 },
-  exampleReading: { fontSize: 12, color: theme.indigo, lineHeight: 18 },
-  exampleZh: { fontSize: 13, color: theme.inkSoft, lineHeight: 19 },
+  exampleLabel: { fontSize: 11, fontWeight: "900", color: t.indigo, marginBottom: 1 },
+  exampleJa: { fontSize: 15, fontWeight: "800", color: t.ink, lineHeight: 22 },
+  exampleReading: { fontSize: 12, color: t.indigo, lineHeight: 18 },
+  exampleZh: { fontSize: 13, color: t.inkSoft, lineHeight: 19 },
   linkCard: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: theme.indigoSoft,
+    backgroundColor: t.indigoSoft,
     borderRadius: 12,
     paddingHorizontal: 12,
     paddingVertical: 10,
     gap: 8,
   },
-  linkText: { flex: 1, fontSize: 13, fontWeight: "800", color: theme.indigo },
-  linkArrow: { fontSize: 14, fontWeight: "900", color: theme.indigo },
+  linkText: { flex: 1, fontSize: 13, fontWeight: "800", color: t.indigo },
+  linkArrow: { fontSize: 14, fontWeight: "900", color: t.indigo },
   modalBackdrop: {
     flex: 1,
     backgroundColor: "rgba(15, 23, 42, 0.90)",
@@ -840,7 +854,7 @@ const styles = StyleSheet.create({
   modalCard: {
     width: "100%",
     maxHeight: "90%",
-    backgroundColor: theme.white,
+    backgroundColor: t.white,
     borderRadius: 20,
     overflow: "hidden",
   },
@@ -851,22 +865,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: theme.paperBorder,
+    borderBottomColor: t.paperBorder,
     gap: 10,
   },
-  modalTitle: { flex: 1, fontSize: 14, fontWeight: "900", color: theme.ink },
+  modalTitle: { flex: 1, fontSize: 14, fontWeight: "900", color: t.ink },
   modalCloseBtn: {
-    backgroundColor: theme.surface,
+    backgroundColor: t.surface,
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 99,
     borderWidth: 1,
-    borderColor: theme.paperBorder,
+    borderColor: t.paperBorder,
   },
-  modalCloseText: { fontSize: 12, fontWeight: "900", color: theme.ink },
+  modalCloseText: { fontSize: 12, fontWeight: "900", color: t.ink },
   modalScrollContent: {
     alignItems: "center",
     justifyContent: "center",
     padding: 12,
   },
 });
+}

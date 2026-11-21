@@ -10,6 +10,7 @@ export type UserPrefs = {
   showFurigana: boolean;
   register: RegisterMode;
   kanaOnly: boolean;
+  darkMode: boolean;
 };
 
 type ProgressState = {
@@ -58,6 +59,7 @@ const defaultPrefs: UserPrefs = {
   showFurigana: true,
   register: "polite",
   kanaOnly: false,
+  darkMode: false,
 };
 
 const initial: ProgressState = {
@@ -116,6 +118,7 @@ function readPrefs(raw: unknown): UserPrefs {
     showFurigana: typeof obj.showFurigana === "boolean" ? obj.showFurigana : defaultPrefs.showFurigana,
     register: obj.register === "casual" || obj.register === "polite" ? obj.register : defaultPrefs.register,
     kanaOnly: typeof obj.kanaOnly === "boolean" ? obj.kanaOnly : defaultPrefs.kanaOnly,
+    darkMode: typeof obj.darkMode === "boolean" ? obj.darkMode : defaultPrefs.darkMode,
   };
 }
 

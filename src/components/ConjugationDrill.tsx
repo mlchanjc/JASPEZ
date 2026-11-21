@@ -3,7 +3,8 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import type { ClassicalForm, LevelId, PatternDrillQuestion } from "@/data/types";
 import { generateClassicalVerbDrill, lexiconCount } from "@/lib/conjugator";
 import { useProgress } from "@/state/progress";
-import { levelAccent, theme } from "@/theme";
+import { useAppTheme } from "@/theme";
+import type { AppTheme } from "@/theme";
 
 const FORM_TABS: { id: ClassicalForm; label: string }[] = [
   { id: "mizen_nai", label: "未然形＋ない" },
@@ -20,6 +21,8 @@ type Props = {
 
 export function ConjugationDrill({ levelFilter }: Props) {
   const { prefs } = useProgress();
+  const { t, levelAccent } = useAppTheme();
+  const styles = useMemo(() => makeStyles(t), [t]);
   const [form, setForm] = useState<ClassicalForm>("katei_ba");
   const [recentIds, setRecentIds] = useState<string[]>([]);
   const [question, setQuestion] = useState<PatternDrillQuestion | null>(() =>
@@ -68,15 +71,13 @@ export function ConjugationDrill({ levelFilter }: Props) {
       <ScrollView style={styles.scroller} contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         <View style={styles.topCard}>
           <View style={styles.topRow}>
-            <View>
-              <Text style={styles.heading}>國文法・六大活用特訓</Text>
+            <View style={styles.topLeft}>
+              <Text style={styles.heading}>國文法 · 六大活用</Text>
               <Text style={styles.sub}>依學校國文法分類 · 本級共 {verbPoolCount} 個動詞</Text>
             </View>
-            <View style={styles.scorePill}>
-              <Text style={styles.scoreText}>
-                {correctCount} / {totalCount}
-              </Text>
-            </View>
+            <Text style={styles.scoreText}>
+              {correctCount} / {totalCount}
+            </Text>
           </View>
 
           <View style={styles.formGrid}>
@@ -97,12 +98,8 @@ export function ConjugationDrill({ levelFilter }: Props) {
 
         <View style={styles.drillCard}>
           <View style={styles.badges}>
-            <View style={[styles.levelBadge, { backgroundColor: accent }]}>
-              <Text style={styles.levelBadgeText}>{question.level}</Text>
-            </View>
-            <View style={styles.groupBadge}>
-              <Text style={styles.groupText}>{question.posLabel}</Text>
-            </View>
+            <Text style={[styles.levelText, { color: accent }]}>{question.level}</Text>
+            <Text style={styles.groupText}>{question.posLabel}</Text>
           </View>
 
           <View style={styles.verbBlock}>
@@ -111,28 +108,27 @@ export function ConjugationDrill({ levelFilter }: Props) {
             <Text style={styles.meaning}>{question.meaning}</Text>
           </View>
 
-          <Text style={styles.prompt}>{question.promptLabel}</Text>
+          <View style={styles.promptRule}>
+            <Text style={styles.prompt}>{question.promptLabel}</Text>
+          </View>
 
           <View style={styles.choicesGrid}>
             {question.choices.map((opt) => {
-              let bg = theme.white;
-              let border = theme.paperBorder;
-              let bottom = "#CBD5E1";
-              let color = theme.ink;
+              let bg = t.surface;
+              let border = t.paperBorder;
+              let color = t.ink;
               if (picked !== null) {
                 if (opt === question.answer) {
-                  bg = theme.successSoft;
-                  border = theme.success;
-                  bottom = theme.matchaDark;
-                  color = theme.matchaDark;
+                  bg = t.successSoft;
+                  border = t.success;
+                  color = t.matchaDark;
                 } else if (opt === picked) {
-                  bg = theme.errorSoft;
-                  border = theme.error;
-                  bottom = theme.error;
-                  color = theme.error;
+                  bg = t.errorSoft;
+                  border = t.error;
+                  color = t.error;
                 } else {
-                  bg = theme.surface;
-                  color = theme.inkMuted;
+                  bg = t.paper;
+                  color = t.inkMuted;
                 }
               }
               return (
@@ -140,7 +136,7 @@ export function ConjugationDrill({ levelFilter }: Props) {
                   key={opt}
                   disabled={picked !== null}
                   onPress={() => choose(opt)}
-                  style={[styles.choiceBtn, { backgroundColor: bg, borderColor: border, borderBottomColor: bottom }]}
+                  style={[styles.choiceBtn, { backgroundColor: bg, borderColor: border }]}
                 >
                   <Text style={[styles.choiceText, { color }]}>{opt}</Text>
                 </Pressable>
@@ -150,20 +146,19 @@ export function ConjugationDrill({ levelFilter }: Props) {
         </View>
       </ScrollView>
 
-      {/* PINNED ZERO-SCROLL FEEDBACK BAR */}
       {picked !== null && (
         <View
           style={[
             styles.feedbackDock,
             {
-              backgroundColor: isCorrect ? "#ECFDF5" : "#FFF1F2",
-              borderTopColor: isCorrect ? theme.success : theme.error,
+              backgroundColor: isCorrect ? t.successSoft : t.errorSoft,
+              borderTopColor: isCorrect ? t.success : t.error,
             },
           ]}
         >
           <View style={styles.dockTop}>
-            <Text style={[styles.dockTitle, { color: isCorrect ? theme.matchaDark : theme.error }]}>
-              {isCorrect ? `✓ 正確！${question.dict} → ${question.answer}` : `✕ 正解：${question.dict} → ${question.answer}`}
+            <Text style={[styles.dockTitle, { color: isCorrect ? t.matchaDark : t.error }]}>
+              {isCorrect ? `✓ 正確 · ${question.dict} → ${question.answer}` : `✕ 正解 · ${question.dict} → ${question.answer}`}
             </Text>
             <Text style={styles.dockBody} numberOfLines={2}>
               {question.rule}
@@ -171,7 +166,7 @@ export function ConjugationDrill({ levelFilter }: Props) {
           </View>
           <Pressable
             onPress={nextVerb}
-            style={[styles.dockBtn, { backgroundColor: isCorrect ? theme.success : theme.error }]}
+            style={[styles.dockBtn, { backgroundColor: isCorrect ? t.success : t.error }]}
           >
             <Text style={styles.dockBtnText}>下一題 →</Text>
           </Pressable>
@@ -181,113 +176,103 @@ export function ConjugationDrill({ levelFilter }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-  scroller: { flex: 1 },
-  scrollContent: { paddingHorizontal: 18, paddingBottom: 24, gap: 12 },
-  topCard: {
-    backgroundColor: theme.white,
-    borderRadius: 22,
-    padding: 15,
-    gap: 10,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-  },
-  topRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 8 },
-  heading: { fontSize: 16, fontWeight: "900", color: theme.ink },
-  sub: { fontSize: 12, color: theme.inkSoft, marginTop: 2, fontWeight: "600" },
-  scorePill: {
-    backgroundColor: theme.indigoSoft,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 99,
-  },
-  scoreText: { fontSize: 13, fontWeight: "900", color: theme.indigo },
-  formGrid: { flexDirection: "row", flexWrap: "wrap", gap: 6 },
-  formChip: {
-    width: "31.5%",
-    paddingVertical: 8,
-    paddingHorizontal: 4,
-    borderRadius: 12,
-    backgroundColor: theme.surface,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    alignItems: "center",
-  },
-  formChipActive: { backgroundColor: theme.indigo, borderColor: theme.indigo },
-  formChipText: { fontSize: 11, fontWeight: "800", color: theme.inkSoft },
-  formChipTextActive: { color: "#fff" },
-  drillCard: {
-    backgroundColor: theme.white,
-    borderRadius: 24,
-    padding: 18,
-    gap: 14,
-    alignItems: "center",
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    shadowColor: "#161B2E",
-    shadowOpacity: 0.05,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 5 },
-    elevation: 2,
-  },
-  badges: { flexDirection: "row", alignItems: "center", gap: 8 },
-  levelBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 99 },
-  levelBadgeText: { color: "#fff", fontSize: 12, fontWeight: "900" },
-  groupBadge: {
-    backgroundColor: theme.goldSoft,
-    paddingHorizontal: 12,
-    paddingVertical: 4,
-    borderRadius: 99,
-  },
-  groupText: { fontSize: 12, fontWeight: "800", color: theme.goldDark },
-  verbBlock: { alignItems: "center", gap: 2 },
-  rt: { fontSize: 13, fontWeight: "700", color: theme.inkSoft },
-  dict: { fontSize: 32, fontWeight: "900", color: theme.ink },
-  meaning: { fontSize: 14, fontWeight: "700", color: theme.inkSoft, marginTop: 2, textAlign: "center" },
-  prompt: {
-    fontSize: 13,
-    fontWeight: "900",
-    color: theme.indigo,
-    backgroundColor: theme.indigoSoft,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 10,
-  },
-  choicesGrid: { flexDirection: "row", flexWrap: "wrap", gap: 10, width: "100%" },
-  choiceBtn: {
-    width: "48%",
-    paddingVertical: 13,
-    borderRadius: 16,
-    borderWidth: 1.5,
-    borderBottomWidth: 4,
-    alignItems: "center",
-  },
-  choiceText: { fontSize: 16, fontWeight: "800" },
-  feedbackDock: {
-    borderTopWidth: 2,
-    paddingHorizontal: 18,
-    paddingVertical: 12,
-    gap: 10,
-  },
-  dockTop: { gap: 3 },
-  dockTitle: { fontSize: 15, fontWeight: "900" },
-  dockBody: { fontSize: 12, color: theme.ink, lineHeight: 18, fontWeight: "600" },
-  dockBtn: {
-    paddingVertical: 12,
-    borderRadius: 14,
-    alignItems: "center",
-  },
-  dockBtnText: { color: "#fff", fontSize: 15, fontWeight: "900" },
-  emptyCard: {
-    margin: 20,
-    padding: 24,
-    borderRadius: 24,
-    backgroundColor: theme.white,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    gap: 6,
-  },
-  emptyTitle: { fontSize: 18, fontWeight: "900", color: theme.ink },
-  emptyBody: { fontSize: 13, color: theme.inkSoft },
-});
+function makeStyles(t: AppTheme) {
+  return StyleSheet.create({
+    container: { flex: 1 },
+    scroller: { flex: 1 },
+    scrollContent: { paddingHorizontal: 18, paddingTop: 12, paddingBottom: 24, gap: 12 },
+    topCard: {
+      backgroundColor: t.white,
+      borderRadius: 8,
+      padding: 14,
+      gap: 10,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    topRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 8 },
+    topLeft: { flex: 1, minWidth: 0 },
+    heading: { fontSize: 15, fontWeight: "700", color: t.ink },
+    sub: { fontSize: 11.5, color: t.inkSoft, marginTop: 2 },
+    scoreText: { fontSize: 13, fontWeight: "700", color: t.ink },
+    formGrid: { flexDirection: "row", flexWrap: "wrap", gap: 6 },
+    formChip: {
+      width: "31.5%",
+      paddingVertical: 8,
+      paddingHorizontal: 4,
+      borderRadius: 6,
+      backgroundColor: t.surface,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      alignItems: "center",
+    },
+    formChipActive: { backgroundColor: t.ink, borderColor: t.ink },
+    formChipText: { fontSize: 11, fontWeight: "700", color: t.inkSoft },
+    formChipTextActive: { color: t.paper },
+    drillCard: {
+      backgroundColor: t.white,
+      borderRadius: 10,
+      padding: 18,
+      gap: 14,
+      alignItems: "center",
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    badges: { flexDirection: "row", alignItems: "center", gap: 10 },
+    levelText: { fontSize: 12, fontWeight: "800", letterSpacing: 0.6 },
+    groupText: {
+      fontSize: 11.5,
+      fontWeight: "700",
+      color: t.goldDark,
+      backgroundColor: t.goldSoft,
+      paddingHorizontal: 8,
+      paddingVertical: 2,
+      borderRadius: 4,
+    },
+    verbBlock: { alignItems: "center", gap: 2 },
+    rt: { fontSize: 13, fontWeight: "600", color: t.inkSoft },
+    dict: { fontFamily: t.serif, fontSize: 32, fontWeight: "700", color: t.ink },
+    meaning: { fontSize: 14, fontWeight: "600", color: t.inkSoft, marginTop: 2, textAlign: "center" },
+    promptRule: {
+      borderLeftWidth: 2,
+      borderLeftColor: t.vermillion,
+      paddingLeft: 10,
+      paddingVertical: 2,
+    },
+    prompt: { fontSize: 13, fontWeight: "700", color: t.ink },
+    choicesGrid: { width: "100%", flexDirection: "row", flexWrap: "wrap", gap: 8 },
+    choiceBtn: {
+      width: "48.5%",
+      borderRadius: 8,
+      borderWidth: 1,
+      paddingVertical: 14,
+      paddingHorizontal: 10,
+      alignItems: "center",
+    },
+    choiceText: { fontSize: 15, fontWeight: "700", textAlign: "center" },
+    feedbackDock: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 12,
+      paddingHorizontal: 18,
+      paddingVertical: 12,
+      borderTopWidth: 1.5,
+    },
+    dockTop: { flex: 1, minWidth: 0, gap: 3 },
+    dockTitle: { fontSize: 13.5, fontWeight: "700" },
+    dockBody: { fontSize: 11.5, color: t.inkSoft, lineHeight: 17 },
+    dockBtn: { paddingHorizontal: 15, paddingVertical: 10, borderRadius: 6 },
+    dockBtnText: { color: "#fff", fontSize: 13, fontWeight: "700" },
+    emptyCard: {
+      margin: 18,
+      backgroundColor: t.white,
+      borderRadius: 8,
+      padding: 24,
+      alignItems: "center",
+      gap: 6,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    emptyTitle: { fontSize: 15, fontWeight: "700", color: t.ink },
+    emptyBody: { fontSize: 13, color: t.inkSoft, textAlign: "center", lineHeight: 20 },
+  });
+}

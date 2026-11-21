@@ -10,10 +10,13 @@ import { LEVELS, manifests } from "@/data/registry";
 import type { LevelId } from "@/data/types";
 import { levelSummary, topicCompletion } from "@/lib/vocab";
 import { useProgress } from "@/state/progress";
-import { levelAccent, theme } from "@/theme";
+import { useAppTheme } from "@/theme";
+import type { AppTheme } from "@/theme";
 
 export default function LearnScreen() {
-  const { currentLevel, setCurrentLevel, learned, attempts } = useProgress();
+  const { currentLevel, setCurrentLevel, learned, attempts, setPref } = useProgress();
+  const { t, isDark, levelAccent } = useAppTheme();
+  const styles = useMemo(() => makeStyles(t), [t]);
   const [level, setLevel] = useState<LevelId>(currentLevel);
   const [search, setSearch] = useState("");
   const allTopics = manifests[level].topics;
@@ -22,7 +25,7 @@ export default function LearnScreen() {
   const topics = useMemo(() => {
     const q = search.trim().toLowerCase();
     if (!q) return allTopics;
-    return allTopics.filter((t) => t.title.toLowerCase().includes(q) || t.id.includes(q));
+    return allTopics.filter((item) => item.title.toLowerCase().includes(q) || item.id.includes(q));
   }, [allTopics, search]);
 
   const chooseLevel = (next: LevelId) => {
@@ -42,27 +45,32 @@ export default function LearnScreen() {
             <Pressable onPress={() => router.back()} hitSlop={12} style={styles.backBtn}>
               <Text style={styles.back}>← 返回</Text>
             </Pressable>
-            <Link href="/grammar" asChild>
-              <Pressable style={styles.grammarShortcut}>
-                <Text style={styles.grammarShortcutText}>✨ 文法特訓 →</Text>
+            <View style={styles.topRight}>
+              <Pressable onPress={() => setPref("darkMode", !isDark)} style={styles.themeBtn}>
+                <Text style={styles.themeBtnText}>{isDark ? "昼" : "夜"}</Text>
               </Pressable>
-            </Link>
-          </View>
-          <View style={styles.titleRow}>
-            <Text style={styles.title}>單字課程</Text>
-            <View style={[styles.countPill, { backgroundColor: `${accent}18` }]}>
-              <Text style={[styles.countPillText, { color: accent }]}>
-                {allTopics.length} 課 · {summary.total} 詞
-              </Text>
+              <Link href="/grammar" asChild>
+                <Pressable style={styles.grammarShortcut}>
+                  <Text style={styles.grammarShortcutText}>文法練功 →</Text>
+                </Pressable>
+              </Link>
             </View>
           </View>
+
+          <View style={styles.titleRow}>
+            <Text style={styles.title}>單字課程</Text>
+            <Text style={styles.countMeta}>
+              {allTopics.length} 課 · {summary.total} 詞
+            </Text>
+          </View>
+
           {allTopics.length > 0 && (
             <View style={styles.searchWrap}>
               <TextInput
                 value={search}
                 onChangeText={setSearch}
                 placeholder={`搜尋 ${level} 單字課（例如：動詞、名詞、05）`}
-                placeholderTextColor={theme.inkMuted}
+                placeholderTextColor={t.inkMuted}
                 style={styles.searchInput}
                 autoCapitalize="none"
                 autoCorrect={false}
@@ -83,9 +91,8 @@ export default function LearnScreen() {
         >
           {allTopics.length === 0 ? (
             <View style={styles.empty}>
-              <Text style={styles.emptyEmoji}>🚧</Text>
-              <Text style={styles.emptyTitle}>{level} 還在準備</Text>
-              <Text style={styles.emptyBody}>這一級的單字課程尚未開放，先挑戰 N5–N3 吧！</Text>
+              <Text style={styles.emptyTitle}>{level} 課程準備中</Text>
+              <Text style={styles.emptyBody}>這一級的單字課程尚未開放，請先切換至 N5–N3 練習。</Text>
             </View>
           ) : topics.length === 0 ? (
             <View style={styles.empty}>
@@ -104,27 +111,21 @@ export default function LearnScreen() {
                 >
                   <Pressable style={styles.topic}>
                     <View style={styles.cardTop}>
-                      <View style={[styles.codeBadge, { backgroundColor: accent }]}>
-                        <Text style={styles.codeBadgeText}>
-                          {level} · {topic.id}
-                        </Text>
-                      </View>
-                      <View style={styles.wordCountChip}>
-                        <Text style={styles.wordCountChipText}>{topic.wordCount} 詞</Text>
-                      </View>
-                      <View style={[styles.pctPill, { backgroundColor: `${accent}18` }]}>
-                        <Text style={[styles.topicPercent, { color: accent }]}>{pctInt}%</Text>
-                      </View>
+                      <Text style={[styles.codeText, { color: accent }]}>
+                        {level} · {topic.id}
+                      </Text>
+                      <Text style={styles.wordCountText}>{topic.wordCount} 詞</Text>
+                      <Text style={styles.topicPercent}>{pctInt}%</Text>
                     </View>
 
                     <Text style={styles.topicTitle}>{topic.title}</Text>
 
                     <View style={styles.cardFoot}>
                       <View style={styles.barWrap}>
-                        <ProgressBar percent={percent} color={accent} height={8} />
+                        <ProgressBar percent={percent} color={accent} height={3} />
                       </View>
                       <Text style={[styles.enterLabel, { color: accent }]}>
-                        {pctInt >= 100 ? "✓ 複習 →" : "開始學習 →"}
+                        {pctInt >= 100 ? "✓ 複習 →" : "開始 →"}
                       </Text>
                     </View>
                   </Pressable>
@@ -144,84 +145,80 @@ export default function LearnScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: theme.paper },
-  safe: { flex: 1 },
-  top: { paddingHorizontal: 18, paddingTop: 8, paddingBottom: 10, gap: 10 },
-  topBar: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
-  backBtn: {
-    backgroundColor: theme.white,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 99,
-    borderWidth: 1,
-    borderColor: theme.paperBorder,
-  },
-  back: { color: theme.ink, fontWeight: "800", fontSize: 13 },
-  grammarShortcut: {
-    backgroundColor: theme.indigoSoft,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 99,
-  },
-  grammarShortcutText: { color: theme.indigo, fontSize: 12, fontWeight: "900" },
-  titleRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
-  title: { fontSize: 26, fontWeight: "900", color: theme.ink },
-  countPill: { paddingHorizontal: 11, paddingVertical: 5, borderRadius: 99 },
-  countPillText: { fontSize: 12, fontWeight: "900" },
-  searchWrap: {
-    backgroundColor: theme.white,
-    borderRadius: 14,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    paddingHorizontal: 12,
-  },
-  searchInput: { height: 40, fontSize: 14, color: theme.ink, fontWeight: "600" },
-  summary: { paddingHorizontal: 18, paddingBottom: 10 },
-  topicScroller: { flex: 1 },
-  topics: { paddingHorizontal: 18, paddingBottom: 32, gap: 11 },
-  topic: {
-    backgroundColor: theme.white,
-    borderRadius: 22,
-    padding: 15,
-    gap: 9,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    shadowColor: "#161B2E",
-    shadowOpacity: 0.05,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 4 },
-    elevation: 2,
-  },
-  cardTop: { flexDirection: "row", alignItems: "center", gap: 7, flexWrap: "wrap" },
-  codeBadge: { paddingHorizontal: 9, paddingVertical: 3, borderRadius: 99 },
-  codeBadgeText: { color: "#fff", fontSize: 11, fontWeight: "900" },
-  wordCountChip: {
-    backgroundColor: theme.surface,
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 99,
-    borderWidth: 1,
-    borderColor: theme.paperBorder,
-  },
-  wordCountChipText: { color: theme.inkSoft, fontSize: 11, fontWeight: "800" },
-  pctPill: { paddingHorizontal: 9, paddingVertical: 3, borderRadius: 99, marginLeft: "auto" },
-  topicPercent: { fontSize: 11, fontWeight: "900" },
-  topicTitle: { fontSize: 16, fontWeight: "900", color: theme.ink, lineHeight: 22 },
-  cardFoot: { flexDirection: "row", alignItems: "center", gap: 12 },
-  barWrap: { flex: 1, minWidth: 0 },
-  enterLabel: { fontSize: 12, fontWeight: "900" },
-  empty: {
-    marginTop: 14,
-    padding: 26,
-    borderRadius: 24,
-    backgroundColor: theme.white,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    alignItems: "center",
-    gap: 6,
-  },
-  emptyEmoji: { fontSize: 32 },
-  emptyTitle: { fontSize: 18, fontWeight: "900", color: theme.ink },
-  emptyBody: { color: theme.inkSoft, textAlign: "center", lineHeight: 20, fontSize: 13 },
-});
+function makeStyles(t: AppTheme) {
+  return StyleSheet.create({
+    screen: { flex: 1, backgroundColor: t.paper },
+    safe: { flex: 1 },
+    top: { paddingHorizontal: 18, paddingTop: 10, paddingBottom: 10, gap: 10 },
+    topBar: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
+    topRight: { flexDirection: "row", alignItems: "center", gap: 8 },
+    backBtn: {
+      backgroundColor: t.white,
+      paddingHorizontal: 11,
+      paddingVertical: 5,
+      borderRadius: 4,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    back: { color: t.ink, fontWeight: "700", fontSize: 12.5 },
+    themeBtn: {
+      backgroundColor: t.white,
+      paddingHorizontal: 10,
+      paddingVertical: 5,
+      borderRadius: 4,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    themeBtnText: { color: t.inkSoft, fontWeight: "700", fontSize: 12.5 },
+    grammarShortcut: {
+      borderWidth: 1,
+      borderColor: t.ink,
+      paddingHorizontal: 11,
+      paddingVertical: 5,
+      borderRadius: 4,
+    },
+    grammarShortcutText: { color: t.ink, fontSize: 12, fontWeight: "700" },
+    titleRow: { flexDirection: "row", alignItems: "baseline", justifyContent: "space-between", gap: 8 },
+    title: { fontFamily: t.serif, fontSize: 25, fontWeight: "700", color: t.ink },
+    countMeta: { fontSize: 12, fontWeight: "600", color: t.inkSoft },
+    searchWrap: {
+      backgroundColor: t.white,
+      borderRadius: 6,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      paddingHorizontal: 12,
+    },
+    searchInput: { height: 38, fontSize: 13.5, color: t.ink },
+    summary: { paddingHorizontal: 18, paddingBottom: 10 },
+    topicScroller: { flex: 1 },
+    topics: { paddingHorizontal: 18, paddingBottom: 32, gap: 10 },
+    topic: {
+      backgroundColor: t.white,
+      borderRadius: 8,
+      padding: 14,
+      gap: 8,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    cardTop: { flexDirection: "row", alignItems: "center", gap: 10 },
+    codeText: { fontSize: 11.5, fontWeight: "800", letterSpacing: 0.6 },
+    wordCountText: { color: t.inkMuted, fontSize: 11.5, fontWeight: "600" },
+    topicPercent: { fontSize: 11.5, fontWeight: "700", color: t.inkSoft, marginLeft: "auto" },
+    topicTitle: { fontSize: 15, fontWeight: "700", color: t.ink, lineHeight: 21 },
+    cardFoot: { flexDirection: "row", alignItems: "center", gap: 12, paddingTop: 2 },
+    barWrap: { flex: 1, minWidth: 0 },
+    enterLabel: { fontSize: 12, fontWeight: "700" },
+    empty: {
+      marginTop: 14,
+      padding: 26,
+      borderRadius: 8,
+      backgroundColor: t.white,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      alignItems: "center",
+      gap: 6,
+    },
+    emptyTitle: { fontSize: 16, fontWeight: "700", color: t.ink },
+    emptyBody: { color: t.inkSoft, textAlign: "center", lineHeight: 20, fontSize: 13 },
+  });
+}

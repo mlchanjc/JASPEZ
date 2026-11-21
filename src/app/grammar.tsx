@@ -9,11 +9,12 @@ import { GrammarLessonMachine } from "@/components/GrammarLessonMachine";
 import { PaperBackdrop } from "@/components/PaperBackdrop";
 import { ProficiencyMeter } from "@/components/ProficiencyMeter";
 import { findGrammarLesson, grammarLessonKey, grammarLessonsByLevel } from "@/data/grammarRegistry";
-import type { LevelId, GrammarLesson } from "@/data/types";
+import type { GrammarLesson, LevelId } from "@/data/types";
 import { lessonAllowedPos } from "@/lib/conjugator";
 import { lessonExamples } from "@/lib/grammar";
 import { useProgress } from "@/state/progress";
-import { levelAccent, theme } from "@/theme";
+import { useAppTheme } from "@/theme";
+import type { AppTheme } from "@/theme";
 
 type GrammarTab = "lessons" | "drill" | "compare";
 
@@ -21,14 +22,13 @@ const LEVEL_FILTERS: LevelId[] = ["N5", "N4", "N3", "N2"];
 
 export default function GrammarScreen() {
   const { currentLevel, prefs, setPref, ghostGrammar, grammarLearned, getGrammarProficiency } = useProgress();
+  const { t, isDark, levelAccent } = useAppTheme();
+  const styles = useMemo(() => makeStyles(t), [t]);
   const [tab, setTab] = useState<GrammarTab>("lessons");
-  const [levelFilter, setLevelFilter] = useState<LevelId>(
-    currentLevel === "N1" ? "N5" : currentLevel,
-  );
+  const [levelFilter, setLevelFilter] = useState<LevelId>(currentLevel === "N1" ? "N5" : currentLevel);
   const [search, setSearch] = useState("");
   const [selectedRef, setSelectedRef] = useState<{ level: LevelId; id: string } | null>(null);
 
-  // Intercept Android hardware / nav-bar back button so closing a lesson returns to the lesson list
   useEffect(() => {
     if (!selectedRef) return;
     const sub = BackHandler.addEventListener("hardwareBackPress", () => {
@@ -75,44 +75,43 @@ export default function GrammarScreen() {
             >
               <Text style={styles.back}>← 返回</Text>
             </Pressable>
-            {ghostGrammar.length > 0 && (
-              <View style={styles.ghostPill}>
-                <Text style={styles.ghostPillText}>⚡ 錯題 {ghostGrammar.length}</Text>
-              </View>
-            )}
+            <View style={styles.navRight}>
+              {ghostGrammar.length > 0 && (
+                <View style={styles.ghostStamp}>
+                  <Text style={styles.ghostStampText}>錯題 {ghostGrammar.length}</Text>
+                </View>
+              )}
+              <Pressable onPress={() => setPref("darkMode", !isDark)} style={styles.miniBtn}>
+                <Text style={styles.miniBtnText}>{isDark ? "昼" : "夜"}</Text>
+              </Pressable>
+              <Pressable
+                onPress={() => setPref("showFurigana", !prefs.showFurigana)}
+                style={[styles.miniBtn, prefs.showFurigana && styles.miniBtnOn]}
+              >
+                <Text style={[styles.miniBtnText, prefs.showFurigana && styles.miniBtnTextOn]}>
+                  假名 {prefs.showFurigana ? "開" : "關"}
+                </Text>
+              </Pressable>
+            </View>
           </View>
 
-          <View style={styles.titleRow}>
-            <Text style={styles.title}>
-              {selectedLesson ? `${selectedLesson.level} 文法 ${selectedLesson.id}` : "文法練功機"}
-            </Text>
-            <Pressable
-              onPress={() => setPref("showFurigana", !prefs.showFurigana)}
-              style={[styles.miniToggle, prefs.showFurigana && styles.miniToggleOn]}
-            >
-              <Text style={[styles.miniToggleText, prefs.showFurigana && styles.miniToggleTextOn]}>
-                假名讀音 {prefs.showFurigana ? "開" : "關"}
-              </Text>
-            </Pressable>
-          </View>
+          <Text style={styles.title}>
+            {selectedLesson ? `${selectedLesson.level} 文法 ${selectedLesson.id}` : "文法練功"}
+          </Text>
 
           {!selectedLesson && tab !== "compare" && (
             <View style={styles.levelRow}>
               {LEVEL_FILTERS.map((lvl) => {
                 const selected = lvl === levelFilter;
-                const chipColor = levelAccent[lvl];
                 const count = grammarLessonsByLevel[lvl].length;
                 return (
                   <Pressable
                     key={lvl}
                     onPress={() => setLevelFilter(lvl)}
-                    style={[
-                      styles.levelChip,
-                      selected && { backgroundColor: chipColor, borderColor: chipColor },
-                    ]}
+                    style={[styles.levelChip, selected && styles.levelChipActive]}
                   >
-                    <Text style={[styles.levelChipText, selected && { color: "#fff" }]}>
-                      {lvl} ({count})
+                    <Text style={[styles.levelChipText, selected && styles.levelChipTextActive]}>
+                      {lvl} · {count}
                     </Text>
                   </Pressable>
                 );
@@ -126,7 +125,7 @@ export default function GrammarScreen() {
                 value={search}
                 onChangeText={setSearch}
                 placeholder={`搜尋 ${levelFilter} 文法（例如：ば、11、假定、中止形）`}
-                placeholderTextColor={theme.inkMuted}
+                placeholderTextColor={t.inkMuted}
                 style={styles.searchInput}
                 autoCapitalize="none"
                 autoCorrect={false}
@@ -137,7 +136,13 @@ export default function GrammarScreen() {
 
         <View style={styles.body}>
           {selectedLesson ? (
-            <GrammarLessonMachine lesson={selectedLesson} onBack={() => setSelectedRef(null)} onNavigateLesson={(lvl, id) => { if (findGrammarLesson(lvl, id)) setSelectedRef({ level: lvl, id }); }} />
+            <GrammarLessonMachine
+              lesson={selectedLesson}
+              onBack={() => setSelectedRef(null)}
+              onNavigateLesson={(lvl, id) => {
+                if (findGrammarLesson(lvl, id)) setSelectedRef({ level: lvl, id });
+              }}
+            />
           ) : tab === "lessons" ? (
             <FlatList
               data={lessonsList}
@@ -166,11 +171,9 @@ export default function GrammarScreen() {
                     style={styles.lessonCard}
                   >
                     <View style={styles.cardTop}>
-                      <View style={[styles.codeBadge, { backgroundColor: accent }]}>
-                        <Text style={styles.codeBadgeText}>
-                          {item.level} · {item.id}
-                        </Text>
-                      </View>
+                      <Text style={[styles.codeText, { color: accent }]}>
+                        {item.level} · {item.id}
+                      </Text>
                       {posList.length > 0 && (
                         <View style={styles.posRow}>
                           {posList.map((p) => (
@@ -182,7 +185,7 @@ export default function GrammarScreen() {
                       )}
                       {exCount > 0 && <Text style={styles.exBadge}>{exCount} 例句</Text>}
                       {isGhost ? (
-                        <Text style={styles.ghostFlag}>⚡ 錯題</Text>
+                        <Text style={styles.ghostFlag}>待複習</Text>
                       ) : learned ? (
                         <Text style={styles.learnedFlag}>✓ 已學</Text>
                       ) : null}
@@ -190,8 +193,8 @@ export default function GrammarScreen() {
 
                     <Text style={styles.cardPattern}>{item.title}</Text>
                     {item.pattern ? (
-                      <View style={styles.formulaPill}>
-                        <Text style={styles.formulaPillText} numberOfLines={2}>
+                      <View style={[styles.formulaBar, { borderLeftColor: accent }]}>
+                        <Text style={styles.formulaText} numberOfLines={2}>
                           {item.pattern}
                         </Text>
                       </View>
@@ -200,7 +203,7 @@ export default function GrammarScreen() {
                     <View style={styles.cardFoot}>
                       <ProficiencyMeter value={prof} />
                       <Text style={[styles.enterLabel, { color: accent }]}>
-                        {posList.length > 0 ? "⚡ 活用練功 →" : "閱讀練習 →"}
+                        {posList.length > 0 ? "活用練習 →" : "閱讀筆記 →"}
                       </Text>
                     </View>
                   </Pressable>
@@ -230,114 +233,122 @@ export default function GrammarScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: theme.paper },
-  safe: { flex: 1 },
-  top: { paddingHorizontal: 18, paddingTop: 8, paddingBottom: 10, gap: 10 },
-  navRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
-  backBtn: {
-    backgroundColor: theme.white,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 99,
-    borderWidth: 1,
-    borderColor: theme.paperBorder,
-  },
-  back: { color: theme.ink, fontWeight: "800", fontSize: 13 },
-  ghostPill: {
-    backgroundColor: theme.goldSoft,
-    paddingHorizontal: 11,
-    paddingVertical: 5,
-    borderRadius: 99,
-  },
-  ghostPillText: { fontSize: 12, fontWeight: "900", color: theme.goldDark },
-  titleRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
-  title: { fontSize: 24, fontWeight: "900", color: theme.ink },
-  miniToggle: {
-    paddingHorizontal: 11,
-    paddingVertical: 6,
-    borderRadius: 12,
-    backgroundColor: theme.white,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-  },
-  miniToggleOn: { backgroundColor: theme.indigo, borderColor: theme.indigo },
-  miniToggleText: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
-  miniToggleTextOn: { color: "#fff" },
-  levelRow: { flexDirection: "row", gap: 6 },
-  levelChip: {
-    flex: 1,
-    paddingVertical: 8,
-    borderRadius: 12,
-    backgroundColor: theme.white,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    alignItems: "center",
-  },
-  levelChipText: { fontSize: 12, fontWeight: "900", color: theme.inkSoft },
-  searchWrap: {
-    backgroundColor: theme.white,
-    borderRadius: 14,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    paddingHorizontal: 13,
-    paddingVertical: 9,
-  },
-  searchInput: { fontSize: 14, color: theme.ink, fontWeight: "600" },
-  body: { flex: 1 },
-  lessonList: { paddingHorizontal: 18, paddingBottom: 32, gap: 11 },
-  lessonCard: {
-    backgroundColor: theme.white,
-    borderRadius: 22,
-    padding: 15,
-    gap: 8,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    shadowColor: "#161B2E",
-    shadowOpacity: 0.05,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 4 },
-    elevation: 2,
-  },
-  cardTop: { flexDirection: "row", alignItems: "center", gap: 6, flexWrap: "wrap" },
-  codeBadge: { paddingHorizontal: 9, paddingVertical: 3, borderRadius: 99 },
-  codeBadgeText: { color: "#fff", fontSize: 11, fontWeight: "900" },
-  posRow: { flexDirection: "row", gap: 4 },
-  posChip: {
-    backgroundColor: theme.surface,
-    borderWidth: 1,
-    borderColor: theme.paperBorder,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 6,
-  },
-  posChipText: { fontSize: 10, fontWeight: "900", color: theme.inkSoft },
-  exBadge: { fontSize: 11, fontWeight: "700", color: theme.inkMuted },
-  learnedFlag: { marginLeft: "auto", fontSize: 11, fontWeight: "900", color: theme.matchaDark },
-  ghostFlag: { marginLeft: "auto", fontSize: 11, fontWeight: "900", color: theme.goldDark },
-  cardPattern: { fontSize: 16, fontWeight: "900", color: theme.ink, lineHeight: 22 },
-  formulaPill: {
-    backgroundColor: theme.indigoSoft,
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-  },
-  formulaPillText: { fontSize: 12, fontWeight: "800", color: theme.indigo, lineHeight: 18 },
-  cardFoot: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingTop: 2,
-  },
-  enterLabel: { fontSize: 13, fontWeight: "900" },
-  emptyCard: {
-    backgroundColor: theme.white,
-    borderRadius: 20,
-    padding: 24,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    gap: 6,
-  },
-  emptyTitle: { fontSize: 16, fontWeight: "900", color: theme.ink },
-  emptyBody: { fontSize: 13, color: theme.inkSoft },
-});
+function makeStyles(t: AppTheme) {
+  return StyleSheet.create({
+    screen: { flex: 1, backgroundColor: t.paper },
+    safe: { flex: 1 },
+    top: {
+      paddingHorizontal: 18,
+      paddingTop: 10,
+      paddingBottom: 12,
+      gap: 10,
+      borderBottomWidth: 1,
+      borderBottomColor: t.paperBorder,
+    },
+    navRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
+    navRight: { flexDirection: "row", alignItems: "center", gap: 6 },
+    backBtn: {
+      backgroundColor: t.white,
+      paddingHorizontal: 11,
+      paddingVertical: 5,
+      borderRadius: 4,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    back: { color: t.ink, fontWeight: "700", fontSize: 12.5 },
+    ghostStamp: {
+      borderWidth: 1,
+      borderColor: t.vermillion,
+      paddingHorizontal: 8,
+      paddingVertical: 4,
+      borderRadius: 4,
+    },
+    ghostStampText: { color: t.vermillion, fontSize: 11, fontWeight: "700" },
+    miniBtn: {
+      backgroundColor: t.white,
+      paddingHorizontal: 9,
+      paddingVertical: 5,
+      borderRadius: 4,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    miniBtnOn: { backgroundColor: t.ink, borderColor: t.ink },
+    miniBtnText: { color: t.inkSoft, fontSize: 11.5, fontWeight: "700" },
+    miniBtnTextOn: { color: t.paper },
+    title: { fontFamily: t.serif, fontSize: 24, fontWeight: "700", color: t.ink },
+    levelRow: { flexDirection: "row", gap: 6 },
+    levelChip: {
+      flex: 1,
+      alignItems: "center",
+      paddingVertical: 7,
+      borderRadius: 6,
+      backgroundColor: t.white,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    levelChipActive: { backgroundColor: t.ink, borderColor: t.ink },
+    levelChipText: { fontSize: 12, fontWeight: "700", color: t.inkSoft },
+    levelChipTextActive: { color: t.paper },
+    searchWrap: {
+      backgroundColor: t.white,
+      borderRadius: 6,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      paddingHorizontal: 12,
+    },
+    searchInput: { height: 38, fontSize: 13.5, color: t.ink },
+    body: { flex: 1 },
+    lessonList: { paddingHorizontal: 18, paddingTop: 12, paddingBottom: 32, gap: 10 },
+    lessonCard: {
+      backgroundColor: t.white,
+      borderRadius: 8,
+      padding: 15,
+      gap: 9,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    cardTop: { flexDirection: "row", alignItems: "center", gap: 8, flexWrap: "wrap" },
+    codeText: { fontSize: 11.5, fontWeight: "800", letterSpacing: 0.6 },
+    posRow: { flexDirection: "row", gap: 4 },
+    posChip: {
+      backgroundColor: t.surface,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      paddingHorizontal: 6,
+      paddingVertical: 1,
+      borderRadius: 4,
+    },
+    posChipText: { fontSize: 10.5, fontWeight: "700", color: t.inkSoft },
+    exBadge: { fontSize: 11, fontWeight: "600", color: t.inkMuted },
+    ghostFlag: { fontSize: 11, fontWeight: "700", color: t.vermillion, marginLeft: "auto" },
+    learnedFlag: { fontSize: 11, fontWeight: "700", color: t.matcha, marginLeft: "auto" },
+    cardPattern: { fontFamily: t.serif, fontSize: 16, fontWeight: "700", color: t.ink, lineHeight: 23 },
+    formulaBar: {
+      paddingLeft: 10,
+      borderLeftWidth: 2,
+      paddingVertical: 2,
+    },
+    formulaText: { fontSize: 12.5, fontWeight: "600", color: t.inkSoft, lineHeight: 19 },
+    cardFoot: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      paddingTop: 8,
+      borderTopWidth: 1,
+      borderTopColor: t.paperBorder,
+    },
+    enterLabel: { fontSize: 12, fontWeight: "700" },
+    emptyCard: {
+      marginTop: 16,
+      backgroundColor: t.white,
+      borderRadius: 8,
+      padding: 24,
+      alignItems: "center",
+      gap: 6,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    emptyTitle: { fontSize: 15, fontWeight: "700", color: t.ink },
+    emptyBody: { fontSize: 13, color: t.inkSoft, textAlign: "center" },
+  });
+}

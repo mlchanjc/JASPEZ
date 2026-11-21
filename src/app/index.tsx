@@ -11,9 +11,8 @@ import { grammarLevelSummary } from "@/lib/grammar";
 import { PROFICIENCY_LEVELS } from "@/lib/proficiency";
 import { levelSummary } from "@/lib/vocab";
 import { useProgress } from "@/state/progress";
-import { levelAccent, theme } from "@/theme";
-
-const proficiencyColor = [theme.inkMuted, theme.gold, theme.indigo, theme.matcha];
+import { useAppTheme } from "@/theme";
+import type { AppTheme } from "@/theme";
 
 export default function DashboardScreen() {
   const {
@@ -26,10 +25,16 @@ export default function DashboardScreen() {
     grammarLearned,
     grammarAttempts,
     ghostGrammar,
+    prefs,
+    setPref,
   } = useProgress();
+  const { t, isDark, levelAccent } = useAppTheme();
+  const styles = useMemo(() => makeStyles(t), [t]);
   const [boardTab, setBoardTab] = useState<"vocab" | "grammar">("vocab");
   const insets = useSafeAreaInsets();
   const buttonBottom = insets.bottom + 16;
+
+  const proficiencyColor = [t.inkMuted, t.gold, t.indigo, t.matcha];
 
   const vocabSummaries = useMemo(
     () => LEVELS.map((level) => ({ level, ...levelSummary(level, learned, attempts) })),
@@ -62,45 +67,54 @@ export default function DashboardScreen() {
   );
 
   const activeTotals = boardTab === "vocab" ? vocabTotals : grammarTotals;
+  const activeList = boardTab === "vocab" ? vocabSummaries : grammarSummaries;
 
   return (
     <View style={styles.screen}>
       <PaperBackdrop />
       <SafeAreaView style={styles.safe} edges={["top", "left", "right"]}>
         <ScrollView
-          contentContainerStyle={[styles.content, { paddingBottom: buttonBottom + 96 }]}
+          contentContainerStyle={[styles.content, { paddingBottom: buttonBottom + 84 }]}
           showsVerticalScrollIndicator={false}
         >
-          {/* Modern Playful Hero Card */}
-          <View style={styles.heroCard}>
-            <View style={styles.heroTop}>
-              <View style={styles.brandPill}>
-                <Text style={styles.brandPillText}>JASPEZ · 離線日語特訓</Text>
-              </View>
-              <View style={[styles.levelPill, { backgroundColor: levelAccent[currentLevel] }]}>
-                <Text style={styles.levelPillText}>目標 {currentLevel}</Text>
+          {/* Editorial Masthead */}
+          <View style={styles.masthead}>
+            <View style={styles.mastheadTop}>
+              <Text style={styles.kicker}>JASPEZ · 目標 {currentLevel}</Text>
+              <View style={styles.topControls}>
+                <Pressable
+                  onPress={() => setPref("darkMode", !isDark)}
+                  style={styles.themeToggle}
+                  accessibilityLabel="切換深淺色模式"
+                >
+                  <Text style={styles.themeToggleText}>{isDark ? "昼 Light" : "夜 Dark"}</Text>
+                </Pressable>
+                <View style={styles.streakStamp}>
+                  <Text style={styles.streakText}>連續 {streak} 日</Text>
+                </View>
               </View>
             </View>
             <Text style={styles.title}>今日の勉強</Text>
             <Text style={styles.subtitle}>
-              N5–N3 單字、國文法與 {totalLexicon} 詞即時活用練功機
+              N5–N3 單字、國文法課堂與 {totalLexicon} 詞即時活用練功
             </Text>
+          </View>
 
-            <View style={styles.heroStats}>
-              <View style={styles.heroStat}>
-                <Text style={styles.heroStatValue}>🔥 {streak}</Text>
-                <Text style={styles.heroStatLabel}>連續天數</Text>
-              </View>
-              <View style={styles.heroDivider} />
-              <View style={styles.heroStat}>
-                <Text style={styles.heroStatValue}>{learnedCount}</Text>
-                <Text style={styles.heroStatLabel}>已學單字</Text>
-              </View>
-              <View style={styles.heroDivider} />
-              <View style={styles.heroStat}>
-                <Text style={styles.heroStatValue}>{grammarLearnedCount}</Text>
-                <Text style={styles.heroStatLabel}>已學文法</Text>
-              </View>
+          {/* 3-Column Hairline Metrics Strip */}
+          <View style={styles.statsStrip}>
+            <View style={styles.statCell}>
+              <Text style={styles.statValue}>{learnedCount}</Text>
+              <Text style={styles.statLabel}>已學單字</Text>
+            </View>
+            <View style={[styles.statCell, styles.statBorder]}>
+              <Text style={styles.statValue}>{grammarLearnedCount}</Text>
+              <Text style={styles.statLabel}>已學文法</Text>
+            </View>
+            <View style={[styles.statCell, styles.statBorder]}>
+              <Text style={[styles.statValue, ghostGrammar.length > 0 && { color: t.vermillion }]}>
+                {ghostGrammar.length}
+              </Text>
+              <Text style={styles.statLabel}>待複習錯題</Text>
             </View>
           </View>
 
@@ -108,14 +122,12 @@ export default function DashboardScreen() {
           {ghostGrammar.length > 0 && (
             <Link href="/grammar" asChild>
               <Pressable style={styles.ghostBanner}>
-                <View style={styles.ghostIcon}>
-                  <Text style={styles.ghostEmoji}>⚡</Text>
+                <View style={styles.ghostRule} />
+                <View style={styles.ghostBody}>
+                  <Text style={styles.ghostTitle}>尚有 {ghostGrammar.length} 個文法錯題待複習</Text>
+                  <Text style={styles.ghostSub}>系統已自動換新例句，點擊立即練習</Text>
                 </View>
-                <View style={styles.ghostBannerText}>
-                  <Text style={styles.ghostTitle}>有 {ghostGrammar.length} 個文法錯題待複習</Text>
-                  <Text style={styles.ghostSub}>系統已自動換新例句，點擊立即挑戰</Text>
-                </View>
-                <Text style={styles.ghostArrow}>GO →</Text>
+                <Text style={styles.ghostArrow}>前往 →</Text>
               </Pressable>
             </Link>
           )}
@@ -141,101 +153,77 @@ export default function DashboardScreen() {
                 </View>
               </View>
               <Text style={styles.overall}>
-                總計 {activeTotals.learned}/{activeTotals.total} 已學 · {activeTotals.proficiency[3]} 記住 ·{" "}
+                總計 {activeTotals.learned} / {activeTotals.total} · {activeTotals.proficiency[3]} 記住 ·{" "}
                 {activeTotals.proficiency[2]} 熟悉 · {activeTotals.proficiency[1]} 初識
               </Text>
             </View>
 
-            {boardTab === "vocab"
-              ? vocabSummaries.map((item) => {
-                  const isPlaceholder = item.total === 0;
-                  return (
-                    <View key={item.level} style={[styles.levelBlock, isPlaceholder && styles.levelBlockMuted]}>
-                      <View style={styles.levelHead}>
-                        <View style={[styles.levelDot, { backgroundColor: levelAccent[item.level] }]}>
-                          <Text style={styles.levelDotText}>{item.level}</Text>
-                        </View>
-                        <Text style={styles.levelMeta}>
-                          {isPlaceholder ? "即將推出" : `${item.lessons} 課 · ${item.learnedCount}/${item.total}`}
-                        </Text>
-                        {!isPlaceholder && (
-                          <Text style={styles.percent}>{Math.round(item.percent * 100)}%</Text>
-                        )}
-                      </View>
+            <View style={styles.levelList}>
+              {activeList.map((item, idx) => {
+                const isPlaceholder = item.total === 0;
+                const accent = levelAccent[item.level];
+                const metaText = isPlaceholder
+                  ? "即將推出"
+                  : boardTab === "vocab"
+                    ? `${(item as (typeof vocabSummaries)[number]).lessons} 課 · ${item.learnedCount} / ${item.total}`
+                    : `${item.learnedCount} / ${item.total} 句型`;
+
+                return (
+                  <View
+                    key={item.level}
+                    style={[
+                      styles.levelBlock,
+                      idx > 0 && styles.levelBlockBorder,
+                      isPlaceholder && styles.levelBlockMuted,
+                    ]}
+                  >
+                    <View style={styles.levelHead}>
+                      <Text style={[styles.levelCode, { color: accent }]}>{item.level}</Text>
+                      <Text style={styles.levelMeta}>{metaText}</Text>
                       {!isPlaceholder && (
-                        <>
-                          <View style={styles.barWrap}>
-                            <ProgressBar percent={item.percent} color={levelAccent[item.level]} height={9} />
-                          </View>
-                          <View style={styles.breakdown}>
-                            {PROFICIENCY_LEVELS.map((label, index) => (
-                              <View key={label} style={styles.breakItem}>
-                                <Text style={[styles.breakValue, { color: proficiencyColor[index] }]}>
-                                  {item.proficiencyCounts[index] ?? 0}
-                                </Text>
-                                <Text style={styles.breakLabel}>{label}</Text>
-                              </View>
-                            ))}
-                          </View>
-                        </>
+                        <Text style={styles.percent}>{Math.round(item.percent * 100)}%</Text>
                       )}
                     </View>
-                  );
-                })
-              : grammarSummaries.map((item) => {
-                  const isPlaceholder = item.total === 0;
-                  return (
-                    <View key={item.level} style={[styles.levelBlock, isPlaceholder && styles.levelBlockMuted]}>
-                      <View style={styles.levelHead}>
-                        <View style={[styles.levelDot, { backgroundColor: levelAccent[item.level] }]}>
-                          <Text style={styles.levelDotText}>{item.level}</Text>
+                    {!isPlaceholder && (
+                      <>
+                        <View style={styles.barWrap}>
+                          <ProgressBar percent={item.percent} color={accent} height={4} />
                         </View>
-                        <Text style={styles.levelMeta}>
-                          {isPlaceholder ? "即將推出" : `${item.learnedCount}/${item.total} 句型（多情境題庫）`}
-                        </Text>
-                        {!isPlaceholder && (
-                          <Text style={styles.percent}>{Math.round(item.percent * 100)}%</Text>
-                        )}
-                      </View>
-                      {!isPlaceholder && (
-                        <>
-                          <View style={styles.barWrap}>
-                            <ProgressBar percent={item.percent} color={levelAccent[item.level]} height={9} />
-                          </View>
-                          <View style={styles.breakdown}>
-                            {PROFICIENCY_LEVELS.map((label, index) => (
-                              <View key={label} style={styles.breakItem}>
-                                <Text style={[styles.breakValue, { color: proficiencyColor[index] }]}>
-                                  {item.proficiencyCounts[index] ?? 0}
-                                </Text>
-                                <Text style={styles.breakLabel}>{label}</Text>
-                              </View>
-                            ))}
-                          </View>
-                        </>
-                      )}
-                    </View>
-                  );
-                })}
+                        <View style={styles.breakdown}>
+                          {PROFICIENCY_LEVELS.map((label, index) => (
+                            <View key={label} style={styles.breakItem}>
+                              <Text style={[styles.breakValue, { color: proficiencyColor[index] }]}>
+                                {item.proficiencyCounts[index] ?? 0}
+                              </Text>
+                              <Text style={styles.breakLabel}>{label}</Text>
+                            </View>
+                          ))}
+                        </View>
+                      </>
+                    )}
+                  </View>
+                );
+              })}
+            </View>
           </View>
         </ScrollView>
 
-        {/* Pinned Tactile Dual Action Bar */}
+        {/* Pinned Editorial Dual Action Bar */}
         <View style={[styles.ctaBar, { bottom: buttonBottom }]}>
           <Link href="/learn" asChild>
             <PressableScale
               accessibilityLabel="開始學單字"
-              style={StyleSheet.flatten([styles.ctaBtn, styles.ctaVocab])}
+              style={StyleSheet.flatten([styles.ctaBtn, styles.ctaSecondary])}
             >
-              <Text style={styles.ctaText}>📚 學單字</Text>
+              <Text style={styles.ctaSecondaryText}>單字課程</Text>
             </PressableScale>
           </Link>
           <Link href="/grammar" asChild>
             <PressableScale
               accessibilityLabel="文法特訓"
-              style={StyleSheet.flatten([styles.ctaBtn, styles.ctaGrammar])}
+              style={StyleSheet.flatten([styles.ctaBtn, styles.ctaPrimary])}
             >
-              <Text style={styles.ctaText}>✨ 練文法</Text>
+              <Text style={styles.ctaPrimaryText}>文法練功 →</Text>
             </PressableScale>
           </Link>
         </View>
@@ -244,145 +232,136 @@ export default function DashboardScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: theme.paper },
-  safe: { flex: 1 },
-  content: { padding: 20, gap: 16 },
-  heroCard: {
-    backgroundColor: theme.ink,
-    borderRadius: 28,
-    padding: 20,
-    gap: 8,
-    shadowColor: "#161B2E",
-    shadowOpacity: 0.16,
-    shadowRadius: 18,
-    shadowOffset: { width: 0, height: 10 },
-    elevation: 5,
-  },
-  heroTop: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
-  brandPill: {
-    backgroundColor: "rgba(255, 255, 255, 0.12)",
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 99,
-  },
-  brandPillText: { color: "#E2E8F0", fontSize: 11, fontWeight: "800", letterSpacing: 0.6 },
-  levelPill: { paddingHorizontal: 11, paddingVertical: 5, borderRadius: 99 },
-  levelPillText: { color: "#fff", fontSize: 12, fontWeight: "900" },
-  title: { marginTop: 4, fontSize: 32, fontWeight: "900", color: "#fff" },
-  subtitle: { color: "#CBD5E1", fontSize: 13, lineHeight: 19, fontWeight: "600" },
-  heroStats: {
-    marginTop: 10,
-    backgroundColor: "rgba(255, 255, 255, 0.08)",
-    borderRadius: 18,
-    paddingVertical: 12,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  heroStat: { flex: 1, alignItems: "center", gap: 2 },
-  heroStatValue: { fontSize: 20, fontWeight: "900", color: "#fff" },
-  heroStatLabel: { fontSize: 11, fontWeight: "700", color: "#94A3B8" },
-  heroDivider: { width: 1, height: 28, backgroundColor: "rgba(255, 255, 255, 0.14)" },
-  ghostBanner: {
-    backgroundColor: theme.white,
-    borderWidth: 2,
-    borderColor: theme.gold,
-    borderRadius: 20,
-    padding: 14,
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 12,
-  },
-  ghostIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: 14,
-    backgroundColor: theme.goldSoft,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  ghostEmoji: { fontSize: 20 },
-  ghostBannerText: { flex: 1, gap: 2 },
-  ghostTitle: { fontSize: 14, fontWeight: "900", color: theme.ink },
-  ghostSub: { fontSize: 12, color: theme.inkSoft, fontWeight: "600" },
-  ghostArrow: { fontSize: 13, fontWeight: "900", color: theme.goldDark },
-  card: {
-    backgroundColor: theme.white,
-    borderRadius: 26,
-    paddingHorizontal: 18,
-    paddingTop: 18,
-    paddingBottom: 8,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    shadowColor: "#161B2E",
-    shadowOpacity: 0.05,
-    shadowRadius: 14,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 2,
-  },
-  cardHead: { gap: 8, paddingBottom: 14 },
-  cardTitleRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
-  section: { fontSize: 18, fontWeight: "900", color: theme.ink },
-  segmented: {
-    flexDirection: "row",
-    backgroundColor: theme.paper,
-    borderRadius: 12,
-    padding: 3,
-    gap: 2,
-  },
-  segBtn: { paddingHorizontal: 14, paddingVertical: 6, borderRadius: 9 },
-  segBtnActive: { backgroundColor: theme.white },
-  segText: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
-  segTextActive: { color: theme.indigo },
-  overall: { color: theme.inkSoft, fontSize: 12, fontWeight: "700", lineHeight: 19 },
-  levelBlock: {
-    gap: 10,
-    paddingVertical: 14,
-    borderTopWidth: 1,
-    borderTopColor: theme.paperBorder,
-  },
-  levelBlockMuted: {
-    paddingVertical: 11,
-    opacity: 0.65,
-  },
-  levelHead: { flexDirection: "row", alignItems: "center", gap: 10 },
-  levelDot: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 99 },
-  levelDotText: { color: "#fff", fontWeight: "900", fontSize: 12 },
-  levelMeta: { flex: 1, color: theme.inkSoft, fontSize: 13, fontWeight: "700" },
-  percent: { color: theme.ink, fontSize: 13, fontWeight: "900" },
-  barWrap: { flex: 1, minWidth: 0 },
-  breakdown: { flexDirection: "row", paddingTop: 2 },
-  breakItem: { flex: 1, alignItems: "center", gap: 2 },
-  breakValue: { fontSize: 14, fontWeight: "900" },
-  breakLabel: { color: theme.inkMuted, fontSize: 11, fontWeight: "700" },
-  ctaBar: {
-    position: "absolute",
-    left: 20,
-    right: 20,
-    flexDirection: "row",
-    gap: 12,
-  },
-  ctaBtn: {
-    flex: 1,
-    height: 58,
-    borderRadius: 20,
-    borderBottomWidth: 4,
-    alignItems: "center",
-    justifyContent: "center",
-    shadowOpacity: 0.2,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 6,
-  },
-  ctaVocab: {
-    backgroundColor: theme.vermillion,
-    borderBottomColor: theme.vermillionDark,
-    shadowColor: theme.vermillion,
-  },
-  ctaGrammar: {
-    backgroundColor: theme.indigo,
-    borderBottomColor: theme.indigoDark,
-    shadowColor: theme.indigo,
-  },
-  ctaText: { color: "#fff", fontSize: 16, fontWeight: "900" },
-});
+function makeStyles(t: AppTheme) {
+  return StyleSheet.create({
+    screen: { flex: 1, backgroundColor: t.paper },
+    safe: { flex: 1 },
+    content: { paddingHorizontal: 20, paddingTop: 14, gap: 18 },
+    masthead: {
+      paddingBottom: 16,
+      borderBottomWidth: 1,
+      borderBottomColor: t.paperBorder,
+      gap: 6,
+    },
+    mastheadTop: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: 8,
+    },
+    kicker: {
+      fontSize: 11,
+      fontWeight: "700",
+      letterSpacing: 1.4,
+      color: t.inkMuted,
+    },
+    topControls: { flexDirection: "row", alignItems: "center", gap: 8 },
+    themeToggle: {
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      backgroundColor: t.white,
+      paddingHorizontal: 10,
+      paddingVertical: 4,
+      borderRadius: 4,
+    },
+    themeToggleText: { fontSize: 11.5, fontWeight: "700", color: t.inkSoft },
+    streakStamp: {
+      borderWidth: 1,
+      borderColor: t.vermillion,
+      paddingHorizontal: 9,
+      paddingVertical: 4,
+      borderRadius: 4,
+    },
+    streakText: { fontSize: 11.5, fontWeight: "700", color: t.vermillion },
+    title: {
+      fontFamily: t.serif,
+      fontSize: 30,
+      fontWeight: "700",
+      color: t.ink,
+      letterSpacing: 0.5,
+      marginTop: 4,
+    },
+    subtitle: { fontSize: 13, color: t.inkSoft, lineHeight: 20 },
+    statsStrip: {
+      flexDirection: "row",
+      paddingBottom: 16,
+      borderBottomWidth: 1,
+      borderBottomColor: t.paperBorder,
+    },
+    statCell: { flex: 1, gap: 2 },
+    statBorder: { borderLeftWidth: 1, borderLeftColor: t.paperBorder, paddingLeft: 14 },
+    statValue: { fontSize: 22, fontWeight: "700", color: t.ink },
+    statLabel: { fontSize: 11.5, color: t.inkSoft, fontWeight: "600" },
+    ghostBanner: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 12,
+      backgroundColor: t.white,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      borderRadius: 8,
+      padding: 14,
+    },
+    ghostRule: { width: 3, alignSelf: "stretch", backgroundColor: t.vermillion, borderRadius: 2 },
+    ghostBody: { flex: 1, minWidth: 0, gap: 2 },
+    ghostTitle: { fontSize: 14, fontWeight: "700", color: t.ink },
+    ghostSub: { fontSize: 12, color: t.inkSoft },
+    ghostArrow: { fontSize: 12.5, fontWeight: "700", color: t.vermillion },
+    card: {
+      backgroundColor: t.white,
+      borderRadius: 10,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      padding: 16,
+      gap: 14,
+    },
+    cardHead: { gap: 8, paddingBottom: 12, borderBottomWidth: 1, borderBottomColor: t.paperBorder },
+    cardTitleRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
+    section: { fontSize: 15, fontWeight: "700", color: t.ink, letterSpacing: 0.4 },
+    segmented: {
+      flexDirection: "row",
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      borderRadius: 6,
+      padding: 2,
+      backgroundColor: t.surface,
+    },
+    segBtn: { paddingHorizontal: 12, paddingVertical: 5, borderRadius: 4 },
+    segBtnActive: { backgroundColor: t.ink },
+    segText: { fontSize: 12, fontWeight: "700", color: t.inkSoft },
+    segTextActive: { color: t.paper },
+    overall: { fontSize: 12, color: t.inkSoft, lineHeight: 18 },
+    levelList: { gap: 0 },
+    levelBlock: { paddingVertical: 12, gap: 8 },
+    levelBlockBorder: { borderTopWidth: 1, borderTopColor: t.paperBorder },
+    levelBlockMuted: { opacity: 0.45 },
+    levelHead: { flexDirection: "row", alignItems: "center", gap: 10 },
+    levelCode: { width: 30, fontSize: 14, fontWeight: "800", letterSpacing: 0.5 },
+    levelMeta: { flex: 1, fontSize: 13, color: t.inkSoft, fontWeight: "600" },
+    percent: { fontSize: 12.5, fontWeight: "700", color: t.ink },
+    barWrap: { flex: 1, minWidth: 0 },
+    breakdown: { flexDirection: "row", gap: 6, paddingTop: 2 },
+    breakItem: { flex: 1, alignItems: "center", gap: 1 },
+    breakValue: { fontSize: 13.5, fontWeight: "700" },
+    breakLabel: { fontSize: 10.5, color: t.inkMuted, fontWeight: "600" },
+    ctaBar: {
+      position: "absolute",
+      left: 20,
+      right: 20,
+      flexDirection: "row",
+      gap: 10,
+    },
+    ctaBtn: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      paddingVertical: 14,
+      borderRadius: 8,
+      borderWidth: 1,
+    },
+    ctaSecondary: { backgroundColor: t.white, borderColor: t.ink },
+    ctaPrimary: { backgroundColor: t.ink, borderColor: t.ink },
+    ctaSecondaryText: { color: t.ink, fontSize: 14, fontWeight: "700", letterSpacing: 0.4 },
+    ctaPrimaryText: { color: t.paper, fontSize: 14, fontWeight: "700", letterSpacing: 0.4 },
+  });
+}

@@ -4,7 +4,8 @@ import type { LevelId, VocabWord } from "@/data/types";
 import { attemptStats, PROFICIENCY_LEVELS } from "@/lib/proficiency";
 import { wordKey } from "@/lib/vocab";
 import { useProgress } from "@/state/progress";
-import { levelAccent, theme } from "@/theme";
+import { useAppTheme } from "@/theme";
+import type { AppTheme } from "@/theme";
 import { ProficiencyMeter } from "./ProficiencyMeter";
 
 function hasNote(word: VocabWord) {
@@ -13,6 +14,8 @@ function hasNote(word: VocabWord) {
 
 export function VocabList({ level, topicId, words }: { level: LevelId; topicId: string; words: VocabWord[] }) {
   const { attempts, learned, setProficiency } = useProgress();
+  const { t, levelAccent } = useAppTheme();
+  const styles = useMemo(() => makeStyles(t), [t]);
   const { width } = useWindowDimensions();
   const singleColumn = width < 720;
   const [search, setSearch] = useState("");
@@ -44,7 +47,7 @@ export function VocabList({ level, topicId, words }: { level: LevelId; topicId: 
             value={search}
             onChangeText={setSearch}
             placeholder="搜尋本課單字、假名或中文意思"
-            placeholderTextColor={theme.inkMuted}
+            placeholderTextColor={t.inkMuted}
             style={styles.searchInput}
             autoCapitalize="none"
             autoCorrect={false}
@@ -82,16 +85,8 @@ export function VocabList({ level, topicId, words }: { level: LevelId; topicId: 
                 />
                 <View style={styles.cardTop} pointerEvents="box-none">
                   <View style={styles.badges} pointerEvents="none">
-                    {word.verbType ? (
-                      <View style={styles.verbChip}>
-                        <Text style={styles.verbChipText}>{word.verbType}</Text>
-                      </View>
-                    ) : null}
-                    {word.accent ? (
-                      <View style={styles.accentChip}>
-                        <Text style={styles.accentChipText}>{word.accent}</Text>
-                      </View>
-                    ) : null}
+                    {word.verbType ? <Text style={styles.verbText}>{word.verbType}</Text> : null}
+                    {word.accent ? <Text style={styles.accentText}>{word.accent}</Text> : null}
                     {isLearned ? <Text style={styles.learnedFlag}>✓ 已學</Text> : null}
                   </View>
                   {hasNote(word) ? (
@@ -101,7 +96,7 @@ export function VocabList({ level, topicId, words }: { level: LevelId; topicId: 
                       onPress={() => setNote(word)}
                       style={styles.noteButton}
                     >
-                      <Text style={styles.noteLabel}>📌 補充</Text>
+                      <Text style={styles.noteLabel}>補充</Text>
                     </Pressable>
                   ) : null}
                 </View>
@@ -131,19 +126,9 @@ export function VocabList({ level, topicId, words }: { level: LevelId; topicId: 
             <View style={styles.dialog}>
               <View style={styles.dialogTop}>
                 <View style={styles.badges}>
-                  <View style={[styles.modalLevelBadge, { backgroundColor: accent }]}>
-                    <Text style={styles.modalLevelText}>{level}</Text>
-                  </View>
-                  {selectedWord.verbType ? (
-                    <View style={styles.verbChip}>
-                      <Text style={styles.verbChipText}>{selectedWord.verbType}</Text>
-                    </View>
-                  ) : null}
-                  {selectedWord.accent ? (
-                    <View style={styles.accentChip}>
-                      <Text style={styles.accentChipText}>{selectedWord.accent}</Text>
-                    </View>
-                  ) : null}
+                  <Text style={[styles.modalLevelText, { color: accent }]}>{level}</Text>
+                  {selectedWord.verbType ? <Text style={styles.verbText}>{selectedWord.verbType}</Text> : null}
+                  {selectedWord.accent ? <Text style={styles.accentText}>{selectedWord.accent}</Text> : null}
                 </View>
                 <Pressable accessibilityRole="button" onPress={() => setSelected(null)} style={styles.closePill}>
                   <Text style={styles.closePillText}>✕ 關閉</Text>
@@ -161,7 +146,7 @@ export function VocabList({ level, topicId, words }: { level: LevelId; topicId: 
                   <Text style={styles.statLabel}>熟練度</Text>
                   <Text style={styles.statDetail}>
                     最近 {selectedStats.correct}/{selectedStats.total} 正確 ·{" "}
-                    {learned.has(selectedKey) ? "✓ 測驗已答對" : "測驗尚未答對"}
+                    {learned.has(selectedKey) ? "✓ 測驗已答對" : "尚未答對"}
                   </Text>
                 </View>
                 <ProficiencyMeter value={selectedStats.level} />
@@ -185,7 +170,7 @@ export function VocabList({ level, topicId, words }: { level: LevelId; topicId: 
               {hasNote(selectedWord) ? (
                 <ScrollView style={styles.noteScroll} showsVerticalScrollIndicator={false}>
                   <View style={styles.noteCallout}>
-                    <Text style={styles.noteCalloutBadge}>📌 補充說明</Text>
+                    <Text style={styles.noteCalloutBadge}>補充說明</Text>
                     <Text style={styles.dialogBody}>{selectedWord.extraInfo}</Text>
                   </View>
                 </ScrollView>
@@ -200,7 +185,7 @@ export function VocabList({ level, topicId, words }: { level: LevelId; topicId: 
           <Pressable accessibilityLabel="關閉補充" style={StyleSheet.absoluteFill} onPress={() => setNote(null)} />
           <View style={styles.dialog}>
             <View style={styles.dialogTop}>
-              <Text style={styles.noteCalloutBadge}>📌 單字補充</Text>
+              <Text style={styles.noteCalloutBadge}>單字補充</Text>
               <Pressable accessibilityRole="button" onPress={() => setNote(null)} style={styles.closePill}>
                 <Text style={styles.closePillText}>✕ 關閉</Text>
               </Pressable>
@@ -222,160 +207,164 @@ export function VocabList({ level, topicId, words }: { level: LevelId; topicId: 
   );
 }
 
-const styles = StyleSheet.create({
-  searchBarWrap: { paddingHorizontal: 18, paddingBottom: 8 },
-  searchBox: {
-    backgroundColor: theme.white,
-    borderRadius: 14,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    paddingHorizontal: 12,
-  },
-  searchInput: { height: 40, fontSize: 14, color: theme.ink, fontWeight: "600" },
-  list: { flex: 1 },
-  content: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    paddingHorizontal: 18,
-    paddingTop: 4,
-    paddingBottom: 32,
-  },
-  card: {
-    width: "48.8%",
-    marginBottom: 11,
-    backgroundColor: theme.white,
-    borderRadius: 20,
-    padding: 14,
-    gap: 8,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-    shadowColor: "#161B2E",
-    shadowOpacity: 0.04,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: 2,
-  },
-  cardSingle: { width: "100%" },
-  cardPress: { ...StyleSheet.absoluteFill, borderRadius: 20 },
-  cardTop: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 6 },
-  badges: { flexDirection: "row", alignItems: "center", gap: 6, flexWrap: "wrap", flex: 1, minWidth: 0 },
-  verbChip: {
-    backgroundColor: theme.goldSoft,
-    paddingHorizontal: 8,
-    paddingVertical: 2,
-    borderRadius: 99,
-  },
-  verbChipText: { color: theme.goldDark, fontSize: 11, fontWeight: "800" },
-  accentChip: {
-    backgroundColor: "#FFF1F2",
-    paddingHorizontal: 7,
-    paddingVertical: 2,
-    borderRadius: 99,
-  },
-  accentChipText: { color: theme.vermillion, fontSize: 11, fontWeight: "800" },
-  learnedFlag: { color: theme.matchaDark, fontSize: 11, fontWeight: "900" },
-  noteButton: {
-    zIndex: 1,
-    backgroundColor: theme.indigoSoft,
-    paddingHorizontal: 9,
-    paddingVertical: 4,
-    borderRadius: 99,
-  },
-  noteLabel: { color: theme.indigo, fontSize: 11, fontWeight: "900" },
-  row: { flexDirection: "row", alignItems: "center", gap: 10 },
-  japanese: { flex: 1, minWidth: 0, alignItems: "flex-start", gap: 2 },
-  word: { fontSize: 19, fontWeight: "900", color: theme.ink, textAlign: "left" },
-  reading: { color: theme.indigo, fontSize: 13, fontWeight: "700" },
-  meaning: { flex: 1, minWidth: 0, textAlign: "left", fontSize: 14, fontWeight: "700", color: theme.inkSoft, lineHeight: 20 },
-  cardFoot: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingTop: 2 },
-  detailCue: { fontSize: 11, fontWeight: "900" },
-  emptyCard: {
-    width: "100%",
-    backgroundColor: theme.white,
-    borderRadius: 22,
-    padding: 24,
-    alignItems: "center",
-    gap: 6,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-  },
-  emptyTitle: { fontSize: 16, fontWeight: "900", color: theme.ink },
-  emptyBody: { fontSize: 13, color: theme.inkSoft, textAlign: "center" },
-  backdrop: {
-    flex: 1,
-    backgroundColor: "rgba(22, 27, 46, 0.5)",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 20,
-  },
-  dialog: {
-    width: "100%",
-    maxWidth: 440,
-    maxHeight: "78%",
-    backgroundColor: theme.white,
-    borderRadius: 24,
-    padding: 18,
-    gap: 12,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-  },
-  dialogTop: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
-  modalLevelBadge: { paddingHorizontal: 10, paddingVertical: 3, borderRadius: 99 },
-  modalLevelText: { color: "#fff", fontSize: 11, fontWeight: "900" },
-  closePill: {
-    backgroundColor: theme.surface,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 99,
-    borderWidth: 1,
-    borderColor: theme.paperBorder,
-  },
-  closePillText: { color: theme.ink, fontSize: 12, fontWeight: "800" },
-  dialogHero: {
-    backgroundColor: theme.surface,
-    borderRadius: 18,
-    padding: 16,
-    alignItems: "center",
-    gap: 4,
-  },
-  dialogReading: { color: theme.indigo, fontSize: 13, fontWeight: "700" },
-  dialogWord: { fontSize: 28, fontWeight: "900", color: theme.ink, textAlign: "center" },
-  dialogMeaning: { fontSize: 16, fontWeight: "700", color: theme.inkSoft, textAlign: "center" },
-  statBlock: {
-    backgroundColor: theme.surface,
-    borderRadius: 16,
-    padding: 12,
-    gap: 8,
-  },
-  statHead: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
-  statLabel: { color: theme.ink, fontSize: 13, fontWeight: "900" },
-  statDetail: { color: theme.inkSoft, fontSize: 11, fontWeight: "700" },
-  levels: { flexDirection: "row", gap: 6, marginTop: 2 },
-  levelButton: {
-    flex: 1,
-    alignItems: "center",
-    borderRadius: 12,
-    paddingVertical: 9,
-    backgroundColor: theme.white,
-    borderWidth: 1.5,
-    borderColor: theme.paperBorder,
-  },
-  levelButtonOn: { backgroundColor: theme.indigo, borderColor: theme.indigo },
-  levelText: { color: theme.inkSoft, fontWeight: "800", fontSize: 12 },
-  levelTextOn: { color: "#fff" },
-  noteScroll: { maxHeight: 160 },
-  noteCallout: {
-    backgroundColor: "#ECFDF5",
-    borderRadius: 14,
-    borderWidth: 1,
-    borderColor: "#A7F3D0",
-    borderLeftWidth: 4,
-    borderLeftColor: "#10B981",
-    padding: 12,
-    gap: 6,
-  },
-  noteCalloutBadge: { color: "#047857", fontSize: 12, fontWeight: "900" },
-  dialogScroll: { flexGrow: 0 },
-  dialogBody: { fontSize: 14, lineHeight: 22, color: theme.ink, fontWeight: "500" },
-});
+function makeStyles(t: AppTheme) {
+  return StyleSheet.create({
+    searchBarWrap: { paddingHorizontal: 18, paddingTop: 10, paddingBottom: 8 },
+    searchBox: {
+      backgroundColor: t.white,
+      borderRadius: 6,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      paddingHorizontal: 12,
+    },
+    searchInput: { height: 38, fontSize: 13.5, color: t.ink },
+    list: { flex: 1 },
+    content: {
+      flexDirection: "row",
+      flexWrap: "wrap",
+      justifyContent: "space-between",
+      paddingHorizontal: 18,
+      paddingTop: 4,
+      paddingBottom: 32,
+    },
+    card: {
+      width: "48.8%",
+      marginBottom: 10,
+      backgroundColor: t.white,
+      borderRadius: 8,
+      padding: 14,
+      gap: 8,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    cardSingle: { width: "100%" },
+    cardPress: { ...StyleSheet.absoluteFill, borderRadius: 8 },
+    cardTop: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 6 },
+    badges: { flexDirection: "row", alignItems: "center", gap: 8, flexWrap: "wrap", flex: 1, minWidth: 0 },
+    verbText: {
+      color: t.goldDark,
+      backgroundColor: t.goldSoft,
+      paddingHorizontal: 7,
+      paddingVertical: 2,
+      borderRadius: 4,
+      fontSize: 11,
+      fontWeight: "700",
+    },
+    accentText: { color: t.vermillion, fontSize: 11, fontWeight: "700" },
+    learnedFlag: { color: t.matcha, fontSize: 11, fontWeight: "700" },
+    noteButton: {
+      zIndex: 1,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      backgroundColor: t.surface,
+      paddingHorizontal: 8,
+      paddingVertical: 3,
+      borderRadius: 4,
+    },
+    noteLabel: { color: t.inkSoft, fontSize: 11, fontWeight: "700" },
+    row: { flexDirection: "row", alignItems: "center", gap: 10 },
+    japanese: { flex: 1, minWidth: 0, alignItems: "flex-start", gap: 2 },
+    word: { fontFamily: t.serif, fontSize: 19, fontWeight: "700", color: t.ink, textAlign: "left" },
+    reading: { color: t.indigo, fontSize: 12.5, fontWeight: "600" },
+    meaning: { flex: 1, minWidth: 0, textAlign: "left", fontSize: 13.5, fontWeight: "600", color: t.inkSoft, lineHeight: 20 },
+    cardFoot: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      paddingTop: 6,
+      borderTopWidth: 1,
+      borderTopColor: t.paperBorder,
+    },
+    detailCue: { fontSize: 11.5, fontWeight: "700" },
+    emptyCard: {
+      width: "100%",
+      backgroundColor: t.white,
+      borderRadius: 8,
+      padding: 24,
+      alignItems: "center",
+      gap: 6,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    emptyTitle: { fontSize: 15, fontWeight: "700", color: t.ink },
+    emptyBody: { fontSize: 13, color: t.inkSoft, textAlign: "center" },
+    backdrop: {
+      flex: 1,
+      backgroundColor: "rgba(10, 9, 8, 0.58)",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: 20,
+    },
+    dialog: {
+      width: "100%",
+      maxWidth: 440,
+      maxHeight: "78%",
+      backgroundColor: t.white,
+      borderRadius: 10,
+      padding: 18,
+      gap: 12,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    dialogTop: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
+    modalLevelText: { fontSize: 12, fontWeight: "800", letterSpacing: 0.6 },
+    closePill: {
+      backgroundColor: t.surface,
+      paddingHorizontal: 10,
+      paddingVertical: 5,
+      borderRadius: 4,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    closePillText: { color: t.ink, fontSize: 12, fontWeight: "700" },
+    dialogHero: {
+      backgroundColor: t.surface,
+      borderRadius: 8,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      padding: 16,
+      alignItems: "center",
+      gap: 4,
+    },
+    dialogReading: { color: t.indigo, fontSize: 13, fontWeight: "600" },
+    dialogWord: { fontFamily: t.serif, fontSize: 28, fontWeight: "700", color: t.ink, textAlign: "center" },
+    dialogMeaning: { fontSize: 15.5, fontWeight: "600", color: t.inkSoft, textAlign: "center" },
+    statBlock: {
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      borderRadius: 8,
+      padding: 12,
+      gap: 8,
+    },
+    statHead: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
+    statLabel: { color: t.ink, fontSize: 12.5, fontWeight: "700" },
+    statDetail: { color: t.inkSoft, fontSize: 11, fontWeight: "600" },
+    levels: { flexDirection: "row", gap: 6, marginTop: 2 },
+    levelButton: {
+      flex: 1,
+      alignItems: "center",
+      borderRadius: 6,
+      paddingVertical: 8,
+      backgroundColor: t.surface,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    levelButtonOn: { backgroundColor: t.ink, borderColor: t.ink },
+    levelText: { color: t.inkSoft, fontWeight: "700", fontSize: 12 },
+    levelTextOn: { color: t.paper },
+    noteScroll: { maxHeight: 160 },
+    noteCallout: {
+      backgroundColor: t.surface,
+      borderRadius: 6,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      borderLeftWidth: 3,
+      borderLeftColor: t.vermillion,
+      padding: 12,
+      gap: 6,
+    },
+    noteCalloutBadge: { color: t.vermillion, fontSize: 11.5, fontWeight: "800", letterSpacing: 0.6 },
+    dialogScroll: { flexGrow: 0 },
+    dialogBody: { fontSize: 14, lineHeight: 22, color: t.ink },
+  });
+}

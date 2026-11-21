@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { theme } from "@/theme";
+import { useAppTheme } from "@/theme";
 
 export type BottomTab = {
   id: string;
@@ -16,9 +16,19 @@ type Props = {
 
 export function BottomTabs({ tabs, value, onChange }: Props) {
   const insets = useSafeAreaInsets();
+  const { t } = useAppTheme();
 
   return (
-    <View style={[styles.bar, { paddingBottom: Math.max(insets.bottom, 10) }]}>
+    <View
+      style={[
+        styles.bar,
+        {
+          paddingBottom: Math.max(insets.bottom, 10),
+          backgroundColor: t.white,
+          borderTopColor: t.paperBorder,
+        },
+      ]}
+    >
       {tabs.map((tab) => {
         const selected = tab.id === value;
         return (
@@ -30,11 +40,11 @@ export function BottomTabs({ tabs, value, onChange }: Props) {
             style={[
               styles.tab,
               selected
-                ? { backgroundColor: tab.color, borderColor: tab.color }
-                : { backgroundColor: theme.surface, borderColor: theme.paperBorder },
+                ? { backgroundColor: t.ink, borderColor: t.ink }
+                : { backgroundColor: "transparent", borderColor: t.paperBorder },
             ]}
           >
-            <Text style={[styles.label, { color: selected ? "#fff" : theme.inkSoft }]}>{tab.label}</Text>
+            <Text style={[styles.label, { color: selected ? t.paper : t.inkSoft }]}>{tab.label}</Text>
           </Pressable>
         );
       })}
@@ -47,18 +57,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 8,
     paddingTop: 10,
-    paddingHorizontal: 14,
-    backgroundColor: theme.white,
+    paddingHorizontal: 16,
     borderTopWidth: 1,
-    borderTopColor: theme.paperBorder,
   },
   tab: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 16,
-    borderWidth: 1.5,
-    paddingVertical: 11,
+    borderRadius: 6,
+    borderWidth: 1,
+    paddingVertical: 10,
   },
-  label: { fontSize: 14, fontWeight: "800" },
+  label: { fontSize: 13, fontWeight: "700", letterSpacing: 0.4 },
 });
