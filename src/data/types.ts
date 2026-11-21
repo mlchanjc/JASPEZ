@@ -37,8 +37,28 @@ export type GrammarExample = {
   zh?: string;
 };
 
+export type GrammarTableCell = {
+  text: string;
+  header?: boolean;
+  reading?: string;
+  zh?: string;
+  colspan?: number;
+  rowspan?: number;
+};
+
+export type GrammarBlock =
+  | { type: "note"; text: string }
+  | { type: "pattern"; pattern: string; connection?: string[] }
+  | { type: "examples"; items: GrammarExample[] }
+  | { type: "callout"; kind?: string; text?: string; blocks?: GrammarBlock[] }
+  | { type: "table"; caption?: string; rows: GrammarTableCell[][] }
+  | { type: "image"; src: string; alt?: string }
+  | { type: "link"; text: string; href: string };
+
 export type GrammarSection = {
   heading: string;
+  level?: number;
+  blocks?: GrammarBlock[];
   pattern?: string;
   notes?: string[];
   examples?: GrammarExample[];

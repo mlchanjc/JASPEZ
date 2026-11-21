@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { GrammarRichContent } from "@/components/GrammarRichContent";
 import { ProficiencyMeter } from "@/components/ProficiencyMeter";
 import { grammarLessonKey } from "@/data/grammarRegistry";
-import type { PatternDrillQuestion, GrammarLesson } from "@/data/types";
+import type { GrammarLesson, LevelId, PatternDrillQuestion } from "@/data/types";
 import {
   generateLessonCloze,
   generateLessonPatternDrill,
@@ -18,13 +19,14 @@ import { levelAccent, theme } from "@/theme";
 type Props = {
   lesson: GrammarLesson;
   onBack: () => void;
+  onNavigateLesson?: (level: LevelId, id: string) => void;
 };
 
 function normalizeInput(value: string) {
   return value.normalize("NFKC").trim().toLowerCase().replace(/[\s・･？?。、]/g, "");
 }
 
-export function GrammarLessonMachine({ lesson, onBack }: Props) {
+export function GrammarLessonMachine({ lesson, onBack, onNavigateLesson }: Props) {
   const {
     prefs,
     grammarNotes,
@@ -380,44 +382,15 @@ export function GrammarLessonMachine({ lesson, onBack }: Props) {
           </View>
         )}
 
-        {/* MODE 3: LESSON NOTES, EXAMPLES & PERSONAL NOTE */}
+        {/* MODE 3: RICH LESSON CONTENT (TABLES, CALLOUTS, IMAGES, EXAMPLES) & PERSONAL NOTE */}
         {mode === "study" && (
           <View style={styles.studyWrap}>
-            {lesson.connection.length > 0 && (
-              <View style={styles.card}>
-                <Text style={styles.sectionTitle}>國文法接續規則</Text>
-                {lesson.connection.map((line, i) => (
-                  <Text key={i} style={styles.connItem}>
-                    • {line}
-                  </Text>
-                ))}
-              </View>
-            )}
-
-            {lesson.sections.map((sec, idx) => (
-              <View key={`${sec.heading}-${idx}`} style={styles.card}>
-                <Text style={styles.sectionTitle}>{sec.heading}</Text>
-                {sec.pattern ? (
-                  <View style={styles.subFormula}>
-                    <Text style={styles.subFormulaText}>{sec.pattern}</Text>
-                  </View>
-                ) : null}
-                {(sec.notes ?? []).map((note, nIdx) => (
-                  <Text key={nIdx} style={styles.nuanceText}>
-                    {note}
-                  </Text>
-                ))}
-                {(sec.examples ?? []).map((ex, eIdx) => (
-                  <View key={eIdx} style={styles.exampleItem}>
-                    <Text style={styles.exampleJa}>{ex.ja}</Text>
-                    {prefs.showFurigana && ex.reading ? (
-                      <Text style={styles.exampleReading}>{ex.reading}</Text>
-                    ) : null}
-                    {ex.zh ? <Text style={styles.exampleZh}>{ex.zh}</Text> : null}
-                  </View>
-                ))}
-              </View>
-            ))}
+            <GrammarRichContent
+              lesson={lesson}
+              showFurigana={prefs.showFurigana}
+              accentColor={accent}
+              onNavigateLesson={onNavigateLesson}
+            />
 
             <View style={styles.card}>
               <Text style={styles.sectionTitle}>熟練度與個人筆記</Text>

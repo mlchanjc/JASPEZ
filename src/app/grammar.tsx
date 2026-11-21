@@ -137,7 +137,7 @@ export default function GrammarScreen() {
 
         <View style={styles.body}>
           {selectedLesson ? (
-            <GrammarLessonMachine lesson={selectedLesson} onBack={() => setSelectedRef(null)} />
+            <GrammarLessonMachine lesson={selectedLesson} onBack={() => setSelectedRef(null)} onNavigateLesson={(lvl, id) => { if (findGrammarLesson(lvl, id)) setSelectedRef({ level: lvl, id }); }} />
           ) : tab === "lessons" ? (
             <FlatList
               data={lessonsList}
