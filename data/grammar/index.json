@@ -74,7 +74,7 @@
             "名詞修飾名詞有幾種用法？",
             "名詞省略（準體助詞的「の」）"
           ],
-          "exampleCount": 50
+          "exampleCount": 52
         },
         {
           "id": "04",
@@ -107,7 +107,7 @@
             "連體形有哪些？",
             "VIP 專屬內容"
           ],
-          "exampleCount": 5
+          "exampleCount": 10
         },
         {
           "id": "06",
@@ -121,6 +121,9 @@
             "何謂代名詞？",
             "人稱代名詞",
             "什麼時候會用到「あなた」？",
+            "㋐ 第一次見面，不知道對方名字的時候",
+            "㋑ 對老公的稱呼",
+            "㋒ 問卷調査、廣告、看板、網頁文字等沒有特定對象之用語",
             "「彼女」也有女朋友的意思？",
             "除了「私」之外還有哪些自稱？",
             "除了「あなた」之外還有哪些「你」的稱呼？",
@@ -146,7 +149,7 @@
             "初學者常見錯誤",
             "形容詞過去式"
           ],
-          "exampleCount": 19
+          "exampleCount": 29
         },
         {
           "id": "08",
@@ -164,7 +167,7 @@
             "表內容的「因果敘述」(原因理由)",
             "注意要點"
           ],
-          "exampleCount": 20
+          "exampleCount": 17
         },
         {
           "id": "09",
@@ -239,7 +242,7 @@
             "表内容的「相對敘述」（不同主語）",
             "表内容的「因果敘述」（原因理由）"
           ],
-          "exampleCount": 15
+          "exampleCount": 12
         },
         {
           "id": "14",
@@ -299,7 +302,7 @@
             "判斷動詞的分類",
             "カ變與サ變"
           ],
-          "exampleCount": 9
+          "exampleCount": 2
         },
         {
           "id": "18",
@@ -374,15 +377,18 @@
             "音便種類",
             "如何做音便？",
             "促音便",
+            "時雨的快速聯想口訣：う・る・つ（汙・辱・詞）",
             "撥音便",
+            "時雨的快速聯想口訣：ぶ・ぬ・む（不・怒・目）",
             "イ音便",
+            "時雨的快速聯想口訣：ぐ・く（孤・苦）",
             "例外",
             "例外一",
             "例外二",
             "總結",
             "✨歡迎使用動詞音便練習機✨"
           ],
-          "exampleCount": 10
+          "exampleCount": 13
         },
         {
           "id": "22",
@@ -399,22 +405,23 @@
             "下一段動詞例句",
             "VIP 專屬內容"
           ],
-          "exampleCount": 2
+          "exampleCount": 9
         },
         {
           "id": "23",
           "title": "N5文法23「動詞中止形」て的用法",
           "point": "動詞中止形",
           "gloss": "て的用法",
-          "pattern": "",
+          "pattern": "V＋て",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n5/23",
           "sections": [
+            null,
             "動詞中止形「て」四大用法",
             "表内容的連續敘述（同一主語）",
             "表内容的相對敘述（不同主語）",
             "VIP 專屬內容"
           ],
-          "exampleCount": 5
+          "exampleCount": 12
         },
         {
           "id": "24",
@@ -445,7 +452,7 @@
             "表述語疑問詞的主題",
             "表強調或暗示"
           ],
-          "exampleCount": 23
+          "exampleCount": 28
         },
         {
           "id": "26",
@@ -464,7 +471,7 @@
             "表條件句中的主詞",
             "表對象語（能力／巧拙／感情…等）"
           ],
-          "exampleCount": 41
+          "exampleCount": 44
         },
         {
           "id": "27",
@@ -474,6 +481,7 @@
           "pattern": "N＋に＋V",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n5/27",
           "sections": [
+            null,
             "表時間（動作發生的時間）",
             "表歸著點（變換位置的到達點）",
             "表存在場所（指人事物本身的存在場所）",
@@ -482,7 +490,7 @@
             "表次數（一個期間内包含的次數）",
             "表目的（移動動詞的目的）"
           ],
-          "exampleCount": 41
+          "exampleCount": 40
         },
         {
           "id": "28",
@@ -497,7 +505,7 @@
             "疑問句時的用法",
             "表對象（單向動作所指向的對象）"
           ],
-          "exampleCount": 13
+          "exampleCount": 18
         },
         {
           "id": "29",
@@ -514,7 +522,7 @@
             "表對象時，「と」和「に」的差別？",
             "表比較基準"
           ],
-          "exampleCount": 20
+          "exampleCount": 21
         },
         {
           "id": "30",
@@ -527,7 +535,7 @@
             "「や」的用法",
             "「や」跟「と」的差別"
           ],
-          "exampleCount": 13
+          "exampleCount": 11
         },
         {
           "id": "31",
@@ -579,7 +587,7 @@
             "總結",
             "常見錯誤"
           ],
-          "exampleCount": 24
+          "exampleCount": 31
         },
         {
           "id": "34",
@@ -589,6 +597,7 @@
           "pattern": "N（場所）＋から",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n5/34",
           "sections": [
+            null,
             "表場所起點【變換位置的場所】（格助詞）",
             "表時間起點【事件開始的時間】（格助詞）",
             "表原料材料【製造物品的原料】（格助詞）",
@@ -608,7 +617,7 @@
             "文法句型",
             "否定用法"
           ],
-          "exampleCount": 13
+          "exampleCount": 11
         },
         {
           "id": "36",
@@ -621,7 +630,7 @@
             "即使、縱然、就算",
             "允許"
           ],
-          "exampleCount": 14
+          "exampleCount": 11
         },
         {
           "id": "37",
@@ -641,7 +650,7 @@
             "小結",
             "關於助詞"
           ],
-          "exampleCount": 34
+          "exampleCount": 24
         },
         {
           "id": "38",
@@ -669,7 +678,7 @@
             "前に",
             "時"
           ],
-          "exampleCount": 19
+          "exampleCount": 18
         },
         {
           "id": "40",
@@ -683,7 +692,7 @@
             "動詞修飾名詞",
             "動作列舉"
           ],
-          "exampleCount": 12
+          "exampleCount": 16
         },
         {
           "id": "41",
@@ -700,7 +709,7 @@
             "どれ（哪個）",
             "どちら（哪個）"
           ],
-          "exampleCount": 14
+          "exampleCount": 17
         },
         {
           "id": "42",
@@ -729,7 +738,7 @@
             "しか…ない（只有）",
             "「だけ」和「しか…ない」的差別"
           ],
-          "exampleCount": 20
+          "exampleCount": 24
         },
         {
           "id": "44",
@@ -739,6 +748,7 @@
           "pattern": "疑問詞＋か",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n5/44",
           "sections": [
+            null,
             "疑問詞＋か",
             "名詞＋か",
             "～かどうか～（是否）",
@@ -757,7 +767,7 @@
             "副詞（ふくし）",
             "狀態副詞（又稱為情態副詞）"
           ],
-          "exampleCount": 26
+          "exampleCount": 28
         },
         {
           "id": "46",
@@ -769,7 +779,7 @@
           "sections": [
             "程度副詞"
           ],
-          "exampleCount": 24
+          "exampleCount": 25
         },
         {
           "id": "47",
@@ -781,7 +791,7 @@
           "sections": [
             "呼應副詞"
           ],
-          "exampleCount": 22
+          "exampleCount": 23
         },
         {
           "id": "48",
@@ -815,6 +825,7 @@
           "pattern": "",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n5/50",
           "sections": [
+            null,
             "基本介紹",
             "だ：斷定助動詞",
             "です：斷定助動詞",
@@ -860,7 +871,7 @@
             "～がする、～がある的差別",
             "比較"
           ],
-          "exampleCount": 18
+          "exampleCount": 15
         },
         {
           "id": "03",
@@ -923,6 +934,7 @@
           "pattern": "",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n4/07",
           "sections": [
+            null,
             "形容詞活用表",
             "特殊變化",
             "いい的變化表",
@@ -951,7 +963,7 @@
             "助詞「を」與「が」",
             "「がっている」和「がる」的差別"
           ],
-          "exampleCount": 35
+          "exampleCount": 36
         },
         {
           "id": "09",
@@ -965,7 +977,7 @@
             "形容動詞活用表",
             "例句"
           ],
-          "exampleCount": 7
+          "exampleCount": 8
         },
         {
           "id": "10",
@@ -983,7 +995,7 @@
             "表做某動作時發現某狀態",
             "表在進行某動作時，發生的事情"
           ],
-          "exampleCount": 24
+          "exampleCount": 25
         },
         {
           "id": "11",
@@ -999,7 +1011,7 @@
             "前項為狀態性述語",
             "前後項的主語不同"
           ],
-          "exampleCount": 14
+          "exampleCount": 20
         },
         {
           "id": "12",
@@ -1014,7 +1026,7 @@
             "表做某動作時發現某狀態",
             "表在進行某動作時，發生的事情"
           ],
-          "exampleCount": 11
+          "exampleCount": 23
         },
         {
           "id": "13",
@@ -1029,7 +1041,7 @@
             "「たなら」的用法",
             "「～のなら」的語感"
           ],
-          "exampleCount": 26
+          "exampleCount": 28
         },
         {
           "id": "14",
@@ -1052,7 +1064,7 @@
             "錯誤例子",
             "補充"
           ],
-          "exampleCount": 30
+          "exampleCount": 31
         },
         {
           "id": "15",
@@ -1074,7 +1086,7 @@
             "「（ら）れる」自発助動詞（自發）",
             "「（ら）れる」尊敬助動詞（尊敬）"
           ],
-          "exampleCount": 51
+          "exampleCount": 46
         },
         {
           "id": "16",
@@ -1176,6 +1188,7 @@
           "pattern": "",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n4/22",
           "sections": [
+            null,
             "樣態助動詞「そうだ」",
             "「ない」雙胞胎",
             "動詞",
@@ -1186,7 +1199,7 @@
             "「そうだ」接動詞、名詞、動詞否定",
             "【進階學習】"
           ],
-          "exampleCount": 34
+          "exampleCount": 45
         },
         {
           "id": "23",
@@ -1240,8 +1253,16 @@
             "接續",
             "用法",
             "推量",
+            "動詞",
+            "形容詞",
+            "形容動詞",
+            "名詞",
             "比喻",
+            "動詞",
+            "名詞",
             "例示",
+            "動詞",
+            "名詞",
             "ようだ的活用表",
             "進階學習"
           ],
@@ -1259,12 +1280,19 @@
             "接續",
             "用法",
             "推量",
+            "動詞",
+            "形容詞",
+            "形容動詞",
+            "名詞",
             "比喻",
+            "動詞",
+            "名詞",
             "例示",
+            "名詞",
             "みたいだ的活用表",
             "注意"
           ],
-          "exampleCount": 18
+          "exampleCount": 17
         },
         {
           "id": "27",
@@ -1274,6 +1302,7 @@
           "pattern": "",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n4/27",
           "sections": [
+            null,
             "そうだ（傳聞）",
             "そうだ（樣態）",
             "らしい（推量）",
@@ -1289,13 +1318,14 @@
           "pattern": "",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n4/28",
           "sections": [
+            null,
             "基本觀念",
             "授受動詞有以下三種用法：",
             "記住兩個要點：",
             "文法句型",
             "VIP 專屬內容"
           ],
-          "exampleCount": 11
+          "exampleCount": 6
         },
         {
           "id": "29",
@@ -1305,22 +1335,28 @@
           "pattern": "Vて＋あげる",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n4/29",
           "sections": [
+            null,
             "基本觀念",
             "～てあげる",
             "〜てさしあげる",
             "VIP 專屬內容"
           ],
-          "exampleCount": 9
+          "exampleCount": 6
         },
         {
           "id": "30",
           "title": "N4文法30「～でございます」",
           "point": "～でございます",
           "gloss": "",
-          "pattern": "",
+          "pattern": "名詞＋でございます",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n4/30",
-          "sections": [],
-          "exampleCount": 0
+          "sections": [
+            null,
+            "規則一",
+            "規則二",
+            "規則三"
+          ],
+          "exampleCount": 33
         },
         {
           "id": "31",
@@ -1349,7 +1385,7 @@
             "基本介紹",
             "文法句型"
           ],
-          "exampleCount": 12
+          "exampleCount": 14
         },
         {
           "id": "33",
@@ -1362,11 +1398,19 @@
             "のに的意思",
             "のに的用法",
             "逆接的確定條件",
+            "名詞",
+            "形容動詞",
+            "形容詞",
+            "動詞",
             "「遺憾、不滿」",
+            "名詞",
+            "形容動詞",
+            "形容詞",
+            "動詞",
             "常見誤用的「のに」",
             "表目的"
           ],
-          "exampleCount": 29
+          "exampleCount": 27
         },
         {
           "id": "34",
@@ -1376,6 +1420,7 @@
           "pattern": "動詞連用形＋動詞",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n4/34",
           "sections": [
+            null,
             "複合動詞",
             "〜込む",
             "〜出す",
@@ -1435,7 +1480,7 @@
             "表原因理由",
             "補充"
           ],
-          "exampleCount": 19
+          "exampleCount": 18
         },
         {
           "id": "38",
@@ -1452,7 +1497,7 @@
             "（２）「〜つもり」和「〜（よ）うと思う」",
             "（３）當作、認為"
           ],
-          "exampleCount": 12
+          "exampleCount": 13
         },
         {
           "id": "39",
@@ -1465,7 +1510,7 @@
             "なさい的由來與意思",
             "文法句型"
           ],
-          "exampleCount": 3
+          "exampleCount": 12
         },
         {
           "id": "40",
@@ -1480,7 +1525,7 @@
             "V＋ことがある",
             "Vた＋ことがある"
           ],
-          "exampleCount": 15
+          "exampleCount": 17
         },
         {
           "id": "41",
@@ -1512,6 +1557,7 @@
           "pattern": "V（連體形）＋ところ",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n4/42",
           "sections": [
+            null,
             "文法句型",
             "V＋ところ",
             "Vている＋ところ",
@@ -1532,7 +1578,7 @@
             "ようにする",
             "ようになる"
           ],
-          "exampleCount": 8
+          "exampleCount": 9
         },
         {
           "id": "44",
@@ -1589,7 +1635,7 @@
             "差異比較",
             "VIP 專屬內容"
           ],
-          "exampleCount": 7
+          "exampleCount": 12
         },
         {
           "id": "48",
@@ -1606,7 +1652,7 @@
             "表動作期間",
             "表極端的例子"
           ],
-          "exampleCount": 17
+          "exampleCount": 18
         },
         {
           "id": "49",
@@ -1638,7 +1684,7 @@
             "「し」和「て（で）」的差異",
             "總結"
           ],
-          "exampleCount": 14
+          "exampleCount": 20
         },
         {
           "id": "51",
@@ -1648,6 +1694,7 @@
           "pattern": "Ｎ＋でも",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n4/51",
           "sections": [
+            null,
             "表類推",
             "表例示",
             "表全面"
@@ -1662,6 +1709,7 @@
           "pattern": "N・Na・A・V＋かい",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n4/52",
           "sections": [
+            null,
             "かい（親切疑問）",
             "だい（加強疑問）",
             "かい・だい 比較",
@@ -1718,7 +1766,7 @@
             "〜あげる",
             "補充"
           ],
-          "exampleCount": 10
+          "exampleCount": 23
         },
         {
           "id": "02",
@@ -1731,7 +1779,7 @@
             "文法句型",
             "與「ばかり」的差別"
           ],
-          "exampleCount": 9
+          "exampleCount": 15
         },
         {
           "id": "03",
@@ -1759,7 +1807,7 @@
             "文法句型",
             "接續名詞方式的差別"
           ],
-          "exampleCount": 10
+          "exampleCount": 12
         },
         {
           "id": "05",
@@ -1796,7 +1844,7 @@
             "Vかけ",
             "Vかける"
           ],
-          "exampleCount": 13
+          "exampleCount": 11
         },
         {
           "id": "08",
@@ -1822,17 +1870,19 @@
             "「か何か」和「でも」",
             "「や何か」"
           ],
-          "exampleCount": 18
+          "exampleCount": 24
         },
         {
           "id": "10",
           "title": "N3文法10「かもしれない」也許、可能",
           "point": "かもしれない",
           "gloss": "也許、可能",
-          "pattern": "",
+          "pattern": "N・Na・A・V＋かもしれない",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/10",
-          "sections": [],
-          "exampleCount": 0
+          "sections": [
+            null
+          ],
+          "exampleCount": 21
         },
         {
           "id": "11",
@@ -1844,16 +1894,17 @@
           "sections": [
             "文法句型"
           ],
-          "exampleCount": 10
+          "exampleCount": 8
         },
         {
           "id": "12",
           "title": "N3文法12「からいうと／からいったら／からいえば／からいって」從～來看",
           "point": "からいうと／からいったら／からいえば／からいって",
           "gloss": "從～來看",
-          "pattern": "",
+          "pattern": "N＋からいうと／からいったら／からいえば／からいって",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/12",
           "sections": [
+            null,
             "表判斷依據",
             "從某個角度去看待事物"
           ],
@@ -1864,10 +1915,12 @@
           "title": "N3文法13「からには」既然～",
           "point": "からには",
           "gloss": "既然～",
-          "pattern": "",
+          "pattern": "N・Na＋であるからには／A・V＋からには",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/13",
-          "sections": [],
-          "exampleCount": 0
+          "sections": [
+            null
+          ],
+          "exampleCount": 9
         },
         {
           "id": "14",
@@ -1880,7 +1933,7 @@
             "代替",
             "代價"
           ],
-          "exampleCount": 20
+          "exampleCount": 21
         },
         {
           "id": "15",
@@ -1907,16 +1960,17 @@
             "これきり・それきり・あれきり",
             "きり・だけ・のみ的差別"
           ],
-          "exampleCount": 27
+          "exampleCount": 59
         },
         {
           "id": "17",
           "title": "N3文法17「～きる」完全、極限、斬斷",
           "point": "～きる",
           "gloss": "完全、極限、斬斷",
-          "pattern": "",
+          "pattern": "V（連用形）＋きる",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/17",
           "sections": [
+            null,
             "完全、完了、光",
             "極限、極致",
             "切斷、斬斷",
@@ -1929,10 +1983,12 @@
           "title": "N3文法18「くせに」明明～卻～",
           "point": "くせに",
           "gloss": "明明～卻～",
-          "pattern": "",
+          "pattern": "Nの／Naな／A／V＋くせに",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/18",
-          "sections": [],
-          "exampleCount": 0
+          "sections": [
+            null
+          ],
+          "exampleCount": 10
         },
         {
           "id": "19",
@@ -1950,7 +2006,7 @@
             "表最低限度",
             "表嫌棄意味"
           ],
-          "exampleCount": 36
+          "exampleCount": 40
         },
         {
           "id": "20",
@@ -1960,6 +2016,7 @@
           "pattern": "N・Na＋だが／A・V＋が",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/20",
           "sections": [
+            null,
             "接續助詞「が」（表逆接）",
             "接續助詞「けど」（表逆接）",
             "補充"
@@ -1971,12 +2028,13 @@
           "title": "N3文法21「こそ」才是、正是",
           "point": "こそ",
           "gloss": "才是、正是",
-          "pattern": "",
+          "pattern": "N＋こそ",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/21",
           "sections": [
+            null,
             "補充"
           ],
-          "exampleCount": 2
+          "exampleCount": 37
         },
         {
           "id": "22",
@@ -1996,10 +2054,12 @@
           "title": "N3文法23「ことだ」應當、就該～",
           "point": "ことだ",
           "gloss": "應當、就該～",
-          "pattern": "",
+          "pattern": "V／Vない＋ことだ",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/23",
-          "sections": [],
-          "exampleCount": 0
+          "sections": [
+            null
+          ],
+          "exampleCount": 4
         },
         {
           "id": "24",
@@ -2055,7 +2115,7 @@
             "「ごとに」跟「たびに」的差別",
             "「ごとに」跟「おきに」的差別"
           ],
-          "exampleCount": 11
+          "exampleCount": 15
         },
         {
           "id": "28",
@@ -2099,7 +2159,7 @@
             "「さえ」和「でさえ」的差別",
             "VIP 專屬內容"
           ],
-          "exampleCount": 16
+          "exampleCount": 20
         },
         {
           "id": "31",
@@ -2109,6 +2169,7 @@
           "pattern": "V＋（さ）せてあげる",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/31",
           "sections": [
+            null,
             "文法句型",
             "させてあげる",
             "させてくれる",
@@ -2132,7 +2193,7 @@
             "させられる 使役＋受身解析",
             "縮約形「V＋される」"
           ],
-          "exampleCount": 12
+          "exampleCount": 17
         },
         {
           "id": "33",
@@ -2146,7 +2207,7 @@
             "注意中譯",
             "「おかげ」和「せい」"
           ],
-          "exampleCount": 17
+          "exampleCount": 20
         },
         {
           "id": "34",
@@ -2159,17 +2220,19 @@
             "文法句型",
             "「せいか」、「ためか」、「おかげか」"
           ],
-          "exampleCount": 8
+          "exampleCount": 12
         },
         {
           "id": "35",
           "title": "N3文法35「だけで」只要、光～就～",
           "point": "だけで",
           "gloss": "只要、光～就～",
-          "pattern": "",
+          "pattern": "N・Na＋であるだけで／Naな・A・V＋だけで",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/35",
-          "sections": [],
-          "exampleCount": 0
+          "sections": [
+            null
+          ],
+          "exampleCount": 7
         },
         {
           "id": "36",
@@ -2225,7 +2288,7 @@
             "文法句型",
             "文法限制"
           ],
-          "exampleCount": 11
+          "exampleCount": 15
         },
         {
           "id": "40",
@@ -2237,7 +2300,7 @@
           "sections": [
             "文法句型"
           ],
-          "exampleCount": 7
+          "exampleCount": 8
         },
         {
           "id": "41",
@@ -2251,7 +2314,7 @@
             "單獨使用「ついでに」",
             "「行くついでに」和「行ったついでに」的差別"
           ],
-          "exampleCount": 10
+          "exampleCount": 11
         },
         {
           "id": "42",
@@ -2276,7 +2339,7 @@
           "sections": [
             "文法句型"
           ],
-          "exampleCount": 26
+          "exampleCount": 34
         },
         {
           "id": "44",
@@ -2327,12 +2390,13 @@
           "title": "N3文法47「て以来」自從～以後",
           "point": "て以来",
           "gloss": "自從～以後",
-          "pattern": "",
+          "pattern": "N＋以来／Vて＋以来",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/47",
           "sections": [
+            null,
             "「～以来」不用於才剛發生的事情"
           ],
-          "exampleCount": 3
+          "exampleCount": 8
         },
         {
           "id": "48",
@@ -2428,7 +2492,7 @@
             "常用句型",
             "總結"
           ],
-          "exampleCount": 25
+          "exampleCount": 21
         },
         {
           "id": "55",
@@ -2444,7 +2508,7 @@
             "「たい」和「てほしい」的用法",
             "組合應用技：誰讓誰？"
           ],
-          "exampleCount": 17
+          "exampleCount": 19
         },
         {
           "id": "56",
@@ -2500,7 +2564,7 @@
             "といいなあ、といいのに、といいが（けど）",
             "表勸說用法"
           ],
-          "exampleCount": 15
+          "exampleCount": 17
         },
         {
           "id": "60",
@@ -2519,7 +2583,7 @@
             "表詢問用「どういうこと」",
             "表說明的「ということだ」≒「という意味だ」"
           ],
-          "exampleCount": 25
+          "exampleCount": 32
         },
         {
           "id": "61",
@@ -2545,7 +2609,7 @@
             "文法句型",
             "常見句型搭配"
           ],
-          "exampleCount": 9
+          "exampleCount": 10
         },
         {
           "id": "63",
@@ -2558,7 +2622,7 @@
             "文法句型",
             "「といっても」和「というより」"
           ],
-          "exampleCount": 11
+          "exampleCount": 12
         },
         {
           "id": "64",
@@ -2608,22 +2672,25 @@
           "pattern": "V＋ところに",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/67",
           "sections": [
+            null,
             "ところに",
             "ところへ",
             "ところを",
             "總結"
           ],
-          "exampleCount": 21
+          "exampleCount": 22
         },
         {
           "id": "68",
           "title": "N3文法68「として（は）」作為～、當作～",
           "point": "として（は）",
           "gloss": "作為～、當作～",
-          "pattern": "",
+          "pattern": "N＋として",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/68",
-          "sections": [],
-          "exampleCount": 0
+          "sections": [
+            null
+          ],
+          "exampleCount": 9
         },
         {
           "id": "69",
@@ -2649,7 +2716,7 @@
             "文法句型",
             "文法上限制"
           ],
-          "exampleCount": 13
+          "exampleCount": 12
         },
         {
           "id": "71",
@@ -2659,6 +2726,7 @@
           "pattern": "Ｎ＋とともに",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/71",
           "sections": [
+            null,
             "和～一起",
             "隨著",
             "同時"
@@ -2753,7 +2821,7 @@
           "sections": [
             "文法句型"
           ],
-          "exampleCount": 6
+          "exampleCount": 9
         },
         {
           "id": "79",
@@ -2769,7 +2837,7 @@
             "討論範圍",
             "文法差異（修飾名詞）"
           ],
-          "exampleCount": 9
+          "exampleCount": 11
         },
         {
           "id": "80",
@@ -2924,11 +2992,12 @@
           "pattern": "N＋によって",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/91",
           "sections": [
+            null,
             "手段：透過～、靠～、根據～",
             "情況：因～、根據～",
             "VIP 專屬內容"
           ],
-          "exampleCount": 17
+          "exampleCount": 18
         },
         {
           "id": "92",
@@ -2942,7 +3011,7 @@
             "まで、にかけて、にわたって的差別",
             "VIP 專屬內容"
           ],
-          "exampleCount": 8
+          "exampleCount": 7
         },
         {
           "id": "93",
@@ -2995,7 +3064,7 @@
             "關於名詞、形容動詞、サ變動詞的用法",
             "である是什麼意思"
           ],
-          "exampleCount": 9
+          "exampleCount": 10
         },
         {
           "id": "97",
@@ -3009,7 +3078,7 @@
             "表願望",
             "表遺憾"
           ],
-          "exampleCount": 19
+          "exampleCount": 18
         },
         {
           "id": "98",
@@ -3023,7 +3092,7 @@
             "「ばかりか」可替換成「ばかりでなく」",
             "ばかり的意思"
           ],
-          "exampleCount": 20
+          "exampleCount": 18
         },
         {
           "id": "99",
@@ -3078,7 +3147,7 @@
             "只能用「っぷり」的詞彙：",
             "兩種都可使用的詞彙："
           ],
-          "exampleCount": 11
+          "exampleCount": 13
         },
         {
           "id": "103",
@@ -3105,7 +3174,7 @@
             "過去式表遺憾、後悔或反省：べきだった／べきではなかった",
             "補充：べからず與べきではない的差異"
           ],
-          "exampleCount": 12
+          "exampleCount": 22
         },
         {
           "id": "105",
@@ -3162,7 +3231,7 @@
             "表比較",
             "補充"
           ],
-          "exampleCount": 20
+          "exampleCount": 19
         },
         {
           "id": "109",
@@ -3228,7 +3297,7 @@
             "適合／適用",
             "不向き"
           ],
-          "exampleCount": 15
+          "exampleCount": 17
         },
         {
           "id": "114",
@@ -3270,7 +3339,7 @@
             "其他用法",
             "接續助詞"
           ],
-          "exampleCount": 11
+          "exampleCount": 12
         },
         {
           "id": "117",
@@ -3293,13 +3362,14 @@
           "pattern": "Naな・A・V＋ものだ",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/118",
           "sections": [
+            null,
             "表本來",
             "表當然",
             "表感概",
             "表渴望",
             "表回憶"
           ],
-          "exampleCount": 30
+          "exampleCount": 26
         },
         {
           "id": "119",
@@ -3311,7 +3381,7 @@
           "sections": [
             "文法句型"
           ],
-          "exampleCount": 9
+          "exampleCount": 8
         },
         {
           "id": "120",
@@ -3328,7 +3398,7 @@
             "捨てたものではない",
             "たまったものではない"
           ],
-          "exampleCount": 14
+          "exampleCount": 17
         },
         {
           "id": "121",
@@ -3344,7 +3414,7 @@
             "「しようがない」和「しょうがない」",
             "總結"
           ],
-          "exampleCount": 17
+          "exampleCount": 35
         },
         {
           "id": "122",
@@ -3354,12 +3424,13 @@
           "pattern": "N・Na＋であるようなら／Nの・Naな・A・V＋ようなら",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/122",
           "sections": [
+            null,
             "文法句型",
             "「ようだと」後項不接意志、命令",
             "「ようなら」和「なら」的差別",
             "總結"
           ],
-          "exampleCount": 13
+          "exampleCount": 14
         },
         {
           "id": "123",
@@ -3369,6 +3440,7 @@
           "pattern": "Nの／V＋ように（後修飾動詞）",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/123",
           "sections": [
+            null,
             "表比喻",
             "表目的",
             "表希望",
@@ -3392,7 +3464,7 @@
             "よりほかに〜ない",
             "よりしかたがない"
           ],
-          "exampleCount": 13
+          "exampleCount": 16
         },
         {
           "id": "125",
@@ -3420,7 +3492,7 @@
             "「わけがない」的用法",
             "「わけがない」和「はずがない」的差別"
           ],
-          "exampleCount": 15
+          "exampleCount": 13
         },
         {
           "id": "127",
@@ -3433,7 +3505,7 @@
             "文法句型",
             "VIP 專屬內容"
           ],
-          "exampleCount": 9
+          "exampleCount": 11
         },
         {
           "id": "128",
@@ -3481,10 +3553,12 @@
           "title": "N3文法131「を込めて」懷著、帶著",
           "point": "を込めて",
           "gloss": "懷著、帶著",
-          "pattern": "",
+          "pattern": "N＋を込めて",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/131",
-          "sections": [],
-          "exampleCount": 0
+          "sections": [
+            null
+          ],
+          "exampleCount": 7
         },
         {
           "id": "132",
@@ -3499,17 +3573,19 @@
             "表職業",
             "接續名詞的用法"
           ],
-          "exampleCount": 17
+          "exampleCount": 18
         },
         {
           "id": "133",
           "title": "N3文法133「を中心に（して）、を中心として」以〜為中心",
           "point": "を中心に（して）、を中心として",
           "gloss": "以〜為中心",
-          "pattern": "",
+          "pattern": "N＋を中心に（して）／を中心として",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/133",
-          "sections": [],
-          "exampleCount": 0
+          "sections": [
+            null
+          ],
+          "exampleCount": 10
         },
         {
           "id": "134",
@@ -3519,6 +3595,7 @@
           "pattern": "N＋を通じて",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/134",
           "sections": [
+            null,
             "「を通じて」",
             "【期間】",
             "【媒介】",
@@ -3530,27 +3607,32 @@
             "【媒介】",
             "總結"
           ],
-          "exampleCount": 27
+          "exampleCount": 20
         },
         {
           "id": "135",
           "title": "N3文法135「をはじめ、をはじめとする」以～為首",
           "point": "をはじめ、をはじめとする",
           "gloss": "以～為首",
-          "pattern": "",
+          "pattern": "N＋をはじめ（として）",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/135",
-          "sections": [],
-          "exampleCount": 0
+          "sections": [
+            null,
+            "「N＋をはじめ」與 「N＋をはじめとして」的差異"
+          ],
+          "exampleCount": 14
         },
         {
           "id": "136",
           "title": "N3文法136「をもとに、をもとにして」以～為基礎",
           "point": "をもとに、をもとにして",
           "gloss": "以～為基礎",
-          "pattern": "",
+          "pattern": "N＋をもとに（して）",
           "url": "https://www.sigure.tw/learn-japanese/grammar/n3/136",
-          "sections": [],
-          "exampleCount": 0
+          "sections": [
+            null
+          ],
+          "exampleCount": 7
         },
         {
           "id": "137",
@@ -3564,7 +3646,7 @@
             "「～んじゃないかと思う」",
             "總結"
           ],
-          "exampleCount": 10
+          "exampleCount": 12
         },
         {
           "id": "138",
@@ -3579,7 +3661,7 @@
             "疑問句的「～んだって」",
             "總結"
           ],
-          "exampleCount": 16
+          "exampleCount": 15
         },
         {
           "id": "139",
@@ -3602,7 +3684,7 @@
             "【終助詞】",
             "「んだもん」＋「な（あ）」／「ね（え）」"
           ],
-          "exampleCount": 15
+          "exampleCount": 20
         },
         {
           "id": "140",
@@ -3618,7 +3700,8 @@
             "「ですが／ますが」與「んですが」的差異",
             "接續助詞與接續詞的使用差異",
             "《逆接條件》",
-            "《前置表現》"
+            "《前置表現》",
+            "N3文法到此結束囉！"
           ],
           "exampleCount": 21
         }
@@ -3671,9 +3754,11 @@
             "常見的搭配組合",
             "「以上（は）」和「からには」的差別",
             "可互換的情況",
-            "不可互換的情況"
+            "不可互換的情況",
+            "A.「以上（いじょう）（は）」可用於非一般常識的因果關係。",
+            "B.「以上（いじょう）（は）」可用於否定。"
           ],
-          "exampleCount": 28
+          "exampleCount": 25
         },
         {
           "id": "04",
@@ -3689,7 +3774,7 @@
             "不適用「一向に」的情況",
             "總結"
           ],
-          "exampleCount": 11
+          "exampleCount": 14
         },
         {
           "id": "05",
@@ -3703,7 +3788,7 @@
             "接続詞用法",
             "與「反面」的差異"
           ],
-          "exampleCount": 13
+          "exampleCount": 19
         },
         {
           "id": "06",
@@ -3716,7 +3801,7 @@
             "文法句型",
             "「今でこそ」、「今では」、「今は」的差別"
           ],
-          "exampleCount": 10
+          "exampleCount": 9
         },
         {
           "id": "07",
@@ -3743,7 +3828,7 @@
             "Vた＋上で",
             "Nの＋上で"
           ],
-          "exampleCount": 15
+          "exampleCount": 17
         },
         {
           "id": "09",
@@ -3756,7 +3841,7 @@
             "上に",
             "その上"
           ],
-          "exampleCount": 15
+          "exampleCount": 12
         },
         {
           "id": "10",
@@ -3769,7 +3854,7 @@
             "句型文法",
             "與「からには」和「以上（は）」的差別"
           ],
-          "exampleCount": 13
+          "exampleCount": 11
         }
       ]
     },

@@ -20,7 +20,8 @@ const RANGES = {
 const args = process.argv.slice(2);
 const dry = args.includes("--dry");
 const all = args.includes("--all");
-const positional = args.filter((arg) => arg !== "--dry" && arg !== "--all");
+const refresh = args.includes("--refresh");
+const positional = args.filter((arg) => !arg.startsWith("--"));
 
 function decodeEntities(value) {
   return value
@@ -132,82 +133,299 @@ function removeSpan(html, className) {
   return next;
 }
 
-function articleSlice(html) {
-  const start = html.search(/<section class="article__content/);
-  if (start < 0) return "";
-  const end = html.indexOf("</section>", start);
-  return end > start ? html.slice(start, end) : "";
+const VOID_TAGS = new Set(["br", "img", "hr", "wbr", "source", "input", "meta", "link"]);
+const SKIP_TAGS = new Set(["button", "script", "style", "svg", "nav"]);
+
+function attr(tag, name) {
+  return decodeEntities(tag.match(new RegExp(`\\b${name}="([^"]*)"`, "i"))?.[1] ?? "");
 }
 
-function parseExampleItem(itemHtml) {
-  const translationHtml = extractSpan(itemHtml, "trans");
-  const label = stripTags(extractSpan(itemHtml, "keyword-gray"));
-  const aside = [...itemHtml.matchAll(/<span class="gray">([\s\S]*?)<\/span>/gi)].map((match) => stripTags(match[1]));
-  const japaneseHtml = removeSpan(removeSpan(itemHtml, "trans"), "keyword-gray")
-    .replace(/<span class="gray">[\s\S]*?<\/span>/gi, "")
-    .replace(/<button\b[\s\S]*?<\/button>/gi, "");
-  const ja = toDisplay(japaneseHtml).replace(/^※\s*/, "");
-  const reading = toReading(japaneseHtml).replace(/^※\s*/, "");
-  if (!ja && !translationHtml) return null;
-  const example = {};
-  if (ja) example.ja = ja;
-  if (reading && reading !== ja) example.reading = reading;
-  if (translationHtml) example.zh = stripTags(translationHtml);
-  if (label) example.label = label;
-  if (aside.length > 0) example.note = aside.join(" ");
-  return example.ja || example.zh ? example : null;
+function classList(tag) {
+  return attr(tag, "class").split(/\s+/).filter(Boolean);
+}
+
+function hasClass(tag, name) {
+  return classList(tag).includes(name);
+}
+
+function matchingClose(html, openIndex, name) {
+  const token = new RegExp(`</?${name}\\b[^>]*>`, "gi");
+  token.lastIndex = openIndex + 1;
+  let depth = 1;
+  let match = token.exec(html);
+  while (match) {
+    if (match[0].startsWith("</")) depth -= 1;
+    else if (!match[0].endsWith("/>")) depth += 1;
+    if (depth === 0) return match.index;
+    match = token.exec(html);
+  }
+  return html.length;
+}
+
+function elementEnd(html, closeIndex) {
+  const end = html.indexOf(">", closeIndex);
+  return end < 0 ? html.length : end + 1;
+}
+
+function topElements(html, tagName) {
+  const elements = [];
+  const opener = new RegExp(`<${tagName}\\b[^>]*>`, "gi");
+  let match = opener.exec(html);
+  while (match) {
+    const close = matchingClose(html, match.index, tagName);
+    const end = elementEnd(html, close);
+    elements.push({ open: match[0], inner: html.slice(match.index + match[0].length, close), start: match.index, end });
+    opener.lastIndex = end;
+    match = opener.exec(html);
+  }
+  return elements;
+}
+
+function elementByClass(html, tagName, className) {
+  const opener = new RegExp(`<${tagName}\\b[^>]*class="[^"]*\\b${className}\\b[^"]*"[^>]*>`, "i");
+  const match = opener.exec(html);
+  if (!match) return "";
+  const close = matchingClose(html, match.index, tagName);
+  return html.slice(match.index, elementEnd(html, close));
+}
+
+function articleSlice(html) {
+  const content = elementByClass(html, "section", "article__content");
+  return content.replace(/^<section\b[^>]*>/i, "").replace(/<\/section>\s*$/i, "");
+}
+
+function articleHtml(html) {
+  const header = elementByClass(html, "header", "article__header");
+  const content = elementByClass(html, "section", "article__content");
+  return [header, content].filter(Boolean).join("\n");
+}
+
+function plainText(html) {
+  return linesFromHtml(
+    html
+      .replace(/<i\b[^>]*fa-angle-double-right[^>]*>\s*<\/i>/gi, "→")
+      .replace(/<i\b[^>]*fa-angle-double-left[^>]*>\s*<\/i>/gi, "←")
+      .replace(/<button\b[\s\S]*?<\/button>/gi, ""),
+  ).join("\n");
+}
+
+function stripClassSpans(html, className) {
+  const spans = topElements(html, "span").filter((span) => hasClass(span.open, className));
+  let next = html;
+  for (const span of spans.sort((left, right) => right.start - left.start)) {
+    next = `${next.slice(0, span.start)}${next.slice(span.end)}`;
+  }
+  return next;
+}
+
+function sentenceFrom(html) {
+  const translation = topElements(html, "span").find((span) => hasClass(span.open, "trans"));
+  const cleaned = stripClassSpans(html, "trans");
+  const ja = toDisplay(cleaned).replace(/^※\s*/, "");
+  const reading = toReading(cleaned).replace(/^※\s*/, "");
+  if (!ja && !translation) return null;
+  const sentence = {};
+  if (ja) sentence.ja = ja;
+  if (reading && reading !== ja) sentence.reading = reading;
+  if (translation) sentence.zh = plainText(translation.inner);
+  return sentence;
+}
+
+function parseListItem(itemHtml) {
+  const spans = topElements(itemHtml, "span");
+  const japanese = spans.filter((span) => /\blang="ja"/i.test(span.open));
+  const translations = spans.filter((span) => hasClass(span.open, "trans"));
+  const asides = spans.filter((span) => hasClass(span.open, "gray"));
+  const labels = spans.filter((span) => classList(span.open).some((name) => name.startsWith("keyword-")));
+  if (japanese.length === 0) {
+    const text = plainText(itemHtml);
+    return text ? [{ type: "note", text }] : [];
+  }
+  return japanese.map((span, index) => {
+    const before = itemHtml.slice(index === 0 ? 0 : japanese[index - 1].end, span.start);
+    const after = itemHtml.slice(span.end, japanese[index + 1]?.start ?? itemHtml.length);
+    const example = sentenceFrom(span.inner) ?? { ja: "" };
+    if (/fa-xmark/i.test(before)) example.status = "incorrect";
+    else if (/fa-circle/i.test(before)) example.status = "correct";
+    const translation = translations.find((item) => item.start >= span.end && item.start < (japanese[index + 1]?.start ?? Infinity));
+    const chosen = translation ?? (translations.length === 1 ? translations[0] : null);
+    if (chosen) example.zh = plainText(chosen.inner);
+    const note = (asides.length === 1 ? asides : asides.filter((item) => item.start >= span.end && item.start < (japanese[index + 1]?.start ?? Infinity)))
+      .map((item) => plainText(item.inner))
+      .filter(Boolean);
+    const label = labels
+      .filter((item) => item.start >= span.start && item.start < (japanese[index + 1]?.start ?? Infinity))
+      .map((item) => plainText(item.inner))
+      .filter(Boolean);
+    if (note.length > 0) example.note = note.join(" ");
+    if (label.length > 0) example.label = label.join(" ");
+    if (!example.ja && after) example.ja = plainText(after);
+    return example.ja || example.zh ? example : null;
+  }).filter(Boolean).map((example) => ({ type: "example", ...example }));
+}
+
+function parseTable(inner, open) {
+  const caption = topElements(inner, "caption")[0];
+  const rows = topElements(inner, "tr").map((row) =>
+    [...topElements(row.inner, "th"), ...topElements(row.inner, "td")]
+      .sort((left, right) => left.start - right.start)
+      .map((cell) => {
+        const sentence = sentenceFrom(cell.inner);
+        const entry = sentence?.ja
+          ? { text: sentence.ja, ...(sentence.reading ? { reading: sentence.reading } : {}), ...(sentence.zh ? { zh: sentence.zh } : {}) }
+          : { text: plainText(cell.inner).replace(/\n/g, " ") };
+        const colspan = Number(attr(cell.open, "colspan"));
+        const rowspan = Number(attr(cell.open, "rowspan"));
+        if (colspan > 1) entry.colspan = colspan;
+        if (rowspan > 1) entry.rowspan = rowspan;
+        if (cell.open.toLowerCase().startsWith("<th") || /<thead\b/i.test(open)) entry.header = true;
+        return entry;
+      }),
+  ).filter((row) => row.length > 0);
+  const table = { type: "table", rows };
+  const captionText = caption ? plainText(caption.inner) : "";
+  if (captionText) table.caption = captionText;
+  return table.rows.length > 0 ? [table] : [];
+}
+
+function parsePatternBlock(inner) {
+  const grammar = topElements(inner, "div").find((item) => hasClass(item.open, "grammar"));
+  const withoutGrammar = grammar ? `${inner.slice(0, grammar.start)}${inner.slice(grammar.end)}` : inner;
+  const formula = plainText(withoutGrammar).split("\n").map((line) => line.trim()).filter(Boolean);
+  const patternLine = formula.find((line) => line.startsWith("文法"));
+  const connection = grammar
+    ? plainText(grammar.inner)
+        .split("\n")
+        .map((line) => line.replace(/^詳細接續[：:；;]\s*/, "").trim())
+        .filter(Boolean)
+    : [];
+  const blocks = [];
+  if (patternLine || connection.length > 0) {
+    const pattern = { type: "pattern", pattern: patternLine?.replace(/^文法[：:]\s*/, "") ?? "" };
+    if (connection.length > 0) pattern.connection = connection;
+    blocks.push(pattern);
+  }
+  const explanation = formula.filter((line) => !line.startsWith("文法") && !line.startsWith("詳細接續")).join("\n");
+  if (explanation) blocks.push({ type: "note", text: explanation });
+  return blocks;
+}
+
+function parseChildren(html) {
+  const blocks = [];
+  let index = 0;
+  while (index < html.length) {
+    const next = html.indexOf("<", index);
+    if (next < 0) {
+      const text = plainText(html.slice(index));
+      if (text) blocks.push({ type: "note", text });
+      break;
+    }
+    if (next > index) {
+      const text = plainText(html.slice(index, next));
+      if (text) blocks.push({ type: "note", text });
+    }
+    const token = html.slice(next).match(/^<\/?([a-zA-Z][\w:-]*)\b[^>]*>/);
+    if (!token) {
+      index = next + 1;
+      continue;
+    }
+    const name = token[1].toLowerCase();
+    if (token[0].startsWith("</")) {
+      index = next + token[0].length;
+      continue;
+    }
+    if (VOID_TAGS.has(name) || token[0].endsWith("/>")) {
+      if (name === "img") {
+        const src = attr(token[0], "src");
+        const alt = attr(token[0], "alt");
+        if (src || alt) {
+          blocks.push({
+            type: "image",
+            alt,
+            src: src.startsWith("http") || !src ? src : new URL(src, "https://www.sigure.tw").href,
+          });
+        }
+      }
+      index = next + token[0].length;
+      continue;
+    }
+    const close = matchingClose(html, next, name);
+    const inner = html.slice(next + token[0].length, close);
+    blocks.push(...parseElement(name, token[0], inner));
+    index = elementEnd(html, close);
+  }
+  return mergeNotes(blocks);
+}
+
+function mergeNotes(blocks) {
+  const merged = [];
+  for (const block of blocks) {
+    const previous = merged.at(-1);
+    if (block.type === "note" && previous?.type === "note") previous.text = `${previous.text}\n${block.text}`;
+    else merged.push(block);
+  }
+  return merged.filter((block) => block.type !== "note" || block.text.trim());
+}
+
+function parseElement(name, open, inner) {
+  if (SKIP_TAGS.has(name)) return [];
+  if (name === "br") return [];
+  if (/^h[2-6]$/.test(name)) return [{ type: "heading", text: plainText(inner) }];
+  if (name === "table") return parseTable(inner, open);
+  if (name === "ol" || name === "ul") {
+    const items = topElements(inner, "li").flatMap((item) => parseListItem(item.inner));
+    const examples = items.filter((item) => item.type === "example");
+    const notes = items.filter((item) => item.type === "note");
+    return [
+      ...notes,
+      ...(examples.length > 0 ? [{ type: "examples", items: examples.map(({ type, ...example }) => example) }] : []),
+    ];
+  }
+  if (name === "div") {
+    if (hasClass(open, "grammar")) return [];
+    if (hasClass(open, "block")) return parsePatternBlock(inner);
+    if (hasClass(open, "url")) {
+      const link = topElements(inner, "a")[0];
+      const text = plainText(link?.inner ?? inner);
+      const href = link ? attr(link.open, "href") : "";
+      return text || href ? [{ type: "link", text, href: href.startsWith("http") || !href ? href : new URL(href, "https://www.sigure.tw").href }] : [];
+    }
+    const kind = classList(open).find((item) => ["note", "point", "warning", "hosoku"].includes(item));
+    if (kind) {
+      const children = parseChildren(inner);
+      const text = children.filter((block) => block.type === "note").map((block) => block.text).join("\n");
+      const nested = children.filter((block) => block.type !== "note");
+      const callout = { type: "callout", kind, text };
+      if (nested.length > 0) callout.blocks = nested;
+      return text || nested.length > 0 ? [callout] : [];
+    }
+    return parseChildren(inner);
+  }
+  if (name === "p" || name === "blockquote" || name === "figcaption" || name === "li") {
+    const children = parseChildren(inner);
+    if (children.some((block) => block.type !== "note")) return children;
+    const text = plainText(inner);
+    return text ? [{ type: "note", text }] : [];
+  }
+  return parseChildren(inner);
 }
 
 function parseChunk(chunk) {
-  const section = { heading: "", notes: [], examples: [] };
-  const heading = chunk.match(/^[\s\S]*?<h[23][^>]*>([\s\S]*?)<\/h[23]>/i);
-  section.heading = heading ? stripTags(heading[1]) : "";
+  const heading = chunk.match(/^[\s\S]*?<h([2-4])\b[^>]*>([\s\S]*?)<\/h\1>/i);
   const body = heading ? chunk.slice(heading.index + heading[0].length) : chunk;
-
-  const block = innerDiv(body, "block");
-  if (block) {
-    const grammar = innerDiv(block, "grammar");
-    const formulaLines = linesFromHtml(block.split(/<div class="grammar"/i)[0]);
-    const patternLine = formulaLines.find((line) => line.startsWith("文法"));
-    if (patternLine) section.pattern = patternLine.replace(/^文法[：:]\s*/, "");
-    if (grammar) {
-      section.connection = linesFromHtml(grammar)
-        .map((line) => line.replace(/^詳細接續[：:；;]\s*/, ""))
-        .filter(Boolean);
-    }
-    const explanation = linesFromHtml(block.replace(/<div class="grammar">[\s\S]*?<\/div>/i, "")).filter(
-      (line) => !line.startsWith("文法") && !line.startsWith("詳細接續"),
-    );
-    section.notes.push(...explanation);
-  }
-  const withoutLists = body.replace(/<(ol|ul)\b[\s\S]*?<\/\1>/gi, "");
-  section.notes.push(
-    ...[...withoutLists.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)]
-      .map((match) => stripTags(match[1]))
-      .filter((text) => text && !text.startsWith("文法：")),
-  );
-  for (const supplement of withoutLists.matchAll(/<div class="hosoku">([\s\S]*?)<\/div>/gi)) {
-    const text = linesFromHtml(supplement[1]).join("\n");
-    if (text) section.notes.push(text.replace(/^補充\s*/, "補充 "));
-  }
-
-  for (const list of body.matchAll(/<(ol|ul)\b[^>]*>([\s\S]*?)<\/\1>/gi)) {
-    for (const item of list[2].matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi)) {
-      const example = parseExampleItem(item[1]);
-      if (!example) continue;
-      if (!example.ja && example.zh) {
-        section.notes.push(example.zh);
-        continue;
-      }
-      section.examples.push(example);
-    }
-  }
-
-  if (!section.pattern) delete section.pattern;
-  if (!section.connection?.length) delete section.connection;
-  if (section.notes.length === 0) delete section.notes;
-  if (section.examples.length === 0) delete section.examples;
+  const blocks = parseChildren(body);
+  const section = { heading: heading ? stripTags(heading[2]) : "", level: heading ? Number(heading[1]) : 2, blocks };
+  if (!section.heading) delete section.heading;
   return section;
+}
+
+function firstPattern(sections) {
+  for (const section of sections) {
+    for (const block of section.blocks ?? []) {
+      if (block.type === "pattern" && block.pattern) return block;
+    }
+  }
+  return null;
 }
 
 export function parseGrammarPage(html, { level, lesson, url }) {
@@ -216,9 +434,9 @@ export function parseGrammarPage(html, { level, lesson, url }) {
   const pointMatch = title.match(/[「『]([^」』]+)[」』]\s*(.*)$/);
   const published = html.match(/<time[^>]*datetime="([^"]+)"/i)?.[1]?.slice(0, 10) ?? null;
   const content = articleSlice(html).replace(/<nav\b[\s\S]*?<\/nav>/gi, "");
-  const parts = content.split(/(?=<h[23]\b)/i).filter((part) => /<h[23]\b/i.test(part));
-  const sections = parts.map(parseChunk).filter((section) => section.heading);
-  const main = sections.find((section) => section.pattern) ?? sections[0];
+  const parts = content.split(/(?=<h[2-4]\b)/i).filter((part) => part.trim());
+  const sections = parts.map(parseChunk).filter((section) => section.heading || section.blocks.length > 0);
+  const pattern = firstPattern(sections);
 
   return {
     level: level.toUpperCase(),
@@ -230,10 +448,17 @@ export function parseGrammarPage(html, { level, lesson, url }) {
     url,
     source: "https://www.sigure.tw",
     published,
-    pattern: main?.pattern ?? "",
-    connection: main?.connection ?? [],
+    pattern: pattern?.pattern ?? "",
+    connection: pattern?.connection ?? [],
     sections,
   };
+}
+
+function countExamples(blocks = []) {
+  return blocks.reduce((sum, block) => {
+    const nested = countExamples(block.blocks ?? block.items?.flatMap((item) => item.blocks ?? []) ?? []);
+    return sum + nested + (block.type === "examples" ? block.items.length : 0);
+  }, 0);
 }
 
 function lessonIds(level) {
@@ -259,16 +484,21 @@ async function fetchLesson(level, lesson) {
       continue;
     }
     if (!response.ok) throw new Error(`${url} -> ${response.status}`);
-    return parseGrammarPage(await response.text(), { level, lesson, url });
+    const page = await response.text();
+    return {
+      parsed: parseGrammarPage(page, { level, lesson, url }),
+      html: articleHtml(page),
+    };
   }
   throw new Error(`${url} -> 429`);
 }
 
-async function saveLesson(parsed, level) {
+async function saveLesson(parsed, html, level) {
   const outDir = path.resolve("data/grammar", level);
   await mkdir(outDir, { recursive: true });
   const outFile = path.join(outDir, `${parsed.id}.json`);
   await writeFile(outFile, `${JSON.stringify(parsed, null, 2)}\n`, "utf8");
+  if (html) await writeFile(path.join(outDir, `${parsed.id}.html`), `${html}\n`, "utf8");
   return outFile;
 }
 
@@ -287,12 +517,13 @@ async function mapPool(items, limit, worker) {
 }
 
 async function scrapeOne(level, lesson) {
-  const parsed = await fetchLesson(level, lesson);
+  const { parsed, html } = await fetchLesson(level, lesson);
   if (dry) {
     console.log(JSON.stringify(parsed, null, 2));
+    console.log(`html ${html.length} chars`);
     return parsed;
   }
-  const outFile = await saveLesson(parsed, level);
+  const outFile = await saveLesson(parsed, html, level);
   console.log(`${parsed.title} -> ${outFile}`);
   return parsed;
 }
@@ -306,18 +537,20 @@ async function scrapeAll() {
   const catalog = {};
   const parsedLessons = await mapPool(jobs, 1, async ({ level, lesson }) => {
     const existing = path.resolve("data/grammar", level, `${lesson}.json`);
-    try {
-      await access(existing);
-      const saved = JSON.parse(await readFile(existing, "utf8"));
-      console.log(`skip ${level}/${lesson}`);
-      return saved;
-    } catch {
-      // not downloaded yet
+    if (!refresh) {
+      try {
+        await access(existing);
+        const saved = JSON.parse(await readFile(existing, "utf8"));
+        console.log(`skip ${level}/${lesson}`);
+        return saved;
+      } catch {
+        // not downloaded yet
+      }
     }
     try {
       await wait(700);
-      const parsed = await fetchLesson(level, lesson);
-      if (!dry) await saveLesson(parsed, level);
+      const { parsed, html } = await fetchLesson(level, lesson);
+      if (!dry) await saveLesson(parsed, html, level);
       console.log(`ok ${level}/${lesson} ${parsed.title}`);
       return parsed;
     } catch (error) {
@@ -339,7 +572,7 @@ async function scrapeAll() {
         pattern: item.pattern,
         url: item.url,
         sections: item.sections.map((section) => section.heading),
-        exampleCount: item.sections.reduce((sum, section) => sum + (section.examples?.length ?? 0), 0),
+        exampleCount: item.sections.reduce((sum, section) => sum + countExamples(section.blocks), 0),
       })),
     };
   }

@@ -55,14 +55,25 @@ const actionPlacePairs = [
   ["プール", "プール", "游泳池", "泳ぎます。", "およぎます。", "游泳。"],
 ];
 
+function toPastJa(s) {
+  return s.replace(/ています。$/, "ていました。").replace(/ます。$/, "ました。");
+}
+function toPastZh(s) {
+  return s.replace(/。$/, "了。");
+}
+
 for (const [tJa, tRd, tZh] of timePrefixes) {
+  const isPast = tJa === "昨日" || tJa === "さっき";
   for (const [pJa, pRd, pZh, aJa, aRd, aZh] of actionPlacePairs) {
+    const finalJa = isPast ? toPastJa(aJa) : aJa;
+    const finalRd = isPast ? toPastJa(aRd) : aRd;
+    const finalZh = isPast ? toPastZh(aZh) : aZh;
     add(
       "n5-particles",
       `${tJa}${pJa}`,
-      aJa,
-      `${tRd}${pRd}で${aRd}`,
-      `${tZh}在${pZh}${aZh}`,
+      finalJa,
+      `${tRd}${pRd}で${finalRd}`,
+      `${tZh}在${pZh}${finalZh}`,
       "で",
       "動態動作發生的場所使用「で」。",
     );
@@ -190,14 +201,19 @@ const moveOpeners = [
   ["次の駅で", "つぎのえきで", "在下一站"],
 ];
 for (const [oJa, oRd, oZh] of moveOpeners) {
+  const isPast = oJa.includes("さっき");
   for (const [pJa, pRd, pZh, vJa, vRd, vZh] of passThrough) {
     if (oJa === "次の駅で" && pJa !== "電車" && pJa !== "バス") continue;
+    if (oJa.includes("毎朝") && vJa.includes("ました")) continue;
+    const finalJa = isPast ? toPastJa(vJa) : vJa;
+    const finalRd = isPast ? toPastJa(vRd) : vRd;
+    const finalZh = isPast && !vZh.includes("了") ? toPastZh(vZh) : vZh;
     add(
       "n5-movement",
       `${oJa}${pJa}`,
-      vJa,
-      `${oRd}${pRd}を${vRd}`,
-      `${oZh}${pZh}${vZh}`,
+      finalJa,
+      `${oRd}${pRd}を${finalRd}`,
+      `${oZh}${pZh}${finalZh}`,
       "を",
       "經過空間（散歩する・渡る）或離開空間／交通工具（降りる・出る）必用「を」。",
     );
@@ -269,13 +285,17 @@ const locActionPairs = [
   ["ホテル", "ホテル", "飯店", "ゆっくり休みました。", "ゆっくりやすみました。", "好好休息了。"],
 ];
 for (const [oJa, oRd, oZh] of [["昨日", "きのう", "昨天"], ["週末に", "しゅうまつに", "週末"], ["旅行中", "りょこうちゅう", "旅行期間"]]) {
+  const isPast = oJa === "昨日" || oJa === "旅行中";
   for (const [pJa, pRd, pZh, vJa, vRd, vZh] of locActionPairs) {
+    const finalJa = isPast ? toPastJa(vJa) : vJa;
+    const finalRd = isPast ? toPastJa(vRd) : vRd;
+    const finalZh = isPast && !vZh.includes("了") ? toPastZh(vZh) : vZh;
     add(
       "n5-movement",
       `${oJa}${pJa}`,
-      vJa,
-      `${oRd}${pRd}で${vRd}`,
-      `${oZh}在${pZh}${vZh}`,
+      finalJa,
+      `${oRd}${pRd}で${finalRd}`,
+      `${oZh}在${pZh}${finalZh}`,
       "で",
       "在某地點進行動作或事件，使用「で」。",
     );
