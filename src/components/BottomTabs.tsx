@@ -18,7 +18,7 @@ export function BottomTabs({ tabs, value, onChange }: Props) {
   const insets = useSafeAreaInsets();
 
   return (
-    <View style={[styles.bar, { paddingBottom: Math.max(insets.bottom, 8) }]}>
+    <View style={[styles.bar, { paddingBottom: Math.max(insets.bottom, 10) }]}>
       {tabs.map((tab) => {
         const selected = tab.id === value;
         return (
@@ -27,9 +27,14 @@ export function BottomTabs({ tabs, value, onChange }: Props) {
             accessibilityRole="tab"
             accessibilityState={{ selected }}
             onPress={() => onChange(tab.id)}
-            style={[styles.tab, selected && { backgroundColor: tab.color }]}
+            style={[
+              styles.tab,
+              selected
+                ? { backgroundColor: tab.color, borderColor: tab.color }
+                : { backgroundColor: theme.surface, borderColor: theme.paperBorder },
+            ]}
           >
-            <Text style={[styles.label, { color: selected ? "#fff" : tab.color }]}>{tab.label}</Text>
+            <Text style={[styles.label, { color: selected ? "#fff" : theme.inkSoft }]}>{tab.label}</Text>
           </Pressable>
         );
       })}
@@ -40,19 +45,20 @@ export function BottomTabs({ tabs, value, onChange }: Props) {
 const styles = StyleSheet.create({
   bar: {
     flexDirection: "row",
-    gap: 6,
-    paddingTop: 8,
-    paddingHorizontal: 12,
+    gap: 8,
+    paddingTop: 10,
+    paddingHorizontal: 14,
     backgroundColor: theme.white,
     borderTopWidth: 1,
-    borderTopColor: "rgba(30, 36, 48, 0.08)",
+    borderTopColor: theme.paperBorder,
   },
   tab: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 14,
-    paddingVertical: 12,
+    borderRadius: 16,
+    borderWidth: 1.5,
+    paddingVertical: 11,
   },
-  label: { fontSize: 15, fontWeight: "800" },
+  label: { fontSize: 14, fontWeight: "800" },
 });

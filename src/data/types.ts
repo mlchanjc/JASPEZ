@@ -46,6 +46,12 @@ export type GrammarVariant = {
   wrongHints: Record<string, string>;
 };
 
+export type GrammarExample = {
+  id: string;
+  polite: GrammarVariant;
+  casual: GrammarVariant;
+};
+
 export type GrammarPoint = {
   id: string;
   level: LevelId;
@@ -54,8 +60,7 @@ export type GrammarPoint = {
   tag: string;
   formation: string;
   nuance: string;
-  polite: GrammarVariant;
-  casual: GrammarVariant;
+  examples: GrammarExample[];
 };
 
 export type ConfusableSide = {
@@ -80,18 +85,15 @@ export type ConfusablePair = {
 
 export type ConjugationForm = "te" | "nai" | "potential" | "ta";
 
-export type ConjugationVerb = {
+export type ConjugationQuestion = {
   id: string;
+  level: LevelId;
   dict: string;
   rt: string;
   group: string;
   meaning: string;
-  forms: Record<
-    ConjugationForm,
-    {
-      answer: string;
-      choices: string[];
-      rule: string;
-    }
-  >;
+  form: ConjugationForm;
+  answer: string;
+  choices: string[];
+  rule: string;
 };

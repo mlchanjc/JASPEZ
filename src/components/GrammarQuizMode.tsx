@@ -10,6 +10,7 @@ import { levelAccent, theme } from "@/theme";
 
 type QueueEntry = {
   id: string;
+  exampleIdx: number;
   isGhost: boolean;
 };
 
@@ -17,11 +18,29 @@ type Props = {
   levelFilter: LevelId | "ALL";
 };
 
+function shuffle<T>(arr: readonly T[]): T[] {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
 function buildInitialQueue(items: GrammarPoint[], ghostIds: readonly string[]): QueueEntry[] {
-  const allowed = new Set(items.map((item) => item.id));
-  const ghosts = ghostIds.filter((id) => allowed.has(id)).map((id) => ({ id, isGhost: true }));
+  const byId = new Map(items.map((item) => [item.id, item]));
+  const ghosts = ghostIds
+    .filter((id) => byId.has(id))
+    .map((id) => {
+      const point = byId.get(id)!;
+      return { id, exampleIdx: Math.floor(Math.random() * point.examples.length), isGhost: true };
+    });
   const ghostSet = new Set(ghosts.map((g) => g.id));
-  const regular = items.filter((item) => !ghostSet.has(item.id)).map((item) => ({ id: item.id, isGhost: false }));
+  const regular = shuffle(items.filter((item) => !ghostSet.has(item.id))).map((item) => ({
+    id: item.id,
+    exampleIdx: Math.floor(Math.random() * item.examples.length),
+    isGhost: false,
+  }));
   return [...ghosts, ...regular];
 }
 
@@ -60,26 +79,39 @@ export function GrammarQuizMode({ levelFilter }: Props) {
     [currentEntry],
   );
 
+  const currentExample = useMemo(() => {
+    if (!currentCard || !currentEntry) return null;
+    return currentCard.examples[currentEntry.exampleIdx % currentCard.examples.length];
+  }, [currentCard, currentEntry]);
+
+  const variant = currentExample ? currentExample[prefs.register] : null;
+
+  const shuffledChoices = useMemo(() => {
+    if (!variant) return [];
+    return shuffle(variant.choices);
+  }, [currentExample?.id, prefs.register, sessionDone]);
+
   if (pool.length === 0) {
     return (
       <View style={styles.emptyCard}>
-        <Text style={styles.emptyTitle}>{levelFilter} 文法還在準備</Text>
-        <Text style={styles.emptyBody}>目前收錄 N5、N4、N3 核心文法，可切換級別或選擇「全部」開始練習。</Text>
+        <Text style={styles.emptyEmoji}>🚧</Text>
+        <Text style={styles.emptyTitle}>{levelFilter} 文法準備中</Text>
+        <Text style={styles.emptyBody}>目前開放 N5、N4、N3 多情境題庫，可切換級別或選擇「全部」開始練習。</Text>
       </View>
     );
   }
 
-  if (!currentCard || !currentEntry) {
+  if (!currentCard || !currentEntry || !currentExample || !variant) {
     const accuracy = sessionDone > 0 ? Math.round((sessionCorrect / sessionDone) * 100) : 100;
     return (
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         <View style={styles.doneCard}>
-          <View style={styles.stamp}>
-            <Text style={styles.stampText}>印</Text>
+          <View style={styles.doneBadge}>
+            <Text style={styles.doneEmoji}>🎉</Text>
           </View>
-          <Text style={styles.doneTitle}>這組文法練完了</Text>
+          <Text style={styles.doneTitle}>本輪文法通關！</Text>
           <Text style={styles.doneMeta}>
-            本次完成 {sessionDone} 題 · 正確率 {accuracy}%
+            完成 {sessionDone} 題 · 正確率 {accuracy}%
           </Text>
           <Pressable
             style={styles.primaryBtn}
@@ -92,14 +124,13 @@ export function GrammarQuizMode({ levelFilter }: Props) {
               setTyped("");
             }}
           >
-            <Text style={styles.primaryBtnText}>再練一輪</Text>
+            <Text style={styles.primaryBtnText}>換新例句再練一輪</Text>
           </Pressable>
         </View>
       </ScrollView>
     );
   }
 
-  const variant = currentCard[prefs.register];
   const accent = levelAccent[currentCard.level];
   const totalSpan = Math.max(1, sessionDone + queue.length);
   const progressPct = sessionDone / totalSpan;
@@ -128,9 +159,11 @@ export function GrammarQuizMode({ levelFilter }: Props) {
     if (!head) return;
     if (mode === "again") {
       addGhostGrammar(head.id);
+      // Rotate to a DIFFERENT example sentence so Ghost Review never feels repetitive
+      const nextExampleIdx = (head.exampleIdx + 1) % currentCard.examples.length;
       const insertAt = Math.min(2, rest.length);
       const nextQueue = [...rest];
-      nextQueue.splice(insertAt, 0, { id: head.id, isGhost: true });
+      nextQueue.splice(insertAt, 0, { id: head.id, exampleIdx: nextExampleIdx, isGhost: true });
       setQueue(nextQueue);
     } else {
       if (isCorrect) clearGhostGrammar(head.id);
@@ -145,23 +178,22 @@ export function GrammarQuizMode({ levelFilter }: Props) {
     !isCorrect && variant.wrongHints[picked] ? variant.wrongHints[picked] : currentCard.nuance;
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
-      {/* Progress bar card */}
-      <View style={styles.progressCard}>
-        <View style={styles.progressHead}>
-          <Text style={styles.progressLabel}>
-            待練 {queue.length} 題{currentEntry.isGhost ? " · 錯題回顧中" : ""}
-          </Text>
-          <Text style={styles.progressPct}>
-            {sessionDone > 0 ? `正確率 ${Math.round((sessionCorrect / sessionDone) * 100)}%` : `${currentCard.level}`}
-          </Text>
-        </View>
+    <ScrollView
+      contentContainerStyle={styles.scrollContent}
+      showsVerticalScrollIndicator={false}
+      keyboardShouldPersistTaps="handled"
+    >
+      {/* Compact Session Progress */}
+      <View style={styles.progressRow}>
         <View style={styles.barWrap}>
-          <ProgressBar percent={progressPct} color={accent} height={8} />
+          <ProgressBar percent={progressPct} color={accent} height={10} />
         </View>
+        <Text style={styles.progressCount}>
+          {sessionDone}/{totalSpan}
+        </Text>
       </View>
 
-      {/* Main Quiz Card */}
+      {/* Main Playful Quiz Card */}
       <View style={styles.card}>
         <View style={styles.badgeRow}>
           <View style={[styles.levelBadge, { backgroundColor: accent }]}>
@@ -172,15 +204,16 @@ export function GrammarQuizMode({ levelFilter }: Props) {
           </View>
           {currentEntry.isGhost && (
             <View style={styles.ghostBadge}>
-              <Text style={styles.ghostBadgeText}>錯題再練</Text>
+              <Text style={styles.ghostBadgeText}>錯題新例句</Text>
             </View>
           )}
+          <Text style={styles.scenarioCount}>
+            情境 {(currentEntry.exampleIdx % currentCard.examples.length) + 1}/{currentCard.examples.length}
+          </Text>
         </View>
 
-        <Text style={styles.tapTip}>點擊虛線底線的單字可查看意思</Text>
-
         <FuriganaSentence
-          key={`${currentCard.id}-${prefs.register}`}
+          key={`${currentExample.id}-${prefs.register}`}
           tokens={variant.tokens}
           showFurigana={prefs.showFurigana}
           blankText={answered ? picked : undefined}
@@ -192,7 +225,7 @@ export function GrammarQuizMode({ levelFilter }: Props) {
 
         {/* Input Mode Switcher */}
         <View style={styles.modeRow}>
-          <Text style={styles.modeLabel}>作答方式</Text>
+          <Text style={styles.modeLabel}>作答模式</Text>
           <View style={styles.segmented}>
             <Pressable
               onPress={() => setInputMode("tiles")}
@@ -211,22 +244,26 @@ export function GrammarQuizMode({ levelFilter }: Props) {
 
         {inputMode === "tiles" ? (
           <View style={styles.tilesGrid}>
-            {variant.choices.map((choice) => {
+            {shuffledChoices.map((choice) => {
               const isAnswer = choice === variant.answer;
               const isPicked = choice === picked;
-              let tileBg = theme.surface;
+              let tileBg = theme.white;
               let tileBorder = theme.paperBorder;
+              let tileBottom = "#CBD5E1";
               let textColor = theme.ink;
               if (answered) {
                 if (isAnswer) {
                   tileBg = theme.successSoft;
                   tileBorder = theme.success;
-                  textColor = theme.success;
+                  tileBottom = theme.matchaDark;
+                  textColor = theme.matchaDark;
                 } else if (isPicked) {
                   tileBg = theme.errorSoft;
                   tileBorder = theme.error;
+                  tileBottom = theme.error;
                   textColor = theme.error;
                 } else {
+                  tileBg = theme.surface;
                   textColor = theme.inkMuted;
                 }
               }
@@ -235,7 +272,10 @@ export function GrammarQuizMode({ levelFilter }: Props) {
                   key={choice}
                   disabled={answered}
                   onPress={() => submitAnswer(choice)}
-                  style={[styles.tile, { backgroundColor: tileBg, borderColor: tileBorder }]}
+                  style={[
+                    styles.tile,
+                    { backgroundColor: tileBg, borderColor: tileBorder, borderBottomColor: tileBottom },
+                  ]}
                 >
                   <Text style={[styles.tileText, { color: textColor }]}>{choice}</Text>
                 </Pressable>
@@ -248,7 +288,7 @@ export function GrammarQuizMode({ levelFilter }: Props) {
               value={typed}
               onChangeText={setTyped}
               editable={!answered}
-              placeholder={`輸入日文（例如：${variant.answer.slice(0, 2)}…）`}
+              placeholder="輸入日文填空…"
               placeholderTextColor={theme.inkMuted}
               onSubmitEditing={() => submitAnswer(typed)}
               style={styles.textInput}
@@ -276,8 +316,8 @@ export function GrammarQuizMode({ levelFilter }: Props) {
             ]}
           >
             <View style={styles.feedbackHead}>
-              <Text style={[styles.feedbackTitle, { color: isCorrect ? theme.success : theme.error }]}>
-                {isCorrect ? `答對了 · ${currentCard.pattern}` : `正解：${variant.answer}`}
+              <Text style={[styles.feedbackTitle, { color: isCorrect ? theme.matchaDark : theme.error }]}>
+                {isCorrect ? `太棒了！${currentCard.pattern}` : `正解：${variant.answer}`}
               </Text>
               <View style={styles.formulaChip}>
                 <Text style={styles.formulaChipText}>{currentCard.formation}</Text>
@@ -287,7 +327,7 @@ export function GrammarQuizMode({ levelFilter }: Props) {
 
             <View style={styles.actionRow}>
               <Pressable onPress={() => advance("again")} style={styles.againBtn}>
-                <Text style={styles.againBtnText}>再練一次</Text>
+                <Text style={styles.againBtnText}>換例句再練</Text>
               </Pressable>
               <Pressable onPress={() => advance("next")} style={[styles.nextBtn, { backgroundColor: accent }]}>
                 <Text style={styles.nextBtnText}>下一題 →</Text>
@@ -301,31 +341,22 @@ export function GrammarQuizMode({ levelFilter }: Props) {
 }
 
 const styles = StyleSheet.create({
-  scrollContent: { paddingHorizontal: 20, paddingBottom: 32, gap: 14 },
-  progressCard: {
-    backgroundColor: theme.white,
-    borderRadius: 18,
-    padding: 14,
-    gap: 8,
-    borderWidth: 1,
-    borderColor: theme.paperBorder,
-  },
-  progressHead: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
-  progressLabel: { fontSize: 13, fontWeight: "700", color: theme.inkSoft },
-  progressPct: { fontSize: 13, fontWeight: "800", color: theme.indigo },
+  scrollContent: { paddingHorizontal: 18, paddingBottom: 32, gap: 14 },
+  progressRow: { flexDirection: "row", alignItems: "center", gap: 10 },
   barWrap: { flex: 1, minWidth: 0 },
+  progressCount: { fontSize: 13, fontWeight: "900", color: theme.inkSoft },
   card: {
     backgroundColor: theme.white,
-    borderRadius: 24,
-    padding: 18,
-    gap: 14,
-    borderWidth: 1,
+    borderRadius: 26,
+    padding: 20,
+    gap: 15,
+    borderWidth: 1.5,
     borderColor: theme.paperBorder,
-    shadowColor: "#1E2430",
+    shadowColor: "#161B2E",
     shadowOpacity: 0.06,
-    shadowRadius: 12,
+    shadowRadius: 16,
     shadowOffset: { width: 0, height: 6 },
-    elevation: 2,
+    elevation: 3,
   },
   badgeRow: { flexDirection: "row", alignItems: "center", gap: 8, flexWrap: "wrap" },
   levelBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 99 },
@@ -334,19 +365,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 99,
-    backgroundColor: theme.surface,
-    borderWidth: 1,
-    borderColor: theme.paperBorder,
+    backgroundColor: theme.indigoSoft,
   },
-  tagBadgeText: { fontSize: 12, fontWeight: "700", color: theme.inkSoft },
+  tagBadgeText: { fontSize: 12, fontWeight: "800", color: theme.indigo },
   ghostBadge: {
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 99,
     backgroundColor: theme.goldSoft,
   },
-  ghostBadgeText: { fontSize: 12, fontWeight: "800", color: "#8A6520" },
-  tapTip: { fontSize: 11, color: theme.inkMuted, fontWeight: "600", marginBottom: -4 },
+  ghostBadgeText: { fontSize: 12, fontWeight: "800", color: theme.goldDark },
+  scenarioCount: { marginLeft: "auto", fontSize: 11, fontWeight: "800", color: theme.inkMuted },
   translation: { fontSize: 15, color: theme.inkSoft, lineHeight: 22, fontWeight: "600" },
   modeRow: {
     flexDirection: "row",
@@ -354,26 +383,27 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingTop: 10,
     borderTopWidth: 1,
-    borderTopColor: "rgba(30, 36, 48, 0.08)",
+    borderTopColor: theme.paperBorder,
   },
-  modeLabel: { fontSize: 12, fontWeight: "700", color: theme.inkSoft },
+  modeLabel: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
   segmented: {
     flexDirection: "row",
     backgroundColor: theme.paper,
-    borderRadius: 10,
+    borderRadius: 12,
     padding: 3,
     gap: 2,
   },
-  segBtn: { paddingHorizontal: 12, paddingVertical: 5, borderRadius: 8 },
+  segBtn: { paddingHorizontal: 13, paddingVertical: 5, borderRadius: 9 },
   segBtnActive: { backgroundColor: theme.white },
-  segText: { fontSize: 12, fontWeight: "700", color: theme.inkSoft },
-  segTextActive: { color: theme.ink },
+  segText: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
+  segTextActive: { color: theme.indigo },
   tilesGrid: { flexDirection: "row", flexWrap: "wrap", gap: 10 },
   tile: {
     width: "48%",
-    borderRadius: 14,
+    borderRadius: 16,
     borderWidth: 1.5,
-    paddingVertical: 13,
+    borderBottomWidth: 4,
+    paddingVertical: 14,
     paddingHorizontal: 10,
     alignItems: "center",
     justifyContent: "center",
@@ -387,20 +417,20 @@ const styles = StyleSheet.create({
     borderColor: theme.paperBorder,
     borderRadius: 14,
     paddingHorizontal: 14,
-    paddingVertical: 11,
+    paddingVertical: 12,
     fontSize: 15,
     color: theme.ink,
     fontWeight: "600",
   },
   submitBtn: {
-    paddingHorizontal: 18,
+    paddingHorizontal: 20,
     borderRadius: 14,
     alignItems: "center",
     justifyContent: "center",
   },
-  submitBtnText: { color: "#fff", fontSize: 14, fontWeight: "800" },
+  submitBtnText: { color: "#fff", fontSize: 14, fontWeight: "900" },
   feedback: {
-    borderRadius: 16,
+    borderRadius: 18,
     borderWidth: 1.5,
     padding: 14,
     gap: 10,
@@ -421,8 +451,8 @@ const styles = StyleSheet.create({
   actionRow: { flexDirection: "row", gap: 10, paddingTop: 4 },
   againBtn: {
     flex: 1,
-    paddingVertical: 11,
-    borderRadius: 12,
+    paddingVertical: 12,
+    borderRadius: 14,
     backgroundColor: theme.white,
     borderWidth: 1.5,
     borderColor: theme.paperBorder,
@@ -431,43 +461,42 @@ const styles = StyleSheet.create({
   againBtnText: { fontSize: 13, fontWeight: "800", color: theme.inkSoft },
   nextBtn: {
     flex: 1.4,
-    paddingVertical: 11,
-    borderRadius: 12,
+    paddingVertical: 12,
+    borderRadius: 14,
     alignItems: "center",
   },
-  nextBtnText: { fontSize: 14, fontWeight: "800", color: "#fff" },
+  nextBtnText: { fontSize: 14, fontWeight: "900", color: "#fff" },
   emptyCard: {
     margin: 20,
-    padding: 24,
-    borderRadius: 24,
+    padding: 26,
+    borderRadius: 26,
     backgroundColor: theme.white,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: theme.paperBorder,
+    alignItems: "center",
     gap: 8,
   },
-  emptyTitle: { fontSize: 20, fontWeight: "800", color: theme.ink },
-  emptyBody: { fontSize: 14, color: theme.inkSoft, lineHeight: 21 },
+  emptyEmoji: { fontSize: 34 },
+  emptyTitle: { fontSize: 20, fontWeight: "900", color: theme.ink },
+  emptyBody: { fontSize: 14, color: theme.inkSoft, lineHeight: 21, textAlign: "center" },
   doneCard: {
     backgroundColor: theme.white,
     borderRadius: 28,
     padding: 28,
     alignItems: "center",
     gap: 12,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: theme.paperBorder,
   },
-  stamp: {
+  doneBadge: {
     width: 72,
     height: 72,
     borderRadius: 36,
-    borderWidth: 3,
-    borderColor: theme.vermillion,
-    backgroundColor: theme.vermillionSoft,
+    backgroundColor: theme.matchaSoft,
     alignItems: "center",
     justifyContent: "center",
-    transform: [{ rotate: "-10deg" }],
   },
-  stampText: { fontSize: 30, fontWeight: "900", color: theme.vermillion },
+  doneEmoji: { fontSize: 34 },
   doneTitle: { fontSize: 22, fontWeight: "900", color: theme.ink },
   doneMeta: { fontSize: 14, color: theme.inkSoft, fontWeight: "700" },
   primaryBtn: {
@@ -475,8 +504,8 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingVertical: 14,
     borderRadius: 18,
-    backgroundColor: theme.vermillion,
+    backgroundColor: theme.indigo,
     alignItems: "center",
   },
-  primaryBtnText: { color: "#fff", fontSize: 16, fontWeight: "800" },
+  primaryBtnText: { color: "#fff", fontSize: 15, fontWeight: "900" },
 });

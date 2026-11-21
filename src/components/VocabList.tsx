@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   cardSingle: { width: "100%" },
-  cardPress: { ...StyleSheet.absoluteFillObject, borderRadius: 22 },
+  cardPress: { ...StyleSheet.absoluteFill, borderRadius: 22 },
   row: { flexDirection: "row", alignItems: "center" },
   meaning: { flex: 1, textAlign: "left", fontSize: 16, fontWeight: "700", color: theme.ink },
   japanese: { flex: 1, alignItems: "flex-start", gap: 2 },

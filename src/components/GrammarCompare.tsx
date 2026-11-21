@@ -10,7 +10,7 @@ export function GrammarCompare() {
     <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
       <View style={styles.banner}>
         <Text style={styles.bannerTitle}>易混文法辨析</Text>
-        <Text style={styles.bannerSub}>把最常搞混的近似句型並排比較，點選下方小測驗馬上驗證語感。</Text>
+        <Text style={styles.bannerSub}>並排對照 N5–N3 最常搞混的句型，點選小測驗立刻驗收。</Text>
       </View>
 
       {CONFUSABLE_PAIRS.map((pair) => {
@@ -38,7 +38,7 @@ export function GrammarCompare() {
                 <Text style={styles.sideTrans}>{pair.left.translation}</Text>
               </View>
               <View style={[styles.sideBox, { backgroundColor: theme.goldSoft }]}>
-                <Text style={[styles.sideLabel, { color: "#8A6520" }]}>{pair.right.label}</Text>
+                <Text style={[styles.sideLabel, { color: theme.goldDark }]}>{pair.right.label}</Text>
                 <Text style={styles.sideRule}>{pair.right.rule}</Text>
                 <Text style={styles.sideExample}>{pair.right.example}</Text>
                 <Text style={styles.sideTrans}>{pair.right.translation}</Text>
@@ -46,21 +46,24 @@ export function GrammarCompare() {
             </View>
 
             <View style={styles.miniQuiz}>
-              <Text style={styles.quizLabel}>即時小測驗</Text>
+              <Text style={styles.quizLabel}>⚡ 即時小測驗</Text>
               <Text style={styles.quizPrompt}>{pair.quizPrompt}</Text>
               <View style={styles.optionRow}>
                 {pair.options.map((opt) => {
                   let bg = theme.white;
                   let border = theme.paperBorder;
+                  let bottom = "#CBD5E1";
                   let color = theme.ink;
                   if (picked) {
                     if (opt === pair.correct) {
                       bg = theme.successSoft;
                       border = theme.success;
-                      color = theme.success;
+                      bottom = theme.matchaDark;
+                      color = theme.matchaDark;
                     } else if (opt === picked) {
                       bg = theme.errorSoft;
                       border = theme.error;
+                      bottom = theme.error;
                       color = theme.error;
                     } else {
                       color = theme.inkMuted;
@@ -70,7 +73,7 @@ export function GrammarCompare() {
                     <Pressable
                       key={opt}
                       onPress={() => setAnswers((prev) => ({ ...prev, [pair.id]: opt }))}
-                      style={[styles.optionBtn, { backgroundColor: bg, borderColor: border }]}
+                      style={[styles.optionBtn, { backgroundColor: bg, borderColor: border, borderBottomColor: bottom }]}
                     >
                       <Text style={[styles.optionText, { color }]}>{opt}</Text>
                     </Pressable>
@@ -78,7 +81,7 @@ export function GrammarCompare() {
                 })}
               </View>
               {picked && (
-                <Text style={[styles.explanation, { color: isCorrect ? theme.success : theme.error }]}>
+                <Text style={[styles.explanation, { color: isCorrect ? theme.matchaDark : theme.error }]}>
                   {isCorrect ? "✓ " : "✕ "}
                   {pair.explanation}
                 </Text>
@@ -92,51 +95,57 @@ export function GrammarCompare() {
 }
 
 const styles = StyleSheet.create({
-  scrollContent: { paddingHorizontal: 20, paddingBottom: 32, gap: 14 },
+  scrollContent: { paddingHorizontal: 18, paddingBottom: 32, gap: 14 },
   banner: {
     backgroundColor: theme.indigo,
-    borderRadius: 22,
-    padding: 16,
+    borderRadius: 24,
+    padding: 18,
     gap: 4,
   },
-  bannerTitle: { fontSize: 17, fontWeight: "900", color: "#fff" },
+  bannerTitle: { fontSize: 18, fontWeight: "900", color: "#fff" },
   bannerSub: { fontSize: 13, color: "rgba(255, 255, 255, 0.85)", lineHeight: 19 },
   card: {
     backgroundColor: theme.white,
-    borderRadius: 22,
-    padding: 16,
+    borderRadius: 24,
+    padding: 18,
     gap: 12,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: theme.paperBorder,
+    shadowColor: "#161B2E",
+    shadowOpacity: 0.05,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 5 },
+    elevation: 2,
   },
   head: { flexDirection: "row", alignItems: "center", gap: 10 },
-  levelBadge: { paddingHorizontal: 9, paddingVertical: 4, borderRadius: 99 },
+  levelBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 99 },
   levelText: { color: "#fff", fontSize: 11, fontWeight: "900" },
   headText: { flex: 1 },
   title: { fontSize: 18, fontWeight: "900", color: theme.ink },
-  subtitle: { fontSize: 12, color: theme.inkSoft, fontWeight: "600", marginTop: 2 },
+  subtitle: { fontSize: 12, color: theme.inkSoft, fontWeight: "700", marginTop: 2 },
   columns: { flexDirection: "row", gap: 10 },
-  sideBox: { flex: 1, borderRadius: 14, padding: 12, gap: 6 },
+  sideBox: { flex: 1, borderRadius: 16, padding: 12, gap: 6 },
   sideLabel: { fontSize: 13, fontWeight: "900" },
   sideRule: { fontSize: 12, color: theme.ink, lineHeight: 18 },
   sideExample: { fontSize: 13, fontWeight: "800", color: theme.ink, paddingTop: 4 },
   sideTrans: { fontSize: 11, color: theme.inkSoft },
   miniQuiz: {
     backgroundColor: theme.surface,
-    borderRadius: 14,
-    padding: 12,
+    borderRadius: 16,
+    padding: 13,
     gap: 8,
     borderWidth: 1,
     borderColor: theme.paperBorder,
   },
-  quizLabel: { fontSize: 11, fontWeight: "800", color: theme.vermillion },
+  quizLabel: { fontSize: 11, fontWeight: "900", color: theme.vermillion },
   quizPrompt: { fontSize: 13, fontWeight: "700", color: theme.ink, lineHeight: 20 },
   optionRow: { flexDirection: "row", gap: 8 },
   optionBtn: {
     flex: 1,
-    paddingVertical: 10,
-    borderRadius: 12,
+    paddingVertical: 11,
+    borderRadius: 14,
     borderWidth: 1.5,
+    borderBottomWidth: 3,
     alignItems: "center",
   },
   optionText: { fontSize: 14, fontWeight: "900" },

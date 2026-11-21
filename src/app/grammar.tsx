@@ -31,12 +31,12 @@ export default function GrammarScreen() {
       <SafeAreaView style={styles.safe} edges={["top", "left", "right"]}>
         <View style={styles.top}>
           <View style={styles.navRow}>
-            <Pressable onPress={() => router.back()} hitSlop={12}>
+            <Pressable onPress={() => router.back()} hitSlop={12} style={styles.backBtn}>
               <Text style={styles.back}>← 返回</Text>
             </Pressable>
             {ghostGrammar.length > 0 && (
               <View style={styles.ghostPill}>
-                <Text style={styles.ghostPillText}>待複習錯題 {ghostGrammar.length}</Text>
+                <Text style={styles.ghostPillText}>⚡ 錯題 {ghostGrammar.length}</Text>
               </View>
             )}
           </View>
@@ -66,7 +66,7 @@ export default function GrammarScreen() {
             </View>
           </View>
 
-          {(tab === "quiz" || tab === "library") && (
+          {tab !== "compare" && (
             <View style={styles.levelRow}>
               {FILTER_LEVELS.map((lvl) => {
                 const selected = lvl === levelFilter;
@@ -98,7 +98,7 @@ export default function GrammarScreen() {
           ) : tab === "compare" ? (
             <GrammarCompare />
           ) : (
-            <ConjugationDrill />
+            <ConjugationDrill levelFilter={levelFilter} />
           )}
         </View>
 
@@ -120,25 +120,33 @@ export default function GrammarScreen() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: theme.paper },
   safe: { flex: 1 },
-  top: { paddingHorizontal: 20, paddingTop: 8, paddingBottom: 12, gap: 10 },
+  top: { paddingHorizontal: 18, paddingTop: 8, paddingBottom: 12, gap: 10 },
   navRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
-  back: { color: theme.indigo, fontWeight: "800", fontSize: 14 },
+  backBtn: {
+    backgroundColor: theme.white,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 99,
+    borderWidth: 1,
+    borderColor: theme.paperBorder,
+  },
+  back: { color: theme.ink, fontWeight: "800", fontSize: 13 },
   ghostPill: {
     backgroundColor: theme.goldSoft,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
+    paddingHorizontal: 11,
+    paddingVertical: 5,
     borderRadius: 99,
   },
-  ghostPillText: { fontSize: 11, fontWeight: "800", color: "#8A6520" },
+  ghostPillText: { fontSize: 12, fontWeight: "900", color: theme.goldDark },
   titleRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8, flexWrap: "wrap" },
   title: { fontSize: 26, fontWeight: "900", color: theme.ink },
   toggleRow: { flexDirection: "row", gap: 6 },
   miniToggle: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 11,
     paddingVertical: 6,
-    borderRadius: 10,
+    borderRadius: 12,
     backgroundColor: theme.white,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: theme.paperBorder,
   },
   miniToggleOn: {
@@ -148,24 +156,24 @@ const styles = StyleSheet.create({
   miniToggleText: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
   miniToggleTextOn: { color: "#fff" },
   registerToggle: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 11,
     paddingVertical: 6,
-    borderRadius: 10,
-    backgroundColor: theme.white,
-    borderWidth: 1,
-    borderColor: theme.paperBorder,
+    borderRadius: 12,
+    backgroundColor: theme.vermillionSoft,
+    borderWidth: 1.5,
+    borderColor: "rgba(255, 90, 95, 0.25)",
   },
-  registerToggleText: { fontSize: 12, fontWeight: "800", color: theme.vermillion },
+  registerToggleText: { fontSize: 12, fontWeight: "900", color: theme.vermillion },
   levelRow: { flexDirection: "row", gap: 8 },
   levelChip: {
     flex: 1,
-    paddingVertical: 7,
+    paddingVertical: 8,
     borderRadius: 12,
     backgroundColor: theme.white,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: theme.paperBorder,
     alignItems: "center",
   },
-  levelChipText: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
+  levelChipText: { fontSize: 12, fontWeight: "900", color: theme.inkSoft },
   body: { flex: 1 },
 });

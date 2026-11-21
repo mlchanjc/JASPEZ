@@ -6,13 +6,14 @@ import { PaperBackdrop } from "@/components/PaperBackdrop";
 import { PressableScale } from "@/components/PressableScale";
 import { ProgressBar } from "@/components/ProgressBar";
 import { LEVELS } from "@/data/registry";
+import { verbCountForLevel } from "@/lib/conjugator";
 import { grammarLevelSummary } from "@/lib/grammar";
 import { PROFICIENCY_LEVELS } from "@/lib/proficiency";
 import { levelSummary } from "@/lib/vocab";
 import { useProgress } from "@/state/progress";
 import { levelAccent, theme } from "@/theme";
 
-const proficiencyColor = [theme.inkSoft, theme.gold, theme.indigo, theme.matcha];
+const proficiencyColor = [theme.inkMuted, theme.gold, theme.indigo, theme.matcha];
 
 export default function DashboardScreen() {
   const {
@@ -39,6 +40,8 @@ export default function DashboardScreen() {
     () => LEVELS.map((level) => ({ level, ...grammarLevelSummary(level, grammarLearned, grammarAttempts) })),
     [grammarLearned, grammarAttempts],
   );
+
+  const totalVerbs = useMemo(() => verbCountForLevel("ALL"), []);
 
   const vocabTotals = vocabSummaries.reduce(
     (sum, item) => ({
@@ -68,53 +71,60 @@ export default function DashboardScreen() {
           contentContainerStyle={[styles.content, { paddingBottom: buttonBottom + 96 }]}
           showsVerticalScrollIndicator={false}
         >
-          {/* Hero Header with Rotated Seal */}
-          <View style={styles.heroRow}>
-            <View style={styles.heroLeft}>
-              <Text style={styles.kicker}>JASPEZ · 單字 × 文法</Text>
-              <Text style={styles.title}>今日の勉強</Text>
-              <Text style={styles.subtitle}>把單字與句型練成習慣，像蓋一枚印章。</Text>
+          {/* Modern Playful Hero Card */}
+          <View style={styles.heroCard}>
+            <View style={styles.heroTop}>
+              <View style={styles.brandPill}>
+                <Text style={styles.brandPillText}>JASPEZ · 離線日語特訓</Text>
+              </View>
+              <View style={[styles.levelPill, { backgroundColor: levelAccent[currentLevel] }]}>
+                <Text style={styles.levelPillText}>目標 {currentLevel}</Text>
+              </View>
             </View>
-            <View style={styles.seal}>
-              <Text style={styles.sealSub}>目標</Text>
-              <Text style={styles.sealText}>{currentLevel}</Text>
+            <Text style={styles.title}>今日の勉強</Text>
+            <Text style={styles.subtitle}>
+              N5–N3 單字、多情境文法與 {totalVerbs} 動詞即時活用
+            </Text>
+
+            <View style={styles.heroStats}>
+              <View style={styles.heroStat}>
+                <Text style={styles.heroStatValue}>🔥 {streak}</Text>
+                <Text style={styles.heroStatLabel}>連續天數</Text>
+              </View>
+              <View style={styles.heroDivider} />
+              <View style={styles.heroStat}>
+                <Text style={styles.heroStatValue}>{learnedCount}</Text>
+                <Text style={styles.heroStatLabel}>已學單字</Text>
+              </View>
+              <View style={styles.heroDivider} />
+              <View style={styles.heroStat}>
+                <Text style={styles.heroStatValue}>{grammarLearnedCount}</Text>
+                <Text style={styles.heroStatLabel}>已學文法</Text>
+              </View>
             </View>
           </View>
 
-          {/* 3-Metric Strip */}
-          <View style={styles.statsRow}>
-            <View style={styles.stat}>
-              <Text style={[styles.statValue, { color: theme.vermillion }]}>{streak}</Text>
-              <Text style={styles.statLabel}>連續天數</Text>
-            </View>
-            <View style={styles.stat}>
-              <Text style={styles.statValue}>{learnedCount}</Text>
-              <Text style={styles.statLabel}>已學單字</Text>
-            </View>
-            <View style={styles.stat}>
-              <Text style={[styles.statValue, { color: theme.matcha }]}>{grammarLearnedCount}</Text>
-              <Text style={styles.statLabel}>已學文法</Text>
-            </View>
-          </View>
-
-          {/* Ghost Review Callout (if any missed grammar points) */}
+          {/* Ghost Review Callout */}
           {ghostGrammar.length > 0 && (
             <Link href="/grammar" asChild>
               <Pressable style={styles.ghostBanner}>
+                <View style={styles.ghostIcon}>
+                  <Text style={styles.ghostEmoji}>⚡</Text>
+                </View>
                 <View style={styles.ghostBannerText}>
                   <Text style={styles.ghostTitle}>有 {ghostGrammar.length} 個文法錯題待複習</Text>
-                  <Text style={styles.ghostSub}>趁記憶還在，點擊進入錯題再練</Text>
+                  <Text style={styles.ghostSub}>系統已自動換新例句，點擊立即挑戰</Text>
                 </View>
-                <Text style={styles.ghostArrow}>前往 →</Text>
+                <Text style={styles.ghostArrow}>GO →</Text>
               </Pressable>
             </Link>
           )}
 
-          {/* Dual Progress Card */}
+          {/* Dual Progress Board */}
           <View style={styles.card}>
             <View style={styles.cardHead}>
               <View style={styles.cardTitleRow}>
-                <Text style={styles.section}>各級進度</Text>
+                <Text style={styles.section}>各級學習進度</Text>
                 <View style={styles.segmented}>
                   <Pressable
                     onPress={() => setBoardTab("vocab")}
@@ -131,71 +141,93 @@ export default function DashboardScreen() {
                 </View>
               </View>
               <Text style={styles.overall}>
-                {activeTotals.learned}/{activeTotals.total} 已學 · {activeTotals.proficiency[3]} 記住 ·{" "}
+                總計 {activeTotals.learned}/{activeTotals.total} 已學 · {activeTotals.proficiency[3]} 記住 ·{" "}
                 {activeTotals.proficiency[2]} 熟悉 · {activeTotals.proficiency[1]} 初識
               </Text>
             </View>
 
             {boardTab === "vocab"
-              ? vocabSummaries.map((item) => (
-                  <View key={item.level} style={styles.levelBlock}>
-                    <View style={styles.levelHead}>
-                      <Text style={[styles.levelName, { color: levelAccent[item.level] }]}>{item.level}</Text>
-                      <Text style={styles.levelMeta}>
-                        {item.lessons} 課 · {item.learnedCount}/{item.total}
-                      </Text>
-                      <Text style={styles.percent}>{Math.round(item.percent * 100)}%</Text>
-                    </View>
-                    <View style={styles.barWrap}>
-                      <ProgressBar percent={item.percent} color={levelAccent[item.level]} height={8} />
-                    </View>
-                    <View style={styles.breakdown}>
-                      {PROFICIENCY_LEVELS.map((label, index) => (
-                        <View key={label} style={styles.breakItem}>
-                          <Text style={[styles.breakValue, { color: proficiencyColor[index] }]}>
-                            {item.proficiencyCounts[index] ?? 0}
-                          </Text>
-                          <Text style={styles.breakLabel}>{label}</Text>
+              ? vocabSummaries.map((item) => {
+                  const isPlaceholder = item.total === 0;
+                  return (
+                    <View key={item.level} style={[styles.levelBlock, isPlaceholder && styles.levelBlockMuted]}>
+                      <View style={styles.levelHead}>
+                        <View style={[styles.levelDot, { backgroundColor: levelAccent[item.level] }]}>
+                          <Text style={styles.levelDotText}>{item.level}</Text>
                         </View>
-                      ))}
+                        <Text style={styles.levelMeta}>
+                          {isPlaceholder ? "即將推出" : `${item.lessons} 課 · ${item.learnedCount}/${item.total}`}
+                        </Text>
+                        {!isPlaceholder && (
+                          <Text style={styles.percent}>{Math.round(item.percent * 100)}%</Text>
+                        )}
+                      </View>
+                      {!isPlaceholder && (
+                        <>
+                          <View style={styles.barWrap}>
+                            <ProgressBar percent={item.percent} color={levelAccent[item.level]} height={9} />
+                          </View>
+                          <View style={styles.breakdown}>
+                            {PROFICIENCY_LEVELS.map((label, index) => (
+                              <View key={label} style={styles.breakItem}>
+                                <Text style={[styles.breakValue, { color: proficiencyColor[index] }]}>
+                                  {item.proficiencyCounts[index] ?? 0}
+                                </Text>
+                                <Text style={styles.breakLabel}>{label}</Text>
+                              </View>
+                            ))}
+                          </View>
+                        </>
+                      )}
                     </View>
-                  </View>
-                ))
-              : grammarSummaries.map((item) => (
-                  <View key={item.level} style={styles.levelBlock}>
-                    <View style={styles.levelHead}>
-                      <Text style={[styles.levelName, { color: levelAccent[item.level] }]}>{item.level}</Text>
-                      <Text style={styles.levelMeta}>
-                        {item.total > 0 ? `${item.learnedCount}/${item.total} 句型` : "還在準備"}
-                      </Text>
-                      <Text style={styles.percent}>{Math.round(item.percent * 100)}%</Text>
-                    </View>
-                    <View style={styles.barWrap}>
-                      <ProgressBar percent={item.percent} color={levelAccent[item.level]} height={8} />
-                    </View>
-                    <View style={styles.breakdown}>
-                      {PROFICIENCY_LEVELS.map((label, index) => (
-                        <View key={label} style={styles.breakItem}>
-                          <Text style={[styles.breakValue, { color: proficiencyColor[index] }]}>
-                            {item.proficiencyCounts[index] ?? 0}
-                          </Text>
-                          <Text style={styles.breakLabel}>{label}</Text>
+                  );
+                })
+              : grammarSummaries.map((item) => {
+                  const isPlaceholder = item.total === 0;
+                  return (
+                    <View key={item.level} style={[styles.levelBlock, isPlaceholder && styles.levelBlockMuted]}>
+                      <View style={styles.levelHead}>
+                        <View style={[styles.levelDot, { backgroundColor: levelAccent[item.level] }]}>
+                          <Text style={styles.levelDotText}>{item.level}</Text>
                         </View>
-                      ))}
+                        <Text style={styles.levelMeta}>
+                          {isPlaceholder ? "即將推出" : `${item.learnedCount}/${item.total} 句型（多情境題庫）`}
+                        </Text>
+                        {!isPlaceholder && (
+                          <Text style={styles.percent}>{Math.round(item.percent * 100)}%</Text>
+                        )}
+                      </View>
+                      {!isPlaceholder && (
+                        <>
+                          <View style={styles.barWrap}>
+                            <ProgressBar percent={item.percent} color={levelAccent[item.level]} height={9} />
+                          </View>
+                          <View style={styles.breakdown}>
+                            {PROFICIENCY_LEVELS.map((label, index) => (
+                              <View key={label} style={styles.breakItem}>
+                                <Text style={[styles.breakValue, { color: proficiencyColor[index] }]}>
+                                  {item.proficiencyCounts[index] ?? 0}
+                                </Text>
+                                <Text style={styles.breakLabel}>{label}</Text>
+                              </View>
+                            ))}
+                          </View>
+                        </>
+                      )}
                     </View>
-                  </View>
-                ))}
+                  );
+                })}
           </View>
         </ScrollView>
 
-        {/* Pinned Dual Action Bar */}
+        {/* Pinned Tactile Dual Action Bar */}
         <View style={[styles.ctaBar, { bottom: buttonBottom }]}>
           <Link href="/learn" asChild>
             <PressableScale
               accessibilityLabel="開始學單字"
               style={StyleSheet.flatten([styles.ctaBtn, styles.ctaVocab])}
             >
-              <Text style={styles.ctaText}>學單字</Text>
+              <Text style={styles.ctaText}>📚 學單字</Text>
             </PressableScale>
           </Link>
           <Link href="/grammar" asChild>
@@ -203,7 +235,7 @@ export default function DashboardScreen() {
               accessibilityLabel="文法特訓"
               style={StyleSheet.flatten([styles.ctaBtn, styles.ctaGrammar])}
             >
-              <Text style={styles.ctaText}>練文法</Text>
+              <Text style={styles.ctaText}>✨ 練文法</Text>
             </PressableScale>
           </Link>
         </View>
@@ -215,74 +247,78 @@ export default function DashboardScreen() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: theme.paper },
   safe: { flex: 1 },
-  content: { padding: 24 },
-  heroRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 12 },
-  heroLeft: { flex: 1 },
-  kicker: { color: theme.vermillion, fontWeight: "800", letterSpacing: 2, fontSize: 12 },
-  title: { marginTop: 4, fontSize: 34, fontWeight: "900", color: theme.ink },
-  subtitle: { marginTop: 6, color: theme.inkSoft, fontSize: 14, lineHeight: 20 },
-  seal: {
-    width: 78,
-    height: 78,
-    borderRadius: 39,
-    borderWidth: 3,
-    borderColor: theme.vermillion,
-    backgroundColor: theme.vermillionSoft,
-    alignItems: "center",
-    justifyContent: "center",
-    transform: [{ rotate: "-8deg" }],
+  content: { padding: 20, gap: 16 },
+  heroCard: {
+    backgroundColor: theme.ink,
+    borderRadius: 28,
+    padding: 20,
+    gap: 8,
+    shadowColor: "#161B2E",
+    shadowOpacity: 0.16,
+    shadowRadius: 18,
+    shadowOffset: { width: 0, height: 10 },
+    elevation: 5,
   },
-  sealSub: { color: theme.vermillion, fontSize: 10, fontWeight: "800" },
-  sealText: { color: theme.vermillion, fontWeight: "900", fontSize: 22, lineHeight: 26 },
-  statsRow: { flexDirection: "row", gap: 10, marginTop: 20 },
-  stat: {
-    flex: 1,
-    backgroundColor: theme.white,
-    borderRadius: 20,
-    paddingVertical: 14,
-    paddingHorizontal: 12,
-    alignItems: "center",
-    borderWidth: 1,
-    borderColor: theme.paperBorder,
-    shadowColor: "#1E2430",
-    shadowOpacity: 0.06,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 5 },
-    elevation: 2,
+  heroTop: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 },
+  brandPill: {
+    backgroundColor: "rgba(255, 255, 255, 0.12)",
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 99,
   },
-  statValue: { fontSize: 26, fontWeight: "900", color: theme.indigo },
-  statLabel: { marginTop: 3, color: theme.inkSoft, fontSize: 12, fontWeight: "700" },
-  ghostBanner: {
-    marginTop: 14,
-    backgroundColor: theme.goldSoft,
-    borderWidth: 1.5,
-    borderColor: theme.gold,
+  brandPillText: { color: "#E2E8F0", fontSize: 11, fontWeight: "800", letterSpacing: 0.6 },
+  levelPill: { paddingHorizontal: 11, paddingVertical: 5, borderRadius: 99 },
+  levelPillText: { color: "#fff", fontSize: 12, fontWeight: "900" },
+  title: { marginTop: 4, fontSize: 32, fontWeight: "900", color: "#fff" },
+  subtitle: { color: "#CBD5E1", fontSize: 13, lineHeight: 19, fontWeight: "600" },
+  heroStats: {
+    marginTop: 10,
+    backgroundColor: "rgba(255, 255, 255, 0.08)",
     borderRadius: 18,
-    paddingHorizontal: 16,
     paddingVertical: 12,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
-    gap: 10,
   },
+  heroStat: { flex: 1, alignItems: "center", gap: 2 },
+  heroStatValue: { fontSize: 20, fontWeight: "900", color: "#fff" },
+  heroStatLabel: { fontSize: 11, fontWeight: "700", color: "#94A3B8" },
+  heroDivider: { width: 1, height: 28, backgroundColor: "rgba(255, 255, 255, 0.14)" },
+  ghostBanner: {
+    backgroundColor: theme.white,
+    borderWidth: 2,
+    borderColor: theme.gold,
+    borderRadius: 20,
+    padding: 14,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+  },
+  ghostIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 14,
+    backgroundColor: theme.goldSoft,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  ghostEmoji: { fontSize: 20 },
   ghostBannerText: { flex: 1, gap: 2 },
-  ghostTitle: { fontSize: 14, fontWeight: "900", color: "#7B5816" },
+  ghostTitle: { fontSize: 14, fontWeight: "900", color: theme.ink },
   ghostSub: { fontSize: 12, color: theme.inkSoft, fontWeight: "600" },
-  ghostArrow: { fontSize: 13, fontWeight: "900", color: theme.vermillion },
+  ghostArrow: { fontSize: 13, fontWeight: "900", color: theme.goldDark },
   card: {
-    marginTop: 18,
     backgroundColor: theme.white,
     borderRadius: 26,
-    paddingHorizontal: 20,
+    paddingHorizontal: 18,
     paddingTop: 18,
     paddingBottom: 8,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: theme.paperBorder,
-    shadowColor: "#1E2430",
-    shadowOpacity: 0.07,
+    shadowColor: "#161B2E",
+    shadowOpacity: 0.05,
     shadowRadius: 14,
-    shadowOffset: { width: 0, height: 7 },
-    elevation: 3,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 2,
   },
   cardHead: { gap: 8, paddingBottom: 14 },
   cardTitleRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
@@ -297,23 +333,28 @@ const styles = StyleSheet.create({
   segBtn: { paddingHorizontal: 14, paddingVertical: 6, borderRadius: 9 },
   segBtnActive: { backgroundColor: theme.white },
   segText: { fontSize: 12, fontWeight: "800", color: theme.inkSoft },
-  segTextActive: { color: theme.ink },
+  segTextActive: { color: theme.indigo },
   overall: { color: theme.inkSoft, fontSize: 12, fontWeight: "700", lineHeight: 19 },
   levelBlock: {
     gap: 10,
     paddingVertical: 14,
     borderTopWidth: 1,
-    borderTopColor: "rgba(30, 36, 48, 0.08)",
+    borderTopColor: theme.paperBorder,
   },
-  levelHead: { flexDirection: "row", alignItems: "baseline", gap: 8 },
-  levelName: { width: 36, fontWeight: "900", fontSize: 15 },
+  levelBlockMuted: {
+    paddingVertical: 11,
+    opacity: 0.65,
+  },
+  levelHead: { flexDirection: "row", alignItems: "center", gap: 10 },
+  levelDot: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 99 },
+  levelDotText: { color: "#fff", fontWeight: "900", fontSize: 12 },
   levelMeta: { flex: 1, color: theme.inkSoft, fontSize: 13, fontWeight: "700" },
-  percent: { color: theme.inkSoft, fontSize: 13, fontWeight: "800" },
+  percent: { color: theme.ink, fontSize: 13, fontWeight: "900" },
   barWrap: { flex: 1, minWidth: 0 },
   breakdown: { flexDirection: "row", paddingTop: 2 },
-  breakItem: { flex: 1, alignItems: "center", gap: 3 },
+  breakItem: { flex: 1, alignItems: "center", gap: 2 },
   breakValue: { fontSize: 14, fontWeight: "900" },
-  breakLabel: { color: theme.inkSoft, fontSize: 11, fontWeight: "700" },
+  breakLabel: { color: theme.inkMuted, fontSize: 11, fontWeight: "700" },
   ctaBar: {
     position: "absolute",
     left: 20,
@@ -323,22 +364,25 @@ const styles = StyleSheet.create({
   },
   ctaBtn: {
     flex: 1,
-    height: 60,
-    borderRadius: 30,
+    height: 58,
+    borderRadius: 20,
+    borderBottomWidth: 4,
     alignItems: "center",
     justifyContent: "center",
-    shadowOpacity: 0.28,
-    shadowRadius: 14,
+    shadowOpacity: 0.2,
+    shadowRadius: 12,
     shadowOffset: { width: 0, height: 6 },
     elevation: 6,
   },
   ctaVocab: {
     backgroundColor: theme.vermillion,
+    borderBottomColor: theme.vermillionDark,
     shadowColor: theme.vermillion,
   },
   ctaGrammar: {
     backgroundColor: theme.indigo,
+    borderBottomColor: theme.indigoDark,
     shadowColor: theme.indigo,
   },
-  ctaText: { color: "#fff", fontSize: 17, fontWeight: "900" },
+  ctaText: { color: "#fff", fontSize: 16, fontWeight: "900" },
 });

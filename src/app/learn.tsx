@@ -29,12 +29,12 @@ export default function LearnScreen() {
       <SafeAreaView style={styles.safe} edges={["top", "left", "right"]}>
         <View style={styles.top}>
           <View style={styles.topBar}>
-            <Pressable onPress={() => router.back()} hitSlop={12}>
+            <Pressable onPress={() => router.back()} hitSlop={12} style={styles.backBtn}>
               <Text style={styles.back}>← 返回</Text>
             </Pressable>
             <Link href="/grammar" asChild>
               <Pressable style={styles.grammarShortcut}>
-                <Text style={styles.grammarShortcutText}>文法特訓 →</Text>
+                <Text style={styles.grammarShortcutText}>✨ 文法特訓 →</Text>
               </Pressable>
             </Link>
           </View>
@@ -46,8 +46,9 @@ export default function LearnScreen() {
         <ScrollView style={styles.topicScroller} contentContainerStyle={styles.topics} showsVerticalScrollIndicator={false}>
           {topics.length === 0 ? (
             <View style={styles.empty}>
+              <Text style={styles.emptyEmoji}>🚧</Text>
               <Text style={styles.emptyTitle}>{level} 還在準備</Text>
-              <Text style={styles.emptyBody}>這一級的單字還沒放進來。</Text>
+              <Text style={styles.emptyBody}>這一級的單字課程尚未開放，先挑戰 N5–N3 吧！</Text>
             </View>
           ) : (
             topics.map((topic) => {
@@ -61,11 +62,15 @@ export default function LearnScreen() {
                   <Pressable style={styles.topic}>
                     <View style={styles.topicHead}>
                       <Text style={styles.topicTitle}>{topic.title}</Text>
-                      <Text style={styles.topicPercent}>{Math.round(percent * 100)}%</Text>
+                      <View style={[styles.pctPill, { backgroundColor: `${levelAccent[level]}18` }]}>
+                        <Text style={[styles.topicPercent, { color: levelAccent[level] }]}>
+                          {Math.round(percent * 100)}%
+                        </Text>
+                      </View>
                     </View>
                     <Text style={styles.topicCount}>{topic.wordCount} 個單字</Text>
                     <View style={styles.barWrap}>
-                      <ProgressBar percent={percent} color={levelAccent[level]} height={8} />
+                      <ProgressBar percent={percent} color={levelAccent[level]} height={9} />
                     </View>
                   </Pressable>
                 </Link>
@@ -86,46 +91,58 @@ export default function LearnScreen() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: theme.paper },
   safe: { flex: 1 },
-  top: { paddingHorizontal: 20, paddingTop: 8, paddingBottom: 8 },
+  top: { paddingHorizontal: 18, paddingTop: 8, paddingBottom: 10 },
   topBar: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
-  back: { color: theme.indigo, fontWeight: "800", fontSize: 14 },
+  backBtn: {
+    backgroundColor: theme.white,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 99,
+    borderWidth: 1,
+    borderColor: theme.paperBorder,
+  },
+  back: { color: theme.ink, fontWeight: "800", fontSize: 13 },
   grammarShortcut: {
     backgroundColor: theme.indigoSoft,
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 99,
   },
-  grammarShortcutText: { color: theme.indigo, fontSize: 12, fontWeight: "800" },
-  title: { marginTop: 8, fontSize: 28, fontWeight: "900", color: theme.ink },
-  summary: { paddingHorizontal: 20, paddingBottom: 12 },
+  grammarShortcutText: { color: theme.indigo, fontSize: 12, fontWeight: "900" },
+  title: { marginTop: 10, fontSize: 28, fontWeight: "900", color: theme.ink },
+  summary: { paddingHorizontal: 18, paddingBottom: 12 },
   topicScroller: { flex: 1 },
-  topics: { paddingHorizontal: 20, paddingBottom: 32, gap: 12 },
+  topics: { paddingHorizontal: 18, paddingBottom: 32, gap: 12 },
   topic: {
     backgroundColor: theme.white,
     borderRadius: 22,
     padding: 16,
     gap: 8,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: theme.paperBorder,
-    shadowColor: "#1E2430",
+    shadowColor: "#161B2E",
     shadowOpacity: 0.05,
     shadowRadius: 10,
     shadowOffset: { width: 0, height: 4 },
     elevation: 2,
   },
   topicHead: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 8 },
-  topicTitle: { flex: 1, fontSize: 16, fontWeight: "800", color: theme.ink },
+  topicTitle: { flex: 1, fontSize: 16, fontWeight: "900", color: theme.ink },
   topicCount: { color: theme.inkSoft, fontSize: 13, fontWeight: "600" },
-  topicPercent: { color: theme.indigo, fontSize: 13, fontWeight: "800" },
+  pctPill: { paddingHorizontal: 9, paddingVertical: 3, borderRadius: 99 },
+  topicPercent: { fontSize: 12, fontWeight: "900" },
   barWrap: { flex: 1, minWidth: 0 },
   empty: {
-    marginTop: 24,
-    padding: 24,
-    borderRadius: 22,
+    marginTop: 20,
+    padding: 28,
+    borderRadius: 24,
     backgroundColor: theme.white,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: theme.paperBorder,
+    alignItems: "center",
+    gap: 6,
   },
-  emptyTitle: { fontSize: 20, fontWeight: "800", color: theme.ink },
-  emptyBody: { marginTop: 6, color: theme.inkSoft },
+  emptyEmoji: { fontSize: 32 },
+  emptyTitle: { fontSize: 20, fontWeight: "900", color: theme.ink },
+  emptyBody: { color: theme.inkSoft, textAlign: "center", lineHeight: 20 },
 });

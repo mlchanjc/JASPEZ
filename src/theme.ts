@@ -1,32 +1,38 @@
 import type { LevelId } from "@/data/types";
 
 export const theme = {
-  paper: "#F6EFE2",
-  paperDeep: "#E7D7BE",
-  paperBorder: "rgba(198, 161, 91, 0.32)",
-  ink: "#1E2430",
-  inkSoft: "#5C5348",
-  inkMuted: "#8A7F72",
-  vermillion: "#D4533E",
-  vermillionSoft: "rgba(212, 83, 62, 0.10)",
-  indigo: "#243E6A",
-  indigoSoft: "rgba(36, 62, 106, 0.09)",
-  gold: "#C6A15B",
-  goldSoft: "rgba(198, 161, 91, 0.16)",
-  matcha: "#6E8B54",
-  matchaSoft: "rgba(110, 139, 84, 0.14)",
-  white: "#FFF9F1",
-  surface: "#FBF5EA",
-  success: "#2E9B62",
-  successSoft: "rgba(46, 155, 98, 0.12)",
-  error: "#D64545",
-  errorSoft: "rgba(214, 69, 69, 0.11)",
+  // Modern playful light canvas & tactile cards
+  paper: "#F4F6FB",
+  paperDeep: "#E6EBF5",
+  paperBorder: "#E2E8F0",
+  ink: "#161B2E",
+  inkSoft: "#5A647A",
+  inkMuted: "#8F9BB3",
+  // Vibrant playful brand accents
+  vermillion: "#FF5A5F",
+  vermillionDark: "#D93B41",
+  vermillionSoft: "rgba(255, 90, 95, 0.12)",
+  indigo: "#4F46E5",
+  indigoDark: "#3730A3",
+  indigoSoft: "rgba(79, 70, 229, 0.10)",
+  gold: "#F59E0B",
+  goldDark: "#B45309",
+  goldSoft: "rgba(245, 158, 11, 0.14)",
+  matcha: "#10B981",
+  matchaDark: "#047857",
+  matchaSoft: "rgba(16, 185, 129, 0.13)",
+  white: "#FFFFFF",
+  surface: "#F8FAFC",
+  success: "#10B981",
+  successSoft: "rgba(16, 185, 129, 0.13)",
+  error: "#F43F5E",
+  errorSoft: "rgba(244, 63, 94, 0.12)",
 };
 
 export const levelAccent: Record<LevelId, string> = {
-  N5: "#6E8B54",
-  N4: "#3D7EA6",
-  N3: "#C6A15B",
-  N2: "#7A5EA7",
-  N1: "#D4533E",
+  N5: "#10B981", // Fresh Mint
+  N4: "#0EA5E9", // Playful Sky
+  N3: "#F59E0B", // Sunny Amber
+  N2: "#8B5CF6", // Vivid Violet
+  N1: "#FF5A5F", // Coral Red
 };
