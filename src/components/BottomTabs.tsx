@@ -31,6 +31,8 @@ export function BottomTabs({ tabs, value, onChange }: Props) {
     >
       {tabs.map((tab) => {
         const selected = tab.id === value;
+        const activeBg = t.preset === "ios" ? t.accentPrimary : t.ink;
+        const activeFg = t.preset === "ios" ? "#FFFFFF" : t.paper;
         return (
           <Pressable
             key={tab.id}
@@ -39,12 +41,13 @@ export function BottomTabs({ tabs, value, onChange }: Props) {
             onPress={() => onChange(tab.id)}
             style={[
               styles.tab,
+              { borderRadius: t.controlRadius },
               selected
-                ? { backgroundColor: t.ink, borderColor: t.ink }
-                : { backgroundColor: "transparent", borderColor: t.paperBorder },
+                ? { backgroundColor: activeBg, borderColor: activeBg }
+                : { backgroundColor: t.preset === "ios" ? t.surface : "transparent", borderColor: t.paperBorder },
             ]}
           >
-            <Text style={[styles.label, { color: selected ? t.paper : t.inkSoft }]}>{tab.label}</Text>
+            <Text style={[styles.label, { color: selected ? activeFg : t.inkSoft }]}>{tab.label}</Text>
           </Pressable>
         );
       })}
@@ -64,9 +67,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 6,
     borderWidth: 1,
     paddingVertical: 10,
   },
-  label: { fontSize: 13, fontWeight: "700", letterSpacing: 0.4 },
+  label: { fontSize: 13, fontWeight: "700", letterSpacing: 0.3 },
 });

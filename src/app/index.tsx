@@ -25,10 +25,8 @@ export default function DashboardScreen() {
     grammarLearned,
     grammarAttempts,
     ghostGrammar,
-    prefs,
-    setPref,
   } = useProgress();
-  const { t, isDark, levelAccent } = useAppTheme();
+  const { t, levelAccent } = useAppTheme();
   const styles = useMemo(() => makeStyles(t), [t]);
   const [boardTab, setBoardTab] = useState<"vocab" | "grammar">("vocab");
   const insets = useSafeAreaInsets();
@@ -82,16 +80,14 @@ export default function DashboardScreen() {
             <View style={styles.mastheadTop}>
               <Text style={styles.kicker}>JASPEZ · 目標 {currentLevel}</Text>
               <View style={styles.topControls}>
-                <Pressable
-                  onPress={() => setPref("darkMode", !isDark)}
-                  style={styles.themeToggle}
-                  accessibilityLabel="切換深淺色模式"
-                >
-                  <Text style={styles.themeToggleText}>{isDark ? "昼 Light" : "夜 Dark"}</Text>
-                </Pressable>
                 <View style={styles.streakStamp}>
                   <Text style={styles.streakText}>連續 {streak} 日</Text>
                 </View>
+                <Link href="/settings" asChild>
+                  <Pressable style={styles.themeToggle} accessibilityLabel="開啟設定">
+                    <Text style={styles.themeToggleText}>設定</Text>
+                  </Pressable>
+                </Link>
               </View>
             </View>
             <Text style={styles.title}>今日の勉強</Text>
@@ -187,7 +183,7 @@ export default function DashboardScreen() {
                     {!isPlaceholder && (
                       <>
                         <View style={styles.barWrap}>
-                          <ProgressBar percent={item.percent} color={accent} height={4} />
+                          <ProgressBar percent={item.percent} color={accent} height={t.barHeight} />
                         </View>
                         <View style={styles.breakdown}>
                           {PROFICIENCY_LEVELS.map((label, index) => (
@@ -309,10 +305,11 @@ function makeStyles(t: AppTheme) {
     ghostArrow: { fontSize: 12.5, fontWeight: "700", color: t.vermillion },
     card: {
       backgroundColor: t.white,
-      borderRadius: 10,
-      borderWidth: 1,
+      borderRadius: t.cardRadius,
+      borderWidth: t.cardBorderWidth,
       borderColor: t.paperBorder,
       padding: 16,
+      ...(t.useShadow ? { shadowColor: "#111827", shadowOpacity: 0.05, shadowRadius: 10, shadowOffset: { width: 0, height: 3 }, elevation: 2 } : {}),
       gap: 14,
     },
     cardHead: { gap: 8, paddingBottom: 12, borderBottomWidth: 1, borderBottomColor: t.paperBorder },
@@ -356,12 +353,12 @@ function makeStyles(t: AppTheme) {
       alignItems: "center",
       justifyContent: "center",
       paddingVertical: 14,
-      borderRadius: 8,
+      borderRadius: t.controlRadius,
       borderWidth: 1,
     },
     ctaSecondary: { backgroundColor: t.white, borderColor: t.ink },
-    ctaPrimary: { backgroundColor: t.ink, borderColor: t.ink },
+    ctaPrimary: { backgroundColor: t.preset === "ios" ? t.accentPrimary : t.ink, borderColor: t.preset === "ios" ? t.accentPrimary : t.ink },
     ctaSecondaryText: { color: t.ink, fontSize: 14, fontWeight: "700", letterSpacing: 0.4 },
-    ctaPrimaryText: { color: t.paper, fontSize: 14, fontWeight: "700", letterSpacing: 0.4 },
+    ctaPrimaryText: { color: t.preset === "ios" ? "#FFFFFF" : t.paper, fontSize: 14, fontWeight: "700", letterSpacing: 0.4 },
   });
 }

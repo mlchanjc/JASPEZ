@@ -6,11 +6,14 @@ import type { LevelId, RegisterMode } from "@/data/types";
 
 const STORAGE_KEY = "jaspez.progress.v1";
 
+export type ThemePreset = "editorial" | "ios" | "darkInk";
+
 export type UserPrefs = {
   showFurigana: boolean;
   register: RegisterMode;
   kanaOnly: boolean;
   darkMode: boolean;
+  themePreset: ThemePreset;
 };
 
 type ProgressState = {
@@ -60,6 +63,7 @@ const defaultPrefs: UserPrefs = {
   register: "polite",
   kanaOnly: false,
   darkMode: false,
+  themePreset: "editorial",
 };
 
 const initial: ProgressState = {
@@ -119,6 +123,10 @@ function readPrefs(raw: unknown): UserPrefs {
     register: obj.register === "casual" || obj.register === "polite" ? obj.register : defaultPrefs.register,
     kanaOnly: typeof obj.kanaOnly === "boolean" ? obj.kanaOnly : defaultPrefs.kanaOnly,
     darkMode: typeof obj.darkMode === "boolean" ? obj.darkMode : defaultPrefs.darkMode,
+    themePreset:
+      obj.themePreset === "editorial" || obj.themePreset === "ios" || obj.themePreset === "darkInk"
+        ? obj.themePreset
+        : defaultPrefs.themePreset,
   };
 }
 
