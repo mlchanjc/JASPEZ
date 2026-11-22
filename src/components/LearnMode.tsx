@@ -23,6 +23,12 @@ type Outcome = {
   recentTotal: number;
 };
 
+function hasJapaneseKana(value?: string | null): boolean {
+  if (!value) return false;
+  const s = value.trim();
+  return /[\u3040-\u30ff]/.test(s) && !/[A-Za-z]/.test(s);
+}
+
 function shuffle<T>(items: T[]) {
   const copy = [...items];
   for (let cursor = copy.length - 1; cursor > 0; cursor -= 1) {
@@ -156,11 +162,13 @@ export function LearnMode({ level, topicId, words }: { level: LevelId; topicId: 
                   style={[styles.option, { backgroundColor: bg, borderColor: border }]}
                 >
                   {kanaOnly ? (
-                    <Text style={[styles.optionWord, { color: wordColor }]}>{option.word.reading || option.word.word}</Text>
+                    <Text style={[styles.optionWord, { color: wordColor }]}>
+                      {hasJapaneseKana(option.word.reading) ? option.word.reading : option.word.word}
+                    </Text>
                   ) : (
                     <>
                       <Text style={[styles.optionWord, { color: wordColor }]}>{option.word.word}</Text>
-                      {option.word.reading ? (
+                      {hasJapaneseKana(option.word.reading) && option.word.reading !== option.word.word ? (
                         <Text style={[styles.optionReading, { color: rtColor }]}>{option.word.reading}</Text>
                       ) : null}
                     </>
@@ -185,8 +193,8 @@ export function LearnMode({ level, topicId, words }: { level: LevelId; topicId: 
           <View style={styles.dockTop}>
             <Text style={[styles.dockTitle, { color: outcome.correct ? t.matchaDark : t.error }]}>
               {outcome.correct
-                ? `✓ 正確 · ${round.prompt.word.word}${round.prompt.word.reading ? `（${round.prompt.word.reading}）` : ""}`
-                : `✕ 正解 · ${round.prompt.word.word}${round.prompt.word.reading ? `（${round.prompt.word.reading}）` : ""}`}
+                ? `✓ 正確 · ${round.prompt.word.word}${hasJapaneseKana(round.prompt.word.reading) && round.prompt.word.reading !== round.prompt.word.word ? `（${round.prompt.word.reading}）` : ""}`
+                : `✕ 正解 · ${round.prompt.word.word}${hasJapaneseKana(round.prompt.word.reading) && round.prompt.word.reading !== round.prompt.word.word ? `（${round.prompt.word.reading}）` : ""}`}
             </Text>
             <Text style={styles.dockBody} numberOfLines={2}>
               熟練度 {proficiencyLabel(outcome.before)} → {proficiencyLabel(outcome.after)} · 最近{" "}

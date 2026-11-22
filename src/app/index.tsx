@@ -65,6 +65,7 @@ export default function DashboardScreen() {
   );
 
   const activeTotals = boardTab === "vocab" ? vocabTotals : grammarTotals;
+  const vocabReviewCount = vocabTotals.proficiency[1] + vocabTotals.proficiency[2] + vocabTotals.proficiency[3];
   const activeList = boardTab === "vocab" ? vocabSummaries : grammarSummaries;
 
   return (
@@ -113,6 +114,20 @@ export default function DashboardScreen() {
               <Text style={styles.statLabel}>待複習錯題</Text>
             </View>
           </View>
+
+          {/* Weighted Vocab Review Callout */}
+          {vocabReviewCount > 0 && (
+            <Link href="/vocab-review" asChild>
+              <Pressable style={styles.ghostBanner}>
+                <View style={[styles.ghostRule, { backgroundColor: t.matcha }]} />
+                <View style={styles.ghostBody}>
+                  <Text style={styles.ghostTitle}>已學單字總複習（{vocabReviewCount} 詞）</Text>
+                  <Text style={styles.ghostSub}>排除未記單字 · 熟練度越低出題機率越高</Text>
+                </View>
+                <Text style={[styles.ghostArrow, { color: t.matcha }]}>測驗 →</Text>
+              </Pressable>
+            </Link>
+          )}
 
           {/* Ghost Review Callout */}
           {ghostGrammar.length > 0 && (

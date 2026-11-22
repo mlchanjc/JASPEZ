@@ -10,6 +10,12 @@ import { ProgressBar } from "./ProgressBar";
 
 type Prompt = { word: VocabWord; index: number };
 
+function hasJapaneseKana(value?: string | null): boolean {
+  if (!value) return false;
+  const s = value.trim();
+  return /[\u3040-\u30ff]/.test(s) && !/[A-Za-z]/.test(s);
+}
+
 function shuffle(words: VocabWord[]) {
   const items: Prompt[] = words.map((word, index) => ({ word, index }));
   for (let cursor = items.length - 1; cursor > 0; cursor -= 1) {
@@ -159,7 +165,7 @@ export function QuizMode({ level, topicId, words }: { level: LevelId; topicId: s
             <Text style={[styles.dockTitle, { color: feedback === "success" ? t.matchaDark : t.error }]}>
               {feedback === "success" ? `✓ 正確 · ${prompt.word.word}` : `✕ 正解 · ${prompt.word.word}`}
             </Text>
-            {prompt.word.reading ? (
+            {hasJapaneseKana(prompt.word.reading) ? (
               <Text style={styles.dockBody} numberOfLines={2}>
                 讀音：{prompt.word.reading}
                 {prompt.word.accent ? ` ${prompt.word.accent}` : ""}

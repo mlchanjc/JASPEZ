@@ -8,6 +8,7 @@ import { PaperBackdrop } from "@/components/PaperBackdrop";
 import { ProgressBar } from "@/components/ProgressBar";
 import { LEVELS, manifests } from "@/data/registry";
 import type { LevelId } from "@/data/types";
+import { attemptStats } from "@/lib/proficiency";
 import { levelSummary, topicCompletion } from "@/lib/vocab";
 import { useProgress } from "@/state/progress";
 import { useAppTheme } from "@/theme";
@@ -21,6 +22,10 @@ export default function LearnScreen() {
   const [search, setSearch] = useState("");
   const allTopics = manifests[level].topics;
   const summary = useMemo(() => levelSummary(level, learned, attempts), [level, learned, attempts]);
+  const reviewCount = useMemo(
+    () => Object.values(attempts).filter((hist) => attemptStats(hist).level >= 1).length,
+    [attempts],
+  );
 
   const topics = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -81,6 +86,19 @@ export default function LearnScreen() {
 
         <View style={styles.summary}>
           <LevelSummary level={level} {...summary} />
+          <Link href="/vocab-review" asChild>
+            <Pressable style={styles.reviewBanner}>
+              <View style={styles.reviewCopy}>
+                <Text style={styles.reviewTitle}>已學單字總複習（加權測驗）</Text>
+                <Text style={styles.reviewSub}>
+                  {reviewCount > 0
+                    ? `共 ${reviewCount} 個非未記單字 · 熟練度越低越常出現`
+                    : "先將單字練至「初識」以上即可開啟總複習"}
+                </Text>
+              </View>
+              <Text style={styles.reviewCta}>開始 →</Text>
+            </Pressable>
+          </Link>
         </View>
 
         <ScrollView
@@ -189,7 +207,24 @@ function makeStyles(t: AppTheme) {
       paddingHorizontal: 12,
     },
     searchInput: { height: 38, fontSize: 13.5, color: t.ink },
-    summary: { paddingHorizontal: 18, paddingBottom: 10 },
+    summary: { paddingHorizontal: 18, paddingBottom: 10, gap: 10 },
+    reviewBanner: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 10,
+      backgroundColor: t.white,
+      borderRadius: t.cardRadius,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      borderLeftWidth: 3,
+      borderLeftColor: t.accentPrimary,
+      paddingHorizontal: 14,
+      paddingVertical: 11,
+    },
+    reviewCopy: { flex: 1, minWidth: 0, gap: 2 },
+    reviewTitle: { fontSize: 13.5, fontWeight: "700", color: t.ink },
+    reviewSub: { fontSize: 11.5, color: t.inkSoft },
+    reviewCta: { fontSize: 12.5, fontWeight: "700", color: t.accentPrimary },
     topicScroller: { flex: 1 },
     topics: { paddingHorizontal: 18, paddingBottom: 32, gap: 10 },
     topic: {

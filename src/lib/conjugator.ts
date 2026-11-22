@@ -1157,6 +1157,32 @@ export function lessonAllowedPos(lesson: GrammarLesson): WordPos[] {
   return Array.from(new Set(clauses.map((c) => c.pos)));
 }
 
+function pickBalancedWord(pool: LexiconWord[], recentIds: readonly string[]): LexiconWord | null {
+  if (pool.length === 0) return null;
+  const recentSet = new Set(recentIds.slice(-18));
+
+  // If picking verbs, stratify equally across available verb categories (五段 / 一段 / サ變 / カ變)
+  if (pool[0]?.pos === "V") {
+    const byCat = new Map<VerbCategory, LexiconWord[]>();
+    for (const w of pool) {
+      const cat: VerbCategory = w.verbCategory ?? "godan";
+      const list = byCat.get(cat) ?? [];
+      list.push(w);
+      byCat.set(cat, list);
+    }
+    const cats = Array.from(byCat.keys());
+    const chosenCat = cats[Math.floor(Math.random() * cats.length)];
+    const catPool = byCat.get(chosenCat) ?? pool;
+    const freshCat = catPool.filter((w) => !recentSet.has(w.id));
+    const src = freshCat.length > 0 ? freshCat : catPool;
+    return src[Math.floor(Math.random() * src.length)] ?? null;
+  }
+
+  const fresh = pool.filter((w) => !recentSet.has(w.id));
+  const source = fresh.length > 0 ? fresh : pool;
+  return source[Math.floor(Math.random() * source.length)] ?? null;
+}
+
 export function generateLessonPatternDrill(
   lesson: GrammarLesson,
   recentIds: readonly string[] = [],
@@ -1164,7 +1190,12 @@ export function generateLessonPatternDrill(
   const clauses = parseLessonClauses(lesson);
   if (clauses.length === 0) return null;
 
-  const clause = clauses[Math.floor(Math.random() * clauses.length)];
+  // Equal probability across each distinct POS supported by this grammar pattern (N / Na / A / V)
+  const distinctPos = Array.from(new Set(clauses.map((c) => c.pos)));
+  const chosenPos = distinctPos[Math.floor(Math.random() * distinctPos.length)];
+  const posClauses = clauses.filter((c) => c.pos === chosenPos);
+  const clause = posClauses[Math.floor(Math.random() * posClauses.length)];
+
   const all = getLexicon();
   let pool = all.filter(
     (w) => w.pos === clause.pos && (lesson.level === "N2" || lesson.level === "N1" ? true : w.level === lesson.level),
@@ -1172,12 +1203,8 @@ export function generateLessonPatternDrill(
   if (pool.length === 0) {
     pool = all.filter((w) => w.pos === clause.pos);
   }
-  if (pool.length === 0) return null;
-
-  const recentSet = new Set(recentIds.slice(-18));
-  const fresh = pool.filter((w) => !recentSet.has(w.id));
-  const source = fresh.length > 0 ? fresh : pool;
-  const word = source[Math.floor(Math.random() * source.length)];
+  const word = pickBalancedWord(pool, recentIds);
+  if (!word) return null;
   const built = applyClause(clause, word);
 
   return {
@@ -1277,10 +1304,8 @@ export function generateClassicalVerbDrill(
   const pool = getLexicon().filter((w) => w.pos === "V" && (levelFilter === "ALL" || w.level === levelFilter));
   if (pool.length === 0) return null;
 
-  const recentSet = new Set(recentIds.slice(-18));
-  const fresh = pool.filter((w) => !recentSet.has(w.id));
-  const source = fresh.length > 0 ? fresh : pool;
-  const word = source[Math.floor(Math.random() * source.length)];
+  const word = pickBalancedWord(pool, recentIds);
+  if (!word) return null;
 
   if (form === "mizen_nai") {
     const res = verbMizenNai(word);
