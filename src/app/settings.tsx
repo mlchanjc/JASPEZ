@@ -221,7 +221,7 @@ export default function SettingsScreen() {
 
           {/* 4. Offline Library Summary */}
           <View style={styles.aboutRow}>
-            <Text style={styles.aboutText}>JASPEZ 離線日語特訓 · 2,195 單字 · 254 堂文法課 · 1,051 題易混題庫</Text>
+            <Text style={styles.aboutText}>JASPEZ 離線日語特訓 · 2,195 單字 · 254 堂文法課 · {ARENA_BANK.length} 題易混題庫</Text>
           </View>
         </ScrollView>
       </SafeAreaView>

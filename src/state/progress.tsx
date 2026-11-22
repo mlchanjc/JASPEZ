@@ -24,6 +24,7 @@ type ProgressState = {
   currentLevel: LevelId;
   grammarLearned: string[];
   grammarAttempts: Record<string, number[]>;
+  arenaAttempts: Record<string, number[]>;
   grammarNotes: Record<string, string>;
   ghostGrammar: string[];
   prefs: UserPrefs;
@@ -45,6 +46,7 @@ type ProgressContextValue = {
   grammarLearnedCount: number;
   grammarLearned: ReadonlySet<string>;
   grammarAttempts: Readonly<Record<string, number[]>>;
+  arenaAttempts: Readonly<Record<string, number[]>>;
   grammarNotes: Readonly<Record<string, string>>;
   ghostGrammar: readonly string[];
   prefs: UserPrefs;
@@ -53,6 +55,7 @@ type ProgressContextValue = {
   getGrammarProficiency: (id: string) => number;
   setGrammarProficiency: (id: string, level: number) => void;
   recordGrammarAttempt: (id: string, correct: boolean) => { level: number; correct: number; total: number };
+  recordArenaAttempt: (itemId: string, correct: boolean) => { level: number; correct: number; total: number };
   setGrammarNote: (id: string, note: string) => void;
   addGhostGrammar: (id: string) => void;
   clearGhostGrammar: (id: string) => void;
@@ -74,6 +77,7 @@ const initial: ProgressState = {
   currentLevel: "N5",
   grammarLearned: [],
   grammarAttempts: {},
+  arenaAttempts: {},
   grammarNotes: {},
   ghostGrammar: [],
   prefs: defaultPrefs,
@@ -171,6 +175,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
           currentLevel: saved.currentLevel ?? "N5",
           grammarLearned: Array.isArray(saved.grammarLearned) ? saved.grammarLearned : [],
           grammarAttempts: readAttemptsMap(saved.grammarAttempts),
+          arenaAttempts: readAttemptsMap(saved.arenaAttempts),
           grammarNotes: readNotes(saved.grammarNotes),
           ghostGrammar: Array.isArray(saved.ghostGrammar)
             ? saved.ghostGrammar.filter((item): item is string => typeof item === "string")
@@ -226,6 +231,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       grammarLearnedCount: state.grammarLearned.length,
       grammarLearned,
       grammarAttempts: state.grammarAttempts,
+      arenaAttempts: state.arenaAttempts,
       grammarNotes: state.grammarNotes,
       ghostGrammar: state.ghostGrammar,
       prefs: state.prefs,
@@ -263,6 +269,18 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
           },
         }));
         return { level: stats.level, correct: stats.correct, total: stats.total };
+      },
+      recordArenaAttempt: (itemId, correct) => {
+        const nextHistory = pushAttempt(state.arenaAttempts[itemId], correct);
+        const stats = attemptStats(nextHistory);
+        setState((prev) => ({
+          ...prev,
+          arenaAttempts: {
+            ...prev.arenaAttempts,
+            [itemId]: pushAttempt(prev.arenaAttempts[itemId], correct),
+          },
+        }));
+        return stats;
       },
       setGrammarNote: (id, note) =>
         setState((prev) => {

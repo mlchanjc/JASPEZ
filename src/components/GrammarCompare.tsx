@@ -1,146 +1,173 @@
 import { useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { ARENA_BANK, ARENA_GROUPS } from "@/data/arenaBank";
-import type { ArenaGroupMeta } from "@/data/arenaBank";
+import type { ArenaGroupId, ArenaItem } from "@/data/arenaBank";
 import { CONFUSABLE_PAIRS } from "@/data/grammar";
-import { findGrammarLesson } from "@/data/grammarRegistry";
-import { lessonExamples } from "@/lib/grammar";
+import { attemptStats } from "@/lib/proficiency";
 import { useProgress } from "@/state/progress";
 import { useAppTheme } from "@/theme";
 import type { AppTheme } from "@/theme";
 
-type ArenaQuestion = {
-  id: string;
-  before: string;
-  after: string;
-  fullJa: string;
-  reading: string;
-  zh: string;
-  correctLabel: string;
-  surface: string;
-  choices: string[];
-  tip: string;
+type RenderedQuestion = {
+  item: ArenaItem;
+  shuffledChoices: string[];
 };
 
-function buildPool(group: ArenaGroupMeta): ArenaQuestion[] {
-  const list: ArenaQuestion[] = [];
-  const seenJa = new Set<string>();
+type AnswerOutcome = "correct" | "alt" | "wrong";
 
-  ARENA_BANK.forEach((item, idx) => {
-    if (item.groupId !== group.id) return;
-    const fullJa = `${item.before}${item.surface}${item.after}`;
-    if (seenJa.has(fullJa)) return;
-    seenJa.add(fullJa);
-    list.push({
-      id: `bank:${group.id}:${idx}`,
-      before: item.before,
-      after: item.after,
-      fullJa,
-      reading: item.reading,
-      zh: item.zh,
-      correctLabel: item.answer,
-      surface: item.surface,
-      choices: group.choices,
-      tip: item.tip,
-    });
+function shuffle<T>(items: readonly T[]): T[] {
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+/**
+ * Weighted sampling by immutable item.id mastery:
+ * - Unseen or low accuracy (level 0-1) -> higher weight (5-6)
+ * - Familiar (level 2) -> weight 3
+ * - Mastered (level 3) -> weight 1
+ */
+function pickWeightedQuestion(
+  pool: ArenaItem[],
+  arenaAttempts: Readonly<Record<string, number[]>>,
+  groupChoices: string[],
+  avoidId: string | null,
+): RenderedQuestion | null {
+  if (pool.length === 0) return null;
+  const candidates = pool.length > 1 && avoidId ? pool.filter((x) => x.id !== avoidId) : pool;
+  const source = candidates.length > 0 ? candidates : pool;
+
+  const weights = source.map((item) => {
+    const hist = arenaAttempts[item.id];
+    if (!hist || hist.length === 0) return 5;
+    const lvl = attemptStats(hist).level;
+    if (lvl === 0) return 6;
+    if (lvl === 1) return 5;
+    if (lvl === 2) return 3;
+    return 1;
   });
 
-  for (const member of group.lessonRefs) {
-    const lesson = findGrammarLesson(member.level, member.lessonId);
-    if (!lesson) continue;
-    const examples = lessonExamples(lesson);
-    examples.forEach((ex, idx) => {
-      const ja = ex.ja.trim();
-      if (!ja || seenJa.has(ja)) return;
-      let hit = "";
-      let pos = -1;
-      for (const tok of member.tokens) {
-        if (tok.length === 1) {
-          const re = new RegExp(`${tok}(?=[、。！？\\s]|$)`);
-          const m = re.exec(ja);
-          if (m) {
-            hit = tok;
-            pos = m.index;
-            break;
-          }
-        } else {
-          const i = ja.indexOf(tok);
-          if (i >= 0) {
-            hit = tok;
-            pos = i;
-            break;
-          }
-        }
-      }
-      if (!hit || pos < 0) return;
-
-      seenJa.add(ja);
-      list.push({
-        id: `lesson:${group.id}:${member.lessonId}:${idx}`,
-        before: ja.slice(0, pos),
-        after: ja.slice(pos + hit.length),
-        fullJa: ja,
-        reading: (ex.reading ?? "").trim(),
-        zh: (ex.zh ?? "").trim(),
-        correctLabel: member.choiceLabel,
-        surface: hit,
-        choices: group.choices,
-        tip: member.tip,
-      });
-    });
+  const total = weights.reduce((s, w) => s + w, 0);
+  let r = Math.random() * total;
+  let picked = source[source.length - 1];
+  for (let i = 0; i < source.length; i += 1) {
+    r -= weights[i];
+    if (r <= 0) {
+      picked = source[i];
+      break;
+    }
   }
 
-  return list;
+  const rawChoices = picked.choices && picked.choices.length > 0 ? picked.choices : groupChoices;
+  return {
+    item: picked,
+    shuffledChoices: shuffle(rawChoices),
+  };
 }
 
 export function GrammarCompare() {
-  const { prefs } = useProgress();
+  const { prefs, arenaAttempts, recordArenaAttempt } = useProgress();
   const { t, levelAccent } = useAppTheme();
   const styles = useMemo(() => makeStyles(t), [t]);
   const [subMode, setSubMode] = useState<"arena" | "guide">("arena");
-  const [groupId, setGroupId] = useState<string>(ARENA_GROUPS[0].id);
-  const [cursor, setCursor] = useState(0);
+  const [groupId, setGroupId] = useState<ArenaGroupId>(ARENA_GROUPS[0].id);
   const [picked, setPicked] = useState<string | null>(null);
+  const [outcome, setOutcome] = useState<AnswerOutcome | null>(null);
   const [streak, setStreak] = useState(0);
   const [correctTotal, setCorrectTotal] = useState(0);
   const [answeredTotal, setAnsweredTotal] = useState(0);
 
   const activeGroup = ARENA_GROUPS.find((g) => g.id === groupId) ?? ARENA_GROUPS[0];
-  const pool = useMemo(() => {
-    const built = buildPool(activeGroup);
-    for (let i = built.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [built[i], built[j]] = [built[j], built[i]];
-    }
-    return built;
-  }, [activeGroup]);
+  const groupPool = useMemo(
+    () => ARENA_BANK.filter((item) => item.groupId === activeGroup.id),
+    [activeGroup.id],
+  );
 
-  const question = pool.length > 0 ? pool[cursor % pool.length] : null;
-  const isCorrect = question !== null && picked === question.correctLabel;
+  const [rendered, setRendered] = useState<RenderedQuestion | null>(() =>
+    pickWeightedQuestion(groupPool, arenaAttempts, activeGroup.choices, null),
+  );
+
+  // Keep rendered question synced when switching group
+  const activeQuestion = useMemo(() => {
+    if (rendered && rendered.item.groupId === activeGroup.id) return rendered;
+    return pickWeightedQuestion(groupPool, arenaAttempts, activeGroup.choices, null);
+  }, [rendered, activeGroup, groupPool, arenaAttempts]);
+
   const accent = levelAccent[activeGroup.level];
 
-  const selectGroup = (id: string) => {
+  const selectGroup = (id: ArenaGroupId) => {
+    const nextGroup = ARENA_GROUPS.find((g) => g.id === id) ?? ARENA_GROUPS[0];
+    const nextPool = ARENA_BANK.filter((item) => item.groupId === id);
     setGroupId(id);
-    setCursor(0);
     setPicked(null);
+    setOutcome(null);
+    setRendered(pickWeightedQuestion(nextPool, arenaAttempts, nextGroup.choices, null));
   };
 
-  const choose = (label: string) => {
-    if (!question || picked !== null) return;
-    setPicked(label);
+  const choose = (choiceText: string) => {
+    if (!activeQuestion || picked !== null) return;
+    const { item } = activeQuestion;
+    setPicked(choiceText);
     setAnsweredTotal((n) => n + 1);
-    if (label === question.correctLabel) {
+
+    if (choiceText === item.answer) {
+      setOutcome("correct");
       setCorrectTotal((n) => n + 1);
       setStreak((n) => n + 1);
+      recordArenaAttempt(item.id, true);
+    } else if (item.altAnswers && item.altAnswers[choiceText]) {
+      // Soft-accept near-synonym: preserve streak, leave mastery weight unchanged
+      setOutcome("alt");
+      setCorrectTotal((n) => n + 1);
     } else {
+      setOutcome("wrong");
       setStreak(0);
+      recordArenaAttempt(item.id, false);
     }
   };
 
   const nextQuestion = () => {
-    setCursor((n) => n + 1);
+    const prevId = activeQuestion?.item.id ?? null;
     setPicked(null);
+    setOutcome(null);
+    setRendered(pickWeightedQuestion(groupPool, arenaAttempts, activeGroup.choices, prevId));
   };
+
+  const item = activeQuestion?.item ?? null;
+  const displaySurface = item ? (item.surface ?? item.answer) : "";
+
+  const feedbackText = useMemo(() => {
+    if (!item || !picked || !outcome) return "";
+    if (outcome === "alt" && item.altAnswers?.[picked]) {
+      return item.altAnswers[picked];
+    }
+    if (outcome === "wrong" && item.distractorNotes?.[picked]) {
+      return item.distractorNotes[picked];
+    }
+    return item.tip;
+  }, [item, picked, outcome]);
+
+  const dockBg =
+    outcome === "correct"
+      ? t.successSoft
+      : outcome === "alt"
+        ? t.goldSoft
+        : t.errorSoft;
+  const dockBorder =
+    outcome === "correct"
+      ? t.success
+      : outcome === "alt"
+        ? t.gold
+        : t.error;
+  const dockTitleColor =
+    outcome === "correct"
+      ? t.matchaDark
+      : outcome === "alt"
+        ? t.goldDark
+        : t.error;
 
   return (
     <View style={styles.container}>
@@ -150,7 +177,7 @@ export function GrammarCompare() {
             <View style={styles.topHeadLeft}>
               <Text style={styles.heading}>易混實戰擂台</Text>
               <Text style={styles.sub} numberOfLines={2}>
-                本組 {pool.length} 題 · 連勝 {streak}（{correctTotal}/{answeredTotal}）
+                本組 {groupPool.length} 題 · 連勝 {streak}（{correctTotal}/{answeredTotal}）
               </Text>
             </View>
             <View style={styles.segmented}>
@@ -187,41 +214,51 @@ export function GrammarCompare() {
           )}
         </View>
 
-        {subMode === "arena" && question && (
+        {subMode === "arena" && activeQuestion && item && (
           <View style={styles.card}>
             <View style={styles.badgeRow}>
-              <Text style={[styles.levelCode, { color: accent }]}>{activeGroup.level}</Text>
+              <Text style={[styles.levelCode, { color: accent }]}>
+                {item.jlptTag ?? activeGroup.level}
+              </Text>
               <Text style={styles.groupLabel} numberOfLines={1}>
                 {activeGroup.label} · 選出最適合的文法
               </Text>
             </View>
 
             <Text style={styles.sentence}>
-              {question.before}
+              {item.before}
               <Text
                 style={[
                   styles.blankText,
                   {
-                    color: picked === null ? t.vermillion : isCorrect ? t.matchaDark : t.error,
+                    color:
+                      picked === null
+                        ? t.vermillion
+                        : outcome === "correct"
+                          ? t.matchaDark
+                          : outcome === "alt"
+                            ? t.goldDark
+                            : t.error,
                   },
                 ]}
               >
-                {picked === null ? " 【　　】 " : ` 【${question.surface}】 `}
+                {picked === null ? " 【　　】 " : ` 【${displaySurface}】 `}
               </Text>
-              {question.after}
+              {item.after}
             </Text>
 
-            {prefs.showFurigana && question.reading ? (
+            {prefs.showFurigana && item.reading ? (
               <Text style={styles.reading}>
-                {picked !== null ? question.reading : "（作答後顯示假名讀音）"}
+                {picked !== null ? item.reading : "（作答後顯示假名讀音）"}
               </Text>
             ) : null}
 
-            {question.zh ? <Text style={styles.zh}>{question.zh}</Text> : null}
+            {item.zh ? <Text style={styles.zh}>{item.zh}</Text> : null}
 
             <View style={styles.choicesGrid}>
-              {question.choices.map((opt) => {
-                const isAns = opt === question.correctLabel;
+              {activeQuestion.shuffledChoices.map((opt) => {
+                const isAns = opt === item.answer;
+                const isAlt = Boolean(item.altAnswers?.[opt]);
                 const isPick = opt === picked;
                 let bg = t.surface;
                 let border = t.paperBorder;
@@ -231,6 +268,10 @@ export function GrammarCompare() {
                     bg = t.successSoft;
                     border = t.success;
                     color = t.matchaDark;
+                  } else if (isPick && isAlt) {
+                    bg = t.goldSoft;
+                    border = t.gold;
+                    color = t.goldDark;
                   } else if (isPick) {
                     bg = t.errorSoft;
                     border = t.error;
@@ -240,12 +281,17 @@ export function GrammarCompare() {
                     color = t.inkMuted;
                   }
                 }
+                const fullWidth = activeQuestion.shuffledChoices.some((c) => c.length >= 8);
                 return (
                   <Pressable
                     key={opt}
                     disabled={picked !== null}
                     onPress={() => choose(opt)}
-                    style={[styles.tile, { backgroundColor: bg, borderColor: border }]}
+                    style={[
+                      styles.tile,
+                      fullWidth && styles.tileFull,
+                      { backgroundColor: bg, borderColor: border },
+                    ]}
                   >
                     <Text style={[styles.tileText, { color }]}>{opt}</Text>
                   </Pressable>
@@ -283,29 +329,22 @@ export function GrammarCompare() {
           ))}
       </ScrollView>
 
-      {subMode === "arena" && question && picked !== null && (
-        <View
-          style={[
-            styles.feedbackDock,
-            {
-              backgroundColor: isCorrect ? t.successSoft : t.errorSoft,
-              borderTopColor: isCorrect ? t.success : t.error,
-            },
-          ]}
-        >
+      {subMode === "arena" && item && picked !== null && outcome !== null && (
+        <View style={[styles.feedbackDock, { backgroundColor: dockBg, borderTopColor: dockBorder }]}>
           <View style={styles.dockTop}>
-            <Text style={[styles.dockTitle, { color: isCorrect ? t.matchaDark : t.error }]}>
-              {isCorrect ? `✓ 正確 · 「${question.correctLabel}」` : `✕ 正解 · 「${question.correctLabel}」`}
-              {question.surface !== question.correctLabel ? `（${question.surface}）` : ""}
+            <Text style={[styles.dockTitle, { color: dockTitleColor }]}>
+              {outcome === "correct"
+                ? `✓ 正確 · ${item.grammarKey}`
+                : outcome === "alt"
+                  ? `△ 也通順（更偏向「${item.grammarKey}」）`
+                  : `✕ 正解 · ${item.grammarKey}`}
+              {displaySurface !== item.grammarKey ? `（${displaySurface}）` : ""}
             </Text>
-            <Text style={styles.dockBody} numberOfLines={2}>
-              {question.tip}
+            <Text style={styles.dockBody} numberOfLines={3}>
+              {feedbackText}
             </Text>
           </View>
-          <Pressable
-            onPress={nextQuestion}
-            style={[styles.dockBtn, { backgroundColor: isCorrect ? t.success : t.error }]}
-          >
+          <Pressable onPress={nextQuestion} style={[styles.dockBtn, { backgroundColor: dockBorder }]}>
             <Text style={styles.dockBtnText}>下一題 →</Text>
           </Pressable>
         </View>
@@ -321,10 +360,10 @@ function makeStyles(t: AppTheme) {
     scrollContent: { paddingHorizontal: 18, paddingTop: 12, paddingBottom: 24, gap: 12 },
     topCard: {
       backgroundColor: t.white,
-      borderRadius: 8,
+      borderRadius: t.cardRadius,
       padding: 14,
       gap: 10,
-      borderWidth: 1,
+      borderWidth: t.cardBorderWidth,
       borderColor: t.paperBorder,
     },
     topHead: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 10 },
@@ -334,60 +373,71 @@ function makeStyles(t: AppTheme) {
     segmented: {
       flexDirection: "row",
       backgroundColor: t.surface,
-      borderRadius: 6,
+      borderRadius: t.controlRadius,
       padding: 2,
       borderWidth: 1,
       borderColor: t.paperBorder,
       flexShrink: 0,
     },
-    segBtn: { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 4 },
-    segBtnActive: { backgroundColor: t.ink },
+    segBtn: { paddingHorizontal: 10, paddingVertical: 5, borderRadius: Math.max(4, t.controlRadius - 2) },
+    segBtnActive: { backgroundColor: t.preset === "ios" ? t.accentPrimary : t.ink },
     segText: { fontSize: 12, fontWeight: "700", color: t.inkSoft },
-    segTextActive: { color: t.paper },
+    segTextActive: { color: t.preset === "ios" ? "#FFFFFF" : t.paper },
     groupRow: { gap: 6, paddingVertical: 2 },
     groupChip: {
       paddingHorizontal: 11,
       paddingVertical: 6,
-      borderRadius: 4,
+      borderRadius: t.controlRadius,
       backgroundColor: t.surface,
       borderWidth: 1,
       borderColor: t.paperBorder,
     },
-    groupChipActive: { backgroundColor: t.ink, borderColor: t.ink },
+    groupChipActive: {
+      backgroundColor: t.preset === "ios" ? t.accentPrimary : t.ink,
+      borderColor: t.preset === "ios" ? t.accentPrimary : t.ink,
+    },
     groupChipText: { fontSize: 11.5, fontWeight: "700", color: t.inkSoft },
-    groupChipTextActive: { color: t.paper },
+    groupChipTextActive: { color: t.preset === "ios" ? "#FFFFFF" : t.paper },
     card: {
       backgroundColor: t.white,
-      borderRadius: 10,
+      borderRadius: t.cardRadius,
       padding: 16,
       gap: 12,
-      borderWidth: 1,
+      borderWidth: t.cardBorderWidth,
       borderColor: t.paperBorder,
     },
     badgeRow: { flexDirection: "row", alignItems: "center", gap: 8 },
     levelCode: { fontSize: 12, fontWeight: "800", letterSpacing: 0.6 },
     groupLabel: { flex: 1, fontSize: 12, fontWeight: "600", color: t.inkSoft },
-    sentence: { fontFamily: t.serif, fontSize: 20, fontWeight: "700", color: t.ink, lineHeight: 32 },
+    sentence: { fontFamily: t.serif, fontSize: 19, fontWeight: "700", color: t.ink, lineHeight: 31 },
     blankText: { fontWeight: "800" },
     reading: { fontSize: 12.5, color: t.inkSoft },
-    zh: { fontSize: 13.5, color: t.inkSoft, lineHeight: 20, paddingTop: 4, borderTopWidth: 1, borderTopColor: t.paperBorder },
+    zh: {
+      fontSize: 13.5,
+      color: t.inkSoft,
+      lineHeight: 20,
+      paddingTop: 6,
+      borderTopWidth: 1,
+      borderTopColor: t.paperBorder,
+    },
     choicesGrid: { flexDirection: "row", flexWrap: "wrap", gap: 8, marginTop: 4 },
     tile: {
       width: "48.5%",
-      borderRadius: 8,
+      borderRadius: t.controlRadius,
       borderWidth: 1,
-      paddingVertical: 13,
+      paddingVertical: 12,
       paddingHorizontal: 10,
       alignItems: "center",
     },
-    tileText: { fontSize: 15, fontWeight: "700", textAlign: "center" },
+    tileFull: { width: "100%" },
+    tileText: { fontSize: 14.5, fontWeight: "700", textAlign: "center" },
     headText: { flex: 1, minWidth: 0 },
     pairTitle: { fontFamily: t.serif, fontSize: 16, fontWeight: "700", color: t.ink },
     pairSub: { fontSize: 12, color: t.inkSoft, marginTop: 2 },
     columns: { gap: 10 },
     sideBox: {
       backgroundColor: t.surface,
-      borderRadius: 8,
+      borderRadius: t.controlRadius,
       borderWidth: 1,
       borderColor: t.paperBorder,
       padding: 12,
@@ -408,7 +458,7 @@ function makeStyles(t: AppTheme) {
     dockTop: { flex: 1, minWidth: 0, gap: 3 },
     dockTitle: { fontSize: 13.5, fontWeight: "700" },
     dockBody: { fontSize: 11.5, color: t.inkSoft, lineHeight: 17 },
-    dockBtn: { paddingHorizontal: 15, paddingVertical: 10, borderRadius: 6 },
+    dockBtn: { paddingHorizontal: 15, paddingVertical: 10, borderRadius: t.controlRadius },
     dockBtnText: { color: "#fff", fontSize: 13, fontWeight: "700" },
   });
 }
