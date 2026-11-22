@@ -10,13 +10,21 @@ export type ArenaGroupId =
   | "n4-aux-dir"
   | "n4-appearance-simile"
   | "n4-hearsay-inference"
+  | "n4-giving-receiving"
+  | "n4-voice"
   | "n3-purpose"
   | "n3-decisions-rules"
   | "n3-cause-effect"
   | "n3-concession"
   | "n3-time-span"
   | "n3-moment-final"
-  | "n3-moment-clause";
+  | "n3-moment-clause"
+  | "n3-wake"
+  | "n3-certainty"
+  | "n3-recurring"
+  | "n3-limits";
+
+export type ArenaTier = "core" | "extended";
 
 export interface ArenaItem {
   id: string;
@@ -33,6 +41,7 @@ export interface ArenaItem {
   altAnswers?: Record<string, string>;
   distractorNotes?: Record<string, string>;
   jlptTag?: "N5" | "N4" | "N3" | "N3/N2";
+  tier?: ArenaTier;
 }
 
 export type ArenaGroupMeta = {
@@ -106,6 +115,22 @@ export const ARENA_GROUPS: ArenaGroupMeta[] = [
     requiresInflectedChoices: true,
   },
   {
+    id: "n4-giving-receiving",
+    label: "N4 授受補助動詞",
+    level: "N4",
+    grammarKeys: ["てあげる", "てくれる", "てもらう"],
+    choices: ["てあげる", "てくれる", "てもらう"],
+    requiresInflectedChoices: true,
+  },
+  {
+    id: "n4-voice",
+    label: "N4 受身・使役・使役受身",
+    level: "N4",
+    grammarKeys: ["受身", "使役", "使役受身"],
+    choices: ["受身", "使役", "使役受身"],
+    requiresInflectedChoices: true,
+  },
+  {
     id: "n3-purpose",
     label: "N3 目的表現",
     level: "N3",
@@ -155,6 +180,36 @@ export const ARENA_GROUPS: ArenaGroupMeta[] = [
     grammarKeys: ["たとたんに", "たところに", "たばかりに", "たせいで"],
     choices: ["たとたんに", "たところに", "たばかりに", "たせいで"],
     requiresInflectedChoices: true,
+  },
+  {
+    id: "n3-wake",
+    label: "N3 わけ系辨析",
+    level: "N3",
+    grammarKeys: ["わけだ", "わけではない", "わけがない", "わけにはいかない"],
+    choices: ["わけだ", "わけではない", "わけがない", "わけにはいかない"],
+  },
+  {
+    id: "n3-certainty",
+    label: "N3 確信與義務",
+    level: "N3",
+    grammarKeys: ["はずだ", "べきだ", "にちがいない", "かもしれない"],
+    choices: ["はずだ", "べきだ", "にちがいない", "かもしれない"],
+    requiresInflectedChoices: true,
+  },
+  {
+    id: "n3-recurring",
+    label: "N3 頻率與間隔",
+    level: "N3",
+    grammarKeys: ["たびに", "ごとに", "おきに"],
+    choices: ["たびに", "ごとに", "おきに"],
+    requiresInflectedChoices: true,
+  },
+  {
+    id: "n3-limits",
+    label: "N3 限定與偏重",
+    level: "N3",
+    grammarKeys: ["だけ", "しか", "ばかり"],
+    choices: ["だけ", "しか", "ばかり"],
   },
 ];
 

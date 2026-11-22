@@ -1,0 +1,422 @@
+[
+  {
+    "id": "n5-mov-core-001",
+    "groupId": "n5-movement",
+    "before": "毎朝、家の前の道",
+    "after": "歩きます。",
+    "reading": "まいあさ、いえのまえのみちをあるきます。",
+    "zh": "每天早上走家門前的路。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "移動經過的路徑「道」配移動動詞「歩きます」用「を」。",
+    "distractorNotes": {
+      "で": "經過的路徑用「を」，停留活動場所才用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-002",
+    "groupId": "n5-movement",
+    "before": "白い鳥が空",
+    "after": "飛んでいます。",
+    "reading": "しろいとりがそらをとんでいます。",
+    "zh": "白鳥正在天空飛翔。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "移動通過的空間「空」配「飛ぶ」用「を」。",
+    "distractorNotes": {
+      "に": "飛越空間用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-003",
+    "groupId": "n5-movement",
+    "before": "図書館の前でバス",
+    "after": "降ります。",
+    "reading": "としょかんのまえでバスをおります。",
+    "zh": "在圖書館前面下公車。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "離開交通工具「降りる」固定用「を」。",
+    "distractorNotes": {
+      "に": "上車才用「に乗る」，下車用「を降りる」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-004",
+    "groupId": "n5-movement",
+    "before": "毎朝七時に家",
+    "after": "出ます。",
+    "reading": "まいあさしちじにいえをでます。",
+    "zh": "每天早上七點出門。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "離開出發點「家を出る」固定用「を」。",
+    "distractorNotes": {
+      "に": "離開空間用「を」，進入才用「に入る」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-005",
+    "groupId": "n5-movement",
+    "before": "大きい橋",
+    "after": "渡って右へ曲がります。",
+    "reading": "おおきいはしをわたってみぎへまがります。",
+    "zh": "過了大橋後向右轉。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "橫越路徑「橋を渡る」固定用「を」。",
+    "distractorNotes": {
+      "で": "橫越經過的場所用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-006",
+    "groupId": "n5-movement",
+    "before": "大きい船が青い海",
+    "after": "通ります。",
+    "reading": "おおきいふねがあおいうみをとおります。",
+    "zh": "大船駛過藍色的海面。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "通過的水域路徑「海を通る」用「を」。",
+    "distractorNotes": {
+      "に": "經過的路徑用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-007",
+    "groupId": "n5-movement",
+    "before": "犬と一緒に公園の中",
+    "after": "走りました。",
+    "reading": "いぬといっしょにこうえんのなかをはしりました。",
+    "zh": "和狗一起在公園裡跑步穿梭。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "移動穿越公園路徑「公園の中を走る」用「を」。",
+    "distractorNotes": {
+      "に": "移動經過路徑用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-008",
+    "groupId": "n5-movement",
+    "before": "さっき学校",
+    "after": "出て駅へ行きました。",
+    "reading": "さっきがっこうをでてえきへいきました。",
+    "zh": "剛才離開學校去車站了。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "離開起點「学校を出る」固定用「を」。",
+    "distractorNotes": {
+      "で": "離開出發點用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-009",
+    "groupId": "n5-movement",
+    "before": "このバスは駅の前",
+    "after": "通りますか。",
+    "reading": "このバスはえきのまえをとおりますか。",
+    "zh": "這班公車會經過車站前嗎？",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "經過地點「通る」固定用「を」。",
+    "distractorNotes": {
+      "に": "經過點用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-010",
+    "groupId": "n5-movement",
+    "before": "暗い道",
+    "after": "一人で歩かないでください。",
+    "reading": "くらいみちをひとりであるかないでください。",
+    "zh": "請不要一個人走暗路。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "行走的路徑「道を歩く」用「を」。",
+    "distractorNotes": {
+      "に": "移動路徑用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-011",
+    "groupId": "n5-movement",
+    "before": "きのう初めて東京",
+    "after": "来ました。",
+    "reading": "きのうはじめてとうきょうにきました。",
+    "zh": "昨天第一次來到東京。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "移動到達的目的地用「に」。",
+    "distractorNotes": {
+      "で": "到達點用「に」，不用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-012",
+    "groupId": "n5-movement",
+    "before": "朝八時にバス",
+    "after": "乗ります。",
+    "reading": "あさはちじにバスにのります。",
+    "zh": "早上八點搭公車。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "搭乘交通工具「乗る」固定用「に」。",
+    "distractorNotes": {
+      "を": "上車用「に乗る」，下車才用「を降りる」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-013",
+    "groupId": "n5-movement",
+    "before": "雨の日なので早く家",
+    "after": "帰ります。",
+    "reading": "あめのひなのではやくいえにかえります。",
+    "zh": "因為下雨，早點回家。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "返回的目的地「家に帰る」用「に」。",
+    "distractorNotes": {
+      "を": "「帰る」的目的地用「に」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-014",
+    "groupId": "n5-movement",
+    "before": "夕方五時に駅",
+    "after": "着きました。",
+    "reading": "ゆうがたごじにえきにつきました。",
+    "zh": "傍晚五點抵達了車站。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "到達動詞「着く」的目的地固定用「に」。",
+    "distractorNotes": {
+      "で": "抵達地點固定用「に着く」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-015",
+    "groupId": "n5-movement",
+    "before": "寒いから早くへや",
+    "after": "入りましょう。",
+    "reading": "さむいからはやくへやにはいりましょう。",
+    "zh": "很冷，快點進房間吧。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "進入目標空間「入る」固定用「に」。",
+    "distractorNotes": {
+      "を": "進入用「に入る」，離開才用「を出る」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-016",
+    "groupId": "n5-movement",
+    "before": "休みの日に友だちの家",
+    "after": "遊びに行きます。",
+    "reading": "やすみのひにともだちのいえにあそびにいきます。",
+    "zh": "休假日要去朋友家玩。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "移動目的地「友だちの家」用「に」。",
+    "distractorNotes": {
+      "で": "目的地用「に」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-017",
+    "groupId": "n5-movement",
+    "before": "日曜日に大きい山",
+    "after": "登りました。",
+    "reading": "にちようびにおおきいやまにのぼりました。",
+    "zh": "星期天去爬了高山。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "攀登目標「山に登る」常用「に」。",
+    "distractorNotes": {
+      "で": "攀登目標點用「に」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-018",
+    "groupId": "n5-movement",
+    "before": "あしたの朝、京都",
+    "after": "着きます。",
+    "reading": "あしたのあさ、きょうとにつきます。",
+    "zh": "明天早上會抵達京都。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「着きます」的到達地點用「に」。",
+    "distractorNotes": {
+      "を": "「着く」為自動詞，不用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-019",
+    "groupId": "n5-movement",
+    "before": "今、古い喫茶店",
+    "after": "入りました。",
+    "reading": "いま、ふるいきっさてんにはいりました。",
+    "zh": "剛剛走進了老咖啡廳。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "進入空間「入る」固定用「に」。",
+    "distractorNotes": {
+      "で": "進入的到達空間用「に」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-020",
+    "groupId": "n5-movement",
+    "before": "週末は海",
+    "after": "泳ぎに行きたいです。",
+    "reading": "しゅうまつはうみにおよぎにいきたいです。",
+    "zh": "週末想去海邊游泳。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "移動目的地「海」用「に」。",
+    "distractorNotes": {
+      "を": "「行く」的目的地用「に」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-021",
+    "groupId": "n5-movement",
+    "before": "毎日、広い公園",
+    "after": "友だちと遊びます。",
+    "reading": "まいにち、ひろいこうえんでともだちとあそびます。",
+    "zh": "每天在寬廣的公園和朋友玩。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "進行活動「遊ぶ」的場所用「で」。",
+    "distractorNotes": {
+      "に": "動作場所用「で」，存在或目的地才用「に」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-022",
+    "groupId": "n5-movement",
+    "before": "夏休みは青い海",
+    "after": "たくさん泳ぎました。",
+    "reading": "なつやすみはあおいうみでたくさんおよぎました。",
+    "zh": "暑假在藍色的海裡游了很多次泳。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "進行「游泳」動作的場所用「で」。",
+    "distractorNotes": {
+      "に": "游泳活動的範圍場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-023",
+    "groupId": "n5-movement",
+    "before": "新しい店",
+    "after": "おいしいパンを買いました。",
+    "reading": "あたらしいみせでおいしいパンをかいました。",
+    "zh": "在新店買了好吃的麵包。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "進行「購買」動作的場所用「で」。",
+    "distractorNotes": {
+      "に": "購物動作場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-024",
+    "groupId": "n5-movement",
+    "before": "学校の図書館",
+    "after": "静かに本を読みます。",
+    "reading": "がっこうのとしょかんでしずかにほんをよみます。",
+    "zh": "在學校圖書館安靜看書。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "進行「看書」動作的場所用「で」。",
+    "distractorNotes": {
+      "を": "閱讀動作場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-025",
+    "groupId": "n5-movement",
+    "before": "きのう駅の前",
+    "after": "先生に会いました。",
+    "reading": "きのうえきのまえでせんせいにあいました。",
+    "zh": "昨天在車站前遇見了老師。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "發生「見面」動作的場所用「で」。",
+    "distractorNotes": {
+      "を": "事件發生場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-026",
+    "groupId": "n5-movement",
+    "before": "あそこの喫茶店",
+    "after": "少し休みましょう。",
+    "reading": "あそこのきっさてんですこしやすみましょう。",
+    "zh": "在那家咖啡廳稍微休息一下吧。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "進行「休息」動作的場所用「で」。",
+    "distractorNotes": {
+      "に": "休息動作場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-027",
+    "groupId": "n5-movement",
+    "before": "広いへや",
+    "after": "みんなで写真を撮りました。",
+    "reading": "ひろいへやでみんなでしゃしんをとりました。",
+    "zh": "大家在寬敞的房間裡拍了照。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "進行「拍照」動作的場所用「で」。",
+    "distractorNotes": {
+      "に": "拍照動作場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-028",
+    "groupId": "n5-movement",
+    "before": "毎朝、家の台所",
+    "after": "コーヒーを飲みます。",
+    "reading": "まいあさ、いえのだいどころでコーヒーをのみます。",
+    "zh": "每天早上在家裡的廚房喝咖啡。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "進行「喝咖啡」動作的場所用「で」。",
+    "distractorNotes": {
+      "に": "動作場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-029",
+    "groupId": "n5-movement",
+    "before": "友だちの家",
+    "after": "楽しい映画を見ました。",
+    "reading": "ともだちのいえでたのしいえいがをみました。",
+    "zh": "在朋友家看了有趣的電影。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "進行「看電影」動作的場所用「で」。",
+    "distractorNotes": {
+      "を": "看電影的場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-core-030",
+    "groupId": "n5-movement",
+    "before": "小さい公園",
+    "after": "昼ごはんを食べました。",
+    "reading": "ちいさいこうえんでひるごはんをたべました。",
+    "zh": "在小公園裡吃了午餐。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "進行「吃飯」動作的場所用「で」。",
+    "distractorNotes": {
+      "に": "用餐動作場所用「で」。"
+    }
+  }
+]

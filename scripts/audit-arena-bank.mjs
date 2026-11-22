@@ -22,6 +22,12 @@ const GROUP_META = {
   "n3-time-span": { keys: ["うちに", "あいだに", "あいだ"] },
   "n3-moment-final": { keys: ["たばかり", "たところ", "ているところ", "辞書形＋ところ"], reqChoices: true },
   "n3-moment-clause": { keys: ["たとたんに", "たところに", "たばかりに", "たせいで"] },
+  "n4-giving-receiving": { keys: ["てあげる", "てくれる", "てもらう"], reqChoices: true },
+  "n4-voice": { keys: ["受身", "使役", "使役受身"], reqChoices: true },
+  "n3-wake": { keys: ["わけだ", "わけではない", "わけがない", "わけにはいかない"] },
+  "n3-certainty": { keys: ["はずだ", "べきだ", "にちがいない", "かもしれない"], reqChoices: true },
+  "n3-recurring": { keys: ["たびに", "ごとに", "おきに"], reqChoices: true },
+  "n3-limits": { keys: ["だけ", "しか", "ばかり"] },
 };
 
 const bankPath = path.resolve("data/grammar/arena-bank.json");
@@ -205,6 +211,87 @@ for (const [gid, meta] of Object.entries(GROUP_META)) {
     }
   }
 
+  // 7b. Orphaned distractorNotes / altAnswers keys & schema contract uniformity
+  let withChoices = 0;
+  let withoutChoices = 0;
+  for (const it of list) {
+    const hasCh = Array.isArray(it.choices) && it.choices.length > 0;
+    if (hasCh) withChoices += 1;
+    else withoutChoices += 1;
+    const validOpts = new Set(hasCh ? it.choices : meta.keys);
+    for (const k of Object.keys(it.distractorNotes ?? {})) {
+      if (!validOpts.has(k) || k === it.answer) {
+        hardErrors.push(`[${gid} ${it.id}] Orphaned/invalid distractorNotes key '${k}'`);
+      }
+      if (it.altAnswers && k in it.altAnswers) {
+        hardErrors.push(`[${gid} ${it.id}] Key '${k}' appears in both altAnswers and distractorNotes`);
+      }
+    }
+    for (const k of Object.keys(it.altAnswers ?? {})) {
+      if (!validOpts.has(k) || k === it.answer) {
+        hardErrors.push(`[${gid} ${it.id}] Orphaned/invalid altAnswers key '${k}'`);
+      }
+    }
+  }
+  if (withChoices > 0 && withoutChoices > 0) {
+    hardErrors.push(`[${gid}] Mixed choices contract: ${withChoices} with choices vs ${withoutChoices} without choices`);
+  }
+
+  // 7c. Canonical choice pattern check (prevent cross-group distractor leaks)
+  const CANONICAL_CHOICE_RE = {
+    'n3-certainty': /(はずだ|はずでした|はずです|べきだ|べきです|にちがいない|にちがいありません|かもしれない|かもしれません)$/,
+    'n3-moment-clause': /(たとたんに|だとたんに|たところに|だところに|たばかりに|だばかりに|たせいで|だせいで)$/,
+    'n3-recurring': /(たびに|ごとに|おきに)$/,
+    'n3-moment-final': /(たばかり|だばかり|たところ|だところ|ているところ|でいるところ|ところ)$/,
+    'n4-appearance-simile': /(そう(だ|です|な|に|で|だった)?|よう(だ|です|な|に|で|だった)?|みたい(だ|です|な|に|で|だった)?)$/,
+    'n4-hearsay-inference': /(そう(だ|です|だった|な|に)?|らし(い|いです|かった|く|くて)|よう(だ|です|だった|な|に)?)$/,
+  };
+  if (CANONICAL_CHOICE_RE[gid]) {
+    const re = CANONICAL_CHOICE_RE[gid];
+    for (const it of list) {
+      for (const ch of (it.choices ?? [])) {
+        if (!re.test(ch)) {
+          hardErrors.push(`[${gid} ${it.id}] Cross-group leaked choice '${ch}'`);
+        }
+      }
+    }
+  }
+
+  // 7d. Morphology gates (reject invalid べきだ, bare noun+はずだ / ようで)
+  for (const it of list) {
+    for (const ch of (it.choices ?? [])) {
+      if (/べき(だ|です)$/.test(ch)) {
+        if (/(ない|た|だ|い|な)べき(だ|です)$/.test(ch) || !/[うくぐすつぬぶむる]べき(だ|です)$/.test(ch)) {
+          hardErrors.push(`[${gid} ${it.id}] Invalid べきだ morphology '${ch}'`);
+        }
+      }
+      if (/[\u4e00-\u9fff\u30a0-\u30ff]はず(だ|です)$/.test(ch)) {
+        hardErrors.push(`[${gid} ${it.id}] Bare noun/katakana + はずだ without の/な '${ch}'`);
+      }
+      if (gid === 'n4-appearance-simile' && /[\u4e00-\u9fff\u30a0-\u30ff]よう(だ|で|な)$/.test(ch)) {
+        hardErrors.push(`[${gid} ${it.id}] Bare noun + ようだ/で/な without の '${ch}'`);
+      }
+      if (gid === 'n4-appearance-simile' && it.grammarKey === 'みたいだ' && ch.endsWith('ようだ') && !ch.endsWith('のようだ') && !ch.endsWith('なようだ') && !/[ただいうくぐすつぬぶむる]ようだ$/.test(ch)) {
+        hardErrors.push(`[${gid} ${it.id}] Bare noun + ようだ without の '${ch}'`);
+      }
+      if (/[\u4e00-\u9fff\u30a0-\u30ff]ようで$/.test(ch)) {
+        hardErrors.push(`[${gid} ${it.id}] Bare noun/katakana + ようで without の '${ch}'`);
+      }
+    }
+  }
+
+  // 7e. n3-limits case-particle alignment before しか
+  if (gid === 'n3-limits') {
+    for (const it of list) {
+      if (it.grammarKey === 'しか' && /(で|に|から)しか/.test(it.reading)) {
+        const m = it.reading.match(/(で|に|から)しか/);
+        if (m && !it.before.endsWith(m[1])) {
+          hardErrors.push(`[${gid} ${it.id}] Missing case particle '${m[1]}' before しか in before='${it.before}'`);
+        }
+      }
+    }
+  }
+
   // 7. altAnswers ceiling <= 20%
   const altCount = list.filter((it) => it.altAnswers && Object.keys(it.altAnswers).length > 0).length;
   if (altCount / list.length > 0.20) {
@@ -212,7 +299,64 @@ for (const [gid, meta] of Object.entries(GROUP_META)) {
   }
 }
 
-console.log(`Audited ${items.length} Arena v2 items across ${byGroup.size}/15 groups.`);
+// 8. Two-tier level-fit guardrails (verify every group & key has healthy core pool, and core items obey ceilings)
+const VOCAB_DIR = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../data/vocab');
+function loadKanjiSet(lvDir) {
+  const s = new Set();
+  const d = path.join(VOCAB_DIR, lvDir);
+  if (!fs.existsSync(d)) return s;
+  for (const fn of fs.readdirSync(d).filter((f) => f.endsWith('.json'))) {
+    const raw = JSON.parse(fs.readFileSync(path.join(d, fn), 'utf8'));
+    const arr = Array.isArray(raw) ? raw : raw.items ?? raw.words ?? [];
+    for (const w of arr) {
+      if (!w || typeof w !== 'object') continue;
+      for (const f of ['jp', 'word', 'kanji', 'surface', 'term', 'text']) {
+        if (typeof w[f] === 'string') {
+          for (const ch of w[f]) if (ch >= '\u4e00' && ch <= '\u9fff') s.add(ch);
+        }
+      }
+    }
+  }
+  return s;
+}
+const EXTRA_N5_KANJI = [...'東京兄住冷階七八公園初朝夕方着登泳休日曜毎船海鳥空飛渡曲暗広静撮台所昼晩洗消開閉電気窓痛寺音聞紙座町茶冊円万飯魚肉卵犬猫花雨雪風夏冬春秋山川道橋駅店家室校生先友母父姉弟妹子人男女名前後上下中外右左北南西大小新古高安長短白黒赤青好多小早遅近遠暑寒明楽忙暇送活間九五一七万中乗二五京休作八公円冊冷出十友喫園夕夜好家寝少店座待新方日時書朝末本母毎泳海犬痛目着緒茶行記語買走起週都階駅'];
+const VK_N5 = new Set([...loadKanjiSet('n5'), ...EXTRA_N5_KANJI]);
+const VK_N4 = new Set([...VK_N5, ...loadKanjiSet('n4'), ...'忘資料']);
+const VK_N3 = new Set([...VK_N4, ...loadKanjiSet('n3')]);
+const N4_LEAK_RE = /(られ|され|させ|ために|に向けて|ておく|ておいた|てしまう|てしまった|なければなら|なくてもいい|ことができる|のに|せいで|おかげで|ばかり|わけだ|はずだ|べきだ|ように)/;
+
+for (const [gid, list] of byGroup.entries()) {
+  const meta = GROUP_META[gid];
+  const lv = gid.split('-')[0].toUpperCase();
+  const allowed = lv === 'N5' ? VK_N5 : lv === 'N4' ? VK_N4 : VK_N3;
+  const maxLen = lv === 'N5' ? 24 : lv === 'N4' ? 34 : 40;
+  const maxOut = lv === 'N5' ? 0 : lv === 'N4' ? 1 : 2;
+  const coreByKey = Object.fromEntries(meta.keys.map((k) => [k, 0]));
+  for (const it of list) {
+    if (it.tier !== 'core' && it.tier !== 'extended') {
+      hardErrors.push(`[${gid} ${it.id}] Missing/invalid tier '${it.tier}'`);
+      continue;
+    }
+    if (it.tier === 'core') {
+      coreByKey[it.grammarKey] = (coreByKey[it.grammarKey] ?? 0) + 1;
+      const full = `${it.before}${it.surface ?? it.answer}${it.after}`;
+      const uniqK = new Set([...full].filter((ch) => ch >= '\u4e00' && ch <= '\u9fff'));
+      let outK = 0;
+      for (const k of uniqK) if (!allowed.has(k)) outK += 1;
+      if (full.length > maxLen) hardErrors.push(`[${gid} ${it.id}] Core item exceeds ${maxLen} chars (${full.length})`);
+      if (outK > maxOut) hardErrors.push(`[${gid} ${it.id}] Core item has ${outK} out-of-level kanji (max ${maxOut})`);
+      if (lv === 'N5' && N4_LEAK_RE.test(`${it.before}${it.after}`)) {
+        hardErrors.push(`[${gid} ${it.id}] Core N5 item embeds N4+ grammar`);
+      }
+    }
+  }
+  const minCoreKey = Math.min(...Object.values(coreByKey));
+  if (minCoreKey < 5) {
+    hardErrors.push(`[${gid}] Thin core pool (min key=${minCoreKey} < 5): ${JSON.stringify(coreByKey)}`);
+  }
+}
+
+console.log(`Audited ${items.length} Arena v2 items across ${byGroup.size}/21 groups.`);
 if (softWarnings.length > 0) {
   console.log(`\nSOFT WARNINGS (${softWarnings.length}):`);
   for (const w of softWarnings) console.log("  WARN:", w);

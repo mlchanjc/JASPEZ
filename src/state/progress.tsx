@@ -59,6 +59,8 @@ type ProgressContextValue = {
   setGrammarNote: (id: string, note: string) => void;
   addGhostGrammar: (id: string) => void;
   clearGhostGrammar: (id: string) => void;
+  exportProgressJson: () => string;
+  importProgressJson: (rawJson: string) => { ok: boolean; error?: string };
 };
 
 const defaultPrefs: UserPrefs = {
@@ -156,6 +158,36 @@ function nextStreak(prev: ProgressState) {
     streak = prev.lastActiveDate === previousDate(today) ? prev.streak + 1 : 1;
   }
   return { streak, lastActiveDate: today };
+}
+
+function normalizeProgressState(saved: Partial<ProgressState> & { proficiency?: unknown }): ProgressState {
+  const validLevel: LevelId =
+    saved.currentLevel === "N5" ||
+    saved.currentLevel === "N4" ||
+    saved.currentLevel === "N3" ||
+    saved.currentLevel === "N2" ||
+    saved.currentLevel === "N1"
+      ? saved.currentLevel
+      : "N5";
+  return {
+    streak: typeof saved.streak === "number" && saved.streak >= 0 ? Math.floor(saved.streak) : 0,
+    lastActiveDate: typeof saved.lastActiveDate === "string" ? saved.lastActiveDate : null,
+    learned: Array.isArray(saved.learned)
+      ? saved.learned.filter((item): item is string => typeof item === "string")
+      : [],
+    attempts: readAttempts(saved),
+    currentLevel: validLevel,
+    grammarLearned: Array.isArray(saved.grammarLearned)
+      ? saved.grammarLearned.filter((item): item is string => typeof item === "string")
+      : [],
+    grammarAttempts: readAttemptsMap(saved.grammarAttempts),
+    arenaAttempts: readAttemptsMap(saved.arenaAttempts),
+    grammarNotes: readNotes(saved.grammarNotes),
+    ghostGrammar: Array.isArray(saved.ghostGrammar)
+      ? saved.ghostGrammar.filter((item): item is string => typeof item === "string")
+      : [],
+    prefs: readPrefs(saved.prefs),
+  };
 }
 
 export function ProgressProvider({ children }: { children: ReactNode }) {
@@ -299,6 +331,35 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
           ...prev,
           ghostGrammar: prev.ghostGrammar.filter((item) => item !== id),
         })),
+      exportProgressJson: () =>
+        JSON.stringify(
+          {
+            app: "JASPEZ",
+            schemaVersion: 1,
+            exportedAt: new Date().toISOString(),
+            data: state,
+          },
+          null,
+          2,
+        ),
+      importProgressJson: (rawJson) => {
+        try {
+          const parsed = JSON.parse(rawJson.trim()) as
+            | { app?: string; data?: Partial<ProgressState> & { proficiency?: unknown } }
+            | (Partial<ProgressState> & { proficiency?: unknown });
+          if (!parsed || typeof parsed !== "object") {
+            return { ok: false, error: "格式錯誤：請貼上有效的 JASPEZ 備份 JSON。" };
+          }
+          const payload = "data" in parsed && parsed.data && typeof parsed.data === "object"
+            ? parsed.data
+            : (parsed as Partial<ProgressState> & { proficiency?: unknown });
+          const next = normalizeProgressState(payload);
+          setState(next);
+          return { ok: true };
+        } catch {
+          return { ok: false, error: "JSON 解析失敗，請確認複製了完整的備份內容。" };
+        }
+      },
     }),
     [grammarLearned, learned, ready, state],
   );

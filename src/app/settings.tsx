@@ -1,8 +1,9 @@
 import { router } from "expo-router";
-import { useMemo } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useMemo, useState } from "react";
+import { Alert, Platform, Pressable, ScrollView, Share, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { PaperBackdrop } from "@/components/PaperBackdrop";
+import { ARENA_BANK } from "@/data/arenaBank";
 import { LEVELS } from "@/data/registry";
 import type { LevelId } from "@/data/types";
 import { useProgress } from "@/state/progress";
@@ -11,12 +12,110 @@ import { THEME_PRESETS, useAppTheme } from "@/theme";
 import type { AppTheme } from "@/theme";
 
 export default function SettingsScreen() {
-  const { prefs, setPref, currentLevel, setCurrentLevel } = useProgress();
+  const {
+    prefs,
+    setPref,
+    currentLevel,
+    setCurrentLevel,
+    streak,
+    learnedCount,
+    grammarLearnedCount,
+    arenaAttempts,
+    exportProgressJson,
+    importProgressJson,
+  } = useProgress();
   const { t, isDark, preset, levelAccent } = useAppTheme();
   const styles = useMemo(() => makeStyles(t), [t]);
 
+  const [exportStatus, setExportStatus] = useState<string | null>(null);
+  const [showImportBox, setShowImportBox] = useState(false);
+  const [importDraft, setImportDraft] = useState("");
+  const [importFeedback, setImportFeedback] = useState<{ ok: boolean; msg: string } | null>(null);
+
+  const arenaPracticedCount = useMemo(() => Object.keys(arenaAttempts).length, [arenaAttempts]);
+
   const choosePreset = (next: ThemePreset) => {
     setPref("themePreset", next);
+  };
+
+  const handleExportAndShare = async () => {
+    const jsonPayload = exportProgressJson();
+    const dateStamp = new Date().toISOString().slice(0, 10);
+    const filename = `jaspez-backup-${dateStamp}.json`;
+
+    try {
+      if (Platform.OS === "web") {
+        // Trigger direct .json download on web, plus Web Share API if available
+        const g = globalThis as unknown as {
+          document?: {
+            createElement: (tag: string) => {
+              href: string;
+              download: string;
+              click: () => void;
+            };
+          };
+          URL?: {
+            createObjectURL: (b: Blob) => string;
+            revokeObjectURL: (u: string) => void;
+          };
+          navigator?: {
+            share?: (opts: { title?: string; text?: string }) => Promise<void>;
+            clipboard?: { writeText: (text: string) => Promise<void> };
+          };
+        };
+
+        if (g.document && g.URL && typeof Blob !== "undefined") {
+          const blob = new Blob([jsonPayload], { type: "application/json;charset=utf-8" });
+          const url = g.URL.createObjectURL(blob);
+          const link = g.document.createElement("a");
+          link.href = url;
+          link.download = filename;
+          link.click();
+          g.URL.revokeObjectURL(url);
+          setExportStatus(`已下載備份檔 ${filename}`);
+          return;
+        }
+        if (g.navigator?.share) {
+          await g.navigator.share({ title: "JASPEZ 學習進度備份", text: jsonPayload });
+          setExportStatus("已開啟系統分享選單");
+          return;
+        }
+        if (g.navigator?.clipboard) {
+          await g.navigator.clipboard.writeText(jsonPayload);
+          setExportStatus("已複製備份 JSON 至剪貼簿");
+          return;
+        }
+      }
+
+      // Native iOS / Android Share Sheet (WhatsApp, Discord, Line, Notes, Files, etc.)
+      const result = await Share.share(
+        {
+          title: `JASPEZ 學習進度備份 (${dateStamp})`,
+          message: jsonPayload,
+        },
+        {
+          dialogTitle: "匯出並分享 JASPEZ 學習資料",
+          subject: `JASPEZ 學習進度備份 (${dateStamp})`,
+        },
+      );
+      if (result.action === Share.sharedAction) {
+        setExportStatus("已匯出並分享學習資料");
+      } else {
+        setExportStatus("已取消分享");
+      }
+    } catch {
+      Alert.alert("匯出失敗", "無法開啟分享選單，請稍後再試。");
+    }
+  };
+
+  const handleImport = () => {
+    const res = importProgressJson(importDraft);
+    if (res.ok) {
+      setImportFeedback({ ok: true, msg: "已成功還原學習進度與偏好設定！" });
+      setImportDraft("");
+    } else {
+      setImportFeedback({ ok: false, msg: res.error ?? "匯入失敗，請確認格式。" });
+    }
   };
 
   return (
@@ -28,7 +127,7 @@ export default function SettingsScreen() {
             <Text style={styles.backText}>← 返回</Text>
           </Pressable>
           <Text style={styles.title}>設定</Text>
-          <Text style={styles.subtitle}>自訂外觀風格、深淺模式與個人學習偏好</Text>
+          <Text style={styles.subtitle}>自訂外觀風格、深淺模式、個人偏好與資料備份</Text>
         </View>
 
         <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
@@ -219,9 +318,83 @@ export default function SettingsScreen() {
             </View>
           </View>
 
-          {/* 4. Offline Library Summary */}
+          {/* 4. Data Export & Share */}
+          <View style={styles.section}>
+            <Text style={styles.sectionLabel}>學習資料備份與分享</Text>
+            <View style={styles.card}>
+              <View style={styles.prefBlock}>
+                <Text style={styles.prefTitle}>匯出個人學習進度</Text>
+                <Text style={styles.prefSub}>
+                  目前紀錄：連勝 {streak} 天 · 單字 {learnedCount} 筆 · 文法 {grammarLearnedCount} 堂 · 擂台 {arenaPracticedCount} 題
+                </Text>
+                <Text style={styles.prefSub}>
+                  可透過系統分享傳送至 WhatsApp、Discord、LINE、備忘錄或檔案備份。
+                </Text>
+              </View>
+
+              <View style={styles.dataActionsRow}>
+                <Pressable onPress={handleExportAndShare} style={styles.primaryActionBtn}>
+                  <Text style={styles.primaryActionText}>匯出並分享資料 →</Text>
+                </Pressable>
+                <Pressable
+                  onPress={() => {
+                    setShowImportBox((prev) => !prev);
+                    setImportFeedback(null);
+                  }}
+                  style={styles.secondaryActionBtn}
+                >
+                  <Text style={styles.secondaryActionText}>
+                    {showImportBox ? "收合匯入" : "匯入備份"}
+                  </Text>
+                </Pressable>
+              </View>
+
+              {exportStatus ? <Text style={styles.statusNote}>{exportStatus}</Text> : null}
+
+              {showImportBox && (
+                <View style={styles.importBox}>
+                  <Text style={styles.prefSub}>
+                    將先前分享或備份的 JSON 文字貼於下方，即可還原學習紀錄：
+                  </Text>
+                  <TextInput
+                    value={importDraft}
+                    onChangeText={setImportDraft}
+                    placeholder='貼上 JASPEZ 備份 JSON（{ "app": "JASPEZ", ... }）'
+                    placeholderTextColor={t.inkMuted}
+                    multiline
+                    textAlignVertical="top"
+                    style={styles.importInput}
+                  />
+                  <Pressable
+                    onPress={handleImport}
+                    disabled={importDraft.trim().length === 0}
+                    style={[
+                      styles.primaryActionBtn,
+                      importDraft.trim().length === 0 && styles.btnDisabled,
+                    ]}
+                  >
+                    <Text style={styles.primaryActionText}>確認還原資料</Text>
+                  </Pressable>
+                  {importFeedback ? (
+                    <Text
+                      style={[
+                        styles.statusNote,
+                        { color: importFeedback.ok ? t.matchaDark : t.error },
+                      ]}
+                    >
+                      {importFeedback.msg}
+                    </Text>
+                  ) : null}
+                </View>
+              )}
+            </View>
+          </View>
+
+          {/* 5. Offline Library Summary */}
           <View style={styles.aboutRow}>
-            <Text style={styles.aboutText}>JASPEZ 離線日語特訓 · 2,195 單字 · 254 堂文法課 · {ARENA_BANK.length} 題易混題庫</Text>
+            <Text style={styles.aboutText}>
+              JASPEZ 離線日語特訓 · 2,195 單字 · 254 堂文法課 · {ARENA_BANK.length.toLocaleString()} 題易混題庫
+            </Text>
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -340,10 +513,10 @@ function makeStyles(t: AppTheme) {
     },
     modeBtnText: { fontSize: 13, fontWeight: "700", color: t.inkSoft },
     modeBtnTextActive: { color: t.preset === "ios" ? "#FFFFFF" : t.paper },
-    prefBlock: { gap: 8 },
+    prefBlock: { gap: 4 },
     prefTitle: { fontSize: 14, fontWeight: "700", color: t.ink },
-    prefSub: { fontSize: 12, color: t.inkSoft, marginTop: 2 },
-    levelRow: { flexDirection: "row", gap: 6 },
+    prefSub: { fontSize: 12, color: t.inkSoft, lineHeight: 18 },
+    levelRow: { flexDirection: "row", gap: 6, marginTop: 4 },
     levelBtn: {
       flex: 1,
       alignItems: "center",
@@ -373,6 +546,47 @@ function makeStyles(t: AppTheme) {
     },
     switchText: { fontSize: 12, fontWeight: "700", color: t.inkSoft },
     switchTextOn: { color: t.preset === "ios" ? "#FFFFFF" : t.paper },
+    dataActionsRow: { flexDirection: "row", gap: 8 },
+    primaryActionBtn: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      paddingVertical: 11,
+      paddingHorizontal: 14,
+      borderRadius: t.controlRadius,
+      backgroundColor: t.accentPrimary,
+    },
+    primaryActionText: { color: "#FFFFFF", fontSize: 13, fontWeight: "700" },
+    secondaryActionBtn: {
+      alignItems: "center",
+      justifyContent: "center",
+      paddingVertical: 11,
+      paddingHorizontal: 14,
+      borderRadius: t.controlRadius,
+      backgroundColor: t.surface,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+    },
+    secondaryActionText: { color: t.ink, fontSize: 13, fontWeight: "700" },
+    statusNote: { fontSize: 12, fontWeight: "600", color: t.matchaDark },
+    importBox: {
+      gap: 8,
+      paddingTop: 8,
+      borderTopWidth: 1,
+      borderTopColor: t.paperBorder,
+    },
+    importInput: {
+      minHeight: 92,
+      maxHeight: 160,
+      backgroundColor: t.surface,
+      borderRadius: t.controlRadius,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      padding: 10,
+      fontSize: 12,
+      color: t.ink,
+    },
+    btnDisabled: { opacity: 0.45 },
     aboutRow: { alignItems: "center", paddingTop: 4 },
     aboutText: { fontSize: 11.5, color: t.inkMuted, textAlign: "center" },
   });
