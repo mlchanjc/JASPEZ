@@ -72,7 +72,10 @@ function hasOutOfLevel3Kanji(text, allowedWords) {
   return false;
 }
 
+const FORCE_EXTENDED_IDS = new Set(["n5-par-012","n5-par-043","n5-mov-002","n5-mov-010","n5-mov-013","n5-mov-017","n5-nom-006","n5-mov-103","n5-mov-133","n5-mov-145","n5-mov-153","n5-mov-157","n5-mov-184","n5-mov-415","n5-mov-core-013","n5-par-124","n5-par-142","n5-par-144","n5-par-148","n5-par-153","n5-par-238","n5-par-413","n5-par-457","n5-par-460","n5-par-core-014","n4-cond-031","n4-st-021","n4-st-030","n4-dir-015","n4-dir-033","n4-hear-026","n4-app-154","n4-app-185","n4-app-237","n4-app-341","n4-dir-124","n4-dir-131","n4-dir-146","n4-dir-167","n4-dir-175","n4-dir-217","n4-dir-248","n4-dir-269","n4-dir-428","n4-st-102","n4-st-131","n4-st-141","n4-st-240","n4-st-257","n4-st-385","n4-st-444","n4-st-506","n4-st-581","n4-st-603","n4-st-716","n4-st-720","n4-st-861","n4-cond-148","n4-cond-149","n4-cond-150","n4-cond-151","n4-cond-154","n4-cond-155","n4-cond-176","n4-cond-386","n4-cond-755","n4-gr-009","n4-gr-106","n4-hear-361","n4-hear-362","n4-voi-052","n4-voi-106","n4-voi-266","n4-voi-290","n4-voi-427","n3-lim-236","n3-lim-299","n3-wk-058","n3-wk-252","n3-wk-262","n3-wk-278","n3-wk-283","n3-wk-460","n3-wk-484"]);
+
 function computeTier(item) {
+  if (FORCE_EXTENDED_IDS.has(item.id)) return 'extended';
   const lv = item.groupId.split('-')[0].toUpperCase();
   const full = `${item.before}${item.surface ?? item.answer}${item.after}`;
   const allowed = lv === 'N5' ? N5_KANJI : lv === 'N4' ? N4_KANJI : N3_KANJI;

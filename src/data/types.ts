@@ -88,20 +88,6 @@ export type ConfusableSide = {
   example: string;
   translation: string;
 };
-
-export type ConfusablePair = {
-  id: string;
-  level: LevelId;
-  title: string;
-  subtitle: string;
-  left: ConfusableSide;
-  right: ConfusableSide;
-  quizPrompt: string;
-  options: [string, string];
-  correct: string;
-  explanation: string;
-};
-
 export type ClassicalForm = "mizen_nai" | "renyou_tai" | "renyou_te" | "renyou_ta" | "katei_ba" | "meirei";
 
 export type PatternDrillQuestion = {
