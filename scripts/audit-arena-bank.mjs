@@ -323,7 +323,9 @@ const EXTRA_N5_KANJI = [...'東京兄住冷階七八公園初朝夕方着登泳�
 const VK_N5 = new Set([...loadKanjiSet('n5'), ...EXTRA_N5_KANJI]);
 const VK_N4 = new Set([...VK_N5, ...loadKanjiSet('n4'), ...'忘資料']);
 const VK_N3 = new Set([...VK_N4, ...loadKanjiSet('n3')]);
-const N4_LEAK_RE = /(られ|され|させ|ために|に向けて|ておく|ておいた|てしまう|てしまった|なければなら|なくてもいい|ことができる|のに|せいで|おかげで|ばかり|わけだ|はずだ|べきだ|ように)/;
+const N4_LEAK_RE = /(られ|され|させ|ために|に向けて|ておく|ておいた|ておきます|ておきました|てしまう|てしまった|てしまいました|なければなら|なくてもいい|ことができる|のに|せいで|せいか|おかげで|ばかり|わけだ|はずだ|べきだ|ように|ので|たら|てくる|てきた|てきます|てきました|ていく|ていった|ていきます|ていきました|やすい|にくい|てくれる|てくれます|てくれた|てあげる|てあげます|てもらう|てもらいます|まま|[うくぐすつぬぶむる]と[、，]|(渡る|曲がる|終わる|なる|飲む)と)/;
+const N3_LEAK_RE = /(うちに|せいで|せいか|おかげで|たばかり|につれて|に向けて|だらけ|によって|たところ|ごとに|ばかり)/;
+const N2_LEAK_RE = /(につれて|どころか|ものの)/;
 
 for (const [gid, list] of byGroup.entries()) {
   const meta = GROUP_META[gid];
@@ -345,8 +347,17 @@ for (const [gid, list] of byGroup.entries()) {
       for (const k of uniqK) if (!allowed.has(k)) outK += 1;
       if (full.length > maxLen) hardErrors.push(`[${gid} ${it.id}] Core item exceeds ${maxLen} chars (${full.length})`);
       if (outK > maxOut) hardErrors.push(`[${gid} ${it.id}] Core item has ${outK} out-of-level kanji (max ${maxOut})`);
-      if (lv === 'N5' && N4_LEAK_RE.test(`${it.before}${it.after}`)) {
-        hardErrors.push(`[${gid} ${it.id}] Core N5 item embeds N4+ grammar`);
+      if (!it.tierOverride) {
+        const carrier = `${it.before}${it.after}`;
+        if (lv === 'N5' && N4_LEAK_RE.test(carrier)) {
+          hardErrors.push(`[${gid} ${it.id}] Core N5 item embeds N4+ grammar`);
+        }
+        if (lv === 'N4' && (N3_LEAK_RE.test(carrier) || /ば.*ほど/.test(full))) {
+          hardErrors.push(`[${gid} ${it.id}] Core N4 item embeds N3+ grammar`);
+        }
+        if (lv === 'N3' && N2_LEAK_RE.test(carrier)) {
+          hardErrors.push(`[${gid} ${it.id}] Core N3 item embeds N2+ grammar`);
+        }
       }
     }
   }

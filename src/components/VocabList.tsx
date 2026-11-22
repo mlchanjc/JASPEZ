@@ -1,3 +1,4 @@
+import { RubyText } from "@/components/RubyText";
 import { useMemo, useState } from "react";
 import { Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, useWindowDimensions, View } from "react-native";
 import type { LevelId, VocabWord } from "@/data/types";
@@ -103,8 +104,13 @@ export function VocabList({ level, topicId, words }: { level: LevelId; topicId: 
 
                 <View style={styles.row} pointerEvents="none">
                   <View style={styles.japanese}>
-                    <Text style={styles.word}>{word.word}</Text>
-                    {word.reading ? <Text style={styles.reading}>{word.reading}</Text> : null}
+                    <RubyText
+                      jp={word.word}
+                      reading={word.reading}
+                      showRuby={Boolean(word.reading && word.reading !== word.word)}
+                      fontSize={20}
+                      rtFontSize={10}
+                    />
                   </View>
                   <Text style={styles.meaning}>{word.meaning}</Text>
                 </View>
@@ -136,8 +142,14 @@ export function VocabList({ level, topicId, words }: { level: LevelId; topicId: 
               </View>
 
               <View style={styles.dialogHero}>
-                {selectedWord.reading ? <Text style={styles.dialogReading}>{selectedWord.reading}</Text> : null}
-                <Text style={styles.dialogWord}>{selectedWord.word}</Text>
+                <RubyText
+                  jp={selectedWord.word}
+                  reading={selectedWord.reading}
+                  showRuby={Boolean(selectedWord.reading && selectedWord.reading !== selectedWord.word)}
+                  fontSize={30}
+                  rtFontSize={12}
+                  align="center"
+                />
                 <Text style={styles.dialogMeaning}>{selectedWord.meaning}</Text>
               </View>
 

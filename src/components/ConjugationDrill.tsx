@@ -1,7 +1,11 @@
+import { QuestionTransition } from "@/components/Motion";
+import { TactileChoiceButton } from "@/components/TactileChoiceButton";
+import type { ChoiceVisualState } from "@/components/TactileChoiceButton";
 import { useEffect, useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import type { ClassicalForm, LevelId, PatternDrillQuestion } from "@/data/types";
 import { generateClassicalVerbDrill, lexiconCount } from "@/lib/conjugator";
+import { RubyText } from "@/components/RubyText";
 import { useProgress } from "@/state/progress";
 import { useAppTheme } from "@/theme";
 import type { AppTheme } from "@/theme";
@@ -96,15 +100,21 @@ export function ConjugationDrill({ levelFilter }: Props) {
           </View>
         </View>
 
-        <View style={styles.drillCard}>
+        <QuestionTransition triggerKey={`${question.dict}-${form}-${recentIds.length}`} style={styles.drillCard}>
           <View style={styles.badges}>
             <Text style={[styles.levelText, { color: accent }]}>{question.level}</Text>
             <Text style={styles.groupText}>{question.posLabel}</Text>
           </View>
 
           <View style={styles.verbBlock}>
-            {prefs.showFurigana && <Text style={styles.rt}>{question.rt}</Text>}
-            <Text style={styles.dict}>{question.dict}</Text>
+            <RubyText
+              jp={question.dict}
+              reading={question.rt}
+              showRuby={prefs.showFurigana}
+              fontSize={30}
+              rtFontSize={11.5}
+              align="center"
+            />
             <Text style={styles.meaning}>{question.meaning}</Text>
           </View>
 
@@ -114,36 +124,33 @@ export function ConjugationDrill({ levelFilter }: Props) {
 
           <View style={styles.choicesGrid}>
             {question.choices.map((opt) => {
-              let bg = t.surface;
-              let border = t.paperBorder;
               let color = t.ink;
+              let choiceState: ChoiceVisualState = "idle";
               if (picked !== null) {
                 if (opt === question.answer) {
-                  bg = t.successSoft;
-                  border = t.success;
                   color = t.matchaDark;
+                  choiceState = "correct";
                 } else if (opt === picked) {
-                  bg = t.errorSoft;
-                  border = t.error;
                   color = t.error;
+                  choiceState = "wrong";
                 } else {
-                  bg = t.paper;
                   color = t.inkMuted;
+                  choiceState = "muted";
                 }
               }
               return (
-                <Pressable
+                <TactileChoiceButton
                   key={opt}
                   disabled={picked !== null}
+                  state={choiceState}
                   onPress={() => choose(opt)}
-                  style={[styles.choiceBtn, { backgroundColor: bg, borderColor: border }]}
                 >
                   <Text style={[styles.choiceText, { color }]}>{opt}</Text>
-                </Pressable>
+                </TactileChoiceButton>
               );
             })}
           </View>
-        </View>
+        </QuestionTransition>
       </ScrollView>
 
       {picked !== null && (

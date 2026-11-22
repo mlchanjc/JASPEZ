@@ -1,5 +1,9 @@
+import { AnimatedFeedbackDock, QuestionTransition, TactilePress } from "@/components/Motion";
+import { TactileChoiceButton } from "@/components/TactileChoiceButton";
+import type { ChoiceVisualState } from "@/components/TactileChoiceButton";
 import { useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { alignClozeRuby, RubyText } from "@/components/RubyText";
 import { ARENA_BANK, ARENA_GROUPS } from "@/data/arenaBank";
 import type { ArenaGroupId, ArenaGroupMeta, ArenaItem } from "@/data/arenaBank";
 import { ARENA_GUIDES } from "@/data/arenaGuides";
@@ -444,10 +448,16 @@ export function GrammarCompare() {
   const accent = levelAccent[activeGroup.level];
   const displaySurface = item ? (item.surface ?? item.answer) : "";
 
-  const maskedReading = useMemo(
-    () => (item ? maskReadingForBlank(item) : ""),
-    [item],
-  );
+  const rubySegments = useMemo(() => {
+    if (!item) return [];
+    return alignClozeRuby({
+      before: item.before,
+      surface: displaySurface,
+      after: item.after,
+      reading: item.reading,
+      revealed: picked !== null,
+    });
+  }, [item, displaySurface, picked]);
 
   const feedbackText = useMemo(() => {
     if (!item || !picked || !outcome) return "";
@@ -834,7 +844,7 @@ export function GrammarCompare() {
 
         {/* === DRILL VIEW: Single Topic or Multi-Topic Random Test === */}
         {subMode === "arena" && view === "drill" && rendered && item && (
-          <View style={styles.card}>
+          <QuestionTransition triggerKey={item.id} style={styles.card}>
             {/* Session status strip */}
             <View style={styles.sessionBar}>
               <View style={styles.badgeRow}>
@@ -881,37 +891,21 @@ export function GrammarCompare() {
               </View>
             )}
 
-            <Text style={styles.sentence}>
-              {item.before}
-              <Text
-                style={[
-                  styles.blankText,
-                  {
-                    color:
-                      picked === null
-                        ? t.vermillion
-                        : outcome === "correct"
-                          ? t.matchaDark
-                          : outcome === "alt"
-                            ? t.goldDark
-                            : t.error,
-                  },
-                ]}
-              >
-                {picked === null ? " 【　　】 " : ` 【${displaySurface}】 `}
-              </Text>
-              {item.after}
-            </Text>
-
-            {item.reading && (showPreReading || picked !== null || prefs.showFurigana) ? (
-              <Text style={styles.reading}>
-                {picked !== null
-                  ? item.reading
-                  : showPreReading
-                    ? maskedReading
-                    : "（作答後顯示假名讀音）"}
-              </Text>
-            ) : null}
+            <RubyText
+              segments={rubySegments}
+              showRuby={showPreReading || picked !== null}
+              fontSize={20}
+              rtFontSize={10.5}
+              blankColor={
+                picked === null
+                  ? t.vermillion
+                  : outcome === "correct"
+                    ? t.matchaDark
+                    : outcome === "alt"
+                      ? t.goldDark
+                      : t.error
+              }
+            />
 
             {item.zh ? (
               effectiveShowZh ? (
@@ -928,45 +922,38 @@ export function GrammarCompare() {
                 const isAns = opt === item.answer;
                 const isAlt = Boolean(item.altAnswers?.[opt]);
                 const isPick = opt === picked;
-                let bg = t.surface;
-                let border = t.paperBorder;
                 let color = t.ink;
+                let choiceState: ChoiceVisualState = "idle";
                 if (picked !== null) {
                   if (isAns) {
-                    bg = t.successSoft;
-                    border = t.success;
                     color = t.matchaDark;
+                    choiceState = "correct";
                   } else if (isPick && isAlt) {
-                    bg = t.goldSoft;
-                    border = t.gold;
                     color = t.goldDark;
+                    choiceState = "alt";
                   } else if (isPick) {
-                    bg = t.errorSoft;
-                    border = t.error;
                     color = t.error;
+                    choiceState = "wrong";
                   } else {
-                    bg = t.paper;
                     color = t.inkMuted;
+                    choiceState = "muted";
                   }
                 }
                 const fullWidth = rendered.shuffledChoices.some((c) => c.length >= 8);
                 return (
-                  <Pressable
+                  <TactileChoiceButton
                     key={opt}
+                    fullWidth={fullWidth}
                     disabled={picked !== null}
+                    state={choiceState}
                     onPress={() => choose(opt)}
-                    style={[
-                      styles.tile,
-                      fullWidth && styles.tileFull,
-                      { backgroundColor: bg, borderColor: border },
-                    ]}
                   >
                     <Text style={[styles.tileText, { color }]}>{opt}</Text>
-                  </Pressable>
+                  </TactileChoiceButton>
                 );
               })}
             </View>
-          </View>
+          </QuestionTransition>
         )}
 
         {/* === SUMMARY VIEW: Fixed-Length Mixed Test Results === */}
@@ -1132,7 +1119,7 @@ export function GrammarCompare() {
 
       {/* Drill Feedback Dock */}
       {subMode === "arena" && view === "drill" && item && picked !== null && outcome !== null && (
-        <View style={[styles.feedbackDock, { backgroundColor: dockBg, borderTopColor: dockBorder }]}>
+        <AnimatedFeedbackDock style={[styles.feedbackDock, { backgroundColor: dockBg, borderTopColor: dockBorder }]}>
           <View style={styles.dockTop}>
             <Text style={[styles.dockTitle, { color: dockTitleColor }]}>
               {outcome === "correct"
@@ -1146,12 +1133,12 @@ export function GrammarCompare() {
               {feedbackText}
             </Text>
           </View>
-          <Pressable onPress={nextQuestion} style={[styles.dockBtn, { backgroundColor: dockBorder }]}>
+          <TactilePress onPress={nextQuestion} style={[styles.dockBtn, { backgroundColor: dockBorder }]}>
             <Text style={styles.dockBtnText}>
               {isLastFixedQuestion ? "查看結果 →" : "下一題 →"}
             </Text>
-          </Pressable>
-        </View>
+          </TactilePress>
+        </AnimatedFeedbackDock>
       )}
     </View>
   );

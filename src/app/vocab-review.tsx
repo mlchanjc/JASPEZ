@@ -1,9 +1,13 @@
+import { AnimatedFeedbackDock, TactilePress } from "@/components/Motion";
+import { TactileChoiceButton } from "@/components/TactileChoiceButton";
+import type { ChoiceVisualState } from "@/components/TactileChoiceButton";
 import { router } from "expo-router";
 import { useMemo, useState } from "react";
 import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import { PaperBackdrop } from "@/components/PaperBackdrop";
 import { ProficiencyMeter } from "@/components/ProficiencyMeter";
+import { RubyText } from "@/components/RubyText";
 import { LEVELS, lessons, manifests } from "@/data/registry";
 import type { LevelId, VocabWord } from "@/data/types";
 import { isCorrectAnswer } from "@/lib/answers";
@@ -298,49 +302,46 @@ export default function VocabReviewScreen() {
                       const isAns = opt.word === activeRound.target.word.word;
                       const isPick = opt.word === pickedWord;
 
-                      let bg = t.surface;
-                      let border = t.paperBorder;
                       let wordColor = t.ink;
-                      let rtColor = t.indigo;
+                      let choiceState: ChoiceVisualState = "idle";
 
                       if (revealed) {
                         if (isAns) {
-                          bg = t.successSoft;
-                          border = t.success;
                           wordColor = t.matchaDark;
-                          rtColor = t.matchaDark;
+                          choiceState = "correct";
                         } else if (isPick) {
-                          bg = t.errorSoft;
-                          border = t.error;
                           wordColor = t.error;
-                          rtColor = t.error;
+                          choiceState = "wrong";
                         } else {
-                          bg = t.paper;
                           wordColor = t.inkMuted;
-                          rtColor = t.inkMuted;
+                          choiceState = "muted";
                         }
                       }
 
                       return (
-                        <Pressable
+                        <TactileChoiceButton
                           key={opt.word}
+                          fullWidth
                           disabled={revealed}
+                          state={choiceState}
                           onPress={() => submitChoice(opt.word)}
-                          style={[styles.option, { backgroundColor: bg, borderColor: border }]}
                         >
                           {kanaOnly ? (
-                            <Text style={[styles.optionWord, { color: wordColor }]}>
+                            <Text style={[styles.optionWord, { color: wordColor, textAlign: "center" }]}>
                               {hasJapaneseKana(opt.reading) ? opt.reading : opt.word}
                             </Text>
                           ) : (
-                            <>
-                              <Text style={[styles.optionWord, { color: wordColor }]}>{opt.word}</Text>
-                              {hasJapaneseKana(opt.reading) && opt.reading !== opt.word ? (
-                                <Text style={[styles.optionReading, { color: rtColor }]}>{opt.reading}</Text>
-                              ) : null}
-                            </>
+                            <RubyText
+                              jp={opt.word}
+                              reading={opt.reading}
+                              showRuby={hasJapaneseKana(opt.reading) && opt.reading !== opt.word}
+                              fontSize={18}
+                              rtFontSize={10}
+                              color={wordColor}
+                              align="center"
+                            />
                           )}
-                        </Pressable>
+                        </TactileChoiceButton>
                       );
                     })}
                   </View>

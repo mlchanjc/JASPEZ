@@ -1,3 +1,6 @@
+import { TactileChoiceButton } from "@/components/TactileChoiceButton";
+import type { ChoiceVisualState } from "@/components/TactileChoiceButton";
+import { alignClozeRuby, RubyText } from "@/components/RubyText";
 import { useEffect, useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -217,8 +220,14 @@ export function GrammarLessonMachine({ lesson, onBack, onNavigateLesson }: Props
             </View>
 
             <View style={styles.wordHero}>
-              {prefs.showFurigana && <Text style={styles.wordRt}>{drill.rt}</Text>}
-              <Text style={styles.wordDict}>{drill.dict}</Text>
+              <RubyText
+                jp={drill.dict}
+                reading={drill.rt}
+                showRuby={prefs.showFurigana}
+                fontSize={30}
+                rtFontSize={11.5}
+                align="center"
+              />
               {drill.meaning ? <Text style={styles.wordMeaning}>{drill.meaning}</Text> : null}
             </View>
 
@@ -247,35 +256,29 @@ export function GrammarLessonMachine({ lesson, onBack, onNavigateLesson }: Props
                 {drill.choices.map((opt) => {
                   const isAns = opt === drill.answer;
                   const isPick = opt === picked;
-                  let bg = t.white;
-                  let border = t.paperBorder;
-                  let bottom = t.choiceBottom;
                   let color = t.ink;
+                  let choiceState: ChoiceVisualState = "idle";
                   if (picked !== null) {
                     if (isAns) {
-                      bg = t.successSoft;
-                      border = t.success;
-                      bottom = t.matchaDark;
                       color = t.matchaDark;
+                      choiceState = "correct";
                     } else if (isPick) {
-                      bg = t.errorSoft;
-                      border = t.error;
-                      bottom = t.error;
                       color = t.error;
+                      choiceState = "wrong";
                     } else {
-                      bg = t.surface;
                       color = t.inkMuted;
+                      choiceState = "muted";
                     }
                   }
                   return (
-                    <Pressable
+                    <TactileChoiceButton
                       key={opt}
                       disabled={picked !== null}
+                      state={choiceState}
                       onPress={() => submitDrill(opt)}
-                      style={[styles.tile, { backgroundColor: bg, borderColor: border, borderBottomColor: bottom }]}
                     >
                       <Text style={[styles.tileText, { color }]}>{opt}</Text>
-                    </Pressable>
+                    </TactileChoiceButton>
                   );
                 })}
               </View>
@@ -318,31 +321,25 @@ export function GrammarLessonMachine({ lesson, onBack, onNavigateLesson }: Props
               )}
             </View>
 
-            <Text style={styles.clozeSentence}>
-              {activeCloze.before}
-              <Text
-                style={[
-                  styles.clozeBlankText,
-                  {
-                    color:
-                      clozePicked === null
-                        ? accent
-                        : clozePicked === activeCloze.answer
-                          ? t.matchaDark
-                          : t.error,
-                  },
-                ]}
-              >
-                {clozePicked === null ? " 【　　】 " : ` 【${clozePicked}】 `}
-              </Text>
-              {activeCloze.after}
-            </Text>
-
-            {prefs.showFurigana && activeCloze.reading ? (
-              <Text style={styles.clozeReading}>
-                {clozePicked !== null ? activeCloze.reading : "（作答後顯示假名讀音）"}
-              </Text>
-            ) : null}
+            <RubyText
+              segments={alignClozeRuby({
+                before: activeCloze.before,
+                surface: clozePicked ?? activeCloze.answer,
+                after: activeCloze.after,
+                reading: activeCloze.reading ?? "",
+                revealed: clozePicked !== null,
+              })}
+              showRuby={prefs.showFurigana}
+              fontSize={19}
+              rtFontSize={10}
+              blankColor={
+                clozePicked === null
+                  ? accent
+                  : clozePicked === activeCloze.answer
+                    ? t.matchaDark
+                    : t.error
+              }
+            />
 
             {activeCloze.zh ? <Text style={styles.translation}>{activeCloze.zh}</Text> : null}
 
@@ -350,35 +347,29 @@ export function GrammarLessonMachine({ lesson, onBack, onNavigateLesson }: Props
               {activeCloze.choices.map((opt) => {
                 const isAns = opt === activeCloze.answer;
                 const isPick = opt === clozePicked;
-                let bg = t.white;
-                let border = t.paperBorder;
-                let bottom = t.choiceBottom;
                 let color = t.ink;
+                let choiceState: ChoiceVisualState = "idle";
                 if (clozePicked !== null) {
                   if (isAns) {
-                    bg = t.successSoft;
-                    border = t.success;
-                    bottom = t.matchaDark;
                     color = t.matchaDark;
+                    choiceState = "correct";
                   } else if (isPick) {
-                    bg = t.errorSoft;
-                    border = t.error;
-                    bottom = t.error;
                     color = t.error;
+                    choiceState = "wrong";
                   } else {
-                    bg = t.surface;
                     color = t.inkMuted;
+                    choiceState = "muted";
                   }
                 }
                 return (
-                  <Pressable
+                  <TactileChoiceButton
                     key={opt}
                     disabled={clozePicked !== null}
+                    state={choiceState}
                     onPress={() => submitCloze(opt)}
-                    style={[styles.tile, { backgroundColor: bg, borderColor: border, borderBottomColor: bottom }]}
                   >
                     <Text style={[styles.tileText, { color }]}>{opt}</Text>
-                  </Pressable>
+                  </TactileChoiceButton>
                 );
               })}
             </View>

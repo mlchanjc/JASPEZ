@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import type { GrammarToken } from "@/data/types";
-import { theme } from "@/theme";
+import { useAppTheme } from "@/theme";
+import type { AppTheme } from "@/theme";
 
 type Props = {
   tokens: GrammarToken[];
@@ -17,9 +18,12 @@ export function FuriganaSentence({
   showFurigana,
   blankText,
   blankStatus = "idle",
-  accentColor = theme.indigo,
+  accentColor,
   interactive = true,
 }: Props) {
+  const { t } = useAppTheme();
+  const styles = useMemo(() => makeStyles(t), [t]);
+  const resolvedAccent = accentColor ?? t.indigo;
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
   const selectedToken = selectedIdx !== null ? tokens[selectedIdx] : null;
 
@@ -30,24 +34,24 @@ export function FuriganaSentence({
           if (token.blank) {
             const bg =
               blankStatus === "correct"
-                ? theme.successSoft
+                ? t.successSoft
                 : blankStatus === "wrong"
-                  ? theme.errorSoft
+                  ? t.errorSoft
                   : blankStatus === "filled"
-                    ? theme.indigoSoft
+                    ? t.indigoSoft
                     : "rgba(36, 62, 106, 0.08)";
             const border =
               blankStatus === "correct"
-                ? theme.success
+                ? t.success
                 : blankStatus === "wrong"
-                  ? theme.error
-                  : accentColor;
+                  ? t.error
+                  : resolvedAccent;
             const color =
               blankStatus === "correct"
-                ? theme.success
+                ? t.success
                 : blankStatus === "wrong"
-                  ? theme.error
-                  : accentColor;
+                  ? t.error
+                  : resolvedAccent;
 
             return (
               <View key={`blank-${idx}`} style={styles.tokenColumn}>
@@ -69,8 +73,8 @@ export function FuriganaSentence({
                   {token.rt ?? " "}
                 </Text>
               )}
-              <View style={tappable ? [styles.underlineBox, isSelected && { borderBottomColor: accentColor }] : undefined}>
-                <Text style={[styles.wordText, isSelected && { color: accentColor }]}>{token.text}</Text>
+              <View style={tappable ? [styles.underlineBox, isSelected && { borderBottomColor: resolvedAccent }] : undefined}>
+                <Text style={[styles.wordText, isSelected && { color: resolvedAccent }]}>{token.text}</Text>
               </View>
             </View>
           );
@@ -111,7 +115,8 @@ export function FuriganaSentence({
   );
 }
 
-const styles = StyleSheet.create({
+function makeStyles(t: AppTheme) {
+  return StyleSheet.create({
   wrap: { gap: 10 },
   line: {
     flexDirection: "row",
@@ -125,12 +130,12 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   tokenSelected: {
-    backgroundColor: theme.indigoSoft,
+    backgroundColor: t.indigoSoft,
   },
   rtText: {
     fontSize: 10,
     lineHeight: 13,
-    color: theme.inkSoft,
+    color: t.inkSoft,
     fontWeight: "600",
     marginBottom: 1,
   },
@@ -149,7 +154,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     lineHeight: 28,
     fontWeight: "700",
-    color: theme.ink,
+    color: t.ink,
   },
   blankBox: {
     minWidth: 78,
@@ -169,9 +174,9 @@ const styles = StyleSheet.create({
   popover: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: theme.surface,
+    backgroundColor: t.surface,
     borderWidth: 1,
-    borderColor: theme.paperBorder,
+    borderColor: t.paperBorder,
     borderRadius: 14,
     paddingHorizontal: 14,
     paddingVertical: 10,
@@ -179,9 +184,10 @@ const styles = StyleSheet.create({
   },
   popoverMain: { flex: 1, gap: 2 },
   popoverHead: { flexDirection: "row", alignItems: "baseline", gap: 8 },
-  popoverWord: { fontSize: 16, fontWeight: "800", color: theme.indigo },
-  popoverReading: { fontSize: 12, fontWeight: "700", color: theme.inkSoft },
-  popoverMeaning: { fontSize: 13, color: theme.ink, fontWeight: "600" },
+  popoverWord: { fontSize: 16, fontWeight: "800", color: t.indigo },
+  popoverReading: { fontSize: 12, fontWeight: "700", color: t.inkSoft },
+  popoverMeaning: { fontSize: 13, color: t.ink, fontWeight: "600" },
   popoverClose: { padding: 4 },
-  popoverCloseText: { fontSize: 14, fontWeight: "800", color: theme.inkMuted },
+  popoverCloseText: { fontSize: 14, fontWeight: "800", color: t.inkMuted },
 });
+}

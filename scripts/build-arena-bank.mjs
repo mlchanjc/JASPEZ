@@ -53,7 +53,13 @@ const N5_WORDS = new Set([
 const N4_WORDS = new Set([...N5_WORDS, ...V4.words, '一時間', '忘れ物', '資料']);
 
 const N4_PLUS_GRAMMAR_RE =
-  /(られ|され|させ|ために|に向けて|ておく|ておいた|てしまう|てしまった|なければなら|なくてもいい|ことができる|のに|せいで|おかげで|ばかり|わけだ|はずだ|べきだ|ように)/;
+  /(られ|され|させ|ために|に向けて|ておく|ておいた|ておきます|ておきました|てしまう|てしまった|てしまいました|なければなら|なくてもいい|ことができる|のに|せいで|せいか|おかげで|ばかり|わけだ|はずだ|べきだ|ように|ので|たら|てくる|てきた|てきます|てきました|ていく|ていった|ていきます|ていきました|やすい|にくい|てくれる|てくれます|てくれた|てあげる|てあげます|てもらう|てもらいます|まま|[うくぐすつぬぶむる]と[、，]|(渡る|曲がる|終わる|なる|飲む)と)/;
+
+const N3_PLUS_GRAMMAR_RE =
+  /(うちに|せいで|せいか|おかげで|たばかり|につれて|に向けて|だらけ|によって|たところ|ごとに|ばかり)/;
+
+const N2_PLUS_GRAMMAR_RE =
+  /(につれて|どころか|ものの)/;
 
 const ADV_COMPOUND_N5_RE =
   /(企画|修正|絶品|書庫|返却|返品|完売|係員|食券|入部|視野|遠慮|旅客|税関|搭乗|本堂|縁日|足早|駅舎|処方|診察|避難|住民|対岸|取引|締切|面接|採用|契約|申請|提出|承認|抜擢|老舗|社外|履修|実務|拡張|水墨|金木|飴細|一眼レフ|野鳥|機内|石段|日当たり|風通し|お得|通勤|下書き|名物)/;
@@ -72,12 +78,13 @@ function hasOutOfLevel3Kanji(text, allowedWords) {
   return false;
 }
 
-const FORCE_EXTENDED_IDS = new Set(["n5-par-012","n5-par-043","n5-mov-002","n5-mov-010","n5-mov-013","n5-mov-017","n5-nom-006","n5-mov-103","n5-mov-133","n5-mov-145","n5-mov-153","n5-mov-157","n5-mov-184","n5-mov-415","n5-mov-core-013","n5-par-124","n5-par-142","n5-par-144","n5-par-148","n5-par-153","n5-par-238","n5-par-413","n5-par-457","n5-par-460","n5-par-core-014","n4-cond-031","n4-st-021","n4-st-030","n4-dir-015","n4-dir-033","n4-hear-026","n4-app-154","n4-app-185","n4-app-237","n4-app-341","n4-dir-124","n4-dir-131","n4-dir-146","n4-dir-167","n4-dir-175","n4-dir-217","n4-dir-248","n4-dir-269","n4-dir-428","n4-st-102","n4-st-131","n4-st-141","n4-st-240","n4-st-257","n4-st-385","n4-st-444","n4-st-506","n4-st-581","n4-st-603","n4-st-716","n4-st-720","n4-st-861","n4-cond-148","n4-cond-149","n4-cond-150","n4-cond-151","n4-cond-154","n4-cond-155","n4-cond-176","n4-cond-386","n4-cond-755","n4-gr-009","n4-gr-106","n4-hear-361","n4-hear-362","n4-voi-052","n4-voi-106","n4-voi-266","n4-voi-290","n4-voi-427","n3-lim-236","n3-lim-299","n3-wk-058","n3-wk-252","n3-wk-262","n3-wk-278","n3-wk-283","n3-wk-460","n3-wk-484"]);
-
 function computeTier(item) {
-  if (FORCE_EXTENDED_IDS.has(item.id)) return 'extended';
+  if (item.tierOverride === 'core' || item.tierOverride === 'extended') {
+    return item.tierOverride;
+  }
   const lv = item.groupId.split('-')[0].toUpperCase();
   const full = `${item.before}${item.surface ?? item.answer}${item.after}`;
+  const carrier = `${item.before}${item.after}`;
   const allowed = lv === 'N5' ? N5_KANJI : lv === 'N4' ? N4_KANJI : N3_KANJI;
   const uniqueKanji = new Set([...full].filter((ch) => ch >= '\u4e00' && ch <= '\u9fff'));
   let outOfLevel = 0;
@@ -86,15 +93,17 @@ function computeTier(item) {
   }
   const len = full.length;
   if (lv === 'N5') {
-    const hasGramLeak = N4_PLUS_GRAMMAR_RE.test(`${item.before}${item.after}`);
+    const hasGramLeak = N4_PLUS_GRAMMAR_RE.test(carrier);
     const hasAdv = ADV_COMPOUND_N5_RE.test(full) || hasOutOfLevel3Kanji(full, N5_WORDS);
     return len <= 24 && outOfLevel === 0 && !hasGramLeak && !hasAdv ? 'core' : 'extended';
   }
   if (lv === 'N4') {
+    const hasGramLeak = N3_PLUS_GRAMMAR_RE.test(carrier) || /ば.*ほど/.test(full);
     const hasAdv = ADV_COMPOUND_N4_RE.test(full) || hasOutOfLevel3Kanji(full, N4_WORDS);
-    return len <= 34 && outOfLevel <= 1 && !hasAdv ? 'core' : 'extended';
+    return len <= 34 && outOfLevel <= 1 && !hasGramLeak && !hasAdv ? 'core' : 'extended';
   }
-  return len <= 40 && outOfLevel <= 2 ? 'core' : 'extended';
+  const hasGramLeak = N2_PLUS_GRAMMAR_RE.test(carrier);
+  return len <= 40 && outOfLevel <= 2 && !hasGramLeak ? 'core' : 'extended';
 }
 
 const batchItems = [];

@@ -1,3 +1,7 @@
+import { AnimatedFeedbackDock, QuestionTransition, TactilePress } from "@/components/Motion";
+import { TactileChoiceButton } from "@/components/TactileChoiceButton";
+import type { ChoiceVisualState } from "@/components/TactileChoiceButton";
+import { RubyText } from "@/components/RubyText";
 import { useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import type { LevelId, VocabWord } from "@/data/types";
@@ -116,7 +120,7 @@ export function LearnMode({ level, topicId, words }: { level: LevelId; topicId: 
           </Pressable>
         </View>
 
-        <View style={styles.drillCard}>
+        <QuestionTransition triggerKey={round.prompt.index} style={styles.drillCard}>
           <View style={styles.metaRow}>
             <Text style={[styles.levelTag, { color: accent }]}>{level}</Text>
             {round.prompt.word.verbType ? <Text style={styles.verbTag}>{round.prompt.word.verbType}</Text> : null}
@@ -131,57 +135,54 @@ export function LearnMode({ level, topicId, words }: { level: LevelId; topicId: 
               const revealed = outcome != null;
               const isAnswer = option.index === round.prompt.index;
 
-              let bg = t.surface;
-              let border = t.paperBorder;
               let wordColor = t.ink;
-              let rtColor = t.indigo;
+              let choiceState: ChoiceVisualState = "idle";
 
               if (revealed) {
                 if (isAnswer) {
-                  bg = t.successSoft;
-                  border = t.success;
                   wordColor = t.matchaDark;
-                  rtColor = t.matchaDark;
+                  choiceState = "correct";
                 } else if (selected) {
-                  bg = t.errorSoft;
-                  border = t.error;
                   wordColor = t.error;
-                  rtColor = t.error;
+                  choiceState = "wrong";
                 } else {
-                  bg = t.paper;
                   wordColor = t.inkMuted;
-                  rtColor = t.inkMuted;
+                  choiceState = "muted";
                 }
               }
 
               return (
-                <Pressable
+                <TactileChoiceButton
                   key={option.index}
+                  fullWidth
                   disabled={revealed}
+                  state={choiceState}
                   onPress={() => choose(option.index)}
-                  style={[styles.option, { backgroundColor: bg, borderColor: border }]}
                 >
                   {kanaOnly ? (
-                    <Text style={[styles.optionWord, { color: wordColor }]}>
+                    <Text style={[styles.optionWord, { color: wordColor, textAlign: "center" }]}>
                       {hasJapaneseKana(option.word.reading) ? option.word.reading : option.word.word}
                     </Text>
                   ) : (
-                    <>
-                      <Text style={[styles.optionWord, { color: wordColor }]}>{option.word.word}</Text>
-                      {hasJapaneseKana(option.word.reading) && option.word.reading !== option.word.word ? (
-                        <Text style={[styles.optionReading, { color: rtColor }]}>{option.word.reading}</Text>
-                      ) : null}
-                    </>
+                    <RubyText
+                      jp={option.word.word}
+                      reading={option.word.reading}
+                      showRuby={hasJapaneseKana(option.word.reading) && option.word.reading !== option.word.word}
+                      fontSize={18}
+                      rtFontSize={10}
+                      color={wordColor}
+                      align="center"
+                    />
                   )}
-                </Pressable>
+                </TactileChoiceButton>
               );
             })}
           </View>
-        </View>
+        </QuestionTransition>
       </ScrollView>
 
       {outcome ? (
-        <View
+        <AnimatedFeedbackDock
           style={[
             styles.feedbackDock,
             {
@@ -201,13 +202,13 @@ export function LearnMode({ level, topicId, words }: { level: LevelId; topicId: 
               {outcome.recentCorrect}/{outcome.recentTotal} 正確
             </Text>
           </View>
-          <Pressable
+          <TactilePress
             onPress={next}
             style={[styles.dockBtn, { backgroundColor: outcome.correct ? t.success : t.error }]}
           >
             <Text style={styles.dockBtnText}>下一題 →</Text>
-          </Pressable>
-        </View>
+          </TactilePress>
+        </AnimatedFeedbackDock>
       ) : null}
     </View>
   );

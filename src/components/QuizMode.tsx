@@ -1,3 +1,5 @@
+import { AnimatedFeedbackDock, TactilePress } from "@/components/Motion";
+import { RubyText } from "@/components/RubyText";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Animated, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import type { LevelId, VocabWord } from "@/data/types";
@@ -152,7 +154,7 @@ export function QuizMode({ level, topicId, words }: { level: LevelId; topicId: s
       </ScrollView>
 
       {feedback ? (
-        <View
+        <AnimatedFeedbackDock
           style={[
             styles.feedbackDock,
             {
@@ -162,23 +164,28 @@ export function QuizMode({ level, topicId, words }: { level: LevelId; topicId: s
           ]}
         >
           <View style={styles.dockTop}>
-            <Text style={[styles.dockTitle, { color: feedback === "success" ? t.matchaDark : t.error }]}>
-              {feedback === "success" ? `✓ 正確 · ${prompt.word.word}` : `✕ 正解 · ${prompt.word.word}`}
-            </Text>
-            {hasJapaneseKana(prompt.word.reading) ? (
-              <Text style={styles.dockBody} numberOfLines={2}>
-                讀音：{prompt.word.reading}
-                {prompt.word.accent ? ` ${prompt.word.accent}` : ""}
+            <View style={{ flexDirection: "row", alignItems: "flex-end", gap: 6, flexWrap: "wrap" }}>
+              <Text style={[styles.dockTitle, { color: feedback === "success" ? t.matchaDark : t.error }]}>
+                {feedback === "success" ? "✓ 正確 ·" : "✕ 正解 ·"}
               </Text>
-            ) : null}
+              <RubyText
+                jp={prompt.word.word}
+                reading={prompt.word.reading}
+                showRuby={hasJapaneseKana(prompt.word.reading) && prompt.word.reading !== prompt.word.word}
+                fontSize={16}
+                rtFontSize={9.5}
+                color={feedback === "success" ? t.matchaDark : t.error}
+              />
+              {prompt.word.accent ? <Text style={styles.dockBody}>{prompt.word.accent}</Text> : null}
+            </View>
           </View>
-          <Pressable
+          <TactilePress
             onPress={continueQuiz}
             style={[styles.dockBtn, { backgroundColor: feedback === "success" ? t.success : t.error }]}
           >
             <Text style={styles.dockBtnText}>下一題 →</Text>
-          </Pressable>
-        </View>
+          </TactilePress>
+        </AnimatedFeedbackDock>
       ) : null}
     </KeyboardAvoidingView>
   );

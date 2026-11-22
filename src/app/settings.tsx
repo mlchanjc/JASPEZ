@@ -1,4 +1,7 @@
+import * as DocumentPicker from "expo-document-picker";
+import * as FileSystem from "expo-file-system";
 import { router } from "expo-router";
+import * as Sharing from "expo-sharing";
 import { useMemo, useState } from "react";
 import { Alert, Platform, Pressable, ScrollView, Share, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -87,7 +90,37 @@ export default function SettingsScreen() {
         }
       }
 
-      // Native iOS / Android Share Sheet (WhatsApp, Discord, Line, Notes, Files, etc.)
+      // Native iOS / Android: write .json file & share as real file attachment (WhatsApp, Discord, LINE, Files)
+      try {
+        const canShareFile = await Sharing.isAvailableAsync();
+        const fsAny = FileSystem as unknown as {
+          cacheDirectory?: string | null;
+          writeAsStringAsync?: (uri: string, content: string) => Promise<void>;
+          Paths?: { cache?: { uri: string } };
+          File?: new (dir: unknown, name: string) => { uri: string; write: (content: string) => void };
+        };
+        let fileUri: string | null = null;
+        if (fsAny.File && fsAny.Paths?.cache) {
+          const f = new fsAny.File(fsAny.Paths.cache, filename);
+          f.write(jsonPayload);
+          fileUri = f.uri;
+        } else if (fsAny.cacheDirectory && fsAny.writeAsStringAsync) {
+          fileUri = `${fsAny.cacheDirectory}${filename}`;
+          await fsAny.writeAsStringAsync(fileUri, jsonPayload);
+        }
+        if (canShareFile && fileUri) {
+          await Sharing.shareAsync(fileUri, {
+            mimeType: "application/json",
+            dialogTitle: "匯出並分享 JASPEZ 備份檔",
+            UTI: "public.json",
+          });
+          setExportStatus(`已匯出備份檔 ${filename}`);
+          return;
+        }
+      } catch {
+        // Fallback to plain Share sheet below
+      }
+
       const result = await Share.share(
         {
           title: `JASPEZ 學習進度備份 (${dateStamp})`,
@@ -105,6 +138,69 @@ export default function SettingsScreen() {
       }
     } catch {
       Alert.alert("匯出失敗", "無法開啟分享選單，請稍後再試。");
+    }
+  };
+
+  const handleUploadBackupFile = async () => {
+    setImportFeedback(null);
+    try {
+      if (Platform.OS === "web") {
+        const g = globalThis as unknown as {
+          document?: {
+            createElement: (tag: string) => {
+              type: string;
+              accept: string;
+              onchange: ((e: unknown) => void) | null;
+              files?: { 0?: Blob };
+              click: () => void;
+            };
+          };
+        };
+        if (!g.document) {
+          setImportFeedback({ ok: false, msg: "目前環境不支援檔案上傳，請使用下方貼上方式。" });
+          return;
+        }
+        const input = g.document.createElement("input");
+        input.type = "file";
+        input.accept = ".json,application/json,text/plain";
+        input.onchange = async () => {
+          const file = input.files?.[0];
+          if (!file) return;
+          try {
+            const text = await file.text();
+            const res = importProgressJson(text);
+            if (res.ok) {
+              setImportFeedback({ ok: true, msg: "已從備份檔成功還原學習進度與偏好設定！" });
+            } else {
+              setImportFeedback({ ok: false, msg: res.error ?? "匯入失敗，請確認檔案格式。" });
+            }
+          } catch {
+            setImportFeedback({ ok: false, msg: "無法讀取選擇的檔案，請確認為有效的 JSON 備份檔。" });
+          }
+        };
+        input.click();
+        return;
+      }
+
+      const picked = await DocumentPicker.getDocumentAsync({
+        type: ["application/json", "text/plain", "*/*"],
+        copyToCacheDirectory: true,
+        multiple: false,
+      });
+      if (picked.canceled || !picked.assets || picked.assets.length === 0) {
+        return;
+      }
+      const asset = picked.assets[0];
+      const response = await fetch(asset.uri);
+      const text = await response.text();
+      const res = importProgressJson(text);
+      if (res.ok) {
+        setImportFeedback({ ok: true, msg: `已從「${asset.name}」成功還原學習進度！` });
+      } else {
+        setImportFeedback({ ok: false, msg: res.error ?? "匯入失敗，請確認檔案格式。" });
+      }
+    } catch {
+      setImportFeedback({ ok: false, msg: "讀取備份檔失敗，請確認選擇了有效的 .json 備份檔。" });
     }
   };
 
@@ -334,27 +430,41 @@ export default function SettingsScreen() {
 
               <View style={styles.dataActionsRow}>
                 <Pressable onPress={handleExportAndShare} style={styles.primaryActionBtn}>
-                  <Text style={styles.primaryActionText}>匯出並分享資料 →</Text>
+                  <Text style={styles.primaryActionText}>匯出 .json 並分享 →</Text>
                 </Pressable>
-                <Pressable
-                  onPress={() => {
-                    setShowImportBox((prev) => !prev);
-                    setImportFeedback(null);
-                  }}
-                  style={styles.secondaryActionBtn}
-                >
-                  <Text style={styles.secondaryActionText}>
-                    {showImportBox ? "收合匯入" : "匯入備份"}
-                  </Text>
+                <Pressable onPress={handleUploadBackupFile} style={styles.secondaryActionBtn}>
+                  <Text style={styles.secondaryActionText}>上傳 .json 還原</Text>
                 </Pressable>
               </View>
 
+              <Pressable
+                onPress={() => {
+                  setShowImportBox((prev) => !prev);
+                  setImportFeedback(null);
+                }}
+                style={styles.linkToggleBtn}
+              >
+                <Text style={styles.linkToggleText}>
+                  {showImportBox ? "▴ 收合手動貼上 JSON" : "▾ 或手動貼上備份 JSON 文字"}
+                </Text>
+              </Pressable>
+
               {exportStatus ? <Text style={styles.statusNote}>{exportStatus}</Text> : null}
+              {!showImportBox && importFeedback ? (
+                <Text
+                  style={[
+                    styles.statusNote,
+                    { color: importFeedback.ok ? t.matchaDark : t.error },
+                  ]}
+                >
+                  {importFeedback.msg}
+                </Text>
+              ) : null}
 
               {showImportBox && (
                 <View style={styles.importBox}>
                   <Text style={styles.prefSub}>
-                    將先前分享或備份的 JSON 文字貼於下方，即可還原學習紀錄：
+                    若無法選擇檔案，也可將備份 JSON 文字直接貼於下方還原：
                   </Text>
                   <TextInput
                     value={importDraft}
@@ -568,6 +678,8 @@ function makeStyles(t: AppTheme) {
       borderColor: t.paperBorder,
     },
     secondaryActionText: { color: t.ink, fontSize: 13, fontWeight: "700" },
+    linkToggleBtn: { alignSelf: "flex-start", paddingVertical: 2 },
+    linkToggleText: { fontSize: 12, fontWeight: "600", color: t.inkSoft },
     statusNote: { fontSize: 12, fontWeight: "600", color: t.matchaDark },
     importBox: {
       gap: 8,
