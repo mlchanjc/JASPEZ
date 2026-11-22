@@ -161,11 +161,14 @@ export function TactileChoiceButton({
 
 const styles = StyleSheet.create({
   outer: {
-    width: "48.5%",
+    flexBasis: "46%",
+    flexGrow: 1,
+    minWidth: 120,
     paddingBottom: 3,
     position: "relative",
   },
   fullWidth: {
+    flexBasis: "100%",
     width: "100%",
   },
   lipBase: {

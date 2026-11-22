@@ -26,6 +26,15 @@ function AppShell() {
           },
         ]}
       >
+        {t.topRuleHeight > 0 ? (
+          <View
+            pointerEvents="none"
+            style={[
+              styles.topRule,
+              { height: t.topRuleHeight, backgroundColor: t.vermillion },
+            ]}
+          />
+        ) : null}
         <Stack
           screenOptions={{
             headerShown: false,
@@ -52,6 +61,15 @@ const styles = StyleSheet.create({
   outer: {
     flex: 1,
     alignItems: "center",
+  },
+  topRule: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 999,
+    elevation: 999,
+    opacity: 0.85,
   },
   frame: {
     flex: 1,
