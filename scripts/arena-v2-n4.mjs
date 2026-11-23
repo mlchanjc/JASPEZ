@@ -102,10 +102,10 @@ export const N4_ITEMS = [
   {
     "id": "n4-cond-006",
     "groupId": "n4-conditionals",
-    "before": "このつまみを右に",
+    "before": "このボタンを右に",
     "after": "、音が大きくなります。",
-    "reading": "このつまみをみぎにまわすと、おとがおおきくなります。",
-    "zh": "把這個旋鈕往右轉，聲音就會變大。",
+    "reading": "このボタンをみぎにまわすと、おとがおおきくなります。",
+    "zh": "把這個按鈕往右轉，聲音就會變大。",
     "grammarKey": "と",
     "answer": "回すと",
     "choices": [
@@ -696,9 +696,9 @@ export const N4_ITEMS = [
     "id": "n4-cond-035",
     "groupId": "n4-conditionals",
     "before": "もし傘が",
-    "after": "、私の予備を貸してあげますよ。",
-    "reading": "もしかさがいるなら、わたしのよびをかしてあげますよ。",
-    "zh": "如果需要傘的話，我借你我的備用傘喔。",
+    "after": "、私の傘を貸してあげますよ。",
+    "reading": "もしかさがいるなら、わたしのかさをかしてあげますよ。",
+    "zh": "如果需要傘的話，我借你我的傘喔。",
     "grammarKey": "なら",
     "answer": "要るなら",
     "choices": [
@@ -1342,10 +1342,10 @@ export const N4_ITEMS = [
   {
     "id": "n4-st-027",
     "groupId": "n4-aux-state",
-    "before": "電池が切れたらしく、壁の時計が",
+    "before": "電池が切れたので、壁の時計が",
     "after": "。",
-    "reading": "でんちがきれたらしく、かべのとけいがとまっています。",
-    "zh": "好像沒電了，牆上的時鐘停著不動。",
+    "reading": "でんちがきれたので、かべのとけいがとまっています。",
+    "zh": "因為沒電了，牆上的時鐘停著不動。",
     "grammarKey": "ている",
     "answer": "止まっています",
     "choices": [

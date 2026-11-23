@@ -300,6 +300,20 @@ for (const [gid, meta] of Object.entries(GROUP_META)) {
   }
 }
 
+// 7b. Syntax, collocation & data-corruption lint gates
+for (const item of items) {
+  const full = `${item.before}${item.surface ?? item.answer}${item.after}`;
+  if (/(子供|子ども|テスト前|学生|大人|初心者|素人)なくせに/.test(full)) {
+    hardErrors.push(`[${item.groupId} ${item.id}] Ungrammatical 名詞+なくせに in '${full}' (must use のくせに)`);
+  }
+  if (/きっと.*かもしれない/.test(full)) {
+    hardErrors.push(`[${item.groupId} ${item.id}] Adverb-modality clash きっと〜かもしれない in '${full}'`);
+  }
+  if (/Wait fix|TODO|FIXME/i.test(`${item.zh || ""} ${item.tip || ""} ${item.reading || ""}`)) {
+    hardErrors.push(`[${item.groupId} ${item.id}] Corrupted placeholder text detected in metadata`);
+  }
+}
+
 // 8. Two-tier level-fit guardrails (verify every group & key has healthy core pool, and core items obey ceilings)
 const VOCAB_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../data/vocab');
 function loadKanjiSet(lvDir) {

@@ -1392,6 +1392,7 @@ export const N3_ITEMS = [
   },
   {
     "id": "n3-ce-031",
+    "tierOverride": "extended",
     "groupId": "n3-cause-effect",
     "jlptTag": "N3/N2",
     "before": "たった一つ嘘をついた",
@@ -1407,6 +1408,7 @@ export const N3_ITEMS = [
   },
   {
     "id": "n3-ce-032",
+    "tierOverride": "extended",
     "groupId": "n3-cause-effect",
     "jlptTag": "N3/N2",
     "before": "たった一分遅れた",
@@ -1422,6 +1424,7 @@ export const N3_ITEMS = [
   },
   {
     "id": "n3-ce-033",
+    "tierOverride": "extended",
     "groupId": "n3-cause-effect",
     "jlptTag": "N3/N2",
     "before": "たった一言ひどいことを言った",
@@ -1437,6 +1440,7 @@ export const N3_ITEMS = [
   },
   {
     "id": "n3-ce-034",
+    "tierOverride": "extended",
     "groupId": "n3-cause-effect",
     "jlptTag": "N3/N2",
     "before": "パスポートのチェックを忘れた",
@@ -1455,6 +1459,7 @@ export const N3_ITEMS = [
   },
   {
     "id": "n3-ce-035",
+    "tierOverride": "extended",
     "groupId": "n3-cause-effect",
     "jlptTag": "N3/N2",
     "before": "解答用紙に名前を書き忘れた",
@@ -1502,6 +1507,7 @@ export const N3_ITEMS = [
   },
   {
     "id": "n3-ce-038",
+    "tierOverride": "extended",
     "groupId": "n3-cause-effect",
     "jlptTag": "N3/N2",
     "before": "傘を持たずに出かけた",
@@ -1520,6 +1526,7 @@ export const N3_ITEMS = [
   },
   {
     "id": "n3-ce-039",
+    "tierOverride": "extended",
     "groupId": "n3-cause-effect",
     "jlptTag": "N3/N2",
     "before": "道を一本間違えた",
@@ -1535,6 +1542,7 @@ export const N3_ITEMS = [
   },
   {
     "id": "n3-ce-040",
+    "tierOverride": "extended",
     "groupId": "n3-cause-effect",
     "jlptTag": "N3/N2",
     "before": "最後のボタンを押さなかった",
@@ -2273,9 +2281,9 @@ export const N3_ITEMS = [
     "id": "n3-ts-011",
     "groupId": "n3-time-span",
     "before": "赤ちゃんがお昼寝している",
-    "after": "、急いで夕飯の下ごしらえを済ませた。",
-    "reading": "あかちゃんがおひるねしているあいだに、いそいでゆうはんのしたごしらえをすませた。",
-    "zh": "在寶寶午睡的期間內，我趕緊把晚餐的備料做完了。",
+    "after": "、急いで夕飯の準備を済ませた。",
+    "reading": "あかちゃんがおひるねしているあいだに、いそいでゆうはんのじゅんびをすませた。",
+    "zh": "在寶寶午睡的期間內，我趕緊把晚餐的準備做完了。",
     "grammarKey": "あいだに",
     "answer": "あいだに",
     "tip": "在某段時間之內「完成」了另一件事（済ませた），必用「あいだに」。",
@@ -3437,9 +3445,9 @@ export const N3_ITEMS = [
     "id": "n3-mc-004",
     "groupId": "n3-moment-clause",
     "before": "一歩外へ",
-    "after": "、急に冷たい突風が吹きつけた。",
-    "reading": "いっぽそとへでたとたんに、きゅうにつめたいとっぷうがふきつけた。",
-    "zh": "剛踏出室外一步的瞬間，突然吹來一陣刺骨強風。",
+    "after": "、急に冷たい強い風が吹いてきた。",
+    "reading": "いっぽそとへでたとたんに、きゅうにつめたいつよいかぜがふいてきた。",
+    "zh": "剛踏出室外一步的瞬間，突然吹來一陣冷強風。",
     "grammarKey": "たとたんに",
     "answer": "出たとたんに",
     "choices": [
@@ -3913,10 +3921,10 @@ export const N3_ITEMS = [
     "id": "n3-mc-027",
     "groupId": "n3-moment-clause",
     "jlptTag": "N3/N2",
-    "before": "念のためバックアップを",
+    "before": "大事なバックアップを",
     "after": "、三年分の写真データが消えてしまった。",
-    "reading": "ねんのためバックアップをとらなかったばかりに、さんねんぶんのしゃしんデータがきえてしまった。",
-    "zh": "就只因為沒以防萬一做備份，三年份的照片資料全消失了。",
+    "reading": "だいじなバックアップをとらなかったばかりに、さんねんぶんのしゃしんデータがきえてしまった。",
+    "zh": "就只因為沒做重要的備份，三年份的照片資料全消失了。",
     "grammarKey": "たばかりに",
     "answer": "取らなかったばかりに",
     "choices": [
@@ -4019,9 +4027,9 @@ export const N3_ITEMS = [
     "id": "n3-mc-032",
     "groupId": "n3-moment-clause",
     "before": "昨夜遅くまで本を",
-    "after": "、今日は一日中眠くてたまらない。",
-    "reading": "さくやおそくまでほんをよんだせいで、きょうはいちにちじゅうねむくてたまらない。",
-    "zh": "因為昨晚看書看到很晚，今天一整天睏得受不了。",
+    "after": "、今日は一日中とても眠い。",
+    "reading": "さくやおそくまでほんをよんだせいで、きょうはいちにちじゅうとてもねむい。",
+    "zh": "因為昨晚看書看到很晚，今天一整天非常睏。",
     "grammarKey": "たせいで",
     "answer": "読んだせいで",
     "choices": [
