@@ -11,6 +11,7 @@ type Props = {
   disabled?: boolean;
   state?: ChoiceVisualState;
   fullWidth?: boolean;
+  compact?: boolean;
   style?: StyleProp<ViewStyle>;
   children: ReactNode;
 };
@@ -26,6 +27,7 @@ export function TactileChoiceButton({
   disabled = false,
   state = "idle",
   fullWidth = false,
+  compact = false,
   style,
   children,
 }: Props) {
@@ -144,6 +146,7 @@ export function TactileChoiceButton({
         <Animated.View
           style={[
             styles.face,
+            compact && styles.faceCompact,
             {
               backgroundColor: bg,
               borderColor: border,
@@ -189,5 +192,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     alignItems: "center",
     justifyContent: "center",
+  },
+  faceCompact: {
+    minHeight: 42,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
   },
 });

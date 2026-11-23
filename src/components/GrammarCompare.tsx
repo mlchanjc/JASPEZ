@@ -215,7 +215,7 @@ function stripLevelPrefix(label: string): string {
 }
 
 export function GrammarCompare() {
-  const { prefs, arenaAttempts, recordArenaAttempt } = useProgress();
+  const { prefs, setPref, arenaAttempts, recordArenaAttempt } = useProgress();
   const { t, levelAccent } = useAppTheme();
   const styles = useMemo(() => makeStyles(t), [t]);
 
@@ -239,7 +239,7 @@ export function GrammarCompare() {
   const [activeGroupIds, setActiveGroupIds] = useState<ArenaGroupId[]>([ARENA_GROUPS[0].id]);
   const [isMixedSession, setIsMixedSession] = useState(false);
   const [targetCount, setTargetCount] = useState<QuizLength>(0);
-  const [showZh, setShowZh] = useState(true);
+  const showZh = prefs.showChinese;
   const [peekZh, setPeekZh] = useState(false);
   const [showPreReading, setShowPreReading] = useState(true);
 
@@ -703,7 +703,7 @@ export function GrammarCompare() {
                 </Pressable>
                 <Pressable
                   onPress={() => {
-                    setShowZh((prev) => !prev);
+                    setPref("showChinese", !showZh);
                     setPeekZh(false);
                   }}
                   style={[styles.togglePill, !showZh && styles.togglePillOff]}

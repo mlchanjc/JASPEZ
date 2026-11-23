@@ -398,6 +398,23 @@ export default function SettingsScreen() {
               <View style={styles.divider} />
 
               <Pressable
+                onPress={() => setPref("showChinese", !prefs.showChinese)}
+                style={styles.toggleRow}
+              >
+                <View style={styles.toggleCopy}>
+                  <Text style={styles.prefTitle}>顯示中文翻譯</Text>
+                  <Text style={styles.prefSub}>在易混文法擂台測驗中預設顯示中文句意</Text>
+                </View>
+                <View style={[styles.switchPill, prefs.showChinese && styles.switchPillOn]}>
+                  <Text style={[styles.switchText, prefs.showChinese && styles.switchTextOn]}>
+                    {prefs.showChinese ? "開" : "關"}
+                  </Text>
+                </View>
+              </Pressable>
+
+              <View style={styles.divider} />
+
+              <Pressable
                 onPress={() => setPref("kanaOnly", !prefs.kanaOnly)}
                 style={styles.toggleRow}
               >

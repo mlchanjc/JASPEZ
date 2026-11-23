@@ -321,7 +321,7 @@ export default function VocabReviewScreen() {
                       return (
                         <TactileChoiceButton
                           key={opt.word}
-                          fullWidth
+                          compact
                           disabled={revealed}
                           state={choiceState}
                           onPress={() => submitChoice(opt.word)}
@@ -335,8 +335,8 @@ export default function VocabReviewScreen() {
                               jp={opt.word}
                               reading={opt.reading}
                               showRuby={hasJapaneseKana(opt.reading) && opt.reading !== opt.word}
-                              fontSize={18}
-                              rtFontSize={10}
+                              fontSize={16}
+                              rtFontSize={9.5}
                               color={wordColor}
                               align="center"
                             />
@@ -489,14 +489,14 @@ function makeStyles(t: AppTheme) {
       borderRadius: 4,
     },
     meaning: { fontSize: 26, fontWeight: "700", color: t.ink, textAlign: "center", lineHeight: 34 },
-    options: { width: "100%", gap: 8, marginTop: 4 },
+    options: { width: "100%", flexDirection: "row", flexWrap: "wrap", gap: 8, marginTop: 4 },
     option: {
       borderRadius: t.controlRadius,
       paddingHorizontal: 14,
       paddingVertical: 12,
       borderWidth: 1,
     },
-    optionWord: { fontFamily: t.serif, fontSize: 18, fontWeight: "700" },
+    optionWord: { fontFamily: t.serif, fontSize: 16, fontWeight: "700" },
     optionReading: { marginTop: 2, fontSize: 12.5, fontWeight: "600" },
     inputGroup: { width: "100%", gap: 10, marginTop: 6 },
     input: {

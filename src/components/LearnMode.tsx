@@ -154,7 +154,7 @@ export function LearnMode({ level, topicId, words }: { level: LevelId; topicId: 
               return (
                 <TactileChoiceButton
                   key={option.index}
-                  fullWidth
+                  compact
                   disabled={revealed}
                   state={choiceState}
                   onPress={() => choose(option.index)}
@@ -168,8 +168,8 @@ export function LearnMode({ level, topicId, words }: { level: LevelId; topicId: 
                       jp={option.word.word}
                       reading={option.word.reading}
                       showRuby={hasJapaneseKana(option.word.reading) && option.word.reading !== option.word.word}
-                      fontSize={18}
-                      rtFontSize={10}
+                      fontSize={16}
+                      rtFontSize={9.5}
                       color={wordColor}
                       align="center"
                     />
@@ -263,14 +263,14 @@ function makeStyles(t: AppTheme) {
       borderRadius: 4,
     },
     meaning: { fontSize: 26, fontWeight: "700", color: t.ink, textAlign: "center", lineHeight: 34 },
-    options: { width: "100%", gap: 8, marginTop: 6 },
+    options: { width: "100%", flexDirection: "row", flexWrap: "wrap", gap: 8, marginTop: 6 },
     option: {
       borderRadius: 8,
       paddingHorizontal: 14,
       paddingVertical: 12,
       borderWidth: 1,
     },
-    optionWord: { fontFamily: t.serif, fontSize: 18, fontWeight: "700" },
+    optionWord: { fontFamily: t.serif, fontSize: 16, fontWeight: "700" },
     optionReading: { marginTop: 2, fontSize: 12.5, fontWeight: "600" },
     feedbackDock: {
       flexDirection: "row",

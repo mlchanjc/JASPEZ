@@ -10,6 +10,7 @@ export type ThemePreset = "editorial" | "ios" | "darkInk";
 
 export type UserPrefs = {
   showFurigana: boolean;
+  showChinese: boolean;
   register: RegisterMode;
   kanaOnly: boolean;
   darkMode: boolean;
@@ -65,6 +66,7 @@ type ProgressContextValue = {
 
 const defaultPrefs: UserPrefs = {
   showFurigana: true,
+  showChinese: true,
   register: "polite",
   kanaOnly: false,
   darkMode: false,
@@ -126,6 +128,7 @@ function readPrefs(raw: unknown): UserPrefs {
   const obj = raw as Partial<UserPrefs>;
   return {
     showFurigana: typeof obj.showFurigana === "boolean" ? obj.showFurigana : defaultPrefs.showFurigana,
+    showChinese: typeof obj.showChinese === "boolean" ? obj.showChinese : defaultPrefs.showChinese,
     register: obj.register === "casual" || obj.register === "polite" ? obj.register : defaultPrefs.register,
     kanaOnly: typeof obj.kanaOnly === "boolean" ? obj.kanaOnly : defaultPrefs.kanaOnly,
     darkMode: typeof obj.darkMode === "boolean" ? obj.darkMode : defaultPrefs.darkMode,
