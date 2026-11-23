@@ -37,7 +37,8 @@
     "tip": "家電結構設計所帶來的固定反應，用「と」。",
     "distractorNotes": {
       "閉めるなら": "「なら」不表示家電開關後的自動反應。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-103",
@@ -77,7 +78,8 @@
     "tip": "感應裝置產生的必然動作，最自然用「と」。",
     "distractorNotes": {
       "立つなら": "「なら」無法表達感應器的必然反應。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-105",
@@ -137,7 +139,8 @@
     "tip": "啟動電器後隨即發生的必然現象，使用「と」。",
     "distractorNotes": {
       "入れるなら": "「なら」用於針對前提提出意見，不表電器運作。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-108",
@@ -257,7 +260,8 @@
     "tip": "指路時說明「沿路走就會看到某地標」固定使用「と」。",
     "distractorNotes": {
       "行くなら": "指路陳述必然出現的建築物不用「なら」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-114",
@@ -277,7 +281,8 @@
     "tip": "指路描述空間位置關係，最自然用「と」。",
     "distractorNotes": {
       "渡るなら": "「なら」用於承接話題提建議，不作指路句型。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-115",
@@ -297,7 +302,8 @@
     "tip": "指路說「一轉彎就有…」為「と」的典型用法。",
     "distractorNotes": {
       "曲がるなら": "指路說明固定地標位置不使用「なら」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-116",
@@ -337,7 +343,8 @@
     "tip": "到達某處就會看到的恆常視野，使用「と」。",
     "distractorNotes": {
       "登るなら": "「なら」不表示移動後必然看見的風景。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-118",
@@ -377,7 +384,8 @@
     "tip": "通過某路段後必然出現的景觀變化，用「と」。",
     "distractorNotes": {
       "抜けるなら": "描述地理環境的必然轉變不用「なら」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-120",
@@ -477,7 +485,8 @@
     "tip": "氣象條件引發的自然現象，最自然用「と」。",
     "distractorNotes": {
       "下がるなら": "氣象規律不使用「なら」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-125",
@@ -517,7 +526,8 @@
     "tip": "自然界的必然物理與季節現象，用「と」。",
     "distractorNotes": {
       "吹くなら": "自然現象的因果關係不用「なら」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-127",
@@ -557,7 +567,8 @@
     "tip": "每年固定出現的季節景象，使用「と」。",
     "distractorNotes": {
       "なるなら": "「なら」不用於恆常季節描述。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-129",
@@ -577,7 +588,8 @@
     "tip": "天氣變化時的自然連鎖現象，使用「と」。",
     "distractorNotes": {
       "広がるなら": "自然天候變化不用「なら」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-130",
@@ -637,7 +649,8 @@
     "tip": "料理加熱後的必然現象，最自然使用「と」。",
     "distractorNotes": {
       "溶かすなら": "描述加熱後的固定現象不用「なら」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-133",
@@ -657,7 +670,8 @@
     "tip": "烹飪科學中的恆常變化，使用「と」。",
     "distractorNotes": {
       "入れるなら": "「なら」不用於說明烹飪物理化學變化。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-134",
@@ -717,7 +731,8 @@
     "tip": "每次烤麵包都會發生的必然情景，使用「と」。",
     "distractorNotes": {
       "焼くなら": "反覆發生的日常現象不用「なら」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-137",
@@ -737,7 +752,8 @@
     "tip": "食物氧化的自然規律，使用「と」。",
     "distractorNotes": {
       "置くなら": "自然氧化現象不用「なら」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-138",
@@ -757,7 +773,8 @@
     "tip": "烹飪操作帶來的必然結果，使用「と」。",
     "distractorNotes": {
       "炒めるなら": "說明料理常理不用「なら」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-139",
@@ -837,7 +854,8 @@
     "tip": "日常習慣帶來的固定身心放鬆效果，用「と」。",
     "distractorNotes": {
       "浸かるなら": "描述日常習慣的恆常效果不用「なら」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-143",
@@ -1118,7 +1136,8 @@
     "tip": "「〜ばいい」是提出解決方法或建議的固定句型。",
     "distractorNotes": {
       "洗うと": "「と」不能接「いい」構成建議句型。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-157",
@@ -1198,7 +1217,8 @@
     "tip": "「〜ばよかった」表達「早知道就…就好了」的惋惜。",
     "distractorNotes": {
       "巻くと": "「と」不能用來表達後悔或願望。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-161",
@@ -1278,7 +1298,8 @@
     "tip": "「〜ばよかった」用於回顧並表達「要是當時…就好了」。",
     "distractorNotes": {
       "むくと": "「と」不可用於後悔句型。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-165",
@@ -1338,7 +1359,8 @@
     "tip": "強調達成目的的條件與秘訣，使用「ば」最精準。",
     "distractorNotes": {
       "沸かすなら": "說明省瓦斯的一般條件以「ば」最自然。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-168",
@@ -1398,7 +1420,8 @@
     "tip": "烹飪訣竅「只要先做某步驟就能成功」，最常用「ば」。",
     "distractorNotes": {
       "戻すなら": "強調達成料理效果的條件應用「ば」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-171",
@@ -1438,7 +1461,8 @@
     "tip": "表示「只要滿足此條件就應該會…」的推論，用「ば」。",
     "distractorNotes": {
       "替えると": "後句為推測「はず」，搭配「ば」比「と」更自然。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-173",
@@ -1458,7 +1482,8 @@
     "tip": "一般健康原則的充分條件，最自然使用「ば」。",
     "distractorNotes": {
       "休むなら": "陳述普遍健康條件用「ば」更恰當。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-174",
@@ -1618,7 +1643,8 @@
     "tip": "形容詞假定形「〜ければ」用於一般條件判斷。",
     "distractorNotes": {
       "強いなら": "這裡陳述普遍防曬條件，用「ば」更精準。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-182",
@@ -1718,7 +1744,8 @@
     "tip": "與事實相反的假設加上「のに」，固定搭配「ば」。",
     "distractorNotes": {
       "広いと": "「と」不能與「のに」搭配表達反事實願望。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-187",
@@ -1859,7 +1886,8 @@
     "tip": "表示某事完成後的請求，最自然使用「たら」。",
     "distractorNotes": {
       "終わると": "後句為請求「〜てくれませんか」，不能用「と」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-194",
@@ -2219,7 +2247,8 @@
     "tip": "看到地標後接請求「曲がってください」，必須用「たら」。",
     "distractorNotes": {
       "見えると": "後句是請求句，不能使用「と」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-212",
@@ -2279,7 +2308,8 @@
     "tip": "過去的意外發現使用「〜たら、〜た」。",
     "distractorNotes": {
       "開ければ": "過去具體事件的意外發現不用「ば」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-215",
@@ -2339,7 +2369,8 @@
     "tip": "意外發現食物已經燒焦的過去情景，用「たら」。",
     "distractorNotes": {
       "のぞけば": "過去意外發現不能使用「ば」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-218",
@@ -2359,7 +2390,8 @@
     "tip": "偶然抬頭發現自然美景的過去事件，用「たら」。",
     "distractorNotes": {
       "見上げれば": "敘述過去的偶然發現不可用「ば」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-219",
@@ -2399,7 +2431,8 @@
     "tip": "單次操作後出現令人驚訝的結果，使用「たら」。",
     "distractorNotes": {
       "ひねれば": "過去的驚訝體驗不使用「ば」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-221",
@@ -2419,7 +2452,8 @@
     "tip": "行動過程中偶然發現某事物（過去式），用「〜ていたら」。",
     "distractorNotes": {
       "いれば": "敘述過去的偶然發現不用「ば」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-222",
@@ -2499,7 +2533,8 @@
     "tip": "過去動作後緊接發生的具體情景，使用「たら」。",
     "distractorNotes": {
       "取れば": "過去具體敘事不適合用「ば」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-226",
@@ -2699,7 +2734,8 @@
     "tip": "「もし〜たら」搭配請求「呼んでください」，用「たら」。",
     "distractorNotes": {
       "上がると": "後句為請求句，不能使用「と」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-236",
@@ -3539,7 +3575,8 @@
     "tip": "承接對方的喜好提供招待，最自然使用「なら」。",
     "distractorNotes": {
       "好きだと": "「と」不能用於承接喜好來招待對方。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n4-cond-278",

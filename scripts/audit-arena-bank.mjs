@@ -5,6 +5,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const GROUP_META = {
   "n5-particles": { keys: ["は", "が", "に", "で", "を"] },
@@ -300,7 +301,7 @@ for (const [gid, meta] of Object.entries(GROUP_META)) {
 }
 
 // 8. Two-tier level-fit guardrails (verify every group & key has healthy core pool, and core items obey ceilings)
-const VOCAB_DIR = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../data/vocab');
+const VOCAB_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../data/vocab');
 function loadKanjiSet(lvDir) {
   const s = new Set();
   const d = path.join(VOCAB_DIR, lvDir);

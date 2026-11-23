@@ -1,842 +1,1634 @@
-/**
- * Arena v2 — N5 Confusable Groups (Zero-Clone, Researcher-Grade)
- * Groups: n5-particles (50), n5-movement (36), n5-nominal-particles (30) = 116 items
- */
 export const N5_ITEMS = [
-  // =========================================================================
-  // 1. n5-particles (は / が / に / で / を) — 10 each = 50 items
-  // =========================================================================
-  // は (10)
   {
-    id: "n5-par-001", groupId: "n5-particles", before: "私", after: "台湾から来ました。",
-    reading: "わたしはたいわんからきました。", zh: "我來自台灣。",
-    grammarKey: "は", answer: "は",
-    tip: "自我介紹點出主題時使用主題助詞「は」。",
-    distractorNotes: { が: "一般自我介紹用主題助詞「は」；用「が」會變成強調『是我（而不是別人）』。", に: "「私」是主語主題，不是方向或地點。" },
-  },
-  {
-    id: "n5-par-002", groupId: "n5-particles", before: "魚は好きですが、肉", after: "あまり食べません。",
-    reading: "さかなはすきですが、にくはあまりたべません。", zh: "我喜歡魚，但不太吃肉。",
-    grammarKey: "は", answer: "は",
-    tip: "前後對比（魚 vs 肉）並搭配否定的受詞主題，使用對比助詞「は」。",
-    distractorNotes: { を: "雖表受詞，但此處有明確前後對比與否定「あまり〜ません」，用對比「は」最自然。", が: "「食べる」的他動詞受詞不接「が」。" },
-  },
-  {
-    id: "n5-par-003", groupId: "n5-particles", before: "このレストラン", after: "安くて美味しいですよ。",
-    reading: "このレストランはやすくておいしいですよ。", zh: "這家餐廳又便宜又好吃喔。",
-    grammarKey: "は", answer: "は",
-    tip: "針對已知或眼前指出的主題進行評價描述，使用「は」。",
-    distractorNotes: { で: "「で」表動作發生的場所，但本句是在評價餐廳本身的特徵。" },
-  },
-  {
-    id: "n5-par-004", groupId: "n5-particles", before: "明日の会議", after: "午後二時から始まります。",
-    reading: "あしたのかいぎはごごにじからはじまります。", zh: "明天的會議從下午兩點開始。",
-    grammarKey: "は", answer: "は",
-    tip: "將既定事項作為話題點出並說明時間，使用「は」。",
-    distractorNotes: { に: "「会議」是主題而非時間點，不能接「に」。" },
-  },
-  {
-    id: "n5-par-005", groupId: "n5-particles", before: "日本語の会話は楽しいですが、漢字", after: "少し難しいです。",
-    reading: "にほんごのかいわはたのしいですが、かんじはすこしむずかしいです。", zh: "日語會話很有趣，但漢字有點難。",
-    grammarKey: "は", answer: "は",
-    tip: "對比「會話」與「漢字」兩者時，使用對比助詞「は」。",
-    distractorNotes: { を: "形容詞「難しい」前不接他動詞受詞助詞「を」。" },
-  },
-  {
-    id: "n5-par-006", groupId: "n5-particles", before: "冬", after: "寒いですが、温泉が気持ちいいです。",
-    reading: "ふゆはさむいですが、おんせんがきもちいいです。", zh: "冬天雖然冷，但泡溫泉很舒服。",
-    grammarKey: "は", answer: "は",
-    tip: "將季節作為整體主題進行陳述時，使用「は」。",
-    distractorNotes: { に: "「冬に寒い」不自然，描述季節一般特徵用「冬は」。" },
-  },
-  {
-    id: "n5-par-007", groupId: "n5-particles", before: "コーヒーは毎朝飲みますが、お酒", after: "全然飲みません。",
-    reading: "コーヒーはまいあさのみますが、おさけはぜんぜんのみません。", zh: "咖啡我每天早上喝，但酒完全不喝。",
-    grammarKey: "は", answer: "は",
-    tip: "對比兩種飲品並接全面否定時，使用對比助詞「は」。",
-    distractorNotes: { が: "他動詞「飲む」的受詞不能用「が」。" },
-  },
-  {
-    id: "n5-par-008", groupId: "n5-particles", before: "京都", after: "古いお寺がたくさんあります。",
-    reading: "きょうとはふるいおてらがたくさんあります。", zh: "京都有許多古老的寺廟。",
-    grammarKey: "は", answer: "は",
-    tip: "以都市作為大主題描述其特色時用「は」（若單純指位置也可用「京都には」）。",
-    altAnswers: { に: "「京都に古いお寺がたくさんあります」也通順，但點出都市主題介紹特色時常用「京都は」。" },
-    distractorNotes: { で: "存在動詞「あります」不搭配「で」。" },
-  },
-  {
-    id: "n5-par-009", groupId: "n5-particles", before: "山田さん", after: "とても親切な先輩です。",
-    reading: "やまださんはとてもしんせつなせんぱいです。", zh: "山田是很親切的前輩。",
-    grammarKey: "は", answer: "は",
-    tip: "介紹特定人物的身分與性格時，使用主題助詞「は」。",
-    distractorNotes: { を: "名詞述語句（〜です）的主題不用「を」。" },
-  },
-  {
-    id: "n5-par-010", groupId: "n5-particles", before: "土曜日", after: "仕事が休みなので、ゆっくり寝ます。",
-    reading: "どようびはしごとがやすみなので、ゆっくりねます。", zh: "星期六不用上班，所以我要好好睡覺。",
-    grammarKey: "は", answer: "は",
-    tip: "將星期幾作為主題說明狀態（放假），使用「は」。",
-    distractorNotes: { で: "「土曜日で」不能用來標示放假的主題。" },
-  },
-  // が (10)
-  {
-    id: "n5-par-011", groupId: "n5-particles", before: "誰", after: "冷蔵庫のプリンを食べましたか。",
-    reading: "だれがれいぞうこのプリンをたべましたか。", zh: "是誰吃了冰箱裡的布丁？",
-    grammarKey: "が", answer: "が",
-    tip: "疑問詞（誰・何・どれ）作主語時，文法上必用「が」，不可用「は」。",
-    distractorNotes: { は: "疑問詞作主語時絕不可接「は」（×誰は）。" },
-  },
-  {
-    id: "n5-par-012", groupId: "n5-particles", before: "あ、外は雨", after: "降ってきましたよ。",
-    reading: "あ、そとはあめがふってきましたよ。", zh: "啊，外面開始下雨了喔。",
-    grammarKey: "が", answer: "が",
-    tip: "眼前剛發現的自然現象（新資訊）主語必用「が」。",
-    distractorNotes: { は: "剛發現的突發現象屬於新資訊，用「が」而非主題「は」。" },
-  },
-  {
-    id: "n5-par-013", groupId: "n5-particles", before: "私は日本語のニュース", after: "少し分かります。",
-    reading: "わたしはにほんごのニュースがすこしわかります。", zh: "我聽得懂一點日文新聞。",
-    grammarKey: "が", answer: "が",
-    tip: "理解・能力動詞「分かる・できる」的對象必用「が」。",
-    distractorNotes: { を: "「分かる」是自動詞，對象必須用「が」，不可用「を」。" },
-  },
-  {
-    id: "n5-par-014", groupId: "n5-particles", before: "象は鼻", after: "長いです。",
-    reading: "ぞうははながながいです。", zh: "大象的鼻子很長。",
-    grammarKey: "が", answer: "が",
-    tip: "「AはBが〜」句型中，描述局部特徵的主語用「が」。",
-    distractorNotes: { を: "形容詞「長い」前不接「を」。" },
-  },
-  {
-    id: "n5-par-015", groupId: "n5-particles", before: "妹はピアノ", after: "とても上手です。",
-    reading: "いもうとはピアノがとてもじょうずです。", zh: "妹妹很擅長彈鋼琴。",
-    grammarKey: "が", answer: "が",
-    tip: "巧拙形容動詞「上手・下手・得意」的對象用「が」。",
-    distractorNotes: { を: "「上手です」是形容動詞，對象用「が」而非「を」。" },
-  },
-  {
-    id: "n5-par-016", groupId: "n5-particles", before: "どの季節", after: "一番好きですか。",
-    reading: "どのきせつがいちばんすきですか。", zh: "你最喜歡哪個季節？",
-    grammarKey: "が", answer: "が",
-    tip: "疑問詞「どの＋名詞」及好惡對象「好き」都要求助詞「が」。",
-    distractorNotes: { は: "疑問詞作主語／對象時不用「は」。" },
-  },
-  {
-    id: "n5-par-017", groupId: "n5-particles", before: "会議室の電気", after: "消えていますね。",
-    reading: "かいぎしつのでんきがきえていますね。", zh: "會議室的燈關著呢。",
-    grammarKey: "が", answer: "が",
-    tip: "自動詞「消える」描述眼前狀態的主語用「が」。",
-    distractorNotes: { を: "「消える」是自動詞，不可接「を」（他動詞「消す」才用「を」）。" },
-  },
-  {
-    id: "n5-par-018", groupId: "n5-particles", before: "さっきから少し頭", after: "痛いです。",
-    reading: "さっきからすこしあたまがいたいです。", zh: "剛才開始我有點頭痛。",
-    grammarKey: "が", answer: "が",
-    tip: "描述身體感覺（頭が痛い・お腹が空いた）固定使用「が」。",
-    distractorNotes: { を: "「痛い」是形容詞，部位主語用「が」。" },
-  },
-  {
-    id: "n5-par-019", groupId: "n5-particles", before: "私は辛い料理", after: "大好きです。",
-    reading: "わたしはからいりょうりがだいすきです。", zh: "我超喜歡吃辣的料理。",
-    grammarKey: "が", answer: "が",
-    tip: "「好き・嫌い・大好き」的好惡對象固定用「が」。",
-    distractorNotes: { を: "「大好き」是形容動詞，對象用「が」。" },
-  },
-  {
-    id: "n5-par-020", groupId: "n5-particles", before: "急に風", after: "強くなりましたね。",
-    reading: "きゅうにかぜがつよくなりましたね。", zh: "風突然變強了呢。",
-    grammarKey: "が", answer: "が",
-    tip: "眼前察覺的自然變化主語使用「が」。",
-    distractorNotes: { で: "「風」是變強的主語，不是手段或場所。" },
-  },
-  // に (10)
-  {
-    id: "n5-par-021", groupId: "n5-particles", before: "駅の前", after: "新しいコンビニがあります。",
-    reading: "えきのまえにあたらしいコンビニがあります。", zh: "車站前面有一家新開的便利商店。",
-    grammarKey: "に", answer: "に",
-    tip: "存在動詞「ある・いる」的靜態場所必用「に」。",
-    distractorNotes: { で: "靜態存在場所不用「で」（「で」用於動態動作場所）。" },
-  },
-  {
-    id: "n5-par-022", groupId: "n5-particles", before: "庭のベンチの上", after: "白い猫がいます。",
-    reading: "にわのベンチのうえにしろいねこがいます。", zh: "院子的長椅上有一隻白貓。",
-    grammarKey: "に", answer: "に",
-    tip: "生物存在動詞「いる」的所在場所使用「に」。",
-    distractorNotes: { で: "「いる」表靜態存在，場所助詞必須用「に」。" },
-  },
-  {
-    id: "n5-par-023", groupId: "n5-particles", before: "壁", after: "大きな時計が掛けてあります。",
-    reading: "かべにおおきなとけいがかけてあります。", zh: "牆上掛著一個大時鐘。",
-    grammarKey: "に", answer: "に",
-    tip: "結果狀態句型「〜てある」標示物品附著存在的場所，固定使用「に」。",
-    distractorNotes: { で: "「掛けてある」表示掛在牆上的結果狀態，場所須用「に」。" },
-  },
-  {
-    id: "n5-par-024", groupId: "n5-particles", before: "毎朝七時", after: "起きて散歩します。",
-    reading: "まいあさしちじにおきてさんぽします。", zh: "我每天早上七點起床散步。",
-    grammarKey: "に", answer: "に",
-    tip: "具體的數字時間點（七時・月曜日・五月）必用「に」。",
-    distractorNotes: { で: "「七時で」表截止或限定，單純起床時間點用「に」。" },
-  },
-  {
-    id: "n5-par-025", groupId: "n5-particles", before: "冷蔵庫の中", after: "冷たい麦茶が入っています。",
-    reading: "れいぞうこのなかにつめたいむぎちゃがはいっています。", zh: "冰箱裡面放著冰麥茶。",
-    grammarKey: "に", answer: "に",
-    tip: "標示物品存在於容器內部的狀態（入っている），場所用「に」。",
-    distractorNotes: { で: "「入っている」表存在狀態，不用「で」。" },
-  },
-  {
-    id: "n5-par-026", groupId: "n5-particles", before: "誕生日に母", after: "花束を贈りました。",
-    reading: "たんじょうびにははにはなたばをおくりました。", zh: "生日那天我送了媽媽一束花。",
-    grammarKey: "に", answer: "に",
-    tip: "授受動詞「贈る・あげる」的接受對象使用「に」。",
-    distractorNotes: { を: "「花束」才是受詞「を」，對象「母」須用「に」。" },
-  },
-  {
-    id: "n5-par-027", groupId: "n5-particles", before: "ノート", after: "今日の宿題をメモしました。",
-    reading: "ノートにきょうのしゅくだいをメモしました。", zh: "我在筆記本上記下了今天的作業。",
-    grammarKey: "に", answer: "に",
-    tip: "「書く・メモする」留下記錄的著落點表面使用「に」。",
-    distractorNotes: { で: "「ノートで」會變成把筆記本當工具，寫在紙面上的著落點用「に」。" },
-  },
-  {
-    id: "n5-par-028", groupId: "n5-particles", before: "銀行の隣", after: "郵便局があります。",
-    reading: "ぎんこうのとなりにゆうびんきょくがあります。", zh: "銀行旁邊有一間郵局。",
-    grammarKey: "に", answer: "に",
-    tip: "建築物存在的靜態位置固定接「に」。",
-    distractorNotes: { で: "「ある」表存在位置，不接「で」。" },
-  },
-  {
-    id: "n5-par-029", groupId: "n5-particles", before: "友達", after: "駅前のカフェで会いました。",
-    reading: "ともだちにえきまえのカフェであいました。", zh: "我在車站前的咖啡廳見了朋友。",
-    grammarKey: "に", answer: "に",
-    tip: "動詞「会う」的見面對象固定接「に」（也可用「と」表互相約見）。",
-    distractorNotes: { を: "「会う」是自動詞，絕不可用「友達を会う」。" },
-  },
-  {
-    id: "n5-par-030", groupId: "n5-particles", before: "この椅子", after: "座ってもいいですか。",
-    reading: "このいすにすわってもいいですか。", zh: "我可以坐這張椅子嗎？",
-    grammarKey: "に", answer: "に",
-    tip: "動作「座る」的著落點必用「に」。",
-    distractorNotes: { で: "坐下的著落點用「に」，不用「で」。" },
-  },
-  // で (10)
-  {
-    id: "n5-par-031", groupId: "n5-particles", before: "放課後、図書館", after: "試験の勉強をしました。",
-    reading: "ほうかご、としょかんでしけんのべんきょうをしました。", zh: "放學後我在圖書館準備考試。",
-    grammarKey: "で", answer: "で",
-    tip: "動態動作發生的場所使用「で」。",
-    distractorNotes: { に: "「勉強する」是動態動作，場所不能用靜態的「に」。" },
-  },
-  {
-    id: "n5-par-032", groupId: "n5-particles", before: "毎日自転車", after: "会社へ通っています。",
-    reading: "まいにちじてんしゃでかいしゃへかよっています。", zh: "我每天騎腳踏車去公司上班。",
-    grammarKey: "で", answer: "で",
-    tip: "交通工具或手段方法使用「で」。",
-    distractorNotes: { に: "搭乘「乗る」用「に」，但表通勤手段時用「で」。" },
-  },
-  {
-    id: "n5-par-033", groupId: "n5-particles", before: "日本のラーメンを箸", after: "食べました。",
-    reading: "にほんのラーメンをはしでたべました。", zh: "我用筷子吃了日本拉麵。",
-    grammarKey: "で", answer: "で",
-    tip: "使用器具、工具進行動作時用「で」。",
-    distractorNotes: { を: "「箸」是工具而非吃的對象，須用「で」。" },
-  },
-  {
-    id: "n5-par-034", groupId: "n5-particles", before: "先週の日曜日、公園", after: "桜の写真を撮りました。",
-    reading: "せんしゅうのにちようび、こうえんでさくらのしゃしんをとりました。", zh: "上週日我在公園拍了櫻花的照片。",
-    grammarKey: "で", answer: "で",
-    tip: "拍照（写真を撮る）的動作發生地點用「で」。",
-    distractorNotes: { に: "動態動作場所須用「で」。" },
-  },
-  {
-    id: "n5-par-035", groupId: "n5-particles", before: "近くのスーパー", after: "新鮮な野菜を買いました。",
-    reading: "ちかくのスーパーでしんせんなやさいをかいました。", zh: "我在附近的超市買了新鮮蔬菜。",
-    grammarKey: "で", answer: "で",
-    tip: "購物行為發生的地點使用「で」。",
-    distractorNotes: { に: "「買う」是動作動詞，地點用「で」。" },
-  },
-  {
-    id: "n5-par-036", groupId: "n5-particles", before: "英語", after: "メールの返事を書きました。",
-    reading: "えいごでメールのへんじをかきました。", zh: "我用英文寫了電子郵件的回覆。",
-    grammarKey: "で", answer: "で",
-    tip: "使用的語言工具屬於手段，固定用「で」。",
-    distractorNotes: { に: "「英語に」用於翻譯目標（英語に訳す），使用英文書寫用「英語で」。" },
-  },
-  {
-    id: "n5-par-037", groupId: "n5-particles", before: "市民プール", after: "一時間くらい泳ぎました。",
-    reading: "しみんプールでいちじかんくらいおよぎました。", zh: "我在市民游泳池游了大約一小時。",
-    grammarKey: "で", answer: "で",
-    tip: "游泳（泳ぐ）的動作場所使用「で」。",
-    distractorNotes: { に: "「泳ぐ」是持續動作，場所用「で」。" },
-  },
-  {
-    id: "n5-par-038", groupId: "n5-particles", before: "学校の体育館", after: "卒業式が行われます。",
-    reading: "がっこうのたいいくかんでそつぎょうしきがおこなわれます。", zh: "畢業典禮將在學校體育館舉行。",
-    grammarKey: "で", answer: "で",
-    tip: "事件、典禮或活動舉行的地點必用「で」。",
-    distractorNotes: { に: "活動舉辦地點用「で」，靜態物品存在才用「に」。" },
-  },
-  {
-    id: "n5-par-039", groupId: "n5-particles", before: "台風", after: "午後の飛行機が欠航になりました。",
-    reading: "たいふうでごごのひこうきがけっこうになりました。", zh: "因為颱風，下午的班機停飛了。",
-    grammarKey: "で", answer: "で",
-    tip: "自然災害或事故作為原因理由時，名詞後接「で」。",
-    distractorNotes: { を: "「台風」是原因而非受詞，須用「で」。" },
-  },
-  {
-    id: "n5-par-040", groupId: "n5-particles", before: "このチーズケーキは全部", after: "千円です。",
-    reading: "このチーズケーキはぜんぶでせんえんです。", zh: "這些起司蛋糕總共一千日圓。",
-    grammarKey: "で", answer: "で",
-    tip: "「全部で」為固定表達，表合計總數的範圍限定。",
-    distractorNotes: { に: "「全部に」不構成合計總數的用法。" },
-  },
-  // を (10)
-  {
-    id: "n5-par-041", groupId: "n5-particles", before: "毎朝起きてすぐ冷たい水", after: "飲みます。",
-    reading: "まいあさおきてすぐつめたいみずをのみます。", zh: "我每天早上起床後立刻喝一杯冷水。",
-    grammarKey: "を", answer: "を",
-    tip: "他動詞「飲む」的直接受詞使用「を」。",
-    distractorNotes: { が: "他動詞「飲む」的直接受詞用「を」。" },
-  },
-  {
-    id: "n5-par-042", groupId: "n5-particles", before: "寝る前に部屋の電気", after: "消してください。",
-    reading: "ねるまえにへやのでんきをけしてください。", zh: "睡前請關掉房間的燈。",
-    grammarKey: "を", answer: "を",
-    tip: "他動詞「消す」的作用對象必用「を」。",
-    distractorNotes: { が: "「消す」是他動詞（人去關燈），受詞必用「を」。" },
-  },
-  {
-    id: "n5-par-043", groupId: "n5-particles", before: "暑いので、教室の窓", after: "開けましょう。",
-    reading: "あついので、きょうしつのまどをあけましょう。", zh: "好熱，我們把教室的窗戶打開吧。",
-    grammarKey: "を", answer: "を",
-    tip: "他動詞「開ける」的受詞使用「を」。",
-    distractorNotes: { が: "自動詞「開く」才用「が」，他動詞「開ける」用「を」。" },
-  },
-  {
-    id: "n5-par-044", groupId: "n5-particles", before: "図書館で歴史の本", after: "三冊借りました。",
-    reading: "としょかんでれきしのほんをさんさつかりました。", zh: "我在圖書館借了三本歷史書。",
-    grammarKey: "を", answer: "を",
-    tip: "他動詞「借りる」的直接受詞用「を」。",
-    distractorNotes: { に: "「借りる」的出借對象（人）才用「に」，借的物品用「を」。" },
-  },
-  {
-    id: "n5-par-045", groupId: "n5-particles", before: "週末は家族のために手料理", after: "作ります。",
-    reading: "しゅうまつはかぞくのためにてりょうりをつくります。", zh: "週末我會為家人親手做菜。",
-    grammarKey: "を", answer: "を",
-    tip: "他動詞「作る」的製作對象用「を」。",
-    distractorNotes: { で: "「手料理」是做出來的成品受詞，不用「で」。" },
-  },
-  {
-    id: "n5-par-046", groupId: "n5-particles", before: "駅の改札で友達", after: "待っています。",
-    reading: "えきのかいさつでともだちをまっています。", zh: "我正在車站剪票口等朋友。",
-    grammarKey: "を", answer: "を",
-    tip: "動詞「待つ」的等待對象固定用「を」。",
-    distractorNotes: { に: "「待つ」是他動詞，等待的對象用「を」而非「に」。" },
-  },
-  {
-    id: "n5-par-047", groupId: "n5-particles", before: "昨日映画館で新作のアニメ", after: "見ました。",
-    reading: "きのうえいがかんでしんさくのアニメをみました。", zh: "我昨天在電影院看了新上映的動畫。",
-    grammarKey: "を", answer: "を",
-    tip: "他動詞「見る」的觀看對象用「を」。",
-    distractorNotes: { が: "「見える（看得見）」才用「が」，主動觀看「見る」用「を」。" },
-  },
-  {
-    id: "n5-par-048", groupId: "n5-particles", before: "毎晩寝る前にクラシック音楽", after: "聞きます。",
-    reading: "まいばんねるまえにクラシックおんがくをききます。", zh: "我每天睡前都會聽古典音樂。",
-    grammarKey: "を", answer: "を",
-    tip: "他動詞「聞く」的聆聽對象用「を」。",
-    distractorNotes: { が: "「聞こえる（傳入耳中）」用「が」，主動聽「聞く」用「を」。" },
-  },
-  {
-    id: "n5-par-049", groupId: "n5-particles", before: "デパートで父の誕生日のネクタイ", after: "買いました。",
-    reading: "デパートでちちのたんじょうびのネクタイをかいました。", zh: "我在百貨公司買了爸爸的生日領帶。",
-    grammarKey: "を", answer: "を",
-    tip: "他動詞「買う」的購買對象用「を」。",
-    distractorNotes: { に: "購買的物品受詞必用「を」。" },
-  },
-  {
-    id: "n5-par-050", groupId: "n5-particles", before: "朝ごはんのあと、すぐに歯", after: "磨きます。",
-    reading: "あさごはんのあと、すぐにはをみがきます。", zh: "吃完早餐後，我會馬上刷牙。",
-    grammarKey: "を", answer: "を",
-    tip: "他動詞「磨く」的動作對象用「を」。",
-    distractorNotes: { で: "「歯」是刷的對象而非工具，用「を」。" },
-  },
-
-  // =========================================================================
-  // 2. n5-movement (を / に / で) — 12 each = 36 items (へ removed!)
-  // =========================================================================
-  // を (12) — pass through or leave space/vehicle
-  {
-    id: "n5-mov-001", groupId: "n5-movement", before: "毎朝犬と近所の公園", after: "散歩します。",
-    reading: "まいあさいぬときんじょのこうえんをさんぽします。", zh: "每天早上我都會帶狗在附近公園散步。",
-    grammarKey: "を", answer: "を",
-    tip: "移動動詞「散歩する」經過的空間必用「を」。",
-    distractorNotes: { で: "「散歩する」表移動經過整個空間，習慣用「を」而非「で」。", に: "「公園に散歩する」不合文法。" },
-  },
-  {
-    id: "n5-mov-002", groupId: "n5-movement", before: "大きな橋", after: "渡ると、右手に駅が見えます。",
-    reading: "おおきなはしをわたると、みぎてにえきがみえます。", zh: "過了這座大橋，右手邊就會看到車站。",
-    grammarKey: "を", answer: "を",
-    tip: "穿越、通過的路線（橋を渡る）必用「を」。",
-    distractorNotes: { で: "「渡る」是穿越移動動詞，路徑用「を」。" },
-  },
-  {
-    id: "n5-mov-003", groupId: "n5-movement", before: "エレベーターが混んでいたので、階段", after: "上りました。",
-    reading: "エレベーターがこんでいたので、かいだんをのぼりました。", zh: "因為電梯很擠，所以我走樓梯上去了。",
-    grammarKey: "を", answer: "を",
-    tip: "沿著路徑向上移動（階段を上る）使用「を」。",
-    distractorNotes: { に: "到達終點（屋上に上る）才用「に」，經過的樓梯用「を」。" },
-  },
-  {
-    id: "n5-mov-004", groupId: "n5-movement", before: "次の駅で電車", after: "降ります。",
-    reading: "つぎのえきででんしゃをおります。", zh: "我在下一站下電車。",
-    grammarKey: "を", answer: "を",
-    tip: "離開交通工具（降りる）的起點必用「を」。",
-    distractorNotes: { に: "上車「乗る」用「に」，下車「降りる」必用「を」。" },
-  },
-  {
-    id: "n5-mov-005", groupId: "n5-movement", before: "あの信号の交差点", after: "左に曲がってください。",
-    reading: "あのしんごうのこうさてんをひだりにまがってください。", zh: "請在那個紅綠燈的十字路口左轉。",
-    grammarKey: "を", answer: "を",
-    tip: "轉彎經過的路口或轉角（交差点を曲がる）固定用「を」。",
-    distractorNotes: { で: "指路句型「交差点／角を曲がる」固定使用「を」。" },
-  },
-  {
-    id: "n5-mov-006", groupId: "n5-movement", before: "青い空", after: "白い鳥が気持ちよさそうに飛んでいます。",
-    reading: "あおいそらをしろいとりがきもちよさそうにとんでいます。", zh: "白鳥正愜意地在藍天中飛翔。",
-    grammarKey: "を", answer: "を",
-    tip: "在廣闊空間移動經過（空を飛ぶ）使用「を」。",
-    distractorNotes: { に: "「飛ぶ」是移動動詞，經過的空間用「を」。" },
-  },
-  {
-    id: "n5-mov-007", groupId: "n5-movement", before: "今朝はいつもより早く家", after: "出ました。",
-    reading: "けさはいつもよりはやくいえをでました。", zh: "今天早上我比平常更早出門。",
-    grammarKey: "を", answer: "を",
-    tip: "離開某個空間（家を出る）的出發點必用「を」。",
-    distractorNotes: { に: "進入「入る」用「に」，離開「出る」用「を」。" },
-  },
-  {
-    id: "n5-mov-008", groupId: "n5-movement", before: "去年の春に大学", after: "卒業しました。",
-    reading: "きょねんのはるにだいがくをそつぎょうしました。", zh: "我去年春天從大學畢業了。",
-    grammarKey: "を", answer: "を",
-    tip: "離開所屬機構（大学を卒業する）固定使用「を」。",
-    distractorNotes: { に: "入學「入学する」用「に」，畢業「卒業する」用「を」。" },
-  },
-  {
-    id: "n5-mov-009", groupId: "n5-movement", before: "この静かな道", after: "真っすぐ歩いてください。",
-    reading: "このしずかなみちをまっすぐあるいてください。", zh: "請沿著這條安靜的路直走。",
-    grammarKey: "を", answer: "を",
-    tip: "沿著道路行走（道を歩く）經過的路徑用「を」。",
-    distractorNotes: { で: "「歩く」搭配路徑名詞「道」時用「を」。" },
-  },
-  {
-    id: "n5-mov-010", groupId: "n5-movement", before: "二つ目の角", after: "右に曲がると郵便局があります。",
-    reading: "ふたつめのかどをみぎにまがるとゆうびんきょくがあります。", zh: "在第二個轉角右轉就會看到郵局。",
-    grammarKey: "を", answer: "を",
-    tip: "「角を曲がる」為固定移動路徑搭配，必用「を」。",
-    distractorNotes: { に: "轉彎方向（右に）用「に」，經過的轉角用「を」。" },
-  },
-  {
-    id: "n5-mov-011", groupId: "n5-movement", before: "バス停に着いたので、急いでバス", after: "降りました。",
-    reading: "バスていについたので、いそいでバスをおりました。", zh: "到公車站了，我趕緊下了公車。",
-    grammarKey: "を", answer: "を",
-    tip: "離開公車（バスを降りる）必用「を」。",
-    distractorNotes: { に: "搭公車用「バスに乗る」，下車用「バスを降りる」。" },
-  },
-  {
-    id: "n5-mov-012", groupId: "n5-movement", before: "会議が終わったので、全員が会議室", after: "出ました。",
-    reading: "かいぎがおわったので、ぜんいんがかいぎしつをでました。", zh: "會議結束了，大家都離開了會議室。",
-    grammarKey: "を", answer: "を",
-    tip: "離開房間或場所（部屋を出る）固定用「を」。",
-    distractorNotes: { で: "離開某空間不用「で」，須用「を」。" },
-  },
-  // に (12) — arrive, enter, board, destination
-  {
-    id: "n5-mov-013", groupId: "n5-movement", before: "空港", after: "着いたら、すぐメッセージを送りますね。",
-    reading: "くうこうについたら、すぐメッセージをおくりますね。", zh: "到機場之後，我會馬上傳訊息給你喔。",
-    grammarKey: "に", answer: "に",
-    tip: "抵達某地（着く）的到達點固定用「に」。",
-    distractorNotes: { で: "「着く」是瞬間抵達動作，目的地必用「に」。", を: "「着く」不接「を」。" },
-  },
-  {
-    id: "n5-mov-014", groupId: "n5-movement", before: "雨が降ってきたので、急いでタクシー", after: "乗りました。",
-    reading: "あめがふってきたので、いそいでタクシーにのりました。", zh: "開始下雨了，我趕緊搭上計程車。",
-    grammarKey: "に", answer: "に",
-    tip: "搭乘交通工具（乗る）的進入對象固定用「に」。",
-    distractorNotes: { を: "下車「降りる」才用「を」，上車「乗る」必用「に」。" },
-  },
-  {
-    id: "n5-mov-015", groupId: "n5-movement", before: "どうぞ、こちらのお部屋", after: "お入りください。",
-    reading: "どうぞ、こちらのおへやにおはいりください。", zh: "請進這間房間。",
-    grammarKey: "に", answer: "に",
-    tip: "進入空間（入る）的歸著點必用「に」。",
-    distractorNotes: { を: "離開「出る」用「を」，進入「入る」用「に」。" },
-  },
-  {
-    id: "n5-mov-016", groupId: "n5-movement", before: "東京駅で新幹線", after: "乗り換えます。",
-    reading: "とうきょうえきでしんかんせんにのりかえます。", zh: "我要在東京車站轉乘新幹線。",
-    grammarKey: "に", answer: "に",
-    tip: "換乘至目標交通工具（〜に乗り換える）使用「に」。",
-    distractorNotes: { で: "轉乘的地點（東京駅で）用「で」，換乘的車輛用「に」。" },
-  },
-  {
-    id: "n5-mov-017", groupId: "n5-movement", before: "帰ってきたら、まず温かいお風呂", after: "入ります。",
-    reading: "かえってきたら、まずあたたかいおふろにはいります。", zh: "回到家後，我會先泡個熱水澡。",
-    grammarKey: "に", answer: "に",
-    tip: "「お風呂に入る」為固定搭配，進入浴缸用「に」。",
-    distractorNotes: { で: "「お風呂で」指在浴室裡做別的事（如唱歌），泡澡固定用「お風呂に入る」。" },
-  },
-  {
-    id: "n5-mov-018", groupId: "n5-movement", before: "来月から新しい会社", after: "勤めることになりました。",
-    reading: "らいげつからあたらしいかいしゃにつとめることになりました。", zh: "下個月起我將到新公司任職。",
-    grammarKey: "に", answer: "に",
-    tip: "所屬任職動詞「勤める」的地點固定用「に」。",
-    distractorNotes: { で: "「働く」用「で」，但「勤める」表所屬歸著點，固定用「に」。" },
-  },
-  {
-    id: "n5-mov-019", groupId: "n5-movement", before: "来年の春、大阪", after: "引っ越す予定です。",
-    reading: "らいねんのはる、おおさかにひっこすよていです。", zh: "我預計明年春天搬到大阪。",
-    grammarKey: "に", answer: "に",
-    tip: "搬遷的目的地（引っ越す）使用「に」。",
-    distractorNotes: { で: "「大阪で引っ越す」指在大阪境內搬家，搬去大阪用「大阪に」。" },
-  },
-  {
-    id: "n5-mov-020", groupId: "n5-movement", before: "明日の朝九時までに会社", after: "着かなければなりません。",
-    reading: "あしたのあさくじまでにかいしゃにつかなければなりません。", zh: "明天早上九點前我必須抵達公司。",
-    grammarKey: "に", answer: "に",
-    tip: "抵達動詞「着く」的目的地固定用「に」。",
-    distractorNotes: { で: "抵達點不用「で」。" },
-  },
-  {
-    id: "n5-mov-021", groupId: "n5-movement", before: "空いている席", after: "お座りください。",
-    reading: "あいているせきにおすわりください。", zh: "請坐空位。",
-    grammarKey: "に", answer: "に",
-    tip: "「座る」的著落點固定用「に」。",
-    distractorNotes: { を: "「座る」是自動詞，不接「を」。" },
-  },
-  {
-    id: "n5-mov-022", groupId: "n5-movement", before: "夏休みは家族と北海道", after: "旅行に行きます。",
-    reading: "なつやすみはかぞくとほっかいどうにりょこうにいきます。", zh: "暑假我要和家人去北海道旅行。",
-    grammarKey: "に", answer: "に",
-    tip: "移動的目的地（北海道に行く）使用「に」。",
-    distractorNotes: { で: "「北海道で」不能搭配移動動詞「行きます」。" },
-  },
-  {
-    id: "n5-mov-023", groupId: "n5-movement", before: "大学を卒業して、京都の大学院", after: "入りました。",
-    reading: "だいがくをそつぎょうして、きょうとのだいがくいんにはいりました。", zh: "大學畢業後，我進了京都的研究所。",
-    grammarKey: "に", answer: "に",
-    tip: "進入學校或組織（入る）必用「に」。",
-    distractorNotes: { を: "離開用「を」，進入用「に」。" },
-  },
-  {
-    id: "n5-mov-024", groupId: "n5-movement", before: "満員電車", after: "乗るのは本当に疲れますね。",
-    reading: "まんいんでんしゃにのるのはほんとうにつかれますね。", zh: "搭擠滿人的電車真的很累呢。",
-    grammarKey: "に", answer: "に",
-    tip: "「乗る」固定搭配「に」。",
-    distractorNotes: { で: "「電車で」後接「行く・通う」，動詞「乗る」須接「に」。" },
-  },
-  // で (12) — action location
-  {
-    id: "n5-mov-025", groupId: "n5-movement", before: "昨日、新宿駅", after: "大学時代の友達と待ち合わせしました。",
-    reading: "きのう、しんじゅくえきでだいがくじだいのともだちとまちあわせしました。", zh: "昨天我在新宿車站和大學同學會合了。",
-    grammarKey: "で", answer: "で",
-    tip: "會合（待ち合わせする）的動作發生地點用「で」。",
-    distractorNotes: { に: "「待ち合わせする」是動作事件，場所用「で」。" },
-  },
-  {
-    id: "n5-mov-026", groupId: "n5-movement", before: "先週末、海", after: "バーベキューをしました。",
-    reading: "せんしゅうまつ、うみでバーベキューをしました。", zh: "上週末我們在海邊烤肉了。",
-    grammarKey: "で", answer: "で",
-    tip: "在某地點舉辦活動（バーベキューをする）用「で」。",
-    distractorNotes: { に: "動態活動場所不用「に」。" },
-  },
-  {
-    id: "n5-mov-027", groupId: "n5-movement", before: "京都駅", after: "家族のためにお土産を買いました。",
-    reading: "きょうとえきでかぞくのためにおみやげをかいました。", zh: "我在京都車站幫家人買了伴手禮。",
-    grammarKey: "で", answer: "で",
-    tip: "購買行為發生的場所用「で」。",
-    distractorNotes: { に: "「買う」是動作動詞，地點用「で」。" },
-  },
-  {
-    id: "n5-mov-028", groupId: "n5-movement", before: "旅館の温泉", after: "ゆっくり疲れを癒やしました。",
-    reading: "りょかんのおんせんでゆっくりつかれをいやしました。", zh: "我在旅館的溫泉好好消除了疲勞。",
-    grammarKey: "で", answer: "で",
-    tip: "在某處進行動作（疲れを癒やす）用「で」。",
-    distractorNotes: { を: "「温泉」是動作場所而非受詞。" },
-  },
-  {
-    id: "n5-mov-029", groupId: "n5-movement", before: "次の駅", after: "急行電車に乗り換えてください。",
-    reading: "つぎのえきできゅうこうでんしゃにのりかえてください。", zh: "請在下一站轉乘急行電車。",
-    grammarKey: "で", answer: "で",
-    tip: "轉乘動作發生的車站地點用「で」（目標電車才用「に」）。",
-    distractorNotes: { に: "句中「急行電車に」已是目標車輛，轉乘場所須用「で」。" },
-  },
-  {
-    id: "n5-mov-030", groupId: "n5-movement", before: "静かなカフェ", after: "旅行の計画を立てました。",
-    reading: "しずかなカフェでりょこうのけいかくをたてました。", zh: "我在安靜的咖啡廳擬定了旅行計畫。",
-    grammarKey: "で", answer: "で",
-    tip: "進行思考、擬定計畫的場所用「で」。",
-    distractorNotes: { に: "動作發生場所不用「に」。" },
-  },
-  {
-    id: "n5-mov-031", groupId: "n5-movement", before: "夏の山", after: "友達とキャンプを楽しみました。",
-    reading: "なつのやまでともだちとキャンプをたのしみました。", zh: "夏天我和朋友在山上享受了露營。",
-    grammarKey: "で", answer: "で",
-    tip: "露營遊玩的活動場所用「で」。",
-    distractorNotes: { に: "「楽しむ」是動作動詞，地點用「で」。" },
-  },
-  {
-    id: "n5-mov-032", groupId: "n5-movement", before: "空港のロビー", after: "搭乗時間まで本を読んでいました。",
-    reading: "くうこうのロビーでとうじょうじかんまでほんをよんでいました。", zh: "我在機場大廳看書看到登機時間。",
-    grammarKey: "で", answer: "で",
-    tip: "看書的動作發生地點用「で」。",
-    distractorNotes: { に: "讀書是動態動作，不用「に」。" },
-  },
-  {
-    id: "n5-mov-033", groupId: "n5-movement", before: "ホテルのレストラン", after: "朝食のバイキングを食べました。",
-    reading: "ホテルのレストランでちょうしょくのバイキングをたべました。", zh: "我在飯店餐廳吃了自助式早餐。",
-    grammarKey: "で", answer: "で",
-    tip: "用餐動作發生的場所用「で」。",
-    distractorNotes: { に: "「食べる」的場所必用「で」。" },
-  },
-  {
-    id: "n5-mov-034", groupId: "n5-movement", before: "駅前広場", after: "週末に音楽イベントが開かれます。",
-    reading: "えきまえひろばでしゅうまつにおんがくイベントがひらかれます。", zh: "週末在站前廣場會舉辦音樂活動。",
-    grammarKey: "で", answer: "で",
-    tip: "活動舉辦的場地固定用「で」。",
-    distractorNotes: { に: "「開かれる」表活動舉辦，場所須用「で」。" },
-  },
-  {
-    id: "n5-mov-035", groupId: "n5-movement", before: "大学の図書館", after: "卒業論文を書いています。",
-    reading: "だいがくのとしょかんでそつぎょうろんぶんをかいています。", zh: "我正在大學圖書館寫畢業論文。",
-    grammarKey: "で", answer: "で",
-    tip: "寫作動作發生的場所用「で」。",
-    distractorNotes: { を: "「図書館」不是寫的受詞，而是動作場所「で」。" },
-  },
-  {
-    id: "n5-mov-036", groupId: "n5-movement", before: "古い商店街", after: "美味しいコロッケを見つけました。",
-    reading: "ふるいしょうてんがいでおいしいコロッケをみつけました。", zh: "我在老商店街發現了好吃的可樂餅。",
-    grammarKey: "で", answer: "で",
-    tip: "「見つける」發生的地點使用「で」。",
-    distractorNotes: { に: "「見つける」是他動詞動作，場所用「で」。" },
-  },
-
-  // =========================================================================
-  // 3. n5-nominal-particles (への / での / からの) — 10 each = 30 items
-  // Every item has a clear directional predicate (zero ambiguity!)
-  // =========================================================================
-  // への (10)
-  {
-    id: "n5-nom-001", groupId: "n5-nominal-particles", before: "母の日なので、母", after: "感謝の手紙を書きました。",
-    reading: "ははのひなので、ははへのかんしゃのてがみをかきました。", zh: "因為是母親節，我寫了一封感謝信給媽媽。",
-    grammarKey: "への", answer: "への",
-    tip: "「書きました」表朝對方寄出／寫給對方，名詞修飾用「への」。",
-    distractorNotes: { からの: "「母からの手紙」是媽媽寄來的信，與「書きました（我寫的）」方向相反。", での: "「での」表場所或手段，不能接在收信人「母」後面。" },
-  },
-  {
-    id: "n5-nom-002", groupId: "n5-nominal-particles", before: "親友の誕生日に、彼", after: "プレゼントを買いに行きました。",
-    reading: "しんゆうのたんじょうびに、かれへのプレゼントをかいにいきました。", zh: "摯友生日，我去買要送給他的禮物。",
-    grammarKey: "への", answer: "への",
-    tip: "「要買來送給他的禮物」指向接收對象，使用「への」。",
-    distractorNotes: { からの: "「彼からのプレゼント」是他送給我的禮物，不需要自己去買。" },
-  },
-  {
-    id: "n5-nom-003", groupId: "n5-nominal-particles", before: "今、駅", after: "道順を地図で調べています。",
-    reading: "いま、えきへのみちじゅんをちずでしらべています。", zh: "我現在正在用地圖查去車站的路線。",
-    grammarKey: "への", answer: "への",
-    tip: "通往某目的地的路線（駅への道順）使用「への」。",
-    distractorNotes: { での: "「駅での道順」不自然，指向目的地方向用「への」。" },
-  },
-  {
-    id: "n5-nom-004", groupId: "n5-nominal-particles", before: "日本", after: "留学の準備を少しずつ進めています。",
-    reading: "にほんへのりゅうがくのじゅんびをすこしずつすすめています。", zh: "我正在一步步推進去日本留學的準備。",
-    grammarKey: "への", answer: "への",
-    tip: "前往某國留學（日本への留学）表移動方向，使用「への」。",
-    distractorNotes: { からの: "「日本からの留学」變成從日本出發去別國留學。" },
-  },
-  {
-    id: "n5-nom-005", groupId: "n5-nominal-particles", before: "お客様", after: "お詫びのメールを急いで作成しました。",
-    reading: "おきゃくさまへのおわびのメールをいそいでさくせいしました。", zh: "我趕緊撰寫了給客戶的致歉郵件。",
-    grammarKey: "への", answer: "への",
-    tip: "「作成しました（撰寫寄給客戶）」指向收件對象，用「への」。",
-    distractorNotes: { からの: "「お客様からの」是客戶寄來的，與「作成しました」矛盾。" },
-  },
-  {
-    id: "n5-nom-006", groupId: "n5-nominal-particles", before: "先生", after: "質問をノートにまとめておきました。",
-    reading: "せんせいへのしつもんをノートにまとめておきました。", zh: "我先把要問老師的問題整理在筆記本裡了。",
-    grammarKey: "への", answer: "への",
-    tip: "「向老師提出的問題」指向提問對象，用「への」。",
-    distractorNotes: { からの: "「先生からの質問」是老師出的問題，與自己整理發問語境不同。" },
-  },
-  {
-    id: "n5-nom-007", groupId: "n5-nominal-particles", before: "来年、ヨーロッパ", after: "旅行を計画しています。",
-    reading: "らいねん、ヨーロッパへのりょこうをけいかくしています。", zh: "我正計畫明年去歐洲旅行。",
-    grammarKey: "への", answer: "への",
-    tip: "前往某地的旅行（ヨーロッパへの旅行）用「への」。",
-    distractorNotes: { からの: "「からの」表起點來源，不是旅遊目的地。" },
-  },
-  {
-    id: "n5-nom-008", groupId: "n5-nominal-particles", before: "後輩", after: "応援メッセージを書いてカードに入れました。",
-    reading: "こうはいへのおうえんメッセージをかいてカードにいれました。", zh: "我寫了給學弟妹的加油訊息放進卡片裡。",
-    grammarKey: "への", answer: "への",
-    tip: "寫給對方的訊息（後輩へのメッセージ）用「への」。",
-    distractorNotes: { での: "人稱名詞「後輩」後不能接場所助詞「での」。" },
-  },
-  {
-    id: "n5-nom-009", groupId: "n5-nominal-particles", before: "空港", after: "バスは毎時間三本出ています。",
-    reading: "くうこうへのバスはまいじかんさんぼんでています。", zh: "往機場的巴士每小時有三班。",
-    grammarKey: "への", answer: "への",
-    tip: "開往某目的地的交通班次（空港へのバス）用「への」。",
-    distractorNotes: { での: "「空港でのバス」無法表達開往機場的方向。" },
-  },
-  {
-    id: "n5-nom-010", groupId: "n5-nominal-particles", before: "新しい環境", after: "期待と不安で胸がいっぱいです。",
-    reading: "あたらしいかんきょうへのきたいとふあんでむねがいっぱいです。", zh: "我對新環境滿懷期待與不安。",
-    grammarKey: "への", answer: "への",
-    tip: "情感朝向的對象（環境への期待）使用「への」。",
-    distractorNotes: { での: "「環境への期待」表對該環境懷抱期待，不用「での」。" },
-  },
-  // での (10)
-  {
-    id: "n5-nom-011", groupId: "n5-nominal-particles", before: "東京", after: "一人暮らしにも、ようやく慣れてきました。",
-    reading: "とうきょうでのひとりぐらしにも、ようやくねれてきました。".replace("ねれて", "なれて"), zh: "我也總算漸漸習慣在東京的獨居生活了。",
-    grammarKey: "での", answer: "での",
-    tip: "在某地點進行的生活（東京での一人暮らし）使用「での」。",
-    distractorNotes: { への: "「東京への」表前往東京，而非在東京當地的生活。" },
-  },
-  {
-    id: "n5-nom-012", groupId: "n5-nominal-particles", before: "昨日の会議", after: "話し合いの結果をまとめました。",
-    reading: "きのうのかいぎでのはなしあいのけっかをまとめました。", zh: "我整理了昨天會議中的討論結果。",
-    grammarKey: "での", answer: "での",
-    tip: "在某場合中發生的討論（会議での話し合い）用「での」。",
-    distractorNotes: { からの: "「会議からの」無法修飾在會議場內進行的討論。" },
-  },
-  {
-    id: "n5-nom-013", groupId: "n5-nominal-particles", before: "北海道", after: "スキー体験は一生の思い出です。",
-    reading: "ほっかいどうでのスキーたいけんはいっしょうのおもいでです。", zh: "在北海道的滑雪體驗是一輩子的回憶。",
-    grammarKey: "での", answer: "での",
-    tip: "在特定地點的體驗活動（北海道での体験）使用「での」。",
-    distractorNotes: { への: "滑雪是在北海道當地發生的動作體驗，用「での」。" },
-  },
-  {
-    id: "n5-nom-014", groupId: "n5-nominal-particles", before: "大学", after: "四年間は本当にあっという間でした。",
-    reading: "だいがくでのよねんかんはほんとうにあっというまでした。", zh: "在大學的四年間真是轉眼就過去了。",
-    grammarKey: "での", answer: "での",
-    tip: "在某場所度過的時間（大学での四年間）使用「での」。",
-    distractorNotes: { からの: "「大学からの四年間」會變成從大學起算，而非在大學裡的四年。" },
-  },
-  {
-    id: "n5-nom-015", groupId: "n5-nominal-particles", before: "日本語", after: "プレゼンは緊張しましたが、うまくいきました。",
-    reading: "にほんごでのプレゼンはきんちょうしましたが、うまくいきました。", zh: "用日文做簡報雖然很緊張，但進行得很順利。",
-    grammarKey: "での", answer: "での",
-    tip: "以某種語言手段進行的活動（日本語でのプレゼン）用「での」。",
-    distractorNotes: { への: "日文是簡報使用的工具手段，不是方向對象。" },
-  },
-  {
-    id: "n5-nom-016", groupId: "n5-nominal-particles", before: "オンライン", after: "打ち合わせは移動時間がなくて便利です。",
-    reading: "オンラインでのうちあわせはいどうじかんがなくてべんりです。", zh: "線上開會不用通勤時間，非常方便。",
-    grammarKey: "での", answer: "での",
-    tip: "透過某媒介／場域進行的會議（オンラインでの打ち合わせ）用「での」。",
-    distractorNotes: { からの: "「オンラインからの」不構成線上會議的表達。" },
-  },
-  {
-    id: "n5-nom-017", groupId: "n5-nominal-particles", before: "京都", after: "観光は秋が一番おすすめです。",
-    reading: "きょうとでのかんこうはあきがいちばんおすすめです。", zh: "在京都觀光最推薦秋天。",
-    grammarKey: "での", answer: "での",
-    tip: "在某地的觀光活動（京都での観光）用「での」。",
-    distractorNotes: { からの: "「京都からの」表從京都出發，與在京都觀光不同。" },
-  },
-  {
-    id: "n5-nom-018", groupId: "n5-nominal-particles", before: "海外", after: "仕事を通して、視野が広がりました。",
-    reading: "かいがいでのしごとをとおして、しやがひろがりました。", zh: "透過在海外的工作，我的視野開闊了。",
-    grammarKey: "での", answer: "での",
-    tip: "在某地從事的工作（海外での仕事）用「での」。",
-    distractorNotes: { への: "「仕事」是在海外執行的動態活動，用「での」。" },
-  },
-  {
-    id: "n5-nom-019", groupId: "n5-nominal-particles", before: "病院", after: "診察が予想より早く終わりました。",
-    reading: "びょういんでのしんさつがよそうよりはやくおわりました。", zh: "在醫院的看診比預期結束得還早。",
-    grammarKey: "での", answer: "での",
-    tip: "在醫院進行的看診（病院での診察）用「での」。",
-    distractorNotes: { への: "看診發生的場所用「での」。" },
-  },
-  {
-    id: "n5-nom-020", groupId: "n5-nominal-particles", before: "電車の中", after: "通話はご遠慮ください。",
-    reading: "でんしゃのなかでのつうわはごえんりょください。", zh: "請勿在電車內講電話。",
-    grammarKey: "での", answer: "での",
-    tip: "在車廂內進行的動作（電車の中での通話）用「での」。",
-    distractorNotes: { からの: "禁止的是在車廂內講電話的行為，場所用「での」。" },
-  },
-  // からの (10)
-  {
-    id: "n5-nom-021", groupId: "n5-nominal-particles", before: "今朝、実家の母", after: "手紙が届いて嬉しかったです。",
-    reading: "けさ、じっかのははからのてがみがとどいてうれしかったです。", zh: "今天早上收到老家媽媽寄來的信，好開心。",
-    grammarKey: "からの", answer: "からの",
-    tip: "「届いた（寄達）」標示信件來自媽媽，來源起點必用「からの」。",
-    distractorNotes: { への: "「母への手紙」是我寫給媽媽的信，不會說「届いた（寄來了）」。" },
-  },
-  {
-    id: "n5-nom-022", groupId: "n5-nominal-particles", before: "高校時代の友達", after: "結婚式の招待状を受け取りました。",
-    reading: "こうこうじだいのともだちからのけっこんしきのしょうたいじょうをうけとりました。", zh: "我收到了高中同學寄來的婚禮喜帖。",
-    grammarKey: "からの", answer: "からの",
-    tip: "「受け取りました（收到）」對應寄件來源，使用「からの」。",
-    distractorNotes: { への: "收到的物品來源必用「からの」。" },
-  },
-  {
-    id: "n5-nom-023", groupId: "n5-nominal-particles", before: "ホテルの窓", after: "眺めがとてもきれいでした。",
-    reading: "ホテルのまどからのながめがとてもきれいでした。", zh: "從飯店窗戶看出去的景色非常美。",
-    grammarKey: "からの", answer: "からの",
-    tip: "視線的出發點（窓からの眺め）固定使用「からの」。",
-    distractorNotes: { での: "從窗戶望出去的視角起點用「からの」。" },
-  },
-  {
-    id: "n5-nom-024", groupId: "n5-nominal-particles", before: "部長", after: "アドバイスのおかげで、企画が通りました。",
-    reading: "ぶちょうからのアドバイスのおかげで、きかくがとおりました。", zh: "多虧了部長給的建議，企劃案通過了。",
-    grammarKey: "からの", answer: "からの",
-    tip: "來自部長的建議（部長からのアドバイス）使用「からの」。",
-    distractorNotes: { への: "「部長へのアドバイス」變成給部長提建議，與受惠「おかげで」語境不符。" },
-  },
-  {
-    id: "n5-nom-025", groupId: "n5-nominal-particles", before: "さっき病院", after: "電話に出て、検査結果を聞きました。",
-    reading: "さっきびょういんからのでんわにでて、けんさけっかをききました。", zh: "剛才我接了醫院打來的電話，聽了檢查結果。",
-    grammarKey: "からの", answer: "からの",
-    tip: "「電話に出て（接起對方打來的電話）」來源用「からの」。",
-    distractorNotes: { への: "「病院への電話」是打給醫院的電話，不會說「出て（接起）」。" },
-  },
-  {
-    id: "n5-nom-026", groupId: "n5-nominal-particles", before: "お客さん", after: "温かいレビューを読んで元気が出ました。",
-    reading: "おきゃくさんからのあたたかいレビューをよんでげんきがでました。", zh: "讀了客人留下的溫暖評價，我有了滿滿的活力。",
-    grammarKey: "からの", answer: "からの",
-    tip: "來自客人的評價（お客さんからのレビュー）用「からの」。",
-    distractorNotes: { への: "「お客さんへの」會變成寫給客人的評論。" },
-  },
-  {
-    id: "n5-nom-027", groupId: "n5-nominal-particles", before: "山頂", after: "日の出を見るために、夜中に出発しました。",
-    reading: "さんちょうからのひのでをみるために、よなかにしゅっぱつしました。", zh: "為了看從山頂望見的日出，我們半夜就出發了。",
-    grammarKey: "からの", answer: "からの",
-    tip: "從山頂望出去的觀測起點（山頂からの日の出）用「からの」。",
-    distractorNotes: { への: "不是往山頂去，而是從山頂看的景色，用「からの」。" },
-  },
-  {
-    id: "n5-nom-028", groupId: "n5-nominal-particles", before: "日本にいる叔母", after: "小包が昨日届きました。",
-    reading: "にほんにいるおばからのこづつみがきのうとどきました。", zh: "住在日本的阿姨寄來的包裹昨天到了。",
-    grammarKey: "からの", answer: "からの",
-    tip: "包裹的寄件來源（叔母からの小包）使用「からの」。",
-    distractorNotes: { への: "「届きました」表示寄到我這裡，寄件人須用「からの」。" },
-  },
-  {
-    id: "n5-nom-029", groupId: "n5-nominal-particles", before: "駅", after: "距離は歩いて五分ほどです。",
-    reading: "えきからのきょりはあるいてごふんほどです。", zh: "從車站出發的距離走路大約五分鐘。",
-    grammarKey: "からの", answer: "からの",
-    tip: "計算距離的起點（駅からの距離）使用「からの」。",
-    distractorNotes: { での: "距離起點須用「からの」。" },
-  },
-  {
-    id: "n5-nom-030", groupId: "n5-nominal-particles", before: "採用担当の方", after: "合格通知メールを何度も読み返しました。",
-    reading: "さいようたんとうのかたからのごうかくつうちメールをなんどもよみかえしました。", zh: "我把人資寄來的錄取通知信反覆讀了好幾遍。",
-    grammarKey: "からの", answer: "からの",
-    tip: "收到的郵件寄件者（〜からのメール）使用「からの」。",
-    distractorNotes: { への: "「読み返しました」指重讀收到的通知信，來源用「からの」。" },
-  },
+    "id": "n5-par-001",
+    "groupId": "n5-particles",
+    "before": "私",
+    "after": "台湾から来ました。",
+    "reading": "わたしはたいわんからきました。",
+    "zh": "我來自台灣。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "自我介紹點出主題時使用主題助詞「は」。",
+    "distractorNotes": {
+      "が": "一般自我介紹用主題助詞「は」；用「が」會變成強調『是我（而不是別人）』。",
+      "に": "「私」是主語主題，不是方向或地點。"
+    }
+  },
+  {
+    "id": "n5-par-002",
+    "groupId": "n5-particles",
+    "before": "魚は好きですが、肉",
+    "after": "あまり食べません。",
+    "reading": "さかなはすきですが、にくはあまりたべません。",
+    "zh": "我喜歡魚，但不太吃肉。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "前後對比（魚 vs 肉）並搭配否定的受詞主題，使用對比助詞「は」。",
+    "distractorNotes": {
+      "を": "雖表受詞，但此處有明確前後對比與否定「あまり〜ません」，用對比「は」最自然。",
+      "が": "「食べる」的他動詞受詞不接「が」。"
+    }
+  },
+  {
+    "id": "n5-par-003",
+    "groupId": "n5-particles",
+    "before": "このレストラン",
+    "after": "安くて美味しいですよ。",
+    "reading": "このレストランはやすくておいしいですよ。",
+    "zh": "這家餐廳又便宜又好吃喔。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "針對已知或眼前指出的主題進行評價描述，使用「は」。",
+    "distractorNotes": {
+      "で": "「で」表動作發生的場所，但本句是在評價餐廳本身的特徵。"
+    }
+  },
+  {
+    "id": "n5-par-004",
+    "groupId": "n5-particles",
+    "before": "明日の会議",
+    "after": "午後二時から始まります。",
+    "reading": "あしたのかいぎはごごにじからはじまります。",
+    "zh": "明天的會議從下午兩點開始。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "將既定事項作為話題點出並說明時間，使用「は」。",
+    "distractorNotes": {
+      "に": "「会議」是主題而非時間點，不能接「に」。"
+    }
+  },
+  {
+    "id": "n5-par-005",
+    "groupId": "n5-particles",
+    "before": "日本語の会話は楽しいですが、漢字",
+    "after": "少し難しいです。",
+    "reading": "にほんごのかいわはたのしいですが、かんじはすこしむずかしいです。",
+    "zh": "日語會話很有趣，但漢字有點難。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "對比「會話」與「漢字」兩者時，使用對比助詞「は」。",
+    "distractorNotes": {
+      "を": "形容詞「難しい」前不接他動詞受詞助詞「を」。"
+    }
+  },
+  {
+    "id": "n5-par-006",
+    "groupId": "n5-particles",
+    "before": "冬",
+    "after": "寒いですが、温泉が気持ちいいです。",
+    "reading": "ふゆはさむいですが、おんせんがきもちいいです。",
+    "zh": "冬天雖然冷，但泡溫泉很舒服。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "將季節作為整體主題進行陳述時，使用「は」。",
+    "distractorNotes": {
+      "に": "「冬に寒い」不自然，描述季節一般特徵用「冬は」。"
+    }
+  },
+  {
+    "id": "n5-par-007",
+    "groupId": "n5-particles",
+    "before": "コーヒーは毎朝飲みますが、お酒",
+    "after": "全然飲みません。",
+    "reading": "コーヒーはまいあさのみますが、おさけはぜんぜんのみません。",
+    "zh": "咖啡我每天早上喝，但酒完全不喝。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "對比兩種飲品並接全面否定時，使用對比助詞「は」。",
+    "distractorNotes": {
+      "が": "他動詞「飲む」的受詞不能用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-008",
+    "groupId": "n5-particles",
+    "before": "京都",
+    "after": "古いお寺がたくさんあります。",
+    "reading": "きょうとはふるいおてらがたくさんあります。",
+    "zh": "京都有許多古老的寺廟。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "以都市作為大主題描述其特色時用「は」（若單純指位置也可用「京都には」）。",
+    "altAnswers": {
+      "に": "「京都に古いお寺がたくさんあります」也通順，但點出都市主題介紹特色時常用「京都は」。"
+    },
+    "distractorNotes": {
+      "で": "存在動詞「あります」不搭配「で」。"
+    }
+  },
+  {
+    "id": "n5-par-009",
+    "groupId": "n5-particles",
+    "before": "山田さん",
+    "after": "とても親切な先輩です。",
+    "reading": "やまださんはとてもしんせつなせんぱいです。",
+    "zh": "山田是很親切的前輩。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "介紹特定人物的身分與性格時，使用主題助詞「は」。",
+    "distractorNotes": {
+      "を": "名詞述語句（〜です）的主題不用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-010",
+    "groupId": "n5-particles",
+    "before": "土曜日",
+    "after": "仕事が休みなので、ゆっくり寝ます。",
+    "reading": "どようびはしごとがやすみなので、ゆっくりねます。",
+    "zh": "星期六不用上班，所以我要好好睡覺。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "將星期幾作為主題說明狀態（放假），使用「は」。",
+    "distractorNotes": {
+      "で": "「土曜日で」不能用來標示放假的主題。"
+    }
+  },
+  {
+    "id": "n5-par-011",
+    "groupId": "n5-particles",
+    "before": "誰",
+    "after": "冷蔵庫のプリンを食べましたか。",
+    "reading": "だれがれいぞうこのプリンをたべましたか。",
+    "zh": "是誰吃了冰箱裡的布丁？",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "疑問詞（誰・何・どれ）作主語時，文法上必用「が」，不可用「は」。",
+    "distractorNotes": {
+      "は": "疑問詞作主語時絕不可接「は」（×誰は）。"
+    }
+  },
+  {
+    "id": "n5-par-012",
+    "groupId": "n5-particles",
+    "before": "あ、外は雨",
+    "after": "降ってきましたよ。",
+    "reading": "あ、そとはあめがふってきましたよ。",
+    "zh": "啊，外面開始下雨了喔。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "眼前剛發現的自然現象（新資訊）主語必用「が」。",
+    "distractorNotes": {
+      "は": "剛發現的突發現象屬於新資訊，用「が」而非主題「は」。"
+    }
+  },
+  {
+    "id": "n5-par-013",
+    "groupId": "n5-particles",
+    "before": "私は日本語のニュース",
+    "after": "少し分かります。",
+    "reading": "わたしはにほんごのニュースがすこしわかります。",
+    "zh": "我聽得懂一點日文新聞。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "理解・能力動詞「分かる・できる」的對象必用「が」。",
+    "distractorNotes": {
+      "を": "「分かる」是自動詞，對象必須用「が」，不可用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-014",
+    "groupId": "n5-particles",
+    "before": "象は鼻",
+    "after": "長いです。",
+    "reading": "ぞうははながながいです。",
+    "zh": "大象的鼻子很長。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「AはBが〜」句型中，描述局部特徵的主語用「が」。",
+    "distractorNotes": {
+      "を": "形容詞「長い」前不接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-015",
+    "groupId": "n5-particles",
+    "before": "妹はピアノ",
+    "after": "とても上手です。",
+    "reading": "いもうとはピアノがとてもじょうずです。",
+    "zh": "妹妹很擅長彈鋼琴。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "巧拙形容動詞「上手・下手・得意」的對象用「が」。",
+    "distractorNotes": {
+      "を": "「上手です」是形容動詞，對象用「が」而非「を」。"
+    }
+  },
+  {
+    "id": "n5-par-016",
+    "groupId": "n5-particles",
+    "before": "どの季節",
+    "after": "一番好きですか。",
+    "reading": "どのきせつがいちばんすきですか。",
+    "zh": "你最喜歡哪個季節？",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "疑問詞「どの＋名詞」及好惡對象「好き」都要求助詞「が」。",
+    "distractorNotes": {
+      "は": "疑問詞作主語／對象時不用「は」。"
+    }
+  },
+  {
+    "id": "n5-par-017",
+    "groupId": "n5-particles",
+    "before": "会議室の電気",
+    "after": "消えていますね。",
+    "reading": "かいぎしつのでんきがきえていますね。",
+    "zh": "會議室的燈關著呢。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "自動詞「消える」描述眼前狀態的主語用「が」。",
+    "distractorNotes": {
+      "を": "「消える」是自動詞，不可接「を」（他動詞「消す」才用「を」）。"
+    }
+  },
+  {
+    "id": "n5-par-018",
+    "groupId": "n5-particles",
+    "before": "さっきから少し頭",
+    "after": "痛いです。",
+    "reading": "さっきからすこしあたまがいたいです。",
+    "zh": "剛才開始我有點頭痛。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "描述身體感覺（頭が痛い・お腹が空いた）固定使用「が」。",
+    "distractorNotes": {
+      "を": "「痛い」是形容詞，部位主語用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-019",
+    "groupId": "n5-particles",
+    "before": "私は辛い料理",
+    "after": "大好きです。",
+    "reading": "わたしはからいりょうりがだいすきです。",
+    "zh": "我超喜歡吃辣的料理。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「好き・嫌い・大好き」的好惡對象固定用「が」。",
+    "distractorNotes": {
+      "を": "「大好き」是形容動詞，對象用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-020",
+    "groupId": "n5-particles",
+    "before": "急に風",
+    "after": "強くなりましたね。",
+    "reading": "きゅうにかぜがつよくなりましたね。",
+    "zh": "風突然變強了呢。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "眼前察覺的自然變化主語使用「が」。",
+    "distractorNotes": {
+      "で": "「風」是變強的主語，不是手段或場所。"
+    }
+  },
+  {
+    "id": "n5-par-021",
+    "groupId": "n5-particles",
+    "before": "駅の前",
+    "after": "新しいコンビニがあります。",
+    "reading": "えきのまえにあたらしいコンビニがあります。",
+    "zh": "車站前面有一家新開的便利商店。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "存在動詞「ある・いる」的靜態場所必用「に」。",
+    "distractorNotes": {
+      "で": "靜態存在場所不用「で」（「で」用於動態動作場所）。"
+    }
+  },
+  {
+    "id": "n5-par-022",
+    "groupId": "n5-particles",
+    "before": "庭のベンチの上",
+    "after": "白い猫がいます。",
+    "reading": "にわのベンチのうえにしろいねこがいます。",
+    "zh": "院子的長椅上有一隻白貓。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "生物存在動詞「いる」的所在場所使用「に」。",
+    "distractorNotes": {
+      "で": "「いる」表靜態存在，場所助詞必須用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-023",
+    "groupId": "n5-particles",
+    "before": "壁",
+    "after": "大きな時計が掛けてあります。",
+    "reading": "かべにおおきなとけいがかけてあります。",
+    "zh": "牆上掛著一個大時鐘。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "結果狀態句型「〜てある」標示物品附著存在的場所，固定使用「に」。",
+    "distractorNotes": {
+      "で": "「掛けてある」表示掛在牆上的結果狀態，場所須用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-024",
+    "groupId": "n5-particles",
+    "before": "毎朝七時",
+    "after": "起きて散歩します。",
+    "reading": "まいあさしちじにおきてさんぽします。",
+    "zh": "我每天早上七點起床散步。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "具體的數字時間點（七時・月曜日・五月）必用「に」。",
+    "distractorNotes": {
+      "で": "「七時で」表截止或限定，單純起床時間點用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-025",
+    "groupId": "n5-particles",
+    "before": "冷蔵庫の中",
+    "after": "冷たい麦茶が入っています。",
+    "reading": "れいぞうこのなかにつめたいむぎちゃがはいっています。",
+    "zh": "冰箱裡面放著冰麥茶。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "標示物品存在於容器內部的狀態（入っている），場所用「に」。",
+    "distractorNotes": {
+      "で": "「入っている」表存在狀態，不用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-026",
+    "groupId": "n5-particles",
+    "before": "誕生日に母",
+    "after": "花束を贈りました。",
+    "reading": "たんじょうびにははにはなたばをおくりました。",
+    "zh": "生日那天我送了媽媽一束花。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "授受動詞「贈る・あげる」的接受對象使用「に」。",
+    "distractorNotes": {
+      "を": "「花束」才是受詞「を」，對象「母」須用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-027",
+    "groupId": "n5-particles",
+    "before": "ノート",
+    "after": "今日の宿題をメモしました。",
+    "reading": "ノートにきょうのしゅくだいをメモしました。",
+    "zh": "我在筆記本上記下了今天的作業。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「書く・メモする」留下記錄的著落點表面使用「に」。",
+    "distractorNotes": {
+      "で": "「ノートで」會變成把筆記本當工具，寫在紙面上的著落點用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-028",
+    "groupId": "n5-particles",
+    "before": "銀行の隣",
+    "after": "郵便局があります。",
+    "reading": "ぎんこうのとなりにゆうびんきょくがあります。",
+    "zh": "銀行旁邊有一間郵局。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "建築物存在的靜態位置固定接「に」。",
+    "distractorNotes": {
+      "で": "「ある」表存在位置，不接「で」。"
+    }
+  },
+  {
+    "id": "n5-par-029",
+    "groupId": "n5-particles",
+    "before": "友達",
+    "after": "駅前のカフェで会いました。",
+    "reading": "ともだちにえきまえのカフェであいました。",
+    "zh": "我在車站前的咖啡廳見了朋友。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "動詞「会う」的見面對象固定接「に」（也可用「と」表互相約見）。",
+    "distractorNotes": {
+      "を": "「会う」是自動詞，絕不可用「友達を会う」。"
+    }
+  },
+  {
+    "id": "n5-par-030",
+    "groupId": "n5-particles",
+    "before": "この椅子",
+    "after": "座ってもいいですか。",
+    "reading": "このいすにすわってもいいですか。",
+    "zh": "我可以坐這張椅子嗎？",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "動作「座る」的著落點必用「に」。",
+    "distractorNotes": {
+      "で": "坐下的著落點用「に」，不用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-031",
+    "groupId": "n5-particles",
+    "before": "放課後、図書館",
+    "after": "試験の勉強をしました。",
+    "reading": "ほうかご、としょかんでしけんのべんきょうをしました。",
+    "zh": "放學後我在圖書館準備考試。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "動態動作發生的場所使用「で」。",
+    "distractorNotes": {
+      "に": "「勉強する」是動態動作，場所不能用靜態的「に」。"
+    }
+  },
+  {
+    "id": "n5-par-032",
+    "groupId": "n5-particles",
+    "before": "毎日自転車",
+    "after": "会社へ通っています。",
+    "reading": "まいにちじてんしゃでかいしゃへかよっています。",
+    "zh": "我每天騎腳踏車去公司上班。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "交通工具或手段方法使用「で」。",
+    "distractorNotes": {
+      "に": "搭乘「乗る」用「に」，但表通勤手段時用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-033",
+    "groupId": "n5-particles",
+    "before": "日本のラーメンを箸",
+    "after": "食べました。",
+    "reading": "にほんのラーメンをはしでたべました。",
+    "zh": "我用筷子吃了日本拉麵。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "使用器具、工具進行動作時用「で」。",
+    "distractorNotes": {
+      "を": "「箸」是工具而非吃的對象，須用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-034",
+    "groupId": "n5-particles",
+    "before": "先週の日曜日、公園",
+    "after": "桜の写真を撮りました。",
+    "reading": "せんしゅうのにちようび、こうえんでさくらのしゃしんをとりました。",
+    "zh": "上週日我在公園拍了櫻花的照片。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "拍照（写真を撮る）的動作發生地點用「で」。",
+    "distractorNotes": {
+      "に": "動態動作場所須用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-035",
+    "groupId": "n5-particles",
+    "before": "近くのスーパー",
+    "after": "新鮮な野菜を買いました。",
+    "reading": "ちかくのスーパーでしんせんなやさいをかいました。",
+    "zh": "我在附近的超市買了新鮮蔬菜。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "購物行為發生的地點使用「で」。",
+    "distractorNotes": {
+      "に": "「買う」是動作動詞，地點用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-036",
+    "groupId": "n5-particles",
+    "before": "英語",
+    "after": "メールを書きました。",
+    "reading": "えいごでメールをかきました。",
+    "zh": "我用英文寫了電子郵件。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "使用的語言工具屬於手段，固定用「で」。",
+    "distractorNotes": {
+      "に": "「英語に」用於翻譯目標（英語に訳す），使用英文書寫用「英語で」。"
+    }
+  },
+  {
+    "id": "n5-par-037",
+    "groupId": "n5-particles",
+    "before": "市民プール",
+    "after": "一時間くらい泳ぎました。",
+    "reading": "しみんプールでいちじかんくらいおよぎました。",
+    "zh": "我在市民游泳池游了大約一小時。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "游泳（泳ぐ）的動作場所使用「で」。",
+    "distractorNotes": {
+      "に": "「泳ぐ」是持續動作，場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-038",
+    "groupId": "n5-particles",
+    "before": "学校の体育館",
+    "after": "卒業式が行われます。",
+    "reading": "がっこうのたいいくかんでそつぎょうしきがおこなわれます。",
+    "zh": "畢業典禮將在學校體育館舉行。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "事件、典禮或活動舉行的地點必用「で」。",
+    "distractorNotes": {
+      "に": "活動舉辦地點用「で」，靜態物品存在才用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-039",
+    "groupId": "n5-particles",
+    "before": "台風",
+    "after": "午後の飛行機が欠航になりました。",
+    "reading": "たいふうでごごのひこうきがけっこうになりました。",
+    "zh": "因為颱風，下午的班機停飛了。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "自然災害或事故作為原因理由時，名詞後接「で」。",
+    "distractorNotes": {
+      "を": "「台風」是原因而非受詞，須用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-040",
+    "groupId": "n5-particles",
+    "before": "このチーズケーキは全部",
+    "after": "千円です。",
+    "reading": "このチーズケーキはぜんぶでせんえんです。",
+    "zh": "這些起司蛋糕總共一千日圓。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "「全部で」為固定表達，表合計總數的範圍限定。",
+    "distractorNotes": {
+      "に": "「全部に」不構成合計總數的用法。"
+    }
+  },
+  {
+    "id": "n5-par-041",
+    "groupId": "n5-particles",
+    "before": "毎朝起きてすぐ冷たい水",
+    "after": "飲みます。",
+    "reading": "まいあさおきてすぐつめたいみずをのみます。",
+    "zh": "我每天早上起床後立刻喝一杯冷水。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「飲む」的直接受詞使用「を」。",
+    "distractorNotes": {
+      "が": "他動詞「飲む」的直接受詞用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-042",
+    "groupId": "n5-particles",
+    "before": "寝る前に部屋の電気",
+    "after": "消してください。",
+    "reading": "ねるまえにへやのでんきをけしてください。",
+    "zh": "睡前請關掉房間的燈。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「消す」的作用對象必用「を」。",
+    "distractorNotes": {
+      "が": "「消す」是他動詞（人去關燈），受詞必用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-043",
+    "groupId": "n5-particles",
+    "before": "暑いので、教室の窓",
+    "after": "開けましょう。",
+    "reading": "あついので、きょうしつのまどをあけましょう。",
+    "zh": "好熱，我們把教室的窗戶打開吧。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「開ける」的受詞使用「を」。",
+    "distractorNotes": {
+      "が": "自動詞「開く」才用「が」，他動詞「開ける」用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-044",
+    "groupId": "n5-particles",
+    "before": "図書館で歴史の本",
+    "after": "三冊借りました。",
+    "reading": "としょかんでれきしのほんをさんさつかりました。",
+    "zh": "我在圖書館借了三本歷史書。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「借りる」的直接受詞用「を」。",
+    "distractorNotes": {
+      "に": "「借りる」的出借對象（人）才用「に」，借的物品用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-045",
+    "groupId": "n5-particles",
+    "before": "週末は家族のために手料理",
+    "after": "作ります。",
+    "reading": "しゅうまつはかぞくのためにてりょうりをつくります。",
+    "zh": "週末我會為家人親手做菜。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「作る」的製作對象用「を」。",
+    "distractorNotes": {
+      "で": "「手料理」是做出來的成品受詞，不用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-046",
+    "groupId": "n5-particles",
+    "before": "駅の改札で友達",
+    "after": "待っています。",
+    "reading": "えきのかいさつでともだちをまっています。",
+    "zh": "我正在車站剪票口等朋友。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "動詞「待つ」的等待對象固定用「を」。",
+    "distractorNotes": {
+      "に": "「待つ」是他動詞，等待的對象用「を」而非「に」。"
+    }
+  },
+  {
+    "id": "n5-par-047",
+    "groupId": "n5-particles",
+    "before": "昨日映画館で新作のアニメ",
+    "after": "見ました。",
+    "reading": "きのうえいがかんでしんさくのアニメをみました。",
+    "zh": "我昨天在電影院看了新上映的動畫。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「見る」的觀看對象用「を」。",
+    "distractorNotes": {
+      "が": "「見える（看得見）」才用「が」，主動觀看「見る」用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-048",
+    "groupId": "n5-particles",
+    "before": "毎晩寝る前にクラシック音楽",
+    "after": "聞きます。",
+    "reading": "まいばんねるまえにクラシックおんがくをききます。",
+    "zh": "我每天睡前都會聽古典音樂。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「聞く」的聆聽對象用「を」。",
+    "distractorNotes": {
+      "が": "「聞こえる（傳入耳中）」用「が」，主動聽「聞く」用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-049",
+    "groupId": "n5-particles",
+    "before": "デパートで父の誕生日のネクタイ",
+    "after": "買いました。",
+    "reading": "デパートでちちのたんじょうびのネクタイをかいました。",
+    "zh": "我在百貨公司買了爸爸的生日領帶。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「買う」的購買對象用「を」。",
+    "distractorNotes": {
+      "に": "購買的物品受詞必用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-050",
+    "groupId": "n5-particles",
+    "before": "朝ごはんのあと、すぐに歯",
+    "after": "磨きます。",
+    "reading": "あさごはんのあと、すぐにはをみがきます。",
+    "zh": "吃完早餐後，我會馬上刷牙。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「磨く」的動作對象用「を」。",
+    "distractorNotes": {
+      "で": "「歯」是刷的對象而非工具，用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-001",
+    "groupId": "n5-movement",
+    "before": "毎朝犬と近所の公園",
+    "after": "散歩します。",
+    "reading": "まいあさいぬときんじょのこうえんをさんぽします。",
+    "zh": "每天早上我都會帶狗在附近公園散步。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "移動動詞「散歩する」經過的空間必用「を」。",
+    "distractorNotes": {
+      "で": "「散歩する」表移動經過整個空間，習慣用「を」而非「で」。",
+      "に": "「公園に散歩する」不合文法。"
+    }
+  },
+  {
+    "id": "n5-mov-002",
+    "groupId": "n5-movement",
+    "before": "大きな橋",
+    "after": "渡ると、右手に駅が見えます。",
+    "reading": "おおきなはしをわたると、みぎてにえきがみえます。",
+    "zh": "過了這座大橋，右手邊就會看到車站。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "穿越、通過的路線（橋を渡る）必用「を」。",
+    "distractorNotes": {
+      "で": "「渡る」是穿越移動動詞，路徑用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-003",
+    "groupId": "n5-movement",
+    "before": "エレベーターが混んでいたので、階段",
+    "after": "上りました。",
+    "reading": "エレベーターがこんでいたので、かいだんをのぼりました。",
+    "zh": "因為電梯很擠，所以我走樓梯上去了。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "沿著路徑向上移動（階段を上る）使用「を」。",
+    "distractorNotes": {
+      "に": "到達終點（屋上に上る）才用「に」，經過的樓梯用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-004",
+    "groupId": "n5-movement",
+    "before": "次の駅で電車",
+    "after": "降ります。",
+    "reading": "つぎのえきででんしゃをおります。",
+    "zh": "我在下一站下電車。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "離開交通工具（降りる）的起點必用「を」。",
+    "distractorNotes": {
+      "に": "上車「乗る」用「に」，下車「降りる」必用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-005",
+    "groupId": "n5-movement",
+    "before": "あの信号の交差点",
+    "after": "左に曲がってください。",
+    "reading": "あのしんごうのこうさてんをひだりにまがってください。",
+    "zh": "請在那個紅綠燈的十字路口左轉。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "轉彎經過的路口或轉角（交差点を曲がる）固定用「を」。",
+    "distractorNotes": {
+      "で": "指路句型「交差点／角を曲がる」固定使用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-006",
+    "groupId": "n5-movement",
+    "before": "青い空",
+    "after": "白い鳥が飛んでいます。",
+    "reading": "あおいそらをしろいとりがとんでいます。",
+    "zh": "白鳥正在藍天中飛翔。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "在廣闊空間移動經過（空を飛ぶ）使用「を」。",
+    "distractorNotes": {
+      "に": "「飛ぶ」是移動動詞，經過的空間用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-007",
+    "groupId": "n5-movement",
+    "before": "今朝はいつもより早く家",
+    "after": "出ました。",
+    "reading": "けさはいつもよりはやくいえをでました。",
+    "zh": "今天早上我比平常更早出門。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "離開某個空間（家を出る）的出發點必用「を」。",
+    "distractorNotes": {
+      "に": "進入「入る」用「に」，離開「出る」用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-008",
+    "groupId": "n5-movement",
+    "before": "去年の春に大学",
+    "after": "卒業しました。",
+    "reading": "きょねんのはるにだいがくをそつぎょうしました。",
+    "zh": "我去年春天從大學畢業了。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "離開所屬機構（大学を卒業する）固定使用「を」。",
+    "distractorNotes": {
+      "に": "入學「入学する」用「に」，畢業「卒業する」用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-009",
+    "groupId": "n5-movement",
+    "before": "この静かな道",
+    "after": "真っすぐ歩いてください。",
+    "reading": "このしずかなみちをまっすぐあるいてください。",
+    "zh": "請沿著這條安靜的路直走。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "沿著道路行走（道を歩く）經過的路徑用「を」。",
+    "distractorNotes": {
+      "で": "「歩く」搭配路徑名詞「道」時用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-010",
+    "groupId": "n5-movement",
+    "before": "二つ目の角",
+    "after": "右に曲がると郵便局があります。",
+    "reading": "ふたつめのかどをみぎにまがるとゆうびんきょくがあります。",
+    "zh": "在第二個轉角右轉就會看到郵局。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "「角を曲がる」為固定移動路徑搭配，必用「を」。",
+    "distractorNotes": {
+      "に": "轉彎方向（右に）用「に」，經過的轉角用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-011",
+    "groupId": "n5-movement",
+    "before": "バス停に着いたので、急いでバス",
+    "after": "降りました。",
+    "reading": "バスていについたので、いそいでバスをおりました。",
+    "zh": "到公車站了，我趕緊下了公車。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "離開公車（バスを降りる）必用「を」。",
+    "distractorNotes": {
+      "に": "搭公車用「バスに乗る」，下車用「バスを降りる」。"
+    }
+  },
+  {
+    "id": "n5-mov-012",
+    "groupId": "n5-movement",
+    "before": "会議が終わったので、全員が会議室",
+    "after": "出ました。",
+    "reading": "かいぎがおわったので、ぜんいんがかいぎしつをでました。",
+    "zh": "會議結束了，大家都離開了會議室。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "離開房間或場所（部屋を出る）固定用「を」。",
+    "distractorNotes": {
+      "で": "離開某空間不用「で」，須用「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-013",
+    "groupId": "n5-movement",
+    "before": "空港",
+    "after": "着いたら、すぐメッセージを送りますね。",
+    "reading": "くうこうについたら、すぐメッセージをおくりますね。",
+    "zh": "到機場之後，我會馬上傳訊息給你喔。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "抵達某地（着く）的到達點固定用「に」。",
+    "distractorNotes": {
+      "で": "「着く」是瞬間抵達動作，目的地必用「に」。",
+      "を": "「着く」不接「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-014",
+    "groupId": "n5-movement",
+    "before": "雨が降ってきたので、急いでタクシー",
+    "after": "乗りました。",
+    "reading": "あめがふってきたので、いそいでタクシーにのりました。",
+    "zh": "開始下雨了，我趕緊搭上計程車。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "搭乘交通工具（乗る）的進入對象固定用「に」。",
+    "distractorNotes": {
+      "を": "下車「降りる」才用「を」，上車「乗る」必用「に」。"
+    }
+  },
+  {
+    "id": "n5-mov-015",
+    "groupId": "n5-movement",
+    "before": "どうぞ、この部屋",
+    "after": "入ってください。",
+    "reading": "どうぞ、このへやにはいってください。",
+    "zh": "請進這間房間。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "進入空間（入る）的歸著點必用「に」。",
+    "distractorNotes": {
+      "を": "離開「出る」用「を」，進入「入る」用「に」。"
+    }
+  },
+  {
+    "id": "n5-mov-016",
+    "groupId": "n5-movement",
+    "before": "東京駅で新幹線",
+    "after": "乗り換えます。",
+    "reading": "とうきょうえきでしんかんせんにのりかえます。",
+    "zh": "我要在東京車站轉乘新幹線。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "換乘至目標交通工具（〜に乗り換える）使用「に」。",
+    "distractorNotes": {
+      "で": "轉乘的地點（東京駅で）用「で」，換乘的車輛用「に」。"
+    }
+  },
+  {
+    "id": "n5-mov-017",
+    "groupId": "n5-movement",
+    "before": "帰ってきたら、まず温かいお風呂",
+    "after": "入ります。",
+    "reading": "かえってきたら、まずあたたかいおふろにはいります。",
+    "zh": "回到家後，我會先泡個熱水澡。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「お風呂に入る」為固定搭配，進入浴缸用「に」。",
+    "distractorNotes": {
+      "で": "「お風呂で」指在浴室裡做別的事（如唱歌），泡澡固定用「お風呂に入る」。"
+    }
+  },
+  {
+    "id": "n5-mov-018",
+    "groupId": "n5-movement",
+    "before": "来月から新しい会社",
+    "after": "入ります。",
+    "reading": "らいげつからあたらしいかいしゃにはいります。",
+    "zh": "下個月起我將進入新公司。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "進入公司或學校等所屬團體（入る）固定用「に」。",
+    "distractorNotes": {
+      "で": "「働く」用「で」，但「入る」表進入所屬歸著點，固定用「に」。"
+    }
+  },
+  {
+    "id": "n5-mov-019",
+    "groupId": "n5-movement",
+    "before": "来年の春、大阪",
+    "after": "引っ越す予定です。",
+    "reading": "らいねんのはる、おおさかにひっこすよていです。",
+    "zh": "我預計明年春天搬到大阪。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "搬遷的目的地（引っ越す）使用「に」。",
+    "distractorNotes": {
+      "で": "「大阪で引っ越す」指在大阪境內搬家，搬去大阪用「大阪に」。"
+    }
+  },
+  {
+    "id": "n5-mov-020",
+    "groupId": "n5-movement",
+    "before": "明日の朝九時に会社",
+    "after": "着きます。",
+    "reading": "あしたのあさくじにかいしゃにつきます。",
+    "zh": "明天早上九點我會抵達公司。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "抵達動詞「着く」的目的地固定用「に」。",
+    "distractorNotes": {
+      "で": "抵達點不用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-021",
+    "groupId": "n5-movement",
+    "before": "空いている席",
+    "after": "お座りください。",
+    "reading": "あいているせきにおすわりください。",
+    "zh": "請坐空位。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「座る」的著落點固定用「に」。",
+    "distractorNotes": {
+      "を": "「座る」是自動詞，不接「を」。"
+    }
+  },
+  {
+    "id": "n5-mov-022",
+    "groupId": "n5-movement",
+    "before": "夏休みは家族と北海道",
+    "after": "旅行に行きます。",
+    "reading": "なつやすみはかぞくとほっかいどうにりょこうにいきます。",
+    "zh": "暑假我要和家人去北海道旅行。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "移動的目的地（北海道に行く）使用「に」。",
+    "distractorNotes": {
+      "で": "「北海道で」不能搭配移動動詞「行きます」。"
+    }
+  },
+  {
+    "id": "n5-mov-023",
+    "groupId": "n5-movement",
+    "before": "大学を卒業して、京都の大学院",
+    "after": "入りました。",
+    "reading": "だいがくをそつぎょうして、きょうとのだいがくいんにはいりました。",
+    "zh": "大學畢業後，我進了京都的研究所。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "進入學校或組織（入る）必用「に」。",
+    "distractorNotes": {
+      "を": "離開用「を」，進入用「に」。"
+    }
+  },
+  {
+    "id": "n5-mov-024",
+    "groupId": "n5-movement",
+    "before": "満員電車",
+    "after": "乗るのは本当に疲れますね。",
+    "reading": "まんいんでんしゃにのるのはほんとうにつかれますね。",
+    "zh": "搭擠滿人的電車真的很累呢。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「乗る」固定搭配「に」。",
+    "distractorNotes": {
+      "で": "「電車で」後接「行く・通う」，動詞「乗る」須接「に」。"
+    }
+  },
+  {
+    "id": "n5-mov-025",
+    "groupId": "n5-movement",
+    "before": "昨日、新宿駅",
+    "after": "大学時代の友達と待ち合わせしました。",
+    "reading": "きのう、しんじゅくえきでだいがくじだいのともだちとまちあわせしました。",
+    "zh": "昨天我在新宿車站和大學同學會合了。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "會合（待ち合わせする）的動作發生地點用「で」。",
+    "distractorNotes": {
+      "に": "「待ち合わせする」是動作事件，場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-026",
+    "groupId": "n5-movement",
+    "before": "先週末、海",
+    "after": "バーベキューをしました。",
+    "reading": "せんしゅうまつ、うみでバーベキューをしました。",
+    "zh": "上週末我們在海邊烤肉了。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "在某地點舉辦活動（バーベキューをする）用「で」。",
+    "distractorNotes": {
+      "に": "動態活動場所不用「に」。"
+    }
+  },
+  {
+    "id": "n5-mov-027",
+    "groupId": "n5-movement",
+    "before": "京都駅",
+    "after": "家族のためにお土産を買いました。",
+    "reading": "きょうとえきでかぞくのためにおみやげをかいました。",
+    "zh": "我在京都車站幫家人買了伴手禮。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "購買行為發生的場所用「で」。",
+    "distractorNotes": {
+      "に": "「買う」是動作動詞，地點用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-028",
+    "groupId": "n5-movement",
+    "before": "旅館の温泉",
+    "after": "ゆっくり疲れを癒やしました。",
+    "reading": "りょかんのおんせんでゆっくりつかれをいやしました。",
+    "zh": "我在旅館的溫泉好好消除了疲勞。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "在某處進行動作（疲れを癒やす）用「で」。",
+    "distractorNotes": {
+      "を": "「温泉」是動作場所而非受詞。"
+    }
+  },
+  {
+    "id": "n5-mov-029",
+    "groupId": "n5-movement",
+    "before": "次の駅",
+    "after": "急行電車に乗り換えてください。",
+    "reading": "つぎのえきできゅうこうでんしゃにのりかえてください。",
+    "zh": "請在下一站轉乘急行電車。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "轉乘動作發生的車站地點用「で」（目標電車才用「に」）。",
+    "distractorNotes": {
+      "に": "句中「急行電車に」已是目標車輛，轉乘場所須用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-030",
+    "groupId": "n5-movement",
+    "before": "静かなカフェ",
+    "after": "友達と話しました。",
+    "reading": "しずかなカフェでともだちとはなしました。",
+    "zh": "我在安靜的咖啡廳和朋友聊天。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "進行交談等動作的場所用「で」。",
+    "distractorNotes": {
+      "に": "動作發生場所不用「に」。"
+    }
+  },
+  {
+    "id": "n5-mov-031",
+    "groupId": "n5-movement",
+    "before": "夏の山",
+    "after": "友達とキャンプをしました。",
+    "reading": "なつのやまでともだちとキャンプをしました。",
+    "zh": "夏天我和朋友在山上露營。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "露營等活動發生的場所用「で」。",
+    "distractorNotes": {
+      "に": "「キャンプをする」是動作動詞，活動場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-032",
+    "groupId": "n5-movement",
+    "before": "空港のロビー",
+    "after": "搭乗時間まで本を読んでいました。",
+    "reading": "くうこうのロビーでとうじょうじかんまでほんをよんでいました。",
+    "zh": "我在機場大廳看書看到登機時間。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "看書的動作發生地點用「で」。",
+    "distractorNotes": {
+      "に": "讀書是動態動作，不用「に」。"
+    }
+  },
+  {
+    "id": "n5-mov-033",
+    "groupId": "n5-movement",
+    "before": "ホテルのレストラン",
+    "after": "朝食のバイキングを食べました。",
+    "reading": "ホテルのレストランでちょうしょくのバイキングをたべました。",
+    "zh": "我在飯店餐廳吃了自助式早餐。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "用餐動作發生的場所用「で」。",
+    "distractorNotes": {
+      "に": "「食べる」的場所必用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-034",
+    "groupId": "n5-movement",
+    "before": "駅前広場",
+    "after": "週末に音楽イベントが開かれます。",
+    "reading": "えきまえひろばでしゅうまつにおんがくイベントがひらかれます。",
+    "zh": "週末在站前廣場會舉辦音樂活動。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "活動舉辦的場地固定用「で」。",
+    "distractorNotes": {
+      "に": "「開かれる」表活動舉辦，場所須用「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-035",
+    "groupId": "n5-movement",
+    "before": "大学の図書館",
+    "after": "卒業論文を書いています。",
+    "reading": "だいがくのとしょかんでそつぎょうろんぶんをかいています。",
+    "zh": "我正在大學圖書館寫畢業論文。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "寫作動作發生的場所用「で」。",
+    "distractorNotes": {
+      "を": "「図書館」不是寫的受詞，而是動作場所「で」。"
+    }
+  },
+  {
+    "id": "n5-mov-036",
+    "groupId": "n5-movement",
+    "before": "古い商店街",
+    "after": "美味しいコロッケを見つけました。",
+    "reading": "ふるいしょうてんがいでおいしいコロッケをみつけました。",
+    "zh": "我在老商店街發現了好吃的可樂餅。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "「見つける」發生的地點使用「で」。",
+    "distractorNotes": {
+      "に": "「見つける」是他動詞動作，場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-nom-001",
+    "groupId": "n5-nominal-particles",
+    "before": "母の日なので、母",
+    "after": "感謝の手紙を書きました。",
+    "reading": "ははのひなので、ははへのかんしゃのてがみをかきました。",
+    "zh": "因為是母親節，我寫了一封感謝信給媽媽。",
+    "grammarKey": "への",
+    "answer": "への",
+    "tip": "「書きました」表朝對方寄出／寫給對方，名詞修飾用「への」。",
+    "distractorNotes": {
+      "からの": "「母からの手紙」是媽媽寄來的信，與「書きました（我寫的）」方向相反。",
+      "での": "「での」表場所或手段，不能接在收信人「母」後面。"
+    }
+  },
+  {
+    "id": "n5-nom-002",
+    "groupId": "n5-nominal-particles",
+    "before": "親友の誕生日に、彼",
+    "after": "プレゼントを買いに行きました。",
+    "reading": "しんゆうのたんじょうびに、かれへのプレゼントをかいにいきました。",
+    "zh": "摯友生日，我去買要送給他的禮物。",
+    "grammarKey": "への",
+    "answer": "への",
+    "tip": "「要買來送給他的禮物」指向接收對象，使用「への」。",
+    "distractorNotes": {
+      "からの": "「彼からのプレゼント」是他送給我的禮物，不需要自己去買。"
+    }
+  },
+  {
+    "id": "n5-nom-003",
+    "groupId": "n5-nominal-particles",
+    "before": "今、駅",
+    "after": "道順を地図で調べています。",
+    "reading": "いま、えきへのみちじゅんをちずでしらべています。",
+    "zh": "我現在正在用地圖查去車站的路線。",
+    "grammarKey": "への",
+    "answer": "への",
+    "tip": "通往某目的地的路線（駅への道順）使用「への」。",
+    "distractorNotes": {
+      "での": "「駅での道順」不自然，指向目的地方向用「への」。"
+    }
+  },
+  {
+    "id": "n5-nom-004",
+    "groupId": "n5-nominal-particles",
+    "before": "日本",
+    "after": "留学の準備を少しずつ進めています。",
+    "reading": "にほんへのりゅうがくのじゅんびをすこしずつすすめています。",
+    "zh": "我正在一步步推進去日本留學的準備。",
+    "grammarKey": "への",
+    "answer": "への",
+    "tip": "前往某國留學（日本への留学）表移動方向，使用「への」。",
+    "distractorNotes": {
+      "からの": "「日本からの留学」變成從日本出發去別國留學。"
+    }
+  },
+  {
+    "id": "n5-nom-005",
+    "groupId": "n5-nominal-particles",
+    "before": "お客様",
+    "after": "お詫びのメールを急いで作成しました。",
+    "reading": "おきゃくさまへのおわびのメールをいそいでさくせいしました。",
+    "zh": "我趕緊撰寫了給客戶的致歉郵件。",
+    "grammarKey": "への",
+    "answer": "への",
+    "tip": "「作成しました（撰寫寄給客戶）」指向收件對象，用「への」。",
+    "distractorNotes": {
+      "からの": "「お客様からの」是客戶寄來的，與「作成しました」矛盾。"
+    }
+  },
+  {
+    "id": "n5-nom-006",
+    "groupId": "n5-nominal-particles",
+    "before": "先生",
+    "after": "質問をノートにまとめておきました。",
+    "reading": "せんせいへのしつもんをノートにまとめておきました。",
+    "zh": "我先把要問老師的問題整理在筆記本裡了。",
+    "grammarKey": "への",
+    "answer": "への",
+    "tip": "「向老師提出的問題」指向提問對象，用「への」。",
+    "distractorNotes": {
+      "からの": "「先生からの質問」是老師出的問題，與自己整理發問語境不同。"
+    }
+  },
+  {
+    "id": "n5-nom-007",
+    "groupId": "n5-nominal-particles",
+    "before": "ヨーロッパ",
+    "after": "切符を買いました。",
+    "reading": "ヨーロッパへのきっぷをかいました。",
+    "zh": "我買了前往歐洲的車票。",
+    "grammarKey": "への",
+    "answer": "への",
+    "tip": "前往某地的車票（ヨーロッパへの切符）用「への」。",
+    "distractorNotes": {
+      "からの": "「からの」表起點來源，不是前往的目的地。"
+    }
+  },
+  {
+    "id": "n5-nom-008",
+    "groupId": "n5-nominal-particles",
+    "before": "後輩",
+    "after": "応援メッセージを書いてカードに入れました。",
+    "reading": "こうはいへのおうえんメッセージをかいてカードにいれました。",
+    "zh": "我寫了給學弟妹的加油訊息放進卡片裡。",
+    "grammarKey": "への",
+    "answer": "への",
+    "tip": "寫給對方的訊息（後輩へのメッセージ）用「への」。",
+    "distractorNotes": {
+      "での": "人稱名詞「後輩」後不能接場所助詞「での」。"
+    }
+  },
+  {
+    "id": "n5-nom-009",
+    "groupId": "n5-nominal-particles",
+    "before": "空港",
+    "after": "バスは毎時間三本出ています。",
+    "reading": "くうこうへのバスはまいじかんさんぼんでています。",
+    "zh": "往機場的巴士每小時有三班。",
+    "grammarKey": "への",
+    "answer": "への",
+    "tip": "開往某目的地的交通班次（空港へのバス）用「への」。",
+    "distractorNotes": {
+      "での": "「空港でのバス」無法表達開往機場的方向。"
+    }
+  },
+  {
+    "id": "n5-nom-010",
+    "groupId": "n5-nominal-particles",
+    "before": "新しい環境",
+    "after": "期待と不安で胸がいっぱいです。",
+    "reading": "あたらしいかんきょうへのきたいとふあんでむねがいっぱいです。",
+    "zh": "我對新環境滿懷期待與不安。",
+    "grammarKey": "への",
+    "answer": "への",
+    "tip": "情感朝向的對象（環境への期待）使用「への」。",
+    "distractorNotes": {
+      "での": "「環境への期待」表對該環境懷抱期待，不用「での」。"
+    }
+  },
+  {
+    "id": "n5-nom-011",
+    "groupId": "n5-nominal-particles",
+    "before": "東京",
+    "after": "一人暮らしにも、ようやく慣れてきました。",
+    "reading": "とうきょうでのひとりぐらしにも、ようやくなれてきました。",
+    "zh": "我也總算漸漸習慣在東京的獨居生活了。",
+    "grammarKey": "での",
+    "answer": "での",
+    "tip": "在某地點進行的生活（東京での一人暮らし）使用「での」。",
+    "distractorNotes": {
+      "への": "「東京への」表前往東京，而非在東京當地的生活。"
+    }
+  },
+  {
+    "id": "n5-nom-012",
+    "groupId": "n5-nominal-particles",
+    "before": "昨日の会議",
+    "after": "話し合いの結果をまとめました。",
+    "reading": "きのうのかいぎでのはなしあいのけっかをまとめました。",
+    "zh": "我整理了昨天會議中的討論結果。",
+    "grammarKey": "での",
+    "answer": "での",
+    "tip": "在某場合中發生的討論（会議での話し合い）用「での」。",
+    "distractorNotes": {
+      "からの": "「会議からの」無法修飾在會議場內進行的討論。"
+    }
+  },
+  {
+    "id": "n5-nom-013",
+    "groupId": "n5-nominal-particles",
+    "before": "北海道",
+    "after": "スキー体験は一生の思い出です。",
+    "reading": "ほっかいどうでのスキーたいけんはいっしょうのおもいでです。",
+    "zh": "在北海道的滑雪體驗是一輩子的回憶。",
+    "grammarKey": "での",
+    "answer": "での",
+    "tip": "在特定地點的體驗活動（北海道での体験）使用「での」。",
+    "distractorNotes": {
+      "への": "滑雪是在北海道當地發生的動作體驗，用「での」。"
+    }
+  },
+  {
+    "id": "n5-nom-014",
+    "groupId": "n5-nominal-particles",
+    "before": "大学",
+    "after": "四年間は本当にあっという間でした。",
+    "reading": "だいがくでのよねんかんはほんとうにあっというまでした。",
+    "zh": "在大學的四年間真是轉眼就過去了。",
+    "grammarKey": "での",
+    "answer": "での",
+    "tip": "在某場所度過的時間（大学での四年間）使用「での」。",
+    "distractorNotes": {
+      "からの": "「大学からの四年間」會變成從大學起算，而非在大學裡的四年。"
+    }
+  },
+  {
+    "id": "n5-nom-015",
+    "groupId": "n5-nominal-particles",
+    "before": "日本語",
+    "after": "プレゼンは緊張しましたが、うまくいきました。",
+    "reading": "にほんごでのプレゼンはきんちょうしましたが、うまくいきました。",
+    "zh": "用日文做簡報雖然很緊張，但進行得很順利。",
+    "grammarKey": "での",
+    "answer": "での",
+    "tip": "以某種語言手段進行的活動（日本語でのプレゼン）用「での」。",
+    "distractorNotes": {
+      "への": "日文是簡報使用的工具手段，不是方向對象。"
+    }
+  },
+  {
+    "id": "n5-nom-016",
+    "groupId": "n5-nominal-particles",
+    "before": "オンライン",
+    "after": "打ち合わせは移動時間がなくて便利です。",
+    "reading": "オンラインでのうちあわせはいどうじかんがなくてべんりです。",
+    "zh": "線上開會不用通勤時間，非常方便。",
+    "grammarKey": "での",
+    "answer": "での",
+    "tip": "透過某媒介／場域進行的會議（オンラインでの打ち合わせ）用「での」。",
+    "distractorNotes": {
+      "からの": "「オンラインからの」不構成線上會議的表達。"
+    }
+  },
+  {
+    "id": "n5-nom-017",
+    "groupId": "n5-nominal-particles",
+    "before": "京都",
+    "after": "観光は秋が一番おすすめです。",
+    "reading": "きょうとでのかんこうはあきがいちばんおすすめです。",
+    "zh": "在京都觀光最推薦秋天。",
+    "grammarKey": "での",
+    "answer": "での",
+    "tip": "在某地的觀光活動（京都での観光）用「での」。",
+    "distractorNotes": {
+      "からの": "「京都からの」表從京都出發，與在京都觀光不同。"
+    }
+  },
+  {
+    "id": "n5-nom-018",
+    "groupId": "n5-nominal-particles",
+    "before": "海外",
+    "after": "仕事を通して、視野が広がりました。",
+    "reading": "かいがいでのしごとをとおして、しやがひろがりました。",
+    "zh": "透過在海外的工作，我的視野開闊了。",
+    "grammarKey": "での",
+    "answer": "での",
+    "tip": "在某地從事的工作（海外での仕事）用「での」。",
+    "distractorNotes": {
+      "への": "「仕事」是在海外執行的動態活動，用「での」。"
+    }
+  },
+  {
+    "id": "n5-nom-019",
+    "groupId": "n5-nominal-particles",
+    "before": "病院",
+    "after": "診察が予想より早く終わりました。",
+    "reading": "びょういんでのしんさつがよそうよりはやくおわりました。",
+    "zh": "在醫院的看診比預期結束得還早。",
+    "grammarKey": "での",
+    "answer": "での",
+    "tip": "在醫院進行的看診（病院での診察）用「での」。",
+    "distractorNotes": {
+      "への": "看診發生的場所用「での」。"
+    }
+  },
+  {
+    "id": "n5-nom-020",
+    "groupId": "n5-nominal-particles",
+    "before": "電車の中",
+    "after": "通話はご遠慮ください。",
+    "reading": "でんしゃのなかでのつうわはごえんりょください。",
+    "zh": "請勿在電車內講電話。",
+    "grammarKey": "での",
+    "answer": "での",
+    "tip": "在車廂內進行的動作（電車の中での通話）用「での」。",
+    "distractorNotes": {
+      "からの": "禁止的是在車廂內講電話的行為，場所用「での」。"
+    }
+  },
+  {
+    "id": "n5-nom-021",
+    "groupId": "n5-nominal-particles",
+    "before": "今朝、実家の母",
+    "after": "手紙が届いて嬉しかったです。",
+    "reading": "けさ、じっかのははからのてがみがとどいてうれしかったです。",
+    "zh": "今天早上收到老家媽媽寄來的信，好開心。",
+    "grammarKey": "からの",
+    "answer": "からの",
+    "tip": "「届いた（寄達）」標示信件來自媽媽，來源起點必用「からの」。",
+    "distractorNotes": {
+      "への": "「母への手紙」是我寫給媽媽的信，不會說「届いた（寄來了）」。"
+    }
+  },
+  {
+    "id": "n5-nom-022",
+    "groupId": "n5-nominal-particles",
+    "before": "高校時代の友達",
+    "after": "結婚式の招待状を受け取りました。",
+    "reading": "こうこうじだいのともだちからのけっこんしきのしょうたいじょうをうけとりました。",
+    "zh": "我收到了高中同學寄來的婚禮喜帖。",
+    "grammarKey": "からの",
+    "answer": "からの",
+    "tip": "「受け取りました（收到）」對應寄件來源，使用「からの」。",
+    "distractorNotes": {
+      "への": "收到的物品來源必用「からの」。"
+    }
+  },
+  {
+    "id": "n5-nom-023",
+    "groupId": "n5-nominal-particles",
+    "before": "ホテルの窓",
+    "after": "眺めがとてもきれいでした。",
+    "reading": "ホテルのまどからのながめがとてもきれいでした。",
+    "zh": "從飯店窗戶看出去的景色非常美。",
+    "grammarKey": "からの",
+    "answer": "からの",
+    "tip": "視線的出發點（窓からの眺め）固定使用「からの」。",
+    "distractorNotes": {
+      "での": "從窗戶望出去的視角起點用「からの」。"
+    }
+  },
+  {
+    "id": "n5-nom-024",
+    "groupId": "n5-nominal-particles",
+    "before": "部長",
+    "after": "アドバイスのおかげで、企画が通りました。",
+    "reading": "ぶちょうからのアドバイスのおかげで、きかくがとおりました。",
+    "zh": "多虧了部長給的建議，企劃案通過了。",
+    "grammarKey": "からの",
+    "answer": "からの",
+    "tip": "來自部長的建議（部長からのアドバイス）使用「からの」。",
+    "distractorNotes": {
+      "への": "「部長へのアドバイス」變成給部長提建議，與受惠「おかげで」語境不符。"
+    }
+  },
+  {
+    "id": "n5-nom-025",
+    "groupId": "n5-nominal-particles",
+    "before": "さっき病院",
+    "after": "電話に出て、検査結果を聞きました。",
+    "reading": "さっきびょういんからのでんわにでて、けんさけっかをききました。",
+    "zh": "剛才我接了醫院打來的電話，聽了檢查結果。",
+    "grammarKey": "からの",
+    "answer": "からの",
+    "tip": "「電話に出て（接起對方打來的電話）」來源用「からの」。",
+    "distractorNotes": {
+      "への": "「病院への電話」是打給醫院的電話，不會說「出て（接起）」。"
+    }
+  },
+  {
+    "id": "n5-nom-026",
+    "groupId": "n5-nominal-particles",
+    "before": "お客さん",
+    "after": "温かいレビューを読んで元気が出ました。",
+    "reading": "おきゃくさんからのあたたかいレビューをよんでげんきがでました。",
+    "zh": "讀了客人留下的溫暖評價，我有了滿滿的活力。",
+    "grammarKey": "からの",
+    "answer": "からの",
+    "tip": "來自客人的評價（お客さんからのレビュー）用「からの」。",
+    "distractorNotes": {
+      "への": "「お客さんへの」會變成寫給客人的評論。"
+    }
+  },
+  {
+    "id": "n5-nom-027",
+    "groupId": "n5-nominal-particles",
+    "before": "山頂",
+    "after": "日の出を見るために、夜中に出発しました。",
+    "reading": "さんちょうからのひのでをみるために、よなかにしゅっぱつしました。",
+    "zh": "為了看從山頂望見的日出，我們半夜就出發了。",
+    "grammarKey": "からの",
+    "answer": "からの",
+    "tip": "從山頂望出去的觀測起點（山頂からの日の出）用「からの」。",
+    "distractorNotes": {
+      "への": "不是往山頂去，而是從山頂看的景色，用「からの」。"
+    }
+  },
+  {
+    "id": "n5-nom-028",
+    "groupId": "n5-nominal-particles",
+    "before": "日本にいる叔母",
+    "after": "小包が昨日届きました。",
+    "reading": "にほんにいるおばからのこづつみがきのうとどきました。",
+    "zh": "住在日本的阿姨寄來的包裹昨天到了。",
+    "grammarKey": "からの",
+    "answer": "からの",
+    "tip": "包裹的寄件來源（叔母からの小包）使用「からの」。",
+    "distractorNotes": {
+      "への": "「届きました」表示寄到我這裡，寄件人須用「からの」。"
+    }
+  },
+  {
+    "id": "n5-nom-029",
+    "groupId": "n5-nominal-particles",
+    "before": "駅",
+    "after": "距離は歩いて五分ほどです。",
+    "reading": "えきからのきょりはあるいてごふんほどです。",
+    "zh": "從車站出發的距離走路大約五分鐘。",
+    "grammarKey": "からの",
+    "answer": "からの",
+    "tip": "計算距離的起點（駅からの距離）使用「からの」。",
+    "distractorNotes": {
+      "での": "距離起點須用「からの」。"
+    }
+  },
+  {
+    "id": "n5-nom-030",
+    "groupId": "n5-nominal-particles",
+    "before": "採用担当の方",
+    "after": "合格通知メールを何度も読み返しました。",
+    "reading": "さいようたんとうのかたからのごうかくつうちメールをなんどもよみかえしました。",
+    "zh": "我把人資寄來的錄取通知信反覆讀了好幾遍。",
+    "grammarKey": "からの",
+    "answer": "からの",
+    "tip": "收到的郵件寄件者（〜からのメール）使用「からの」。",
+    "distractorNotes": {
+      "への": "「読み返しました」指重讀收到的通知信，來源用「からの」。"
+    }
+  }
 ];

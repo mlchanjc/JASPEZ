@@ -11,7 +11,8 @@ export const N3_ITEMS = [
     "tip": "前項為可控的意志動作（留学する）且前後主語相同，必用「ために」。",
     "distractorNotes": {
       "ように": "意志動詞「留学する」表明確目的時用「ために」，不用「ように」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-pur-002",
@@ -25,7 +26,8 @@ export const N3_ITEMS = [
     "tip": "「名詞＋の」接目的時只能用「ために」（不可用「の＋ように」表目的）。",
     "distractorNotes": {
       "ように": "「名詞＋のように」表比喻（像…一樣），不能表目的。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-pur-003",
@@ -67,7 +69,8 @@ export const N3_ITEMS = [
     "tip": "意志動詞「叶える」表明確奮鬥目標，用「ために」。",
     "distractorNotes": {
       "ように": "他動詞意志動作「夢を叶える」接「ために」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-pur-006",
@@ -109,7 +112,8 @@ export const N3_ITEMS = [
     "tip": "意志動作「会う」表明確目的，用「ために」。",
     "distractorNotes": {
       "ように": "同主語意志動作「会う」接「ために」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-pur-009",
@@ -137,15 +141,16 @@ export const N3_ITEMS = [
     "tip": "他動詞意志表現「成功させる」接「ために」。",
     "distractorNotes": {
       "ように": "主動使役意志表現「成功させる」用「ために」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-pur-011",
     "groupId": "n3-purpose",
     "before": "環境保護の",
-    "after": "、買い物にはマイバッグを持参しています。",
-    "reading": "かんきょうほごのために、かいものにはマイバッグをじさんしています。",
-    "zh": "為了環境保護，我買東西都會自備環保袋。",
+    "after": "、買い物にはマイバッグを持って行きます。",
+    "reading": "かんきょうほごのために、かいものにはマイバッグをもっていきます。",
+    "zh": "為了環境保護，我買東西都會帶環保袋去。",
     "grammarKey": "ために",
     "answer": "ために",
     "tip": "「名詞＋の＋ために」表公益目的。",
@@ -179,7 +184,8 @@ export const N3_ITEMS = [
     "tip": "否定形「Vない」表防範目標，必須接「ように」（不可用「ないために」）。",
     "distractorNotes": {
       "ために": "「Vない」表避免某結果時固定用「ように」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-pur-014",
@@ -235,7 +241,8 @@ export const N3_ITEMS = [
     "tip": "否定形且前後主語不同（子ども vs 我），必用「ように」。",
     "distractorNotes": {
       "ために": "前後主語不同且為否定狀態，不能用「ために」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-pur-018",
@@ -319,7 +326,8 @@ export const N3_ITEMS = [
     "tip": "自動詞無意志變化「乾く」且前後主語不同，必用「ように」。",
     "distractorNotes": {
       "ために": "無意志自動詞「乾く」表自然狀態變化，不能用「ために」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-pur-024",
@@ -338,10 +346,10 @@ export const N3_ITEMS = [
   {
     "id": "n3-dec-001",
     "groupId": "n3-decisions-rules",
-    "before": "よく考えた結果、今度の転職は辞退する",
+    "before": "よく考えた結果、今度の転職はやめる",
     "after": "。",
-    "reading": "よくかんがえたけっか、こんどのてんしょくはじたいすることにした。",
-    "zh": "深思熟慮之後，我決定婉拒這次的轉職。",
+    "reading": "よくかんがえたけっか、こんどのてんしょくはやめることにした。",
+    "zh": "深思熟慮之後，我決定放棄這次的轉職。",
     "grammarKey": "ことにする",
     "answer": "ことにする",
     "surface": "ことにした",
@@ -393,7 +401,8 @@ export const N3_ITEMS = [
     "tip": "個人的單次旅行決定，使用「ことにした」。",
     "distractorNotes": {
       "ことにしている": "並非每年固定習慣，只是今年暑假的決定。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-005",
@@ -413,9 +422,9 @@ export const N3_ITEMS = [
   {
     "id": "n3-dec-006",
     "groupId": "n3-decisions-rules",
-    "before": "体調がすぐれないので、今夜は早めに寝る",
+    "before": "体調がよくないので、今夜は早めに寝る",
     "after": "。",
-    "reading": "たいちょうがすぐれないので、こんやははやめにねることにします。",
+    "reading": "たいちょうがよくないので、こんやははやめにねることにします。",
     "zh": "身體不太舒服，今晚我決定早點睡。",
     "grammarKey": "ことにする",
     "answer": "ことにする",
@@ -453,7 +462,8 @@ export const N3_ITEMS = [
     "tip": "當下的單次主觀決定，使用「ことにする」。",
     "distractorNotes": {
       "ことにしている": "「あと十分だけ」是當下一次性決定。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-009",
@@ -468,7 +478,8 @@ export const N3_ITEMS = [
     "tip": "今年冬天的單次主觀選擇，用「ことにしました」。",
     "distractorNotes": {
       "ことになる": "強調自己主動選擇改去溫泉，用「ことにしました」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-010",
@@ -483,7 +494,8 @@ export const N3_ITEMS = [
     "tip": "主動報名參賽的個人決定，使用「ことにしました」。",
     "distractorNotes": {
       "ことになっている": "不是被強迫規定，而是自己決定報名。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-011",
@@ -498,7 +510,8 @@ export const N3_ITEMS = [
     "tip": "自己訂定並長期持續執行的個人習慣（毎朝），必用「ことにしている」。",
     "distractorNotes": {
       "ことになっている": "「ことになっている」指外部規則，個人自發習慣用「ことにしている」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-012",
@@ -513,15 +526,16 @@ export const N3_ITEMS = [
     "tip": "個人長期堅持的生活原則，使用「ことにしています」。",
     "distractorNotes": {
       "ことにする": "長期持續的個人原則用「ことにしています」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-013",
     "groupId": "n3-decisions-rules",
-    "before": "語彙力を伸ばすため、毎日必ず単語を十個覚える",
+    "before": "日本語の力を伸ばすため、毎日必ず単語を十個覚える",
     "after": "。",
-    "reading": "ごいりょくをのばすため、まいにちかならずたんごをじゅっこおぼえることにしています。",
-    "zh": "為了提升字彙量，我固定每天至少背十個單字。",
+    "reading": "にほんごのちからをのばすため、まいにちかならずたんごをじゅっこおぼえることにしています。",
+    "zh": "為了提升日文能力，我固定每天至少背十個單字。",
     "grammarKey": "ことにしている",
     "answer": "ことにしている",
     "surface": "ことにしています",
@@ -573,7 +587,8 @@ export const N3_ITEMS = [
     "tip": "每個月固定執行的理財習慣，必用「ことにしている」。",
     "distractorNotes": {
       "ことにする": "「毎月〜」表持續習慣，用「ことにしている」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-017",
@@ -633,7 +648,8 @@ export const N3_ITEMS = [
     "tip": "每週固定執行的個人運動習慣，必用「ことにしている」。",
     "distractorNotes": {
       "ことになっている": "個人健身習慣用「ことにしている」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-021",
@@ -663,21 +679,22 @@ export const N3_ITEMS = [
     "tip": "客觀情勢或主辦單位做出的決定公告，使用「ことになりました」。",
     "distractorNotes": {
       "ことにする": "客觀公告結果常用「ことになりました」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-023",
     "groupId": "n3-decisions-rules",
-    "before": "選考を通過し、来年から海外の大学で研究する",
+    "before": "試験に合格し、来年から海外の大学で研究する",
     "after": "。",
-    "reading": "せんこうをつうかし、らいねんからかいがいのだいがくでけんきゅうすることになりました。",
-    "zh": "我通過甄選，確定明年起要到海外大學做研究了。",
+    "reading": "しけんにごうかくし、らいねんからかいがいのだいがくでけんきゅうすることになりました。",
+    "zh": "我通過考試，確定明年起要到海外大學做研究了。",
     "grammarKey": "ことになる",
     "answer": "ことになる",
     "surface": "ことになりました",
-    "tip": "經由外部評選結果而確定的安排，使用「ことになりました」。",
+    "tip": "經由考試錄取結果而確定的安排，使用「ことになりました」。",
     "distractorNotes": {
-      "ことにする": "通過外部甄選而定案，委婉客觀報告用「ことになりました」。"
+      "ことにする": "通過考試而定案，委婉客觀報告用「ことになりました」。"
     }
   },
   {
@@ -723,15 +740,16 @@ export const N3_ITEMS = [
     "tip": "受限於客觀狀況（預算不足）而導致的變更結果，用「ことになった」。",
     "distractorNotes": {
       "ことにする": "非出於主觀意願，而是客觀條件迫使的結果用「ことになった」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-027",
     "groupId": "n3-decisions-rules",
-    "before": "駅前が再開発され、来年新しい図書館ができる",
+    "before": "駅前が新しくなり、来年大きな図書館ができる",
     "after": "。",
-    "reading": "えきまえがさいかいはつされ、らいねんあたらしいとしょかんができることになった。",
-    "zh": "站前進行都更，確定明年會蓋一座新圖書館。",
+    "reading": "えきまえがあたらしくなり、らいねんおおきなとしょかんができることになった。",
+    "zh": "站前整修翻新，確定明年會蓋一座大圖書館。",
     "grammarKey": "ことになる",
     "answer": "ことになる",
     "surface": "ことになった",
@@ -753,15 +771,16 @@ export const N3_ITEMS = [
     "tip": "因突發狀況而形成的臨時安排，用「ことになりました」。",
     "distractorNotes": {
       "ことになっている": "非既定常規制度，而是臨時決定的結果。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-029",
     "groupId": "n3-decisions-rules",
-    "before": "今度の出張では、通訳も同行する",
+    "before": "今度の出張では、通訳も一緒に行く",
     "after": "。",
-    "reading": "こんどのしゅっちょうでは、つうやくもどうこうすることになりました。",
-    "zh": "這次出差確定口譯人員也會同行。",
+    "reading": "こんどのしゅっちょうでは、つうやくもいっしょにいくことになりました。",
+    "zh": "這次出差確定口譯人員也會一起去。",
     "grammarKey": "ことになる",
     "answer": "ことになる",
     "surface": "ことになりました",
@@ -783,7 +802,8 @@ export const N3_ITEMS = [
     "tip": "抽籤結果帶來的客觀成果，必用「ことになった」。",
     "distractorNotes": {
       "ことにする": "抽中門票非單靠個人意志決定，用「ことになった」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-031",
@@ -828,7 +848,8 @@ export const N3_ITEMS = [
     "tip": "考場明文規定，固定使用「ことになっています」。",
     "distractorNotes": {
       "ことにしている": "考場規則非個人習慣，用「ことになっています」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-034",
@@ -848,17 +869,18 @@ export const N3_ITEMS = [
   {
     "id": "n3-dec-035",
     "groupId": "n3-decisions-rules",
-    "before": "この資料室は、許可なく部外者が入れない",
+    "before": "この資料室は、許可なく他の人が入れない",
     "after": "。",
-    "reading": "このしりょうしつは、きょかなくぶがいしゃがはいれないことになっています。",
-    "zh": "規定沒有許可，外部人員不能進入這間資料室。",
+    "reading": "このしりょうしつは、きょかなくほかのひとがはいれないことになっています。",
+    "zh": "規定沒有許可，其他人不能進入這間資料室。",
     "grammarKey": "ことになっている",
     "answer": "ことになっている",
     "surface": "ことになっています",
     "tip": "場館既定的門禁規則，必用「ことになっています」。",
     "distractorNotes": {
       "ことにしている": "場所規定不用個人習慣「ことにしています」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-036",
@@ -888,7 +910,8 @@ export const N3_ITEMS = [
     "tip": "團體規範要求，使用「ことになっています」。",
     "distractorNotes": {
       "ことにする": "既定規範用「ことになっています」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-038",
@@ -918,7 +941,8 @@ export const N3_ITEMS = [
     "tip": "宿舍既定規範，使用「ことになっています」。",
     "distractorNotes": {
       "ことにしている": "宿舍規範用「ことになっています」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-dec-040",
@@ -947,7 +971,8 @@ export const N3_ITEMS = [
     "tip": "正面的好結果並帶有感謝語氣，必用「おかげで」。",
     "distractorNotes": {
       "せいで": "「せいで」用於責怪壞結果，不可用於感謝老師。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ce-002",
@@ -961,7 +986,8 @@ export const N3_ITEMS = [
     "tip": "努力帶來的正面好結果，使用「おかげで」。",
     "distractorNotes": {
       "ばかりに": "「ばかりに」固定接後悔莫及的壞結果。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ce-003",
@@ -989,7 +1015,8 @@ export const N3_ITEMS = [
     "tip": "慶幸提早準備帶來的正面結果，用「おかげで」。",
     "distractorNotes": {
       "せいか": "原因明確且為慶幸的好結果，用「おかげで」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ce-005",
@@ -1017,7 +1044,8 @@ export const N3_ITEMS = [
     "tip": "向大家表達感謝的好結果，用「名詞の＋おかげで」。",
     "distractorNotes": {
       "せいで": "感謝大家的應援必用「おかげで」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ce-007",
@@ -1087,7 +1115,8 @@ export const N3_ITEMS = [
     "tip": "將明確的壞結果（停飛）歸咎於前項原因，必用「せいで」。",
     "distractorNotes": {
       "おかげで": "停飛是壞結果，不能用帶感謝意味的「おかげで」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ce-012",
@@ -1157,7 +1186,8 @@ export const N3_ITEMS = [
     "tip": "指出造成壞結果的明確原因，用「せいで」。",
     "distractorNotes": {
       "おかげで": "視力下降是負面結果。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ce-017",
@@ -1171,7 +1201,8 @@ export const N3_ITEMS = [
     "tip": "負面社會結果的歸因，用「せいで」。",
     "distractorNotes": {
       "ばかりに": "「ばかりに」強調『就只因單一小小失誤』，不適用於「不景氣」這類大背景。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ce-018",
@@ -1185,7 +1216,8 @@ export const N3_ITEMS = [
     "tip": "明確指出睡過頭的負面原因，用「せいで」。",
     "distractorNotes": {
       "おかげで": "沒聽到鬧鐘是壞結果。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ce-019",
@@ -1205,8 +1237,8 @@ export const N3_ITEMS = [
     "id": "n3-ce-020",
     "groupId": "n3-cause-effect",
     "before": "寝不足の",
-    "after": "、朝から頭が重くて仕事がはかどらない。",
-    "reading": "ねぶそくのせいで、あさからあたまがおもくてしごとがはかどらない。",
+    "after": "、朝から頭が重くて仕事が進まない。",
+    "reading": "ねぶそくのせいで、あさからあたまがおもくてしごとがすすまない。",
     "zh": "因為睡眠不足，從早上起頭就重重的，工作進度很慢。",
     "grammarKey": "せいで",
     "answer": "せいで",
@@ -1241,7 +1273,8 @@ export const N3_ITEMS = [
     "tip": "委婉推測也許是年紀造成的原因，用「せいか」。",
     "distractorNotes": {
       "ばかりに": "年紀大不是一時失誤，不能用「ばかりに」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ce-023",
@@ -1317,9 +1350,9 @@ export const N3_ITEMS = [
     "id": "n3-ce-028",
     "groupId": "n3-cause-effect",
     "before": "久しぶりに運動した",
-    "after": "、今日はやけに眠い気がする。",
-    "reading": "ひさしぶりにうんどうしたせいか、きょうはやけにねむいきがする。",
-    "zh": "也許是久違地運動了，今天總覺得特別想睡。",
+    "after": "、今日はとても眠い気がする。",
+    "reading": "ひさしぶりにうんどうしたせいか、きょうはとてもねむいきがする。",
+    "zh": "也許是久違地運動了，今天總覺得很想睡。",
     "grammarKey": "せいか",
     "answer": "せいか",
     "tip": "「気がする」搭配不確定推測原因「せいか」。",
@@ -1339,7 +1372,8 @@ export const N3_ITEMS = [
     "tip": "對視覺印象原因做柔和推測，使用「せいか」。",
     "distractorNotes": {
       "ばかりに": "不帶強烈悔恨，不用「ばかりに」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ce-030",
@@ -1353,7 +1387,8 @@ export const N3_ITEMS = [
     "tip": "推測味覺遲鈍的可能原因，用「せいか」。",
     "distractorNotes": {
       "おかげで": "嚐不出味道不是好結果。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ce-031",
@@ -1375,24 +1410,24 @@ export const N3_ITEMS = [
     "groupId": "n3-cause-effect",
     "jlptTag": "N3/N2",
     "before": "たった一分遅れた",
-    "after": "、一年に一度の重要な面接を受けられなかった。",
-    "reading": "たったいっぷんおくれたばかりに、いちねんにいちどのじゅうようなめんせつをうけられなかった。",
-    "zh": "就只因為晚了一分鐘，我沒能參加一年一度的重要面試。",
+    "after": "、一年に一度の大切な試験を受けられなかった。",
+    "reading": "たったいっぷんおくれたばかりに、いちねんにいちどのたいせつなしけんをうけられなかった。",
+    "zh": "就只因為晚了一分鐘，我沒能參加一年一度的重要考試。",
     "grammarKey": "ばかりに",
     "answer": "ばかりに",
     "tip": "強調「就只差一分鐘」釀成慘痛後悔，必用「ばかりに」。",
     "distractorNotes": {
-      "おかげで": "錯過重要面試是慘痛壞結果。"
+      "おかげで": "錯過重要考試是慘痛壞結果。"
     }
   },
   {
     "id": "n3-ce-033",
     "groupId": "n3-cause-effect",
     "jlptTag": "N3/N2",
-    "before": "たった一言余計なことを言った",
-    "after": "、せっかくの良い雰囲気が台無しになった。",
-    "reading": "たったひとことよけいなことをいったばかりに、せっかくのよいふんいきがだいなしになった。",
-    "zh": "就只因多嘴說了一句話，好不容易營造的好氣氛全毀了。",
+    "before": "たった一言ひどいことを言った",
+    "after": "、せっかくの良い空気が台無しになった。",
+    "reading": "たったひとことひどいことをいったばかりに、せっかくのよいくうきがだいなしになった。",
+    "zh": "就只因說了一句過分的話，好不容易營造的好氣氛全毀了。",
     "grammarKey": "ばかりに",
     "answer": "ばかりに",
     "tip": "「たった一言」單一小失誤引發嚴重後果與後悔，用「ばかりに」。",
@@ -1404,10 +1439,10 @@ export const N3_ITEMS = [
     "id": "n3-ce-034",
     "groupId": "n3-cause-effect",
     "jlptTag": "N3/N2",
-    "before": "パスポートの確認を怠った",
+    "before": "パスポートのチェックを忘れた",
     "after": "、空港で飛行機に乗せてもらえなかった。",
-    "reading": "パスポートのかくにんをおこたったばかりに、くうこうでひこうきにのせてもらえなかった。",
-    "zh": "就只因為疏忽沒檢查護照，我在機場沒能搭上飛機。",
+    "reading": "パスポートのチェックをわすれたばかりに、くうこうでひこうきにのせてもらえなかった。",
+    "zh": "就只因為忘了檢查護照，我在機場沒能搭上飛機。",
     "grammarKey": "ばかりに",
     "answer": "ばかりに",
     "tip": "因一個疏忽導致重大後悔結果，用「ばかりに」。",
@@ -1423,9 +1458,9 @@ export const N3_ITEMS = [
     "groupId": "n3-cause-effect",
     "jlptTag": "N3/N2",
     "before": "解答用紙に名前を書き忘れた",
-    "after": "、満点のはずのテストが零点になってしまった。",
-    "reading": "かいとうようしになまえをかきわすれたばかりに、まんてんのはずのテストがれいてんになってしまった。",
-    "zh": "就只因為忘了在答案卷上寫名字，原本該滿分的考試變零分了。",
+    "after": "、百点のはずのテストがゼロ点になってしまった。",
+    "reading": "かいとうようしになまえをかきわすれたばかりに、ひゃくてんのはずのテストがゼロてんになってしまった。",
+    "zh": "就只因為忘了在答案卷上寫名字，原本該拿滿分的考試變零分了。",
     "grammarKey": "ばかりに",
     "answer": "ばかりに",
     "tip": "小小失誤造成滿分變零分的極度悔恨，典型使用「ばかりに」。",
@@ -1446,7 +1481,8 @@ export const N3_ITEMS = [
     "tip": "「ほんの一瞬（僅僅一瞬間）」釀成大錯的懊悔，用「ばかりに」。",
     "distractorNotes": {
       "おかげで": "慘遭逆轉落敗不能用「おかげで」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ce-037",
@@ -1461,7 +1497,8 @@ export const N3_ITEMS = [
     "tip": "因一時衝動而自食惡果的後悔感，使用「ばかりに」。",
     "distractorNotes": {
       "せいか": "原因明確，不用推測「せいか」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ce-038",
@@ -1500,10 +1537,10 @@ export const N3_ITEMS = [
     "id": "n3-ce-040",
     "groupId": "n3-cause-effect",
     "jlptTag": "N3/N2",
-    "before": "最終確認のボタンを押さなかった",
-    "after": "、希望の講座に申し込めなかった。",
-    "reading": "さいしゅうかくにんのボタンをおさなかったばかりに、きぼうのこうざにもうしこめなかった。",
-    "zh": "就只因為沒按下最後確認按鈕，沒能報上想上的課程。",
+    "before": "最後のボタンを押さなかった",
+    "after": "、入りたい講座に申し込めなかった。",
+    "reading": "さいごのボタンをおさなかったばかりに、はいりたいこうざにもうしこめなかった。",
+    "zh": "就只因為沒按下最後的按鈕，沒能報上想上的課程。",
     "grammarKey": "ばかりに",
     "answer": "ばかりに",
     "tip": "只差最後一步的小疏忽釀成遺憾，必用「ばかりに」。",
@@ -1649,7 +1686,8 @@ export const N3_ITEMS = [
     "tip": "多次嘗試卻沒結果的無奈，用「のに」。",
     "distractorNotes": {
       "といっても": "與「といっても」的讓步修正用法無關。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-conc-011",
@@ -1677,7 +1715,8 @@ export const N3_ITEMS = [
     "tip": "批評他人表裡不一、令人傻眼（呆れる），最具批判力的選擇是「くせに」。",
     "distractorNotes": {
       "といっても": "「といっても」無責備輕蔑語氣。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-conc-013",
@@ -1708,7 +1747,8 @@ export const N3_ITEMS = [
     },
     "distractorNotes": {
       "わりに": "不帶批評判斷，不合此處語境。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-conc-015",
@@ -1722,7 +1762,8 @@ export const N3_ITEMS = [
     "tip": "輕蔑批評「虫が良すぎる（想得美）」，固定呼應「くせに」。",
     "distractorNotes": {
       "といっても": "「といっても」不能表達嘲諷與責備。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-conc-016",
@@ -1736,7 +1777,8 @@ export const N3_ITEMS = [
     "tip": "諷刺對方裝內行（恥ずかしくないのかな），必用「くせに」。",
     "distractorNotes": {
       "わりに": "與標準對照無關。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-conc-017",
@@ -1750,7 +1792,8 @@ export const N3_ITEMS = [
     "tip": "「名詞の＋くせに」（「のに」不可接「の」）＋強烈批評「見苦しい」。",
     "distractorNotes": {
       "のに": "名詞接「のに」須用「大人なのに」，不可接「大人の」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-conc-018",
@@ -1772,10 +1815,10 @@ export const N3_ITEMS = [
   {
     "id": "n3-conc-019",
     "groupId": "n3-concession",
-    "before": "お金がないと毎回嘆いている",
+    "before": "お金がないと毎回言っている",
     "after": "、新作のブランド品ばかり買っている。",
-    "reading": "おかねがないとまいかいなげいているくせに、しんさくのブランドひんばかりかっている。",
-    "zh": "明明每次都在哭窮，卻淨是買新款名牌貨。",
+    "reading": "おかねがないとまいかいいっているくせに、しんさくのブランドひんばかりかっている。",
+    "zh": "明明每次都說沒錢，卻淨是買新款名牌貨。",
     "grammarKey": "くせに",
     "answer": "くせに",
     "tip": "嘲諷言行矛盾（嘴上哭窮卻狂買名牌），使用「くせに」。",
@@ -1795,7 +1838,8 @@ export const N3_ITEMS = [
     "tip": "「名詞の＋くせに」責難不符合身分應有的表現（情けない）。",
     "distractorNotes": {
       "のに": "「プロののに」接續錯誤（「のに」須用「プロなのに」）。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-conc-021",
@@ -1963,7 +2007,8 @@ export const N3_ITEMS = [
     "tip": "修正程度「〜程度です」，典型搭配「といっても」。",
     "distractorNotes": {
       "わりに": "不是按標準誇讚或比較，而是界定實際程度。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-conc-033",
@@ -2033,15 +2078,16 @@ export const N3_ITEMS = [
     "tip": "謙稱實際飲酒量有限（〜程度です），固定用「といっても」。",
     "distractorNotes": {
       "くせに": "無批評意味。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-conc-038",
     "groupId": "n3-concession",
     "before": "海外旅行に行った",
-    "after": "、二泊三日の弾丸ツアーでした。",
-    "reading": "かいがいりょこうにいったといっても、にはくみっかのだんがんツアーでした。",
-    "zh": "雖說去了海外旅行，其實只是三天兩夜的快閃團。",
+    "after": "、二泊三日の短いツアーでした。",
+    "reading": "かいがいりょこうにいったといっても、にはくみっかのみじかいツアーでした。",
+    "zh": "雖說去了海外旅行，其實只是三天兩夜的短期團。",
     "grammarKey": "といっても",
     "answer": "といっても",
     "tip": "補充說明實際行程很短，沒那麼豪華，用「といっても」。",
@@ -2106,7 +2152,8 @@ export const N3_ITEMS = [
     },
     "distractorNotes": {
       "あいだ": "「あいだ」表整段期間持續不斷做的動作，爬一次山是單次行動。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ts-003",
@@ -2148,7 +2195,8 @@ export const N3_ITEMS = [
     "tip": "趁記憶淡忘前（狀態改變前）先記下來，形容動詞「な＋うちに」。",
     "distractorNotes": {
       "あいだに": "形容動詞「鮮明な」不直接接「あいだに」，趁狀態未變必用「うちに」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ts-006",
@@ -2182,9 +2230,9 @@ export const N3_ITEMS = [
     "id": "n3-ts-008",
     "groupId": "n3-time-span",
     "before": "元気な",
-    "after": "、ずっとやりたかった陶芸を始めてみたい。",
-    "reading": "げんきなうちに、ずっとやりたかったとうげいをはじめてみたい。",
-    "zh": "想趁身體還硬朗的時候，開始學一直想做的陶藝。",
+    "after": "、ずっとやりたかった水泳を始めてみたい。",
+    "reading": "げんきなうちに、ずっとやりたかったすいえいをはじめてみたい。",
+    "zh": "想趁身體還硬朗的時候，開始學一直想做的游泳。",
     "grammarKey": "うちに",
     "answer": "うちに",
     "tip": "把握身體健康狀態未改變前開始行動，用「元気なうちに」。",
@@ -2204,7 +2252,8 @@ export const N3_ITEMS = [
     "tip": "趁時間截止（狀態改變）前把事做完，用「あるうちに」。",
     "distractorNotes": {
       "あいだ": "「済ませよう（做完）」是一次性完成動作，不用持續「あいだ」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ts-010",
@@ -2305,7 +2354,8 @@ export const N3_ITEMS = [
     "tip": "不在家期間內發生的瞬間到達（届いていた），必用「の＋あいだに」。",
     "distractorNotes": {
       "あいだ": "包裹送達是單一時間點事件，必須加「に」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ts-017",
@@ -2361,7 +2411,8 @@ export const N3_ITEMS = [
     "tip": "短短幾秒內發生的瞬間移動，必用「の＋あいだに」。",
     "distractorNotes": {
       "あいだ": "鑽進去是瞬間動作，不能省略「に」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ts-021",
@@ -2389,7 +2440,8 @@ export const N3_ITEMS = [
     "tip": "兩項持續狀態同時並行貫穿整段期間，必用無「に」的「あいだ」。",
     "distractorNotes": {
       "あいだに": "「編み物をしている」表持續進行狀態，非單點完成事件。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ts-023",
@@ -2431,7 +2483,8 @@ export const N3_ITEMS = [
     "tip": "「ずっと暮らしていた」持續整個留學期間，必用「あいだ」。",
     "distractorNotes": {
       "あいだに": "貫穿整個留學期的持續居住狀態，不可用「あいだに」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ts-026",
@@ -2473,7 +2526,8 @@ export const N3_ITEMS = [
     "tip": "狀態持續貫穿整場演奏，必用「あいだ」。",
     "distractorNotes": {
       "あいだに": "非瞬間事件，而是持續整場的狀態，不用「あいだに」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ts-029",
@@ -2487,7 +2541,8 @@ export const N3_ITEMS = [
     "tip": "「ずっと眺めていた」持續整個飛行過程，必用「あいだ」。",
     "distractorNotes": {
       "あいだに": "持續性動作搭配「ずっと」必用無「に」的「あいだ」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-ts-030",
@@ -2501,7 +2556,8 @@ export const N3_ITEMS = [
     "tip": "禁令有效範圍涵蓋整個考試期間，必用「あいだ」。",
     "distractorNotes": {
       "あいだに": "涵蓋全程的持續規定不用「あいだに」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mf-001",
@@ -2561,7 +2617,8 @@ export const N3_ITEMS = [
     "tip": "可接「の＋名詞」且可用於數月前的主觀「剛…」，必用「たばかり」。",
     "distractorNotes": {
       "卒業したところ": "「たところ」不能直接加「の＋名詞」修飾人物，也不用於數月前。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mf-004",
@@ -2621,7 +2678,8 @@ export const N3_ITEMS = [
     "tip": "「三日前」在心理感覺上才剛出院不久，必用「たばかり」。",
     "distractorNotes": {
       "したところ": "「三日前」超過「たところ」的當下瞬間範圍。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mf-007",
@@ -2744,7 +2802,8 @@ export const N3_ITEMS = [
     "tip": "向對方匯報「剛剛那一刻完成交件」的客觀時間點，用「たところ」。",
     "distractorNotes": {
       "提出するところ": "已經交出去了，用過去形「提出したところ」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mf-013",
@@ -2784,7 +2843,8 @@ export const N3_ITEMS = [
     "tip": "「ちょうど今（現在剛好）」客觀說明會議剛結束的時點，用「たところ」。",
     "distractorNotes": {
       "終わるところ": "已經結束並提議休息，用「終わったところ」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mf-015",
@@ -2904,7 +2964,8 @@ export const N3_ITEMS = [
     "tip": "「今ちょうど」剛曬完的客觀瞬間，用「たところ」。",
     "distractorNotes": {
       "終わるところ": "已經曬完才說「すぐ行けます」，用「終わったところ」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mf-021",
@@ -2964,7 +3025,8 @@ export const N3_ITEMS = [
     "tip": "正在調查進行中的當下階段，用「ているところ」。",
     "distractorNotes": {
       "調べたところ": "還沒查完、仍在進行中，用「調べているところ」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mf-024",
@@ -3004,7 +3066,8 @@ export const N3_ITEMS = [
     "tip": "正在確認處理當中（もう少々お待ちください），必用「ているところ」。",
     "distractorNotes": {
       "したところ": "尚未確認完畢，正進行中用「ているところ」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mf-026",
@@ -3064,7 +3127,8 @@ export const N3_ITEMS = [
     "tip": "太陽正逐漸露臉的進行狀態，用「出ているところ」。",
     "distractorNotes": {
       "出るところ": "描述已經在露臉的眼前畫面用「出ているところ」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mf-029",
@@ -3244,7 +3308,8 @@ export const N3_ITEMS = [
     "tip": "「今から」正要動手泡咖啡，用「淹れるところ」。",
     "distractorNotes": {
       "淹れたばかり": "「今から」表即將開始，必用「辞書形＋ところ」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mf-038",
@@ -3324,7 +3389,8 @@ export const N3_ITEMS = [
     "tip": "「開門的剎那間貓就衝出來」強調瞬間發生的意外變化，用「たとたんに」。",
     "distractorNotes": {
       "開けたせいで": "重點在『打開門那一剎那』的瞬間時間感，非歸咎責怪。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mc-002",
@@ -3364,7 +3430,8 @@ export const N3_ITEMS = [
     "tip": "站起來的剎那間立刻頭暈（クラッと），必用「たとたんに」。",
     "distractorNotes": {
       "立ち上がったところに": "「ところに」表『正當某時點恰好遇到別的事』，不表自身生理瞬間反應。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mc-004",
@@ -3429,10 +3496,10 @@ export const N3_ITEMS = [
   {
     "id": "n3-mc-007",
     "groupId": "n3-moment-clause",
-    "before": "終業のチャイムが",
-    "after": "、生徒たちは一斉に教室を飛び出した。",
-    "reading": "しゅうぎょうのチャイムがなったとたんに、せいとたちはいっせいにきょうしつをとびだした。",
-    "zh": "下課鐘聲一響的瞬間，學生們一齊衝出教室。",
+    "before": "終わりのチャイムが",
+    "after": "、生徒たちはすぐ教室を飛び出した。",
+    "reading": "おわりのチャイムがなったとたんに、せいとたちはすぐきょうしつをとびだした。",
+    "zh": "下課鐘聲一響的瞬間，學生們立刻衝出教室。",
     "grammarKey": "たとたんに",
     "answer": "鳴ったとたんに",
     "choices": [
@@ -3441,7 +3508,7 @@ export const N3_ITEMS = [
       "鳴ったばかりに",
       "鳴ったせいで"
     ],
-    "tip": "鐘聲響起的剎那立刻出現一齊衝出的變化，必用「たとたんに」。",
+    "tip": "鐘聲響起的剎那立刻衝出教室，必用「たとたんに」。",
     "distractorNotes": {
       "鳴ったせいで": "非歸咎壞結果，而是描寫瞬間緊接的動作。"
     }
@@ -3464,7 +3531,8 @@ export const N3_ITEMS = [
     "tip": "下車那一瞬間突然驚覺，必用「たとたんに」。",
     "distractorNotes": {
       "降りたせいで": "下車不是忘帶傘的原因。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mc-009",
@@ -3484,7 +3552,8 @@ export const N3_ITEMS = [
     "tip": "被點名的瞬間心跳加速，用「たとたんに」。",
     "distractorNotes": {
       "呼ばれたばかりに": "不是失誤釀成災難，不用「ばかりに」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mc-010",
@@ -3644,7 +3713,8 @@ export const N3_ITEMS = [
     "tip": "剛印完的節骨眼上正好撞上修改通知，用「たところに」。",
     "distractorNotes": {
       "終えたせいで": "印完資料不是部長要修改的原因。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mc-018",
@@ -3684,7 +3754,8 @@ export const N3_ITEMS = [
     "tip": "「ちょうど」巧合時間點撞上別人出現，必用「たところに」。",
     "distractorNotes": {
       "淹れたばかりに": "不是遺憾的失誤。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mc-020",
@@ -3704,7 +3775,8 @@ export const N3_ITEMS = [
     "tip": "剛忙完的節骨眼上被交辦新工作，用「たところに」。",
     "distractorNotes": {
       "ついたせいで": "非因果責怪，而是巧合的糟糕時機。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mc-021",
@@ -3770,7 +3842,8 @@ export const N3_ITEMS = [
     },
     "distractorNotes": {
       "見落としたとたんに": "非瞬間立即發生。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mc-024",
@@ -3797,10 +3870,10 @@ export const N3_ITEMS = [
     "id": "n3-mc-025",
     "groupId": "n3-moment-clause",
     "jlptTag": "N3/N2",
-    "before": "安さに惹かれてよく調べずに",
-    "after": "、一か月で修理不能になってしまった。",
-    "reading": "やすさにひかれてよくしらべずにかったばかりに、いっかげつでしゅうりふのうになってしまった。",
-    "zh": "就只因貪便宜沒查清楚就買下，才一個月就壞到無法修理。",
+    "before": "安かったのでよく調べずに",
+    "after": "、一か月で壊れてしまった。",
+    "reading": "やすかったのでよくしらべずにかったばかりに、いっかげつでこわれてしまった。",
+    "zh": "就只因便宜沒查清楚就買下，才一個月就壞掉了。",
     "grammarKey": "たばかりに",
     "answer": "買ったばかりに",
     "choices": [
@@ -3833,7 +3906,8 @@ export const N3_ITEMS = [
     "tip": "「たった一つ（就只差一個）」造成延畢一年的悔恨，必用「たばかりに」。",
     "distractorNotes": {
       "落としたとたんに": "強調微小原因釀成嚴重後果，非瞬間時間。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mc-027",
@@ -3896,16 +3970,17 @@ export const N3_ITEMS = [
     "tip": "因一時愛面子的決定而自食惡果，用「選んだばかりに」（撥音便だ）。",
     "distractorNotes": {
       "選んだとたんに": "非瞬間發生的物理變化。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mc-030",
     "groupId": "n3-moment-clause",
     "jlptTag": "N3/N2",
     "before": "軽い風邪だと思って病院へ",
-    "after": "、こじらせて入院することになった。",
-    "reading": "かるいかぜだとおもってびょういんへいかなかったばかりに、こじらせてにゅういんすることになった。",
-    "zh": "就只因以為是小感冒沒去醫院，結果拖到惡化住院了。",
+    "after": "、ひどくなって入院することになった。",
+    "reading": "かるいかぜだとおもってびょういんへいかなかったばかりに、ひどくなってにゅういんすることになった。",
+    "zh": "就只因以為是小感冒沒去醫院，結果變嚴重住院了。",
     "grammarKey": "たばかりに",
     "answer": "行かなかったばかりに",
     "choices": [
@@ -3937,7 +4012,8 @@ export const N3_ITEMS = [
     "tip": "日常負面原因歸咎（吃太多導致胃微不適），最自然使用「たせいで」。",
     "distractorNotes": {
       "食べすぎたとたんに": "是隔天早上才不舒服，非吃下的瞬間。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mc-032",
@@ -3977,15 +4053,16 @@ export const N3_ITEMS = [
     "tip": "將日常困擾歸咎於客觀氣候變化，必用「たせいで」（非個人小失誤「ばかりに」）。",
     "distractorNotes": {
       "なったばかりに": "梅雨下雨不是個人悔恨的單一小失誤，用「せいで」。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mc-034",
     "groupId": "n3-moment-clause",
     "before": "普段履き慣れない革靴で長く",
-    "after": "、足に靴擦れができた。",
-    "reading": "ふだんはきなれないかわぐつでながくあるいたせいで、あしにくつずれができた。",
-    "zh": "因為穿不習慣的皮鞋走太久，腳磨破皮了。",
+    "after": "、足が痛くなった。",
+    "reading": "ふだんはきなれないかわぐつでながくあるいたせいで、あしがいたくなった。",
+    "zh": "因為穿不習慣的皮鞋走太久，腳變痛了。",
     "grammarKey": "たせいで",
     "answer": "歩いたせいで",
     "choices": [
@@ -3994,10 +4071,11 @@ export const N3_ITEMS = [
       "歩いたところに",
       "歩いたばかりに"
     ],
-    "tip": "明確指出腳磨破皮的直接負面原因，用「たせいで」。",
+    "tip": "明確指出腳痛的直接負面原因，用「たせいで」。",
     "distractorNotes": {
       "歩いたとたんに": "是走了很久造成的，非走第一步的瞬間。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mc-035",
@@ -4037,7 +4115,8 @@ export const N3_ITEMS = [
     "tip": "客觀季節乾燥造成的困擾歸因，用「たせいで」。",
     "distractorNotes": {
       "なったところに": "表因果而非巧合時間。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mc-037",
@@ -4077,7 +4156,8 @@ export const N3_ITEMS = [
     "tip": "持續一整天的行為造成肩頸僵硬，用「たせいで」。",
     "distractorNotes": {
       "続けたとたんに": "是一整天累積的結果，非一瞬間。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n3-mc-039",
@@ -4103,9 +4183,9 @@ export const N3_ITEMS = [
     "id": "n3-mc-040",
     "groupId": "n3-moment-clause",
     "before": "準備運動をせずに急に",
-    "after": "、ふくらはぎを痛めてしまった。",
-    "reading": "じゅんびうんどうをせずにきゅうにはしったせいで、ふくらはぎをいためてしまった。",
-    "zh": "因為沒做暖身運動就突然跑步，結果小腿拉傷了。",
+    "after": "、足を痛めてしまった。",
+    "reading": "じゅんびうんどうをせずにきゅうにはしったせいで、あしをいためてしまった。",
+    "zh": "因為沒做暖身運動就突然跑步，結果腳拉傷了。",
     "grammarKey": "たせいで",
     "answer": "走ったせいで",
     "choices": [

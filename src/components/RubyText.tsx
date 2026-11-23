@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { lessons } from "@/data/registry";
 import { useAppTheme } from "@/theme";
 
 export type RubySegment = {
@@ -9,6 +10,12 @@ export type RubySegment = {
 };
 
 const KANJI_CHAR_RE = /[\u4e00-\u9fff々〆ヵヶ]/;
+const PURE_KANJI_RE = /^[\u4e00-\u9fff々〆ヵヶ]+$/;
+const BAD_START = new Set(["ん", "っ", "ー", "ゃ", "ゅ", "ょ", "ぁ", "ぃ", "ぅ", "ぇ", "ぉ"]);
+const PARTICLE_OR_PUNCT = new Set([
+  "は", "が", "の", "を", "に", "で", "と", "へ", "も", "や", "か",
+  "、", "。", "？", "！", "「", "」", "（", "）",
+]);
 
 function toHiragana(str: string): string {
   let out = "";
@@ -23,9 +30,60 @@ function toHiragana(str: string): string {
   return out;
 }
 
+let cachedVocabReadings: Map<string, Set<string>> | null = null;
+
 /**
- * Splits a Japanese string `jp` and its full kana `reading` into exact
- * ruby segments `{ text, rt? }` where `rt` is attached only to kanji runs.
+ * Lazily indexes kanji-run readings directly from JASPEZ's own bundled
+ * 2,195-word vocabulary registry (zero hardcoded word lists, zero extra bundle size).
+ */
+function getVocabReadingMap(): Map<string, Set<string>> {
+  if (cachedVocabReadings) return cachedVocabReadings;
+  const map = new Map<string, Set<string>>();
+  const add = (kanji: string, rd: string) => {
+    if (!kanji || !rd) return;
+    let set = map.get(kanji);
+    if (!set) {
+      set = new Set();
+      map.set(kanji, set);
+    }
+    set.add(rd);
+  };
+
+  for (const levelLessons of Object.values(lessons)) {
+    for (const lesson of Object.values(levelLessons)) {
+      for (const entry of lesson.words ?? []) {
+        const w = entry.word?.trim();
+        const r = entry.reading?.trim();
+        if (!w || !r || !KANJI_CHAR_RE.test(w)) continue;
+        const rH = toHiragana(r);
+        if (PURE_KANJI_RE.test(w)) {
+          add(w, rH);
+        } else {
+          // Extract leading kanji stem when followed by matching trailing okurigana (e.g., 食べる/たべる -> 食:た)
+          let kEnd = 0;
+          while (kEnd < w.length && KANJI_CHAR_RE.test(w[kEnd])) kEnd += 1;
+          if (kEnd > 0) {
+            const stem = w.slice(0, kEnd);
+            const suffix = toHiragana(w.slice(kEnd));
+            if (suffix && !KANJI_CHAR_RE.test(suffix) && rH.endsWith(suffix) && rH.length > suffix.length) {
+              add(stem, rH.slice(0, rH.length - suffix.length));
+            }
+          }
+        }
+      }
+    }
+  }
+
+  cachedVocabReadings = map;
+  return map;
+}
+
+/**
+ * Globally optimal DP aligner splitting a Japanese string `jp` and its full
+ * kana `reading` into exact ruby segments `{ text, rt? }` where `rt` is
+ * attached only to kanji runs. Uses JASPEZ's bundled vocabulary readings plus
+ * an okurigana-aware mora prior (2.05/kanji for standalone nouns vs 1.45/kanji
+ * for verb/adjective stems before okurigana).
  */
 export function alignKanjiRuby(jp: string, reading: string): RubySegment[] {
   if (!jp) return [];
@@ -33,7 +91,6 @@ export function alignKanjiRuby(jp: string, reading: string): RubySegment[] {
     return [{ text: jp }];
   }
 
-  // Split jp into alternating runs of kanji vs non-kanji
   const runs: { text: string; isKanji: boolean }[] = [];
   for (let i = 0; i < jp.length; i += 1) {
     const ch = jp[i];
@@ -46,23 +103,87 @@ export function alignKanjiRuby(jp: string, reading: string): RubySegment[] {
     }
   }
 
+  const vocabMap = getVocabReadingMap();
+  const R = runs.length;
+  const M = reading.length;
   const rdNorm = toHiragana(reading);
+  const INF = 1e9;
+
+  const dp: number[][] = Array.from({ length: R + 1 }, () => new Array<number>(M + 1).fill(INF));
+  const back: number[][] = Array.from({ length: R + 1 }, () => new Array<number>(M + 1).fill(-1));
+  dp[0][0] = 0;
+
+  for (let i = 0; i < R; i += 1) {
+    const run = runs[i];
+    if (!run.isKanji) {
+      const target = toHiragana(run.text);
+      const L = target.length;
+      for (let j = 0; j <= M - L; j += 1) {
+        if (dp[i][j] < INF && rdNorm.slice(j, j + L) === target) {
+          if (dp[i][j] < dp[i + 1][j + L]) {
+            dp[i + 1][j + L] = dp[i][j];
+            back[i + 1][j + L] = j;
+          }
+        }
+      }
+    } else {
+      const k = run.text.length;
+      const nextRun = runs[i + 1];
+      const nextFirst = nextRun ? nextRun.text[0] : "";
+      const isStandaloneNoun = !nextRun || PARTICLE_OR_PUNCT.has(nextFirst);
+      const expectedPerKanji = isStandaloneNoun ? 2.05 : 1.45;
+      const known = vocabMap.get(run.text);
+
+      for (let j = 0; j < M; j += 1) {
+        if (dp[i][j] >= INF) continue;
+        if (BAD_START.has(rdNorm[j])) continue;
+        const maxEnd = Math.min(M, j + k * 5 + 3);
+        for (let end = j + k; end <= maxEnd; end += 1) {
+          const L = end - j;
+          let cost = (L - expectedPerKanji * k) * (L - expectedPerKanji * k);
+          if (rdNorm[end - 1] === "っ") {
+            // Soft penalty: valid before て/た (買って), disfavored vs full reading (夫と)
+            cost += 2.5;
+          }
+          if (known && known.has(rdNorm.slice(j, end))) {
+            cost -= 4.5;
+          }
+          const nc = dp[i][j] + cost;
+          if (nc < dp[i + 1][end]) {
+            dp[i + 1][end] = nc;
+            back[i + 1][end] = j;
+          }
+        }
+      }
+    }
+  }
+
+  if (dp[R][M] < INF) {
+    const segs: RubySegment[] = new Array(R);
+    let cur = M;
+    for (let i = R; i > 0; i -= 1) {
+      const prev = back[i][cur];
+      const run = runs[i - 1];
+      segs[i - 1] = run.isKanji
+        ? { text: run.text, rt: reading.slice(prev, cur) || undefined }
+        : { text: run.text };
+      cur = prev;
+    }
+    return segs;
+  }
+
+  // Greedy fallback if reading has an unexpected mismatch
   const segs: RubySegment[] = [];
   let rdPos = 0;
-
-  for (let i = 0; i < runs.length; i += 1) {
+  for (let i = 0; i < R; i += 1) {
     const run = runs[i];
     if (!run.isKanji) {
       const target = toHiragana(run.text);
       const idx = rdNorm.indexOf(target, rdPos);
-      if (idx !== -1) {
-        rdPos = idx + target.length;
-      }
+      if (idx !== -1) rdPos = idx + target.length;
       segs.push({ text: run.text });
       continue;
     }
-
-    // Kanji run: find where the next non-kanji anchor begins in reading
     const nextRun = runs[i + 1];
     if (!nextRun) {
       const rt = reading.slice(rdPos);
@@ -70,23 +191,17 @@ export function alignKanjiRuby(jp: string, reading: string): RubySegment[] {
       segs.push({ text: run.text, rt: rt || undefined });
     } else {
       const anchor = toHiragana(nextRun.text);
-      // Search for anchor at least 1 kana after rdPos (each kanji has >= 1 mora)
-      let searchStart = Math.min(reading.length, rdPos + 1);
-      let idx = rdNorm.indexOf(anchor, searchStart);
-      if (idx === -1) {
-        idx = rdNorm.indexOf(anchor, rdPos);
-      }
+      let idx = rdNorm.indexOf(anchor, Math.min(M, rdPos + 1));
+      if (idx === -1) idx = rdNorm.indexOf(anchor, rdPos);
       if (idx !== -1) {
         const rt = reading.slice(rdPos, idx);
         rdPos = idx;
         segs.push({ text: run.text, rt: rt || undefined });
       } else {
-        // Fallback: attach remaining reading to avoid silent drop
         segs.push({ text: run.text });
       }
     }
   }
-
   return segs;
 }
 
@@ -119,12 +234,10 @@ export function alignClozeRuby(params: {
     const segEnd = cursor + seg.text.length;
     cursor = segEnd;
 
-    // Completely before blank
     if (segEnd <= blankStart) {
       out.push(seg);
       continue;
     }
-    // Completely after blank
     if (segStart >= blankEnd) {
       if (!revealed && !emittedPlaceholder) {
         out.push({ text: blankPlaceholder, isBlank: true });
@@ -134,7 +247,6 @@ export function alignClozeRuby(params: {
       continue;
     }
 
-    // Overlaps blank [blankStart, blankEnd)
     const preLen = Math.max(0, blankStart - segStart);
     const postStartInSeg = Math.min(seg.text.length, blankEnd - segStart);
 
@@ -166,7 +278,6 @@ export function alignClozeRuby(params: {
     out.push({ text: blankPlaceholder, isBlank: true });
   }
 
-  // Wrap revealed blank segments with 【 and 】 visually
   if (revealed) {
     const firstBlankIdx = out.findIndex((s) => s.isBlank);
     let lastBlankIdx = -1;
@@ -221,7 +332,6 @@ export function RubyText({
     return [];
   }, [segments, jp, reading]);
 
-  // Expand non-ruby runs into per-character atoms so Japanese wraps naturally at any char
   const atoms = useMemo(() => {
     const list: { text: string; rt?: string; isBlank?: boolean }[] = [];
     for (const seg of resolvedSegments) {

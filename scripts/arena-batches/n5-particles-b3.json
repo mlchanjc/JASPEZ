@@ -1676,7 +1676,8 @@
     "distractorNotes": {
       "に": "表示共同行動的群體範圍固定用「みんなで」。",
       "を": "「曲を」才是受詞。"
-    }
+    },
+    "tierOverride": "extended"
   },
   {
     "id": "n5-par-513",
