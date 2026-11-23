@@ -1,0 +1,2883 @@
+[
+  {
+    "id": "n5-par-c2-001",
+    "groupId": "n5-particles",
+    "before": "いすの下にねこ",
+    "after": "います。",
+    "reading": "いすのしたにねこがいます。",
+    "zh": "椅子下面有一隻貓。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "表示存在句的主語「貓」，搭配「います」用「が」。",
+    "distractorNotes": {
+      "を": "「います」是自動詞，不接表示受詞的「を」。",
+      "に": "「ねこ」是存在的主體，不是場所。"
+    }
+  },
+  {
+    "id": "n5-par-c2-002",
+    "groupId": "n5-particles",
+    "before": "はこの中にかぎ",
+    "after": "あります。",
+    "reading": "はこのなかにかぎがあります。",
+    "zh": "盒子裡面有鑰匙。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "表示存在句的主語「鑰匙」，搭配「あります」用「が」。",
+    "distractorNotes": {
+      "を": "「あります」是自動詞，不接「を」。",
+      "で": "「で」表動作場所，不能標示存在物。"
+    }
+  },
+  {
+    "id": "n5-par-c2-003",
+    "groupId": "n5-particles",
+    "before": "にわに大きい木",
+    "after": "あります。",
+    "reading": "にわにおおきいきがあります。",
+    "zh": "院子裡有一棵大樹。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "說明某處存在某物時，存在主體接主格助詞「が」。",
+    "distractorNotes": {
+      "を": "「あります」不接他動詞受詞助詞「を」。",
+      "は": "單純描述新發現或某處有某物，用「が」最自然。"
+    }
+  },
+  {
+    "id": "n5-par-c2-004",
+    "groupId": "n5-particles",
+    "before": "つくえの上に花",
+    "after": "あります。",
+    "reading": "つくえのうえにはながあります。",
+    "zh": "桌子上有花。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "表示「桌上存在著花」，存在主體「花」接「が」。",
+    "distractorNotes": {
+      "を": "「あります」前不能用「を」。",
+      "に": "場所「つくえの上」已用「に」，存在主體要用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-005",
+    "groupId": "n5-particles",
+    "before": "えきの前にぎんこう",
+    "after": "あります。",
+    "reading": "えきのまえにぎんこうがあります。",
+    "zh": "車站前面有銀行。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "存在句「場所＋に＋主體＋が＋あります」的主體用「が」。",
+    "distractorNotes": {
+      "で": "表示靜態存在不用「で」，且「ぎんこう」是主語。"
+    }
+  },
+  {
+    "id": "n5-par-c2-006",
+    "groupId": "n5-particles",
+    "before": "わたしは甘いおかし",
+    "after": "好きです。",
+    "reading": "わたしはあまいおかしがすきです。",
+    "zh": "我喜歡甜的點心。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "形容動詞「好きです」的好惡對象用「が」標示。",
+    "distractorNotes": {
+      "を": "日語的「好き」是形容動詞，對象不用「を」而用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-007",
+    "groupId": "n5-particles",
+    "before": "妹はからいカレー",
+    "after": "きらいです。",
+    "reading": "いもうとはからいカレーがきらいです。",
+    "zh": "妹妹討厭辣的咖哩。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "形容動詞「きらいです」的對象用「が」標示。",
+    "distractorNotes": {
+      "を": "「きらいです」是形容動詞，對象須用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-008",
+    "groupId": "n5-particles",
+    "before": "父はテニス",
+    "after": "とてもじょうずです。",
+    "reading": "ちちはテニスがとてもじょうずです。",
+    "zh": "爸爸非常擅長網球。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "表示擅長或不擅長（「じょうず・へた」）的對象用「が」。",
+    "distractorNotes": {
+      "を": "「じょうずです」是形容動詞，前面接「が」而非「を」。",
+      "で": "「テニス」是擅長的對象，不是工具。"
+    }
+  },
+  {
+    "id": "n5-par-c2-009",
+    "groupId": "n5-particles",
+    "before": "わたしはうた",
+    "after": "少しへたです。",
+    "reading": "わたしはうたがすこしへたです。",
+    "zh": "我有點不擅長唱歌。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「へたです」表示不擅長，其對象用「が」。",
+    "distractorNotes": {
+      "を": "「へたです」前不接他動詞受詞助詞「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-010",
+    "groupId": "n5-particles",
+    "before": "新しいくつ",
+    "after": "ほしいです。",
+    "reading": "あたらしいくつがほしいです。",
+    "zh": "我想要新鞋子。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "形容詞「ほしいです」表示想要的對象，前面接「が」。",
+    "distractorNotes": {
+      "を": "「ほしい」是形容詞，想要的對象慣用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-011",
+    "groupId": "n5-particles",
+    "before": "あねはえいご",
+    "after": "よくわかります。",
+    "reading": "あねはえいごがよくわかります。",
+    "zh": "姊姊很懂英語。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "動詞「わかります」表示理解的對象，前面用「が」。",
+    "distractorNotes": {
+      "を": "「わかります」是自動詞，理解的對象用「が」不用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-012",
+    "groupId": "n5-particles",
+    "before": "そとは強い風",
+    "after": "ふいています。",
+    "reading": "そとはつよいかぜがふいています。",
+    "zh": "外面正吹著強風。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "描述自然現象「風在吹」，主語「風」用「が」。",
+    "distractorNotes": {
+      "を": "「ふく」此處表風吹的自動現象，主語用「が」。",
+      "で": "「強い風」是吹動的主語，不是手段。"
+    }
+  },
+  {
+    "id": "n5-par-c2-013",
+    "groupId": "n5-particles",
+    "before": "朝から小さい雨",
+    "after": "ふっています。",
+    "reading": "あさからちいさいあめがふっています。",
+    "zh": "從早上開始就下著小雨。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "描述下雨等自然現象時，主語「雨」接「が」。",
+    "distractorNotes": {
+      "を": "「ふる」是自動詞，主語用「が」。",
+      "に": "「雨」是主語，不是時間或方向。"
+    }
+  },
+  {
+    "id": "n5-par-c2-014",
+    "groupId": "n5-particles",
+    "before": "きのうの夜は雪",
+    "after": "たくさんふりました。",
+    "reading": "きのうのよるはゆきがたくさんふりました。",
+    "zh": "昨天晚上下了很多雪。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「雪がふる」為固定搭配，自動詞主語用「が」。",
+    "distractorNotes": {
+      "を": "「ふる」是自動詞，不能接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-015",
+    "groupId": "n5-particles",
+    "before": "けさからあたま",
+    "after": "少し痛いです。",
+    "reading": "けさからあたまがすこしいたいです。",
+    "zh": "從今天早上開始頭有點痛。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "描述身體部位的疼痛狀態，部位名詞接「が」。",
+    "distractorNotes": {
+      "を": "「痛い」是形容詞，前面不接「を」。",
+      "に": "說明哪裡痛用主格「が」，不用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-016",
+    "groupId": "n5-particles",
+    "before": "きのうからおなか",
+    "after": "痛いです。",
+    "reading": "きのうからおなかがいたいです。",
+    "zh": "從昨天開始肚子痛。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "說明身體不適的部位「肚子」，用「が」。",
+    "distractorNotes": {
+      "で": "身體部位疼痛的主語用「が」，不用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-017",
+    "groupId": "n5-particles",
+    "before": "たくさん歩いてのど",
+    "after": "かわきました。",
+    "reading": "たくさんあるいてのどがかわきました。",
+    "zh": "走了很多路，口渴了。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「のどがかわく」（口渴）為慣用表現，主語用「が」。",
+    "distractorNotes": {
+      "を": "「かわく」是自動詞，主語用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-018",
+    "groupId": "n5-particles",
+    "before": "もう昼だからおなか",
+    "after": "すきました。",
+    "reading": "もうひるだからおなかがすきました。",
+    "zh": "已經中午了，肚子餓了。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「おなかがすく」（肚子餓）為固定慣用句，用「が」。",
+    "distractorNotes": {
+      "を": "「すく」是自動詞，不能接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-019",
+    "groupId": "n5-particles",
+    "before": "山の上から青い海",
+    "after": "見えます。",
+    "reading": "やまのうえからあおいうみがみえます。",
+    "zh": "從山頂看得到藍色的海。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「見えます」表示自然映入眼簾，對象用「が」。",
+    "distractorNotes": {
+      "を": "「見えます」為自動詞，對象用「が」而非「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-020",
+    "groupId": "n5-particles",
+    "before": "となりからピアノの音",
+    "after": "きこえます。",
+    "reading": "となりからピアノのおとがきこえます。",
+    "zh": "從隔壁傳來鋼琴聲。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「きこえます」表示自然聽見，聲音主體用「が」。",
+    "distractorNotes": {
+      "を": "主動去聽才用「を聞く」，自然聽見用「がきこえる」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-021",
+    "groupId": "n5-particles",
+    "before": "だれ",
+    "after": "この手紙を書きましたか。",
+    "reading": "だれがこのてがみをかきましたか。",
+    "zh": "這封信是誰寫的？",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "疑問詞「だれ」作主語時，必須接「が」而不能用「は」。",
+    "distractorNotes": {
+      "は": "疑問詞作主語時不可接「は」，須用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-022",
+    "groupId": "n5-particles",
+    "before": "どのりんご",
+    "after": "一番あまいですか。",
+    "reading": "どのりんごがいちばんあまいですか。",
+    "zh": "哪一顆蘋果最甜？",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "含疑問詞「どの〜」的主語須接「が」。",
+    "distractorNotes": {
+      "は": "疑問詞句作主語時不用「は」，改用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-023",
+    "groupId": "n5-particles",
+    "before": "なに",
+    "after": "一番たいせつですか。",
+    "reading": "なにがいちばんたいせつですか。",
+    "zh": "什麼是最重要的？",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "疑問詞「なに」作主語時，固定搭配「が」。",
+    "distractorNotes": {
+      "は": "疑問詞作主語不可用「は」，須用「が」。",
+      "を": "「たいせつです」是形容動詞，不接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-024",
+    "groupId": "n5-particles",
+    "before": "どちらのバス",
+    "after": "早いですか。",
+    "reading": "どちらのバスがはやいですか。",
+    "zh": "哪一班公車比較快？",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "二選一疑問詞「どちら」作主語時，接「が」。",
+    "distractorNotes": {
+      "は": "疑問詞主語須用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-025",
+    "groupId": "n5-particles",
+    "before": "ぞうははな",
+    "after": "とても長いです。",
+    "reading": "ぞうははながとてもながいです。",
+    "zh": "大象的鼻子非常長。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「大主題は＋部分主語が＋形容詞」句型，部分主語用「が」。",
+    "distractorNotes": {
+      "を": "「長い」是形容詞，前面不接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-026",
+    "groupId": "n5-particles",
+    "before": "この犬はみみ",
+    "after": "大きいです。",
+    "reading": "このいぬはみみがおおきいです。",
+    "zh": "這隻狗的耳朵很大。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "描述主題特徵「耳朵大」，特徵部位接「が」。",
+    "distractorNotes": {
+      "に": "「みみ」是「大きい」的主語，非地點。"
+    }
+  },
+  {
+    "id": "n5-par-c2-027",
+    "groupId": "n5-particles",
+    "before": "あねはせ",
+    "after": "とても高いです。",
+    "reading": "あねはせがとてもたかいです。",
+    "zh": "姊姊個子非常高。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「せが高い」（個子高）為固定表現，主語「せ」用「が」。",
+    "distractorNotes": {
+      "を": "形容詞「高い」前不能接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-028",
+    "groupId": "n5-particles",
+    "before": "この町は道",
+    "after": "ひろくてきれいです。",
+    "reading": "このまちはみちがひろくてきれいです。",
+    "zh": "這個城鎮的道路寬敞又乾淨。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "說明主題「這座城鎮」的局部特徵「道路」，用「が」。",
+    "distractorNotes": {
+      "で": "本句描述道路的性質，並非動作發生的場所。"
+    }
+  },
+  {
+    "id": "n5-par-c2-029",
+    "groupId": "n5-particles",
+    "before": "あそこで子ども",
+    "after": "およいでいます。",
+    "reading": "あそこでこどもがおよいでいます。",
+    "zh": "那裡有小孩正在游泳。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "描述眼前看到的具體場景，動作主體用「が」。",
+    "distractorNotes": {
+      "を": "「子ども」是游泳的主體，不是受詞。"
+    }
+  },
+  {
+    "id": "n5-par-c2-030",
+    "groupId": "n5-particles",
+    "before": "まど",
+    "after": "しずかにあいています。",
+    "reading": "まどがしずかにあいています。",
+    "zh": "窗戶靜靜地開著。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「あく」是自動詞，表示窗戶開著的狀態，主語用「が」。",
+    "distractorNotes": {
+      "を": "「あける」才接「を」；自動詞「あいている」主語用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-031",
+    "groupId": "n5-particles",
+    "before": "へやの電気",
+    "after": "きえています。",
+    "reading": "へやのでんきがきえています。",
+    "zh": "房間的電燈關著。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「きえる」是自動詞，說明電燈熄滅的狀態，主語用「が」。",
+    "distractorNotes": {
+      "を": "他動詞「けす」接「を」；自動詞「きえている」接「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-032",
+    "groupId": "n5-particles",
+    "before": "ドア",
+    "after": "しまっていますよ。",
+    "reading": "ドアがしまっていますよ。",
+    "zh": "門關著喔。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「しまる」是自動詞，表示門關著的狀態，用「が」。",
+    "distractorNotes": {
+      "を": "「しめる」才用「を」；自動詞「しまっている」用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-033",
+    "groupId": "n5-particles",
+    "before": "あそこに白い鳥",
+    "after": "とんでいます。",
+    "reading": "あそこにしろいとりがとんでいます。",
+    "zh": "那裡有白色的鳥正在飛。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "描寫眼前出現的景物動態，主語「白い鳥」接「が」。",
+    "distractorNotes": {
+      "を": "「白い鳥」是飛行的主體，不是經過的空間。"
+    }
+  },
+  {
+    "id": "n5-par-c2-034",
+    "groupId": "n5-particles",
+    "before": "もうすぐ夏やすみ",
+    "after": "始まります。",
+    "reading": "もうすぐなつやすみがはじまります。",
+    "zh": "暑假馬上就要開始了。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「始まる」是自動詞，表示某事開始，主語用「が」。",
+    "distractorNotes": {
+      "を": "他動詞「始める」接「を」；自動詞「始まる」主語用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-035",
+    "groupId": "n5-particles",
+    "before": "さんじにじゅぎょう",
+    "after": "おわります。",
+    "reading": "さんじにじゅぎょうがおわります。",
+    "zh": "三點課程結束。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「おわる」是自動詞，表示課程結束，主語用「が」。",
+    "distractorNotes": {
+      "を": "自動詞「おわる」不接「を」，主語用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-036",
+    "groupId": "n5-particles",
+    "before": "あした大事なテスト",
+    "after": "あります。",
+    "reading": "あしただいじなテストがあります。",
+    "zh": "明天有重要的考試。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "表示活動或事件舉行（「〜がある」），事件主語用「が」。",
+    "distractorNotes": {
+      "を": "「あります」前不接「を」。",
+      "で": "「テスト」是舉行的事件主語，非手段。"
+    }
+  },
+  {
+    "id": "n5-par-c2-037",
+    "groupId": "n5-particles",
+    "before": "こんどのどようびにうんどうかい",
+    "after": "あります。",
+    "reading": "こんどのどようびにうんどうかいがあります。",
+    "zh": "這週六有運動會。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "表示「有運動會」，「〜があります」的主語用「が」。",
+    "distractorNotes": {
+      "を": "「あります」是自動詞，不用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-038",
+    "groupId": "n5-particles",
+    "before": "わたしは時間",
+    "after": "あまりありません。",
+    "reading": "わたしはじかんがあまりありません。",
+    "zh": "我不太有時間。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "表示擁有與否（「〜がある・ない」），對象「時間」用「が」。",
+    "distractorNotes": {
+      "を": "「ありません」前不接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-039",
+    "groupId": "n5-particles",
+    "before": "この川は水",
+    "after": "とてもきれいです。",
+    "reading": "このかわはみずがとてもきれいです。",
+    "zh": "這條河的水非常乾淨。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "說明主題「這條河」的特徵「水很乾淨」，主語用「が」。",
+    "distractorNotes": {
+      "で": "「水」是「きれいです」的主語，不是工具或地點。"
+    }
+  },
+  {
+    "id": "n5-par-c2-040",
+    "groupId": "n5-particles",
+    "before": "わたしは白いねこ",
+    "after": "好きです。",
+    "reading": "わたしはしろいねこがすきです。",
+    "zh": "我喜歡白色的貓。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「好きです」表示喜歡的對象，前面接「が」。",
+    "distractorNotes": {
+      "を": "形容動詞「好き」的對象用「が」，不用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-041",
+    "groupId": "n5-particles",
+    "before": "弟はサッカー",
+    "after": "とても好きです。",
+    "reading": "おとうとはサッカーがとてもすきです。",
+    "zh": "弟弟非常喜歡足球。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「好きです」前接「が」標示喜歡的對象。",
+    "distractorNotes": {
+      "を": "「サッカーをする」用「を」，但「サッカーが好き」用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-042",
+    "groupId": "n5-particles",
+    "before": "きっさてんの前に人",
+    "after": "ならんでいます。",
+    "reading": "きっさてんのまえにひとがならんでいます。",
+    "zh": "咖啡廳前面有人在排隊。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "描寫某處有人正在排隊的狀態，主語「人」接「が」。",
+    "distractorNotes": {
+      "を": "「ならぶ」是自動詞，主語用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-043",
+    "groupId": "n5-particles",
+    "before": "春にはきれいな花",
+    "after": "たくさんさきます。",
+    "reading": "はるにはきれいなはながたくさんさきます。",
+    "zh": "春天會開出許多漂亮的花。",
+    "grammarKey": "が",
+    "answer": "が",
+    "tip": "「さく」是自動詞，表示花朵盛開，主語「花」用「が」。",
+    "distractorNotes": {
+      "を": "「さく」是自動詞，不能接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-044",
+    "groupId": "n5-particles",
+    "before": "図書館",
+    "after": "しずかに本を読みます。",
+    "reading": "としょかんでしずかにほんをよみます。",
+    "zh": "在圖書館安靜地看書。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「看書」這個動作發生的場所，用「で」。",
+    "distractorNotes": {
+      "に": "「に」用於存在或到達地點，動態動作的場所要用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-045",
+    "groupId": "n5-particles",
+    "before": "台所",
+    "after": "母とばんごはんを作ります。",
+    "reading": "だいどころでははとばんごはんをつくります。",
+    "zh": "在廚房和媽媽一起做晚餐。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「做晚餐」的動作場所，用「で」。",
+    "distractorNotes": {
+      "に": "「作る」是動作動詞，場所助詞須用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-046",
+    "groupId": "n5-particles",
+    "before": "公園",
+    "after": "犬とさんぽします。",
+    "reading": "こうえんでいぬとさんぽします。",
+    "zh": "在公園和狗散步。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「散步」這個動作進行的場所，用「で」。",
+    "distractorNotes": {
+      "に": "動作發生的地點須用「で」而非「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-047",
+    "groupId": "n5-particles",
+    "before": "部屋",
+    "after": "えいごのテープを聞きます。",
+    "reading": "へやでえいごのテープをききます。",
+    "zh": "在房間裡聽英語錄音帶。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「聽」這個動作發生的地點，用「で」。",
+    "distractorNotes": {
+      "に": "「聞く」是動作，動作場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-048",
+    "groupId": "n5-particles",
+    "before": "喫茶店",
+    "after": "友だちと話します。",
+    "reading": "きっさてんでともだちとはなします。",
+    "zh": "在咖啡廳和朋友聊天。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「聊天」發生的場所，用「で」。",
+    "distractorNotes": {
+      "に": "「話す」是動態動作，場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-049",
+    "groupId": "n5-particles",
+    "before": "スーパー",
+    "after": "安いやさいを買います。",
+    "reading": "スーパーでやすいやさいをかいます。",
+    "zh": "在超市買便宜的蔬菜。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「買東西」的場所，用「で」。",
+    "distractorNotes": {
+      "に": "「買う」是動作動詞，場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-050",
+    "groupId": "n5-particles",
+    "before": "たいいくかん",
+    "after": "バスケをれんしゅうします。",
+    "reading": "たいいくかんでバスケをれんしゅうします。",
+    "zh": "在體育館練習籃球。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「練習」這個動作的地點，用「で」。",
+    "distractorNotes": {
+      "に": "動作場所用「で」，不用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-051",
+    "groupId": "n5-particles",
+    "before": "青い海",
+    "after": "友だちとおよぎます。",
+    "reading": "あおいうみでともだちとおよぎます。",
+    "zh": "在藍色的海裡和朋友游泳。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「游泳」這個動作發生的場所，用「で」。",
+    "distractorNotes": {
+      "に": "「およぐ」是動態動作，場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-052",
+    "groupId": "n5-particles",
+    "before": "きょうしつ",
+    "after": "日本語をべんきょうします。",
+    "reading": "きょうしつでにほんごをべんきょうします。",
+    "zh": "在教室學習日語。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「學習」這個動作進行的地點，用「で」。",
+    "distractorNotes": {
+      "に": "「べんきょうする」的動作場所須用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-053",
+    "groupId": "n5-particles",
+    "before": "にわ",
+    "after": "子どもがあそんでいます。",
+    "reading": "にわでこどもがあそんでいます。",
+    "zh": "小孩正在院子裡玩。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「玩耍」這個動作發生的場所，用「で」。",
+    "distractorNotes": {
+      "に": "「あそぶ」是動態動作，場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-054",
+    "groupId": "n5-particles",
+    "before": "えき",
+    "after": "あさのしんぶんを買いました。",
+    "reading": "えきであさのしんぶんをかいました。",
+    "zh": "在車站買了早報。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「買報紙」的場所，用「で」。",
+    "distractorNotes": {
+      "に": "「買う」的動作場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-055",
+    "groupId": "n5-particles",
+    "before": "デパート",
+    "after": "母のプレゼントをえらびます。",
+    "reading": "デパートでははのプレゼントをえらびます。",
+    "zh": "在百貨公司挑選媽媽的禮物。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「挑選」動作的場所，用「で」。",
+    "distractorNotes": {
+      "に": "「選ぶ」是動作動詞，場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-056",
+    "groupId": "n5-particles",
+    "before": "郵便局",
+    "after": "きってを五まい買いました。",
+    "reading": "ゆうびんきょくできってをごまいかいました。",
+    "zh": "在郵局買了五張郵票。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示購買動作發生的場所，用「で」。",
+    "distractorNotes": {
+      "に": "「買う」是動作，場所須用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-057",
+    "groupId": "n5-particles",
+    "before": "レストラン",
+    "after": "昼ごはんを食べます。",
+    "reading": "レストランでひるごはんをたべます。",
+    "zh": "在餐廳吃午餐。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「吃飯」的場所，用「で」。",
+    "distractorNotes": {
+      "に": "「食べる」是動作動詞，場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-058",
+    "groupId": "n5-particles",
+    "before": "ホテル",
+    "after": "ゆっくりやすみました。",
+    "reading": "ホテルでゆっくりやすみました。",
+    "zh": "在飯店好好休息了。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「休息」這個動作的場所，用「で」。",
+    "distractorNotes": {
+      "に": "「やすむ」發生的場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-059",
+    "groupId": "n5-particles",
+    "before": "びじゅつかん",
+    "after": "きれいなえを見ました。",
+    "reading": "びじゅつかんできれいなえをみました。",
+    "zh": "在美術館看了漂亮的畫。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「看畫」這個動作發生的場所，用「で」。",
+    "distractorNotes": {
+      "に": "「見る」是動作動詞，場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-060",
+    "groupId": "n5-particles",
+    "before": "おふろ",
+    "after": "大きい声でうたいます。",
+    "reading": "おふろでおおきいこえでうたいます。",
+    "zh": "在浴室大聲唱歌。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「唱歌」這個動作發生的場所，用「で」。",
+    "distractorNotes": {
+      "に": "「うたう」是動作，場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-061",
+    "groupId": "n5-particles",
+    "before": "まいあさ自転車",
+    "after": "学校へ行きます。",
+    "reading": "まいあさじてんしゃでがっこうへいきます。",
+    "zh": "每天早上騎腳踏車去學校。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示交通工具與移動手段，用「で」。",
+    "distractorNotes": {
+      "に": "「自転車に乗る」用「に」，但「騎腳踏車去」表手段用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-062",
+    "groupId": "n5-particles",
+    "before": "はし",
+    "after": "さかなを食べます。",
+    "reading": "はしでさかなをたべます。",
+    "zh": "用筷子吃魚。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示進食使用的工具「筷子」，用「で」。",
+    "distractorNotes": {
+      "を": "「はし」是工具而非吃的對象，須用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-063",
+    "groupId": "n5-particles",
+    "before": "えんぴつ",
+    "after": "名前を書いてください。",
+    "reading": "えんぴつでなまえをかいてください。",
+    "zh": "請用鉛筆寫名字。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示書寫使用的工具「鉛筆」，用「で」。",
+    "distractorNotes": {
+      "を": "書寫工具用「で」，受詞「名前」才用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-064",
+    "groupId": "n5-particles",
+    "before": "日本語",
+    "after": "メールを書きました。",
+    "reading": "にほんごでメールをかきました。",
+    "zh": "用日語寫了電子郵件。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示書寫所使用的語言手段「日語」，用「で」。",
+    "distractorNotes": {
+      "を": "「日本語」在此是書寫語言手段，用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-065",
+    "groupId": "n5-particles",
+    "before": "バス",
+    "after": "えきまで行きます。",
+    "reading": "バスでえきまでいきます。",
+    "zh": "搭公車去車站。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示交通手段「公車」，用「で」。",
+    "distractorNotes": {
+      "に": "搭配移動動詞「行く」表交通工具用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-066",
+    "groupId": "n5-particles",
+    "before": "フォーク",
+    "after": "ケーキを食べました。",
+    "reading": "フォークでケーキをたべました。",
+    "zh": "用叉子吃了蛋糕。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示使用的餐具工具，用「で」。",
+    "distractorNotes": {
+      "を": "「フォーク」是工具，須用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-067",
+    "groupId": "n5-particles",
+    "before": "でんわ",
+    "after": "母と長く話しました。",
+    "reading": "でんわでははとながくはなしました。",
+    "zh": "用電話和媽媽聊了很久。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示聯絡的手段工具「電話」，用「で」。",
+    "distractorNotes": {
+      "に": "「でんわ」是交談手段，用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-068",
+    "groupId": "n5-particles",
+    "before": "地下鉄",
+    "after": "会社へかよっています。",
+    "reading": "ちかてつでかいしゃへかよっています。",
+    "zh": "搭地鐵通勤去公司。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示通勤的交通工具「地鐵」，用「で」。",
+    "distractorNotes": {
+      "に": "表交通手段搭配移動動詞時用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-069",
+    "groupId": "n5-particles",
+    "before": "ナイフ",
+    "after": "りんごをきります。",
+    "reading": "ナイフでりんごをきります。",
+    "zh": "用刀子切蘋果。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示切東西的工具「刀子」，用「で」。",
+    "distractorNotes": {
+      "を": "「ナイフ」是工具，「りんご」才是受詞。"
+    }
+  },
+  {
+    "id": "n5-par-c2-070",
+    "groupId": "n5-particles",
+    "before": "スプーン",
+    "after": "あたたかいスープを飲みます。",
+    "reading": "スプーンであたたかいスープをのみます。",
+    "zh": "用湯匙喝熱湯。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示使用的餐具「湯匙」，用「で」。",
+    "distractorNotes": {
+      "を": "工具用「で」，不能用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-071",
+    "groupId": "n5-particles",
+    "before": "じしょ",
+    "after": "新しいことばをしらべます。",
+    "reading": "じしょであたらしいことばをしらべます。",
+    "zh": "用字典查新單字。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示查詢所使用的工具「字典」，用「で」。",
+    "distractorNotes": {
+      "を": "「じしょ」是手段工具，「ことば」才是受詞。"
+    }
+  },
+  {
+    "id": "n5-par-c2-072",
+    "groupId": "n5-particles",
+    "before": "船",
+    "after": "小さいしまへわたります。",
+    "reading": "ふねでちいさいしまへわたります。",
+    "zh": "搭船渡海去小島。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示交通手段「船」，用「で」。",
+    "distractorNotes": {
+      "に": "表交通工具配合「わたる」用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-073",
+    "groupId": "n5-particles",
+    "before": "あかいペン",
+    "after": "まるをつけてください。",
+    "reading": "あかいペンでまるをつけてください。",
+    "zh": "請用紅筆打圈。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示使用的文具工具「紅筆」，用「で」。",
+    "distractorNotes": {
+      "を": "「あかいペン」是工具，用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-074",
+    "groupId": "n5-particles",
+    "before": "カメラ",
+    "after": "花の写真をとりました。",
+    "reading": "カメラではなのしゃしんをとりました。",
+    "zh": "用相機拍了花的照片。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示拍照的工具「相機」，用「で」。",
+    "distractorNotes": {
+      "を": "「カメラ」是工具，受詞是「写真」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-075",
+    "groupId": "n5-particles",
+    "before": "タクシー",
+    "after": "びょういんへ行きました。",
+    "reading": "タクシーでびょういんへいきました。",
+    "zh": "搭計程車去了醫院。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示交通工具「計程車」，用「で」。",
+    "distractorNotes": {
+      "に": "搭配「行く」表交通工具須用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-076",
+    "groupId": "n5-particles",
+    "before": "しんかんせん",
+    "after": "おおさかまで行きます。",
+    "reading": "しんかんせんでおおさかまでいきます。",
+    "zh": "搭新幹線去大阪。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示移動的交通工具「新幹線」，用「で」。",
+    "distractorNotes": {
+      "に": "「新幹線に乗る」用「に」，但「〜へ行く」表手段用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-077",
+    "groupId": "n5-particles",
+    "before": "飛行機",
+    "after": "東京からほっかいどうへ行きます。",
+    "reading": "ひこうきでとうきょうからほっかいどうへいきます。",
+    "zh": "搭飛機從東京去北海道。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示交通手段「飛機」，用「で」。",
+    "distractorNotes": {
+      "に": "表交通手段用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-078",
+    "groupId": "n5-particles",
+    "before": "ひとり",
+    "after": "映画を見に行きました。",
+    "reading": "ひとりでえいがをみにいきました。",
+    "zh": "一個人去看電影了。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示動作進行的人數狀態「一個人」，用「で」。",
+    "distractorNotes": {
+      "に": "表示人數狀態「ひとりで・ふたりで」固定用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-079",
+    "groupId": "n5-particles",
+    "before": "かぞくよにん",
+    "after": "りょこうしました。",
+    "reading": "かぞくよにんでりょこうしました。",
+    "zh": "全家四個人一起去旅行了。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示一起行動的人數範圍「四個人」，用「で」。",
+    "distractorNotes": {
+      "に": "人數狀態搭配動作動詞用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-080",
+    "groupId": "n5-particles",
+    "before": "ぜんぶ",
+    "after": "五ひゃく円になります。",
+    "reading": "ぜんぶでごひゃくえんになります。",
+    "zh": "總共是五百日圓。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "「ぜんぶで」表示合計、總共的範圍，用「で」。",
+    "distractorNotes": {
+      "に": "表示合計數量或金額時慣用「ぜんぶで」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-081",
+    "groupId": "n5-particles",
+    "before": "クラス",
+    "after": "一番せが高いです。",
+    "reading": "クラスでいちばんせがたかいです。",
+    "zh": "在班上個子最高。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示比較範圍「在班上」，用「で」。",
+    "distractorNotes": {
+      "に": "表最高級的比較範圍（「〜で一番」）用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-082",
+    "groupId": "n5-particles",
+    "before": "日本",
+    "after": "いちばん高い山はふじ山です。",
+    "reading": "にほんでいちばんたかいやまはふじさんです。",
+    "zh": "日本最高的山是富士山。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示比較範圍「在日本」，用「で」。",
+    "distractorNotes": {
+      "に": "「〜で一番」的範圍助詞固定用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-083",
+    "groupId": "n5-particles",
+    "before": "一ねん",
+    "after": "夏がいちばん好きです。",
+    "reading": "いちねんでなつがいちばんすきです。",
+    "zh": "一年之中我最喜歡夏天。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「在一年當中」的比較範圍，用「で」。",
+    "distractorNotes": {
+      "に": "表比較範圍「〜で一番」須用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-084",
+    "groupId": "n5-particles",
+    "before": "かぜ",
+    "after": "きのう学校をやすみました。",
+    "reading": "かぜできのうがっこうをやすみました。",
+    "zh": "因為感冒，昨天向學校請假了。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示原因理由「因為感冒」，用原因助詞「で」。",
+    "distractorNotes": {
+      "に": "表示請假的原因（生病、天氣等）用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-085",
+    "groupId": "n5-particles",
+    "before": "みっつ",
+    "after": "さんびゃく円です。",
+    "reading": "みっつでさんびゃくえんです。",
+    "zh": "三個三百日圓。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示單位基準「以三個為單位」，用「で」。",
+    "distractorNotes": {
+      "に": "表數量單位與價格的對應關係用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-086",
+    "groupId": "n5-particles",
+    "before": "映画館",
+    "after": "おもしろい映画を見ました。",
+    "reading": "えいがかんでおもしろいえいがをみました。",
+    "zh": "在電影院看了有趣的電影。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「看電影」發生的場所，用「で」。",
+    "distractorNotes": {
+      "に": "「見る」是動作動詞，場所用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-087",
+    "groupId": "n5-particles",
+    "before": "動物園",
+    "after": "大きいぞうを見ました。",
+    "reading": "どうぶつえんでおおきいぞうをみました。",
+    "zh": "在動物園看到了大象。",
+    "grammarKey": "で",
+    "answer": "で",
+    "tip": "表示「看大象」的動作場所，用「で」。",
+    "distractorNotes": {
+      "に": "「見る」是動作，場所助詞須用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-088",
+    "groupId": "n5-particles",
+    "before": "毎朝七時",
+    "after": "うちを出ます。",
+    "reading": "まいあさしちじにうちをでます。",
+    "zh": "每天早上七點出門。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "表示具體時間點「七點」，用「に」。",
+    "distractorNotes": {
+      "で": "具體時刻點用「に」，不用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-089",
+    "groupId": "n5-particles",
+    "before": "夜十時",
+    "after": "いつもねます。",
+    "reading": "よるじゅうじにいつもねます。",
+    "zh": "晚上十點總是會睡覺。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "具體時刻「夜十時」後接時間點助詞「に」。",
+    "distractorNotes": {
+      "で": "表示動作發生的時刻點用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-090",
+    "groupId": "n5-particles",
+    "before": "日曜日",
+    "after": "友だちと買い物します。",
+    "reading": "にちようびにともだちとかいものします。",
+    "zh": "星期天和朋友去購物。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "星期幾作為具體時間點，可接「に」。",
+    "distractorNotes": {
+      "で": "表日期與星期時間點用「に」不用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-091",
+    "groupId": "n5-particles",
+    "before": "さんがつ",
+    "after": "日本へりょこうに来ます。",
+    "reading": "さんがつににほんへりょこうにきます。",
+    "zh": "三月要來日本旅行。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "具體月份「三月」作為時間點，用「に」。",
+    "distractorNotes": {
+      "で": "具體月份時間點用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-092",
+    "groupId": "n5-particles",
+    "before": "五がついつか",
+    "after": "パーティーがあります。",
+    "reading": "ごがついつかにパーティーがあります。",
+    "zh": "五月五日有派對。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "具體日期「五月五日」後接「に」。",
+    "distractorNotes": {
+      "で": "日期時間點須用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-093",
+    "groupId": "n5-particles",
+    "before": "ごごさんじ",
+    "after": "テストが始まります。",
+    "reading": "ごごさんじにテストがはじまります。",
+    "zh": "下午三點考試開始。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "表示開始的具體時刻「下午三點」，用「に」。",
+    "distractorNotes": {
+      "で": "時刻點用「に」，不用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-094",
+    "groupId": "n5-particles",
+    "before": "ひるじゅうにじ",
+    "after": "ごはんを食べます。",
+    "reading": "ひるじゅうにじにごはんをたべます。",
+    "zh": "中午十二點吃飯。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "具體時刻「十二點」接時間點助詞「に」。",
+    "distractorNotes": {
+      "で": "表時刻點用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-095",
+    "groupId": "n5-particles",
+    "before": "あさろくじ",
+    "after": "まいにちおきます。",
+    "reading": "あさろくじにまいにちおきます。",
+    "zh": "每天早上六點起床。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "表示起床的具體時刻「六點」，用「に」。",
+    "distractorNotes": {
+      "で": "時刻點固定用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-096",
+    "groupId": "n5-particles",
+    "before": "夕方五時",
+    "after": "うちへ帰ります。",
+    "reading": "ゆうがたごじにうちへかえります。",
+    "zh": "傍晚五點回家。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "具體時刻「五點」接時間點助詞「に」。",
+    "distractorNotes": {
+      "で": "表時刻用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-097",
+    "groupId": "n5-particles",
+    "before": "つくえの上",
+    "after": "とけいがあります。",
+    "reading": "つくえのうえにとけいがあります。",
+    "zh": "桌子上有時鐘。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "表示物品存在的靜態位置，搭配「あります」用「に」。",
+    "distractorNotes": {
+      "で": "「あります」表存在時，地點用「に」而非「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-098",
+    "groupId": "n5-particles",
+    "before": "いすの下",
+    "after": "犬がねています。",
+    "reading": "いすのしたにいぬがねています。",
+    "zh": "椅子下面有狗在睡覺。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "表示存在或停留的位置，用「に」。",
+    "distractorNotes": {
+      "を": "「いすの下」是位置，不能接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-099",
+    "groupId": "n5-particles",
+    "before": "あねはおおさか",
+    "after": "住んでいます。",
+    "reading": "あねはおおさかにすんでいます。",
+    "zh": "姊姊住在大阪。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「住んでいます」表示居住地點，固定接「に」。",
+    "distractorNotes": {
+      "で": "居住動詞「住む」的地點固定用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-100",
+    "groupId": "n5-particles",
+    "before": "えきのちかく",
+    "after": "大きい店があります。",
+    "reading": "えきのちかくにおおきいみせがあります。",
+    "zh": "車站附近有大商店。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "存在句「〜があります」的場所用「に」。",
+    "distractorNotes": {
+      "で": "靜態存在地點用「に」，不用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-101",
+    "groupId": "n5-particles",
+    "before": "部屋の中",
+    "after": "だれもいません。",
+    "reading": "へやのなかにだれもいません。",
+    "zh": "房間裡面沒有人。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「いません」表示人或動物的存在，場所用「に」。",
+    "distractorNotes": {
+      "で": "存在句的場所固定用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-102",
+    "groupId": "n5-particles",
+    "before": "ポケットの中",
+    "after": "ハンカチがあります。",
+    "reading": "ポケットのなかにハンカチがあります。",
+    "zh": "口袋裡面有手帕。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "表示手帕存在的位置「口袋裡面」，用「に」。",
+    "distractorNotes": {
+      "で": "搭配「あります」表存在位置須用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-103",
+    "groupId": "n5-particles",
+    "before": "れいぞうこ",
+    "after": "ぎゅうにゅうがあります。",
+    "reading": "れいぞうこにぎゅうにゅうがあります。",
+    "zh": "冰箱裡有牛奶。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "表示「牛奶在冰箱裡」，存在場所用「に」。",
+    "distractorNotes": {
+      "で": "存在位置不用「で」，須用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-104",
+    "groupId": "n5-particles",
+    "before": "こうえん",
+    "after": "子どもがたくさんいます。",
+    "reading": "こうえんにこどもがたくさんいます。",
+    "zh": "公園裡有很多小孩。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "存在句搭配「います」，地點「公園」接「に」。",
+    "distractorNotes": {
+      "で": "本句重點在「存在（います）」，地點用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-105",
+    "groupId": "n5-particles",
+    "before": "らいしゅうなら",
+    "after": "行きます。",
+    "reading": "らいしゅうならにいきます。",
+    "zh": "下週要去奈良。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "表示移動的目的地「奈良」，搭配「行きます」用「に」。",
+    "distractorNotes": {
+      "で": "「で」表動作場所，移動目的地須用「に」（或「へ」）。"
+    }
+  },
+  {
+    "id": "n5-par-c2-106",
+    "groupId": "n5-particles",
+    "before": "バス",
+    "after": "乗って学校へ行きます。",
+    "reading": "バスにのってがっこうへいきます。",
+    "zh": "搭公車去學校。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「乗る」（搭乘）的交通工具固定接「に」。",
+    "distractorNotes": {
+      "を": "下車用「を降りる」，上車搭乘固定用「に乗る」。",
+      "で": "有動詞「乗る」時，所搭交通工具用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-107",
+    "groupId": "n5-particles",
+    "before": "おふろ",
+    "after": "入ってすぐねます。",
+    "reading": "おふろにはいってすぐねます。",
+    "zh": "泡完澡馬上睡覺。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「入る」（進入）的歸著點固定接「に」。",
+    "distractorNotes": {
+      "を": "進入某處用「に入る」，離開才用「を出る」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-108",
+    "groupId": "n5-particles",
+    "before": "ひこうきは八時ごろ東京",
+    "after": "着きます。",
+    "reading": "ひこうきははちじごろとうきょうにつきます。",
+    "zh": "飛機大約八點抵達東京。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「着く」（抵達）的到達地點固定用「に」。",
+    "distractorNotes": {
+      "で": "抵達地點須用歸著點助詞「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-109",
+    "groupId": "n5-particles",
+    "before": "こちらのいす",
+    "after": "すわってください。",
+    "reading": "こちらのいすにすわってください。",
+    "zh": "請坐這張椅子。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「すわる」（坐下）的附著地點用「に」。",
+    "distractorNotes": {
+      "で": "坐下的位置固定用「にすわる」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-110",
+    "groupId": "n5-particles",
+    "before": "でんしゃ",
+    "after": "乗って海へ行きます。",
+    "reading": "でんしゃにのってうみへいきます。",
+    "zh": "搭電車去海邊。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「乗る」固定搭配「に」標示搭乘對象。",
+    "distractorNotes": {
+      "を": "搭乘交通工具用「に乗る」，不用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-111",
+    "groupId": "n5-particles",
+    "before": "しずかにきょうしつ",
+    "after": "入ります。",
+    "reading": "しずかにきょうしつにはいります。",
+    "zh": "安靜地走進教室。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「入る」表示進入某空間，場所接「に」。",
+    "distractorNotes": {
+      "で": "進入的目標空間用「に」，不用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-112",
+    "groupId": "n5-particles",
+    "before": "母",
+    "after": "きれいな花をあげました。",
+    "reading": "ははにきれいなはなをあげました。",
+    "zh": "送了漂亮的花給媽媽。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「あげる」表示給予，接受對象「媽媽」接「に」。",
+    "distractorNotes": {
+      "を": "「花」是受詞用「を」，對象「母」須用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-113",
+    "groupId": "n5-particles",
+    "before": "友だち",
+    "after": "おもしろい本をかしました。",
+    "reading": "ともだちにおもしろいほんをかしました。",
+    "zh": "借了有趣的書給朋友。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「かす」（借出）的對象「朋友」用「に」。",
+    "distractorNotes": {
+      "を": "借出的物品用「を」，借給的對象用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-114",
+    "groupId": "n5-particles",
+    "before": "あしたえきで友だち",
+    "after": "会います。",
+    "reading": "あしたえきでともだちにあいます。",
+    "zh": "明天要在車站和朋友見面。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「会う」（見面）的對象固定接「に」。",
+    "distractorNotes": {
+      "を": "「会う」是自動詞，見面對象用「に」而非「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-115",
+    "groupId": "n5-particles",
+    "before": "弟",
+    "after": "かんじをおしえました。",
+    "reading": "おとうとにかんじをおしえました。",
+    "zh": "教了弟弟漢字。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「おしえる」（教導）的對象「弟弟」用「に」。",
+    "distractorNotes": {
+      "を": "所教內容「漢字」用「を」，對象用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-116",
+    "groupId": "n5-particles",
+    "before": "父",
+    "after": "でんわをかけました。",
+    "reading": "ちちにでんわをかけました。",
+    "zh": "打電話給爸爸了。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「でんわをかける」的通話對象接「に」。",
+    "distractorNotes": {
+      "を": "受詞是「でんわ」，打給的對象用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-117",
+    "groupId": "n5-particles",
+    "before": "そぼ",
+    "after": "長い手紙を書きました。",
+    "reading": "そぼにながいてがみをかきました。",
+    "zh": "寫了長信給祖母。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「手紙を書く」的收信對象用「に」。",
+    "distractorNotes": {
+      "を": "書寫對象「手紙」用「を」，收件人用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-118",
+    "groupId": "n5-particles",
+    "before": "先生",
+    "after": "しつもんを聞きました。",
+    "reading": "せんせいにしつもんをききました。",
+    "zh": "向老師問了問題。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「聞く」（詢問）的詢問對象用「に」。",
+    "distractorNotes": {
+      "を": "詢問的內容用「を」，對象「先生」用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-119",
+    "groupId": "n5-particles",
+    "before": "いっしゅうかん",
+    "after": "さんかいおよぎます。",
+    "reading": "いっしゅうかんにさんかいおよぎます。",
+    "zh": "一週游泳三次。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "表示頻率的基準期間（「期間＋に＋次數」），用「に」。",
+    "distractorNotes": {
+      "で": "表頻率「一週三次」固定用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-120",
+    "groupId": "n5-particles",
+    "before": "一日",
+    "after": "さんかいはをみがきます。",
+    "reading": "いちにちにさんかいはをみがきます。",
+    "zh": "一天刷三次牙。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "表示動作頻率的基準時間「一天」，用「に」。",
+    "distractorNotes": {
+      "で": "表頻率基準「一日に〜回」固定用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-121",
+    "groupId": "n5-particles",
+    "before": "一かげつ",
+    "after": "にかい映画を見ます。",
+    "reading": "いっかげつににかいえいがをみます。",
+    "zh": "一個月看兩次電影。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「期間＋に＋次數」表示頻率，用「に」。",
+    "distractorNotes": {
+      "で": "頻率句型固定用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-122",
+    "groupId": "n5-particles",
+    "before": "デパートへくつを買い",
+    "after": "行きます。",
+    "reading": "デパートへくつをかいにいきます。",
+    "zh": "去百貨公司買鞋子。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "動詞連用形＋「に」＋移動動詞，表示移動的目的。",
+    "distractorNotes": {
+      "を": "表移動目的用「連用形＋に行く」，不用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-123",
+    "groupId": "n5-particles",
+    "before": "公園へ花を見",
+    "after": "行きます。",
+    "reading": "こうえんへはなをみにいきます。",
+    "zh": "去公園賞花。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "動詞連用形「見」＋「に」＋「行きます」表示去的目的。",
+    "distractorNotes": {
+      "で": "移動目的固定用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-124",
+    "groupId": "n5-particles",
+    "before": "友だちとすしを食べ",
+    "after": "行きます。",
+    "reading": "ともだちとすしをたべにいきます。",
+    "zh": "和朋友去吃壽司。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "動詞連用形「食べ」＋「に」＋「行きます」表示去的目的。",
+    "distractorNotes": {
+      "で": "表移動目的須用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-125",
+    "groupId": "n5-particles",
+    "before": "ノート",
+    "after": "新しいことばを書きます。",
+    "reading": "ノートにあたらしいことばをかきます。",
+    "zh": "在筆記本上寫新單字。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "表示書寫文字留下的附著處「筆記本」，用「に」。",
+    "distractorNotes": {
+      "を": "書寫的對象「ことば」用「を」，寫上去的地方用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-126",
+    "groupId": "n5-particles",
+    "before": "かべ",
+    "after": "きれいな写真をはります。",
+    "reading": "かべにきれいなしゃしんをはります。",
+    "zh": "在牆壁上貼漂亮的照片。",
+    "grammarKey": "に",
+    "answer": "に",
+    "tip": "「はる」（貼）的附著地點「牆壁」用「に」。",
+    "distractorNotes": {
+      "で": "動作結果附著的位置須用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-127",
+    "groupId": "n5-particles",
+    "before": "わたしのしゅみ",
+    "after": "ピアノです。",
+    "reading": "わたしのしゅみはピアノです。",
+    "zh": "我的興趣是鋼琴。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "「AはBです」句型，用主題助詞「は」提示主題。",
+    "distractorNotes": {
+      "が": "一般陳述個人興趣時，主題用「は」最自然。"
+    }
+  },
+  {
+    "id": "n5-par-c2-128",
+    "groupId": "n5-particles",
+    "before": "このとけい",
+    "after": "とても古いです。",
+    "reading": "このとけいはとてもふるいです。",
+    "zh": "這個時鐘非常舊。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "針對眼前的「這個時鐘」描述性質，主題用「は」。",
+    "distractorNotes": {
+      "を": "形容詞「古い」前不接他動詞受詞助詞「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-129",
+    "groupId": "n5-particles",
+    "before": "きょうの昼ごはん",
+    "after": "うどんです。",
+    "reading": "きょうのひるごはんはうどんです。",
+    "zh": "今天的午餐是烏龍麵。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "提示話題「今天的午餐」並說明內容，用「は」。",
+    "distractorNotes": {
+      "が": "單純說明今天午餐是什麼，用主題助詞「は」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-130",
+    "groupId": "n5-particles",
+    "before": "あのかばん",
+    "after": "少し重いです。",
+    "reading": "あのかばんはすこしおもいです。",
+    "zh": "那個包包有點重。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "針對「那個包包」進行評價描述，主題用「は」。",
+    "distractorNotes": {
+      "を": "形容詞「重い」前不用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-131",
+    "groupId": "n5-particles",
+    "before": "わたしの部屋",
+    "after": "二階です。",
+    "reading": "わたしのへやはにかいです。",
+    "zh": "我的房間在二樓。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "以「我的房間」為主題說明位置，用「は」。",
+    "distractorNotes": {
+      "に": "「部屋」是句子的主題而非場所補語，須用「は」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-132",
+    "groupId": "n5-particles",
+    "before": "このくつ",
+    "after": "すこし小さいです。",
+    "reading": "このくつはすこしちいさいです。",
+    "zh": "這雙鞋子有點小。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "提示眼前物品「這雙鞋」並描述大小，用「は」。",
+    "distractorNotes": {
+      "を": "形容詞「小さい」前不接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-133",
+    "groupId": "n5-particles",
+    "before": "父の仕事",
+    "after": "ぎんこういんです。",
+    "reading": "ちちのしごとはぎんこういんです。",
+    "zh": "爸爸的工作是銀行行員。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "「AはBです」自我或家庭介紹句型，主題用「は」。",
+    "distractorNotes": {
+      "に": "「仕事」是主題，不能接「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-134",
+    "groupId": "n5-particles",
+    "before": "このお茶",
+    "after": "とてもあついです。",
+    "reading": "このおちゃはとてもあついです。",
+    "zh": "這杯茶非常燙。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "針對眼前已知的「這杯茶」描述狀態，主題用「は」。",
+    "distractorNotes": {
+      "を": "形容詞「あつい」前不能接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-135",
+    "groupId": "n5-particles",
+    "before": "わたしのたんじょうび",
+    "after": "五月です。",
+    "reading": "わたしのたんじょうびはごがつです。",
+    "zh": "我的生日是五月。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "以「我的生日」為主題說明月份，用「は」。",
+    "distractorNotes": {
+      "に": "「たんじょうび」是句子主題，不用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-136",
+    "groupId": "n5-particles",
+    "before": "あの白い家",
+    "after": "先生の家です。",
+    "reading": "あのしろいいえはせんせいのいえです。",
+    "zh": "那棟白色的房子是老師的家。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "指示遠處的房子作為主題並說明所屬，用「は」。",
+    "distractorNotes": {
+      "で": "本句是名詞判斷句，不是動作發生的場所。"
+    }
+  },
+  {
+    "id": "n5-par-c2-137",
+    "groupId": "n5-particles",
+    "before": "このみかん",
+    "after": "とてもあまいです。",
+    "reading": "このみかんはとてもあまいです。",
+    "zh": "這顆橘子非常甜。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "針對「這顆橘子」進行味覺評價，用主題助詞「は」。",
+    "distractorNotes": {
+      "を": "形容詞「あまい」前不接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-138",
+    "groupId": "n5-particles",
+    "before": "きのうのテスト",
+    "after": "かんたんでした。",
+    "reading": "きのうのテストはかんたんでした。",
+    "zh": "昨天的考試很簡單。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "以「昨天的考試」為主題作評價，用「は」。",
+    "distractorNotes": {
+      "で": "本句評價考試本身難易，不是在考試中做某動作。"
+    }
+  },
+  {
+    "id": "n5-par-c2-139",
+    "groupId": "n5-particles",
+    "before": "わたしのくに",
+    "after": "夏がとても暑いです。",
+    "reading": "わたしのくにはなつがとてもあついです。",
+    "zh": "我的國家夏天非常熱。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "提出大主題「我的國家」再說明其氣候，用「は」。",
+    "distractorNotes": {
+      "に": "此處將「我的國家」提示為主題，用「は」最自然。"
+    }
+  },
+  {
+    "id": "n5-par-c2-140",
+    "groupId": "n5-particles",
+    "before": "その赤いセーター",
+    "after": "とてもあたたかいです。",
+    "reading": "そのあかいセーターはとてもあたたかいです。",
+    "zh": "那件紅色的毛衣非常保暖。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "針對眼前的「那件紅毛衣」描述性質，主題用「は」。",
+    "distractorNotes": {
+      "を": "形容詞「あたたかい」前不接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-141",
+    "groupId": "n5-particles",
+    "before": "この部屋",
+    "after": "しずかできれいです。",
+    "reading": "このへやはしずかできれいです。",
+    "zh": "這個房間安靜又乾淨。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "針對「這個房間」做狀態描述，主題用「は」。",
+    "distractorNotes": {
+      "で": "本句描述房間本身特徵，非動作場所。"
+    }
+  },
+  {
+    "id": "n5-par-c2-142",
+    "groupId": "n5-particles",
+    "before": "あしたの天気",
+    "after": "はれです。",
+    "reading": "あしたのてんきははれです。",
+    "zh": "明天的天氣是晴天。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "提示主題「明天的天氣」並說明結果，用「は」。",
+    "distractorNotes": {
+      "が": "一般播報或陳述明天天氣，主題用「は」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-143",
+    "groupId": "n5-particles",
+    "before": "このりょうり",
+    "after": "少しからいです。",
+    "reading": "このりょうりはすこしからいです。",
+    "zh": "這道料理有點辣。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "針對眼前的「這道料理」做味道評價，主題用「は」。",
+    "distractorNotes": {
+      "を": "形容詞「からい」前不接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-144",
+    "groupId": "n5-particles",
+    "before": "わたしの犬",
+    "after": "とてもげんきです。",
+    "reading": "わたしのいぬはとてもげんきです。",
+    "zh": "我的狗非常有精神。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "以「我的狗」為話題描述狀態，用「は」。",
+    "distractorNotes": {
+      "を": "形容動詞「げんきです」前不接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-145",
+    "groupId": "n5-particles",
+    "before": "わたし",
+    "after": "まいにちろくじにおきます。",
+    "reading": "わたしはまいにちろくじにおきます。",
+    "zh": "我每天六點起床。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "陳述個人日常習慣，主語主題「我」用「は」。",
+    "distractorNotes": {
+      "に": "「わたし」是動作主體話題，非對象或場所。"
+    }
+  },
+  {
+    "id": "n5-par-c2-146",
+    "groupId": "n5-particles",
+    "before": "母",
+    "after": "いつも早くねます。",
+    "reading": "はははいつもはやくねます。",
+    "zh": "媽媽總是早睡。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "以「媽媽」為主題陳述習慣，用「は」。",
+    "distractorNotes": {
+      "を": "「母」是主語主題，不是受詞。"
+    }
+  },
+  {
+    "id": "n5-par-c2-147",
+    "groupId": "n5-particles",
+    "before": "日曜日",
+    "after": "うちでゆっくりします。",
+    "reading": "にちようびはうちでゆっくりします。",
+    "zh": "星期天都在家好好放鬆。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "將「星期天」提示為話題來說明通常安排，用「は」。",
+    "distractorNotes": {
+      "を": "「日曜日」是時間主題，不能接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-148",
+    "groupId": "n5-particles",
+    "before": "夏やすみ",
+    "after": "海へ行きたいです。",
+    "reading": "なつやすみはうみへいきたいです。",
+    "zh": "暑假想去海邊。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "將「暑假」提示為主題說明計畫，用「は」。",
+    "distractorNotes": {
+      "を": "「夏やすみ」在此不是受詞，而是話題主題。"
+    }
+  },
+  {
+    "id": "n5-par-c2-149",
+    "groupId": "n5-particles",
+    "before": "弟",
+    "after": "毎日サッカーをします。",
+    "reading": "おとうとはまいにちサッカーをします。",
+    "zh": "弟弟每天踢足球。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "以「弟弟」為主題描述日常活動，用「は」。",
+    "distractorNotes": {
+      "を": "受詞已經是「サッカー」，主語主題用「は」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-150",
+    "groupId": "n5-particles",
+    "before": "きのう",
+    "after": "とてもさむかったです。",
+    "reading": "きのうはとてもさむかったです。",
+    "zh": "昨天非常冷。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "以「昨天」作為主題陳述天氣感受，用「は」。",
+    "distractorNotes": {
+      "に": "「きのう」不接時間點助詞「に」，提示主題用「は」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-151",
+    "groupId": "n5-particles",
+    "before": "今週のどようび",
+    "after": "ひまです。",
+    "reading": "こんしゅうのどようびはひまです。",
+    "zh": "這週六有空。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "將「這週六」提示為話題說明狀態，用「は」。",
+    "distractorNotes": {
+      "を": "形容動詞「ひまです」前不用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-152",
+    "groupId": "n5-particles",
+    "before": "らいしゅうの水曜日",
+    "after": "やすみです。",
+    "reading": "らいしゅうのすいようびはやすみです。",
+    "zh": "下週三放假。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "提示「下週三」為主題說明放假，用「は」。",
+    "distractorNotes": {
+      "で": "本句說明下週三是假日，不用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-153",
+    "groupId": "n5-particles",
+    "before": "コーヒーは飲みますが、お茶",
+    "after": "飲みません。",
+    "reading": "コーヒーはのみますが、おちゃはのみません。",
+    "zh": "我喝咖啡，但不喝茶。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "前後對比（咖啡 vs 茶）搭配否定，用對比助詞「は」。",
+    "distractorNotes": {
+      "が": "「飲む」的受詞不接「が」，且此處需表達對比。"
+    }
+  },
+  {
+    "id": "n5-par-c2-154",
+    "groupId": "n5-particles",
+    "before": "夏は好きですが、冬",
+    "after": "きらいです。",
+    "reading": "なつはすきですが、ふゆはきらいです。",
+    "zh": "我喜歡夏天，但討厭冬天。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "對比「夏天」與「冬天」兩個季節，用對比助詞「は」。",
+    "distractorNotes": {
+      "を": "「きらいです」不接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-155",
+    "groupId": "n5-particles",
+    "before": "朝はパンですが、夜",
+    "after": "ごはんです。",
+    "reading": "あさはパンですが、よるはごはんです。",
+    "zh": "早上吃麵包，晚上吃米飯。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "對比「早上」與「晚上」的飲食，用對比助詞「は」。",
+    "distractorNotes": {
+      "を": "「ごはんです」為名詞判斷句，不用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-156",
+    "groupId": "n5-particles",
+    "before": "犬はいますが、ねこ",
+    "after": "いません。",
+    "reading": "いぬはいますが、ねこはいません。",
+    "zh": "家裡有狗，但沒有貓。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "對比「狗」與「貓」的有無，用對比助詞「は」。",
+    "distractorNotes": {
+      "を": "「いません」是自動詞，不接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-157",
+    "groupId": "n5-particles",
+    "before": "りんごは食べますが、バナナ",
+    "after": "食べません。",
+    "reading": "りんごはたべますが、バナナはたべません。",
+    "zh": "我吃蘋果，但不吃香蕉。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "前後對比並搭配否定「食べません」，受詞改用對比「は」。",
+    "distractorNotes": {
+      "が": "他動詞「食べる」的受詞不用「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-158",
+    "groupId": "n5-particles",
+    "before": "あねはせが高いですが、わたし",
+    "after": "低いです。",
+    "reading": "あねはせがたかいですが、わたしはひくいです。",
+    "zh": "姊姊個子高，但我比較矮。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "對比「姊姊」與「我」，用對比助詞「は」。",
+    "distractorNotes": {
+      "に": "「わたし」是對比主題，不能接「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-159",
+    "groupId": "n5-particles",
+    "before": "きょうは暑いですが、きのう",
+    "after": "寒かったです。",
+    "reading": "きょうはあついですが、きのうはさむかったです。",
+    "zh": "今天很熱，但昨天很冷。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "對比「今天」與「昨天」的氣溫，用對比助詞「は」。",
+    "distractorNotes": {
+      "に": "「きのう」不接「に」，對比主題用「は」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-160",
+    "groupId": "n5-particles",
+    "before": "バスは安いですが、タクシー",
+    "after": "高いです。",
+    "reading": "バスはやすいですが、タクシーはたかいです。",
+    "zh": "公車很便宜，但計程車很貴。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "對比「公車」與「計程車」的價格，用對比助詞「は」。",
+    "distractorNotes": {
+      "で": "本句評價計程車價格高低，不是表交通手段。"
+    }
+  },
+  {
+    "id": "n5-par-c2-161",
+    "groupId": "n5-particles",
+    "before": "朝はいそがしいですが、夜",
+    "after": "ひまです。",
+    "reading": "あさはいそがしいですが、よるはひまです。",
+    "zh": "早上很忙，但晚上很閒。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "對比「早上」與「晚上」的忙碌程度，用對比助詞「は」。",
+    "distractorNotes": {
+      "を": "「ひまです」前不能接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-162",
+    "groupId": "n5-particles",
+    "before": "ひらがなは書けますが、漢字",
+    "after": "むずかしいです。",
+    "reading": "ひらがなはかけますが、かんじはむずかしいです。",
+    "zh": "平假名會寫，但漢字很難。",
+    "grammarKey": "は",
+    "answer": "は",
+    "tip": "前後對比「平假名」與「漢字」，用對比助詞「は」。",
+    "distractorNotes": {
+      "を": "形容詞「むずかしい」前不接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-163",
+    "groupId": "n5-particles",
+    "before": "毎朝あたたかいコーヒー",
+    "after": "飲みます。",
+    "reading": "まいあさあたたかいコーヒーをのみます。",
+    "zh": "每天早上喝熱咖啡。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「飲む」的直接受詞「熱咖啡」接「を」。",
+    "distractorNotes": {
+      "が": "他動詞「飲む」的對象用「を」而非「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-164",
+    "groupId": "n5-particles",
+    "before": "テレビを見ながらごはん",
+    "after": "食べます。",
+    "reading": "テレビをみながらごはんをたべます。",
+    "zh": "一邊看電視一邊吃飯。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「食べる」的直接受詞「ごはん」接「を」。",
+    "distractorNotes": {
+      "が": "「食べる」是他動詞，受詞用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-165",
+    "groupId": "n5-particles",
+    "before": "しゅくだい",
+    "after": "してからあそびます。",
+    "reading": "しゅくだいをしてからあそびます。",
+    "zh": "寫完功課之後再去玩。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「する」的受詞「しゅくだい」接「を」。",
+    "distractorNotes": {
+      "に": "「しゅくだい」是做的對象，須用受詞助詞「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-166",
+    "groupId": "n5-particles",
+    "before": "新しいじしょ",
+    "after": "買いました。",
+    "reading": "あたらしいじしょをかいました。",
+    "zh": "買了新字典。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「買う」的受詞「新字典」接「を」。",
+    "distractorNotes": {
+      "が": "「買う」是他動詞，買的物品用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-167",
+    "groupId": "n5-particles",
+    "before": "まど",
+    "after": "あけて風を入れます。",
+    "reading": "まどをあけてかぜをいれます。",
+    "zh": "打開窗戶讓風進來。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「あける」（打開）的受詞「まど」接「を」。",
+    "distractorNotes": {
+      "が": "自動詞「あく」用「が」；他動詞「あける」須用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-168",
+    "groupId": "n5-particles",
+    "before": "へやの電気",
+    "after": "けしてねます。",
+    "reading": "へやのでんきをけしてねます。",
+    "zh": "關掉房間的燈去睡覺。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「けす」（關掉）的受詞「電気」接「を」。",
+    "distractorNotes": {
+      "が": "自動詞「きえる」用「が」；他動詞「けす」用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-169",
+    "groupId": "n5-particles",
+    "before": "きれいな写真",
+    "after": "たくさんとりました。",
+    "reading": "きれいなしゃしんをたくさんとりました。",
+    "zh": "拍了很多漂亮的照片。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「とる」（拍攝）的受詞「写真」接「を」。",
+    "distractorNotes": {
+      "に": "「写真」是拍攝的對象，須用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-170",
+    "groupId": "n5-particles",
+    "before": "まいばん日記",
+    "after": "書いています。",
+    "reading": "まいばんにっきをかいています。",
+    "zh": "每天晚上都在寫日記。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「書く」的受詞「日記」接「を」。",
+    "distractorNotes": {
+      "に": "寫的內容受詞用「を」，寫在何處才用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-171",
+    "groupId": "n5-particles",
+    "before": "友だちに長い手紙",
+    "after": "出しました。",
+    "reading": "ともだちにながいてがみをだしました。",
+    "zh": "寄了一封長信給朋友。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「出す」（寄出）的受詞「手紙」接「を」。",
+    "distractorNotes": {
+      "が": "「出す」是他動詞，寄出的物品接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-172",
+    "groupId": "n5-particles",
+    "before": "まいばんうちでえいご",
+    "after": "べんきょうします。",
+    "reading": "まいばんうちでえいごをべんきょうします。",
+    "zh": "每天晚上在家讀英語。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「べんきょうする」的受詞「えいご」接「を」。",
+    "distractorNotes": {
+      "で": "「えいご」是學習的對象受詞，須用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-173",
+    "groupId": "n5-particles",
+    "before": "ごはんのまえに手",
+    "after": "洗います。",
+    "reading": "ごはんのまえにてをあらいます。",
+    "zh": "吃飯前洗手。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「洗う」的受詞「手」接「を」。",
+    "distractorNotes": {
+      "に": "「手」是清洗的對象，用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-174",
+    "groupId": "n5-particles",
+    "before": "あさごはんにたまご",
+    "after": "やきます。",
+    "reading": "あさごはんにたまごをやきます。",
+    "zh": "早餐煎蛋。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「やく」（煎、烤）的受詞「たまご」接「を」。",
+    "distractorNotes": {
+      "が": "「やく」是他動詞，受詞用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-175",
+    "groupId": "n5-particles",
+    "before": "スーパーでやさいと肉",
+    "after": "買います。",
+    "reading": "スーパーでやさいとにくをかいます。",
+    "zh": "在超市買蔬菜和肉。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「買う」的受詞「やさいと肉」接「を」。",
+    "distractorNotes": {
+      "で": "場所已用「スーパーで」，購買對象須用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-176",
+    "groupId": "n5-particles",
+    "before": "すきな音楽",
+    "after": "聞きながら歩きます。",
+    "reading": "すきなおんがくをききながらあるきます。",
+    "zh": "一邊聽喜歡的音樂一邊走路。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「聞く」（主動聆聽）的受詞「音楽」接「を」。",
+    "distractorNotes": {
+      "が": "「きこえる」用「が」，主動聆聽的「聞く」用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-177",
+    "groupId": "n5-particles",
+    "before": "図書館で新しい本",
+    "after": "かりました。",
+    "reading": "としょかんであたらしいほんをかりました。",
+    "zh": "在圖書館借了新書。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「かりる」（借入）的受詞「本」接「を」。",
+    "distractorNotes": {
+      "が": "「かりる」是他動詞，借入的物品用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-178",
+    "groupId": "n5-particles",
+    "before": "くつ",
+    "after": "ぬいでへやに入ります。",
+    "reading": "くつをぬいでへやにはいります。",
+    "zh": "脫下鞋子進房間。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「ぬぐ」（脫下）的受詞「くつ」接「を」。",
+    "distractorNotes": {
+      "が": "「ぬぐ」是他動詞，脫下的衣物接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-179",
+    "groupId": "n5-particles",
+    "before": "あたたかいコート",
+    "after": "着て出かけます。",
+    "reading": "あたたかいコートをきてでかけます。",
+    "zh": "穿上保暖的大衣出門。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「着る」（穿）的受詞「コート」接「を」。",
+    "distractorNotes": {
+      "に": "穿戴動詞「着る」的衣物受詞固定用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-180",
+    "groupId": "n5-particles",
+    "before": "めがね",
+    "after": "かけてしんぶんを読みます。",
+    "reading": "めがねをかけてしんぶんをよみます。",
+    "zh": "戴上眼鏡看報紙。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「かける」（戴眼鏡）的受詞「めがね」接「を」。",
+    "distractorNotes": {
+      "に": "「めがねをかける」為固定搭配，受詞用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-181",
+    "groupId": "n5-particles",
+    "before": "かぎ",
+    "after": "しめてうちを出ました。",
+    "reading": "かぎをしめてうちをでました。",
+    "zh": "鎖上門後出門了。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「しめる」（鎖上、關上）的受詞「かぎ」接「を」。",
+    "distractorNotes": {
+      "が": "他動詞「しめる」接「を」；自動詞「しまる」才接「が」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-182",
+    "groupId": "n5-particles",
+    "before": "テーブルの上",
+    "after": "きれいにそうじします。",
+    "reading": "テーブルのうえをきれいにそうじします。",
+    "zh": "把桌子上面打掃乾淨。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「そうじする」的清掃對象接「を」。",
+    "distractorNotes": {
+      "で": "本句指打掃「桌面」這個對象，用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-183",
+    "groupId": "n5-particles",
+    "before": "あついお茶",
+    "after": "入れてください。",
+    "reading": "あついおちゃをいれてください。",
+    "zh": "請泡熱茶。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「入れる」（泡茶）的受詞「お茶」接「を」。",
+    "distractorNotes": {
+      "が": "「入れる」是他動詞，受詞用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-184",
+    "groupId": "n5-particles",
+    "before": "えきできっぷ",
+    "after": "買って電車に乗ります。",
+    "reading": "えきできっぷをかってでんしゃにのります。",
+    "zh": "在車站買票搭電車。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「買う」的受詞「きっぷ」接「を」。",
+    "distractorNotes": {
+      "に": "「きっぷ」是購買對象，須用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-185",
+    "groupId": "n5-particles",
+    "before": "毎朝七時にかお",
+    "after": "洗います。",
+    "reading": "まいあさしちじにかおをあらいます。",
+    "zh": "每天早上七點洗臉。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「洗う」的受詞「かお」接「を」。",
+    "distractorNotes": {
+      "が": "「洗う」是他動詞，受詞用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-186",
+    "groupId": "n5-particles",
+    "before": "夜おそくまで本",
+    "after": "読みました。",
+    "reading": "よるおそくまでほんをよみました。",
+    "zh": "看書看到深夜。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「読む」的受詞「本」接「を」。",
+    "distractorNotes": {
+      "が": "「読む」是他動詞，閱讀對象用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-187",
+    "groupId": "n5-particles",
+    "before": "はさみで白い紙",
+    "after": "きります。",
+    "reading": "はさみでしろいかみをきります。",
+    "zh": "用剪刀剪白紙。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「きる」（剪、切）的受詞「白い紙」接「を」。",
+    "distractorNotes": {
+      "で": "工具「はさみ」已用「で」，被剪的對象「紙」用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-188",
+    "groupId": "n5-particles",
+    "before": "母のたんじょうびにケーキ",
+    "after": "作ります。",
+    "reading": "ははのたんじょうびにケーキをつくります。",
+    "zh": "在媽媽生日時做蛋糕。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「作る」的受詞「ケーキ」接「を」。",
+    "distractorNotes": {
+      "が": "「作る」是他動詞，製作的對象用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-189",
+    "groupId": "n5-particles",
+    "before": "ちいさい声で名前",
+    "after": "よびました。",
+    "reading": "ちいさいこえでなまえをよびました。",
+    "zh": "小聲地叫了名字。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「よぶ」（呼喚）的受詞「名前」接「を」。",
+    "distractorNotes": {
+      "が": "「よぶ」是他動詞，呼叫對象用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-190",
+    "groupId": "n5-particles",
+    "before": "じぶんの部屋",
+    "after": "かたづけます。",
+    "reading": "じぶんのへやをかたづけます。",
+    "zh": "整理自己的房間。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「かたづける」（整理）的受詞「部屋」接「を」。",
+    "distractorNotes": {
+      "で": "「部屋」是被整理的對象，而非單純動作場所，須用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-191",
+    "groupId": "n5-particles",
+    "before": "えきの前でバス",
+    "after": "まっています。",
+    "reading": "えきのまえでバスをまっています。",
+    "zh": "在車站前面等公車。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「まつ」（等待）的對象「バス」接「を」。",
+    "distractorNotes": {
+      "に": "「まつ」是他動詞，等待對象用「を」不用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-192",
+    "groupId": "n5-particles",
+    "before": "あかいぼうし",
+    "after": "かぶっています。",
+    "reading": "あかいぼうしをかぶっています。",
+    "zh": "戴著紅色的帽子。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「かぶる」（戴帽子）的受詞「ぼうし」接「を」。",
+    "distractorNotes": {
+      "に": "戴帽子固定用「ぼうしをかぶる」，受詞接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-193",
+    "groupId": "n5-particles",
+    "before": "ばんごはんのあとでさら",
+    "after": "洗います。",
+    "reading": "ばんごはんのあとでさらをあらいます。",
+    "zh": "吃完晚餐後洗盤子。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「洗う」的受詞「さら」接「を」。",
+    "distractorNotes": {
+      "が": "「洗う」是他動詞，受詞用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-194",
+    "groupId": "n5-particles",
+    "before": "かばんからノート",
+    "after": "出しました。",
+    "reading": "かばんからノートをだしました。",
+    "zh": "從包包裡拿出筆記本。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「出す」（拿出）的受詞「ノート」接「を」。",
+    "distractorNotes": {
+      "が": "他動詞「出す」的對象用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-195",
+    "groupId": "n5-particles",
+    "before": "友だちに道",
+    "after": "聞きました。",
+    "reading": "ともだちにみちをききました。",
+    "zh": "向朋友問路。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「聞く」（詢問）的詢問內容「道」接「を」。",
+    "distractorNotes": {
+      "に": "詢問的對象「友だち」用「に」，詢問的內容用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-196",
+    "groupId": "n5-particles",
+    "before": "あさ公園",
+    "after": "ゆっくり走ります。",
+    "reading": "あさこうえんをゆっくりはしります。",
+    "zh": "早上在公園裡慢慢跑步。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "表示移動動詞「走る」經過的空間，用「を」。",
+    "distractorNotes": {
+      "に": "表示沿著空間移動經過須用「を」，不用「に」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-197",
+    "groupId": "n5-particles",
+    "before": "ひろい道",
+    "after": "まっすぐ歩きます。",
+    "reading": "ひろいみちをまっすぐあるきます。",
+    "zh": "沿著寬敞的道路直走。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "表示移動動詞「歩く」所經過的路徑空間，用「を」。",
+    "distractorNotes": {
+      "に": "沿著道路行走經過，路徑名詞接「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-198",
+    "groupId": "n5-particles",
+    "before": "あぶないからこのはし",
+    "after": "渡ります。",
+    "reading": "あぶないからこのはしをわたります。",
+    "zh": "因為危險，所以走這座橋過去。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "「渡る」（橫越、過橋）所經過的場所接「を」。",
+    "distractorNotes": {
+      "に": "過橋或過馬路（「はし・道を渡る」）固定用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-199",
+    "groupId": "n5-particles",
+    "before": "まいあさ八時にうち",
+    "after": "出ます。",
+    "reading": "まいあさはちじにうちをでます。",
+    "zh": "每天早上八點出門。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "「出る」表示離開某空間，出發點固定接「を」。",
+    "distractorNotes": {
+      "に": "進入用「に入る」，離開出發點須用「を出る」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-200",
+    "groupId": "n5-particles",
+    "before": "つぎのえきで電車",
+    "after": "降ります。",
+    "reading": "つぎのえきででんしゃをおります。",
+    "zh": "在下一站下電車。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "「降りる」（下車）所離開的交通工具固定用「を」。",
+    "distractorNotes": {
+      "に": "上車用「に乗る」，下車固定用「を降りる」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-201",
+    "groupId": "n5-particles",
+    "before": "白い鳥が青い空",
+    "after": "とんでいます。",
+    "reading": "しろいとりがあおいそらをとんでいます。",
+    "zh": "白色的鳥在藍天飛翔。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "表示飛行「とぶ」所經過的空間「藍天」，用「を」。",
+    "distractorNotes": {
+      "に": "在空中飛翔經過的空間須用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-202",
+    "groupId": "n5-particles",
+    "before": "みぎのかど",
+    "after": "まがってください。",
+    "reading": "みぎのかどをまがってください。",
+    "zh": "請在右邊的轉角轉彎。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "「まがる」（轉彎）所經過的轉角接「を」。",
+    "distractorNotes": {
+      "に": "經過轉角轉彎固定用「かどをまがる」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-203",
+    "groupId": "n5-particles",
+    "before": "あさ九時に会社",
+    "after": "出ました。",
+    "reading": "あさくじにかいしゃをでました。",
+    "zh": "早上九點離開了公司。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "「出る」表示離開的地點「公司」，用「を」。",
+    "distractorNotes": {
+      "で": "離開某地固定用「を出る」，不用「で」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-204",
+    "groupId": "n5-particles",
+    "before": "まいにち犬のせわ",
+    "after": "します。",
+    "reading": "まいにちいぬのせわをします。",
+    "zh": "每天照顧狗。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "「せわをする」（照顧）的動作受詞接「を」。",
+    "distractorNotes": {
+      "に": "「せわをする」為固定搭配，受詞用「を」。"
+    }
+  },
+  {
+    "id": "n5-par-c2-205",
+    "groupId": "n5-particles",
+    "before": "新しいうた",
+    "after": "おぼえました。",
+    "reading": "あたらしいうたをおぼえました。",
+    "zh": "記住了新歌。",
+    "grammarKey": "を",
+    "answer": "を",
+    "tip": "他動詞「おぼえる」（記住）的受詞「うた」接「を」。",
+    "distractorNotes": {
+      "が": "「おぼえる」是他動詞，受詞用「を」。"
+    }
+  }
+]
