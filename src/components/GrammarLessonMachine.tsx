@@ -1,6 +1,6 @@
 import { TactileChoiceButton } from "@/components/TactileChoiceButton";
 import type { ChoiceVisualState } from "@/components/TactileChoiceButton";
-import { alignClozeRuby, RubyText } from "@/components/RubyText";
+import { RubyText } from "@/components/RubyText";
 import { useEffect, useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -9,12 +9,10 @@ import { ProficiencyMeter } from "@/components/ProficiencyMeter";
 import { grammarLessonKey } from "@/data/grammarRegistry";
 import type { GrammarLesson, LevelId, PatternDrillQuestion } from "@/data/types";
 import {
-  generateLessonCloze,
   generateLessonPatternDrill,
   lessonAllowedPos,
   lexiconCount,
 } from "@/lib/conjugator";
-import { lessonExamples } from "@/lib/grammar";
 import { PROFICIENCY_LEVELS } from "@/lib/proficiency";
 import { useProgress } from "@/state/progress";
 import { useAppTheme } from "@/theme";
@@ -51,13 +49,10 @@ export function GrammarLessonMachine({ lesson, onBack, onNavigateLesson }: Props
   const prof = getGrammarProficiency(key);
 
   const allowedPos = useMemo(() => lessonAllowedPos(lesson), [lesson]);
-  const examples = useMemo(() => lessonExamples(lesson), [lesson]);
   const hasMachine = allowedPos.length > 0;
-  const firstCloze = useMemo(() => generateLessonCloze(lesson, 0), [lesson]);
-  const hasCloze = firstCloze !== null;
 
-  const defaultMode: "machine" | "cloze" | "study" = hasMachine ? "machine" : hasCloze ? "cloze" : "study";
-  const [mode, setMode] = useState<"machine" | "cloze" | "study">(defaultMode);
+  const defaultMode: "machine" | "study" = hasMachine ? "machine" : "study";
+  const [mode, setMode] = useState<"machine" | "study">(defaultMode);
   const [inputMode, setInputMode] = useState<"tiles" | "type">("tiles");
 
   // Pattern machine state
@@ -71,26 +66,13 @@ export function GrammarLessonMachine({ lesson, onBack, onNavigateLesson }: Props
   const [streak, setStreak] = useState(0);
   const [total, setTotal] = useState(0);
 
-  // Real-example Cloze state
-  const [exampleIdx, setExampleIdx] = useState(0);
-  const [clozePicked, setClozePicked] = useState<string | null>(null);
-
   const poolSize = useMemo(
     () => (allowedPos.length > 0 ? lexiconCount("ALL", allowedPos) : 0),
     [allowedPos],
   );
 
-  const activeCloze = useMemo(() => {
-    if (!hasCloze) return null;
-    for (let offset = 0; offset < examples.length; offset += 1) {
-      const q = generateLessonCloze(lesson, exampleIdx + offset);
-      if (q) return q;
-    }
-    return null;
-  }, [examples.length, exampleIdx, hasCloze, lesson]);
-
   useEffect(() => {
-    const nextDefault = hasMachine ? "machine" : hasCloze ? "cloze" : "study";
+    const nextDefault = hasMachine ? "machine" : "study";
     setMode(nextDefault);
     setRecentIds([]);
     setPicked(null);
@@ -98,9 +80,7 @@ export function GrammarLessonMachine({ lesson, onBack, onNavigateLesson }: Props
     setStreak(0);
     setTotal(0);
     setDrill(hasMachine ? generateLessonPatternDrill(lesson, []) : null);
-    setExampleIdx(0);
-    setClozePicked(null);
-  }, [hasCloze, hasMachine, lesson]);
+  }, [hasMachine, lesson]);
 
   const submitDrill = (raw: string) => {
     if (!drill || picked !== null) return;
@@ -129,27 +109,8 @@ export function GrammarLessonMachine({ lesson, onBack, onNavigateLesson }: Props
     setDrill(generateLessonPatternDrill(lesson, nextRecent));
   };
 
-  const submitCloze = (choice: string) => {
-    if (!activeCloze || clozePicked !== null) return;
-    const ok = choice === activeCloze.answer;
-    setClozePicked(choice);
-    if (ok) {
-      markGrammarLearned(key);
-      clearGhostGrammar(key);
-    } else {
-      addGhostGrammar(key);
-    }
-    recordGrammarAttempt(key, ok);
-  };
-
-  const nextCloze = () => {
-    setExampleIdx((n) => (n + 1) % Math.max(1, examples.length));
-    setClozePicked(null);
-  };
-
   const showDrillSheet = mode === "machine" && drill && picked !== null;
-  const showClozeSheet = mode === "cloze" && activeCloze && clozePicked !== null;
-  const hasBottomSheet = Boolean(showDrillSheet || showClozeSheet);
+  const hasBottomSheet = Boolean(showDrillSheet);
 
   return (
     <View style={styles.container}>
@@ -188,14 +149,6 @@ export function GrammarLessonMachine({ lesson, onBack, onNavigateLesson }: Props
                 style={[styles.subTab, mode === "machine" && { backgroundColor: accent }]}
               >
                 <Text style={[styles.subTabText, mode === "machine" && { color: "#fff" }]}>活用練功</Text>
-              </Pressable>
-            )}
-            {hasCloze && (
-              <Pressable
-                onPress={() => setMode("cloze")}
-                style={[styles.subTab, mode === "cloze" && { backgroundColor: accent }]}
-              >
-                <Text style={[styles.subTabText, mode === "cloze" && { color: "#fff" }]}>例句填空</Text>
               </Pressable>
             )}
             <Pressable
@@ -307,75 +260,6 @@ export function GrammarLessonMachine({ lesson, onBack, onNavigateLesson }: Props
           </View>
         )}
 
-        {/* MODE 2: EXAMPLE CLOZE */}
-        {mode === "cloze" && activeCloze && (
-          <View style={styles.card}>
-            <View style={styles.machineTop}>
-              <Text style={styles.poolInfo}>
-                例句 {(exampleIdx % examples.length) + 1} / {examples.length}
-              </Text>
-              {examples.length > 1 && (
-                <Pressable onPress={nextCloze} style={styles.cycleBtn}>
-                  <Text style={styles.cycleBtnText}>換一句 ↻</Text>
-                </Pressable>
-              )}
-            </View>
-
-            <RubyText
-              segments={alignClozeRuby({
-                before: activeCloze.before,
-                surface: clozePicked ?? activeCloze.answer,
-                after: activeCloze.after,
-                reading: activeCloze.reading ?? "",
-                revealed: clozePicked !== null,
-              })}
-              showRuby={prefs.showFurigana}
-              fontSize={19}
-              rtFontSize={10}
-              blankColor={
-                clozePicked === null
-                  ? accent
-                  : clozePicked === activeCloze.answer
-                    ? t.matchaDark
-                    : t.error
-              }
-            />
-
-            {activeCloze.zh ? <Text style={styles.translation}>{activeCloze.zh}</Text> : null}
-
-            <View style={styles.tilesGrid}>
-              {activeCloze.choices.map((opt) => {
-                const isAns = opt === activeCloze.answer;
-                const isPick = opt === clozePicked;
-                let color = t.ink;
-                let choiceState: ChoiceVisualState = "idle";
-                if (clozePicked !== null) {
-                  if (isAns) {
-                    color = t.matchaDark;
-                    choiceState = "correct";
-                  } else if (isPick) {
-                    color = t.error;
-                    choiceState = "wrong";
-                  } else {
-                    color = t.inkMuted;
-                    choiceState = "muted";
-                  }
-                }
-                return (
-                  <TactileChoiceButton
-                    key={opt}
-                    disabled={clozePicked !== null}
-                    state={choiceState}
-                    onPress={() => submitCloze(opt)}
-                  >
-                    <Text style={[styles.tileText, { color }]}>{opt}</Text>
-                  </TactileChoiceButton>
-                );
-              })}
-            </View>
-          </View>
-        )}
-
         {/* MODE 3: RICH LESSON CONTENT (TABLES, CALLOUTS, IMAGES, EXAMPLES) & PERSONAL NOTE */}
         {mode === "study" && (
           <View style={styles.studyWrap}>
@@ -441,43 +325,6 @@ export function GrammarLessonMachine({ lesson, onBack, onNavigateLesson }: Props
             style={[styles.dockBtn, { backgroundColor: isCorrect ? t.success : t.error }]}
           >
             <Text style={styles.dockBtnText}>下一題 →</Text>
-          </Pressable>
-        </View>
-      )}
-
-      {/* PINNED ZERO-SCROLL FEEDBACK BAR (Cloze) */}
-      {showClozeSheet && (
-        <View
-          style={[
-            styles.feedbackDock,
-            {
-              paddingBottom: Math.max(insets.bottom, 14),
-              backgroundColor: clozePicked === activeCloze.answer ? t.successSoft : t.errorSoft,
-              borderTopColor: clozePicked === activeCloze.answer ? t.success : t.error,
-            },
-          ]}
-        >
-          <View style={styles.dockTop}>
-            <Text
-              style={[
-                styles.dockTitle,
-                { color: clozePicked === activeCloze.answer ? t.matchaDark : t.error },
-              ]}
-            >
-              {clozePicked === activeCloze.answer ? "✓ 答對了！" : `✕ 正解：${activeCloze.answer}`}
-            </Text>
-            <Text style={styles.dockBody} numberOfLines={2}>
-              {activeCloze.fullJa}
-            </Text>
-          </View>
-          <Pressable
-            onPress={nextCloze}
-            style={[
-              styles.dockBtn,
-              { backgroundColor: clozePicked === activeCloze.answer ? t.success : t.error },
-            ]}
-          >
-            <Text style={styles.dockBtnText}>下一個例句 →</Text>
           </Pressable>
         </View>
       )}

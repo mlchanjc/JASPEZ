@@ -2,13 +2,11 @@ import { grammarLessonsByLevel } from "@/data/grammarRegistry";
 import { lessons, manifests } from "@/data/registry";
 import type {
   ClassicalForm,
-  ExampleClozeQuestion,
   GrammarLesson,
   LevelId,
   PatternDrillQuestion,
   WordPos,
 } from "@/data/types";
-import { lessonExamples } from "@/lib/grammar";
 
 type VerbCategory = "godan" | "ichidan" | "suru" | "kuru";
 
@@ -1217,79 +1215,6 @@ export function generateLessonPatternDrill(
     meaning: word.meaning,
     promptLabel: clause.label,
     ...built,
-  };
-}
-
-// ==================================================
-// BOUNDARY-SAFE REAL EXAMPLE CLOZE GENERATOR
-// ==================================================
-function candidateTargets(lesson: GrammarLesson): string[] {
-  const raw = `${lesson.point ?? ""}／${lesson.gloss ?? ""}`;
-  const parts = raw
-    .split(/[／/・、,，]/)
-    .map((s) =>
-      s
-        .replace(/[〜～~「」『』（）()【】]/g, "")
-        .replace(/^(N|Na|A|V)[のになだ]?/, "")
-        .trim(),
-    )
-    .filter((s) => s.length >= 1 && /^[\u3040-\u30ff\u4e00-\u9fafー]+$/.test(s));
-  return Array.from(new Set(parts)).sort((a, b) => b.length - a.length);
-}
-
-function findSafeTargetIndex(sentence: string, target: string): number {
-  if (target.length >= 2) {
-    return sentence.indexOf(target);
-  }
-  const re = new RegExp(`${target}(?=[、。！？\\s]|$)`, "g");
-  const match = re.exec(sentence);
-  return match ? match.index : -1;
-}
-
-export function generateLessonCloze(
-  lesson: GrammarLesson,
-  exampleIndex: number,
-): ExampleClozeQuestion | null {
-  const examples = lessonExamples(lesson);
-  if (examples.length === 0) return null;
-
-  const targets = candidateTargets(lesson);
-  const ex = examples[exampleIndex % examples.length];
-  const fullJa = ex.ja.trim();
-  const reading = (ex.reading ?? "").trim();
-  const zh = (ex.zh ?? "").trim();
-
-  let matched = "";
-  let matchPos = -1;
-  for (const t of targets) {
-    const idx = findSafeTargetIndex(fullJa, t);
-    if (idx >= 0) {
-      matched = t;
-      matchPos = idx;
-      break;
-    }
-  }
-  if (!matched || matchPos < 0) return null;
-
-  const siblings = grammarLessonsByLevel[lesson.level]
-    .filter((other) => other.id !== lesson.id)
-    .flatMap((other) => candidateTargets(other))
-    .filter((cand) => cand !== matched && cand.length >= Math.min(2, matched.length) && cand.length <= 8);
-
-  const shuffledSiblings = [...new Set(siblings)];
-  for (let i = shuffledSiblings.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffledSiblings[i], shuffledSiblings[j]] = [shuffledSiblings[j], shuffledSiblings[i]];
-  }
-
-  return {
-    before: fullJa.slice(0, matchPos),
-    after: fullJa.slice(matchPos + matched.length),
-    answer: matched,
-    fullJa,
-    reading,
-    zh,
-    choices: uniqueChoices(matched, shuffledSiblings.slice(0, 8)),
   };
 }
 

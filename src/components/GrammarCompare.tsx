@@ -2,7 +2,7 @@ import { AnimatedFeedbackDock, QuestionTransition, TactilePress } from "@/compon
 import { TactileChoiceButton } from "@/components/TactileChoiceButton";
 import type { ChoiceVisualState } from "@/components/TactileChoiceButton";
 import { useMemo, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { alignClozeRuby, RubyText } from "@/components/RubyText";
 import { ARENA_BANK, ARENA_GROUPS } from "@/data/arenaBank";
 import type { ArenaGroupId, ArenaGroupMeta, ArenaItem } from "@/data/arenaBank";
@@ -214,6 +214,10 @@ function stripLevelPrefix(label: string): string {
   return label.replace(/^N[1-5]\s+/, "");
 }
 
+function normalizeArenaInput(value: string): string {
+  return value.normalize("NFKC").trim().toLowerCase().replace(/[\s・･？?。、]/g, "");
+}
+
 export function GrammarCompare() {
   const { prefs, setPref, arenaAttempts, recordArenaAttempt } = useProgress();
   const { t, levelAccent } = useAppTheme();
@@ -242,6 +246,8 @@ export function GrammarCompare() {
   const showZh = prefs.showChinese;
   const [peekZh, setPeekZh] = useState(false);
   const [showPreReading, setShowPreReading] = useState(true);
+  const [inputMode, setInputMode] = useState<"tiles" | "type">("tiles");
+  const [typed, setTyped] = useState("");
 
   const [rendered, setRendered] = useState<RenderedQuestion | null>(null);
   const [seenIds, setSeenIds] = useState<Set<string>>(() => new Set());
@@ -377,6 +383,7 @@ export function GrammarCompare() {
     setRendered(first);
     setSeenIds(new Set([first.item.id]));
     setPicked(null);
+    setTyped("");
     setOutcome(null);
     setPeekZh(false);
     setStreak(0);
@@ -398,11 +405,31 @@ export function GrammarCompare() {
   const choose = (choiceText: string) => {
     if (!rendered || picked !== null) return;
     const { item } = rendered;
-    setPicked(choiceText);
+    const cleaned = choiceText.trim();
+    if (!cleaned) return;
+    const normInput = normalizeArenaInput(cleaned);
+    const blankReading = alignClozeRuby({
+      before: item.before,
+      surface: item.surface ?? item.answer,
+      after: item.after,
+      reading: item.reading,
+      revealed: true,
+    })
+      .filter((seg) => seg.isBlank)
+      .map((seg) => seg.rt ?? seg.base)
+      .join("");
+    const acceptedExact = [item.answer, item.surface, blankReading]
+      .filter((v): v is string => Boolean(v))
+      .map(normalizeArenaInput);
+    const matchedAltKey = item.altAnswers
+      ? Object.keys(item.altAnswers).find((k) => normalizeArenaInput(k) === normInput)
+      : undefined;
+
+    setPicked(matchedAltKey ?? cleaned);
     setAnsweredTotal((n) => n + 1);
 
     let nextOutcome: AnswerOutcome;
-    if (choiceText === item.answer) {
+    if (acceptedExact.includes(normInput)) {
       nextOutcome = "correct";
       setCorrectTotal((n) => n + 1);
       setStreak((prev) => {
@@ -411,7 +438,7 @@ export function GrammarCompare() {
         return next;
       });
       recordArenaAttempt(item.id, true);
-    } else if (item.altAnswers && item.altAnswers[choiceText]) {
+    } else if (matchedAltKey) {
       // Soft-accept near-synonym: preserve streak, leave mastery weight unchanged
       nextOutcome = "alt";
       setCorrectTotal((n) => n + 1);
@@ -431,6 +458,7 @@ export function GrammarCompare() {
     }
     const next = pickWeightedQuestion(activePool, arenaAttempts, seenIds);
     setPicked(null);
+    setTyped("");
     setOutcome(null);
     setPeekZh(false);
     if (next) {
@@ -507,7 +535,10 @@ export function GrammarCompare() {
   const effectiveShowZh = showZh || peekZh || picked !== null;
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+    >
       <ScrollView
         style={styles.scroller}
         contentContainerStyle={[
@@ -515,6 +546,7 @@ export function GrammarCompare() {
           subMode === "arena" && view === "hub" && multiSelectMode && styles.scrollContentWithDock,
         ]}
         showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
       >
         {/* Top Header */}
         <View style={styles.topCard}>
@@ -693,6 +725,19 @@ export function GrammarCompare() {
               </Pressable>
 
               <View style={styles.drillToolbarRight}>
+                <Pressable
+                  onPress={() => setInputMode((prev) => (prev === "tiles" ? "type" : "tiles"))}
+                  style={[styles.togglePill, inputMode === "type" && styles.togglePillAccent]}
+                >
+                  <Text
+                    style={[
+                      styles.togglePillText,
+                      inputMode === "type" && styles.togglePillTextAccent,
+                    ]}
+                  >
+                    {inputMode === "tiles" ? "作答：選詞" : "作答：手打"}
+                  </Text>
+                </Pressable>
                 <Pressable
                   onPress={() => setShowPreReading((prev) => !prev)}
                   style={[styles.togglePill, !showPreReading && styles.togglePillOff]}
@@ -917,6 +962,7 @@ export function GrammarCompare() {
               )
             ) : null}
 
+            {inputMode === "tiles" ? (
             <View style={styles.choicesGrid}>
               {rendered.shuffledChoices.map((opt) => {
                 const isAns = opt === item.answer;
@@ -953,6 +999,38 @@ export function GrammarCompare() {
                 );
               })}
             </View>
+            ) : (
+              <View style={styles.typeBox}>
+                <View style={styles.typeRow}>
+                  <TextInput
+                    value={typed}
+                    onChangeText={setTyped}
+                    editable={picked === null}
+                    placeholder="輸入填入【　】的日文（漢字或假名）…"
+                    placeholderTextColor={t.inkMuted}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    onSubmitEditing={() => choose(typed)}
+                    style={styles.typeInput}
+                  />
+                  <Pressable
+                    disabled={picked !== null || !typed.trim()}
+                    onPress={() => choose(typed)}
+                    style={[
+                      styles.typeSubmitBtn,
+                      (picked !== null || !typed.trim()) && styles.btnDisabled,
+                    ]}
+                  >
+                    <Text style={styles.typeSubmitText}>送出</Text>
+                  </Pressable>
+                </View>
+                {picked !== null && (
+                  <Text style={styles.typedEcho}>
+                    你的作答：{picked}
+                  </Text>
+                )}
+              </View>
+            )}
           </QuestionTransition>
         )}
 
@@ -1140,7 +1218,7 @@ export function GrammarCompare() {
           </TactilePress>
         </AnimatedFeedbackDock>
       )}
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -1441,6 +1519,35 @@ function makeStyles(t: AppTheme) {
     },
     tileFull: { width: "100%" },
     tileText: { fontSize: 14.5, fontWeight: "700", textAlign: "center" },
+    togglePillAccent: {
+      backgroundColor: activeBg,
+      borderColor: activeBg,
+    },
+    togglePillTextAccent: { color: activeFg },
+    typeBox: { gap: 8, marginTop: 4 },
+    typeRow: { flexDirection: "row", alignItems: "center", gap: 8 },
+    typeInput: {
+      flex: 1,
+      backgroundColor: t.surface,
+      borderRadius: t.controlRadius,
+      borderWidth: 1,
+      borderColor: t.paperBorder,
+      paddingHorizontal: 12,
+      paddingVertical: 11,
+      fontSize: 15.5,
+      fontWeight: "600",
+      color: t.ink,
+    },
+    typeSubmitBtn: {
+      backgroundColor: t.accentPrimary,
+      borderRadius: t.controlRadius,
+      paddingHorizontal: 16,
+      paddingVertical: 11,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    typeSubmitText: { color: "#FFFFFF", fontSize: 14, fontWeight: "700" },
+    typedEcho: { fontSize: 12.5, fontWeight: "600", color: t.inkSoft },
 
     // Multi-Select Bottom Dock
     multiDock: {

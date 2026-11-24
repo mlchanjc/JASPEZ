@@ -105,12 +105,3 @@ export type PatternDrillQuestion = {
   rule: string;
 };
 
-export type ExampleClozeQuestion = {
-  before: string;
-  after: string;
-  answer: string;
-  fullJa: string;
-  reading: string;
-  zh: string;
-  choices: string[];
-};
